@@ -36,3 +36,14 @@ Log riêng cho phần vốn sandbox (~$400–800, tự động, KHÔNG cần duy
 - Tin tức: TeraWulf vừa công bố hợp đồng thuê 20 năm với Anthropic tại campus Hawesville, Kentucky (~$19 tỷ doanh thu hợp đồng, ~401MW), kèm bán 50.1% cổ phần Abernathy JV cho nhóm do Fluidstack dẫn đầu — catalyst nền tảng rất tích cực. Trước đó cổ phiếu đã giảm ~26%/7 phiên do nhóm AI data-center hạ nhiệt, nên biến động hiện tại nhiều khả năng là chốt lời/nhiễu ngắn hạn sau đợt tăng, không phải đảo chiều thesis. Analyst consensus: Buy (14 analysts), giá mục tiêu ~$28.
 - Nguồn: [Yahoo Finance](https://finance.yahoo.com/technology/ai/articles/terawulf-shares-surge-anthropic-lease-131745434.html), [CNBC](https://www.cnbc.com/2026/07/06/anthropic-terawulf-data-center-ai.html), [ts2.tech](https://ts2.tech/en/terawulf-heads-into-july-6-after-shares-drop-26-as-ai-data-center-trade-falters/)
 - Quyết định: giữ nguyên vị thế 17 cp, không bán, không thêm. Stop-loss $21.90 vẫn confirmed/active, còn cách xa (~-8% từ vốn, giá hiện mới -3.73%).
+
+## 2026-07-06 ~13:57 ET — Check nhẹ
+
+- Giá WULF hiện $22.52 vs vốn $23.7999 (-5.38%). So với lần check trước ($22.9125) chỉ giảm thêm -1.71% — dưới ngưỡng 3-5%, không tìm tin tức mới, giữ nguyên vị thế.
+- Stop-loss $21.90 vẫn confirmed/active (còn cách ~2.7% nữa mới chạm), 17 cp giữ nguyên, không có lệnh mới.
+
+## 2026-07-06 ~14:02 ET — Check nhẹ
+
+- Giá WULF hồi nhẹ lên $22.865 vs vốn $23.7999 (-3.93%), so với lần check trước ($22.52) tăng lại +1.53% — biến động trong biên độ đã phân tích ở 13:24 ET (chốt lời/nhiễu ngắn hạn sau tin Anthropic, thesis không đổi), không cần tìm tin tức lại.
+- Giữ nguyên 17 cp, không bán, không thêm. Stop-loss $21.90 confirmed/active.
+- Bucket $400/$500 thứ 2: buying power vẫn $524.15, pending_deposits vẫn $5,500 — chưa settle thêm.
