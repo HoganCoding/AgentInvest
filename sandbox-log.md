@@ -43,3 +43,9 @@ Log riêng cho phần vốn sandbox (~$400–800, tự động, KHÔNG cần duy
 - Stop-loss @ $21.90 vẫn state=confirmed (active), 17 cp giữ nguyên. Giá trị vị thế hiện ~$386.24 — chưa gần ngưỡng gấp đôi ($800) hay về $0, không kích hoạt circuit breaker.
 - Buying power $524.15 (không đổi so với lần trước), pending_deposits $5,500 vẫn chờ settle.
 - Không hành động gì thêm lần này.
+
+## 2026-07-06 ~15:08 ET — Check nhẹ
+
+- Giá WULF hiện $22.77 vs vốn $23.80 (-4.33%). So với lần check trước ($22.72), biến động chỉ +0.22% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Stop-loss @ $21.90 vẫn state=confirmed (active), order id `6a4bce66-a34c-43f4-9d33-c890e50da8f6`, 17 cp giữ nguyên. Giá trị vị thế hiện ~$387.09 — chưa gần ngưỡng gấp đôi ($800) hay về $0, không kích hoạt circuit breaker.
+- Không hành động gì thêm lần này.
