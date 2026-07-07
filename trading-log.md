@@ -161,12 +161,6 @@ Cắt lỗ/chốt lời đề xuất: IONQ/RXRX -5% (đề nghị nới -8%, ch�
 - Không có lệnh nào đang chờ khớp ngoài 6 stop-loss (đều `confirmed`).
 - Không có gì cần Hogan duyệt — không gửi PushNotification.
 
-## 2026-07-06 ~16:00 ET — Đóng cửa phiên, chuyển sang chế độ qua đêm
-
-Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, không có gì cần duyệt. Chuyển loop sang chế độ qua đêm — không kiểm tra liên tục, chờ tới phiên giao dịch kế tiếp (~9:45 ET thứ Ba 2026-07-07).
-
-**Ghi chú kỹ thuật lịch qua đêm:** đồng hồ "local" của cơ chế lịch (ScheduleWakeup/CronCreate) chạy UTC-5, lệch 1 tiếng so với giờ ET thực tế (UTC-4, đã xác nhận qua giờ đóng cửa NYSE khớp chính xác 20:00 UTC = 16:00 ET). Dùng CronCreate one-shot (job `6a1c5e96`, cron "45 8 7 7 *" = 8:45 local = 9:45 ET) để bắc cầu qua đêm thay vì chain nhiều lần ScheduleWakeup (giới hạn 3600s/lần, sẽ tốn ~17 lần thức dậy vô ích qua đêm). Lưu ý: cron job này chỉ tồn tại trong phiên hiện tại (session-only) — nếu phiên bị dừng, job này cũng mất, không có cơ chế tự phục hồi (giống rủi ro đã trao đổi trước đây).
-
 ## 2026-07-06 ~15:16 ET — Check-in đầy đủ (mốc 15:30 ET, chạy sớm ~14 phút)
 
 - Portfolio: total_value $5,505.66, equity_value $4,981.51, cash $524.15, pending_deposits $5,500.
@@ -187,3 +181,57 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
 
 - Không mã nào chạm ngưỡng cắt lỗ/chốt lời. RXRX hạ nhiệt so với sáng nay (+6.75% → +4.63%) nhưng vẫn dương, không có tín hiệu đáng lo.
 - Không có gì cần Hogan duyệt — không gửi PushNotification.
+
+## 2026-07-06 ~15:37 ET — Check-in cuối phiên
+
+- P&L so với giá vốn (giá lúc kiểm tra so với average_buy_price):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày (so với đóng cửa 07-02) |
+  |---|---|---|---|---|
+  | RXRX | $3.78 | $3.935 | +4.10% | +3.55% |
+  | IONQ | $49.00 | $49.09 | +0.18% | -0.06% |
+  | AAPL | $307.90 | $313.54 | +1.83% | +1.59% |
+  | GOOGL | $361.40 | $367.605 | +1.72% | +2.14% |
+  | AMZN | $243.78 | $245.30 | +0.62% | +1.08% |
+  | VOO | $688.26 | $691.105 | +0.41% | +0.91% |
+  | MSFT | $386.75 | $386.16 | -0.15% | -1.11% |
+  | RSP | $214.93 | $214.91 | -0.01% | 0.00% |
+  | JNJ | $260.69 | $259.60 | -0.42% | -1.31% |
+  | KO | $84.10 | $83.05 | -1.25% | -1.30% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). RXRX là mã biến động nhiều nhất trong ngày (+3.55%) nhưng đã giảm nhiệt so với mức +6.75% lúc 13:10 ET.
+- QQQ hôm nay +1.62% (712.60 → 724.13) — MSFT (-1.11%) hơi kém hơn benchmark trong phiên nhưng đây là nhiễu 1 ngày, chưa đủ cơ sở đánh giá "kém hiệu suất 30 ngày" theo tiêu chí CLAUDE.md.
+- Đã tìm tin tức cho RXRX (mã biến động nhiều nhất): đợt tăng giá đến từ việc được thêm vào các chỉ số Russell (Russell 2000 Value...) cuối tháng 6/2026, dòng tiền thụ động — không phải catalyst tiêu cực, không đáng lo. Không có 8-K/tin xấu mới cho các mã khác.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-06 ~16:00 ET — Đóng cửa phiên, chuyển sang chế độ qua đêm
+
+Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, không có gì cần duyệt. Chuyển loop sang chế độ qua đêm — không kiểm tra liên tục, chờ tới phiên giao dịch kế tiếp (~9:45 ET thứ Ba 2026-07-07).
+
+**Ghi chú kỹ thuật lịch qua đêm:** đồng hồ "local" của cơ chế lịch (ScheduleWakeup/CronCreate) chạy UTC-5, lệch 1 tiếng so với giờ ET thực tế (UTC-4, đã xác nhận qua giờ đóng cửa NYSE khớp chính xác 20:00 UTC = 16:00 ET). Dùng CronCreate one-shot (job `6a1c5e96`, cron "45 8 7 7 *" = 8:45 local = 9:45 ET) để bắc cầu qua đêm thay vì chain nhiều lần ScheduleWakeup (giới hạn 3600s/lần, sẽ tốn ~17 lần thức dậy vô ích qua đêm). Lưu ý: cron job này chỉ tồn tại trong phiên hiện tại (session-only) — nếu phiên bị dừng, job này cũng mất, không có cơ chế tự phục hồi (giống rủi ro đã trao đổi trước đây).
+
+## 2026-07-07 ~13:45 ET — Check-in định kỳ
+
+- P&L so với giá vốn (giá lúc kiểm tra so với average_buy_price) và thay đổi trong ngày (so với đóng cửa 07-06):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | RXRX | $3.78 | $3.925 | +3.84% | -0.88% |
+  | IONQ | $49.00 | $46.95 | **-4.18%** | **-3.93%** |
+  | AAPL | $307.90 | $311.645 | +1.22% | -0.32% |
+  | GOOGL | $361.40 | $371.66 | +2.84% | +1.42% |
+  | AMZN | $243.78 | $245.535 | +0.72% | +0.56% |
+  | VOO | $688.26 | $689.28 | +0.15% | -0.19% |
+  | MSFT | $386.75 | $390.17 | +0.88% | +0.89% |
+  | RSP | $214.93 | $216.01 | +0.50% | +0.47% |
+  | JNJ | $260.69 | $266.90 | +2.38% | **+2.92%** |
+  | KO | $84.10 | $84.78 | +0.81% | +2.19% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). IONQ gần nhất (-4.18%), còn cách xa ngưỡng -8%.
+- QQQ hôm nay -1.30% (722.82 → 713.46) — cả 4 mã tech (AAPL, GOOGL, AMZN, MSFT) đều **outperform** benchmark rõ rệt hôm nay, không có vấn đề hiệu suất.
+- Đã tìm tin tức cho 2 mã biến động đáng chú ý nhất (IONQ -3.93%, JNJ +2.92%):
+  - **IONQ**: không có catalyst cụ thể trong 24h. Đang trong xu hướng giảm từ đỉnh tháng 6 (-26% trong tháng 6) sau phản ứng "sell the news" với báo cáo Q1 mạnh (doanh thu +755% YoY, nâng guidance); DA Davidson hạ khuyến nghị xuống Neutral; áp lực cạnh tranh từ khoản đầu tư $10B vào quantum của IBM. Đánh giá: nhiễu biến động ngành/chốt lời theo định giá, không phải suy giảm cơ bản — không đủ điều kiện đề xuất theo tiêu chí CLAUDE.md.
+  - **JNJ**: không có catalyst đơn lẻ trong ngày nhưng có loạt tin tích cực gần đây: HSBC nâng target giá lên $290 (03/07), đề xuất mua lại Firefly Bio (~$1B) củng cố pipeline ung thư, CHMP khuyến nghị EU phê duyệt Tecvayli+Darzalex, cổ phiếu lập đỉnh mọi thời đại (02/07). Rủi ro nền: kiện tụng talc vẫn tồn đọng (MDL, chưa có phán quyết mới bất lợi). Đánh giá: tích cực, phản ánh nền tảng cơ bản cải thiện — không cần hành động (đã có sẵn vị thế, không phải tín hiệu bán).
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
