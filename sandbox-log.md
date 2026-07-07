@@ -130,3 +130,10 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
   - Nguồn: [Benzinga](https://www.benzinga.com/markets/equities/26/07/60268929/bitcoin-mining-stocks-iren-riot-and-mara-slide-as-ai-pivot-faces-fresh-headwinds), [Tickeron](https://tickeron.com/blogs/iren-limited-iren-stock-drops-41-7-in-30-days-amid-bitcoin-decline-and-ai-spending-fears-14462/), [Seeking Alpha](https://seekingalpha.com/article/4855958-terawulf-vs-cipher-mining-winners-in-2026s-ai-acceleration-story)
 - **Quyết định:** KHÔNG mở lại vị thế trong nhóm này hôm nay. Tin Meta Compute là rủi ro cấu trúc mới (đe dọa trực tiếp thesis "compute scarcity"), không đơn thuần là nhiễu ngắn hạn như đợt giảm trước đó (chốt lời sau tin Anthropic). Kết hợp với Bitcoin giảm dưới $60k, đây là ngày risk-off toàn ngành — bắt đáy lúc này rủi ro cao hơn lợi ích. Tiếp tục giữ cash, chờ tín hiệu ổn định rõ ràng hơn hoặc cơ hội ở nhóm high-risk khác trước khi vào lệnh mới.
 - Không có circuit breaker nào bị kích hoạt (không có vị thế để tính giá trị sandbox).
+
+## 2026-07-07 ~12:08 ET — Check nhẹ (cloud routine, vẫn cash-only)
+
+- Sandbox vẫn không có vị thế nào (cash-only kể từ sau stop-loss WULF ~10:08 ET, quyết định không mở lại nhóm miner ở lần check 11:09 ET).
+- Giá nhóm bitcoin-miner/AI-pivot đang theo dõi, so với lần check trước (11:09 ET): WULF $19.90→$20.40 (+2.51%), IREN $40.55→$40.83 (+0.69%), CIFR $20.00→$20.70 (+3.50%), HUT $96.44→$97.28 (+0.87%).
+- CIFR chạm nhẹ ngưỡng 3-5% nhưng đây là mức hồi phục nhẹ chung cả nhóm sau đợt bán tháo hôm qua (Meta Compute + Bitcoin giảm dưới $60k), không phải catalyst mới đảo ngược thesis risk-off đã phân tích ở lần check trước — không tìm tin tức sâu thêm, không có tín hiệu đủ mạnh để mở lại vị thế.
+- Quyết định: tiếp tục giữ cash, không mở lệnh mới. Không có circuit breaker nào bị kích hoạt (không có vị thế để tính giá trị sandbox).
