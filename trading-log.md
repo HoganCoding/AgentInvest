@@ -279,3 +279,27 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
 - QBTS giảm -4.19% trong phiên (mã biến động nhiều nhất) — đã tìm tin tức: không có catalyst tiêu cực; ngược lại có tin tích cực (được vinh danh Leader trong IDC MarketScape Quantum Computing 2026, nhận thêm $1.5M tài trợ NSF cho dự án ERASE). Đánh giá: nhiễu biến động chung nhóm quantum (cùng xu hướng với IONQ trước đó), không phải suy giảm cơ bản riêng của QBTS — không đủ điều kiện đề xuất theo CLAUDE.md. Vẫn cách xa ngưỡng stop-loss ($19.03).
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-07 ~15:31 ET — Check-in định kỳ (cuối phiên)
+
+- Vị thế 10 mã core hiện tại (IONQ đã thay bằng QBTS từ sáng nay): RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS.
+- P&L so với giá vốn (giá lúc kiểm tra so với average_buy_price) và thay đổi trong ngày (so với đóng cửa 07-06):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | JNJ | $260.69 | $267.215 | +2.51% | +3.03% |
+  | GOOGL | $361.40 | $367.86 | +1.79% | +0.38% |
+  | AAPL | $307.90 | $312.065 | +1.35% | -0.19% |
+  | QBTS | $20.69 | $21.33 | +3.09% | -5.45% |
+  | RXRX | $3.78 | $3.92 | +3.70% | -1.01% |
+  | MSFT | $386.75 | $389.49 | +0.71% | +0.71% |
+  | AMZN | $243.78 | $245.535 | +0.72% | +0.56% |
+  | KO | $84.10 | $84.065 | -0.04% | +1.34% |
+  | RSP | $214.93 | $214.74 | -0.09% | -0.12% |
+  | VOO | $688.26 | $686.75 | -0.22% | -0.56% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). QBTS còn cách xa ngưỡng stop-loss ($19.03, hiện tại $21.33).
+- QQQ hôm nay -1.96% (722.82 → 708.69) — cả 4 mã large-cap tech (AAPL, GOOGL, AMZN, MSFT) tiếp tục **outperform** rõ rệt benchmark, không có vấn đề hiệu suất.
+- QBTS giảm -5.45% trong phiên (mã biến động nhiều nhất, vượt ngưỡng >3-5% nên đã tìm tin tức) — không có catalyst tiêu cực; ngược lại tin tức gần đây tích cực (catalyst tài trợ liên bang ~$100M đưa tin 07-06, thêm $1.57M tài trợ NSF qua chương trình National Quantum Virtual Laboratory; 14 analyst đồng thuận "Strong Buy", target giá trung bình $37.39). Đánh giá: tiếp tục là biến động chung nhóm quantum computing, không phải suy giảm cơ bản riêng của QBTS — không đủ điều kiện đề xuất theo CLAUDE.md.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
