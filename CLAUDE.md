@@ -6,6 +6,7 @@
 - Không bao giờ vượt quá tỷ trọng tối đa mỗi vị thế đã quy định bên dưới.
 - Nếu không chắc chắn hoặc dữ liệu không đủ, báo tôi thay vì đoán.
 - Không tự ý đổi nhóm rủi ro của 1 mã khi thay thế (mã tech kém → thay bằng tech khác, không nhảy sang nhóm rủi ro cao).
+- **Hạn chế tối đa các giao dịch làm phát sinh nghĩa vụ thuế không cần thiết (cập nhật 2026-07-07)** — áp dụng cho CẢ 10 mã core lẫn phần sandbox. Ưu tiên giữ vị thế đủ lâu để hưởng thuế suất dài hạn khi hợp lý; tránh mua/bán vòng quay ngắn hạn không có lý do quản trị rủi ro rõ ràng (không exit/entry chỉ để "chốt sổ"); đặc biệt tránh vi phạm wash sale rule — không mua lại đúng mã hoặc mã gần như tương đương trong vòng 30 ngày sau khi bán lỗ. Quy tắc này KHÔNG override kỷ luật cắt lỗ/chốt lời đã đặt (stop-loss vẫn tự động khớp bình thường) — chỉ áp dụng ở những chỗ có phần tự quyết (chọn mã thay thế, thời điểm vào/thoát lệnh không bắt buộc).
 
 ## Ngoại lệ đã duyệt: Sandbox tự động rủi ro cao (2026-07-06)
 Đây là ngoại lệ DUY NHẤT cho nguyên tắc "chỉ đề xuất, không tự đặt lệnh" ở trên — chỉ áp dụng cho phần vốn sandbox dưới đây, KHÔNG áp dụng cho 10 mã danh mục chính.
@@ -17,6 +18,7 @@
 - **Vẫn bắt buộc:** ghi log mỗi giao dịch vào `sandbox-log.md` (file riêng, KHÔNG chung với `trading-log.md` của 10 mã core); gửi PushNotification sau mỗi lệnh (chỉ để thông báo, không chờ phản hồi); có thể dừng sandbox bất cứ lúc nào chỉ bằng cách yêu cầu "dừng".
 - **Tần suất & chi phí (để tiết kiệm token — quyết định 2026-07-06):** kiểm tra sandbox mỗi ~45-60 phút (không phải 25 phút) trong giờ giao dịch. Mỗi lần kiểm tra mặc định chỉ gọi quote/vị thế (rẻ) — CHỈ tìm tin tức/phân tích sâu khi giá biến động đáng kể (>3-5% so với lần kiểm tra trước) hoặc khi cân nhắc vào/thoát lệnh mới.
 - **Ràng buộc tài khoản cần lưu ý:** tài khoản Agentic là cash account — xoay vòng tiền bán chưa settle có thể dính "good faith violation" (GFV) nếu không có instant settle; cần tự kiểm tra buying power thực tế sau mỗi lệnh bán trước khi mua tiếp.
+- **Hạn chế giao dịch phát sinh thuế (cập nhật 2026-07-07):** dù sandbox được phép giao dịch tự động tần suất cao, vẫn tránh vòng quay ngoài mức cần thiết theo kỷ luật cắt lỗ/chốt lời — không exit/entry lặp lại một mã chỉ vì lý do không liên quan rủi ro. Đặc biệt tránh mua lại đúng mã (hoặc mã gần tương đương) trong vòng 30 ngày sau khi vừa bán lỗ mã đó (wash sale) — như đã áp dụng đúng sau khi WULF bị stop-loss (giữ cash, không mua lại ngay).
 - Chi tiết đầy đủ điều khoản: xem memory `sandbox_400_autonomous.md` và `sandbox-log.md`.
 
 ## Cơ cấu danh mục (10 mã)
