@@ -160,3 +160,30 @@ Cắt lỗ/chốt lời đề xuất: IONQ/RXRX -5% (đề nghị nới -8%, ch�
 - Đã tìm tin tức cho RXRX (mã biến động nhiều nhất) — không có catalyst tiêu cực/tích cực cụ thể nào công bố hôm nay, nhiều khả năng do sentiment chung nhóm AI-biotech. Không có gì đáng lo.
 - Không có lệnh nào đang chờ khớp ngoài 6 stop-loss (đều `confirmed`).
 - Không có gì cần Hogan duyệt — không gửi PushNotification.
+
+## 2026-07-06 ~16:00 ET — Đóng cửa phiên, chuyển sang chế độ qua đêm
+
+Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, không có gì cần duyệt. Chuyển loop sang chế độ qua đêm — không kiểm tra liên tục, chờ tới phiên giao dịch kế tiếp (~9:45 ET thứ Ba 2026-07-07).
+
+**Ghi chú kỹ thuật lịch qua đêm:** đồng hồ "local" của cơ chế lịch (ScheduleWakeup/CronCreate) chạy UTC-5, lệch 1 tiếng so với giờ ET thực tế (UTC-4, đã xác nhận qua giờ đóng cửa NYSE khớp chính xác 20:00 UTC = 16:00 ET). Dùng CronCreate one-shot (job `6a1c5e96`, cron "45 8 7 7 *" = 8:45 local = 9:45 ET) để bắc cầu qua đêm thay vì chain nhiều lần ScheduleWakeup (giới hạn 3600s/lần, sẽ tốn ~17 lần thức dậy vô ích qua đêm). Lưu ý: cron job này chỉ tồn tại trong phiên hiện tại (session-only) — nếu phiên bị dừng, job này cũng mất, không có cơ chế tự phục hồi (giống rủi ro đã trao đổi trước đây).
+
+## 2026-07-06 ~15:16 ET — Check-in đầy đủ (mốc 15:30 ET, chạy sớm ~14 phút)
+
+- Portfolio: total_value $5,505.66, equity_value $4,981.51, cash $524.15, pending_deposits $5,500.
+- P&L so với giá vốn:
+
+  | Mã | Giá vốn | Giá hiện tại | P&L |
+  |---|---|---|---|
+  | RXRX | $3.78 | $3.955 | +4.63% |
+  | AAPL | $307.90 | $313.185 | +1.72% |
+  | GOOGL | $361.40 | $366.60 | +1.44% |
+  | AMZN | $243.78 | $245.68 | +0.78% |
+  | VOO | $688.26 | $691.01 | +0.40% |
+  | IONQ | $49.00 | $49.07 | +0.14% |
+  | RSP | $214.93 | $215.05 | +0.06% |
+  | MSFT | $386.75 | $385.875 | -0.23% |
+  | JNJ | $260.69 | $258.945 | -0.67% |
+  | KO | $84.10 | $83.285 | -0.97% |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời. RXRX hạ nhiệt so với sáng nay (+6.75% → +4.63%) nhưng vẫn dương, không có tín hiệu đáng lo.
+- Không có gì cần Hogan duyệt — không gửi PushNotification.

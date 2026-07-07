@@ -10,9 +10,9 @@
 ## Ngoại lệ đã duyệt: Sandbox tự động rủi ro cao (2026-07-06)
 Đây là ngoại lệ DUY NHẤT cho nguyên tắc "chỉ đề xuất, không tự đặt lệnh" ở trên — chỉ áp dụng cho phần vốn sandbox dưới đây, KHÔNG áp dụng cho 10 mã danh mục chính.
 
-- **Phạm vi vốn:** ~$400 buying power dư ban đầu + $400 nạp thêm sau đó để luân phiên 2 "bucket" (một bucket chờ settle, một bucket sẵn sàng giao dịch) — tổng tối đa ~$800 vốn xoay vòng, tách biệt hoàn toàn khỏi 10 mã core.
-- **Quyền tự chủ:** agent tự chọn mã, tự vào/thoát lệnh, KHÔNG cần preview/duyệt trước khi đặt lệnh thật (khác với toàn bộ phần còn lại của tài khoản).
-- **Chốt lời:** khi tổng giá trị sandbox đạt ~gấp đôi (~$800 nếu bắt đầu từ $400) → rút phần vốn gốc ($400) về, tiếp tục xoay vòng với phần còn lại.
+- **Phạm vi vốn (cập nhật 2026-07-07):** ~$700 vốn gốc + $700 nạp thêm sau đó để luân phiên 2 "bucket" (một bucket chờ settle, một bucket sẵn sàng giao dịch) — tổng tối đa ~$1400 vốn xoay vòng (tăng từ mốc $400/$800 ban đầu ngày 2026-07-06), tách biệt hoàn toàn khỏi 10 mã core.
+- **Quyền tự chủ:** agent tự chọn mã, tự vào/thoát lệnh, KHÔNG cần preview/duyệt trước khi đặt lệnh thật (khác với toàn bộ phần còn lại của tài khoản). Có thể nắm giữ NHIỀU mã cùng lúc trong sandbox (không giới hạn 1 mã/1 lần) — miễn tổng vốn dùng không vượt quá phần vốn sandbox (~$1400) và mỗi vị thế vẫn được log/theo dõi riêng.
+- **Chốt lời:** khi tổng giá trị sandbox đạt ~gấp đôi (~$1400 nếu bắt đầu từ $700) → rút phần vốn gốc ($700) về, tiếp tục xoay vòng với phần còn lại.
 - **Dừng hẳn:** nếu giá trị sandbox về gần $0 → dừng hoàn toàn, báo tôi, KHÔNG tự nạp thêm vốn.
 - **Vẫn bắt buộc:** ghi log mỗi giao dịch vào `sandbox-log.md` (file riêng, KHÔNG chung với `trading-log.md` của 10 mã core); gửi PushNotification sau mỗi lệnh (chỉ để thông báo, không chờ phản hồi); có thể dừng sandbox bất cứ lúc nào chỉ bằng cách yêu cầu "dừng".
 - **Tần suất & chi phí (để tiết kiệm token — quyết định 2026-07-06):** kiểm tra sandbox mỗi ~45-60 phút (không phải 25 phút) trong giờ giao dịch. Mỗi lần kiểm tra mặc định chỉ gọi quote/vị thế (rẻ) — CHỈ tìm tin tức/phân tích sâu khi giá biến động đáng kể (>3-5% so với lần kiểm tra trước) hoặc khi cân nhắc vào/thoát lệnh mới.
@@ -36,7 +36,7 @@
 - Chốt lời (take-profit): +10% đến +20% (tối thiểu tỷ lệ risk/reward 1:2 so với mức cắt lỗ)
 - Tỷ trọng tối đa 1 mã: 5-10% tổng danh mục Agentic account
 - Số tiền tối đa mỗi lệnh đề xuất: 1-10%
-- Tần suất kiểm tra/phân tích: 2-3 lần/ngày (ví dụ 9h, 13h, 16h giờ Mỹ) — tránh overtrading
+- Tần suất kiểm tra/phân tích: 2-3 lần/ngày (ví dụ 9:45, 13h, 15:30 giờ ET Mỹ) — tránh overtrading
 - Loại cổ phiếu (nguyên/fractional): linh hoạt theo từng lệnh, không cố định một kiểu.
   - Ưu tiên mua nguyên cổ phiếu khi cần đặt stop-loss/take-profit tự động (Robinhood không hỗ trợ lệnh stop-loss/limit tự động trên fractional shares, chỉ market order).
   - Có thể dùng fractional khi cần khớp chính xác tỷ trọng/ngân sách đề ra, đặc biệt với cổ phiếu giá cao hoặc tài khoản nhỏ.

@@ -1,6 +1,6 @@
 # Sandbox Log — Giao dịch tự động rủi ro cao
 
-Log riêng cho phần vốn sandbox (~$400–800, tự động, KHÔNG cần duyệt từng lệnh) — tách biệt hoàn toàn khỏi 10 mã danh mục chính trong `trading-log.md`. Điều khoản đầy đủ: xem mục "Ngoại lệ đã duyệt: Sandbox tự động rủi ro cao" trong `CLAUDE.md`.
+Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần duyệt từng lệnh) — tách biệt hoàn toàn khỏi 10 mã danh mục chính trong `trading-log.md`. Điều khoản đầy đủ: xem mục "Ngoại lệ đã duyệt: Sandbox tự động rủi ro cao" trong `CLAUDE.md`.
 
 ## 2026-07-06 ~11:48 ET — Bật sandbox $400 tự động (KHÔNG qua duyệt)
 
@@ -60,3 +60,32 @@ Log riêng cho phần vốn sandbox (~$400–800, tự động, KHÔNG cần duy
 - Giá WULF hiện $22.77 vs vốn $23.80 (-4.33%). So với lần check trước ($22.72), biến động chỉ +0.22% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
 - Stop-loss @ $21.90 vẫn state=confirmed (active), order id `6a4bce66-a34c-43f4-9d33-c890e50da8f6`, 17 cp giữ nguyên. Giá trị vị thế hiện ~$387.09 — chưa gần ngưỡng gấp đôi ($800) hay về $0, không kích hoạt circuit breaker.
 - Không hành động gì thêm lần này.
+
+## 2026-07-06 ~14:54 ET — Check nhẹ, giá tiến gần stop-loss
+
+- Giá WULF $22.125 vs vốn $23.7999 (-7.03%). So với lần check trước, giảm thêm nhưng biến động từng bước vẫn <3-5% nên không tìm tin tức mới (thesis từ 13:24 ET vẫn là cơ sở: Anthropic deal tích cực, đây là chốt lời/nhiễu ngắn hạn).
+- **Chỉ còn ~1% (~$0.225) nữa là chạm stop-loss $21.90.** Không can thiệp sớm — để stop-loss tự động xử lý nếu chạm, đúng theo kỷ luật đã đặt ra. Không bán non trước hạn.
+- Portfolio tổng: total_value $5,514.53, buying power $524.15 (không đổi), pending_deposits $5,500 (bucket 2 vẫn chưa settle thêm).
+- Vì đang gần điểm quyết định, rút ngắn chu kỳ check tiếp theo xuống ~20 phút thay vì 45-60 phút để theo dõi sát hơn.
+
+## 2026-07-06 ~15:16 ET — Check nhẹ, vẫn gần stop-loss
+
+- Giá WULF $22.0701 vs vốn $23.7999 (-7.27%), cách stop-loss $21.90 chỉ ~0.77%. So với lần check trước ($22.125), biến động -0.25% — dưới ngưỡng, không tìm tin tức mới.
+- Stop-loss vẫn `confirmed`, chưa khớp (cumulative_quantity=0). Không can thiệp, giữ nguyên kỷ luật để stop-loss tự xử lý.
+- Vẫn duy trì chu kỳ check ~20 phút cho tới khi giá tách xa stop-loss hơn hoặc stop-loss khớp.
+
+## 2026-07-06 ~15:37 ET — Check nhẹ, hồi nhẹ
+
+- Giá WULF $22.265 vs vốn $23.7999 (-6.44%), cách stop-loss $21.90 ~1.64% (tách xa hơn lần trước 0.77%). Biến động +0.88% so với lần check trước — dưới ngưỡng, không tìm tin tức mới.
+- Stop-loss vẫn `confirmed`, chưa khớp. Không hành động gì thêm.
+- Thị trường đóng cửa trong ~23 phút (16:00 ET) — sẽ check lần cuối phiên rồi chuyển sang lên lịch qua đêm.
+
+## 2026-07-07 — Tăng vốn sandbox lên $700/$1400
+
+**Quyết định của Hogan:** tăng vốn gốc sandbox từ $400 lên $700 — chốt lời (circuit breaker) giờ kích hoạt khi tổng giá trị sandbox đạt ~$1400 (gấp đôi $700, thay cho mốc $800 cũ), lúc đó rút $700 gốc về, tiếp tục xoay vòng phần còn lại. Ngoài ra Hogan nạp thêm $700 nữa (tách biệt với $700 gốc) để luôn có sẵn bucket tiền thứ 2 dùng mua tiếp mà không phải chờ settle T+1 của bucket đầu — cùng logic 2-bucket đã thiết lập từ 2026-07-06, chỉ tăng quy mô. Tổng vốn thực tế đưa vào sandbox hiện ~$1400. Điều khoản dừng hẳn khi về gần $0 và không tự nạp thêm vẫn giữ nguyên.
+
+## 2026-07-06 ~16:00 ET — Đóng cửa phiên, chuyển qua đêm
+
+- Giá đóng cửa (regular hours) $22.195 vs vốn $23.7999 (-6.75%). Stop-loss $21.90 KHÔNG bị khớp trong phiên — vẫn giữ nguyên 17 cp WULF qua đêm, `confirmed`/active.
+- Kết quả trong ngày: mua ở $23.80 sáng nay theo tin Anthropic $19B, giá dao động -0.8% đến -7.3% trong phiên nhưng không chạm stop -8% ($21.90), đóng cửa ở -6.75%. Chưa hiện thực hóa lãi/lỗ (chưa bán).
+- Chuyển sang chế độ qua đêm: không check liên tục, chờ tới phiên giao dịch kế tiếp (~9:45 ET thứ Ba 2026-07-07) để tiếp tục theo dõi.
