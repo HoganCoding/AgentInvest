@@ -157,3 +157,10 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Sandbox vẫn không có vị thế nào (cash-only kể từ sau stop-loss WULF ~10:08 ET hôm nay). Xác nhận qua get_equity_positions: không có WULF/IREN/CIFR/HUT trong tài khoản, chỉ có các mã core-10 (RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL) + QBTS (core-10, không phải sandbox).
 - Giá nhóm bitcoin-miner/AI-pivot đang theo dõi, so với lần check trước (14:08 ET): WULF $20.465→$20.185 (-1.37%), IREN $41.38→$40.52 (-2.08%), CIFR $20.86→$20.455 (-1.94%), HUT $98.599→$96.32 (-2.31%). Tất cả dưới ngưỡng 3-5% — không tìm tin tức sâu. (Lưu ý: so với đóng cửa hôm qua cả nhóm vẫn giảm sâu hơn — WULF -9.10%, IREN -7.72%, CIFR -5.87%, HUT -7.17% — tiếp diễn xu hướng risk-off đã phân tích ở lần check 11:09 ET, không phải tín hiệu mới.)
 - Quyết định: tiếp tục giữ cash, không mở lệnh mới. Không có circuit breaker nào bị kích hoạt (không có vị thế để tính giá trị sandbox).
+
+## 2026-07-07 ~16:08 ET — Đóng cửa phiên, check nhẹ (cloud routine, vẫn cash-only)
+
+- Sandbox vẫn không có vị thế nào (cash-only kể từ sau stop-loss WULF ~10:08 ET hôm nay). Xác nhận qua get_equity_positions: không có WULF/IREN/CIFR/HUT, chỉ có các mã core-10 (RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL) + QBTS (core-10, không phải sandbox).
+- Giá đóng cửa nhóm bitcoin-miner/AI-pivot, so với lần check trước (15:08 ET): WULF $20.185→$20.27 (+0.42%), IREN $40.52→$39.815 (-1.74%), CIFR $20.455→$20.58 (+0.61%), HUT $96.32→$96.64 (+0.33%). Tất cả dưới ngưỡng 3-5% — không tìm tin tức sâu. So với đóng cửa hôm qua (2026-07-06), cả nhóm vẫn giảm: WULF -8.74%, IREN -9.35%, CIFR -5.29%, HUT -6.87% — risk-off (Meta Compute + Bitcoin dưới $60k, phân tích tại lần check 11:09 ET) vẫn chưa đảo chiều rõ ràng.
+- Lưu ý wash-sale: còn trong cửa sổ 30 ngày kể từ khi bán lỗ WULF (2026-07-07) — tránh mua lại WULF trước ~2026-08-06 nếu cân nhắc mở lại vị thế nhóm này.
+- Quyết định: tiếp tục giữ cash, không mở lệnh mới. Thị trường vừa đóng cửa (16:00 ET) — chuyển sang chế độ qua đêm, chờ phiên kế tiếp. Không có circuit breaker nào bị kích hoạt (không có vị thế để tính giá trị sandbox).
