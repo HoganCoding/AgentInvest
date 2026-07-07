@@ -235,3 +235,22 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
   - **JNJ**: không có catalyst đơn lẻ trong ngày nhưng có loạt tin tích cực gần đây: HSBC nâng target giá lên $290 (03/07), đề xuất mua lại Firefly Bio (~$1B) củng cố pipeline ung thư, CHMP khuyến nghị EU phê duyệt Tecvayli+Darzalex, cổ phiếu lập đỉnh mọi thời đại (02/07). Rủi ro nền: kiện tụng talc vẫn tồn đọng (MDL, chưa có phán quyết mới bất lợi). Đánh giá: tích cực, phản ánh nền tảng cơ bản cải thiện — không cần hành động (đã có sẵn vị thế, không phải tín hiệu bán).
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+> **Đính chính (phát hiện lúc kiểm tra sandbox ~cuối chiều 2026-07-07):** dòng IONQ trong bảng trên (-4.18%, giá $46.95) đã LỖI THỜI — thực tế IONQ đã bị stop-loss bán hết từ **~10:11 ET sáng nay** (trước cả lần check-in 13:45 ET này), tức bảng trên đáng lẽ không còn nên liệt kê IONQ như vị thế đang giữ. Xem entry chính xác bên dưới.
+
+## 2026-07-07 ~10:11 ET — Stop-loss IONQ đã kích hoạt (đóng vị thế)
+
+- **Stop-loss đã filled:** lệnh `6a4bcab6-8579-493b-b68a-82166719b030` khớp lúc 14:11:15 UTC (~10:11 ET) — bán 10 cp IONQ @ giá TB $45.07, stop trigger $45.08. Vốn mua $49.00 → lỗ thực hiện **-8.02%** (đúng ngưỡng cắt lỗ -8% đã đặt cho nhóm rủi ro cao). Đây là lệnh stop-loss đặt sẵn tự động khớp theo kỷ luật rủi ro đã duyệt trước, không phải quyết định mới của agent.
+- **Vì sao bị bỏ sót lúc 13:45 ET:** lần check-in 13:45 ET cùng ngày đã dùng dữ liệu giá cũ/sai và báo nhầm IONQ vẫn đang giữ ở -4.18% — thực tế lúc đó IONQ đã bị bán ra hơn 3 tiếng trước. Phát hiện ra khi Hogan yêu cầu kiểm tra sandbox và agent rà soát lại toàn bộ lịch sử lệnh (`get_equity_orders`) để đối chiếu.
+- **Tài khoản (Agentic ••••0133) tại thời điểm phát hiện (cuối chiều 07-07):** total_value $5,977.67, equity_value $4,136.47, cash $1,841.20, buying power $1,024.15, pending_deposits $5,000. Vị thế 10 mã core hiện còn 9 mã (RXRX, AAPL, GOOGL, AMZN, VOO, MSFT, RSP, JNJ, KO) — thiếu IONQ do đã bị stop ra.
+- **Việc cần làm tiếp theo:** theo quy trình CLAUDE.md, mã bị dừng do cắt lỗ không tự động thay thế — cần đề xuất ít nhất 2 lựa chọn thay thế cùng nhóm rủi ro cao (small/mid-cap tăng trưởng mạnh hoặc volatility cao) để Hogan chọn/duyệt, KHÔNG tự chọn 1 mã và mua lại ngay. Sẽ chuẩn bị đề xuất ở lần check-in kế tiếp.
+
+## 2026-07-07 ~10:28 ET — Thay thế IONQ bằng QBTS (đã duyệt)
+
+- **Đề xuất:** 2 lựa chọn cùng nhóm rủi ro cao — QBTS (D-Wave Quantum, cùng phân khúc quantum, bookings Q1 FY26 +~2.000% YoY, cash $588.4M) và SIDU (Sidus Space, micro-cap space-as-a-service, doanh thu +51% YoY, vừa được thêm vào Russell 3000/2000/Microcap Index 26/06/2026). Hogan chọn QBTS.
+- **Lý do chọn QBTS:** bảng cân đối mạnh hơn RGTI (đối thủ cùng ngành, đang giảm 22.47%/tháng, cash burn), catalyst hợp đồng cụ thể ($20M Florida Atlantic University, $10M Fortune 100 QCaaS). Lưu ý đã nêu trước khi đặt lệnh: hôm nay cả nhóm quantum đang giảm mạnh (QBTS -8.7% trong phiên tại thời điểm đề xuất), không phải ngày lý tưởng để vào lệnh nhưng Hogan chấp nhận rủi ro timing này.
+- **Mua 24 cp QBTS @ $20.6899 (thị giá), tổng ~$496.56.** Order id `6a4d0d10-d12f-480e-9259-929e8a80ae98`, state=filled.
+- **Đặt stop-loss bảo vệ -8% tại $19.03**, order id `6a4d0d20-4d38-4eaf-bf07-b5429fee48d9`, state=unconfirmed lúc đặt (theo đúng mức đã dùng cho IONQ).
+- **Chốt lời đề xuất:** +15-20% (chưa đặt lệnh limit, sẽ theo dõi thủ công ở các lần check-in).
+- **Rủi ro chính:** cổ phiếu quantum computing biến động cực mạnh, PE âm (chưa có lợi nhuận), đã giảm từ đỉnh 52 tuần $46.75 xuống ~$20.7 (-56%); rủi ro tiếp tục giảm nếu xu hướng risk-off nhóm đầu cơ hôm nay kéo dài.
+- **Việc cần làm tiếp theo:** xác nhận stop-loss đã chuyển sang `confirmed` ở lần check-in kế tiếp; theo dõi QBTS cùng nhịp với 9 mã core còn lại.
