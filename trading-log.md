@@ -254,3 +254,28 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
 - **Chốt lời đề xuất:** +15-20% (chưa đặt lệnh limit, sẽ theo dõi thủ công ở các lần check-in).
 - **Rủi ro chính:** cổ phiếu quantum computing biến động cực mạnh, PE âm (chưa có lợi nhuận), đã giảm từ đỉnh 52 tuần $46.75 xuống ~$20.7 (-56%); rủi ro tiếp tục giảm nếu xu hướng risk-off nhóm đầu cơ hôm nay kéo dài.
 - **Việc cần làm tiếp theo:** xác nhận stop-loss đã chuyển sang `confirmed` ở lần check-in kế tiếp; theo dõi QBTS cùng nhịp với 9 mã core còn lại.
+
+## 2026-07-07 (routine check-in tiếp theo)
+
+- Xác nhận: lệnh stop-loss QBTS (`6a4d0d20-...`, -8% tại $19.03) đã chuyển sang state=`confirmed`. Toàn bộ 6/6 stop-loss core (RXRX, QBTS, AMZN, MSFT, GOOGL, KO) đều `confirmed`.
+- Vị thế hiện tại (10 mã core, IONQ đã thay bằng QBTS): RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS.
+- P&L so với giá vốn (giá lúc kiểm tra so với average_buy_price):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | JNJ | $260.69 | $266.93 | +2.39% | +2.93% |
+  | GOOGL | $361.40 | $369.63 | +2.28% | +0.87% |
+  | AAPL | $307.90 | $313.19 | +1.72% | +0.17% |
+  | MSFT | $386.75 | $394.02 | +1.88% | +1.88% |
+  | QBTS | $20.69 | $21.615 | +4.47% | -4.19% |
+  | RXRX | $3.78 | $3.96 | +4.76% | 0.00% |
+  | AMZN | $243.78 | $245.70 | +0.79% | +0.63% |
+  | RSP | $214.93 | $215.055 | +0.06% | +0.03% |
+  | VOO | $688.26 | $688.605 | +0.05% | -0.29% |
+  | KO | $84.10 | $84.08 | -0.02% | +1.35% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%).
+- QQQ hôm nay -1.32% (722.82 → 713.225) — cả 4 mã large-cap tech (AAPL, GOOGL, AMZN, MSFT) tiếp tục **outperform** rõ rệt, không có vấn đề hiệu suất.
+- QBTS giảm -4.19% trong phiên (mã biến động nhiều nhất) — đã tìm tin tức: không có catalyst tiêu cực; ngược lại có tin tích cực (được vinh danh Leader trong IDC MarketScape Quantum Computing 2026, nhận thêm $1.5M tài trợ NSF cho dự án ERASE). Đánh giá: nhiễu biến động chung nhóm quantum (cùng xu hướng với IONQ trước đó), không phải suy giảm cơ bản riêng của QBTS — không đủ điều kiện đề xuất theo CLAUDE.md. Vẫn cách xa ngưỡng stop-loss ($19.03).
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
