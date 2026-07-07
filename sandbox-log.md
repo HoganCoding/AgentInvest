@@ -60,3 +60,11 @@ Log riêng cho phần vốn sandbox (~$400–800, tự động, KHÔNG cần duy
 - Giá WULF hiện $22.77 vs vốn $23.80 (-4.33%). So với lần check trước ($22.72), biến động chỉ +0.22% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
 - Stop-loss @ $21.90 vẫn state=confirmed (active), order id `6a4bce66-a34c-43f4-9d33-c890e50da8f6`, 17 cp giữ nguyên. Giá trị vị thế hiện ~$387.09 — chưa gần ngưỡng gấp đôi ($800) hay về $0, không kích hoạt circuit breaker.
 - Không hành động gì thêm lần này.
+
+## 2026-07-07 ~09:30 ET — Stop-loss WULF khớp lúc mở cửa (giao dịch #1 đóng)
+
+- Cổ phiếu WULF gap-down mạnh khi mở cửa phiên thứ Ba: giá mở dưới mức stop $21.90. Lệnh stop-loss (order id `6a4bce66-a34c-43f4-9d33-c890e50da8f6`) kích hoạt thành market order và khớp toàn bộ 17 cp @ **$21.55** trung bình lúc 13:30:00 UTC (~9:30 ET) — trượt giá (~-1.6% so với mức stop $21.90) do gap qua đêm, không phải lỗi hệ thống.
+- **Kết quả giao dịch #1 (WULF):** mua 17 cp @ $23.7999 ($404.60) → bán 17 cp @ $21.55 ($366.35) → **lỗ hiện thực -$38.25 (-9.45%)**.
+- Quote WULF lúc phát hiện (kiểm tra ~10:0x ET, giờ đã sang chiều khi log này được ghi lại): $20.42 (so với previous close $22.21, giảm thêm -8.06%) — giá tiếp tục giảm sau khi stop khớp, xác nhận thoát lệnh kịp thời là quyết định đúng, tránh lỗ sâu hơn.
+- Vị thế sandbox hiện tại: **0 cổ phiếu WULF, toàn bộ về cash.** Portfolio tổng tài khoản (bao gồm cả 10 mã core, không tách riêng được vì chung 1 account): total_value $5,984.62, cash $1,390.50, buying_power $1,024.15, pending_deposits $5,000 (bucket 2 vẫn chờ settle).
+- Chưa chọn lệnh mới — sẽ phân tích cơ hội tiếp theo ở lần check kế tiếp theo đúng chu kỳ 45-60 phút. Không có áp lực circuit breaker (vốn chưa gần $0 hay gấp đôi $800).
