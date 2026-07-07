@@ -255,9 +255,58 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
 - **Rủi ro chính:** cổ phiếu quantum computing biến động cực mạnh, PE âm (chưa có lợi nhuận), đã giảm từ đỉnh 52 tuần $46.75 xuống ~$20.7 (-56%); rủi ro tiếp tục giảm nếu xu hướng risk-off nhóm đầu cơ hôm nay kéo dài.
 - **Việc cần làm tiếp theo:** xác nhận stop-loss đã chuyển sang `confirmed` ở lần check-in kế tiếp; theo dõi QBTS cùng nhịp với 9 mã core còn lại.
 
+## 2026-07-07 (routine check-in tiếp theo)
+
+- Xác nhận: lệnh stop-loss QBTS (`6a4d0d20-...`, -8% tại $19.03) đã chuyển sang state=`confirmed`. Toàn bộ 6/6 stop-loss core (RXRX, QBTS, AMZN, MSFT, GOOGL, KO) đều `confirmed`.
+- Vị thế hiện tại (10 mã core, IONQ đã thay bằng QBTS): RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS.
+- P&L so với giá vốn (giá lúc kiểm tra so với average_buy_price):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | JNJ | $260.69 | $266.93 | +2.39% | +2.93% |
+  | GOOGL | $361.40 | $369.63 | +2.28% | +0.87% |
+  | AAPL | $307.90 | $313.19 | +1.72% | +0.17% |
+  | MSFT | $386.75 | $394.02 | +1.88% | +1.88% |
+  | QBTS | $20.69 | $21.615 | +4.47% | -4.19% |
+  | RXRX | $3.78 | $3.96 | +4.76% | 0.00% |
+  | AMZN | $243.78 | $245.70 | +0.79% | +0.63% |
+  | RSP | $214.93 | $215.055 | +0.06% | +0.03% |
+  | VOO | $688.26 | $688.605 | +0.05% | -0.29% |
+  | KO | $84.10 | $84.08 | -0.02% | +1.35% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%).
+- QQQ hôm nay -1.32% (722.82 → 713.225) — cả 4 mã large-cap tech (AAPL, GOOGL, AMZN, MSFT) tiếp tục **outperform** rõ rệt, không có vấn đề hiệu suất.
+- QBTS giảm -4.19% trong phiên (mã biến động nhiều nhất) — đã tìm tin tức: không có catalyst tiêu cực; ngược lại có tin tích cực (được vinh danh Leader trong IDC MarketScape Quantum Computing 2026, nhận thêm $1.5M tài trợ NSF cho dự án ERASE). Đánh giá: nhiễu biến động chung nhóm quantum (cùng xu hướng với IONQ trước đó), không phải suy giảm cơ bản riêng của QBTS — không đủ điều kiện đề xuất theo CLAUDE.md. Vẫn cách xa ngưỡng stop-loss ($19.03).
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-07 ~15:31 ET — Check-in định kỳ (cuối phiên)
+
+- Vị thế 10 mã core hiện tại (IONQ đã thay bằng QBTS từ sáng nay): RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS.
+- P&L so với giá vốn (giá lúc kiểm tra so với average_buy_price) và thay đổi trong ngày (so với đóng cửa 07-06):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | JNJ | $260.69 | $267.215 | +2.51% | +3.03% |
+  | GOOGL | $361.40 | $367.86 | +1.79% | +0.38% |
+  | AAPL | $307.90 | $312.065 | +1.35% | -0.19% |
+  | QBTS | $20.69 | $21.33 | +3.09% | -5.45% |
+  | RXRX | $3.78 | $3.92 | +3.70% | -1.01% |
+  | MSFT | $386.75 | $389.49 | +0.71% | +0.71% |
+  | AMZN | $243.78 | $245.535 | +0.72% | +0.56% |
+  | KO | $84.10 | $84.065 | -0.04% | +1.34% |
+  | RSP | $214.93 | $214.74 | -0.09% | -0.12% |
+  | VOO | $688.26 | $686.75 | -0.22% | -0.56% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). QBTS còn cách xa ngưỡng stop-loss ($19.03, hiện tại $21.33).
+- QQQ hôm nay -1.96% (722.82 → 708.69) — cả 4 mã large-cap tech (AAPL, GOOGL, AMZN, MSFT) tiếp tục **outperform** rõ rệt benchmark, không có vấn đề hiệu suất.
+- QBTS giảm -5.45% trong phiên (mã biến động nhiều nhất, vượt ngưỡng >3-5% nên đã tìm tin tức) — không có catalyst tiêu cực; ngược lại tin tức gần đây tích cực (catalyst tài trợ liên bang ~$100M đưa tin 07-06, thêm $1.57M tài trợ NSF qua chương trình National Quantum Virtual Laboratory; 14 analyst đồng thuận "Strong Buy", target giá trung bình $37.39). Đánh giá: tiếp tục là biến động chung nhóm quantum computing, không phải suy giảm cơ bản riêng của QBTS — không đủ điều kiện đề xuất theo CLAUDE.md.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
 ## 2026-07-07 ~16:31 ET — Đóng cửa phiên, chuyển sang chế độ qua đêm
 
-- **Lưu ý:** mốc kiểm tra 15:30 ET bị bỏ lỡ trong phiên này do tính nhầm timezone (tưởng mới 14:39 ET trong khi thực tế đã 16:30 ET, thị trường đã đóng cửa) — Hogan phát hiện và chỉnh lại. Xác nhận giờ đóng cửa thật qua timestamp khớp lệnh regular-hours cuối cùng của các mã (19:59:59 UTC = 16:00 ET).
+- **Lưu ý:** lần kiểm tra này ban đầu tưởng mốc 15:30 ET đã bị bỏ lỡ, do phiên hiện tại tính nhầm timezone (tưởng mới 14:39 ET, thực tế đã 16:30 ET) — Hogan phát hiện và chỉnh lại. Sau khi đồng bộ với git mới thấy cloud routine đã tự chạy đúng 2 lần check-in (~14:xx và 15:31 ET, xem 2 entry ngay phía trên) — không có gì thực sự bị bỏ sót, chỉ là phiên này chưa pull kịp. Xác nhận giờ đóng cửa qua timestamp khớp lệnh regular-hours cuối cùng của các mã (19:59:59 UTC = 16:00 ET).
 - P&L so với giá vốn (giá đóng cửa) và thay đổi trong ngày (so với đóng cửa 07-06):
 
   | Mã | Giá vốn | Giá đóng cửa | P&L | Thay đổi trong ngày |

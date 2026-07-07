@@ -130,3 +130,37 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
   - Nguồn: [Benzinga](https://www.benzinga.com/markets/equities/26/07/60268929/bitcoin-mining-stocks-iren-riot-and-mara-slide-as-ai-pivot-faces-fresh-headwinds), [Tickeron](https://tickeron.com/blogs/iren-limited-iren-stock-drops-41-7-in-30-days-amid-bitcoin-decline-and-ai-spending-fears-14462/), [Seeking Alpha](https://seekingalpha.com/article/4855958-terawulf-vs-cipher-mining-winners-in-2026s-ai-acceleration-story)
 - **Quyết định:** KHÔNG mở lại vị thế trong nhóm này hôm nay. Tin Meta Compute là rủi ro cấu trúc mới (đe dọa trực tiếp thesis "compute scarcity"), không đơn thuần là nhiễu ngắn hạn như đợt giảm trước đó (chốt lời sau tin Anthropic). Kết hợp với Bitcoin giảm dưới $60k, đây là ngày risk-off toàn ngành — bắt đáy lúc này rủi ro cao hơn lợi ích. Tiếp tục giữ cash, chờ tín hiệu ổn định rõ ràng hơn hoặc cơ hội ở nhóm high-risk khác trước khi vào lệnh mới.
 - Không có circuit breaker nào bị kích hoạt (không có vị thế để tính giá trị sandbox).
+
+## 2026-07-07 ~12:08 ET — Check nhẹ (cloud routine, vẫn cash-only)
+
+- Sandbox vẫn không có vị thế nào (cash-only kể từ sau stop-loss WULF ~10:08 ET, quyết định không mở lại nhóm miner ở lần check 11:09 ET).
+- Giá nhóm bitcoin-miner/AI-pivot đang theo dõi, so với lần check trước (11:09 ET): WULF $19.90→$20.40 (+2.51%), IREN $40.55→$40.83 (+0.69%), CIFR $20.00→$20.70 (+3.50%), HUT $96.44→$97.28 (+0.87%).
+- CIFR chạm nhẹ ngưỡng 3-5% nhưng đây là mức hồi phục nhẹ chung cả nhóm sau đợt bán tháo hôm qua (Meta Compute + Bitcoin giảm dưới $60k), không phải catalyst mới đảo ngược thesis risk-off đã phân tích ở lần check trước — không tìm tin tức sâu thêm, không có tín hiệu đủ mạnh để mở lại vị thế.
+- Quyết định: tiếp tục giữ cash, không mở lệnh mới. Không có circuit breaker nào bị kích hoạt (không có vị thế để tính giá trị sandbox).
+
+## 2026-07-07 ~13:08 ET — Check nhẹ (cloud routine, vẫn cash-only)
+
+- Sandbox vẫn không có vị thế nào (cash-only kể từ sau stop-loss WULF ~10:08 ET hôm nay).
+- Giá nhóm bitcoin-miner/AI-pivot đang theo dõi, so với lần check trước (12:08 ET): WULF $20.40→$20.50 (+0.49%), IREN $40.83→$41.58 (+1.84%), CIFR $20.70→$20.83 (+0.63%), HUT $97.28→$98.81 (+1.57%). Tất cả dưới ngưỡng 3-5% — không tìm tin tức sâu, thesis risk-off từ lần check 11:09 ET (Meta Compute + Bitcoin dưới $60k) vẫn là cơ sở, chưa có tín hiệu đảo ngược rõ ràng.
+- Buying power tài khoản hiện $527.59 (giảm từ $1,024.15 sau stop-loss WULF sáng nay) — mức giảm này đến từ giao dịch QBTS (24 cp, ~$496.56) thuộc core-10 portfolio (thay IONQ, đã duyệt riêng trong `trading-log.md`), KHÔNG liên quan đến vốn sandbox. Cash $1,344.64, pending_deposits $5,000 vẫn chờ settle.
+- Quyết định: tiếp tục giữ cash, không mở lệnh mới. Không có circuit breaker nào bị kích hoạt (không có vị thế để tính giá trị sandbox).
+
+## 2026-07-07 ~14:08 ET — Check nhẹ (cloud routine, vẫn cash-only)
+
+- Sandbox vẫn không có vị thế nào (cash-only kể từ sau stop-loss WULF ~10:08 ET hôm nay). Xác nhận qua get_equity_positions: không có WULF/IREN/CIFR/HUT trong tài khoản, chỉ có các mã core-10 (RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL) + QBTS (thay IONQ, thuộc core-10, không phải sandbox).
+- Giá nhóm bitcoin-miner/AI-pivot đang theo dõi, so với lần check trước (13:08 ET): WULF $20.50→$20.465 (-0.17%), IREN $41.58→$41.38 (-0.48%), CIFR $20.83→$20.86 (+0.14%), HUT $98.81→$98.599 (-0.21%). Tất cả dưới ngưỡng 3-5% — không tìm tin tức sâu, thesis risk-off từ lần check 11:09 ET (Meta Compute + Bitcoin dưới $60k) vẫn là cơ sở, chưa có tín hiệu đảo ngược rõ ràng.
+- Buying power tài khoản $527.59 (không đổi so với lần check trước), cash $1,344.64, pending_deposits $5,000 vẫn chờ settle.
+- Quyết định: tiếp tục giữ cash, không mở lệnh mới. Không có circuit breaker nào bị kích hoạt (không có vị thế để tính giá trị sandbox).
+
+## 2026-07-07 ~15:08 ET — Check nhẹ (cloud routine, vẫn cash-only)
+
+- Sandbox vẫn không có vị thế nào (cash-only kể từ sau stop-loss WULF ~10:08 ET hôm nay). Xác nhận qua get_equity_positions: không có WULF/IREN/CIFR/HUT trong tài khoản, chỉ có các mã core-10 (RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL) + QBTS (core-10, không phải sandbox).
+- Giá nhóm bitcoin-miner/AI-pivot đang theo dõi, so với lần check trước (14:08 ET): WULF $20.465→$20.185 (-1.37%), IREN $41.38→$40.52 (-2.08%), CIFR $20.86→$20.455 (-1.94%), HUT $98.599→$96.32 (-2.31%). Tất cả dưới ngưỡng 3-5% — không tìm tin tức sâu. (Lưu ý: so với đóng cửa hôm qua cả nhóm vẫn giảm sâu hơn — WULF -9.10%, IREN -7.72%, CIFR -5.87%, HUT -7.17% — tiếp diễn xu hướng risk-off đã phân tích ở lần check 11:09 ET, không phải tín hiệu mới.)
+- Quyết định: tiếp tục giữ cash, không mở lệnh mới. Không có circuit breaker nào bị kích hoạt (không có vị thế để tính giá trị sandbox).
+
+## 2026-07-07 ~16:08 ET — Đóng cửa phiên, check nhẹ (cloud routine, vẫn cash-only)
+
+- Sandbox vẫn không có vị thế nào (cash-only kể từ sau stop-loss WULF ~10:08 ET hôm nay). Xác nhận qua get_equity_positions: không có WULF/IREN/CIFR/HUT, chỉ có các mã core-10 (RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL) + QBTS (core-10, không phải sandbox).
+- Giá đóng cửa nhóm bitcoin-miner/AI-pivot, so với lần check trước (15:08 ET): WULF $20.185→$20.27 (+0.42%), IREN $40.52→$39.815 (-1.74%), CIFR $20.455→$20.58 (+0.61%), HUT $96.32→$96.64 (+0.33%). Tất cả dưới ngưỡng 3-5% — không tìm tin tức sâu. So với đóng cửa hôm qua (2026-07-06), cả nhóm vẫn giảm: WULF -8.74%, IREN -9.35%, CIFR -5.29%, HUT -6.87% — risk-off (Meta Compute + Bitcoin dưới $60k, phân tích tại lần check 11:09 ET) vẫn chưa đảo chiều rõ ràng.
+- Lưu ý wash-sale: còn trong cửa sổ 30 ngày kể từ khi bán lỗ WULF (2026-07-07) — tránh mua lại WULF trước ~2026-08-06 nếu cân nhắc mở lại vị thế nhóm này.
+- Quyết định: tiếp tục giữ cash, không mở lệnh mới. Thị trường vừa đóng cửa (16:00 ET) — chuyển sang chế độ qua đêm, chờ phiên kế tiếp. Không có circuit breaker nào bị kích hoạt (không có vị thế để tính giá trị sandbox).
