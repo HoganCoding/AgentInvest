@@ -75,3 +75,10 @@ Log riêng cho phần vốn sandbox (~$400–800, tự động, KHÔNG cần duy
 - Stop-loss @ $21.90 vẫn state=`confirmed`/active, order id `6a4bce66-a34c-43f4-9d33-c890e50da8f6`, stop_price=$21.90, gtc, 17 cp giữ nguyên. Giá hiện chỉ còn cách stop-loss ~1.33% — vẫn khá gần, tiếp tục theo dõi sát.
 - Giá trị vị thế hiện ~$377.32 (17 cp × $22.195) — chưa gần ngưỡng gấp đôi ($800) hay về $0, không kích hoạt circuit breaker.
 - Không hành động gì thêm lần này.
+
+## 2026-07-07 ~09:08 ET — Check nhẹ (cloud routine, mở phiên mới)
+
+- Giá WULF hiện $21.9225 (pre-market) vs vốn $23.80 (-7.89%). So với lần check trước ($22.195 lúc 17:08 ET hôm qua), biến động chỉ -1.23% — dưới ngưỡng 3-5%, không tìm tin tức sâu. Previous close (2026-07-06) = $22.21.
+- Đáng chú ý: giá hiện chỉ còn cách stop-loss $21.90 khoảng ~0.1% (rất sát). Đã xác nhận qua get_equity_orders: lệnh stop-loss (`6a4bce66-a34c-43f4-9d33-c890e50da8f6`) vẫn state=`confirmed`/active, stop_price=$21.90, gtc, market_hours=regular_hours — hiện đang pre-market nên chưa thể kích hoạt; sẽ tự kích hoạt khi phiên chính thức mở nếu giá vẫn ở dưới/gần mức này.
+- Giá trị vị thế hiện ~$372.68 (17 cp × $21.9225) — chưa gần ngưỡng gấp đôi ($800) hay về $0, không kích hoạt circuit breaker khác.
+- 17 cp giữ nguyên, không có lệnh mới. Không hành động gì thêm lần này; theo dõi sát ở lần check tiếp theo do rất gần stop-loss và phiên chính thức sắp mở.
