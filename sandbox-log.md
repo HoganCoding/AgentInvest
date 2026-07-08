@@ -215,3 +215,12 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - **Quyết định:** giữ nguyên 5 cp HUT, không bán, không thêm. Catalyst xác nhận thesis, không phải rủi ro mới. Stop-loss $91.05 vẫn `confirmed`/active.
 - Giá trị vị thế hiện ~$513.65 — chưa gần ngưỡng gấp đôi ($1400) hay về $0, không kích hoạt circuit breaker. Tài khoản: cash/buying power $849.79 (không đổi so với lần trước), pending_deposits $5,000 chưa settle.
 - Không gửi push notification (không có hành động/thay đổi thật dù có tìm tin tức — theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-08 ~20:09 UTC (~16:09 ET) — Check + tìm tin tức (HUT chạm ngưỡng, vẫn giữ nguyên, gần đóng cửa)
+
+- Giá HUT hiện $106.19 vs vốn $98.97 (+7.29%). So với lần check trước (15:08 ET @ $102.73), biến động +3.37% — chạm ngưỡng, tìm tin tức sâu.
+- **Tin tức:** không có catalyst tiêu cực mới, đà tăng tiếp diễn từ thesis đã xác nhận (Beacon Point lease $9.8B, Q1 2026 backlog $16.8B trên 2 campus AI hyperscale 597MW, đợt phát hành trái phiếu $4.25B non-dilutive tuần này). Analyst consensus vẫn 15/15 Buy/Strong Buy, median price target $127. Một số nguồn ghi nhận lo ngại định giá cao (P/S 41.1x) và có tin về insider sales, nhưng không phải catalyst đảo chiều thesis.
+  - Nguồn: [Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/hut-8-hut-stock-looks-182104307.html), [StockTitan](https://www.stocktitan.net/news/HUT/), [QuiverQuant](https://www.quiverquant.com/news/Hut+8+(HUT)+Falls+as+Rally+Cools+and+Investors+Digest+Recent+Financing+and+Insider+Sales)
+- **Quyết định:** giữ nguyên 5 cp HUT, không bán, không thêm. Catalyst xác nhận thesis, không phải rủi ro mới; chưa đạt mức chốt lời dự kiến (+15-20%, hiện mới +7.29%). Stop-loss $91.05 vẫn `confirmed`/active.
+- Giá trị vị thế hiện ~$530.95 (5 cp × $106.19) — chưa gần ngưỡng gấp đôi ($1400) hay về $0, không kích hoạt circuit breaker. Thị trường sắp đóng cửa (16:00 ET đã qua, giá là giá đóng/gần đóng cửa).
+- Không gửi push notification (không có hành động/thay đổi thật dù có tìm tin tức — theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
