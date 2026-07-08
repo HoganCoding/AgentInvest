@@ -173,3 +173,11 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
   - Nguồn: [Motley Fool](https://www.fool.com/coverage/stock-market-today/2026/07/07/stock-market-today-july-7-terawulf-pulls-back-after-anthropic-lease-draws-focus-to-ai-buildout/), [MarketBeat](https://www.marketbeat.com/instant-alerts/terawulf-nasdaqwulf-stock-price-down-99-should-you-sell-2026-07-07/)
 - **Quyết định:** KHÔNG mua lại WULF — vẫn trong cửa sổ wash-sale 30 ngày kể từ khi bán lỗ WULF ngày 2026-07-07 (chỉ mới 1 ngày, tránh mua lại tới ~2026-08-06). Đây cũng chỉ là hồi kỹ thuật nhẹ, không phải catalyst mới đủ mạnh để đổi sang mã khác cùng nhóm (IREN/CIFR/HUT đều giảm nhẹ, không có tín hiệu entry). Tiếp tục giữ cash.
 - Tài khoản: buying power $1,344.64, cash $1,344.64, pending_deposits $5,000 (chưa settle thêm), total_value $5,919.28. Không có circuit breaker nào bị kích hoạt (không có vị thế để tính giá trị sandbox).
+
+## 2026-07-08 ~10:09 ET — Mở vị thế HUT (ghi nhận sau khi phát hiện)
+
+- **Giao dịch #2 sandbox — HUT (Hut 8):** mua 5 cp @ $98.9699 (thị giá), tổng ~$494.85. Order id `6a4e5a1c-44a9-4409-9e4e-e03c53bf8631`, state=filled, lúc 14:09:32 UTC.
+- Đặt stop-loss bảo vệ -8% tại $91.05, order id `6a4e5a27-a403-4b82-8e6c-523da527af61`, state=`confirmed` (đã active).
+- **Lưu ý:** lệnh này do một tiến trình/phiên khác (cloud routine) thực hiện tự động — phiên hiện tại chỉ phát hiện và ghi nhận lại qua rà soát `get_equity_positions`/`get_equity_orders` khi Hogan yêu cầu kiểm tra, không có sẵn phần phân tích/lý do gốc (tin tức, catalyst) đã dẫn tới quyết định vào lệnh. HUT là 1 trong 4 mã nhóm bitcoin-miner/AI-pivot (WULF, IREN, CIFR, HUT) đã được theo dõi liên tục từ 2026-07-07; không có vấn đề wash-sale vì HUT chưa từng bị bán lỗ trong sandbox (khác với WULF, hiện vẫn trong cửa sổ 30 ngày cấm mua lại).
+- Giá hiện tại (lúc phát hiện, ~10:10 ET): $98.85, gần như đi ngang so với giá vốn (-0.12%). So với đóng cửa hôm qua (07-07): $96.74 → +2.18%.
+- Việc cần làm tiếp theo: theo dõi HUT cùng nhịp với các lần check sandbox tiếp theo; xác nhận không có thêm giao dịch nào khác chưa được ghi log.
