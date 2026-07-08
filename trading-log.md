@@ -326,3 +326,26 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
 - **Tài khoản (Agentic ••••0133):** total_value $5,966.53, equity_value $4,621.89, cash $1,344.64, buying power $527.59, pending_deposits $5,000.
 - Không có gì cần Hogan duyệt — không gửi PushNotification.
 - Chuyển sang chế độ qua đêm: đã đặt CronCreate one-shot (job `5c78cbe6`, cron "45 8 8 7 *") để tự động check-in mở phiên ~9:45 ET thứ Tư 2026-07-08. Lưu ý: job này chỉ tồn tại trong phiên hiện tại (session-only), sẽ mất nếu phiên dừng, không có cơ chế tự phục hồi.
+
+## 2026-07-08 ~9:45 ET — Check-in định kỳ (mở phiên)
+
+- Vị thế 10 mã core không đổi (RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS).
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-07):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | JNJ | $260.69 | $266.87 | +2.37% | -0.14% |
+  | QBTS | $20.69 | $21.25 | +2.71% | +0.90% |
+  | GOOGL | $361.40 | $364.605 | +0.89% | -0.66% |
+  | AMZN | $243.78 | $243.995 | +0.09% | -0.81% |
+  | AAPL | $307.90 | $307.9583 | +0.02% | -0.87% |
+  | KO | $84.10 | $84.02 | -0.10% | -0.04% |
+  | MSFT | $386.75 | $384.295 | -0.63% | -1.17% |
+  | VOO | $688.26 | $684.0381 | -0.61% | -0.44% |
+  | RXRX | $3.78 | $3.755 | -0.66% | -2.21% |
+  | RSP | $214.93 | $212.7903 | -1.00% | -0.90% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). Biến động lớn nhất trong ngày (RXRX -2.21%) vẫn dưới ngưỡng 3-5% nên không cần tìm tin tức sâu.
+- **Tài khoản (Agentic ••••0133):** total_value $5,938.53, equity_value $4,593.89, cash/buying power $1,344.64, pending_deposits $5,000.
+- **Sandbox:** kiểm tra nhanh — vẫn cash-only, không có thay đổi so với lần check 09:08 ET (xem `sandbox-log.md`), không cần ghi thêm entry mới.
+- Không có gì cần Hogan duyệt — không gửi PushNotification.
