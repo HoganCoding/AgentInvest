@@ -206,3 +206,12 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Stop-loss @ $91.05 vẫn state=`confirmed`/active, order id `6a4e5a27-a403-4b82-8e6c-523da527af61`, 5 cp giữ nguyên (xác nhận qua get_equity_positions). Giá trị vị thế hiện ~$495.18 — chưa gần ngưỡng gấp đôi ($1400) hay về $0, không kích hoạt circuit breaker.
 - Tài khoản: cash $849.79, buying power $849.79, pending_deposits $5,000 (chưa settle), total_value $5,919.32.
 - Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-08 ~19:08 UTC (~15:08 ET) — Check + tìm tin tức (HUT chạm ngưỡng, vẫn giữ nguyên)
+
+- Giá HUT hiện $102.73 vs vốn $98.97 (+3.80%). So với lần check trước (13:08 ET @ $99.035), biến động +3.73% — chạm ngưỡng, tìm tin tức sâu.
+- **Tin tức:** không có catalyst tiêu cực mới. Đà tăng tiếp diễn từ thesis đã xác nhận (hợp đồng thuê Beacon Point 15 năm, 352MW, trị giá $9.8 tỷ gắn Nvidia). Điểm mới đáng chú ý: Hut 8 vừa đóng đợt phát hành $4.25 tỷ trái phiếu senior secured 6.129% đáo hạn 2042 để tài trợ Beacon Point — non-recourse, non-dilutive, xếp hạng Baa2 — trực tiếp giải quyết lo ngại "funding/dilution risk" từng khiến nhóm miner này (kể cả WULF) bị bán tháo trước đó. Analyst consensus vẫn Strong Buy/Buy (15/15 trong 3 tháng qua), dù định giá P/S 41.1x bị xem là cao.
+  - Nguồn: [Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/hut-8-hut-stock-looks-182104307.html), [StockTitan](https://www.stocktitan.net/news/HUT/), [Nasdaq](https://www.nasdaq.com/market-activity/stocks/hut/news-headlines)
+- **Quyết định:** giữ nguyên 5 cp HUT, không bán, không thêm. Catalyst xác nhận thesis, không phải rủi ro mới. Stop-loss $91.05 vẫn `confirmed`/active.
+- Giá trị vị thế hiện ~$513.65 — chưa gần ngưỡng gấp đôi ($1400) hay về $0, không kích hoạt circuit breaker. Tài khoản: cash/buying power $849.79 (không đổi so với lần trước), pending_deposits $5,000 chưa settle.
+- Không gửi push notification (không có hành động/thay đổi thật dù có tìm tin tức — theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
