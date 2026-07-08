@@ -349,3 +349,30 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
 - **Tài khoản (Agentic ••••0133):** total_value $5,938.53, equity_value $4,593.89, cash/buying power $1,344.64, pending_deposits $5,000.
 - **Sandbox:** kiểm tra nhanh — vẫn cash-only, không có thay đổi so với lần check 09:08 ET (xem `sandbox-log.md`), không cần ghi thêm entry mới.
 - Không có gì cần Hogan duyệt — không gửi PushNotification.
+
+## 2026-07-08 ~13:10 ET — Check-in định kỳ (giữa phiên)
+
+- Vị thế 10 mã core không đổi (RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS — QBTS đã thay IONQ từ 07-06).
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-07):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | JNJ | $260.69 | $266.12 | +2.08% | -0.42% |
+  | AAPL | $307.90 | $313.755 | +1.90% | +1.00% |
+  | KO | $84.10 | $84.03 | -0.08% | -0.02% |
+  | GOOGL | $361.40 | $361.22 | -0.05% | -1.58% |
+  | VOO | $688.26 | $684.109 | -0.60% | -0.43% |
+  | AMZN | $243.78 | $242.305 | -0.61% | -1.49% |
+  | RSP | $214.93 | $212.15 | -1.29% | -1.20% |
+  | MSFT | $386.75 | $381.61 | -1.33% | -1.86% |
+  | QBTS | $20.69 | $20.27 | -2.03% | -3.75% |
+  | RXRX | $3.78 | $3.6784 | -2.69% | -4.21% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%).
+- Thị trường chung điều chỉnh giảm hôm nay (NDX ~29,135, đa số mã core đỏ) — RXRX (-4.21%) là mã biến động nhiều nhất, vượt ngưỡng 3-5% nên đã tìm tin tức: không có catalyst tiêu cực riêng của công ty (không có 8-K/thông cáo xấu); tuần trước RXRX còn được ARK Invest mua thêm 260k cổ phiếu (tín hiệu tích cực từ tổ chức), đà giảm hôm nay phù hợp với điều chỉnh chung nhóm biến động cao/growth trong ngày risk-off — không đủ điều kiện đề xuất theo CLAUDE.md.
+  - Nguồn: [Yahoo Finance – RXRX news](https://finance.yahoo.com/quote/RXRX/news/), [TimothySykes – ARK buying RXRX](https://www.timothysykes.com/news/recursion-pharmaceuticals-inc-rxrx-news-2026_07_02/)
+- QBTS (-3.75% trong ngày) cũng trong biên độ biến động thường thấy của nhóm quantum computing gần đây, chưa cần tìm tin tức riêng (dưới ngưỡng 5%, đã kiểm tra kỹ ở lần check trước).
+- 4 mã large-cap tech: AAPL outperform rõ rệt (+1.00%), GOOGL/AMZN/MSFT giảm nhẹ cùng nhịp thị trường chung — không có vấn đề hiệu suất đáng lo so với QQQ/NDX.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
+- **Tài khoản (Agentic ••••0133):** total_value $5,891.82, equity_value $5,042.03, cash/buying power $849.79, pending_deposits $5,000.
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
