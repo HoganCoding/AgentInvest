@@ -376,3 +376,27 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
 - **Tài khoản (Agentic ••••0133):** total_value $5,891.82, equity_value $5,042.03, cash/buying power $849.79, pending_deposits $5,000.
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-08 ~15:31 ET — Check-in định kỳ (cuối phiên)
+
+- Vị thế 10 mã core không đổi (RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS — QBTS đã thay IONQ từ 07-06). Lưu ý: vị thế HUT (5 cp) cũng xuất hiện trong tài khoản nhưng đó là giao dịch sandbox tự động, đã ghi ở `sandbox-log.md`, không thuộc phạm vi 10 mã core.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-07):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $314.15 | +2.03% | +1.12% |
+  | JNJ | $260.69 | $265.25 | +1.75% | -0.74% |
+  | GOOGL | $361.40 | $359.275 | -0.59% | -2.11% |
+  | VOO | $688.26 | $684.77 | -0.51% | -0.34% |
+  | QBTS | $20.69 | $20.575 | -0.56% | -2.30% |
+  | KO | $84.10 | $83.695 | -0.48% | -0.42% |
+  | AMZN | $243.78 | $242.565 | -0.50% | -1.39% |
+  | MSFT | $386.75 | $383.72 | -0.78% | -1.32% |
+  | RSP | $214.93 | $212.165 | -1.29% | -1.19% |
+  | RXRX | $3.78 | $3.71 | -1.85% | -3.39% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%).
+- Thị trường chung tiếp tục điều chỉnh giảm hôm nay (NDX ~29,174) — GOOGL/QBTS/RXRX là 3 mã giảm nhiều nhất trong ngày. RXRX (-3.39%) đã được phân tích tin tức kỹ ở lần check 13:10 ET (không có catalyst tiêu cực riêng, ARK vẫn đang mua thêm, phù hợp điều chỉnh chung nhóm growth/risk-off) — mức giảm hiện tại đã hạ nhiệt so với -4.21% lúc 13:10 ET, không phải diễn biến mới nên không tìm tin tức lại. GOOGL/QBTS dưới ngưỡng 5%, chưa cần tìm tin tức sâu.
+- 4 mã large-cap tech: AAPL tiếp tục outperform rõ rệt (+1.12%), GOOGL giảm nhiều nhất (-2.11%) nhưng đây là nhiễu 1 ngày, chưa đủ cơ sở đánh giá "kém hiệu suất 30 ngày" theo tiêu chí CLAUDE.md.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
