@@ -187,3 +187,9 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản sau lệnh: cần xác nhận buying power ở lần check tiếp theo để đảm bảo không có GFV do phần tiền dùng mua đã settled (buying power $1,344.64 trước lệnh là tiền mặt thực, không phải pending).
 - Việc cần làm tiếp theo: theo dõi giá HUT sát hơn ở các lần check tiếp theo; nếu circuit breaker (giá trị sandbox ~gấp đôi $1400 hoặc về gần $0) kích hoạt thì xử lý theo quy định.
 - **Lưu ý đồng bộ:** một phiên/tiến trình cloud routine khác chạy gần như đồng thời đã phát hiện cùng giao dịch này qua rà soát vị thế (cùng order id) và ghi một entry ngắn hơn — entry đầy đủ ở trên (với phân tích tin tức/catalyst gốc) là bản chính thức, thay thế cho entry rút gọn đó. Chỉ có 1 giao dịch mua HUT thực tế (5 cp), không bị mua trùng.
+
+## 2026-07-08 ~11:08 ET — Check nhẹ (cloud routine, giữ nguyên HUT)
+
+- Giá HUT hiện $97.625 vs vốn $98.97 (-1.36%). So với lúc mua (~10:09 ET @ $98.9699), biến động nhỏ — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Stop-loss @ $91.05 vẫn state=`confirmed`/active, order id `6a4e5a27-a403-4b82-8e6c-523da527af61`, 5 cp giữ nguyên. Giá trị vị thế hiện ~$488.13 — chưa gần ngưỡng gấp đôi ($1400) hay về $0, không kích hoạt circuit breaker.
+- Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
