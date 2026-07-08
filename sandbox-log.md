@@ -193,3 +193,9 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Giá HUT hiện $97.625 vs vốn $98.97 (-1.36%). So với lúc mua (~10:09 ET @ $98.9699), biến động nhỏ — dưới ngưỡng 3-5%, không tìm tin tức sâu.
 - Stop-loss @ $91.05 vẫn state=`confirmed`/active, order id `6a4e5a27-a403-4b82-8e6c-523da527af61`, 5 cp giữ nguyên. Giá trị vị thế hiện ~$488.13 — chưa gần ngưỡng gấp đôi ($1400) hay về $0, không kích hoạt circuit breaker.
 - Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-08 ~12:08 ET — Check nhẹ (cloud routine, giữ nguyên HUT)
+
+- Giá HUT hiện $97.4795 vs vốn $98.97 (-1.51%). So với lần check trước (11:08 ET @ $97.625), biến động chỉ -0.15% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Stop-loss @ $91.05 vẫn state=`confirmed`/active, order id `6a4e5a27-a403-4b82-8e6c-523da527af61`, 5 cp giữ nguyên. Giá trị vị thế hiện ~$487.40 — chưa gần ngưỡng gấp đôi ($1400) hay về $0, không kích hoạt circuit breaker.
+- Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
