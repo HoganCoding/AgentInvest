@@ -233,3 +233,10 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - **Tính giá trị sandbox tổng (quan trọng — GẦN circuit breaker chốt lời):** cash/buying power $849.79 (đã fully settled, pending_deposits $0) + giá trị vị thế HUT (5 cp × $109.40 = $547.00, hoặc theo giá bid thực tế $109.00 = $545.00) → **tổng ~$1,394.79–$1,396.79**, tương đương **~99.6-99.8% ngưỡng gấp đôi ~$1,400** (vốn gốc $700, theo quy định chốt lời trong CLAUDE.md).
 - **Quyết định:** CHƯA bán — giá hiện tại là pre-market với spread rộng ($109/$110, chưa đại diện giá phiên chính thức đáng tin cậy để thực hiện quyết định circuit breaker cấp danh mục), và mới đạt ~99.7% ngưỡng chứ chưa vượt hẳn. Giữ nguyên 5 cp HUT, không bán, không thêm vị thế mới. Stop-loss $91.05 vẫn `confirmed`/active. Sẽ đánh giá lại ngay khi có giá phiên chính thức (từ 9:30 ET) ở lần check tiếp theo — nếu tổng giá trị sandbox xác nhận ≥~$1400 với giá thanh khoản tốt, sẽ bán một phần/toàn bộ HUT để chốt lời và rút vốn gốc $700 theo đúng quy định.
 - Không có circuit breaker nào chính thức kích hoạt (chỉ mới cận ngưỡng, chưa xác nhận) — nhưng do mức độ quan trọng (gần đạt mốc chốt lời gấp đôi), vẫn gửi push notification để Hogan biết trước khi thị trường mở cửa chính thức.
+
+## 2026-07-09 ~09:16 ET (13:16 UTC) — Check đồng bộ, vẫn pre-market, GIỮ NGUYÊN kế hoạch chờ mở cửa
+
+- Giá HUT pre-market hiện $109.85 (13:13:55 UTC), bid/ask $109.00/$113.00 — spread còn rộng hơn lần check trước (09:08 ET), chưa đủ tin cậy để chốt quyết định circuit breaker.
+- Tổng giá trị sandbox ước tính: cash $849.79 (đã settle, pending_deposits $0) + HUT 5 cp × $109.85 = $549.25 → tổng **~$1,399.04** (theo giá bid $109 thận trọng hơn: ~$1,394.79) — vẫn quanh ngưỡng ~$1,400, chưa vượt hẳn với giá đáng tin cậy.
+- Thị trường chính thức chưa mở cửa (9:30 ET/13:30 UTC) — giữ nguyên kế hoạch đã đặt ở lần check 09:08 ET: chờ giá phiên chính thức rồi mới quyết định chốt lời một phần/toàn bộ nếu tổng giá trị xác nhận ≥$1400.
+- Không có lệnh mới. Không gửi push notification thêm (đã gửi ở lần check trước, chưa có thay đổi thật kể từ đó).
