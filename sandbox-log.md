@@ -291,3 +291,11 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản: cash/buying power $849.79 (đã settle, pending_deposits $0), không đổi so với lần check trước.
 - "Phần theo dõi" (đúng công thức đính chính 09:44 ET): cash $849.79 − $700 đệm = $149.79 cash rảnh + HUT (5 cp × $108.79 = $543.95) = **~$693.74** — vẫn quanh mốc gốc $700, còn rất xa ngưỡng chốt lời $1400 (~49.6%). Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-09 ~14:08 ET (18:08 UTC) — Check nhẹ (cloud routine, giữ nguyên HUT)
+
+- Giá HUT hiện $107.84 vs vốn $98.97 (+8.96%). So với lần check trước (13:08 ET @ $108.79), biến động -0.87% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Stop-loss @ $91.05 vẫn active, 5 cp HUT giữ nguyên (xác nhận qua get_equity_positions). Chỉ có core-10 khác (RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL) + QBTS (core-10, không phải sandbox) trong tài khoản.
+- Tài khoản: cash/buying power $849.79 (đã settle, pending_deposits $0), không đổi so với lần check trước.
+- "Phần theo dõi" (đúng công thức đính chính 09:44 ET): cash $849.79 − $700 đệm = $149.79 cash rảnh + HUT (5 cp × $107.84 = $539.20) = **~$688.99** — vẫn quanh mốc gốc $700, còn rất xa ngưỡng chốt lời $1400 (~49.2%). Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
