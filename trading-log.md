@@ -446,3 +446,28 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
 - QQQ hôm nay +1.38% (711.44 → 721.29) — cả 4 mã large-cap tech (AAPL, GOOGL, AMZN, MSFT) đều **kém hơn benchmark rõ rệt** trong phiên hôm nay (từ -0.75% đến -1.13% trong khi QQQ +1.38%). Đây là chênh lệch 1 ngày, chưa đủ cơ sở kết luận "kém hiệu suất 30 ngày" theo tiêu chí CLAUDE.md — cần tiếp tục theo dõi nếu xu hướng kéo dài.
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-09 ~15:31 ET — Check-in định kỳ (giữa/cuối phiên)
+
+- Vị thế 10 mã core không đổi (RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS). HUT (5 cp) vẫn xuất hiện — thuộc sandbox, ghi ở `sandbox-log.md`.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-08):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | QBTS | $20.69 | $21.285 | +2.88% | +3.13% |
+  | AAPL | $307.90 | $315.69 | +2.53% | +0.73% |
+  | AMZN | $243.78 | $245.65 | +0.77% | +0.83% |
+  | VOO | $688.26 | $690.30 | +0.30% | +0.74% |
+  | RSP | $214.93 | $213.535 | -0.65% | +0.63% |
+  | JNJ | $260.69 | $259.12 | -0.60% | -1.63% |
+  | GOOGL | $361.40 | $358.325 | -0.85% | -0.99% |
+  | RXRX | $3.78 | $3.765 | -0.40% | +1.21% |
+  | MSFT | $386.75 | $382.61 | -1.07% | -0.19% |
+  | KO | $84.10 | $82.55 | -1.84% | -1.02% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%).
+- QBTS +3.13% trong ngày, vượt ngưỡng 3% nên đã tìm tin tức: catalyst tích cực — D-Wave Quantum (QBTS) được IDC MarketScape công nhận là "Leader" trong đánh giá Quantum Computing 2026 (công bố 07-08), cùng số liệu tăng trưởng sử dụng hệ thống Advantage2 (+314% YoY) và Stride hybrid solver (+114% trong 6 tháng). Không có tin tức tiêu cực. Đánh giá: biến động tích cực có catalyst rõ ràng, không đủ điều kiện đề xuất hành động theo CLAUDE.md (không phải ngưỡng cắt lỗ/chốt lời, không phải tín hiệu xấu).
+  - Nguồn: [D-Wave Quantum Newsroom](https://www.dwavequantum.com/company/newsroom/press-release/), [StockTitan – QBTS news](https://www.stocktitan.net/news/QBTS/)
+- 4 mã large-cap tech: AAPL/AMZN tăng nhẹ cùng nhịp, GOOGL/MSFT giảm nhẹ — biến động trong biên độ bình thường, không có vấn đề hiệu suất đáng lo so với NDX (29,705 lúc kiểm tra).
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
