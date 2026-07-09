@@ -259,3 +259,11 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - **Quyết định:** KHÔNG mở vị thế mới. Không có catalyst riêng biệt đủ mạnh để chọn CIFR/IREN thay vì HUT (đã có exposure nhóm này qua HUT rồi — thêm CIFR/IREN chỉ là tăng gấp đôi cùng một thesis, không đa dạng hóa thật). $150 cash không đủ mua 1 cp nguyên của IREN/CIFR cộng đủ margin an toàn để còn dư cho biến động. Giữ nguyên cash rảnh, không ép giao dịch.
 - Không đề xuất tăng vốn (chưa có cơ hội đủ tốt để cần vượt ngân sách hiện có).
 - Không gửi push notification (không có hành động/thay đổi thật, không có đề xuất cần duyệt).
+
+## 2026-07-09 ~10:08 ET (14:08 UTC) — Check nhẹ (cloud routine, giữ nguyên HUT)
+
+- Giá HUT hiện $109.07 vs vốn $98.97 (+10.20%). So với lần check trước (10:03 ET @ $108.51), biến động +0.52% — dưới ngưỡng 3-5%, không tìm tin tức sâu (thesis AI-pivot/Nvidia-tied lease đã xác nhận các lần check trước vẫn là cơ sở).
+- Stop-loss @ $91.05 vẫn active, 5 cp HUT giữ nguyên (xác nhận qua get_equity_positions). WULF vẫn ngoài vị thế (còn cấm mua tới ~2026-08-06 do wash-sale), giá tham khảo $23.38.
+- Tài khoản: cash/buying power $849.79 (đã settle, pending_deposits $0), không đổi so với lần check trước.
+- **Tính đúng công thức "phần theo dõi" (theo đính chính 09:44 ET):** cash $849.79 − $700 đệm = $149.79 cash rảnh + HUT (5 cp × $109.07 = $545.35) = **~$695.14** — vẫn quanh mốc gốc $700, còn rất xa ngưỡng chốt lời $1400 (~49.7%). Không có circuit breaker nào kích hoạt (chốt lời hay dừng hẳn).
+- Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
