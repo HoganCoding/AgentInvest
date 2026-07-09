@@ -240,3 +240,13 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tổng giá trị sandbox ước tính: cash $849.79 (đã settle, pending_deposits $0) + HUT 5 cp × $109.85 = $549.25 → tổng **~$1,399.04** (theo giá bid $109 thận trọng hơn: ~$1,394.79) — vẫn quanh ngưỡng ~$1,400, chưa vượt hẳn với giá đáng tin cậy.
 - Thị trường chính thức chưa mở cửa (9:30 ET/13:30 UTC) — giữ nguyên kế hoạch đã đặt ở lần check 09:08 ET: chờ giá phiên chính thức rồi mới quyết định chốt lời một phần/toàn bộ nếu tổng giá trị xác nhận ≥$1400.
 - Không có lệnh mới. Không gửi push notification thêm (đã gửi ở lần check trước, chưa có thay đổi thật kể từ đó).
+
+## 2026-07-09 ~09:44 ET (13:44 UTC) — SỬA LỖI công thức chốt lời (Hogan phát hiện)
+
+> **Đính chính:** 2 entry ngay trên (09:08 ET và 09:16 ET) tính SAI công thức ngưỡng chốt lời — đã cộng thẳng cả $700 bucket đệm (buffer chờ settle) vào tổng để so với $1400, khiến tưởng nhầm là "gần chạm ngưỡng". Hogan chỉ ra công thức đúng: ngưỡng gấp đôi ($1400) chỉ áp dụng cho **phần đang xoay vòng $700 gốc** — tức (cash trừ $700 đệm) + giá trị vị thế hiện có, KHÔNG cộng nguyên $700 đệm vào.
+
+- Giá HUT phiên chính thức (đã mở cửa, spread hẹp, đáng tin cậy): $108.49 (13:44:31 UTC), bid/ask $108.30/$108.90.
+- **Tính lại đúng công thức:** cash $849.79 − $700 đệm = $149.79 cash rảnh + HUT (5 cp × $108.49 = $542.45) = **phần theo dõi ~$692.24** — bắt đầu từ mốc $700, hiện gần như đi ngang (chưa tính phí/lãi lỗ tích lũy từ WULF trước đó). Còn CÁCH RẤT XA ngưỡng chốt lời $1400 (mới ~49%), không phải 99% như 2 entry trước ghi nhầm.
+- Đã sửa `CLAUDE.md` (mục "Chốt lời" trong phần sandbox) để ghi rõ công thức, tránh lặp lại lỗi. Đã cập nhật memory `sandbox_400_autonomous.md`.
+- **Tác động:** không có circuit breaker nào cận kề. Có ~$149.79 cash thực sự rảnh (ngoài $700 đệm) sẵn sàng đầu tư thêm nếu có cơ hội tốt — không cần chờ ngưỡng gấp đôi.
+- Không gửi push notification (đây là điều chỉnh nội bộ, không phải giao dịch/circuit breaker thật).
