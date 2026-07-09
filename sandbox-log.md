@@ -307,3 +307,12 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản: cash/buying power $849.79 (đã settle, pending_deposits $0), không đổi so với lần check trước. Total account value $5,970.49.
 - "Phần theo dõi" (đúng công thức đính chính 09:44 ET): cash $849.79 − $700 đệm = $149.79 cash rảnh + HUT (5 cp × $107.65 = $538.25) = **~$688.04** — vẫn quanh mốc gốc $700, còn rất xa ngưỡng chốt lời $1400 (~49.1%). Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+
+## 2026-07-09 ~16:03 ET (20:03 UTC) — Check nhẹ, thị trường vừa đóng cửa (cloud routine, giữ nguyên HUT)
+
+- Giá HUT hiện $106.28 (last_trade_price 19:59:59 UTC, cuối phiên chính thức; after-hours $105.72) vs vốn $98.97 (+7.39%). So với lần check trước (15:08 ET @ $107.65), biến động -1.27% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Stop-loss @ $91.05 vẫn active, 5 cp HUT giữ nguyên (xác nhận qua get_equity_positions). Không có vị thế sandbox nào khác (WULF vẫn cấm mua tới ~2026-08-06 do wash-sale, không nắm giữ).
+- Tài khoản: cash/buying power $849.79 (đã settle, pending_deposits $0 theo lần check gần nhất, không thay đổi).
+- "Phần theo dõi" (đúng công thức đính chính 09:44 ET): cash $849.79 − $700 đệm = $149.79 cash rảnh + HUT (5 cp × $106.28 = $531.40) = **~$681.19** — vẫn quanh mốc gốc $700, còn rất xa ngưỡng chốt lời $1400 (~48.7%). Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế, không có lệnh mới. Thị trường vừa đóng cửa (16:00 ET) — chuyển sang chế độ qua đêm, chờ phiên kế tiếp. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
