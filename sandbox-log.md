@@ -250,3 +250,12 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Đã sửa `CLAUDE.md` (mục "Chốt lời" trong phần sandbox) để ghi rõ công thức, tránh lặp lại lỗi. Đã cập nhật memory `sandbox_400_autonomous.md`.
 - **Tác động:** không có circuit breaker nào cận kề. Có ~$149.79 cash thực sự rảnh (ngoài $700 đệm) sẵn sàng đầu tư thêm nếu có cơ hội tốt — không cần chờ ngưỡng gấp đôi.
 - Không gửi push notification (đây là điều chỉnh nội bộ, không phải giao dịch/circuit breaker thật).
+
+## 2026-07-09 ~10:03 ET (14:03 UTC) — Tìm cơ hội mới cho $150 cash rảnh (theo yêu cầu Hogan), quyết định GIỮ CASH
+
+- Giá hiện tại nhóm miner/AI-pivot (phiên chính thức): HUT $108.51 (+2.26% ngày, +9.64% so vốn), WULF $23.50 (+2.94% ngày — còn cấm mua tới ~2026-08-06 do wash-sale), IREN $43.585 (+1.35% ngày), CIFR $22.86 (**+4.62% ngày** — chạm ngưỡng, tìm tin tức).
+- **Tin tức:** tìm CIFR/IREN/HUT — không có catalyst MỚI riêng cho ngày 07-09. Tin đang lưu hành vẫn là các catalyst đã biết: CIFR bắt đầu triển khai giai đoạn 1 hợp đồng AWS 300MW/$5.5B (Needham nâng target lên $25), IREN có hợp đồng Microsoft GPU cloud $9.7B/5 năm (đã biết), HUT vẫn là Nvidia-tied lease $9.8B (đã có vị thế). Đà tăng hôm nay là tiếp diễn thesis AI-pivot đã phản ánh vào giá những ngày trước, không phải tín hiệu entry mới/riêng biệt.
+  - Nguồn: [CCN](https://www.ccn.com/news/crypto/ai-boom-bitcoin-mining-stocks-hut8-cipher-iren-surge/), [The Block](https://www.theblock.co/post/402773/bitcoin-miner-ai-boom-stocks-soaring-cipher-hut-8-fresh-highs), [24/7 Wall St](https://247wallst.com/investing/2026/07/08/terawulf-rises-12-iren-climbs-7-as-ai-infrastructure-stocks-bounce-back/)
+- **Quyết định:** KHÔNG mở vị thế mới. Không có catalyst riêng biệt đủ mạnh để chọn CIFR/IREN thay vì HUT (đã có exposure nhóm này qua HUT rồi — thêm CIFR/IREN chỉ là tăng gấp đôi cùng một thesis, không đa dạng hóa thật). $150 cash không đủ mua 1 cp nguyên của IREN/CIFR cộng đủ margin an toàn để còn dư cho biến động. Giữ nguyên cash rảnh, không ép giao dịch.
+- Không đề xuất tăng vốn (chưa có cơ hội đủ tốt để cần vượt ngân sách hiện có).
+- Không gửi push notification (không có hành động/thay đổi thật, không có đề xuất cần duyệt).
