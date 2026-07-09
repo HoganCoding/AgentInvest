@@ -400,3 +400,26 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
 - 4 mã large-cap tech: AAPL tiếp tục outperform rõ rệt (+1.12%), GOOGL giảm nhiều nhất (-2.11%) nhưng đây là nhiễu 1 ngày, chưa đủ cơ sở đánh giá "kém hiệu suất 30 ngày" theo tiêu chí CLAUDE.md.
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-09 ~9:45 ET — Check-in định kỳ (mở phiên)
+
+- Vị thế 10 mã core không đổi (RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS). Lưu ý: HUT (5 cp) vẫn xuất hiện trong tài khoản — thuộc sandbox, ghi riêng ở `sandbox-log.md`.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-08):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | QBTS | $20.69 | $21.08 | +1.89% | +2.13% |
+  | RXRX | $3.78 | $3.805 | +0.66% | +2.28% |
+  | JNJ | $260.69 | $262.395 | +0.65% | -0.38% |
+  | AAPL | $307.90 | $311.035 | +1.02% | -0.75% |
+  | VOO | $688.26 | $688.10 | -0.02% | +0.44% |
+  | RSP | $214.93 | $213.09 | -0.86% | +0.42% |
+  | AMZN | $243.78 | $241.71 | -0.85% | -0.78% |
+  | GOOGL | $361.40 | $357.57 | -1.06% | -1.20% |
+  | MSFT | $386.75 | $379.01 | -2.00% | -1.13% |
+  | KO | $84.10 | $81.955 | -2.55% | -1.73% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). Biến động lớn nhất trong ngày (RXRX +2.28%, KO -1.73%) đều dưới ngưỡng 3-5% nên không tìm tin tức sâu.
+- QQQ hôm nay +1.38% (711.44 → 721.29) — cả 4 mã large-cap tech (AAPL, GOOGL, AMZN, MSFT) đều **kém hơn benchmark rõ rệt** trong phiên hôm nay (từ -0.75% đến -1.13% trong khi QQQ +1.38%). Đây là chênh lệch 1 ngày, chưa đủ cơ sở kết luận "kém hiệu suất 30 ngày" theo tiêu chí CLAUDE.md — cần tiếp tục theo dõi nếu xu hướng kéo dài.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
