@@ -275,3 +275,11 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản: cash/buying power $849.79 (đã settle, pending_deposits $0), không đổi so với lần check trước.
 - "Phần theo dõi": cash $849.79 − $700 đệm = $149.79 cash rảnh + HUT (5 cp × $108.62 = $543.10) = **~$692.89** — vẫn quanh mốc gốc $700, còn rất xa ngưỡng chốt lời $1400 (~49.5%). Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-09 ~12:08 ET (16:08 UTC) — Check nhẹ (cloud routine, giữ nguyên HUT)
+
+- Giá HUT hiện $109.75 vs vốn $98.97 (+10.89%). So với lần check trước (11:09 ET @ $108.62), biến động +1.04% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Stop-loss @ $91.05 vẫn active, 5 cp HUT giữ nguyên (xác nhận qua get_equity_positions). WULF vẫn ngoài vị thế (còn cấm mua tới ~2026-08-06 do wash-sale), giá tham khảo $24.20 (+6.00% ngày). CIFR $23.745 (+8.68% ngày) và IREN $43.02 (+0.03% ngày) — không phải vị thế hiện có, không xét entry mới (đã có exposure nhóm AI-pivot/miner qua HUT).
+- Tài khoản: cash/buying power $849.79 (đã settle, pending_deposits $0), không đổi so với lần check trước.
+- "Phần theo dõi" (đúng công thức đính chính 09:44 ET): cash $849.79 − $700 đệm = $149.79 cash rảnh + HUT (5 cp × $109.75 = $548.75) = **~$698.54** — vẫn quanh mốc gốc $700, còn rất xa ngưỡng chốt lời $1400 (~49.9%). Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
