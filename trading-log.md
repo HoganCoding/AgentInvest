@@ -401,6 +401,29 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
 
+## 2026-07-09 ~13:10 ET — Check-in định kỳ (giữa phiên)
+
+- Vị thế 10 mã core không đổi (RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS). HUT (5 cp) vẫn xuất hiện — thuộc sandbox, ghi ở `sandbox-log.md`.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-08):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | QBTS | $20.69 | $21.205 | +2.49% | +2.74% |
+  | AAPL | $307.90 | $314.89 | +2.27% | +0.48% |
+  | RXRX | $3.78 | $3.8099 | +0.79% | +2.42% |
+  | VOO | $688.26 | $690.37 | +0.31% | +0.74% |
+  | JNJ | $260.69 | $259.87 | -0.31% | -1.34% |
+  | AMZN | $243.78 | $243.32 | -0.19% | -0.12% |
+  | RSP | $214.93 | $213.975 | -0.44% | +0.84% |
+  | GOOGL | $361.40 | $355.13 | -1.73% | -1.88% |
+  | MSFT | $386.75 | $379.5864 | -1.85% | -0.98% |
+  | KO | $84.10 | $82.71 | -1.65% | -0.83% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). Biến động lớn nhất trong ngày (GOOGL -1.88%, QBTS +2.74%) vẫn dưới ngưỡng 3-5% nên không tìm tin tức sâu lần này.
+- 4 mã large-cap tech đều giảm nhẹ trong ngày (GOOGL -1.88%, MSFT -0.98%, AMZN -0.12%, AAPL +0.48% là ngoại lệ dương) — nhiễu 1 phiên, chưa đủ cơ sở đánh giá "kém hiệu suất 30 ngày" theo CLAUDE.md.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
 ## 2026-07-09 ~9:45 ET — Check-in định kỳ (mở phiên)
 
 - Vị thế 10 mã core không đổi (RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS). Lưu ý: HUT (5 cp) vẫn xuất hiện trong tài khoản — thuộc sandbox, ghi riêng ở `sandbox-log.md`.
