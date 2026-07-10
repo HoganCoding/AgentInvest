@@ -378,3 +378,12 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản: buying power $348.96 (vẫn thấp, chưa hồi phục về ~$804-849 — hiệu ứng timing settle core-10 từ SOUN/RXRX, không phải giao dịch sandbox), cash $804.81, total_value $5,895.20.
 - "Phần theo dõi" sandbox: tạm dùng baseline $849.79 (buying power sandbox xác nhận gần nhất trước ảnh hưởng timing core-10) − $700 đệm = $149.79 cash rảnh + HUT (5×$102.80=$514.00) = **~$663.79** (~94.8% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-10 ~16:05 ET (20:05 UTC) — Check định kỳ (giữ nguyên HUT, gần cuối phiên)
+
+- Giá HUT: last_trade_price $102.191 (19:59:59 UTC, regular hours) vs last_non_reg_trade_price $101.21 (20:02:57 UTC, sau giờ — dùng giá này vì mới hơn) — so với vốn $98.97: +2.26%; so với previous close $106.22: -4.72% trong ngày. So với lần check trước (15:08 ET @ $102.80), biến động -1.55% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. Stop-loss HUT @ $91.05 vẫn `confirmed`/active (order `6a4e5a27-...`, last_transaction_at 2026-07-10T12:21:49Z). WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale).
+- Core-10 hiện tại: AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS, SOUN — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản: buying power $348.96 (vẫn thấp, chưa hồi phục về ~$804-849 như 2 lần check trước dự đoán — hiệu ứng timing settle core-10 từ SOUN/RXRX kéo dài hơn dự kiến, không phải giao dịch sandbox), cash $804.81, total_value $5,885.82.
+- "Phần theo dõi" sandbox: tạm dùng baseline $849.79 (buying power sandbox xác nhận gần nhất trước ảnh hưởng timing core-10) − $700 đệm = $149.79 cash rảnh + HUT (5×$101.21=$506.05) = **~$655.84** (~93.7% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
