@@ -325,3 +325,14 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản: cash/buying power $849.79 (đã settle, pending_deposits $0), không đổi so với lần check trước. Total account value $5,981.84.
 - "Phần theo dõi" (đúng công thức đính chính 09:44 ET 07-09): cash $849.79 − $700 đệm = $149.79 cash rảnh + HUT (5 cp × $107.91 = $539.55) = **~$689.34** — vẫn quanh mốc gốc $700, còn rất xa ngưỡng chốt lời $1400 (~49.2%). Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-10 ~10:09 ET (14:09 UTC) — Check + tìm tin tức (HUT giảm vượt ngưỡng, giữ nguyên)
+
+- Giá HUT hiện $101.64 vs previous close $106.22 (**-4.31%** trong ngày) và vs vốn $98.97 (+2.70%). So với lần check trước (09:10 ET @ $107.91 pre-market), biến động **-5.81%** — vượt ngưỡng 3-5%, tìm tin tức sâu.
+- **Tin tức:** không có catalyst tiêu cực mới về công ty/fundamentals. QuiverQuant ghi nhận "Hut 8 (HUT) slides 7.2% as crypto-sensitive names cool and recent insider selling weighs on sentiment" — pullback đến từ (1) nhóm crypto-sensitive hạ nhiệt chung (không riêng HUT), (2) tâm lý nhà đầu tư bị ảnh hưởng bởi tin insider selling đã biết trước đó (không phải tin mới), không có tin xấu về hợp đồng Beacon Point/Nvidia-tied lease hay tài chính công ty. Đây là điều chỉnh/chốt lời sau chuỗi tăng mạnh (~+10% so vốn những ngày trước), không phải đảo chiều thesis.
+  - Nguồn: [QuiverQuant](https://www.quiverquant.com/news/Hut+8+(HUT)+slides+7.2%+as+crypto-sensitive+names+cool+and+recent+insider+selling+weighs+on+sentiment), [Yahoo Finance](https://finance.yahoo.com/quote/HUT/)
+- Stop-loss @ $91.05 vẫn state=`confirmed`/active (order id `6a4e5a27-a403-4b82-8e6c-523da527af61`), 5 cp HUT giữ nguyên (xác nhận qua get_equity_positions). Giá hiện còn cách stop-loss ~10.4%, chưa gần kích hoạt.
+- Tài khoản: cash/buying power $849.79 (đã settle, pending_deposits $0), total_value $5,902.92.
+- "Phần theo dõi" (đúng công thức đính chính 2026-07-09): cash $849.79 − $700 đệm = $149.79 cash rảnh + HUT (5 cp × $101.64 = $508.20) = **~$657.99** — dưới mốc gốc $700 (~94%), còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt (chốt lời hay dừng hẳn).
+- Quyết định: giữ nguyên vị thế, không có lệnh mới, không bán non — pullback do tâm lý/sector cooling chứ không phải tin xấu thesis-breaking, stop-loss -8% vẫn đủ để bảo vệ nếu tiếp tục giảm sâu hơn.
+- Không gửi push notification (không có hành động/thay đổi thật; mức giảm nằm trong biên độ biến động bình thường của nhóm này, chưa chạm circuit breaker).
