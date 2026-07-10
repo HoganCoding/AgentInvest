@@ -515,3 +515,28 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
 - Rủi ro chính: thanh khoản/biến động cao (giá đã giảm ~70% từ đỉnh 52 tuần $22.17), đang tích hợp thương vụ M&A LivePerson (rủi ro thực thi), chưa có lợi nhuận (PE âm).
 - Vị thế 10 mã core hiện tại: SOUN (thay RXRX), AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS.
 - Việc cần làm tiếp theo: xác nhận stop-loss chuyển sang `confirmed` ở lần check tiếp theo; theo dõi tin tức LivePerson integration.
+
+## 2026-07-10 ~13:10 ET (17:10 UTC) — Check-in định kỳ
+
+- Vị thế 10 mã core hiện tại (RXRX đã thay bằng SOUN sáng nay): SOUN, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS. HUT (5 cp) vẫn xuất hiện — thuộc sandbox, ghi ở `sandbox-log.md`.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-09):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | VOO | $688.26 | $692.745 | +0.65% | +0.30% |
+  | AAPL | $307.90 | $314.46 | +2.13% | -0.56% |
+  | SOUN | $6.59 | $6.605 | +0.23% | -1.12% |
+  | AMZN | $243.78 | $245.42 | +0.67% | -0.66% |
+  | KO | $84.10 | $83.495 | -0.72% | +1.05% |
+  | MSFT | $386.75 | $385.20 | -0.40% | +0.22% |
+  | RSP | $214.93 | $214.225 | -0.33% | +0.34% |
+  | JNJ | $260.69 | $256.06 | -1.78% | -1.17% |
+  | GOOGL | $361.40 | $354.93 | -1.79% | -1.10% |
+  | QBTS | $20.69 | $20.30 | -1.88% | -4.06% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). SOUN (mới mua sáng nay, stop-loss -8% tại $6.06) còn cách xa ngưỡng.
+- QBTS giảm -4.06% trong ngày, vượt ngưỡng 3-5% nên đã tìm tin tức: không có catalyst tiêu cực — ngược lại tin tức tiếp tục tích cực (Mizuho nâng target giá lên $35 từ $29 giữ khuyến nghị Buy, công bố lộ trình gate-model hướng tới 100 logical qubit vào 2032, nhận thêm gói tài trợ NSF $1.57M cho dự án ERASE). Đánh giá: biến động chung nhóm quantum computing (đã lặp lại nhiều lần gần đây), không phải suy giảm cơ bản riêng của QBTS — không đủ điều kiện đề xuất theo CLAUDE.md.
+  - Nguồn: [Yahoo Finance – Good News For D-Wave Quantum Stock Fans](https://finance.yahoo.com/technology/ai/articles/good-news-d-wave-quantum-122853057.html), [Motley Fool – $100M catalyst](https://www.fool.com/investing/2026/07/06/this-explosive-quantum-stock-just-got-a-massive-10/), [StockTitan – QBTS news](https://www.stocktitan.net/news/QBTS/)
+- 4 mã large-cap tech đều giảm nhẹ trong ngày (GOOGL -1.10% kém nhất, MSFT +0.22% là ngoại lệ dương) — nhiễu 1 phiên, chưa đủ cơ sở đánh giá "kém hiệu suất 30 ngày" theo CLAUDE.md.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
