@@ -336,3 +336,11 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - "Phần theo dõi" (đúng công thức đính chính 2026-07-09): cash $849.79 − $700 đệm = $149.79 cash rảnh + HUT (5 cp × $101.64 = $508.20) = **~$657.99** — dưới mốc gốc $700 (~94%), còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt (chốt lời hay dừng hẳn).
 - Quyết định: giữ nguyên vị thế, không có lệnh mới, không bán non — pullback do tâm lý/sector cooling chứ không phải tin xấu thesis-breaking, stop-loss -8% vẫn đủ để bảo vệ nếu tiếp tục giảm sâu hơn.
 - Không gửi push notification (không có hành động/thay đổi thật; mức giảm nằm trong biên độ biến động bình thường của nhóm này, chưa chạm circuit breaker).
+
+## 2026-07-10 ~11:10 ET (15:10 UTC) — Check nhẹ (cloud routine, giữ nguyên HUT)
+
+- Giá HUT hiện $101.675 vs vốn $98.97 (+2.73%), vs previous close $106.22 (-4.31% trong ngày, không đổi so với lần check trước). So với lần check trước (10:09 ET @ $101.64), biến động +0.03% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Stop-loss @ $91.05 vẫn state=`confirmed` (order id `6a4e5a27-...`), 5 cp HUT giữ nguyên (xác nhận qua get_equity_positions). WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale).
+- Tài khoản: buying power $849.79 (đã settle, pending_deposits $0), không đổi so với lần check trước. Lưu ý: cash tổng tài khoản tăng lên $1,305.64 do stop-loss RXRX (core-10, 131 cp @ $3.48) vừa khớp lúc 14:33 UTC hôm nay — đây là sự kiện core-10, không thuộc phạm vi sandbox, không ảnh hưởng tới buying_power dùng cho công thức dưới đây, để routine core-10/`trading-log.md` xử lý riêng.
+- "Phần theo dõi" (đúng công thức đính chính 2026-07-09): buying power $849.79 − $700 đệm = $149.79 cash rảnh + HUT (5 cp × $101.675 = $508.38) = **~$658.17** — dưới mốc gốc $700 (~94%), còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
