@@ -471,3 +471,28 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
 - 4 mã large-cap tech: AAPL/AMZN tăng nhẹ cùng nhịp, GOOGL/MSFT giảm nhẹ — biến động trong biên độ bình thường, không có vấn đề hiệu suất đáng lo so với NDX (29,705 lúc kiểm tra).
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-10 ~9:47 ET — Check-in định kỳ (mở phiên)
+
+- Vị thế 10 mã core không đổi (RXRX, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS). HUT (5 cp) vẫn xuất hiện — thuộc sandbox, ghi ở `sandbox-log.md`.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-09):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $314.55 | +2.16% | -0.53% |
+  | AMZN | $243.78 | $246.845 | +1.26% | -0.08% |
+  | VOO | $688.26 | $691.40 | +0.46% | +0.10% |
+  | MSFT | $386.75 | $386.505 | -0.06% | +0.56% |
+  | RSP | $214.93 | $214.37 | -0.26% | +0.41% |
+  | JNJ | $260.69 | $259.615 | -0.41% | +0.20% |
+  | QBTS | $20.69 | $20.70 | +0.05% | -2.17% |
+  | KO | $84.10 | $83.22 | -1.05% | +0.71% |
+  | GOOGL | $361.40 | $355.68 | -1.58% | -0.89% |
+  | RXRX | $3.78 | $3.555 | **-5.95%** | **-5.45%** |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời. RXRX gần nhất về P&L (-5.95%) nhưng vẫn cách xa stop-loss đã đặt (-8%, $3.48 confirmed).
+- QQQ hôm nay -0.22% (723.28 → 721.69) — 4 mã large-cap tech dao động quanh mức benchmark, không có vấn đề hiệu suất.
+- RXRX giảm -5.45% trong ngày, vượt ngưỡng 3-5% nên đã tìm tin tức: không thấy catalyst tiêu cực riêng của công ty (không có 8-K/thông cáo xấu mới); một số nguồn cho thấy biotech nhóm nhỏ/small-cap nói chung điều chỉnh (nhạy cảm với kỳ vọng lãi suất). Đánh giá: biến động chung nhóm biotech/growth, không phải suy giảm cơ bản riêng của RXRX — không đủ điều kiện đề xuất theo CLAUDE.md.
+  - Nguồn: [Yahoo Finance – RXRX](https://finance.yahoo.com/quote/RXRX/), [Zacks – why RXRX dipped](https://zacks.com/stock/news/2938302/why-recursion-pharmaceuticals-rxrx-dipped-more-than-broader-market-today)
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
