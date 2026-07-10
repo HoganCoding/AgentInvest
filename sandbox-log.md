@@ -370,3 +370,11 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản: buying power $348.96 — vẫn ở mức thấp giống lần check 13:10 ET (chưa hồi phục về ~$804-849 như dự kiến, có thể proceeds RXRX/timing settle core-10 chưa hoàn tất). total_value $5,893.68, cash $804.81. Đây là hiệu ứng timing từ giao dịch core-10 (SOUN/QBTS), không phải giao dịch sandbox.
 - "Phần theo dõi" sandbox: do buying power hiện tại đang bị ảnh hưởng bởi timing settle core-10 (chưa phản ánh đúng phần sandbox), tạm dùng baseline $849.79 (mức buying power sandbox xác nhận gần nhất trước khi bị ảnh hưởng) − $700 đệm = $149.79 cash rảnh + HUT (5×$103.88=$519.40) = **~$669.19** (~95.6% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-10 ~15:08 ET (19:08 UTC) — Check định kỳ (giữ nguyên HUT)
+
+- Giá HUT hiện $102.80 (last_trade_price 19:08:01 UTC) vs vốn $98.97 (+3.87%), vs previous close $106.22 (-3.22% trong ngày). So với lần check trước (14:07 ET @ $103.88), biến động -1.04% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên, không có vị thế sandbox nào khác. Core-10 hiện tại: AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS, SOUN — khớp `trading-log.md`, không có mã lạ.
+- Tài khoản: buying power $348.96 (vẫn thấp, chưa hồi phục về ~$804-849 — hiệu ứng timing settle core-10 từ SOUN/RXRX, không phải giao dịch sandbox), cash $804.81, total_value $5,895.20.
+- "Phần theo dõi" sandbox: tạm dùng baseline $849.79 (buying power sandbox xác nhận gần nhất trước ảnh hưởng timing core-10) − $700 đệm = $149.79 cash rảnh + HUT (5×$102.80=$514.00) = **~$663.79** (~94.8% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
