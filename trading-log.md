@@ -540,3 +540,27 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
 - 4 mã large-cap tech đều giảm nhẹ trong ngày (GOOGL -1.10% kém nhất, MSFT +0.22% là ngoại lệ dương) — nhiễu 1 phiên, chưa đủ cơ sở đánh giá "kém hiệu suất 30 ngày" theo CLAUDE.md.
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-10 ~15:32 ET (19:32 UTC) — Check-in định kỳ
+
+- Vị thế 10 mã core hiện tại: SOUN, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS. HUT (5 cp) vẫn xuất hiện — thuộc sandbox, ghi ở `sandbox-log.md`.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-09):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $316.18 | +2.69% | -0.01% |
+  | VOO | $688.26 | $693.99 | +0.83% | +0.48% |
+  | SOUN | $6.59 | $6.625 | +0.53% | -0.82% |
+  | AMZN | $243.78 | $245.20 | +0.58% | -0.75% |
+  | MSFT | $386.75 | $384.98 | -0.46% | +0.16% |
+  | RSP | $214.93 | $214.435 | -0.23% | +0.44% |
+  | KO | $84.10 | $83.534 | -0.67% | +1.09% |
+  | GOOGL | $361.40 | $356.48 | -1.36% | -0.67% |
+  | JNJ | $260.69 | $256.925 | -1.44% | -0.84% |
+  | QBTS | $20.69 | $20.07 | -3.00% | -5.15% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). QBTS còn cách xa ngưỡng stop-loss ($19.03).
+- QBTS giảm -5.15% trong ngày, vượt ngưỡng nên đã tìm tin tức: không có catalyst tiêu cực riêng cho QBTS (tin tức gần nhất vẫn tích cực — IDC MarketScape Leader, tài trợ NSF $1.57M, target giá đồng thuận $36.80). Xác nhận qua tin tức nhóm ngành: cả IONQ, RGTI, QBTS đều giảm mạnh trong tuần (IONQ ~-7%, RGTI ~-7-8%) do risk-off/chốt lời sau đợt tăng nóng của nhóm quantum, lan từ áp lực bán nhóm AI/chip — không phải vấn đề cơ bản riêng của D-Wave. Đánh giá: tiếp tục là biến động chung nhóm quantum computing (đã lặp lại nhiều lần các ngày gần đây) — không đủ điều kiện đề xuất theo CLAUDE.md.
+  - Nguồn: [Yahoo Finance – IonQ, Rigetti, D-Wave, Quantum Computing Inc. All Fall 5% to 7%](https://finance.yahoo.com/markets/stocks/articles/ionq-rigetti-d-wave-quantum-183030435.html), [TipRanks – Quantum Stocks Slide](https://www.tipranks.com/news/quantum-stocks-slide-why-ionq-rgti-and-qbts-fell-on-july-7), [GuruFocus – Good News For D-Wave Quantum Stock Fans](https://www.gurufocus.com/news/8950885/good-news-for-dwave-quantum-stock-fans)
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
