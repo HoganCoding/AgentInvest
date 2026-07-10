@@ -505,3 +505,13 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
 - Vị thế 10 mã core hiện còn 9 mã: AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS — thiếu RXRX (nhóm rủi ro cao/tăng trưởng mạnh; QBTS vẫn còn trong nhóm này, cần đề xuất thay thế RXRX để đủ 2 mã nhóm rủi ro cao theo cơ cấu danh mục).
 - Tài khoản (Agentic ••••0133) tại thời điểm phát hiện: total_value $5,889.56, equity_value $4,583.92, cash $1,305.64, buying power $849.79 (chỉ phản ánh phần sandbox — proceeds RXRX thuộc core-10, cộng vào cash tổng tài khoản nhưng không tính vào buying power sandbox theo dõi riêng).
 - **Việc cần làm tiếp theo:** chuẩn bị đề xuất thay thế RXRX (nhóm rủi ro cao) với tối thiểu 2 lựa chọn theo đúng quy trình CLAUDE.md, trình Hogan duyệt.
+
+## 2026-07-10 ~12:35 ET — Thay thế RXRX bằng SOUN (đã duyệt)
+
+- Đề xuất 2 lựa chọn: **SOUN** (SoundHound AI — voice/NLP AI, doanh thu Q1 2026 +52% YoY, guidance FY26 $225-260M) vs **TEM** (Tempus AI — AI chẩn đoán/precision medicine, doanh thu Q1 2026 +36.1% YoY, guidance FY26 ~$1.6B). Hogan chọn **SOUN**.
+- **Mua 76 cp SOUN @ $6.5899 (thị giá), tổng $500.83.** Order id `6a511f3c-6837-47a0-844a-a9bd93bf1330`, state=filled.
+- Đặt stop-loss -8% tại $6.06, order id `6a511f46-4031-427b-99bc-b3c9769aa12c`, time_in_force=gtc, state=unconfirmed lúc đặt (cần xác nhận lần check tiếp theo).
+- Chốt lời dự kiến (theo dõi thủ công, không đặt lệnh tự động): +16-20% từ vốn (~$7.64-7.91/cp), risk/reward ~1:2 so với stop-loss -8%.
+- Rủi ro chính: thanh khoản/biến động cao (giá đã giảm ~70% từ đỉnh 52 tuần $22.17), đang tích hợp thương vụ M&A LivePerson (rủi ro thực thi), chưa có lợi nhuận (PE âm).
+- Vị thế 10 mã core hiện tại: SOUN (thay RXRX), AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS.
+- Việc cần làm tiếp theo: xác nhận stop-loss chuyển sang `confirmed` ở lần check tiếp theo; theo dõi tin tức LivePerson integration.
