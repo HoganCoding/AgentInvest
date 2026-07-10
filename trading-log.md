@@ -496,3 +496,12 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
   - Nguồn: [Yahoo Finance – RXRX](https://finance.yahoo.com/quote/RXRX/), [Zacks – why RXRX dipped](https://zacks.com/stock/news/2938302/why-recursion-pharmaceuticals-rxrx-dipped-more-than-broader-market-today)
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-10 ~10:33 ET (14:33 UTC) — Stop-loss RXRX đã kích hoạt (đóng vị thế)
+
+- Lệnh stop-loss RXRX (-8% tại $3.48, order id `6a4bcab6-06db-4e7a-becf-ffb0d4be50ed`, đặt từ 2026-07-06) đã khớp: bán 131 cp @ $3.48, tổng $455.88 (fee $0.03) → thu về $455.85. Giá vốn $3.78/cp → lỗ thực tế **-7.94%** (~-$39.30).
+- Phát hiện qua reconciliation lúc kiểm tra sandbox 11:10 ET hôm nay (cash tổng tài khoản tăng lên $1,305.64) — entry đầy đủ ghi lại ở đây (trước đó chỉ có ghi chú ngắn bên `sandbox-log.md`, không thuộc phạm vi sandbox).
+- Bối cảnh: check-in 9:47 ET sáng nay đã ghi nhận RXRX -5.95% P&L, -5.45% trong ngày, không có catalyst tiêu cực riêng (chỉ là điều chỉnh chung nhóm biotech/growth nhạy lãi suất) — nhưng đà giảm tiếp tục sau đó và chạm ngưỡng -8% lúc 10:33 ET.
+- Vị thế 10 mã core hiện còn 9 mã: AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS — thiếu RXRX (nhóm rủi ro cao/tăng trưởng mạnh; QBTS vẫn còn trong nhóm này, cần đề xuất thay thế RXRX để đủ 2 mã nhóm rủi ro cao theo cơ cấu danh mục).
+- Tài khoản (Agentic ••••0133) tại thời điểm phát hiện: total_value $5,889.56, equity_value $4,583.92, cash $1,305.64, buying power $849.79 (chỉ phản ánh phần sandbox — proceeds RXRX thuộc core-10, cộng vào cash tổng tài khoản nhưng không tính vào buying power sandbox theo dõi riêng).
+- **Việc cần làm tiếp theo:** chuẩn bị đề xuất thay thế RXRX (nhóm rủi ro cao) với tối thiểu 2 lựa chọn theo đúng quy trình CLAUDE.md, trình Hogan duyệt.
