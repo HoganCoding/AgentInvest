@@ -344,3 +344,11 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản: buying power $849.79 (đã settle, pending_deposits $0), không đổi so với lần check trước. Lưu ý: cash tổng tài khoản tăng lên $1,305.64 do stop-loss RXRX (core-10, 131 cp @ $3.48) vừa khớp lúc 14:33 UTC hôm nay — đây là sự kiện core-10, không thuộc phạm vi sandbox, không ảnh hưởng tới buying_power dùng cho công thức dưới đây, để routine core-10/`trading-log.md` xử lý riêng.
 - "Phần theo dõi" (đúng công thức đính chính 2026-07-09): buying power $849.79 − $700 đệm = $149.79 cash rảnh + HUT (5 cp × $101.675 = $508.38) = **~$658.17** — dưới mốc gốc $700 (~94%), còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-10 ~12:09 ET (16:09 UTC) — Check nhẹ (cloud routine, giữ nguyên HUT)
+
+- Giá HUT hiện $102.475 vs vốn $98.97 (+3.54%), vs previous close $106.22 (-3.53% trong ngày). So với lần check trước (11:10 ET @ $101.675), biến động +0.79% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Stop-loss @ $91.05 vẫn active, 5 cp HUT giữ nguyên (xác nhận qua get_equity_positions). WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale). Không có vị thế sandbox nào khác.
+- Tài khoản: buying power $849.79 (không đổi so với lần check trước), cash tổng $1,305.64 (bao gồm proceeds stop-loss RXRX core-10, không thuộc sandbox), total_value $5,881.68.
+- "Phần theo dõi" (đúng công thức đính chính 2026-07-09): buying power $849.79 − $700 đệm = $149.79 cash rảnh + HUT (5 cp × $102.475 = $512.38) = **~$662.16** — dưới mốc gốc $700 (~94.6%), còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
