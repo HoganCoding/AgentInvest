@@ -568,6 +568,13 @@ Sources: [Serve Robotics news – StockTitan](https://www.stocktitan.net/news/SE
 
 **Đề xuất:** mua ~$497-500 (tương đương vốn QBTS đã mất, ưu tiên nguyên cổ phiếu để giữ stop-loss tự động), stop-loss -8%, chốt lời theo dõi thủ công +15-20%. Chờ Hogan chọn 1 trong 2 (hoặc chỉ định mã khác).
 
+**Hogan chọn SERV (duyệt lúc ~9:59 ET).**
+- **Mua 87 cp SERV @ $5.7199 (thị giá), tổng $497.63.** Order id `6a54ef65-dcab-4a1e-bfa1-3be1cacc9719`, state=filled.
+- **Đặt stop-loss -8% tại $5.26**, order id `6a54ef6f-a48f-4a09-afcb-50f6f2c03537`, time_in_force=gtc, state=unconfirmed lúc đặt (cần xác nhận lần check tiếp theo).
+- **Chốt lời đề xuất:** +15-20% (~$6.58-6.86/cp), theo dõi thủ công, chưa đặt lệnh tự động.
+- Vị thế 10 mã core hiện tại: SERV (thay QBTS), SOUN, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL.
+- Việc cần làm tiếp theo: xác nhận stop-loss SERV chuyển sang `confirmed` ở lần check kế tiếp; theo dõi tin tức catalyst NoScrubs/White Castle/Maggie.
+
 ## 2026-07-10 ~15:32 ET (19:32 UTC) — Check-in định kỳ
 
 - Vị thế 10 mã core hiện tại: SOUN, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS. HUT (5 cp) vẫn xuất hiện — thuộc sandbox, ghi ở `sandbox-log.md`.
