@@ -420,3 +420,11 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản (qua get_portfolio): buying power $307.18 (vẫn thấp, không đổi so với lần check trước — hiệu ứng timing settle core-10 từ SERV/QBTS chưa hồi phục, không phải sandbox), cash $763.90, total_value $5,854.41. Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ.
 - "Phần theo dõi" sandbox: dùng baseline buying power đã settle gần nhất trước ảnh hưởng core-10 ($804.81, xác nhận 07-13 09:00 ET) − $700 đệm = $104.81 cash rảnh + HUT (5×$98.34=$491.70) = **~$596.51** (~85.2% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-13 ~13:08 ET (17:08 UTC) — Check định kỳ (giữ nguyên HUT)
+
+- Giá HUT hiện $97.95 (last_trade_price 17:07 UTC) vs vốn $98.97 (-1.03%), vs previous close (Fri 07-10) $102.22 (-4.18% trong ngày). So với lần check trước (12:08 ET @ $98.34), biến động -0.40% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale). Core-10 không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): buying power $307.18 (vẫn thấp, không đổi — hiệu ứng timing settle core-10 từ SERV/QBTS chưa hồi phục, không phải sandbox), cash $763.90, total_value $5,849.78.
+- "Phần theo dõi" sandbox: dùng baseline buying power đã settle gần nhất trước ảnh hưởng core-10 ($804.81, xác nhận 07-13 09:00 ET) − $700 đệm = $104.81 cash rảnh + HUT (5×$97.95=$489.75) = **~$594.56** (~84.9% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
