@@ -541,6 +541,33 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
 
+## 2026-07-13 ~9:41 ET (13:41 UTC) — Stop-loss QBTS đã kích hoạt (đóng vị thế)
+
+- Lệnh stop-loss QBTS (-8% tại $19.03, order id `6a4d0d20-4d38-4eaf-bf07-b5429fee48d9`, đặt từ 2026-07-07) đã khớp: bán 24 cp @ $19.03, tổng $456.72. Giá vốn $20.69/cp → lỗ thực tế **-8.02%** (~-$39.84). Đây là lệnh stop-loss đặt sẵn tự động khớp theo kỷ luật rủi ro đã duyệt trước, không phải quyết định mới của agent.
+- Phát hiện qua reconciliation lúc kiểm tra portfolio/sandbox định kỳ ~9:53 ET hôm nay (equity_value giảm ~$460.7, cash tăng từ $804.81 lên $1,261.53 dù buying_power không đổi ngay — chưa settle).
+- Vị thế 10 mã core hiện còn 9 mã: SOUN, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL — thiếu QBTS (nhóm rủi ro cao/tăng trưởng mạnh; SOUN vẫn còn trong nhóm này, cần đề xuất thay thế QBTS để đủ 2 mã nhóm rủi ro cao theo cơ cấu danh mục).
+- **Lưu ý wash sale:** QBTS không được mua lại trước ~2026-08-12 (30 ngày từ ngày bán lỗ này).
+- **Việc cần làm tiếp theo:** chuẩn bị đề xuất thay thế QBTS (nhóm rủi ro cao) với tối thiểu 2 lựa chọn theo đúng quy trình CLAUDE.md, trình Hogan duyệt (xem đề xuất ngay bên dưới).
+
+## 2026-07-13 ~9:55 ET — Đề xuất thay thế QBTS (chờ duyệt)
+
+**Bối cảnh sàng lọc:** Loại trừ IONQ (đã bị stop-loss lỗ 2026-07-07, wash sale tới ~2026-08-06) và QBTS (vừa bị stop-loss lỗ hôm nay, wash sale tới ~2026-08-12) — không mua lại 2 mã này. Cân nhắc RGTI (Rigetti, cùng ngành quantum) nhưng loại vì cơ bản yếu: doanh thu FY2025 giảm -34% YoY, Zacks Rank #4 (Sell), đang bị pha loãng mạnh qua chương trình ATM (~$100M cổ phiếu mới phát hành), một số phân tích cảnh báo "sharp selloff" nửa cuối 2026. Chuyển sang nhóm tăng trưởng đầu cơ khác (không nhất thiết cùng ngành quantum — chỉ cần cùng nhóm rủi ro cao theo CLAUDE.md).
+
+**Lựa chọn 1: SERV (Serve Robotics)** — giá hiện tại $5.705 (giảm từ đỉnh, -46.7% YTD)
+- Robot giao hàng tự hành (sidewalk delivery robot), doanh thu 2025 $2.7M, guidance 2026 nâng lên ~$26M (tăng trưởng mạnh từ nền thấp).
+- Catalyst gần đây: hợp tác White Castle/Uber Eats (từ 11/03/2026), pilot dịch vụ giặt ủi NoScrubs (mở rộng ngoài thực phẩm), ra mắt robot AI hội thoại "Maggie" dùng 5G Advanced của T-Mobile.
+- Consensus 8 analyst: Buy, target giá trung bình $17.58 (upside lớn so với giá hiện tại).
+- Rủi ro: chưa có lợi nhuận, vốn hóa nhỏ, giá đã giảm sâu YTD (có thể phản ánh lo ngại execution/cạnh tranh).
+
+**Lựa chọn 2: JOBY (Joby Aviation)** — giá hiện tại $7.475
+- eVTOL air taxi, tiền mặt dồi dào ~$2.47B (current ratio ~22 — bảng cân đối rất mạnh so với nhóm đầu cơ thông thường), doanh thu ~$53.4M nhưng EBITDA âm ~-$98.8M/quý.
+- Catalyst: liên doanh sản xuất mới với Toyota (công bố đầu 07/2026) nhằm mở rộng quy mô sản xuất trước chứng nhận thương mại; đã hoàn thành chuyến bay demo point-to-point đầu tiên tại NYC (04/2026); đang mở hướng ứng dụng quốc phòng.
+- Rủi ro: định giá vẫn bị coi là cao ("overvalued" theo một số phân tích) sau tin JV Toyota; rủi ro trì hoãn chứng nhận FAA đã khiến giá điều chỉnh gần đây (~-25% từ đầu tháng 6).
+
+Sources: [Serve Robotics news – StockTitan](https://www.stocktitan.net/news/SERV/), [SERV forecast – Public.com](https://public.com/stocks/serv/forecast-price-target), [JOBY Toyota JV – Timothy Sykes](https://www.timothysykes.com/news/joby-aviation-inc-joby-news-2026_07_06/), [JOBY overvalued – Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/joby-aviation-joby-stock-still-131615288.html), [RGTI fundamentals – Yahoo/Zacks](https://finance.yahoo.com/markets/stocks/articles/rigetti-computing-inc-rgti-stock-215005778.html)
+
+**Đề xuất:** mua ~$497-500 (tương đương vốn QBTS đã mất, ưu tiên nguyên cổ phiếu để giữ stop-loss tự động), stop-loss -8%, chốt lời theo dõi thủ công +15-20%. Chờ Hogan chọn 1 trong 2 (hoặc chỉ định mã khác).
+
 ## 2026-07-10 ~15:32 ET (19:32 UTC) — Check-in định kỳ
 
 - Vị thế 10 mã core hiện tại: SOUN, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, QBTS. HUT (5 cp) vẫn xuất hiện — thuộc sandbox, ghi ở `sandbox-log.md`.
