@@ -404,3 +404,11 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - **Lưu ý (không thuộc sandbox):** buying_power tổng tài khoản giảm còn $307.18 (từ $804.81) — xác nhận qua get_equity_orders là do core-10 mua 87 cp SERV @ $5.7199 ($497.63) lúc 14:00 UTC hôm nay, thay thế QBTS sau stop-loss (đã Hogan duyệt lúc ~9:59 ET, đã log đầy đủ ở `trading-log.md`). Đây thuần túy là hiệu ứng timing/pool tiền mặt chung giữa core-10 và sandbox, không phải giao dịch sandbox — không cần push riêng vì Hogan đã duyệt việc này qua core-10 routine.
 - "Phần theo dõi" sandbox: dùng baseline buying power đã settle gần nhất trước ảnh hưởng core-10 ($804.81, xác nhận 09:00 ET sáng nay) − $700 đệm = $104.81 cash rảnh + HUT (5×$98.49=$492.45) = **~$597.26** (~85.3% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-13 ~11:09 ET (15:09 UTC) — Check định kỳ (giữ nguyên HUT)
+
+- Giá HUT hiện $101.02 vs vốn $98.97 (+2.07%), vs previous close (Fri 07-10) $102.22 (-1.17% trong ngày). So với lần check trước (10:09 ET @ $98.49), biến động +2.57% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale), giá tham khảo $21.02.
+- Tài khoản: buying power $307.18 (vẫn thấp — hiệu ứng timing settle core-10 từ SERV/QBTS đã ghi nhận lần check trước, chưa hồi phục), cash $763.90, total_value $5,879.10. Core-10 hiện có thêm SERV (87 cp) xác nhận qua get_equity_positions — khớp ghi nhận trước, không phải sandbox.
+- "Phần theo dõi" sandbox: dùng baseline buying power đã settle gần nhất trước ảnh hưởng core-10 ($804.81, xác nhận 07-13 09:00 ET) − $700 đệm = $104.81 cash rảnh + HUT (5×$101.02=$505.10) = **~$609.91** (~87.1% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
