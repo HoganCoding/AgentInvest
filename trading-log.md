@@ -645,3 +645,26 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Rủi ro chính chung: cả 2 đều là micro/mid-cap chưa có lợi nhuận, biến động rất cao, nhạy với sentiment risk-on/risk-off toàn thị trường tăng trưởng — tương tự QBTS/IONQ.
 
 **Cần Hogan chọn A, B, hoặc yêu cầu lựa chọn khác trước khi đặt lệnh.**
+
+## 2026-07-13 ~13:15 ET (17:15 UTC) — Check-in định kỳ (đối soát vị thế 10 mã core)
+
+- **Đối soát:** vị thế 10 mã core hiện tại xác nhận: SERV, SOUN, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL (QBTS đã thay bằng SERV sáng nay, đã ghi log). Lưu ý: 2 entry log trước đó cùng buổi sáng nay (~9:47 và ~9:55 ET) mô tả cùng một sự kiện thay QBTS nhưng có vẻ trùng lặp/không đồng bộ thứ tự — xác nhận qua get_equity_positions và get_equity_orders: **SERV là lựa chọn đã được duyệt và đặt lệnh thật** (87 cp @ $5.7199, filled), lệnh stop-loss -8% tại $5.26 nay đã chuyển trạng thái **confirmed** (order `6a54ef6f-...`). Không có lệnh nào khác cần xử lý; đây chỉ là ghi chú làm rõ, không phải hành động mới.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-10, phiên gần nhất do cuối tuần):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $316.57 | +2.82% | +0.40% |
+  | MSFT | $386.75 | $393.54 | +1.76% | +2.19% |
+  | AMZN | $243.78 | $247.85 | +1.67% | +1.02% |
+  | SERV | $5.72 | $5.745 | +0.44% | -2.96% |
+  | VOO | $688.26 | $689.93 | +0.24% | -0.57% |
+  | KO | $84.10 | $83.93 | -0.20% | +0.53% |
+  | RSP | $214.93 | $214.35 | -0.27% | +0.02% |
+  | JNJ | $260.69 | $257.735 | -1.13% | +0.29% |
+  | GOOGL | $361.40 | $355.78 | -1.55% | -0.39% |
+  | SOUN | $6.59 | $6.505 | -1.29% | -2.03% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). SERV/SOUN có thay đổi trong ngày lớn nhất (-2.96%/-2.03%) nhưng dưới ngưỡng 3% nên không cần tìm tin tức sâu lần này.
+- 4 mã large-cap tech đều tăng hoặc đi ngang nhẹ (MSFT dẫn đầu +2.19%), không có vấn đề hiệu suất so với benchmark.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
