@@ -564,3 +564,50 @@ Thị trường đã đóng cửa. Portfolio 10 mã ổn định cả ngày, kh�
   - Nguồn: [Yahoo Finance – IonQ, Rigetti, D-Wave, Quantum Computing Inc. All Fall 5% to 7%](https://finance.yahoo.com/markets/stocks/articles/ionq-rigetti-d-wave-quantum-183030435.html), [TipRanks – Quantum Stocks Slide](https://www.tipranks.com/news/quantum-stocks-slide-why-ionq-rgti-and-qbts-fell-on-july-7), [GuruFocus – Good News For D-Wave Quantum Stock Fans](https://www.gurufocus.com/news/8950885/good-news-for-dwave-quantum-stock-fans)
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng).
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-13 ~9:47 ET (13:47 UTC) — Stop-loss QBTS đã kích hoạt + đề xuất thay thế
+
+- **Stop-loss QBTS đã filled:** lệnh `6a4d0d20-4d38-4eaf-bf07-b5429fee48d9` (đặt 2026-07-07, -8% tại $19.03) khớp lúc **13:41:50 UTC (~9:41 ET) hôm nay** — bán 24 cp @ $19.03, giá vốn $20.6899 → lỗ thực hiện **-8.02%** (~-$39.83). Đây là lệnh stop-loss tự động khớp theo kỷ luật rủi ro đã duyệt trước (đặt từ 07-07), không phải quyết định mới.
+- **Bối cảnh:** cổ phiếu nhóm quantum computing (IONQ, RGTI, QBTS) tiếp tục giảm mạnh cả tuần qua — không có catalyst tiêu cực riêng của D-Wave (tin tức công ty vẫn tích cực: NSF funding $1.6M, breakthrough gate-model, target giá đồng thuận $36.80) — nguyên nhân chính là risk-off lan từ nhóm AI/chip, lo ngại định giá/commercialization risk toàn ngành quantum (IONQ -25%, RGTI -24%, QBTS -21% trong tháng 6). Đây là mã rủi ro cao thứ 2 liên tiếp trong nhóm quantum bị stop-loss (sau IONQ ngày 07-07) — cho thấy rủi ro tương quan cao (correlated risk) khi tập trung 2 vị thế cùng phân khúc hẹp.
+  - Nguồn: [Barchart – D-Wave quantum breakthrough](https://www.barchart.com/story/news/2587013/d-wave-just-unveiled-a-major-quantum-breakthrough-qbts-stock-looks-ready-for-another-surge), [TipRanks – Quantum stocks slide July 7](https://www.tipranks.com/news/quantum-stocks-slide-why-ionq-rgti-and-qbts-fell-on-july-7)
+- **Vị thế 10 mã core hiện còn 9 mã:** SOUN, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL — thiếu QBTS (nhóm rủi ro cao/tăng trưởng mạnh).
+- **Tài khoản (Agentic ••••0133) tại thời điểm kiểm tra:** total_value $5,871.07, equity_value $4,609.54, cash $1,261.53, buying power $804.81, pending_deposits $0.
+- P&L 9 mã còn lại so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-10):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $322.06 | **+4.60%** | +2.14% |
+  | AMZN | $243.78 | $247.23 | +1.42% | +0.77% |
+  | VOO | $688.26 | $691.61 | +0.49% | -0.32% |
+  | SOUN | $6.59 | $6.62 | +0.46% | -0.30% |
+  | MSFT | $386.75 | $388.26 | +0.39% | +0.82% |
+  | KO | $84.10 | $84.205 | +0.12% | +0.86% |
+  | RSP | $214.93 | $214.935 | +0.00% | +0.30% |
+  | JNJ | $260.69 | $258.105 | -0.99% | +0.44% |
+  | GOOGL | $361.40 | $357.485 | -1.08% | +0.09% |
+
+- Không mã nào khác chạm ngưỡng cắt lỗ/chốt lời. AAPL hiệu suất tốt nhất (+4.60% so với vốn) nhưng chưa tới ngưỡng chốt lời (+10-20%).
+
+### Đề xuất thay thế QBTS (nhóm rủi ro cao) — cần Hogan chọn/duyệt
+
+Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm rủi ro cao, KHÔNG tự chọn 1 mã. Lần này chủ động chọn 2 mã **ngoài nhóm quantum computing** để giảm rủi ro tương quan (đã 2/2 lần bị stop-loss ở nhóm quantum: IONQ 07-07, QBTS 07-13).
+
+**Lựa chọn A: SERV (Serve Robotics)**
+- Robot giao hàng tự hành (physical AI/last-mile delivery), tích hợp Uber Eats + DoorDash (phủ ~80% thị trường giao đồ ăn Mỹ), chạy trên nền tảng NVIDIA Jetson Orin.
+- Doanh thu Q1 2026 $3.0M, **+578% YoY**, +238% so với quý trước; nâng guidance doanh thu FY26 lên ~$26M nhờ mở rộng fleet lên 2.000 robot.
+- Vừa mua lại Diligent Robotics (đóng 27/01, $29M bằng cổ phiếu) — bổ sung robot Moxi cho bệnh viện, thêm dòng doanh thu recurring từ y tế.
+- Giá hiện tại: $5.68 (giảm -4.05% so với đóng cửa 07-10, nhóm robotics/growth điều chỉnh chung).
+- Rủi ro: doanh thu tuyệt đối còn rất nhỏ, chưa có lợi nhuận, biến động cực mạnh (micro-cap), rủi ro thực thi tích hợp M&A.
+
+**Lựa chọn B: ASTS (AST SpaceMobile)**
+- Vệ tinh kết nối trực tiếp tới điện thoại thường (direct-to-device satellite), hợp tác với hơn 50 nhà mạng di động phủ ~3 tỷ thuê bao toàn cầu.
+- Đang mở rộng chòm vệ tinh lên 45-60 vệ tinh cuối 2026 (kế hoạch dài hạn 248 vệ tinh), FCC đã phê duyệt kế hoạch mở rộng (tháng 4/2026).
+- Giá hiện tại: $69.30 (giảm -5.49% so với đóng cửa 07-10).
+- Rủi ro: vốn hóa đã lớn hơn SERV (~large mid-cap), giá/cổ phiếu cao nên khó khớp đúng tỷ trọng bằng nguyên cổ phiếu ở mức ~$500 (chỉ được ~7 cp), chưa có lợi nhuận, phụ thuộc tiến độ phóng vệ tinh và vốn đầu tư lớn (dilution risk), biến động cao theo tin tức phóng vệ tinh/đối tác viễn thông.
+
+**Đề xuất lệnh (áp dụng cho mã được chọn):** mua ~$500 (~8.5% danh mục), tương đương ~88 cp SERV hoặc ~7 cp ASTS (nguyên cổ phiếu để giữ stop-loss tự động).
+- Cắt lỗ: -8% (theo mức đã áp dụng cho nhóm rủi ro cao/quantum trước đây).
+- Chốt lời theo dõi thủ công: +15-20%.
+- Rủi ro chính chung: cả 2 đều là micro/mid-cap chưa có lợi nhuận, biến động rất cao, nhạy với sentiment risk-on/risk-off toàn thị trường tăng trưởng — tương tự QBTS/IONQ.
+
+**Cần Hogan chọn A, B, hoặc yêu cầu lựa chọn khác trước khi đặt lệnh.**
