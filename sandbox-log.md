@@ -387,3 +387,12 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản: buying power $348.96 (vẫn thấp, chưa hồi phục về ~$804-849 như 2 lần check trước dự đoán — hiệu ứng timing settle core-10 từ SOUN/RXRX kéo dài hơn dự kiến, không phải giao dịch sandbox), cash $804.81, total_value $5,885.82.
 - "Phần theo dõi" sandbox: tạm dùng baseline $849.79 (buying power sandbox xác nhận gần nhất trước ảnh hưởng timing core-10) − $700 đệm = $149.79 cash rảnh + HUT (5×$101.21=$506.05) = **~$655.84** (~93.7% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-13 ~09:00 ET (13:00 UTC) — Check đầu tuần, pre-market (cloud routine, giữ nguyên HUT)
+
+- Giá HUT hiện $99.31 (pre-market, last_non_reg_trade_price 12:45 UTC) vs vốn $98.97 (+0.34%), vs previous close (Fri 07-10) $102.22 (-2.85%). So với lần check trước (07-10 16:05 ET @ $101.21), biến động -1.88% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale), giá tham khảo $21.42 (pre-market).
+- Xác nhận get_equity_orders (từ 07-10 20:05 ET tới nay): không có lệnh mới nào trong toàn tài khoản — không có hoạt động sandbox hay core-10 nào chưa được log.
+- Tài khoản: buying power $804.81 (đã settle đầy đủ, pending_deposits $0, khớp với cash $804.81) — đã phục hồi từ mức thấp tạm thời $348.96 ghi nhận cuối tuần trước do hiệu ứng timing settle core-10 (SOUN mua $500.83 trước khi RXRX proceeds $455.85 settle xong). Baseline sandbox mới xác nhận: $804.81 (thấp hơn $849.79 cũ ~$44.98, đúng bằng chênh lệch ròng SOUN/RXRX của core-10, không phải thay đổi sandbox). Total account value $5,869.37.
+- "Phần theo dõi" sandbox (dùng buying power $804.81 đã settle xác nhận): $804.81 − $700 đệm = $104.81 cash rảnh + HUT (5×$99.31=$496.55) = **~$601.36** (~85.9% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
