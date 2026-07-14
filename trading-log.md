@@ -715,3 +715,31 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - NDX hiện ~29,590 lúc mở phiên — 4 mã large-cap tech (AAPL, GOOGL, AMZN, MSFT) dao động trong biên độ bình thường, không có tín hiệu kém hiệu suất đáng lo so với benchmark.
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-14 ~13:10 UTC — Check-in định kỳ
+
+- Vị thế 10 mã core hiện tại xác nhận qua get_equity_positions: SERV, SOUN, AAPL, GOOGL, AMZN, MSFT, JNJ, KO, VOO, RSP (đủ 10 mã, đúng cơ cấu). HUT (5 cp) vẫn xuất hiện — thuộc sandbox, ghi riêng ở `sandbox-log.md`.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-13):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | SOUN | $6.59 | $6.765 | +2.66% | **+4.24%** |
+  | AAPL | $307.90 | $314.68 | +2.20% | -0.83% |
+  | SERV | $5.72 | $5.815 | +1.66% | +0.43% |
+  | AMZN | $243.78 | $246.12 | +0.96% | -0.48% |
+  | VOO | $688.26 | $691.31 | +0.44% | +0.41% |
+  | MSFT | $386.75 | $387.155 | +0.10% | -0.98% |
+  | RSP | $214.93 | $213.48 | -0.67% | -0.35% |
+  | KO | $84.10 | $83.38 | -0.86% | -1.03% |
+  | GOOGL | $361.40 | $357.05 | -1.20% | +1.29% |
+  | JNJ | $260.69 | $253.18 | -2.88% | -1.78% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%).
+- SOUN +4.24% trong ngày, vượt ngưỡng 3-5% nên đã tìm tin tức: không có catalyst tiêu cực — tiếp tục hưởng lợi từ tin Gartner Magic Quadrant Leader (công bố 07-13) và S-4 filing có hiệu lực (07-09) cho thương vụ mở rộng nền tảng enterprise AI. Lưu ý có tin về short interest lớn (~$1.08B) tăng thêm trước tuần CPI — biến động 2 chiều có thể tăng nhưng không phải tín hiệu xấu về cơ bản.
+  - Nguồn: [SoundHound AI S-4 Filing — Yahoo Finance](https://finance.yahoo.com/technology/ai/articles/soundhound-ai-soun-files-effective-180704515.html), [SoundHound short bet — ts2.tech](https://ts2.tech/en/soundhound-ai-stocks-1-08-billion-short-bet-just-grew-and-cpi-week-is-next/)
+- JNJ -2.88% so với vốn (mức giảm sâu nhất trong 10 mã, xu hướng giảm nhiều phiên liên tiếp) nhưng thay đổi trong ngày hôm nay (-1.78%) dưới ngưỡng 3-5%; đã tra thêm bối cảnh do xu hướng giảm kéo dài nhiều ngày: đây là điều chỉnh sau đợt tăng mạnh (+72% YoY, +11.5% tuần trước) khiến Morningstar hạ xuống 1-star (overvalued, ~34% trên fair value ước tính), KHÔNG phải suy giảm cơ bản — Q1 vẫn beat estimate, đã nâng guidance FY26, tăng cổ tức. Không đủ điều kiện đề xuất theo tiêu chí CLAUDE.md (không phải tin xấu/fundamentals xấu đi, chỉ là chốt lời/định giá sau đà tăng nóng).
+  - **Lưu ý quan trọng:** JNJ công bố báo cáo lợi nhuận Q2 2026 vào **2026-07-15 (ngày mai)** — cần theo dõi sát phản ứng giá sau earnings ở lần check-in tiếp theo, có thể biến động mạnh hơn bình thường.
+  - Nguồn: [GuruFocus — JNJ overvalued](https://www.gurufocus.com/news/8954331/johnson-johnson-jnj-stock-down-08-but-still-overvalued-gf-score-81100), [MarketBeat — JNJ shares down 1.9%](https://www.marketbeat.com/instant-alerts/johnson-johnson-nysejnj-shares-down-19-time-to-sell-2026-07-09/)
+- 4 mã large-cap tech: GOOGL dẫn đầu ngày (+1.29%), MSFT giảm nhẹ nhất (-0.98%) — biến động bình thường, không có vấn đề hiệu suất so với NDX.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
