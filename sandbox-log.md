@@ -489,3 +489,12 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,835.22.
 - "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$99.205=$496.03) = **~$559.93** (~80.0% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên vị thế HUT, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-14 ~13:08 ET (17:08 UTC) — Check định kỳ (giữ nguyên HUT)
+
+- Giá HUT hiện $96.355 (last_trade_price 17:08:11 UTC) vs vốn $98.97 (-2.64%), vs previous close (Mon 07-13) $99.17 (-2.84% trong ngày). So với lần check trước (07-14 12:09 ET @ $99.205), biến động -2.87% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale), giá tham khảo $19.18.
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào. get_equity_orders từ 07-14 16:00 UTC tới nay: không có lệnh mới nào trong toàn tài khoản.
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,843.997.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$96.355=$481.775) = **~$545.68** (~78.0% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ gửi 1 dòng thông báo ngắn theo yêu cầu quy trình cloud routine.
