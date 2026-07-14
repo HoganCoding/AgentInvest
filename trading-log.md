@@ -646,6 +646,8 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 
 **Cần Hogan chọn A, B, hoặc yêu cầu lựa chọn khác trước khi đặt lệnh.**
 
+> **Lưu ý đồng bộ (phát hiện 2026-07-14):** entry này là bản ghi trùng lặp — một phiên/tiến trình khác chạy gần như đồng thời (~9:47 ET) cũng phát hiện cùng sự kiện stop-loss QBTS và soạn đề xuất thay thế độc lập (SERV/ASTS ở trên), khác với đề xuất SERV/JOBY ở entry "2026-07-13 ~9:55 ET" phía trên. Hogan đã duyệt và lệnh mua SERV đã được thực hiện dựa trên entry SERV/JOBY (xem phần "Hogan chọn SERV (duyệt lúc ~9:59 ET)" ở entry đó) — đề xuất ASTS ở entry này KHÔNG được thực hiện, coi như đã hết hiệu lực (superseded). Chỉ có 1 giao dịch mua SERV thực tế (87 cp), không bị mua trùng.
+
 ## 2026-07-13 ~13:15 ET (17:15 UTC) — Check-in định kỳ (đối soát vị thế 10 mã core)
 
 - **Đối soát:** vị thế 10 mã core hiện tại xác nhận: SERV, SOUN, AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL (QBTS đã thay bằng SERV sáng nay, đã ghi log). Lưu ý: 2 entry log trước đó cùng buổi sáng nay (~9:47 và ~9:55 ET) mô tả cùng một sự kiện thay QBTS nhưng có vẻ trùng lặp/không đồng bộ thứ tự — xác nhận qua get_equity_positions và get_equity_orders: **SERV là lựa chọn đã được duyệt và đặt lệnh thật** (87 cp @ $5.7199, filled), lệnh stop-loss -8% tại $5.26 nay đã chuyển trạng thái **confirmed** (order `6a54ef6f-...`). Không có lệnh nào khác cần xử lý; đây chỉ là ghi chú làm rõ, không phải hành động mới.
