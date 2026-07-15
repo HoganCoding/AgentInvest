@@ -561,3 +561,13 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,871.67.
 - "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$96.59=$482.95) = **~$546.85** (~78.1% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên vị thế HUT, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-15 ~13:09 ET (17:09 UTC) — Check định kỳ (giữ nguyên HUT, đã tìm tin tức do biến động >3%)
+
+- Giá HUT hiện $100.50 (last_trade_price 17:08:05 UTC) vs vốn $98.97 (+1.55%), vs previous close (Tue 07-14) $98.33 (+2.21% trong ngày). So với lần check trước (12:09 ET @ $96.59), biến động +4.05% — vượt ngưỡng 3-5%, đã tìm tin tức.
+- Tin tức: không có tin tiêu cực. Analyst Mark Palmer (Benchmark) vừa nâng price target HUT từ $85 lên $165, giữ rating Buy, dẫn "strong operating momentum" trước báo cáo Q2 (dự kiến công bố 2026-08-04). HUT đã tăng 389% trong 12 tháng qua, có backlog hợp đồng thuê $16.8B cho 2 campus AI hyperscale (597MW) và hợp đồng Beacon Point 352MW/15 năm trị giá $9.8B. Biến động +4% hôm nay phù hợp với đà tăng chung, không phải tín hiệu rủi ro mới. Nguồn: Yahoo Finance (qua Benzinga/StockTitan tổng hợp).
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale), giá tham khảo $19.69.
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,895.76.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$100.50=$502.50) = **~$566.40** (~80.9% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới (tin tức tích cực, không có lý do bán; chưa đạt ngưỡng chốt lời). Không gửi push notification riêng (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
