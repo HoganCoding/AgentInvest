@@ -796,3 +796,28 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - 4 mã large-cap tech đều tăng (AAPL dẫn đầu +2.15%), không có vấn đề hiệu suất so với benchmark.
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-15 ~13:10 ET (17:10 UTC) — Check-in định kỳ (giữa phiên, sau công bố Q2 JNJ)
+
+- Vị thế 10 mã core hiện tại xác nhận qua get_equity_positions: SERV, SOUN, AAPL, GOOGL, AMZN, MSFT, JNJ, KO, VOO, RSP (đủ 10 mã, đúng cơ cấu). HUT (5 cp) vẫn xuất hiện — thuộc sandbox, ghi riêng ở `sandbox-log.md`.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-14):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $326.975 | **+6.20%** | +3.85% |
+  | AMZN | $243.78 | $255.11 | +4.65% | +3.08% |
+  | GOOGL | $361.40 | $372.185 | +2.98% | +3.53% |
+  | MSFT | $386.75 | $395.43 | +2.24% | +2.73% |
+  | SERV | $5.72 | $5.755 | +0.61% | -1.12% |
+  | VOO | $688.26 | $691.365 | +0.45% | +0.04% |
+  | RSP | $214.93 | $212.88 | -0.95% | -0.27% |
+  | SOUN | $6.59 | $6.505 | -1.29% | -2.77% |
+  | KO | $84.10 | $83.10 | -1.19% | +0.02% |
+  | JNJ | $260.69 | $250.515 | -3.90% | -1.31% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). AAPL dẫn đầu P&L (+6.20%) nhưng chưa tới ngưỡng chốt lời.
+- 4 mã large-cap tech đều tăng mạnh trong ngày (AAPL +3.85%, GOOGL +3.53%, AMZN +3.08%, MSFT +2.73%) — phiên tăng chung nhóm tech, không có vấn đề hiệu suất.
+- **JNJ sau công bố Q2 2026 sáng nay** (EPS $2.90 vượt ước tính, doanh thu $25.3B vượt ước tính, nâng guidance FY26): cổ phiếu tiếp tục giảm nhẹ trong phiên (-1.31%, chuyển từ +0.28% lúc mở phiên sang âm), dưới ngưỡng cần tìm tin tức sâu (3-5%) nhưng đã tra thêm để xác nhận không có diễn biến bất thường — kết quả kinh doanh mạnh nhưng phần lớn đã được phản ánh trước vào giá (traders kỳ vọng biến động ~3.65% quanh mức consensus $2.85 EPS đã đạt được), phù hợp nhận định "sell the news"/chốt lời sau đà tăng nóng (Morningstar coi overvalued) đã ghi nhận từ các lần check trước — không phải tin xấu về cơ bản. P&L hiện -3.90%, vẫn cách ngưỡng cắt lỗ -5% một khoảng an toàn (~$2.75/cp).
+  - Nguồn: [Johnson & Johnson Q2 Earnings: Sales $25.3B, Outlook Raised — StockTitan](https://www.stocktitan.net/news/JNJ/johnson-johnson-reports-q2-2026-results-raises-2026-b50atm4ecwl7.html), [JNJ 8-K — SEC](https://www.sec.gov/Archives/edgar/data/0000200406/000020040626000146/a2026q2exhibit991.htm)
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
