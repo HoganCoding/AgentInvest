@@ -771,3 +771,28 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - 4 mã large-cap tech: GOOGL dẫn đầu ngày (+1.95%), MSFT giảm nhẹ nhất (-1.33%) — biến động bình thường, không có vấn đề hiệu suất so với NDX.
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-15 ~9:46 ET (13:46 UTC) — Check-in định kỳ (mở phiên, JNJ báo cáo Q2 2026)
+
+- Vị thế 10 mã core hiện tại xác nhận qua get_equity_positions: SERV, SOUN, AAPL, GOOGL, AMZN, MSFT, JNJ, KO, VOO, RSP (đủ 10 mã, đúng cơ cấu 2 rủi ro cao / 4 tech / 2 blue-chip / 2 ETF). HUT (5 cp) vẫn xuất hiện — thuộc sandbox, ghi riêng ở `sandbox-log.md`, không thuộc core 10.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-14):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $321.64 | +4.46% | +2.15% |
+  | AMZN | $243.78 | $251.08 | +3.00% | +1.45% |
+  | SERV | $5.72 | $5.845 | +2.18% | +0.43% |
+  | VOO | $688.26 | $693.10 | +0.70% | +0.29% |
+  | GOOGL | $361.40 | $364.20 | +0.77% | +1.30% |
+  | MSFT | $386.75 | $387.50 | +0.19% | +0.67% |
+  | SOUN | $6.59 | $6.545 | -0.68% | -2.17% |
+  | RSP | $214.93 | $213.378 | -0.72% | -0.03% |
+  | KO | $84.10 | $82.705 | -1.66% | -0.45% |
+  | JNJ | $260.69 | $254.57 | -2.35% | +0.28% |
+
+- **JNJ báo cáo Q2 2026 sáng nay:** EPS $2.90 (vượt ước tính $2.85), doanh thu $25.3B (vượt ước tính), **nâng guidance FY2026** lên EPS $11.60-$11.75 (so với consensus $11.57) và doanh thu $100.8B-$101.4B — trên đà đạt mốc doanh thu >$100B lần đầu tiên trong lịch sử 140 năm công ty, động lực chính từ mảng dược phẩm (Tremfya, Darzalex). Phản ứng giá chỉ +0.28% trong ngày — kết quả tốt nhưng có vẻ đã phần nào được phản ánh trước (định giá đã bị Morningstar coi là overvalued ở lần check-in trước). Đây là tin tích cực, không phải tín hiệu xấu về cơ bản — không đủ điều kiện đề xuất bán theo CLAUDE.md; ngược lại củng cố luận điểm giữ JNJ dù đang lỗ nhẹ so với giá vốn (-2.35%, chưa chạm ngưỡng cắt lỗ -5%).
+  - Nguồn: [Johnson & Johnson Q2 Earnings: Sales $25.3B, Outlook Raised — StockTitan](https://www.stocktitan.net/news/JNJ/johnson-johnson-reports-q2-2026-results-raises-2026-b50atm4ecwl7.html), [JNJ 8-K — SEC](https://www.sec.gov/Archives/edgar/data/0000200406/000020040626000146/a2026q2exhibit991.htm)
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). Biến động trong ngày của các mã còn lại đều dưới ngưỡng 3-5% nên không cần tìm tin tức sâu thêm.
+- 4 mã large-cap tech đều tăng (AAPL dẫn đầu +2.15%), không có vấn đề hiệu suất so với benchmark.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
