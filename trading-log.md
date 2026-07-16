@@ -846,3 +846,31 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - AAPL dẫn đầu P&L danh mục (+6.09%) nhưng vẫn cách xa ngưỡng chốt lời (+10-20% cho nhóm tech).
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
 - **Không có đề xuất mới lần kiểm tra này** — JNJ cần theo dõi sát ở lần check-in kế tiếp do gần ngưỡng cắt lỗ và không có stop tự động — không gửi PushNotification (chưa có hành động/quyết định cần Hogan duyệt).
+
+## 2026-07-16 ~9:46 ET (13:46 UTC) — Check-in định kỳ (mở phiên)
+
+- Vị thế 10 mã core hiện tại xác nhận qua get_equity_positions: SERV, SOUN, AAPL, GOOGL, AMZN, MSFT, JNJ, KO, VOO, RSP (đủ 10 mã, đúng cơ cấu 2 rủi ro cao / 4 tech / 2 blue-chip / 2 ETF). HUT (5 cp) vẫn xuất hiện — thuộc sandbox, ghi riêng ở `sandbox-log.md`.
+- Tài khoản (Agentic ••••0133): total_value $5,861.58, equity_value $5,097.68, cash/buying power $763.90, pending_deposits $0.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-15):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $328.7815 | **+6.78%** | +0.39% |
+  | AMZN | $243.78 | $253.95 | +4.17% | -0.40% |
+  | GOOGL | $361.40 | $370.0786 | +2.40% | -0.23% |
+  | MSFT | $386.75 | $393.53 | +1.75% | -0.53% |
+  | VOO | $688.26 | $690.59 | +0.34% | -0.46% |
+  | KO | $84.10 | $84.6405 | +0.64% | **+2.66%** |
+  | RSP | $214.93 | $214.36 | -0.27% | +0.65% |
+  | JNJ | $260.69 | $250.60 | -3.87% | +1.45% |
+  | SOUN | $6.59 | $6.355 | -3.57% | -2.23% |
+  | SERV | $5.72 | $5.5286 | -3.35% | -3.86% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). **JNJ đã hạ nhiệt rõ rệt so với lần check cuối 07-15** (-4.65% → -3.87%), phục hồi +1.45% trong ngày hôm nay — không còn cận kề ngưỡng cắt lỗ -5% như tối qua, nhưng vẫn là vị thế fractional không có stop tự động nên tiếp tục theo dõi thủ công ở các lần check tới.
+- KO +2.66% trong ngày (gần ngưỡng 3%, đã tìm tin tức để chắc chắn): không có tin tiêu cực — ngược lại 2 catalyst tích cực mới: BofA nâng target giá lên $95 (từ $90, giữ Buy), Citi nâng target lên $97 (từ $91, 13/07). Cổ phiếu đang ở vùng cao nhất kể từ 1976. Đánh giá: đà tăng có nền tảng (upgrade phân tích, Q1 organic revenue +10%), không phải nhiễu ngắn hạn — không cần hành động (đã có sẵn vị thế, không phải tín hiệu bán). Lưu ý: KO công bố KQKD Q2 2026 vào 2026-07-28.
+  - Nguồn: [Coca-Cola KO analyst ratings — Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/coca-cola-company-ko-good-163243200.html), [KO News — MarketBeat](https://www.marketbeat.com/stocks/NYSE/KO/news/)
+- SERV -3.86% trong ngày (mức giảm nhiều nhất, vượt ngưỡng 3-5% nên đã tìm tin tức): không có catalyst tiêu cực cụ thể mới — tiếp tục là xu hướng giảm chung của nhóm growth/micro-cap (SERV đã giảm ~25.3% trong 3 tháng qua), không có 8-K/tin xấu riêng. Doanh thu Q1 2026 vẫn +578% YoY, guidance FY26 $26M được giữ nguyên. Đánh giá: biến động chung nhóm đầu cơ, không phải suy giảm cơ bản — không đủ điều kiện đề xuất theo CLAUDE.md. Còn cách xa ngưỡng stop-loss -8% ($5.26 so với giá hiện tại $5.53).
+  - Nguồn: [Serve Robotics news — Yahoo Finance](https://finance.yahoo.com/quote/SERV/news/), [SERV News — MarketBeat](https://www.marketbeat.com/stocks/NASDAQ/SERV/news/)
+- QQQ hôm nay -1.31% (717.74 → 708.34) — cả 4 mã large-cap tech (AAPL +0.39%, GOOGL -0.23%, AMZN -0.40%, MSFT -0.53%) đều **outperform** benchmark rõ rệt, không có vấn đề hiệu suất.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
