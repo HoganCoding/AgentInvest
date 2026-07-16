@@ -609,3 +609,12 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,884.73.
 - "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$99.3677=$496.84) = **~$560.74** (~80.1% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên vị thế HUT, không có lệnh mới (pullback kỹ thuật/ngành, không phải tín hiệu cơ bản xấu; vị thế vẫn lãi nhẹ so với vốn). Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ gửi 1 dòng thông báo ngắn theo yêu cầu quy trình cloud routine.
+
+## 2026-07-16 ~10:10 ET (14:10 UTC) — Check định kỳ (giữ nguyên HUT)
+
+- Giá HUT hiện $98.165 (last_trade_price 14:09:37 UTC) vs vốn $98.97 (-0.81%), vs previous close (Wed 07-15) $103.03 (-4.72% trong ngày). So với lần check trước (09:04 ET @ $99.3677 pre-market), biến động -1.21% — dưới ngưỡng 3-5%, không tìm tin tức sâu (tin tức nền tảng vẫn như lần trước: Benchmark PT $165/Buy, pullback kỹ thuật/ngành đã ghi nhận, không có gì mới cần xét lại).
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale), giá tham khảo $18.625.
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,860.25.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$98.165=$490.83) = **~$554.73** (~79.2% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ gửi 1 dòng thông báo ngắn theo yêu cầu quy trình cloud routine.
