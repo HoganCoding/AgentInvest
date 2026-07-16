@@ -874,3 +874,31 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - QQQ hôm nay -1.31% (717.74 → 708.34) — cả 4 mã large-cap tech (AAPL +0.39%, GOOGL -0.23%, AMZN -0.40%, MSFT -0.53%) đều **outperform** benchmark rõ rệt, không có vấn đề hiệu suất.
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-16 ~13:10 ET (17:10 UTC) — Check-in định kỳ (giữa phiên)
+
+- Vị thế 10 mã core hiện tại xác nhận qua get_equity_positions: SERV, SOUN, AAPL, GOOGL, AMZN, MSFT, JNJ, KO, VOO, RSP (đủ 10 mã, đúng cơ cấu 2 rủi ro cao / 4 tech / 2 blue-chip / 2 ETF). Không thấy vị thế HUT sandbox lần này (có thể đã đóng — xem `sandbox-log.md`, ngoài phạm vi báo cáo này).
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-15):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $332.11 | **+7.87%** | +1.41% |
+  | AMZN | $243.78 | $256.055 | +5.04% | +0.43% |
+  | MSFT | $386.75 | $402.02 | +3.95% | +1.61% |
+  | GOOGL | $361.40 | $371.395 | +2.77% | +0.13% |
+  | VOO | $688.26 | $691.93 | +0.53% | -0.27% |
+  | KO | $84.10 | $84.465 | +0.43% | +0.44% |
+  | RSP | $214.93 | $214.63 | -0.14% | +0.78% |
+  | JNJ | $260.69 | $248.50 | -4.68% | -0.66% |
+  | SERV | $5.72 | $5.405 | -5.51% | **-6.00%** |
+  | SOUN | $6.59 | $6.2528 | -5.11% | **-3.80%** |
+
+- Không mã nào chạm ngưỡng cắt lỗ thật (SOUN stop -8% tại $6.06, còn cách ~$0.19; SERV stop -8% tại $5.26, còn cách ~$0.145) hay chốt lời (+10-20%).
+- SERV giảm mạnh nhất trong ngày (-6.00%, vượt ngưỡng 3-5%) — đã tìm tin tức: không có catalyst tiêu cực mới/8-K xấu. Diễn biến gần đây: bổ nhiệm Andreas Lieber vào HĐQT (22/06, thay đại diện Uber), mở rộng pilot NoScrubs (giặt ủi) ngoài mảng đồ ăn, đồng sáng lập được vinh danh Inc. Female Founders 500 — đều là tin trung tính/tích cực, không giải thích được đà giảm giá. Đánh giá: tiếp tục biến động chung nhóm growth/micro-cap vốn đã giảm ~25% trong 3 tháng qua, không phải suy giảm cơ bản riêng — không đủ điều kiện đề xuất theo CLAUDE.md. Vẫn cách xa ngưỡng stop-loss thật.
+  - Nguồn: [Serve Robotics – Yahoo Finance](https://finance.yahoo.com/quote/SERV/), [SERV News – MarketBeat](https://www.marketbeat.com/stocks/NASDAQ/SERV/news/)
+- SOUN giảm -3.80% trong ngày, vượt ngưỡng nên cũng đã tìm tin tức: không có tin xấu mới cụ thể hôm nay — bài phân tích gần nhất (16/07) nhắc lại cổ phiếu đã giảm 37% từ đầu năm 2026 do tăng trưởng doanh thu giảm tốc (Q1 2026 +52% YoY so với +151% YoY cùng kỳ 2025, gây lo ngại nhà đầu tư) — đây là yếu tố đã biết, không phải diễn biến mới trong 24h. Không đủ điều kiện đề xuất bán theo CLAUDE.md (chưa chạm stop-loss -8%, chưa có tin xấu mới/nghiêm trọng). Cần tiếp tục theo dõi sát vì cả 2 mã rủi ro cao (SOUN, SERV) đều đang lỗ hơn 5% so với vốn — gần ngưỡng cắt lỗ hơn các lần check trước.
+  - Nguồn: [SoundHound AI stock drops 37% in 2026 — Foreign Policy Journal](https://www.foreignpolicyjournal.com/2026/07/16/soundhound-ai-nasdaq-soun-stock-drops-37-in-2026-but-forward-revenue-outlook-sparks-debate-among-investors/), [SOUN — StocksToTrade](https://stockstotrade.com/news/soundhound-ai-inc-soun-news-2026_07_14/)
+- JNJ tiếp tục ở gần ngưỡng cắt lỗ -5% (hiện -4.68%, hạ nhiệt nhẹ so với -3.87% sáng nay do biến động trong phiên) — vẫn là vị thế fractional không có stop tự động, tiếp tục theo dõi thủ công sát sao.
+- 4 mã large-cap tech đều tăng trong ngày (MSFT +1.61%, AAPL +1.41%, GOOGL +0.13%, AMZN +0.43%) — NDX ở mức 29,132 (giữa phiên), không có vấn đề hiệu suất so với benchmark.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
+- **Không có đề xuất mới lần kiểm tra này** — không mã nào chạm ngưỡng cắt lỗ/chốt lời thật hay có tin xấu nghiêm trọng đủ điều kiện theo CLAUDE.md — không gửi PushNotification.
