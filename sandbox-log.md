@@ -648,3 +648,16 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - **"Phần theo dõi" sandbox:** cash tổng $1,218.33 (gồm cả phần chưa settle) − $700 đệm = **~$518.33** (~74.0% mốc gốc $700), không có vị thế nào khác. Còn xa ngưỡng chốt lời $1400 và không gần $0 — không kích hoạt circuit breaker gấp đôi/về $0 (đây là sự kiện stop-loss thông thường, không phải circuit breaker vốn).
 - Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
 - Gửi PushNotification cho sự kiện này vì đây là thay đổi thật (stop-loss kích hoạt, đóng vị thế), theo đúng quy định trong CLAUDE.md.
+
+## 2026-07-16 ~14:09 ET (18:09 UTC) — Check định kỳ (không có vị thế, đã sàng lọc nhưng chưa vào lệnh mới)
+
+- Không có vị thế sandbox nào hiện tại (HUT đã đóng do stop-loss lúc ~12:45 ET cùng ngày, xem entry trước). WULF cấm mua lại tới ~2026-08-06, HUT cấm mua lại tới ~2026-08-15 (wash-sale).
+- Đã sàng lọc mã high-risk thay thế theo kế hoạch từ lần check trước:
+  - WebSearch "best high risk high momentum small cap stocks to buy July 2026": các gợi ý nổi bật gồm AXTI (chất bán dẫn cho AI infra, +30% revenue growth dự kiến FY26), SERV (đã có trong core-10 — loại trừ), Erasca (biotech giai đoạn lâm sàng, đầu cơ cao). Không có mã nào đủ thuyết phục ngay (thiếu catalyst cụ thể/gần).
+  - WebSearch "Bitcoin miner AI datacenter stocks IREN CIFR CORZ news July 16 2026": cùng nhóm ngành với HUT (bitcoin-miner-to-AI-datacenter) — IREN có hợp đồng AI cloud $9.7B với Microsoft (200MW, ARR $1.94B, EBITDA margin ~85%) nhưng đang "lag" so với đà tăng AI/Bitcoin chung, thị trường định giá "execution gap" ~$1.3B; CIFR có JV 1GW "Colchis" ở Texas + 300MW capacity 2026. Tuy nhiên CẢ HAI đều đang giảm giá hôm nay (CORZ -3.0%, CIFR -1.1%) — cùng áp lực điều chỉnh sector-wide (crypto-sensitive hạ nhiệt) vừa khiến HUT chạm stop-loss vài giờ trước.
+- **Quyết định:** KHÔNG mở vị thế mới ngay — vào lại đúng subsector (bitcoin-miner/AI-infra) ngay sau khi vừa bị stop-loss trên HUT, trong lúc cả nhóm đang đỏ cùng phiên, là rủi ro đuổi theo cùng một làn sóng điều chỉnh vừa cắt lỗ, không phải một entry point tốt. Giữ nguyên cash, tiếp tục sàng lọc ở các lần check tiếp theo (chờ nhóm bitcoin-miner ổn định lại HOẶC tìm cơ hội ở nhóm khác với catalyst rõ ràng hơn).
+- Vị thế xác nhận qua get_equity_positions: không có vị thế sandbox nào (0 shares HUT/WULF).
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $1,218.33 (gồm ~$454.43 proceeds HUT CHƯA settle, dự kiến ~2026-07-17), buying_power $763.90 (phần đã settle). total_value $5,810.15.
+- "Phần theo dõi" sandbox: cash tổng $1,218.33 − $700 đệm = **~$518.33** (~74.0% mốc gốc $700), không có vị thế nào khác. Còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox — quyết định chủ động KHÔNG vào lệnh sau khi sàng lọc, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
