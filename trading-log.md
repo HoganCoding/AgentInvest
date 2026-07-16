@@ -902,3 +902,30 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - 4 mã large-cap tech đều tăng trong ngày (MSFT +1.61%, AAPL +1.41%, GOOGL +0.13%, AMZN +0.43%) — NDX ở mức 29,132 (giữa phiên), không có vấn đề hiệu suất so với benchmark.
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
 - **Không có đề xuất mới lần kiểm tra này** — không mã nào chạm ngưỡng cắt lỗ/chốt lời thật hay có tin xấu nghiêm trọng đủ điều kiện theo CLAUDE.md — không gửi PushNotification.
+
+## 2026-07-16 ~15:31 ET (19:31 UTC) — Check-in định kỳ (cuối phiên) — SERV bị stop-loss tự động
+
+- **Sự kiện quan trọng: SERV đã bị stop-loss tự động khớp lúc 15:27:52 ET hôm nay** — xác nhận qua get_equity_orders: lệnh stop_market (side sell, trigger "stop", stop_price $5.26, đặt ngày 2026-07-13 khi mua) đã filled toàn bộ 87 cổ phiếu, giá khớp trung bình $5.2684/cp. Giá vốn mua $5.7199/cp (mua 2026-07-13) → lỗ thực hiện khoảng **-7.85%**, đúng theo băng cắt lỗ -8% đã đặt cho nhóm rủi ro cao/biến động mạnh. Đây là lệnh tự động đã đặt sẵn từ trước, khớp bình thường theo kỷ luật quản trị rủi ro trong CLAUDE.md — không cần quyết định/duyệt thêm từ Hogan, chỉ ghi nhận.
+  - **Lưu ý wash sale (theo CLAUDE.md, cập nhật 2026-07-07):** vì SERV vừa bị bán lỗ, KHÔNG mua lại SERV hoặc mã gần tương đương trong vòng 30 ngày tới (tới hết 2026-08-15) trừ khi có lý do quản trị rủi ro rõ ràng và được Hogan xác nhận.
+  - Danh mục core hiện còn **9 mã** (thiếu 1 mã nhóm rủi ro cao so với cơ cấu 2 mã chuẩn): AAPL, GOOGL, AMZN, MSFT, JNJ, KO, VOO, RSP, SOUN. Cần đề xuất mã thay thế cùng nhóm rủi ro cao ở lần check-in kế tiếp (không đề xuất vội trong log này vì cần thêm thời gian sàng lọc theo tiêu chí CLAUDE.md — sẽ có đề xuất kèm tối thiểu 2 lựa chọn ở lần check tới).
+- Vị thế còn lại xác nhận qua get_equity_positions: AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-15):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $333.015 | **+8.16%** | +1.68% |
+  | MSFT | $386.75 | $400.79 | +3.63% | +1.30% |
+  | AMZN | $243.78 | $251.25 | +3.06% | -1.45% |
+  | KO | $84.10 | $84.579 | +0.57% | +2.58% |
+  | RSP | $214.93 | $214.29 | -0.30% | +0.62% |
+  | VOO | $688.26 | $688.219 | -0.01% | -0.80% |
+  | GOOGL | $361.40 | $354.45 | -1.92% | **-4.44%** |
+  | JNJ | $260.69 | $250.42 | -3.94% | +1.38% |
+  | SOUN | $6.59 | $6.29 | -4.55% | -3.23% |
+
+- Không mã nào còn lại chạm ngưỡng cắt lỗ/chốt lời thật. SOUN gần nhất (-4.55%, stop -8% tại $6.06, còn cách ~$0.23).
+- **GOOGL giảm -4.44% trong ngày**, vượt ngưỡng 3-5% nên đã tìm tin tức: tuần này Alphabet hứng chịu loạt tin pháp lý tiêu cực — tòa án EU giữ nguyên án phạt chống độc quyền Android €4.1B (~$4.67B), tòa Thụy Điển buộc bồi thường ~$1.97B cho PriceRunner (vụ thiên vị dịch vụ mua sắm riêng trong kết quả tìm kiếm), cơ quan quản lý cạnh tranh Hàn Quốc cáo buộc lạm dụng vị thế trên Android app marketplace (phạt tiềm năng tới $546M). Đây là tin tiêu cực về kiện tụng nhưng là rủi ro pháp lý đã biết từ lâu (không phải sự kiện đột ngột mới), fundamentals vẫn mạnh (cloud backlog $460B, doanh thu +22%), báo cáo Q2 2026 sẽ công bố 2026-07-22 (6 ngày tới) — đây mới là catalyst lớn cần theo dõi. P&L GOOGL hiện chỉ -1.92%, còn cách xa ngưỡng cắt lỗ -5%. Chưa đủ điều kiện đề xuất theo CLAUDE.md (chưa chạm cắt lỗ, tin xấu là rủi ro đã biết chứ không phải suy giảm cơ bản đột ngột) — cần theo dõi sát quanh ngày báo cáo Q2 (07-22).
+  - Nguồn: [Alphabet shares edge lower after EU top court upholds €4.1B Google Android antitrust fine — Yahoo Finance](https://finance.yahoo.com/technology/articles/alphabet-shares-edge-lower-eu-185900492.html), [Google Had a Brutal Week in Court — the Stock Didn't Seem to Care — Benzinga](https://www.benzinga.com/trading-ideas/movers/26/07/60242661/google-had-a-brutal-week-in-court-the-stock-didnt-seem-to-care)
+- JNJ hạ nhiệt tiếp (-3.94%, so với -4.68% giữa phiên sáng nay), không còn cận kề ngưỡng cắt lỗ -5% như các lần check trước — vẫn là vị thế fractional không có stop tự động, tiếp tục theo dõi thủ công.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01) — nhưng việc SERV bị stop-loss tạo ra nhu cầu thay mã nhóm rủi ro cao sớm hơn mốc đó, sẽ đề xuất ở lần check-in kế tiếp.
+- **Không có đề xuất mua/bán mới cần Hogan duyệt lần này** (SERV đã tự động khớp theo lệnh cắt lỗ có sẵn, không cần duyệt) — nhưng đã gửi PushNotification để báo sự kiện quan trọng này vì đây là thay đổi thực tế trong danh mục.
