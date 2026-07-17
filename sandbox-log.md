@@ -741,3 +741,13 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản (qua get_portfolio): cash $2,480.53, buying_power $1,676.67 (không đổi so với lần check trước). total_value $5,723.59.
 - "Phần theo dõi" sandbox: buying_power $1,676.67 − $700 đệm = **~$976.67** (~139.5% mốc gốc $700) — không đổi so với lần check trước, chưa đạt ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: tiếp tục đứng ngoài, không vào lệnh mới — nhóm bitcoin-miner/AI-infra đang thoái lui nhẹ sau nhịp hồi sáng nay, chưa có catalyst/đảo chiều đủ rõ ràng để cân nhắc entry mới ở IREN/CIFR (2 mã duy nhất ngoài lệnh cấm wash-sale), HUT/WULF vẫn trong lệnh cấm wash-sale. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-17 ~15:07 ET (19:07 UTC) — Check định kỳ (không có vị thế, tiếp tục đứng ngoài)
+
+- Không có vị thế sandbox nào (xác nhận qua get_equity_positions — 7 vị thế đều thuộc core-10: AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL; không có HUT/WULF/mã sandbox khác). HUT vẫn cấm mua lại tới ~2026-08-15, WULF cấm mua lại tới ~2026-08-06 (wash-sale).
+- Giá nhóm bitcoin-miner/AI-infra (last_trade_price ~19:07 UTC) vs previous close (Thu 07-16): HUT $91.39 vs $91.91 (-0.57%), WULF $17.82 vs $17.98 (-0.89%), IREN $33.49 vs $34.83 (-3.85%), CIFR $17.3439 vs $17.72 (-2.12%). So với lần check trước (14:08 ET, HUT $93.35, WULF $17.8901, IREN $33.925, CIFR $17.485): HUT -2.10%, WULF -0.39%, IREN -1.28%, CIFR -0.81% — tất cả dưới ngưỡng 3-5% so với lần check trước, không tìm tin tức sâu (tiếp diễn thoái lui nhẹ đã biết, chưa phải diễn biến mới cần đánh giá lại).
+- get_equity_orders từ 14:08 ET tới nay: rỗng — không có lệnh nào mới đặt.
+- Core-10 hiện tại (get_equity_positions): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL — không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $2,480.53, buying_power $1,676.67 (không đổi so với lần check trước). total_value $5,729.23.
+- "Phần theo dõi" sandbox: buying_power $1,676.67 − $700 đệm = **~$976.67** (~139.5% mốc gốc $700) — không đổi so với lần check trước, chưa đạt ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: tiếp tục đứng ngoài, không vào lệnh mới — cả nhóm tiếp tục thoái lui nhẹ trong biên dưới ngưỡng, chưa có catalyst/đảo chiều mới để cân nhắc entry ở IREN/CIFR (2 mã ngoài lệnh cấm wash-sale), HUT/WULF vẫn trong lệnh cấm wash-sale. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
