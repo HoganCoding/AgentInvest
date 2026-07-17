@@ -979,3 +979,8 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 
 **Chờ Hogan chọn 1 lựa chọn cho mỗi slot (hoặc chỉ định mã khác / yêu cầu chờ thêm) trước khi đặt lệnh.**
 
+**Quyết định của Hogan (nhận lúc sau khi gửi PushNotification, cùng ngày 2026-07-17):** chọn **CRM** (Slot 1 — thay GOOGL), **TEM** (Slot 2 — thay SERV), **ASTS** (Slot 3 — thay SOUN).
+
+- **CHƯA ĐẶT LỆNH:** phiên phân tích này (routine core-10 check-in) được cấu hình **read-only/chỉ đề xuất** trên tài khoản ••••0133 — không được phép đặt/hủy/sửa lệnh dưới bất kỳ hình thức nào, kể cả khi đã có quyết định duyệt từ Hogan. Quyết định đã được ghi nhận ở đây; việc đặt 3 lệnh mua thực tế (CRM, TEM, ASTS, mỗi lệnh ~$450-500, ưu tiên nguyên cổ phiếu để giữ stop-loss tự động: CRM -5%/+12%, TEM/ASTS -8%/+15-20%) cần thực hiện qua phiên giao dịch tương tác thường lệ (phiên có quyền đặt lệnh trên tài khoản này, `placed_agent: agentic`), không phải phiên routine tự động này.
+- **Việc cần làm tiếp theo:** ở phiên có quyền đặt lệnh — đặt 3 lệnh mua theo quyết định trên, sau đó đặt stop-loss tương ứng; xác nhận lại toàn bộ 10 vị thế core đã đủ ở lần check-in kế tiếp của routine này.
+
