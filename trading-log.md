@@ -929,3 +929,53 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - JNJ hạ nhiệt tiếp (-3.94%, so với -4.68% giữa phiên sáng nay), không còn cận kề ngưỡng cắt lỗ -5% như các lần check trước — vẫn là vị thế fractional không có stop tự động, tiếp tục theo dõi thủ công.
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01) — nhưng việc SERV bị stop-loss tạo ra nhu cầu thay mã nhóm rủi ro cao sớm hơn mốc đó, sẽ đề xuất ở lần check-in kế tiếp.
 - **Không có đề xuất mua/bán mới cần Hogan duyệt lần này** (SERV đã tự động khớp theo lệnh cắt lỗ có sẵn, không cần duyệt) — nhưng đã gửi PushNotification để báo sự kiện quan trọng này vì đây là thay đổi thực tế trong danh mục.
+
+## 2026-07-17 ~9:49 ET (13:49 UTC) — GOOGL và SOUN đều bị stop-loss tự động cùng phiên sáng nay + đề xuất thay 3 mã
+
+- **Bối cảnh thị trường:** hôm nay là phiên bán tháo diện rộng nhóm công nghệ/AI toàn cầu, khởi phát từ báo cáo lợi nhuận đáng thất vọng của TSMC và Netflix (Netflix giảm ~9.24% sau giờ, TSMC giảm ~2.63%), lan sang thị trường châu Á (Nikkei, KOSPI) rồi tới Mỹ. Xác nhận qua quote thời gian thực: NVDA -4.13%, META -3.95%, AVGO -3.90%, JOBY -4.29%, OKLO -3.69%, TEM -3.40%, RKLB -1.74% — biến động lan rộng toàn nhóm tăng trưởng/công nghệ, không riêng mã nào trong danh mục.
+  - Nguồn: [Fortune — Tech stocks lead steep global selloff as investors lose faith in AI chip trade](https://fortune.com/2026/07/17/tech-stocks-global-selloff-as-investors-ai-semiconductor-chips/), [CNBC — mild correction for overpriced tech stocks](https://www.cnbc.com/video/2026/07/17/mild-correction-markets-sell-off-overpriced-tech-stocks-strategist.html)
+
+- **Sự kiện 1 — GOOGL bị stop-loss tự động:** lệnh `6a4bcaba-879d-4747-82d9-061ab8de15dd` (đặt 2026-07-06, -5% tại $343.33) khớp lúc **13:38:20 UTC (~9:38 ET)** hôm nay — bán 1 cp @ $343.31. Giá vốn $361.40 → lỗ thực hiện **-5.00%** (~-$18.09). Đây là lệnh tự động đã đặt sẵn, khớp đúng kỷ luật rủi ro, không phải quyết định mới.
+- **Sự kiện 2 — SOUN bị stop-loss tự động:** lệnh `6a511f46-4031-427b-99bc-b3c9769aa12c` (đặt 2026-07-10, -8% tại $6.06) khớp lúc **13:43:17 UTC (~9:43 ET)** hôm nay — bán 76 cp @ $6.06 (phí $0.01). Giá vốn $6.5899 → lỗ thực hiện **-8.03%** (~-$40.24). Cũng là lệnh tự động theo kỷ luật rủi ro đã đặt sẵn.
+- **Lưu ý wash sale:** không mua lại GOOGL trước ~2026-08-16; không mua lại SOUN (hoặc mã gần tương đương) trước ~2026-08-16. Nhắc lại các mã đang trong thời gian wash-sale khác: RXRX (tới ~08-09), IONQ (tới ~08-06), QBTS (tới ~08-12), SERV (tới ~08-15).
+
+- **Vị thế 10 mã core hiện chỉ còn 7 mã:** AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL. Thiếu **3 slot**: 1 large-cap tech (GOOGL, mới mất sáng nay) + 2 rủi ro cao (SERV mất từ 07-16 — đã ghi nhận cần đề xuất nhưng chưa kịp làm — và SOUN mất sáng nay).
+- **Tài khoản (Agentic ••••0133):** total_value $5,744.27, equity_value $3,263.74 (giảm mạnh do mất 3 vị thế), cash $2,480.53, buying_power $1,676.67, pending_deposits $0.
+- P&L 7 mã còn lại so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-16):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $334.015 | **+8.51%** | +0.23% |
+  | MSFT | $386.75 | $394.39 | +1.98% | -1.66% |
+  | AMZN | $243.78 | $246.505 | +1.12% | -1.35% |
+  | RSP | $214.93 | $215.515 | +0.27% | +0.21% |
+  | KO | $84.10 | $84.235 | +0.16% | -0.81% |
+  | VOO | $688.26 | $681.98 | -0.91% | -1.19% |
+  | JNJ | $260.69 | $255.20 | -2.11% | **+2.09%** |
+
+  Không mã nào trong 7 mã còn lại chạm ngưỡng cắt lỗ/chốt lời. AAPL dẫn đầu (+8.51%) nhưng chưa tới ngưỡng chốt lời (+10-20%); JNJ ngược dòng thị trường (+2.09%, tính phòng thủ blue-chip phát huy tác dụng đúng lúc thị trường bán tháo nhóm tăng trưởng).
+
+### Đề xuất thay thế 3 mã — cần Hogan chọn/duyệt (mỗi slot tối thiểu 2 lựa chọn theo CLAUDE.md)
+
+**Lưu ý về thời điểm:** đây là ngày thị trường điều chỉnh mạnh diện rộng nhóm tăng trưởng/công nghệ — mua vào ngay hôm nay có rủi ro "bắt dao rơi" nếu đà giảm chưa dừng, nhưng cũng có thể là điểm vào tốt nếu chỉ là điều chỉnh ngắn hạn. Đây là quyết định thời điểm agent không tự quyết — Hogan có thể chọn mã ngay, chờ vài phiên, hoặc chia nhỏ lệnh (fractional) để rải điểm vào.
+
+**Slot 1 — Large-cap tech (thay GOOGL), ~$450-500 (~8% danh mục):**
+- **Lựa chọn A: ORCL (Oracle)** — giá ~$122.92 (giảm -1.04% hôm nay, tương đối ít bị ảnh hưởng bởi làn sóng bán tháo AI-chip so với nhóm Mag7). Cloud infrastructure (OCI) tăng trưởng backlog mạnh, ít phụ thuộc trực tiếp vào chuỗi cung ứng chip AI như NVDA/AVGO.
+- **Lựa chọn B: CRM (Salesforce)** — giá ~$173.48 (**tăng +0.46%** hôm nay, ngược dòng thị trường). Phần mềm doanh nghiệp/CRM, dòng tiền ổn định, ít tương quan với "AI chip trade" đang bị bán tháo — giúp đa dạng hóa sub-sector khỏi AI-chip/semiconductor.
+- Rủi ro chính: cả 2 vẫn là cổ phiếu tăng trưởng định giá cao, nhạy cảm lãi suất; ORCL có đòn bẩy nợ tương đối cao từ đầu tư hạ tầng OCI.
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Slot 2 — Rủi ro cao #1 (thay SERV), ~$450-500 (~8% danh mục):**
+- **Lựa chọn A: TEM (Tempus AI)** — giá ~$51.77 (giảm -3.40% hôm nay, cùng nhịp thị trường). AI chẩn đoán/precision medicine, doanh thu Q1 2026 +36.1% YoY ($348.1M), nâng guidance FY26 lên $1.59-1.60B (~25% tăng trưởng), vừa ký hợp tác chiến lược với Merck. Đa dạng hóa sang AI-y tế, khác hẳn nhóm quantum/robotics đã 2 lần bị stop trước đây.
+- **Lựa chọn B: OKLO (Oklo)** — giá ~$40.16 (giảm -3.69% hôm nay). Lò phản ứng hạt nhân module nhỏ (SMR), hưởng lợi xu hướng nhu cầu điện cho AI data center, vừa được DOE phê duyệt Documented Safety Analysis (01/07) hướng tới thử nghiệm criticality tháng này — catalyst gần. Rủi ro: chưa có doanh thu đáng kể, dự kiến EBITDA dương chỉ từ 2030 (theo Guggenheim, Hold, target $54).
+- Rủi ro chính: cả 2 đều chưa có lợi nhuận, biến động cao, nhạy cảm sentiment risk-on/risk-off.
+- Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
+
+**Slot 3 — Rủi ro cao #2 (thay SOUN), ~$450-500 (~8% danh mục):**
+- **Lựa chọn A: RKLB (Rocket Lab)** — giá ~$66.18 (giảm -1.74% hôm nay). Phóng vệ tinh/không gian, vừa công bố thương vụ mua Iridium ~$8B (mở rộng sang truyền thông vệ tinh), nhiều ngân hàng nâng target giá (Citizens $130, Citi/Morgan Stanley/Roth ~$130, BofA $110) sau tin M&A — nhưng cổ phiếu giảm mạnh -12% ngày 07-16 sau khi Piper Sandler khởi tạo Neutral, lo ngại rủi ro tích hợp/pha loãng từ thương vụ. **Lưu ý rủi ro timing:** mới giảm sâu 2 ngày qua vì tin M&A, chưa rõ đã ổn định.
+- **Lựa chọn B: ASTS (AST SpaceMobile)** — giá ~$56.04 (**tăng +1.86%** hôm nay, phục hồi kỹ thuật). Vệ tinh kết nối trực tiếp điện thoại, nhưng vừa giảm mạnh -17% ngày 07-16 sau khi công bố phát hành $1B convertible notes (pha loãng) và trì hoãn phóng vệ tinh BlueBird sang đầu 2027 (vướng năng lực phóng của New Glenn/Blue Origin). Analyst trung bình vẫn "Hold", target $79.78 (+45% so với giá hiện tại).
+- Rủi ro chính: cả 2 đều vừa có tin tiêu cực/biến động mạnh trong 24-48h qua (M&A risk / dilution risk) — rủi ro cao hơn bình thường ở thời điểm vào lệnh này, cần Hogan cân nhắc kỹ hoặc yêu cầu mã khác nếu muốn giảm rủi ro timing.
+- Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
+
+**Chờ Hogan chọn 1 lựa chọn cho mỗi slot (hoặc chỉ định mã khác / yêu cầu chờ thêm) trước khi đặt lệnh.**
+
