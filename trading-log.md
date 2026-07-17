@@ -984,3 +984,25 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **CHƯA ĐẶT LỆNH:** phiên phân tích này (routine core-10 check-in) được cấu hình **read-only/chỉ đề xuất** trên tài khoản ••••0133 — không được phép đặt/hủy/sửa lệnh dưới bất kỳ hình thức nào, kể cả khi đã có quyết định duyệt từ Hogan. Quyết định đã được ghi nhận ở đây; việc đặt 3 lệnh mua thực tế (CRM, TEM, ASTS, mỗi lệnh ~$450-500, ưu tiên nguyên cổ phiếu để giữ stop-loss tự động: CRM -5%/+12%, TEM/ASTS -8%/+15-20%) cần thực hiện qua phiên giao dịch tương tác thường lệ (phiên có quyền đặt lệnh trên tài khoản này, `placed_agent: agentic`), không phải phiên routine tự động này.
 - **Việc cần làm tiếp theo:** ở phiên có quyền đặt lệnh — đặt 3 lệnh mua theo quyết định trên, sau đó đặt stop-loss tương ứng; xác nhận lại toàn bộ 10 vị thế core đã đủ ở lần check-in kế tiếp của routine này.
 
+## 2026-07-17 ~13:10 ET (17:10 UTC) — Check-in định kỳ (giữa phiên)
+
+- Vị thế xác nhận qua get_equity_positions: vẫn chỉ **7 mã** (AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL) — 3 lệnh mua CRM/TEM/ASTS (quyết định của Hogan sáng nay, xem entry trên) **chưa được đặt** (đã kiểm tra get_equity_orders từ 00:00 UTC hôm nay, không có lệnh nào ngoài 2 lệnh stop-loss GOOGL/SOUN đã khớp sáng nay). Đúng như dự kiến — phiên routine này read-only, việc đặt lệnh cần thực hiện ở phiên tương tác riêng.
+- **Tài khoản (Agentic ••••0133):** total_value $5,727.92, equity_value $3,247.39, cash $2,480.53, buying_power $1,676.67, pending_deposits $0.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-16):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $330.25 | +7.26% | -0.90% |
+  | MSFT | $386.75 | $394.37 | +1.97% | -1.68% |
+  | AMZN | $243.78 | $248.72 | +2.03% | -0.47% |
+  | JNJ | $260.69 | $252.615 | -3.10% | +1.06% |
+  | RSP | $214.93 | $213.91 | -0.47% | -0.53% |
+  | VOO | $688.26 | $686.58 | -0.24% | -0.52% |
+  | KO | $84.10 | $81.60 | -2.97% | **-3.91%** |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời thật. JNJ (fractional, không stop tự động) đã hạ nhiệt so với sáng nay, không còn cận kề -5%.
+- KO giảm -3.91% trong ngày, vượt ngưỡng nên đã tìm tin tức: nguyên nhân là **vụ tấn công ransomware nhắm vào mảng sữa Fairlife** (công ty con của Coca-Cola), tạm ngừng sản xuất tại Mỹ. Đây là sự cố vận hành/an ninh mạng ở một mảng phụ (Fairlife), chưa có dấu hiệu ảnh hưởng nghiêm trọng đến toàn bộ fundamentals KO — không phải kiện tụng/gian lận kế toán/mất CEO/hạ bậc tín nhiệm theo tiêu chí CLAUDE.md. Sentiment analyst vẫn tích cực (vừa tăng cổ tức lần thứ 64 liên tiếp), báo cáo Q2 2026 sẽ công bố 2026-07-28. P&L KO hiện -2.97%, còn cách xa ngưỡng cắt lỗ -5%. Chưa đủ điều kiện đề xuất theo CLAUDE.md — tiếp tục theo dõi vì đây là tin cần chú ý tới khi có thêm chi tiết hoặc gần ngày báo cáo Q2.
+  - Nguồn: [Coca-Cola (KO) Stock Drops Despite Market Gains — Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/coca-cola-ko-stock-drops-214502134.html), [Coca-Cola (KO) Stock Sinks As Market Gains — Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/coca-cola-ko-stock-sinks-215004704.html)
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
+- **Không có đề xuất mới lần kiểm tra này** — đề xuất thay 3 mã (CRM/TEM/ASTS) đã được Hogan duyệt ở entry trước, chỉ còn chờ thực hiện ở phiên có quyền đặt lệnh — không gửi PushNotification lặp lại (không có thông tin mới cần Hogan quyết định).
+
