@@ -508,39 +508,297 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$97.98=$489.90) = **~$553.80** (~79.1% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên vị thế HUT, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
 
-## 2026-07-15 ~14:37 ET (18:37 UTC) — Đồng bộ log (yêu cầu Hogan)
+## 2026-07-14 ~15:08 ET (19:08 UTC) — Check định kỳ (giữ nguyên HUT)
 
-- Giá HUT hiện $104.63 (last_trade_price 18:37:33 UTC) vs vốn $98.97 (**+5.72%**), vs previous close (Tue 07-14) $98.33 (**+6.41% trong ngày**). So với lần check trước (07-14 14:08 ET @ $97.98), biến động +6.79% — vượt ngưỡng 3-5%, đã tìm tin tức sâu.
-- Tin tức đã xem (WebSearch "Hut 8 HUT stock news July 15 2026"): không có tin tiêu cực. Ngược lại rất tích cực — Benchmark (Mark Palmer) duy trì Buy, **nâng price target từ $85 lên $165** (07-14) sau khi HUT chốt $16.8B hợp đồng thuê AI data center 15 năm (597 MW, hai địa điểm) và $7.5B tài trợ dự án; Lucid Capital Markets khởi tạo coverage Buy với target **$226**; bổ nhiệm E. Stanley O'Neal (cựu CEO Merrill Lynch) làm Chair mới. Earnings Q2 dự kiến 08-04. Đánh giá: đà tăng phản ánh tin cơ bản tích cực thật (không phải nhiễu/momentum đơn thuần) — không có lý do để thoát vị thế.
-  - Nguồn: [CoinCentral — Benchmark nearly doubles price target to $165](https://coincentral.com/hut-8-hut-stock-benchmark-nearly-doubles-price-target-to-165-heres-why/), [GuruFocus — HUT price target raised to $165](https://www.gurufocus.com/news/8958143/hut-maintained-by-benchmark-price-target-raised-to-165)
-- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. get_equity_orders từ 07-14 18:08 UTC tới nay: không có lệnh mới nào trong toàn tài khoản (khớp `trading-log.md`). WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale).
+- Giá HUT hiện $97.64 (last_trade_price 19:08:33 UTC) vs vốn $98.97 (-1.34%), vs previous close (Mon 07-13) $99.17 (-1.54% trong ngày). So với lần check trước (07-14 14:08 ET @ $97.98), biến động -0.35% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale), giá tham khảo $19.19.
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào. get_equity_orders từ 07-14 18:00 UTC tới nay: không có lệnh mới nào trong toàn tài khoản.
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,848.78.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$97.64=$488.20) = **~$552.10** (~78.9% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-14 ~16:09 ET (20:09 UTC) — Check định kỳ (giữ nguyên HUT)
+
+- Giá HUT hiện $98.34 (last_trade_price 19:59:59 UTC, ngay lúc đóng cửa) vs vốn $98.97 (-0.64%), vs previous close (Mon 07-13) $99.17 (-0.84% trong ngày). So với lần check trước (07-14 15:08 ET @ $97.64), biến động +0.72% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale), giá tham khảo $19.40.
 - Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
-- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,917.64.
-- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$104.63=$523.15) = **~$587.05** (~83.9% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
-- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox dù đã kiểm tra tin tức do biến động giá vượt ngưỡng — theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,850.41.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$98.34=$491.70) = **~$555.60** (~79.4% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
 
-## 2026-07-16 ~16:52 ET (20:52 UTC) — HUT stop-loss kích hoạt, sandbox về 100% cash
+## 2026-07-15 ~09:09 ET (13:09 UTC) — Check đầu ngày, pre-market (cloud routine, giữ nguyên HUT)
 
-- Lệnh stop-loss HUT (đặt tại $91.05) đã khớp lúc 12:45:39 ET (16:45:39 UTC): bán 5 cp @ giá trung bình $90.886 (tổng $454.43, phí $0). Giá vốn $98.97 → lỗ -8.17%/cp (~-$40.42 tổng), đúng theo cấu hình cắt lỗ -8% cho nhóm rủi ro cao.
-- Đã kiểm tra tin tức HUT: không có catalyst tiêu cực riêng cho hôm nay — nền tảng vẫn tích cực (Benchmark PT $165, hợp đồng AI data center $16.8B, earnings 08-04 sắp tới). Mức giảm giá nhiều khả năng là biến động/chốt lời sau đà tăng nóng tuần trước (đỉnh ~$104 → về ~$91-92), không phải suy giảm cơ bản.
-- Sandbox hiện KHÔNG còn vị thế nào — 100% cash. "Phần theo dõi": $63.90 cash rảnh (buying power settled $763.90 − $700 đệm, số liệu trước khi khoản bán HUT settle) + $454.43 proceeds từ HUT (đang chờ settle T+1, dự kiến ~07-17) = **~$518.33** (~74.0% mốc gốc $700) — không gần $0, không đạt ngưỡng chốt lời x2 ($1400). Không có circuit breaker dừng hẳn.
-- **Wash sale:** không được mua lại HUT (hoặc mã gần tương đương) tới **2026-08-15** (30 ngày sau khi bán lỗ hôm nay).
-- Quyết định: giữ cash, chờ cơ hội mới phù hợp (agent tự quyết theo quyền tự chủ sandbox, không cần duyệt trước). Đã gửi PushNotification vì đây là thay đổi thật (stop-loss kích hoạt).
+- Giá HUT hiện $98.94 (last_non_reg_trade_price 13:06:25 UTC, pre-market — mới hơn last_trade_price $98.34 lúc 07-14 19:59:59 UTC) vs vốn $98.97 (-0.03%, gần như đi ngang), vs previous close (Tue 07-14) $98.33 (+0.62%). So với lần check trước (07-14 16:09 ET @ $98.34), biến động +0.61% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale).
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,869.34.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$98.94=$494.70) = **~$558.60** (~79.8% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
 
-## 2026-07-17 ~10:20 ET (14:20 UTC) — Check định kỳ (resume, vẫn 100% cash)
+## 2026-07-15 ~10:08 ET (14:08 UTC) — Check định kỳ (giữ nguyên HUT)
 
-- Sandbox không có vị thế nào (xác nhận qua get_equity_positions — không có HUT hay mã nào khác ngoài core-10). Không có lệnh sandbox mới nào kể từ stop-loss HUT hôm 07-16.
-- **Lưu ý:** không tính "phần theo dõi" theo công thức buying_power − $700 lần này — hôm nay core-10 vừa có 2 lệnh stop-loss lớn (GOOGL, SOUN, xem `trading-log.md`) khiến buying_power tổng ($1,676.67) tăng đột biến do tiền bán core-10 đang tạm nằm chung pool (chưa settle hết), không phản ánh đúng phần vốn sandbox. Sẽ tính lại chính xác khi buying_power ổn định (không còn proceeds core-10 mới chờ settle).
-- Không có wash-sale nào phát sinh thêm cho sandbox (HUT vẫn cấm mua lại tới 2026-08-15).
-- Quyết định: giữ cash, không có lệnh mới, không có cơ hội mới được đánh giá trong lần check này. Không gửi push riêng cho sandbox (không có thay đổi thật).
+- Giá HUT hiện $100.44 (last_trade_price 14:08:42 UTC) vs vốn $98.97 (+1.49%), vs previous close (Tue 07-14) $98.33 (+2.15% trong ngày). So với lần check trước (09:09 ET @ $98.94), biến động +1.52% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale), giá tham khảo $19.57.
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,904.09.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$100.44=$502.20) = **~$566.10** (~80.9% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
 
-## 2026-07-20 ~10:46 ET (14:46 UTC) — Ghi log bù: mở vị thế IREN (phát hiện qua kiểm tra định kỳ, không có log gốc)
+## 2026-07-15 ~11:09 ET (15:09 UTC) — Check định kỳ (giữ nguyên HUT)
 
-- **Lưu ý quan trọng:** không có phiên log gốc nào cho giao dịch này — phát hiện qua đối chiếu get_equity_orders khi Hogan yêu cầu kiểm tra trạng thái sandbox/portfolio hôm nay. Khoảng trống log 3 ngày (07-17 → 07-20) trước đó, có khả năng một phiên cloud routine khác đã đặt lệnh nhưng không ghi log đầy đủ (tương tự vấn đề duplicate/orphaned session đã gặp trước — xem lịch sử commit "Flag orphaned SERV/ASTS proposal"). Ghi lại đây từ dữ liệu lệnh xác nhận để không mất dấu vết, KHÔNG có phân tích tin tức/lý do gốc kèm theo vì không truy được.
-- **Lệnh xác nhận qua get_equity_orders:**
-  - 2026-07-20 14:13:12 UTC: mua market 15 cp IREN (Iris Energy), khớp giá TB $38.7499, tổng ~$581.25, `placed_agent: agentic`.
-  - 2026-07-20 14:13:34 UTC: đặt stop-loss GTC 15 cp @ $35.65 (≈-8% từ giá vốn — đúng khung cắt lỗ nới rộng cho nhóm biến động mạnh), trạng thái confirmed/chưa khớp.
-- Xác nhận không vi phạm wash-sale: IREN là công ty khác (Iris Energy) với HUT (Hut 8) dù cùng ngành bitcoin-miner/AI-pivot — không phải "substantially identical security", HUT vẫn cấm mua lại riêng tới 2026-08-15 (không liên quan IREN).
-- Vị thế sandbox hiện tại (xác nhận qua get_equity_positions 07-20 14:46 UTC): 15 cp IREN, giá vốn $38.75, giá hiện tại $38.79 (~+0.1%, gần như đi ngang). Không có mã sandbox nào khác.
-- **Không tính được "phần theo dõi" chính xác lần này:** buying_power toàn tài khoản $1,899.28 hiện lẫn cả cash core-10 chưa dùng cho 3 slot còn trống (AEHR chưa mua, GOOGL/SOUN chưa có mã thay thế — xem `trading-log.md` 07-17) lẫn phần cash/đệm sandbox — không tách bạch được như đã lưu ý tương tự ở lần check 07-17. Sẽ tính lại khi core-10 lấp đủ slot hoặc buying_power ổn định rõ ràng hơn.
-- **Cần làm:** xác nhận với Hogan phiên nào đã đặt lệnh này (nếu có phiên cloud routine khác đang chạy song song) để tránh trùng lặp/xung đột quyết định trong tương lai.
+- Giá HUT hiện $99.36 (last_trade_price 15:09:19 UTC) vs vốn $98.97 (+0.39%), vs previous close (Tue 07-14) $98.33 (+1.05% trong ngày). So với lần check trước (10:08 ET @ $100.44), biến động -1.08% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale).
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,898.61.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$99.36=$496.80) = **~$560.70** (~80.1% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-15 ~12:09 ET (16:09 UTC) — Check định kỳ (giữ nguyên HUT)
+
+- Giá HUT hiện $96.59 (last_trade_price 16:09:09 UTC) vs vốn $98.97 (-2.40%), vs previous close (Tue 07-14) $98.33 (-1.77% trong ngày). So với lần check trước (11:09 ET @ $99.36), biến động -2.79% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale), giá tham khảo $18.745.
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,871.67.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$96.59=$482.95) = **~$546.85** (~78.1% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-15 ~13:09 ET (17:09 UTC) — Check định kỳ (giữ nguyên HUT, đã tìm tin tức do biến động >3%)
+
+- Giá HUT hiện $100.50 (last_trade_price 17:08:05 UTC) vs vốn $98.97 (+1.55%), vs previous close (Tue 07-14) $98.33 (+2.21% trong ngày). So với lần check trước (12:09 ET @ $96.59), biến động +4.05% — vượt ngưỡng 3-5%, đã tìm tin tức.
+- Tin tức: không có tin tiêu cực. Analyst Mark Palmer (Benchmark) vừa nâng price target HUT từ $85 lên $165, giữ rating Buy, dẫn "strong operating momentum" trước báo cáo Q2 (dự kiến công bố 2026-08-04). HUT đã tăng 389% trong 12 tháng qua, có backlog hợp đồng thuê $16.8B cho 2 campus AI hyperscale (597MW) và hợp đồng Beacon Point 352MW/15 năm trị giá $9.8B. Biến động +4% hôm nay phù hợp với đà tăng chung, không phải tín hiệu rủi ro mới. Nguồn: Yahoo Finance (qua Benzinga/StockTitan tổng hợp).
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale), giá tham khảo $19.69.
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,895.76.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$100.50=$502.50) = **~$566.40** (~80.9% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới (tin tức tích cực, không có lý do bán; chưa đạt ngưỡng chốt lời). Không gửi push notification riêng (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-15 ~14:08 ET (18:08 UTC) — Check định kỳ (giữ nguyên HUT, đã tìm tin tức do biến động >3%)
+
+- Giá HUT hiện $103.71 (last_trade_price 18:07:46 UTC) vs vốn $98.97 (+4.79%), vs previous close (Tue 07-14) $98.33 (+5.47% trong ngày). So với lần check trước (13:09 ET @ $100.50), biến động +3.19% — vượt ngưỡng 3-5%, đã tìm tin tức.
+- Tin tức (WebSearch "HUT Hut 8 stock news July 15 2026"): không có tin tiêu cực mới. Cùng nền tảng đã ghi nhận các lần trước: Benchmark nâng price target lên $165 (giữ Buy), backlog hợp đồng AI data center $16.8B (597MW hai campus hyperscale) + Beacon Point 352MW/15 năm $9.8B, cổ phiếu tăng 389% trong 12 tháng qua, earnings Q2 dự kiến công bố 2026-08-04. Một số nguồn (Nasdaq/tổng hợp) ghi nhận biến động trong ngày dao động $96.07–$104.00, phản ánh volatility cao quanh vùng đỉnh chứ không phải tin xấu mới. Nguồn: [Yahoo Finance](https://finance.yahoo.com/quote/HUT/), [MarketBeat](https://www.marketbeat.com/stocks/NASDAQ/HUT/), [StockTitan](https://www.stocktitan.net/news/HUT/), [Nasdaq](https://www.nasdaq.com/market-activity/stocks/hut). Kết luận: đà tăng tiếp diễn theo momentum/tin tích cực nền tảng đã biết, không có lý do để thoát vị thế.
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale).
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,912.10.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$103.71=$518.55) = **~$582.45** (~83.2% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới (tin tức vẫn tích cực, chưa đạt ngưỡng chốt lời). Không gửi push notification riêng (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-15 ~15:08 ET (19:08 UTC) — Check định kỳ (giữ nguyên HUT)
+
+- Giá HUT hiện $103.13 (last_trade_price 19:08:13 UTC) vs vốn $98.97 (+4.20%), vs previous close (Tue 07-14) $98.33 (+4.88% trong ngày). So với lần check trước (14:08 ET @ $103.71), biến động -0.56% — dưới ngưỡng 3-5%, không tìm tin tức sâu (tin tức nền tảng vẫn như lần trước: Benchmark PT $165/Buy, backlog $16.8B+$9.8B, không có gì mới cần xét lại).
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale), giá tham khảo $19.435.
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,899.94.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$103.13=$515.65) = **~$579.55** (~82.8% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-15 ~16:08 ET (20:08 UTC) — Check định kỳ cuối phiên (giữ nguyên HUT)
+
+- Giá HUT hiện $103.03 (last_trade_price 19:59:59 UTC, ngay lúc đóng cửa; non-reg $103.60 lúc 20:03 UTC after-hours) vs vốn $98.97 (+4.10%), vs previous close (Tue 07-14) $98.33 (+4.79% trong ngày). So với lần check trước (15:08 ET @ $103.13), biến động -0.10% — dưới ngưỡng 3-5%, không tìm tin tức sâu (tin tức nền tảng vẫn như các lần trước: Benchmark PT $165/Buy, backlog $16.8B+$9.8B, không có gì mới cần xét lại).
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale), giá tham khảo $19.38.
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,893.19.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$103.03=$515.15) = **~$579.05** (~82.7% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-16 ~09:04 ET (13:04 UTC) — Check đầu ngày, pre-market (cloud routine, giữ nguyên HUT)
+
+- Giá HUT hiện $99.3677 (last_non_reg_trade_price 12:51:51 UTC, pre-market — mới hơn last_trade_price $103.03 lúc 07-15 19:59:59 UTC, đóng cửa) vs vốn $98.97 (+0.40%), vs previous close (Wed 07-15) $103.03 (-3.55%). So với lần check trước (07-15 16:08 ET @ $103.03), biến động -3.55% — chạm ngưỡng 3-5%, đã tìm tin tức.
+- Tin tức (WebSearch "HUT Hut 8 stock news July 16 2026"): không có tin tiêu cực mới/cụ thể riêng cho hôm nay. Nền tảng vẫn như các lần trước: Benchmark giữ Buy, price target $165 (từ $85), backlog hợp đồng AI data center $16.8B (597MW hai campus hyperscale) + Beacon Point 352MW/15 năm $9.8B, revenue +226% YoY, lease Texas $10B, earnings Q2 dự kiến 08-04. Một bài Yahoo Finance ghi nhận HUT đã giảm gần 30% trong 6 tuần qua dù kết quả vận hành mạnh — mô tả biến động/pullback kỹ thuật sau đợt tăng nóng, không phải tin xấu công ty cụ thể; một bài khác (QuiverQuant) ghi nhận nhịp giảm ~7.2% do nhóm cổ phiếu nhạy cảm với crypto hạ nhiệt chung + có insider selling gần đây tạo áp lực tâm lý — cần theo dõi thêm nhưng chưa phải red flag nghiêm trọng theo tiêu chí CLAUDE.md (không phải kiện tụng/gian lận/mất CEO/hạ tín nhiệm). Nguồn: [Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/hut-8-stock-hits-one-171330522.html), [StockTitan](https://www.stocktitan.net/news/HUT/), [QuiverQuant](https://www.quiverquant.com/news/Hut+8+(HUT)+slides+7.2%+as+crypto-sensitive+names+cool+and+recent+insider+selling+weighs+on+sentiment). Kết luận: pullback kỹ thuật/tâm lý ngành, chưa có lý do rõ ràng để thoát vị thế; vị thế vẫn lãi nhẹ so với vốn ($98.97).
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale).
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,884.73.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$99.3677=$496.84) = **~$560.74** (~80.1% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới (pullback kỹ thuật/ngành, không phải tín hiệu cơ bản xấu; vị thế vẫn lãi nhẹ so với vốn). Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ gửi 1 dòng thông báo ngắn theo yêu cầu quy trình cloud routine.
+
+## 2026-07-16 ~10:10 ET (14:10 UTC) — Check định kỳ (giữ nguyên HUT)
+
+- Giá HUT hiện $98.165 (last_trade_price 14:09:37 UTC) vs vốn $98.97 (-0.81%), vs previous close (Wed 07-15) $103.03 (-4.72% trong ngày). So với lần check trước (09:04 ET @ $99.3677 pre-market), biến động -1.21% — dưới ngưỡng 3-5%, không tìm tin tức sâu (tin tức nền tảng vẫn như lần trước: Benchmark PT $165/Buy, pullback kỹ thuật/ngành đã ghi nhận, không có gì mới cần xét lại).
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale), giá tham khảo $18.625.
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,860.25.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$98.165=$490.83) = **~$554.73** (~79.2% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ gửi 1 dòng thông báo ngắn theo yêu cầu quy trình cloud routine.
+
+## 2026-07-16 ~11:09 ET (15:09 UTC) — Check định kỳ (giữ nguyên HUT, đã tìm tin tức do biến động >3%)
+
+- Giá HUT hiện $94.605 (last_trade_price 15:09:24 UTC) vs vốn $98.97 (-4.41%), vs previous close (Wed 07-15) $103.03 (-8.16% trong ngày). So với lần check trước (10:10 ET @ $98.165), biến động -3.63% — vượt ngưỡng 3-5%, đã tìm tin tức.
+- Tin tức (WebSearch "Hut 8 HUT stock news July 16 2026"): không có tin tiêu cực mới/cụ thể. Vẫn cùng nền tảng đã biết: Benchmark giữ Buy, price target $165 (từ $85, 07-14), ghi nhận cổ phiếu đã giảm ~30% trong 6 tuần qua dù vận hành mạnh (revenue +226% YoY, lease Texas $10B), earnings Q2 dự kiến 08-04. Không có kiện tụng/gian lận/mất CEO/hạ tín nhiệm — pullback tiếp diễn theo nhịp điều chỉnh kỹ thuật/nhóm crypto-sensitive hạ nhiệt đã ghi nhận từ sáng nay, không phải rủi ro mới. Nguồn: [Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/hut-8-stock-hits-one-171330522.html), [MarketBeat](https://www.marketbeat.com/stocks/NASDAQ/HUT/).
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. Stop-loss @ $91.05 vẫn state=`confirmed`/active (order id `6a4e5a27-a403-4b82-8e6c-523da527af61`, cumulative_quantity=0, chưa khớp) — giá hiện còn cách stop-loss ~3.9%, chưa chạm. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale), giá tham khảo $18.355.
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,841.16.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$94.605=$473.03) = **~$536.93** (~76.7% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới (pullback tiếp diễn nhưng chưa chạm stop-loss $91.05, không có tin xấu cơ bản mới, để kỷ luật stop-loss tự xử lý nếu tiếp tục giảm). Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ gửi 1 dòng thông báo ngắn theo yêu cầu quy trình cloud routine.
+
+## 2026-07-16 ~12:08 ET (16:08 UTC) — Check định kỳ (giữ nguyên HUT, gần stop-loss)
+
+- Giá HUT hiện $92.15 (last_trade_price 16:08:10 UTC) vs vốn $98.97 (-6.89%), vs previous close (Wed 07-15) $103.03 (-10.55% trong ngày). So với lần check trước (11:09 ET @ $94.605), biến động -2.60% — dưới ngưỡng 3-5%, không tìm tin tức sâu (tin tức nền tảng vẫn như các lần trước trong ngày: pullback kỹ thuật/nhóm crypto-sensitive hạ nhiệt, Benchmark vẫn giữ Buy/PT $165, không có tin xấu cơ bản mới).
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. Stop-loss @ $91.05 vẫn state=`confirmed`/active (order id `6a4e5a27-a403-4b82-8e6c-523da527af61`, cumulative_quantity=0, chưa khớp) — giá hiện chỉ còn cách stop-loss ~1.19%, rất gần kích hoạt. WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale), giá tham khảo $17.975.
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,835.47.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$92.15=$460.75) = **~$524.65** (~75.0% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới — để kỷ luật stop-loss $91.05 tự xử lý nếu giá tiếp tục giảm (không có tin xấu cơ bản mới để chủ động thoát sớm hơn). Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ gửi 1 dòng thông báo ngắn theo yêu cầu quy trình cloud routine.
+
+## 2026-07-16 ~13:08 ET (17:08 UTC) — Stop-loss HUT đã kích hoạt (đóng vị thế)
+
+- **Stop-loss đã filled:** lệnh `6a4e5a27-a403-4b82-8e6c-523da527af61` khớp lúc 16:45:39 UTC (~12:45 ET) — bán 5 cp HUT @ giá TB $90.886, stop trigger $91.05. Vốn mua $98.9699 → lỗ thực hiện **-8.17%** (~$40.42), thu về ~$454.43.
+- Giá HUT hiện tại (quote) $91.30 (17:07:57 UTC) vs previous close (Wed 07-15) $103.03 (-11.39% trong ngày) — giá dao động quanh vùng đã chạm stop, chưa có dấu hiệu hồi mạnh ngay.
+- **Tin tức đã tìm** (WebSearch "Hut 8 HUT stock news July 16 2026"): không có tin xấu mới/cụ thể (không kiện tụng/gian lận/mất CEO/hạ tín nhiệm). Vẫn cùng nền tảng đã biết cả ngày nay: Benchmark giữ Buy, PT $165 (từ $85, nâng 07-14), doanh thu +226% YoY, lease Texas $10B, backlog hợp đồng $16.8B, earnings Q2 dự kiến 08-04. Giá đã giảm ~30% trong 6 tuần qua dù vận hành mạnh — thị trường định giá lại nhóm crypto-miner/AI-infra sau đợt tăng nóng, không phải rủi ro cơ bản mới của riêng HUT. Nguồn: [Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/hut-8-stock-hits-one-171330522.html), [QuiverQuant](https://www.quiverquant.com/news/Hut+8+(HUT)+slides+7.2%+as+crypto-sensitive+names+cool+and+recent+insider+selling+weighs+on+sentiment).
+- **Quyết định:** đóng vị thế HUT hoàn toàn (do stop-loss tự động, không phải quyết định thủ công) — kỷ luật cắt lỗ hoạt động đúng như thiết kế, không phải bị "quét" bởi nhiễu ngắn hạn (giá tiếp tục ở dưới vùng stop, không bật ngược ngay). KHÔNG mua lại HUT trong vòng 30 ngày (tới ~2026-08-15) theo wash-sale rule (CLAUDE.md, mục "Hạn chế giao dịch phát sinh thuế"). WULF cũng vẫn đang trong lệnh cấm mua lại tới ~2026-08-06 (wash-sale từ lần trước). Tạm thời giữ nguyên cash, KHÔNG mở vị thế mới ngay trong lần check này — cần sàng lọc mã high-risk khác (ngoài HUT/WULF) ở lần check tiếp theo, đồng thời một phần proceeds ($454.43) chưa settle nên buying power thực tế còn thấp hơn cash tổng (tránh rủi ro GFV nếu xoay vòng ngay).
+- **Tài khoản (qua get_portfolio):** cash $1,218.33 (tăng từ $763.90 do proceeds HUT $454.43 vừa khớp, CHƯA settle), buying_power vẫn $763.90 (chưa đổi — phần proceeds đang chờ settle T+1, dự kiến ~2026-07-17). total_value $5,819.24.
+- **"Phần theo dõi" sandbox:** cash tổng $1,218.33 (gồm cả phần chưa settle) − $700 đệm = **~$518.33** (~74.0% mốc gốc $700), không có vị thế nào khác. Còn xa ngưỡng chốt lời $1400 và không gần $0 — không kích hoạt circuit breaker gấp đôi/về $0 (đây là sự kiện stop-loss thông thường, không phải circuit breaker vốn).
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Gửi PushNotification cho sự kiện này vì đây là thay đổi thật (stop-loss kích hoạt, đóng vị thế), theo đúng quy định trong CLAUDE.md.
+
+## 2026-07-16 ~14:09 ET (18:09 UTC) — Check định kỳ (không có vị thế, đã sàng lọc nhưng chưa vào lệnh mới)
+
+- Không có vị thế sandbox nào hiện tại (HUT đã đóng do stop-loss lúc ~12:45 ET cùng ngày, xem entry trước). WULF cấm mua lại tới ~2026-08-06, HUT cấm mua lại tới ~2026-08-15 (wash-sale).
+- Đã sàng lọc mã high-risk thay thế theo kế hoạch từ lần check trước:
+  - WebSearch "best high risk high momentum small cap stocks to buy July 2026": các gợi ý nổi bật gồm AXTI (chất bán dẫn cho AI infra, +30% revenue growth dự kiến FY26), SERV (đã có trong core-10 — loại trừ), Erasca (biotech giai đoạn lâm sàng, đầu cơ cao). Không có mã nào đủ thuyết phục ngay (thiếu catalyst cụ thể/gần).
+  - WebSearch "Bitcoin miner AI datacenter stocks IREN CIFR CORZ news July 16 2026": cùng nhóm ngành với HUT (bitcoin-miner-to-AI-datacenter) — IREN có hợp đồng AI cloud $9.7B với Microsoft (200MW, ARR $1.94B, EBITDA margin ~85%) nhưng đang "lag" so với đà tăng AI/Bitcoin chung, thị trường định giá "execution gap" ~$1.3B; CIFR có JV 1GW "Colchis" ở Texas + 300MW capacity 2026. Tuy nhiên CẢ HAI đều đang giảm giá hôm nay (CORZ -3.0%, CIFR -1.1%) — cùng áp lực điều chỉnh sector-wide (crypto-sensitive hạ nhiệt) vừa khiến HUT chạm stop-loss vài giờ trước.
+- **Quyết định:** KHÔNG mở vị thế mới ngay — vào lại đúng subsector (bitcoin-miner/AI-infra) ngay sau khi vừa bị stop-loss trên HUT, trong lúc cả nhóm đang đỏ cùng phiên, là rủi ro đuổi theo cùng một làn sóng điều chỉnh vừa cắt lỗ, không phải một entry point tốt. Giữ nguyên cash, tiếp tục sàng lọc ở các lần check tiếp theo (chờ nhóm bitcoin-miner ổn định lại HOẶC tìm cơ hội ở nhóm khác với catalyst rõ ràng hơn).
+- Vị thế xác nhận qua get_equity_positions: không có vị thế sandbox nào (0 shares HUT/WULF).
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $1,218.33 (gồm ~$454.43 proceeds HUT CHƯA settle, dự kiến ~2026-07-17), buying_power $763.90 (phần đã settle). total_value $5,810.15.
+- "Phần theo dõi" sandbox: cash tổng $1,218.33 − $700 đệm = **~$518.33** (~74.0% mốc gốc $700), không có vị thế nào khác. Còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox — quyết định chủ động KHÔNG vào lệnh sau khi sàng lọc, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-16 ~15:08 ET (19:08 UTC) — Check định kỳ (không có vị thế, tiếp tục đứng ngoài)
+
+- Không có vị thế sandbox nào (xác nhận qua get_equity_positions — chỉ có 10 mã core, không có HUT/WULF/mã sandbox khác). WULF cấm mua lại tới ~2026-08-06, HUT cấm mua lại tới ~2026-08-15 (wash-sale).
+- Giá tham khảo nhóm bitcoin-miner/AI-infra (không tìm tin tức mới, chỉ theo dõi tiếp diễn xu hướng đã biết từ lần check trước): HUT $93.155 (-9.6% so với previous close $103.03), WULF $18.14 (-6.35%), IREN $35.49 (-7.28%), CIFR $18.05 (-9.15%) — toàn bộ nhóm tiếp tục giảm mạnh hơn cả lần check 14:09 ET, xác nhận đây là đợt điều chỉnh sector-wide (crypto-sensitive hạ nhiệt) chứ không phải đặc thù một mã. Không tìm tin tức sâu thêm vì đây là tiếp diễn dynamic đã biết, không phải diễn biến mới cần đánh giá lại, và không cân nhắc vào lệnh mới trong nhóm này lúc này.
+- Core-10 xác nhận qua get_equity_positions: AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV — không đổi, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $1,218.33 (gồm ~$454.43 proceeds HUT vẫn CHƯA settle), buying_power $763.90 (chưa đổi, phần proceeds vẫn đang chờ T+1, dự kiến settle ~2026-07-17). total_value $5,799.47.
+- "Phần theo dõi" sandbox: cash tổng $1,218.33 − $700 đệm = **~$518.33** (~74.0% mốc gốc $700), không có vị thế nào khác. Còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: tiếp tục đứng ngoài — nhóm bitcoin-miner/AI-infra (nơi vừa bị stop-loss trên HUT) tiếp tục giảm sâu hơn, càng củng cố quyết định không đuổi theo cùng làn sóng điều chỉnh. Chờ nhóm ổn định lại hoặc tìm cơ hội khác với catalyst rõ ràng hơn ở lần check tiếp theo. Không gửi push notification riêng (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-16 ~16:09 ET (20:09 UTC) — Check định kỳ cuối phiên (không có vị thế, tiếp tục đứng ngoài)
+
+- Không có vị thế sandbox nào (xác nhận qua get_equity_positions — chỉ có 10 mã core: AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV, không có HUT/WULF/mã sandbox khác). WULF cấm mua lại tới ~2026-08-06, HUT cấm mua lại tới ~2026-08-15 (wash-sale).
+- Giá đóng cửa nhóm bitcoin-miner/AI-infra (last_trade_price 19:59:59 UTC, ngay lúc đóng cửa): HUT $91.98 (-10.72% so với previous close $103.03), WULF $17.975 (-7.20%), IREN $34.8287 (-9.01%), CIFR $17.70 (-10.92%). So với lần check trước (15:08 ET, HUT $93.155), biến động chỉ -1.26% — dưới ngưỡng 3-5%, không tìm tin tức mới (đây là tiếp diễn đợt điều chỉnh sector-wide crypto-sensitive đã phân tích ở các lần check trước trong ngày, không phải diễn biến mới).
+- Core-10 xác nhận qua get_equity_positions: AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV — không đổi, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $1,676.67, buying_power $763.90 (pending_deposits $0 nhưng cash > buying_power ~$912.77 — chênh lệch này có vẻ gồm cả phần chưa settle liên quan core-10, không phải sandbox; dùng buying_power làm số thực dùng được cho sandbox theo đúng lưu ý CLAUDE.md). total_value $5,786.77.
+- "Phần theo dõi" sandbox: buying_power $763.90 − $700 đệm = **~$63.90** (~9.1% mốc gốc $700), không có vị thế nào khác. Còn rất xa ngưỡng chốt lời $1400 và không gần $0 (không kích hoạt "dừng hẳn" vì đây là cash rảnh, không phải phần đang xoay vòng về $0 do thua lỗ). Không có circuit breaker nào kích hoạt.
+- Quyết định: tiếp tục đứng ngoài — thị trường vừa đóng cửa (16:00 ET), nhóm bitcoin-miner/AI-infra đóng cửa giảm sâu (-7% đến -11%) tiếp diễn đợt điều chỉnh đã biết, không có catalyst mới để cân nhắc entry ngay. Chuyển sang chế độ theo dõi qua đêm, chờ phiên kế tiếp để đánh giá lại cơ hội entry (nhóm này hoặc mã high-risk khác). Không gửi push notification riêng (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-17 ~09:11 ET (13:11 UTC) — Check đầu ngày, pre-market (cloud routine, không có vị thế, tiếp tục đứng ngoài)
+
+- Không có vị thế sandbox nào (xác nhận qua get_equity_positions — 9 vị thế đều thuộc core-10: AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN; không có HUT/WULF/mã sandbox khác). Lưu ý ngoài phạm vi sandbox: SERV (core-10) đã bị stop-loss tự động khớp chiều 07-16 theo `trading-log.md` — đây là việc của quy trình core-10 riêng, không thuộc thẩm quyền/phạm vi check sandbox này, không hành động gì thêm ở đây. HUT vẫn cấm mua lại tới ~2026-08-15, WULF cấm mua lại tới ~2026-08-06 (wash-sale).
+- Giá pre-market nhóm bitcoin-miner/AI-infra (last_non_reg_trade_price ~13:01-13:10 UTC) vs previous close (Thu 07-16): HUT $88.30 vs $91.91 (-3.93%), WULF $17.2726 vs $17.98 (-3.93%), IREN $33.63 vs $34.83 (-3.44%), CIFR $16.9046 vs $17.72 (-4.60%) — toàn nhóm tiếp tục giảm trong biên 3-5% so với lần check trước (đóng cửa 07-16), đã tìm tin tức do chạm ngưỡng.
+- Tin tức (WebSearch "Bitcoin miner AI datacenter stocks HUT WULF IREN CIFR news July 17 2026" và "Hut 8 HUT stock premarket July 17 2026"): không tìm thấy tin tiêu cực mới/cụ thể cho hôm nay — phần lớn kết quả là bài cũ hơn về đợt rally trước đó (TeraWulf $19B lease với Anthropic, Morgan Stanley nâng triển vọng WULF/CIFR/MARA, Benchmark PT $165 cho HUT). Không có kiện tụng/gian lận/mất CEO/hạ tín nhiệm mới. Pullback tiếp diễn giống các phiên trước — điều chỉnh kỹ thuật/nhóm crypto-sensitive hạ nhiệt, chưa có catalyst cụ thể đảo chiều. Nguồn: [MarketBeat — Hut 8 Shares Gap Down](https://www.marketbeat.com/instant-alerts/hut-8-nasdaqhut-shares-gap-down-whats-next-2026-07-16/), [GuruFocus — Benchmark PT $165](https://www.gurufocus.com/news/8958143/hut-maintained-by-benchmark-price-target-raised-to-165).
+- Không có lệnh nào mới đặt kể từ lần check trước (xác nhận get_equity_orders từ 2026-07-16 20:00 UTC — rỗng).
+- Tài khoản (qua get_portfolio): cash $1,676.67, buying_power $1,676.67 (khớp đầy đủ — proceeds HUT đã settle xong). total_value $5,747.76.
+- "Phần theo dõi" sandbox: $1,676.67 − $700 đệm = **~$976.67** (~139.5% mốc gốc $700) — chưa đạt ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: tiếp tục đứng ngoài, không vào lệnh mới. HUT/WULF vẫn trong lệnh cấm wash-sale; IREN/CIFR tiếp tục giảm cùng nhịp điều chỉnh sector-wide chưa có dấu hiệu đảo chiều rõ ràng, chưa đủ thuyết phục làm điểm entry mới. Sẽ tiếp tục sàng lọc cơ hội (trong hoặc ngoài nhóm bitcoin-miner/AI-infra) ở các lần check tiếp theo. Không gửi push notification riêng (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-17 ~10:09 ET (14:09 UTC) — Check định kỳ (không có vị thế, tiếp tục đứng ngoài)
+
+- Không có vị thế sandbox nào (xác nhận qua get_equity_positions — 7 vị thế đều thuộc core-10: AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL; không có HUT/WULF/mã sandbox khác). HUT vẫn cấm mua lại tới ~2026-08-15, WULF cấm mua lại tới ~2026-08-06 (wash-sale).
+- Giá nhóm bitcoin-miner/AI-infra (last_trade_price 14:09:21 UTC) vs previous close (Thu 07-16): HUT $89.52 vs $91.91 (-2.60%), WULF $17.755 vs $17.98 (-1.25%), IREN $34.125 vs $34.83 (-2.02%), CIFR $17.25 vs $17.72 (-2.65%) — so với lần check trước (09:11 ET, HUT premarket $88.30), biến động HUT +1.38%, WULF +2.79%, IREN +1.47%, CIFR +2.04% — tất cả dưới ngưỡng 3-5%, không tìm tin tức sâu. Cả nhóm đang hồi nhẹ so với đáy premarket sáng nay nhưng vẫn dưới previous close — chưa đủ tín hiệu đảo chiều rõ ràng để cân nhắc entry.
+- get_equity_orders từ 09:11 ET tới nay: rỗng — không có lệnh nào mới đặt.
+- Core-10 hiện tại (get_equity_positions): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL — không có mã lạ, không chạm vào (SERV/GOOGL không còn trong danh sách vị thế lần này, nằm ngoài phạm vi sandbox nên không xét ở đây).
+- Tài khoản (qua get_portfolio): cash $2,480.53, buying_power $1,676.67 (chênh lệch cash-buying_power thuộc phần chưa settle liên quan core-10, không phải sandbox — dùng buying_power theo đúng lưu ý CLAUDE.md). total_value $5,737.45.
+- "Phần theo dõi" sandbox: buying_power $1,676.67 − $700 đệm = **~$976.67** (~139.5% mốc gốc $700) — không đổi so với lần check trước, chưa đạt ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: tiếp tục đứng ngoài, không vào lệnh mới — chưa có catalyst/đảo chiều đủ rõ ràng ở nhóm bitcoin-miner/AI-infra, HUT/WULF vẫn trong lệnh cấm wash-sale. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-17 ~11:09 ET (15:09 UTC) — Check định kỳ (không có vị thế, tiếp tục đứng ngoài)
+
+- Không có vị thế sandbox nào (xác nhận qua get_equity_positions — 7 vị thế đều thuộc core-10: AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL; không có HUT/WULF/mã sandbox khác). HUT vẫn cấm mua lại tới ~2026-08-15, WULF cấm mua lại tới ~2026-08-06 (wash-sale).
+- Giá nhóm bitcoin-miner/AI-infra (last_trade_price 15:09:3x UTC) vs previous close (Thu 07-16): HUT $89.56 vs $91.91 (-2.56%), WULF $17.545 vs $17.98 (-2.42%), IREN $33.39 vs $34.83 (-4.13%), CIFR $16.81 vs $17.72 (-5.14%) — so với lần check trước (10:09 ET, HUT $89.52), biến động HUT +0.04%, WULF -1.18%, IREN -2.15%, CIFR -2.55% — tất cả dưới ngưỡng 3-5% so với lần check trước, không tìm tin tức sâu (nhóm tiếp tục drift nhẹ xuống, chưa phải diễn biến mới cần đánh giá lại).
+- get_equity_orders từ 10:09 ET tới nay: rỗng — không có lệnh nào mới đặt.
+- Core-10 hiện tại (get_equity_positions): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL — không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $2,480.53, buying_power $1,676.67 (chênh lệch cash-buying_power thuộc phần chưa settle liên quan core-10, không phải sandbox — dùng buying_power theo đúng lưu ý CLAUDE.md). total_value $5,741.66.
+- "Phần theo dõi" sandbox: buying_power $1,676.67 − $700 đệm = **~$976.67** (~139.5% mốc gốc $700) — không đổi so với lần check trước, chưa đạt ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: tiếp tục đứng ngoài, không vào lệnh mới — chưa có catalyst/đảo chiều đủ rõ ràng ở nhóm bitcoin-miner/AI-infra (tiếp tục giảm nhẹ, không hồi phục), HUT/WULF vẫn trong lệnh cấm wash-sale. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-17 ~12:09 ET (16:09 UTC) — Check định kỳ (không có vị thế, đã tìm tin tức do HUT/CIFR vượt ngưỡng, tiếp tục đứng ngoài)
+
+- Không có vị thế sandbox nào (xác nhận qua get_equity_positions — 7 vị thế đều thuộc core-10: AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL; không có HUT/WULF/mã sandbox khác). HUT vẫn cấm mua lại tới ~2026-08-15, WULF cấm mua lại tới ~2026-08-06 (wash-sale).
+- Giá nhóm bitcoin-miner/AI-infra (last_trade_price 16:09 UTC) vs previous close (Thu 07-16): HUT $93.75 vs $91.91 (+1.99%), WULF $17.98 vs $17.98 (0%), IREN $34.24 vs $34.83 (-1.69%), CIFR $17.53 vs $17.72 (-1.07%). So với lần check trước (11:09 ET): HUT $89.56→$93.75 (**+4.68%**), CIFR $16.81→$17.53 (**+4.28%**), WULF $17.545→$17.98 (+2.48%), IREN $33.39→$34.24 (+2.55%) — HUT và CIFR vượt ngưỡng 3-5%, đã tìm tin tức sâu.
+- Tin tức (WebSearch "Bitcoin miner AI datacenter stocks HUT CIFR IREN WULF news July 17 2026"): không có catalyst mới cụ thể cho hôm nay — toàn bộ kết quả là tin cũ đã biết (TeraWulf $19B Anthropic lease, Morgan Stanley PT WULF $41.50/CIFR $40.50, HUT +131% YTD, Freedom Capital nâng IREN). Đây là nhịp hồi phục kỹ thuật của cả nhóm sau đợt điều chỉnh sector-wide 2 ngày qua (crypto-sensitive hạ nhiệt), không phải catalyst mới đảo chiều hay xấu đi.
+  - Nguồn: [BeInCrypto](https://beincrypto.com/bitcoin-miner-stocks-ai-infrastructure-rally/), [Stocktwits](https://stocktwits.com/news-articles/markets/equity/morgan-stanley-big-upside-wulf-cifr-mara-bitcoin-miners/cZBNsvQRePW), [MarketBeat](https://www.marketbeat.com/articles/these-3-bitcoin-miner-stocks-are-riding-the-ai-data-center-boom/)
+- get_equity_orders từ 11:09 ET tới nay: rỗng — không có lệnh nào mới đặt.
+- Core-10 hiện tại (get_equity_positions): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL — không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $2,480.53, buying_power $1,676.67 (không đổi so với lần check trước). total_value $5,727.33.
+- "Phần theo dõi" sandbox: buying_power $1,676.67 − $700 đệm = **~$976.67** (~139.5% mốc gốc $700) — không đổi so với lần check trước, chưa đạt ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: tiếp tục đứng ngoài, không vào lệnh mới — hồi phục kỹ thuật không kèm catalyst mới đủ mạnh để xác nhận đảo chiều thesis, CIFR/IREN chưa có tín hiệu entry rõ ràng (chỉ mới hồi 1 phiên sau khi giảm sâu nhiều ngày), HUT/WULF vẫn trong lệnh cấm wash-sale. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-17 ~13:09 ET (17:09 UTC) — Check định kỳ (không có vị thế, tiếp tục đứng ngoài)
+
+- Không có vị thế sandbox nào (xác nhận qua get_equity_positions — 7 vị thế đều thuộc core-10: AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL; không có HUT/WULF/mã sandbox khác). HUT vẫn cấm mua lại tới ~2026-08-15, WULF cấm mua lại tới ~2026-08-06 (wash-sale).
+- Giá nhóm bitcoin-miner/AI-infra (last_trade_price 17:08 UTC) vs previous close (Thu 07-16): HUT $95.42 vs $91.91 (+3.82%), WULF $18.215 vs $17.98 (+1.31%), IREN $34.605 vs $34.83 (-0.65%), CIFR $17.82 vs $17.72 (+0.56%). So với lần check trước (12:09 ET, HUT $93.75, CIFR $17.53, WULF $17.98, IREN $34.24): HUT +1.78%, WULF +1.31%, IREN +1.07%, CIFR +1.65% — tất cả dưới ngưỡng 3-5% so với lần check trước, không tìm tin tức sâu (tiếp diễn nhịp hồi phục nhẹ đã biết, chưa phải diễn biến mới).
+- get_equity_orders từ 12:09 ET tới nay: rỗng — không có lệnh nào mới đặt.
+- Core-10 hiện tại (get_equity_positions): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL — không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $2,480.53, buying_power $1,676.67 (không đổi so với lần check trước). total_value $5,728.04.
+- "Phần theo dõi" sandbox: buying_power $1,676.67 − $700 đệm = **~$976.67** (~139.5% mốc gốc $700) — không đổi so với lần check trước, chưa đạt ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: tiếp tục đứng ngoài, không vào lệnh mới — nhịp hồi phục kỹ thuật tiếp diễn nhưng chậm lại, HUT +3.82% so với previous close nhưng chưa đủ mạnh/rõ ràng để coi là đảo chiều thesis xác nhận, và HUT vẫn trong lệnh cấm wash-sale nên không thể mua lại dù có tín hiệu. CIFR/IREN đi ngang quanh previous close, chưa có tín hiệu entry mới. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-17 ~14:08 ET (18:08 UTC) — Check định kỳ (không có vị thế, tiếp tục đứng ngoài)
+
+- Không có vị thế sandbox nào (xác nhận qua get_equity_positions — 7 vị thế đều thuộc core-10: AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL; không có HUT/WULF/mã sandbox khác). HUT vẫn cấm mua lại tới ~2026-08-15, WULF cấm mua lại tới ~2026-08-06 (wash-sale).
+- Giá nhóm bitcoin-miner/AI-infra (last_trade_price ~18:08 UTC) vs previous close (Thu 07-16): HUT $93.35 vs $91.91 (+1.57%), WULF $17.8901 vs $17.98 (-0.50%), IREN $33.925 vs $34.83 (-2.60%), CIFR $17.485 vs $17.72 (-1.33%). So với lần check trước (13:09 ET, HUT $95.42, WULF $18.215, IREN $34.605, CIFR $17.82): HUT -2.17%, WULF -1.79%, IREN -1.96%, CIFR -1.88% — tất cả dưới ngưỡng 3-5% so với lần check trước, không tìm tin tức sâu (nhịp hồi phục nhẹ hôm nay đang thoái lui một phần, chưa phải diễn biến mới cần đánh giá lại).
+- get_equity_orders từ 13:09 ET tới nay: rỗng — không có lệnh nào mới đặt.
+- Core-10 hiện tại (get_equity_positions): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL — không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $2,480.53, buying_power $1,676.67 (không đổi so với lần check trước). total_value $5,723.59.
+- "Phần theo dõi" sandbox: buying_power $1,676.67 − $700 đệm = **~$976.67** (~139.5% mốc gốc $700) — không đổi so với lần check trước, chưa đạt ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: tiếp tục đứng ngoài, không vào lệnh mới — nhóm bitcoin-miner/AI-infra đang thoái lui nhẹ sau nhịp hồi sáng nay, chưa có catalyst/đảo chiều đủ rõ ràng để cân nhắc entry mới ở IREN/CIFR (2 mã duy nhất ngoài lệnh cấm wash-sale), HUT/WULF vẫn trong lệnh cấm wash-sale. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-17 ~15:07 ET (19:07 UTC) — Check định kỳ (không có vị thế, tiếp tục đứng ngoài)
+
+- Không có vị thế sandbox nào (xác nhận qua get_equity_positions — 7 vị thế đều thuộc core-10: AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL; không có HUT/WULF/mã sandbox khác). HUT vẫn cấm mua lại tới ~2026-08-15, WULF cấm mua lại tới ~2026-08-06 (wash-sale).
+- Giá nhóm bitcoin-miner/AI-infra (last_trade_price ~19:07 UTC) vs previous close (Thu 07-16): HUT $91.39 vs $91.91 (-0.57%), WULF $17.82 vs $17.98 (-0.89%), IREN $33.49 vs $34.83 (-3.85%), CIFR $17.3439 vs $17.72 (-2.12%). So với lần check trước (14:08 ET, HUT $93.35, WULF $17.8901, IREN $33.925, CIFR $17.485): HUT -2.10%, WULF -0.39%, IREN -1.28%, CIFR -0.81% — tất cả dưới ngưỡng 3-5% so với lần check trước, không tìm tin tức sâu (tiếp diễn thoái lui nhẹ đã biết, chưa phải diễn biến mới cần đánh giá lại).
+- get_equity_orders từ 14:08 ET tới nay: rỗng — không có lệnh nào mới đặt.
+- Core-10 hiện tại (get_equity_positions): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL — không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $2,480.53, buying_power $1,676.67 (không đổi so với lần check trước). total_value $5,729.23.
+- "Phần theo dõi" sandbox: buying_power $1,676.67 − $700 đệm = **~$976.67** (~139.5% mốc gốc $700) — không đổi so với lần check trước, chưa đạt ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: tiếp tục đứng ngoài, không vào lệnh mới — cả nhóm tiếp tục thoái lui nhẹ trong biên dưới ngưỡng, chưa có catalyst/đảo chiều mới để cân nhắc entry ở IREN/CIFR (2 mã ngoài lệnh cấm wash-sale), HUT/WULF vẫn trong lệnh cấm wash-sale. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-17 ~16:08 ET (20:08 UTC) — Check định kỳ cuối phiên (không có vị thế, tiếp tục đứng ngoài)
+
+- Không có vị thế sandbox nào (xác nhận qua get_equity_positions — 7 vị thế đều thuộc core-10: AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL; không có HUT/WULF/mã sandbox khác). HUT vẫn cấm mua lại tới ~2026-08-15, WULF cấm mua lại tới ~2026-08-06 (wash-sale).
+- Giá đóng cửa nhóm bitcoin-miner/AI-infra (last_trade_price 19:59:5x UTC, ngay lúc đóng cửa) vs previous close (Thu 07-16): HUT $91.45 vs $91.91 (-0.50%), WULF $18.16 vs $17.98 (+1.00%), IREN $33.615 vs $34.83 (-3.49%), CIFR $17.55 vs $17.72 (-0.96%). So với lần check trước (15:07 ET, HUT $91.39, WULF $17.82, IREN $33.49, CIFR $17.3439): HUT +0.07%, WULF +1.91%, IREN +0.37%, CIFR +1.19% — tất cả dưới ngưỡng 3-5% so với lần check trước, không tìm tin tức sâu (đóng cửa gần như đi ngang so với lần check trước, không phải diễn biến mới).
+- get_equity_orders từ 15:07 ET tới nay: rỗng — không có lệnh nào mới đặt.
+- Core-10 hiện tại (get_equity_positions): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL — không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $2,480.53, buying_power $1,676.67 (không đổi so với lần check trước). total_value $5,724.61.
+- "Phần theo dõi" sandbox: buying_power $1,676.67 − $700 đệm = **~$976.67** (~139.5% mốc gốc $700) — không đổi so với lần check trước, chưa đạt ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: thị trường vừa đóng cửa (16:00 ET) gần như đi ngang so với lần check trước, không có catalyst mới, tiếp tục đứng ngoài — chuyển sang chế độ theo dõi qua đêm, chờ phiên kế tiếp để đánh giá lại cơ hội entry ở IREN/CIFR (2 mã ngoài lệnh cấm wash-sale) hoặc mã high-risk khác. Không gửi push notification riêng (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-20 ~09:12 ET (13:12 UTC) — Check đầu tuần, pre-market (cloud routine, tin tức mới đáng chú ý — IREN, chưa vào lệnh)
+
+- Không có vị thế sandbox nào (xác nhận qua get_equity_positions — 7 vị thế đều thuộc core-10: AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL; không có HUT/WULF/mã sandbox khác). HUT vẫn cấm mua lại tới ~2026-08-15, WULF vẫn cấm mua lại tới ~2026-08-06 (wash-sale).
+- Giá pre-market (last_non_reg_trade_price ~13:11-13:12 UTC) vs previous close (Fri 07-17): HUT $104.02 vs $91.45 (**+13.75%**), IREN $36.33 vs $33.62 (**+8.06%**), CIFR $18.79 vs $17.56 (**+7.00%**), WULF $19.064 vs $18.16 (**+4.98%**) — toàn nhóm vượt xa ngưỡng 3-5%, tìm tin tức sâu.
+- **Tin tức:** đợt tăng có catalyst công ty cụ thể, không chỉ nhiễu sector-wide:
+  - **IREN** (đáng chú ý nhất — KHÔNG bị cấm wash-sale): công bố ký hợp đồng cloud mới trị giá **$2.8 tỷ**, nâng mục tiêu ARR AI Cloud cuối năm 2026 lên **>$4 tỷ** (từ $3.7 tỷ trước đó); riêng tin này đã đẩy giá +9-10% pre-market. Thêm tin IREN là ứng viên chính cho gói thầu data center của Anthropic tại Úc (theo Benzinga). Đây là catalyst nội tại công ty, tương tự chất lượng với tin Anthropic $19B từng đẩy WULF hôm 07-06.
+  - **HUT**: không tìm thấy tin mới cụ thể hôm nay giải thích mức tăng +13.75% — có thể một phần là hồi kỹ thuật/theo nhóm sau khi có tin IREN, nhưng biên độ lớn bất thường nên cần xác nhận thêm khi phiên chính mở cửa (thanh khoản pre-market mỏng có thể khiến % biến động bị phóng đại).
+  - CIFR/WULF: tăng theo nhóm, không có catalyst riêng mới được tìm thấy.
+  - Nguồn: [Benzinga — IREN premarket surge](https://www.benzinga.com/trading-ideas/movers/26/07/60274417/anthropics-australian-data-center-tender-puts-iren-among-key-contenders-report), [Seeking Alpha — IREN $2.8B contracts](https://seekingalpha.com/news/4615207-iren-surges-after-signing-28b-contracts-raising-2026-arr-target), [MarketBeat — HUT PT $165](https://www.marketbeat.com/stocks/NASDAQ/HUT/)
+- **Quyết định:** CHƯA vào lệnh IREN dù catalyst thuyết phục. Lý do: (1) đang pre-market (~18 phút trước giờ mở cửa 9:30 ET), thanh khoản mỏng, spread bid/ask rộng ($36.32/$36.40), giá pre-market dễ bị nhiễu; (2) giá đã tăng ~8-10% trước khi có thể vào lệnh — cần xác nhận đà tăng giữ được khi phiên chính thức mở và có volume thật, tránh mua đúng đỉnh pre-market rồi bị "sell the news" ngay đầu phiên (mẫu hình đã từng thấy với HUT hôm 07-08, lúc đó chờ xác nhận ở phiên chính mới vào lệnh lúc 10:09 ET). Sẽ đánh giá lại IREN ở lần check tiếp theo (~1 giờ nữa, sau khi phiên chính đã mở ổn định) — nếu đà tăng giữ vững kèm volume xác nhận, cân nhắc mở vị thế mới bằng ~$450-500 (trong ngân sách $700 gốc).
+- get_equity_orders từ 07-17 16:08 ET tới nay: rỗng — không có lệnh nào mới đặt qua cuối tuần.
+- Core-10 hiện tại (get_equity_positions): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL — không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $2,480.53, buying_power $2,480.53 (tăng từ $1,676.67 lần check trước — chênh lệch cash/buying_power cũ đã settle qua cuối tuần, KHÔNG phải giao dịch sandbox mới). total_value $5,722.44.
+- **Lưu ý về "phần theo dõi":** công thức buying_power − $700 giờ cho ra ~$1,780.53, cao hơn nhiều so với lần trước (~$976.67) — nhưng đây là do phần cash core-10 vừa settle xong (pool dùng chung), KHÔNG phải sandbox tăng giá trị thật. Sandbox hiện 100% cash, không có vị thế nào — không có gì để "gấp đôi" thật sự, nên KHÔNG áp dụng circuit breaker chốt lời ở đây (đúng lưu ý CLAUDE.md: kiểm tra buying_power thực tế, không giả định). Không gần $0 (dừng hẳn) cũng không áp dụng vì đây là cash rảnh chưa đầu tư, không phải lỗ.
+- Không gửi push notification cho quyết định "chưa vào lệnh" này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log. Sẽ đánh giá và có thể gửi push nếu vào lệnh IREN ở lần check tiếp theo.
+
+## 2026-07-20 ~10:13 ET (14:13 UTC) — Check định kỳ, MUA IREN (đà tăng xác nhận với volume thật ở phiên chính)
+
+- Vị thế trước lệnh: không có vị thế sandbox nào (7 vị thế đều thuộc core-10: AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL). HUT vẫn cấm mua lại tới ~2026-08-15, WULF cấm mua lại tới ~2026-08-06 (wash-sale) — cả hai bị loại khỏi danh sách entry dù đang tăng mạnh nhất nhóm.
+- Giá tại thời điểm check (14:11-14:13 UTC, ~41 phút sau khi mở cửa phiên chính) vs previous close (Fri 07-17): HUT $105.16 vs $91.45 (+15.0%), IREN $38.90 vs $33.62 (+15.7%), CIFR $19.71 vs $17.56 (+12.2%), WULF $19.22 vs $18.16 (+5.9%) — tăng mạnh hơn nhiều so với ước tính pre-market lúc 09:12 ET, đã tìm tin tức sâu để xác nhận catalyst và độ tin cậy trước khi vào lệnh.
+- **Tin tức xác nhận catalyst mạnh, không phải nhiễu:**
+  - **HUT**: ký hợp đồng thuê 15 năm trị giá **$9.8 tỷ** cho giai đoạn 2 campus Beacon Point (Texas) — thêm 352MW Nvidia-based AI capacity, cùng tenant đầu tư-cấp với giai đoạn 1, nâng tổng cam kết tenant lên 704MW, tổng giá trị hợp đồng campus lên $19.6B. HUT có lúc chạm $104.51. Nguồn: [CoinDesk](https://www.coindesk.com/business/2026/07/20/hut-8-surges-on-usd9-8-billion-ai-data-center-lease-lifting-compute-sector).
+  - **IREN**: hợp đồng cloud mới $2.8 tỷ với khách hàng gồm Microsoft, Nvidia, Perplexity, Figure AI, Together AI, Fluidstack, Fireworks AI, Hume AI — nâng mục tiêu ARR cuối 2026 lên >$4B (từ $3.7B), ~85% mục tiêu ARR đã có hợp đồng, các hợp đồng mới có prepayment khách hàng che ~45% capex GPU (giảm rủi ro tài trợ/dilution — đúng lo ngại từng khiến IREN giảm 22% trong 7 phiên trước đó 07-09→07-17). Nguồn: [Seeking Alpha](https://seekingalpha.com/news/4615207-iren-surges-after-signing-28b-contracts-raising-2026-arr-target), [Benzinga](https://www.benzinga.com/trading-ideas/movers/26/07/60274417/anthropics-australian-data-center-tender-puts-iren-among-key-contenders-report).
+  - CIFR/WULF tăng theo hiệu ứng sector-wide (CoinShares Bitcoin Miners ETF +9.3%), không có catalyst riêng mới.
+  - Đây là tin tức công ty cụ thể (hợp đồng/doanh thu thật), không phải suy đoán/tâm lý — đáp ứng tiêu chí "catalyst rõ ràng" đã đặt ra ở lần check trước.
+- **Xác nhận volume/đà tăng thật (không phải phóng đại do thanh khoản mỏng pre-market):** kiểm tra 5-phút bars phiên chính (13:30-14:05 UTC) cho IREN và CIFR — cả hai đi lên đều đặn với volume ổn định mỗi nến (IREN: 1.0-2.6M cp/nến; CIFR: 240K-1.1M cp/nến), giá consolidate gần đỉnh phiên chứ không phải spike-rồi-tụt (không có dấu hiệu "sell the news"). Spread bid/ask hẹp (IREN $38.77/$38.79). Đáp ứng điều kiện tự đặt ra ở lần check 09:12 ET: "nếu đà tăng giữ vững kèm volume xác nhận, cân nhắc mở vị thế mới".
+- **Quyết định: MUA 15 cổ phiếu IREN** (nguyên cổ phiếu, để đặt được stop-loss tự động) bằng lệnh market — chọn IREN thay vì CIFR vì IREN có catalyst nội tại công ty rõ ràng nhất (hợp đồng $2.8B + nâng guidance ARR trực tiếp của chính IREN, không chỉ hưởng lây sector-wide như CIFR), đồng thời không dính wash-sale (khác HUT/WULF).
+  - Lệnh mua: filled @ avg $38.7499/cp × 15 = **$581.25** (order id `6a5e2cf8-6dda-480c-a5d1-f56e9db44ca4`).
+  - Stop-loss đặt ngay: stop_market GTC @ **$35.65** (-8.0% từ giá vào, phù hợp mức mở rộng cho nhóm biến động cao theo CLAUDE.md, đồng nhất với mức đã dùng cho HUT trước đây) — order id `6a5e2d0e-c7ff-4246-8d69-d7a531e5f0de`, state `unconfirmed` lúc đặt (chờ xác nhận ở lần check sau).
+  - Chốt lời tham khảo (theo dõi thủ công, không đặt lệnh tự động, giống cách làm với HUT trước đây): mục tiêu ~+16-20% từ giá vào (~$45.00-$46.50), tối thiểu risk/reward 1:2 so với stop-loss.
+- get_equity_orders từ 09:12 ET tới nay (trước 2 lệnh mới): rỗng.
+- Core-10 hiện tại (get_equity_positions): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL — không có mã lạ, không chạm vào.
+- Tài khoản sau lệnh (qua get_portfolio): cash $1,899.28, buying_power $1,899.28. total_value $5,723.94.
+- **"Phần theo dõi" sandbox:** (buying_power $1,899.28 − $700 đệm) + giá trị vị thế IREN (15×$38.75≈$581.25) = $1,199.28 + $581.25 = **~$1,780.53** (~254.4% mốc gốc $700 — nhưng như đã lưu ý lần trước, phần lớn con số buying_power cao này đến từ cash core-10 vừa settle qua cuối tuần trong pool dùng chung, KHÔNG phải lợi nhuận sandbox thật). Vốn sandbox thật sự đang dùng cho vị thế mới chỉ $581.25 trong ngân sách $700 gốc — chưa đạt ngưỡng chốt lời x2 và không gần $0. Không có circuit breaker nào kích hoạt.
+- **Gửi PushNotification** cho lần này vì đây là thay đổi thật (mở vị thế mới + đặt stop-loss), theo đúng quy định CLAUDE.md.
+
+## 2026-07-20 ~11:05 ET (15:05 UTC) — Đồng bộ git giữa 2 phiên (yêu cầu Hogan)
+
+- Phát hiện phiên tương tác này (chat) và phiên cloud routine tự động đã phân kỳ lịch sử git (40 commit khác nhau kể từ `53e2e8d`). Đối chiếu nội dung: các entry 07-15 → 07-20 phía routine (vừa merge ở trên) là bản ghi gốc real-time đầy đủ; phần entry cùng giai đoạn phía phiên chat (bản tóm tắt "đồng bộ log" + entry ghi bù giao dịch IREN) chỉ là bản dựng lại **sau đó** từ dữ liệu lệnh, kém chi tiết hơn và trùng lặp — đã loại bỏ khi merge, giữ lại bản gốc của routine phía trên.
+- Giao dịch IREN (mua 15cp @ $38.7499, stop-loss @ $35.65, 2026-07-20 14:13 UTC) đã có log gốc đầy đủ từ routine (entry `2026-07-20 ~10:13 ET`) — không cần ghi bù, thắc mắc trước đó về "giao dịch chưa log" đã được giải đáp.

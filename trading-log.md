@@ -746,83 +746,303 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
 
-## 2026-07-15 ~14:37 ET (18:37 UTC) — Đồng bộ log (yêu cầu Hogan)
+## 2026-07-14 ~15:31 ET (19:31 UTC) — Check-in định kỳ
 
-- Đối chiếu qua get_equity_positions/get_equity_orders: vị thế 10 mã core không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV), không có lệnh mới nào kể từ lần check cuối (07-14 ~13:10 UTC) tới nay. Khớp hoàn toàn với log.
+- Vị thế 10 mã core hiện tại xác nhận qua get_equity_positions: SERV, SOUN, AAPL, GOOGL, AMZN, MSFT, JNJ, KO, VOO, RSP (đủ 10 mã, đúng cơ cấu). HUT (5 cp) vẫn xuất hiện — thuộc sandbox, ghi riêng ở `sandbox-log.md`.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-13):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $315.57 | +2.49% | -0.55% |
+  | AMZN | $243.78 | $247.85 | +1.67% | +0.22% |
+  | SOUN | $6.59 | $6.70 | +1.67% | **+3.24%** |
+  | SERV | $5.72 | $5.79 | +1.22% | 0.00% |
+  | VOO | $688.26 | $691.05 | +0.41% | +0.37% |
+  | KO | $84.10 | $83.48 | -0.74% | -0.91% |
+  | RSP | $214.93 | $213.34 | -0.74% | -0.42% |
+  | MSFT | $386.75 | $385.79 | -0.25% | -1.33% |
+  | GOOGL | $361.40 | $359.40 | -0.56% | +1.95% |
+  | JNJ | $260.69 | $253.40 | -2.80% | -1.70% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%).
+- SOUN +3.24% trong ngày, vượt ngưỡng 3% nên đã tìm tin tức: không có catalyst mới — tiếp tục là dư âm của tin S-4 filing (hiệu lực 07-09) và Gartner Magic Quadrant Leader (07-13) đã ghi nhận ở các entry trước. Không có tin xấu, không đủ điều kiện đề xuất theo CLAUDE.md.
+  - Nguồn: [SoundHound AI S-4 Filing And Platform Push — Foreign Policy Journal](https://www.foreignpolicyjournal.com/2026/07/13/soundhound-ai-nasdaq-soun-s-4-filing-and-platform-push-signal-major-strategic-shift-for-shareholders/)
+- JNJ -2.80% so với vốn, xu hướng giảm tiếp diễn — nhắc lại: **JNJ báo cáo lợi nhuận Q2 2026 vào ngày mai (2026-07-15)**, cần theo dõi sát phản ứng giá ở lần check-in kế tiếp sau khi earnings công bố.
+- 4 mã large-cap tech: GOOGL dẫn đầu ngày (+1.95%), MSFT giảm nhẹ nhất (-1.33%) — biến động bình thường, không có vấn đề hiệu suất so với NDX.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-15 ~9:46 ET (13:46 UTC) — Check-in định kỳ (mở phiên, JNJ báo cáo Q2 2026)
+
+- Vị thế 10 mã core hiện tại xác nhận qua get_equity_positions: SERV, SOUN, AAPL, GOOGL, AMZN, MSFT, JNJ, KO, VOO, RSP (đủ 10 mã, đúng cơ cấu 2 rủi ro cao / 4 tech / 2 blue-chip / 2 ETF). HUT (5 cp) vẫn xuất hiện — thuộc sandbox, ghi riêng ở `sandbox-log.md`, không thuộc core 10.- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-14):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $321.64 | +4.46% | +2.15% |
+  | AMZN | $243.78 | $251.08 | +3.00% | +1.45% |
+  | SERV | $5.72 | $5.845 | +2.18% | +0.43% |
+  | VOO | $688.26 | $693.10 | +0.70% | +0.29% |
+  | GOOGL | $361.40 | $364.20 | +0.77% | +1.30% |
+  | MSFT | $386.75 | $387.50 | +0.19% | +0.67% |
+  | SOUN | $6.59 | $6.545 | -0.68% | -2.17% |
+  | RSP | $214.93 | $213.378 | -0.72% | -0.03% |
+  | KO | $84.10 | $82.705 | -1.66% | -0.45% |
+  | JNJ | $260.69 | $254.57 | -2.35% | +0.28% |
+
+- **JNJ báo cáo Q2 2026 sáng nay:** EPS $2.90 (vượt ước tính $2.85), doanh thu $25.3B (vượt ước tính), **nâng guidance FY2026** lên EPS $11.60-$11.75 (so với consensus $11.57) và doanh thu $100.8B-$101.4B — trên đà đạt mốc doanh thu >$100B lần đầu tiên trong lịch sử 140 năm công ty, động lực chính từ mảng dược phẩm (Tremfya, Darzalex). Phản ứng giá chỉ +0.28% trong ngày — kết quả tốt nhưng có vẻ đã phần nào được phản ánh trước (định giá đã bị Morningstar coi là overvalued ở lần check-in trước). Đây là tin tích cực, không phải tín hiệu xấu về cơ bản — không đủ điều kiện đề xuất bán theo CLAUDE.md; ngược lại củng cố luận điểm giữ JNJ dù đang lỗ nhẹ so với giá vốn (-2.35%, chưa chạm ngưỡng cắt lỗ -5%).
+  - Nguồn: [Johnson & Johnson Q2 Earnings: Sales $25.3B, Outlook Raised — StockTitan](https://www.stocktitan.net/news/JNJ/johnson-johnson-reports-q2-2026-results-raises-2026-b50atm4ecwl7.html), [JNJ 8-K — SEC](https://www.sec.gov/Archives/edgar/data/0000200406/000020040626000146/a2026q2exhibit991.htm)
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). Biến động trong ngày của các mã còn lại đều dưới ngưỡng 3-5% nên không cần tìm tin tức sâu thêm.
+- 4 mã large-cap tech đều tăng (AAPL dẫn đầu +2.15%), không có vấn đề hiệu suất so với benchmark.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-15 ~13:10 ET (17:10 UTC) — Check-in định kỳ (giữa phiên, sau công bố Q2 JNJ)
+
+- Vị thế 10 mã core hiện tại xác nhận qua get_equity_positions: SERV, SOUN, AAPL, GOOGL, AMZN, MSFT, JNJ, KO, VOO, RSP (đủ 10 mã, đúng cơ cấu). HUT (5 cp) vẫn xuất hiện — thuộc sandbox, ghi riêng ở `sandbox-log.md`.
 - P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-14):
 
   | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
   |---|---|---|---|---|
-  | AAPL | $307.90 | $327.745 | **+6.45%** | **+4.09%** |
-  | AMZN | $243.78 | $254.81 | +4.52% | +2.96% |
-  | GOOGL | $361.40 | $372.17 | +2.98% | **+3.52%** |
-  | MSFT | $386.75 | $396.7651 | +2.59% | **+3.07%** |
-  | VOO | $688.26 | $693.5701 | +0.77% | +0.36% |
-  | SERV | $5.72 | $5.775 | +0.96% | -0.77% |
-  | SOUN | $6.59 | $6.545 | -0.68% | -2.17% |
-  | RSP | $214.93 | $213.10 | -0.85% | -0.16% |
-  | KO | $84.10 | $82.7199 | -1.64% | -0.43% |
-  | JNJ | $260.69 | $248.30 | **-4.75%** | -2.19% |
+  | AAPL | $307.90 | $326.975 | **+6.20%** | +3.85% |
+  | AMZN | $243.78 | $255.11 | +4.65% | +3.08% |
+  | GOOGL | $361.40 | $372.185 | +2.98% | +3.53% |
+  | MSFT | $386.75 | $395.43 | +2.24% | +2.73% |
+  | SERV | $5.72 | $5.755 | +0.61% | -1.12% |
+  | VOO | $688.26 | $691.365 | +0.45% | +0.04% |
+  | RSP | $214.93 | $212.88 | -0.95% | -0.27% |
+  | SOUN | $6.59 | $6.505 | -1.29% | -2.77% |
+  | KO | $84.10 | $83.10 | -1.19% | +0.02% |
+  | JNJ | $260.69 | $250.515 | -3.90% | -1.31% |
 
-- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). **JNJ ở -4.75%, gần sát ngưỡng cắt lỗ -5%** — đây là vị thế fractional, KHÔNG có stop-loss tự động (theo dõi thủ công theo kế hoạch ban đầu), cần theo dõi sát lần check-in tiếp theo.
-- Đã tìm tin tức JNJ (đúng ngày công bố earnings Q2 2026 như đã lưu ý 07-09): JNJ báo cáo **beat-and-raise** — EPS adjusted $2.90 (vượt ước tính $2.86), doanh thu $25.3B (+6.6% YoY, vượt ước tính $25.02B), nâng guidance FY26 adjusted EPS lên $11.68 (+8.2%), doanh thu FY26 dự kiến vượt $100B lần đầu tiên trong lịch sử 140 năm công ty. Đánh giá: tin tức cơ bản TÍCH CỰC, không phải suy giảm — mức giảm giá hôm nay nhiều khả năng là chốt lời sau định giá cao (Morningstar từng hạ 1-star, overvalued — đã ghi nhận 07-09) chứ không phải phản ứng tiêu cực với báo cáo. Không đủ điều kiện đề xuất cắt lỗ/thay mã theo CLAUDE.md (không phải fundamentals xấu đi/tin xấu), nhưng do gần ngưỡng -5% và không có stop tự động, sẽ theo dõi chặt ở lần check tiếp theo.
-  - Nguồn: [JNJ Q2 2026 Earnings Press Release — jnj.com](https://www.jnj.com/media-center/press-releases/johnson-johnson-reports-q2-2026-results-raises-2026-outlook), [Blockonomi — JNJ Q2 2026 Earnings Preview](https://blockonomi.com/johnson-johnson-jnj-q2-2026-earnings-preview-analyst-expectations-and-stock-outlook/)
-- 4 mã large-cap tech đồng loạt tăng mạnh (AAPL +4.09%, GOOGL +3.52%, MSFT +3.07%, AMZN +2.96%), vượt ngưỡng 3-5% nên đã tìm bối cảnh chung: thị trường tăng nhờ CPI tháng 6 hạ nhiệt (headline CPI -0.4% MoM, thấp hơn ước tính), củng cố kỳ vọng Fed giữ nguyên lãi suất — Nasdaq +0.9%, S&P 500 +0.4%, riêng nhóm Information Technology (XLK) +1.3%. Đây là rally toàn thị trường/ngành, không phải tin riêng từng mã — không cần hành động, chỉ ghi nhận outperform so với benchmark.
-  - Nguồn: [TradingKey — CPI Cooling Ignites AI Tech Stock Rally](https://www.tradingkey.com/analysis/stocks/us-stocks/262030310-cooling-cpi-fuels-rally-ai-tech-stocks-nvidia-micron-amd-tradingkey), [24/7 Wall St — Markets Advance on Cooling Inflation](https://247wallst.com/investing/2026/07/15/live-nasdaq-composite-markets-advance-on-cooling-inflation-chip-earnings-tailwinds/)
-- **Tài khoản (Agentic ••••0133):** total_value $5,917.64, equity_value $5,153.74, cash/buying_power $763.90 (khớp, đã settle đầy đủ, pending_deposits $0).
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). AAPL dẫn đầu P&L (+6.20%) nhưng chưa tới ngưỡng chốt lời.
+- 4 mã large-cap tech đều tăng mạnh trong ngày (AAPL +3.85%, GOOGL +3.53%, AMZN +3.08%, MSFT +2.73%) — phiên tăng chung nhóm tech, không có vấn đề hiệu suất.
+- **JNJ sau công bố Q2 2026 sáng nay** (EPS $2.90 vượt ước tính, doanh thu $25.3B vượt ước tính, nâng guidance FY26): cổ phiếu tiếp tục giảm nhẹ trong phiên (-1.31%, chuyển từ +0.28% lúc mở phiên sang âm), dưới ngưỡng cần tìm tin tức sâu (3-5%) nhưng đã tra thêm để xác nhận không có diễn biến bất thường — kết quả kinh doanh mạnh nhưng phần lớn đã được phản ánh trước vào giá (traders kỳ vọng biến động ~3.65% quanh mức consensus $2.85 EPS đã đạt được), phù hợp nhận định "sell the news"/chốt lời sau đà tăng nóng (Morningstar coi overvalued) đã ghi nhận từ các lần check trước — không phải tin xấu về cơ bản. P&L hiện -3.90%, vẫn cách ngưỡng cắt lỗ -5% một khoảng an toàn (~$2.75/cp).
+  - Nguồn: [Johnson & Johnson Q2 Earnings: Sales $25.3B, Outlook Raised — StockTitan](https://www.stocktitan.net/news/JNJ/johnson-johnson-reports-q2-2026-results-raises-2026-b50atm4ecwl7.html), [JNJ 8-K — SEC](https://www.sec.gov/Archives/edgar/data/0000200406/000020040626000146/a2026q2exhibit991.htm)
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
-- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification (JNJ chưa chạm ngưỡng -5%, chỉ cần theo dõi sát, chưa phải circuit breaker).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
 
-## 2026-07-16 ~15:27 ET (19:27 UTC) — SERV stop-loss kích hoạt, cần đề xuất thay thế
+## 2026-07-15 ~15:31 ET (19:31 UTC) — Check-in định kỳ (cuối phiên)
 
-- Lệnh stop-loss SERV (đặt tại $5.26) đã khớp lúc 15:27:52 ET (19:27:52 UTC): bán 87 cp @ giá trung bình $5.2684 (tổng $458.35, phí $0.01). Giá vốn $5.7199 → lỗ -7.86%/cp, đúng theo cấu hình cắt lỗ -8% đã đặt khi mua ngày 07-13.
-- Đây là lần thứ 3 nhóm rủi ro cao bị cắt lỗ liên tiếp trong ~10 ngày (IONQ 07-07 → QBTS 07-13 → SERV 07-16), cả 3 đều thuộc các ngành tăng trưởng cao biến động mạnh (quantum computing, robotics).
-- Đã thử tìm lựa chọn thay thế cùng nhóm rủi ro cao: **ASTS (1 trong 2 lựa chọn từng đề xuất cho lần thay QBTS, chưa từng mua) hiện KHÔNG phù hợp** — cổ phiếu vừa giảm -15.5% hôm nay 07-16 do công ty phát hành $1B convertible notes (lo ngại pha loãng cổ phần) và dời lịch phóng vệ tinh BlueBird sang đầu 2027; đã giảm ~60% từ đỉnh cuối tháng 5. Không đề xuất mua vào lúc này.
-- Chưa tìm được lựa chọn thứ 2 đủ chất lượng (tránh trùng ngành đã cháy 2 lần — quantum/robotics) trong lần kiểm tra này — không ép chọn đại một mã, sẽ cần nghiên cứu thêm và trình đề xuất riêng (tối thiểu 2 lựa chọn) khi có.
-- Vốn từ SERV ($458.35) hiện đang chờ settle (~07-17), tạm thời nằm ngoài buying power đã settle ($763.90 hiện tại chưa phản ánh).
-- **Vị thế còn lại (9/10 mã, tạm thời thiếu 1 slot rủi ro cao):** xem bảng P&L bên dưới.
+- Vị thế 10 mã core hiện tại xác nhận qua get_equity_positions: SERV, SOUN, AAPL, GOOGL, AMZN, MSFT, JNJ, KO, VOO, RSP (đủ 10 mã, đúng cơ cấu 2 rủi ro cao / 4 tech / 2 blue-chip / 2 ETF). HUT (5 cp) vẫn xuất hiện — thuộc sandbox, ghi riêng ở `sandbox-log.md`.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-14):
 
-## 2026-07-16 ~16:52 ET (20:52 UTC) — Check-in định kỳ (đối soát sau stop-loss SERV)
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $326.65 | **+6.09%** | +3.75% |
+  | AMZN | $243.78 | $253.995 | +4.19% | +2.63% |
+  | GOOGL | $361.40 | $370.08 | +2.40% | +2.94% |
+  | MSFT | $386.75 | $395.69 | +2.31% | +2.80% |
+  | VOO | $688.26 | $692.95 | +0.68% | +0.27% |
+  | SERV | $5.72 | $5.7415 | +0.38% | -1.35% |
+  | SOUN | $6.59 | $6.53 | -0.91% | -2.39% |
+  | RSP | $214.93 | $212.945 | -0.92% | -0.24% |
+  | KO | $84.10 | $82.485 | -1.92% | -0.72% |
+  | JNJ | $260.69 | $248.575 | **-4.65%** | -2.08% |
 
-- Vị thế 10 mã core hiện tại (9/10, SERV vừa bị stop-loss chiều nay): AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN. HUT không thuộc core-10 (sandbox, cũng vừa bị stop-loss trưa nay, ghi ở `sandbox-log.md`).
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%) — nhưng **JNJ đã tới rất gần ngưỡng cắt lỗ -5% cho nhóm blue-chip** (hiện -4.65%). Lưu ý quan trọng: JNJ là vị thế **fractional (1.918 cp)**, KHÔNG có lệnh stop-loss tự động — theo CLAUDE.md cần theo dõi thủ công. Đã tìm tin tức để xác nhận không có catalyst tiêu cực mới kể từ báo cáo Q2 sáng nay: đà giảm tiếp diễn là "sell the news"/chốt lời sau đợt tăng giá trước đó dù kết quả kinh doanh vượt kỳ vọng (EPS +1.59%, doanh thu +0.99% so với ước tính) và nâng guidance FY26 — không phải suy giảm cơ bản. Do CHƯA chạm ngưỡng -5% và không có tin xấu mới, chưa đủ điều kiện đề xuất bán theo CLAUDE.md lần này — nhưng cần ưu tiên kiểm tra JNJ kỹ ở lần check-in tiếp theo vì không có stop tự động bảo vệ.
+  - Nguồn: [Johnson & Johnson (JNJ) Declines More Than Market — Zacks](https://www.zacks.com/stock/news/2950529/johnson-johnson-jnj-declines-more-than-market-some-information-for-investors), [JNJ Stock Slides as Market Rises — Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/johnson-johnson-jnj-stock-slides-214503956.html)
+- 4 mã large-cap tech đều tăng mạnh trong ngày (AAPL +3.75%, GOOGL +2.94%, MSFT +2.80%, AMZN +2.63%) — phiên tăng chung nhóm tech rất tốt, không có vấn đề hiệu suất.
+- AAPL dẫn đầu P&L danh mục (+6.09%) nhưng vẫn cách xa ngưỡng chốt lời (+10-20% cho nhóm tech).
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
+- **Không có đề xuất mới lần kiểm tra này** — JNJ cần theo dõi sát ở lần check-in kế tiếp do gần ngưỡng cắt lỗ và không có stop tự động — không gửi PushNotification (chưa có hành động/quyết định cần Hogan duyệt).
+
+## 2026-07-16 ~9:46 ET (13:46 UTC) — Check-in định kỳ (mở phiên)
+
+- Vị thế 10 mã core hiện tại xác nhận qua get_equity_positions: SERV, SOUN, AAPL, GOOGL, AMZN, MSFT, JNJ, KO, VOO, RSP (đủ 10 mã, đúng cơ cấu 2 rủi ro cao / 4 tech / 2 blue-chip / 2 ETF). HUT (5 cp) vẫn xuất hiện — thuộc sandbox, ghi riêng ở `sandbox-log.md`.
+- Tài khoản (Agentic ••••0133): total_value $5,861.58, equity_value $5,097.68, cash/buying power $763.90, pending_deposits $0.- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-15):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $328.7815 | **+6.78%** | +0.39% |
+  | AMZN | $243.78 | $253.95 | +4.17% | -0.40% |
+  | GOOGL | $361.40 | $370.0786 | +2.40% | -0.23% |
+  | MSFT | $386.75 | $393.53 | +1.75% | -0.53% |
+  | VOO | $688.26 | $690.59 | +0.34% | -0.46% |
+  | KO | $84.10 | $84.6405 | +0.64% | **+2.66%** |
+  | RSP | $214.93 | $214.36 | -0.27% | +0.65% |
+  | JNJ | $260.69 | $250.60 | -3.87% | +1.45% |
+  | SOUN | $6.59 | $6.355 | -3.57% | -2.23% |
+  | SERV | $5.72 | $5.5286 | -3.35% | -3.86% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). **JNJ đã hạ nhiệt rõ rệt so với lần check cuối 07-15** (-4.65% → -3.87%), phục hồi +1.45% trong ngày hôm nay — không còn cận kề ngưỡng cắt lỗ -5% như tối qua, nhưng vẫn là vị thế fractional không có stop tự động nên tiếp tục theo dõi thủ công ở các lần check tới.
+- KO +2.66% trong ngày (gần ngưỡng 3%, đã tìm tin tức để chắc chắn): không có tin tiêu cực — ngược lại 2 catalyst tích cực mới: BofA nâng target giá lên $95 (từ $90, giữ Buy), Citi nâng target lên $97 (từ $91, 13/07). Cổ phiếu đang ở vùng cao nhất kể từ 1976. Đánh giá: đà tăng có nền tảng (upgrade phân tích, Q1 organic revenue +10%), không phải nhiễu ngắn hạn — không cần hành động (đã có sẵn vị thế, không phải tín hiệu bán). Lưu ý: KO công bố KQKD Q2 2026 vào 2026-07-28.
+  - Nguồn: [Coca-Cola KO analyst ratings — Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/coca-cola-company-ko-good-163243200.html), [KO News — MarketBeat](https://www.marketbeat.com/stocks/NYSE/KO/news/)
+- SERV -3.86% trong ngày (mức giảm nhiều nhất, vượt ngưỡng 3-5% nên đã tìm tin tức): không có catalyst tiêu cực cụ thể mới — tiếp tục là xu hướng giảm chung của nhóm growth/micro-cap (SERV đã giảm ~25.3% trong 3 tháng qua), không có 8-K/tin xấu riêng. Doanh thu Q1 2026 vẫn +578% YoY, guidance FY26 $26M được giữ nguyên. Đánh giá: biến động chung nhóm đầu cơ, không phải suy giảm cơ bản — không đủ điều kiện đề xuất theo CLAUDE.md. Còn cách xa ngưỡng stop-loss -8% ($5.26 so với giá hiện tại $5.53).
+  - Nguồn: [Serve Robotics news — Yahoo Finance](https://finance.yahoo.com/quote/SERV/news/), [SERV News — MarketBeat](https://www.marketbeat.com/stocks/NASDAQ/SERV/news/)
+- QQQ hôm nay -1.31% (717.74 → 708.34) — cả 4 mã large-cap tech (AAPL +0.39%, GOOGL -0.23%, AMZN -0.40%, MSFT -0.53%) đều **outperform** benchmark rõ rệt, không có vấn đề hiệu suất.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-16 ~13:10 ET (17:10 UTC) — Check-in định kỳ (giữa phiên)
+
+- Vị thế 10 mã core hiện tại xác nhận qua get_equity_positions: SERV, SOUN, AAPL, GOOGL, AMZN, MSFT, JNJ, KO, VOO, RSP (đủ 10 mã, đúng cơ cấu 2 rủi ro cao / 4 tech / 2 blue-chip / 2 ETF). Không thấy vị thế HUT sandbox lần này (có thể đã đóng — xem `sandbox-log.md`, ngoài phạm vi báo cáo này).
 - P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-15):
 
   | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
   |---|---|---|---|---|
-  | AAPL | $307.90 | $332.85 | +8.10% | +1.63% |
-  | MSFT | $386.75 | $400.3769 | +3.52% | +1.20% |
-  | AMZN | $243.78 | $250.00 | +2.55% | -1.95% |
-  | VOO | $688.26 | $689.29 | +0.15% | -0.65% |
-  | RSP | $214.93 | $214.89 | -0.02% | +0.90% |
-  | KO | $84.10 | $83.9912 | -0.13% | +1.87% |
-  | GOOGL | $361.40 | $356.10 | -1.47% | -4.00% |
-  | JNJ | $260.69 | $250.8211 | -3.79% | +1.54% |
-  | SOUN | $6.59 | $6.3003 | -4.39% | -3.07% |
+  | AAPL | $307.90 | $332.11 | **+7.87%** | +1.41% |
+  | AMZN | $243.78 | $256.055 | +5.04% | +0.43% |
+  | MSFT | $386.75 | $402.02 | +3.95% | +1.61% |
+  | GOOGL | $361.40 | $371.395 | +2.77% | +0.13% |
+  | VOO | $688.26 | $691.93 | +0.53% | -0.27% |
+  | KO | $84.10 | $84.465 | +0.43% | +0.44% |
+  | RSP | $214.93 | $214.63 | -0.14% | +0.78% |
+  | JNJ | $260.69 | $248.50 | -4.68% | -0.66% |
+  | SERV | $5.72 | $5.405 | -5.51% | **-6.00%** |
+  | SOUN | $6.59 | $6.2528 | -5.11% | **-3.80%** |
 
-- Không mã nào chạm ngưỡng cắt lỗ/chốt lời (ngoài SERV đã xử lý ở trên). GOOGL giảm -4.00% trong ngày (vượt ngưỡng 3-5%, đã tìm tin tức): không có tin xấu mới riêng hôm nay — vẫn là câu chuyện capex/pha loãng đã biết từ đầu hè (guidance capex $190B kéo FCF margin xuống, đợt tăng vốn cổ phần $84.75B, Noam Shazeer rời đi) đã phản ánh vào giá nhiều tuần qua, không phải suy giảm cơ bản mới — không đủ điều kiện đề xuất theo CLAUDE.md.
-- JNJ -3.79% (fractional, không có stop-loss tự động) — đã hồi phục phần nào so với mức -4.75% ghi nhận 07-15 sau earnings beat-and-raise, không còn sát ngưỡng -5% như trước, vẫn theo dõi thủ công bình thường.
+- Không mã nào chạm ngưỡng cắt lỗ thật (SOUN stop -8% tại $6.06, còn cách ~$0.19; SERV stop -8% tại $5.26, còn cách ~$0.145) hay chốt lời (+10-20%).
+- SERV giảm mạnh nhất trong ngày (-6.00%, vượt ngưỡng 3-5%) — đã tìm tin tức: không có catalyst tiêu cực mới/8-K xấu. Diễn biến gần đây: bổ nhiệm Andreas Lieber vào HĐQT (22/06, thay đại diện Uber), mở rộng pilot NoScrubs (giặt ủi) ngoài mảng đồ ăn, đồng sáng lập được vinh danh Inc. Female Founders 500 — đều là tin trung tính/tích cực, không giải thích được đà giảm giá. Đánh giá: tiếp tục biến động chung nhóm growth/micro-cap vốn đã giảm ~25% trong 3 tháng qua, không phải suy giảm cơ bản riêng — không đủ điều kiện đề xuất theo CLAUDE.md. Vẫn cách xa ngưỡng stop-loss thật.
+  - Nguồn: [Serve Robotics – Yahoo Finance](https://finance.yahoo.com/quote/SERV/), [SERV News – MarketBeat](https://www.marketbeat.com/stocks/NASDAQ/SERV/news/)
+- SOUN giảm -3.80% trong ngày, vượt ngưỡng nên cũng đã tìm tin tức: không có tin xấu mới cụ thể hôm nay — bài phân tích gần nhất (16/07) nhắc lại cổ phiếu đã giảm 37% từ đầu năm 2026 do tăng trưởng doanh thu giảm tốc (Q1 2026 +52% YoY so với +151% YoY cùng kỳ 2025, gây lo ngại nhà đầu tư) — đây là yếu tố đã biết, không phải diễn biến mới trong 24h. Không đủ điều kiện đề xuất bán theo CLAUDE.md (chưa chạm stop-loss -8%, chưa có tin xấu mới/nghiêm trọng). Cần tiếp tục theo dõi sát vì cả 2 mã rủi ro cao (SOUN, SERV) đều đang lỗ hơn 5% so với vốn — gần ngưỡng cắt lỗ hơn các lần check trước.
+  - Nguồn: [SoundHound AI stock drops 37% in 2026 — Foreign Policy Journal](https://www.foreignpolicyjournal.com/2026/07/16/soundhound-ai-nasdaq-soun-stock-drops-37-in-2026-but-forward-revenue-outlook-sparks-debate-among-investors/), [SOUN — StocksToTrade](https://stockstotrade.com/news/soundhound-ai-inc-soun-news-2026_07_14/)
+- JNJ tiếp tục ở gần ngưỡng cắt lỗ -5% (hiện -4.68%, hạ nhiệt nhẹ so với -3.87% sáng nay do biến động trong phiên) — vẫn là vị thế fractional không có stop tự động, tiếp tục theo dõi thủ công sát sao.
+- 4 mã large-cap tech đều tăng trong ngày (MSFT +1.61%, AAPL +1.41%, GOOGL +0.13%, AMZN +0.43%) — NDX ở mức 29,132 (giữa phiên), không có vấn đề hiệu suất so với benchmark.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
+- **Không có đề xuất mới lần kiểm tra này** — không mã nào chạm ngưỡng cắt lỗ/chốt lời thật hay có tin xấu nghiêm trọng đủ điều kiện theo CLAUDE.md — không gửi PushNotification.
+
+## 2026-07-16 ~15:31 ET (19:31 UTC) — Check-in định kỳ (cuối phiên) — SERV bị stop-loss tự động
+
+- **Sự kiện quan trọng: SERV đã bị stop-loss tự động khớp lúc 15:27:52 ET hôm nay** — xác nhận qua get_equity_orders: lệnh stop_market (side sell, trigger "stop", stop_price $5.26, đặt ngày 2026-07-13 khi mua) đã filled toàn bộ 87 cổ phiếu, giá khớp trung bình $5.2684/cp. Giá vốn mua $5.7199/cp (mua 2026-07-13) → lỗ thực hiện khoảng **-7.85%**, đúng theo băng cắt lỗ -8% đã đặt cho nhóm rủi ro cao/biến động mạnh. Đây là lệnh tự động đã đặt sẵn từ trước, khớp bình thường theo kỷ luật quản trị rủi ro trong CLAUDE.md — không cần quyết định/duyệt thêm từ Hogan, chỉ ghi nhận.
+  - **Lưu ý wash sale (theo CLAUDE.md, cập nhật 2026-07-07):** vì SERV vừa bị bán lỗ, KHÔNG mua lại SERV hoặc mã gần tương đương trong vòng 30 ngày tới (tới hết 2026-08-15) trừ khi có lý do quản trị rủi ro rõ ràng và được Hogan xác nhận.
+  - Danh mục core hiện còn **9 mã** (thiếu 1 mã nhóm rủi ro cao so với cơ cấu 2 mã chuẩn): AAPL, GOOGL, AMZN, MSFT, JNJ, KO, VOO, RSP, SOUN. Cần đề xuất mã thay thế cùng nhóm rủi ro cao ở lần check-in kế tiếp (không đề xuất vội trong log này vì cần thêm thời gian sàng lọc theo tiêu chí CLAUDE.md — sẽ có đề xuất kèm tối thiểu 2 lựa chọn ở lần check tới).
+- Vị thế còn lại xác nhận qua get_equity_positions: AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-15):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $333.015 | **+8.16%** | +1.68% |
+  | MSFT | $386.75 | $400.79 | +3.63% | +1.30% |
+  | AMZN | $243.78 | $251.25 | +3.06% | -1.45% |
+  | KO | $84.10 | $84.579 | +0.57% | +2.58% |
+  | RSP | $214.93 | $214.29 | -0.30% | +0.62% |
+  | VOO | $688.26 | $688.219 | -0.01% | -0.80% |
+  | GOOGL | $361.40 | $354.45 | -1.92% | **-4.44%** |
+  | JNJ | $260.69 | $250.42 | -3.94% | +1.38% |
+  | SOUN | $6.59 | $6.29 | -4.55% | -3.23% |
+
+- Không mã nào còn lại chạm ngưỡng cắt lỗ/chốt lời thật. SOUN gần nhất (-4.55%, stop -8% tại $6.06, còn cách ~$0.23).
+- **GOOGL giảm -4.44% trong ngày**, vượt ngưỡng 3-5% nên đã tìm tin tức: tuần này Alphabet hứng chịu loạt tin pháp lý tiêu cực — tòa án EU giữ nguyên án phạt chống độc quyền Android €4.1B (~$4.67B), tòa Thụy Điển buộc bồi thường ~$1.97B cho PriceRunner (vụ thiên vị dịch vụ mua sắm riêng trong kết quả tìm kiếm), cơ quan quản lý cạnh tranh Hàn Quốc cáo buộc lạm dụng vị thế trên Android app marketplace (phạt tiềm năng tới $546M). Đây là tin tiêu cực về kiện tụng nhưng là rủi ro pháp lý đã biết từ lâu (không phải sự kiện đột ngột mới), fundamentals vẫn mạnh (cloud backlog $460B, doanh thu +22%), báo cáo Q2 2026 sẽ công bố 2026-07-22 (6 ngày tới) — đây mới là catalyst lớn cần theo dõi. P&L GOOGL hiện chỉ -1.92%, còn cách xa ngưỡng cắt lỗ -5%. Chưa đủ điều kiện đề xuất theo CLAUDE.md (chưa chạm cắt lỗ, tin xấu là rủi ro đã biết chứ không phải suy giảm cơ bản đột ngột) — cần theo dõi sát quanh ngày báo cáo Q2 (07-22).
+  - Nguồn: [Alphabet shares edge lower after EU top court upholds €4.1B Google Android antitrust fine — Yahoo Finance](https://finance.yahoo.com/technology/articles/alphabet-shares-edge-lower-eu-185900492.html), [Google Had a Brutal Week in Court — the Stock Didn't Seem to Care — Benzinga](https://www.benzinga.com/trading-ideas/movers/26/07/60242661/google-had-a-brutal-week-in-court-the-stock-didnt-seem-to-care)
+- JNJ hạ nhiệt tiếp (-3.94%, so với -4.68% giữa phiên sáng nay), không còn cận kề ngưỡng cắt lỗ -5% như các lần check trước — vẫn là vị thế fractional không có stop tự động, tiếp tục theo dõi thủ công.
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01) — nhưng việc SERV bị stop-loss tạo ra nhu cầu thay mã nhóm rủi ro cao sớm hơn mốc đó, sẽ đề xuất ở lần check-in kế tiếp.
+- **Không có đề xuất mua/bán mới cần Hogan duyệt lần này** (SERV đã tự động khớp theo lệnh cắt lỗ có sẵn, không cần duyệt) — nhưng đã gửi PushNotification để báo sự kiện quan trọng này vì đây là thay đổi thực tế trong danh mục.
+
+## 2026-07-17 ~9:49 ET (13:49 UTC) — GOOGL và SOUN đều bị stop-loss tự động cùng phiên sáng nay + đề xuất thay 3 mã
+
+- **Bối cảnh thị trường:** hôm nay là phiên bán tháo diện rộng nhóm công nghệ/AI toàn cầu, khởi phát từ báo cáo lợi nhuận đáng thất vọng của TSMC và Netflix (Netflix giảm ~9.24% sau giờ, TSMC giảm ~2.63%), lan sang thị trường châu Á (Nikkei, KOSPI) rồi tới Mỹ. Xác nhận qua quote thời gian thực: NVDA -4.13%, META -3.95%, AVGO -3.90%, JOBY -4.29%, OKLO -3.69%, TEM -3.40%, RKLB -1.74% — biến động lan rộng toàn nhóm tăng trưởng/công nghệ, không riêng mã nào trong danh mục.
+  - Nguồn: [Fortune — Tech stocks lead steep global selloff as investors lose faith in AI chip trade](https://fortune.com/2026/07/17/tech-stocks-global-selloff-as-investors-ai-semiconductor-chips/), [CNBC — mild correction for overpriced tech stocks](https://www.cnbc.com/video/2026/07/17/mild-correction-markets-sell-off-overpriced-tech-stocks-strategist.html)
+
+- **Sự kiện 1 — GOOGL bị stop-loss tự động:** lệnh `6a4bcaba-879d-4747-82d9-061ab8de15dd` (đặt 2026-07-06, -5% tại $343.33) khớp lúc **13:38:20 UTC (~9:38 ET)** hôm nay — bán 1 cp @ $343.31. Giá vốn $361.40 → lỗ thực hiện **-5.00%** (~-$18.09). Đây là lệnh tự động đã đặt sẵn, khớp đúng kỷ luật rủi ro, không phải quyết định mới.
+- **Sự kiện 2 — SOUN bị stop-loss tự động:** lệnh `6a511f46-4031-427b-99bc-b3c9769aa12c` (đặt 2026-07-10, -8% tại $6.06) khớp lúc **13:43:17 UTC (~9:43 ET)** hôm nay — bán 76 cp @ $6.06 (phí $0.01). Giá vốn $6.5899 → lỗ thực hiện **-8.03%** (~-$40.24). Cũng là lệnh tự động theo kỷ luật rủi ro đã đặt sẵn.
+- **Lưu ý wash sale:** không mua lại GOOGL trước ~2026-08-16; không mua lại SOUN (hoặc mã gần tương đương) trước ~2026-08-16. Nhắc lại các mã đang trong thời gian wash-sale khác: RXRX (tới ~08-09), IONQ (tới ~08-06), QBTS (tới ~08-12), SERV (tới ~08-15).
+
+- **Vị thế 10 mã core hiện chỉ còn 7 mã:** AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL. Thiếu **3 slot**: 1 large-cap tech (GOOGL, mới mất sáng nay) + 2 rủi ro cao (SERV mất từ 07-16 — đã ghi nhận cần đề xuất nhưng chưa kịp làm — và SOUN mất sáng nay).
+- **Tài khoản (Agentic ••••0133):** total_value $5,744.27, equity_value $3,263.74 (giảm mạnh do mất 3 vị thế), cash $2,480.53, buying_power $1,676.67, pending_deposits $0.
+- P&L 7 mã còn lại so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-16):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $334.015 | **+8.51%** | +0.23% |
+  | MSFT | $386.75 | $394.39 | +1.98% | -1.66% |
+  | AMZN | $243.78 | $246.505 | +1.12% | -1.35% |
+  | RSP | $214.93 | $215.515 | +0.27% | +0.21% |
+  | KO | $84.10 | $84.235 | +0.16% | -0.81% |
+  | VOO | $688.26 | $681.98 | -0.91% | -1.19% |
+  | JNJ | $260.69 | $255.20 | -2.11% | **+2.09%** |
+
+  Không mã nào trong 7 mã còn lại chạm ngưỡng cắt lỗ/chốt lời. AAPL dẫn đầu (+8.51%) nhưng chưa tới ngưỡng chốt lời (+10-20%); JNJ ngược dòng thị trường (+2.09%, tính phòng thủ blue-chip phát huy tác dụng đúng lúc thị trường bán tháo nhóm tăng trưởng).
+
+### Đề xuất thay thế 3 mã — cần Hogan chọn/duyệt (mỗi slot tối thiểu 2 lựa chọn theo CLAUDE.md)
+
+**Lưu ý về thời điểm:** đây là ngày thị trường điều chỉnh mạnh diện rộng nhóm tăng trưởng/công nghệ — mua vào ngay hôm nay có rủi ro "bắt dao rơi" nếu đà giảm chưa dừng, nhưng cũng có thể là điểm vào tốt nếu chỉ là điều chỉnh ngắn hạn. Đây là quyết định thời điểm agent không tự quyết — Hogan có thể chọn mã ngay, chờ vài phiên, hoặc chia nhỏ lệnh (fractional) để rải điểm vào.
+
+**Slot 1 — Large-cap tech (thay GOOGL), ~$450-500 (~8% danh mục):**
+- **Lựa chọn A: ORCL (Oracle)** — giá ~$122.92 (giảm -1.04% hôm nay, tương đối ít bị ảnh hưởng bởi làn sóng bán tháo AI-chip so với nhóm Mag7). Cloud infrastructure (OCI) tăng trưởng backlog mạnh, ít phụ thuộc trực tiếp vào chuỗi cung ứng chip AI như NVDA/AVGO.
+- **Lựa chọn B: CRM (Salesforce)** — giá ~$173.48 (**tăng +0.46%** hôm nay, ngược dòng thị trường). Phần mềm doanh nghiệp/CRM, dòng tiền ổn định, ít tương quan với "AI chip trade" đang bị bán tháo — giúp đa dạng hóa sub-sector khỏi AI-chip/semiconductor.
+- Rủi ro chính: cả 2 vẫn là cổ phiếu tăng trưởng định giá cao, nhạy cảm lãi suất; ORCL có đòn bẩy nợ tương đối cao từ đầu tư hạ tầng OCI.
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Slot 2 — Rủi ro cao #1 (thay SERV), ~$450-500 (~8% danh mục):**
+- **Lựa chọn A: TEM (Tempus AI)** — giá ~$51.77 (giảm -3.40% hôm nay, cùng nhịp thị trường). AI chẩn đoán/precision medicine, doanh thu Q1 2026 +36.1% YoY ($348.1M), nâng guidance FY26 lên $1.59-1.60B (~25% tăng trưởng), vừa ký hợp tác chiến lược với Merck. Đa dạng hóa sang AI-y tế, khác hẳn nhóm quantum/robotics đã 2 lần bị stop trước đây.
+- **Lựa chọn B: OKLO (Oklo)** — giá ~$40.16 (giảm -3.69% hôm nay). Lò phản ứng hạt nhân module nhỏ (SMR), hưởng lợi xu hướng nhu cầu điện cho AI data center, vừa được DOE phê duyệt Documented Safety Analysis (01/07) hướng tới thử nghiệm criticality tháng này — catalyst gần. Rủi ro: chưa có doanh thu đáng kể, dự kiến EBITDA dương chỉ từ 2030 (theo Guggenheim, Hold, target $54).
+- Rủi ro chính: cả 2 đều chưa có lợi nhuận, biến động cao, nhạy cảm sentiment risk-on/risk-off.
+- Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
+
+**Slot 3 — Rủi ro cao #2 (thay SOUN), ~$450-500 (~8% danh mục):**
+- **Lựa chọn A: RKLB (Rocket Lab)** — giá ~$66.18 (giảm -1.74% hôm nay). Phóng vệ tinh/không gian, vừa công bố thương vụ mua Iridium ~$8B (mở rộng sang truyền thông vệ tinh), nhiều ngân hàng nâng target giá (Citizens $130, Citi/Morgan Stanley/Roth ~$130, BofA $110) sau tin M&A — nhưng cổ phiếu giảm mạnh -12% ngày 07-16 sau khi Piper Sandler khởi tạo Neutral, lo ngại rủi ro tích hợp/pha loãng từ thương vụ. **Lưu ý rủi ro timing:** mới giảm sâu 2 ngày qua vì tin M&A, chưa rõ đã ổn định.
+- **Lựa chọn B: ASTS (AST SpaceMobile)** — giá ~$56.04 (**tăng +1.86%** hôm nay, phục hồi kỹ thuật). Vệ tinh kết nối trực tiếp điện thoại, nhưng vừa giảm mạnh -17% ngày 07-16 sau khi công bố phát hành $1B convertible notes (pha loãng) và trì hoãn phóng vệ tinh BlueBird sang đầu 2027 (vướng năng lực phóng của New Glenn/Blue Origin). Analyst trung bình vẫn "Hold", target $79.78 (+45% so với giá hiện tại).
+- Rủi ro chính: cả 2 đều vừa có tin tiêu cực/biến động mạnh trong 24-48h qua (M&A risk / dilution risk) — rủi ro cao hơn bình thường ở thời điểm vào lệnh này, cần Hogan cân nhắc kỹ hoặc yêu cầu mã khác nếu muốn giảm rủi ro timing.
+- Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
+
+**Chờ Hogan chọn 1 lựa chọn cho mỗi slot (hoặc chỉ định mã khác / yêu cầu chờ thêm) trước khi đặt lệnh.**
+
+**Quyết định của Hogan (nhận lúc sau khi gửi PushNotification, cùng ngày 2026-07-17):** chọn **CRM** (Slot 1 — thay GOOGL), **TEM** (Slot 2 — thay SERV), **ASTS** (Slot 3 — thay SOUN).
+
+- **CHƯA ĐẶT LỆNH:** phiên phân tích này (routine core-10 check-in) được cấu hình **read-only/chỉ đề xuất** trên tài khoản ••••0133 — không được phép đặt/hủy/sửa lệnh dưới bất kỳ hình thức nào, kể cả khi đã có quyết định duyệt từ Hogan. Quyết định đã được ghi nhận ở đây; việc đặt 3 lệnh mua thực tế (CRM, TEM, ASTS, mỗi lệnh ~$450-500, ưu tiên nguyên cổ phiếu để giữ stop-loss tự động: CRM -5%/+12%, TEM/ASTS -8%/+15-20%) cần thực hiện qua phiên giao dịch tương tác thường lệ (phiên có quyền đặt lệnh trên tài khoản này, `placed_agent: agentic`), không phải phiên routine tự động này.
+- **Việc cần làm tiếp theo:** ở phiên có quyền đặt lệnh — đặt 3 lệnh mua theo quyết định trên, sau đó đặt stop-loss tương ứng; xác nhận lại toàn bộ 10 vị thế core đã đủ ở lần check-in kế tiếp của routine này.
+
+## 2026-07-17 ~13:10 ET (17:10 UTC) — Check-in định kỳ (giữa phiên)
+
+- Vị thế xác nhận qua get_equity_positions: vẫn chỉ **7 mã** (AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL) — 3 lệnh mua CRM/TEM/ASTS (quyết định của Hogan sáng nay, xem entry trên) **chưa được đặt** (đã kiểm tra get_equity_orders từ 00:00 UTC hôm nay, không có lệnh nào ngoài 2 lệnh stop-loss GOOGL/SOUN đã khớp sáng nay). Đúng như dự kiến — phiên routine này read-only, việc đặt lệnh cần thực hiện ở phiên tương tác riêng.
+- **Tài khoản (Agentic ••••0133):** total_value $5,727.92, equity_value $3,247.39, cash $2,480.53, buying_power $1,676.67, pending_deposits $0.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-16):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $330.25 | +7.26% | -0.90% |
+  | MSFT | $386.75 | $394.37 | +1.97% | -1.68% |
+  | AMZN | $243.78 | $248.72 | +2.03% | -0.47% |
+  | JNJ | $260.69 | $252.615 | -3.10% | +1.06% |
+  | RSP | $214.93 | $213.91 | -0.47% | -0.53% |
+  | VOO | $688.26 | $686.58 | -0.24% | -0.52% |
+  | KO | $84.10 | $81.60 | -2.97% | **-3.91%** |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời thật. JNJ (fractional, không stop tự động) đã hạ nhiệt so với sáng nay, không còn cận kề -5%.
+- KO giảm -3.91% trong ngày, vượt ngưỡng nên đã tìm tin tức: nguyên nhân là **vụ tấn công ransomware nhắm vào mảng sữa Fairlife** (công ty con của Coca-Cola), tạm ngừng sản xuất tại Mỹ. Đây là sự cố vận hành/an ninh mạng ở một mảng phụ (Fairlife), chưa có dấu hiệu ảnh hưởng nghiêm trọng đến toàn bộ fundamentals KO — không phải kiện tụng/gian lận kế toán/mất CEO/hạ bậc tín nhiệm theo tiêu chí CLAUDE.md. Sentiment analyst vẫn tích cực (vừa tăng cổ tức lần thứ 64 liên tiếp), báo cáo Q2 2026 sẽ công bố 2026-07-28. P&L KO hiện -2.97%, còn cách xa ngưỡng cắt lỗ -5%. Chưa đủ điều kiện đề xuất theo CLAUDE.md — tiếp tục theo dõi vì đây là tin cần chú ý tới khi có thêm chi tiết hoặc gần ngày báo cáo Q2.
+  - Nguồn: [Coca-Cola (KO) Stock Drops Despite Market Gains — Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/coca-cola-ko-stock-drops-214502134.html), [Coca-Cola (KO) Stock Sinks As Market Gains — Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/coca-cola-ko-stock-sinks-215004704.html)
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
+- **Không có đề xuất mới lần kiểm tra này** — đề xuất thay 3 mã (CRM/TEM/ASTS) đã được Hogan duyệt ở entry trước, chỉ còn chờ thực hiện ở phiên có quyền đặt lệnh — không gửi PushNotification lặp lại (không có thông tin mới cần Hogan quyết định).
+
+## 2026-07-17 ~15:31 ET (19:31 UTC) — Check-in định kỳ (cuối phiên)
+
+- Vị thế xác nhận qua get_equity_positions: vẫn chỉ **7 mã** (AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL). Đã kiểm tra get_equity_orders từ 17:00 UTC hôm nay — **không có lệnh mới nào được đặt**, xác nhận 3 lệnh mua CRM/TEM/ASTS (Hogan đã duyệt sáng nay) vẫn chưa thực hiện, đúng như dự kiến (phiên routine này read-only).
+- **Tài khoản (Agentic ••••0133):** total_value $5,725.54, equity_value $3,245.01, cash $2,480.53, buying_power $1,676.67, pending_deposits $0.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-16):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $332.64 | +8.06% | -0.19% |
+  | MSFT | $386.75 | $395.335 | +2.22% | -1.44% |
+  | AMZN | $243.78 | $247.16 | +1.39% | -1.09% |
+  | JNJ | $260.69 | $253.09 | -2.92% | +1.25% |
+  | VOO | $688.26 | $682.935 | -0.77% | -1.04% |
+  | RSP | $214.93 | $213.08 | -0.86% | -0.92% |
+  | KO | $84.10 | $81.49 | -3.10% | **-4.04%** |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời thật. KO tiếp tục giảm trong ngày (-3.91% lúc 13:10 ET → -4.04% hiện tại) nhưng cùng nguyên nhân đã xác định ở lần check trước (ransomware tấn công mảng Fairlife, sự cố vận hành ở mảng phụ, không phải suy giảm fundamentals toàn công ty) — không có catalyst mới, chưa cần tìm tin tức lại. P&L KO vẫn -3.10%, còn cách ngưỡng cắt lỗ -5%.
 - Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01).
-- **Đã gửi PushNotification** vì có thay đổi thật (SERV stop-loss) cần Hogan biết và cho hướng xử lý slot rủi ro cao còn trống.
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification (đề xuất CRM/TEM/ASTS đã gửi và được duyệt ở entry sáng nay, không có quyết định mới cần Hogan).
 
-## 2026-07-16 ~17:20 ET (21:20 UTC) — Hogan chọn AEHR thay SERV, hoãn đặt lệnh tới mai
+## 2026-07-20 ~9:46 ET (13:46 UTC) — Check-in định kỳ (đầu phiên, sau 3 ngày không có entry)
 
-- Từ 2 lựa chọn thay SERV (SAIL / AEHR), Hogan chọn **AEHR** (~6 cp, ~$500).
-- Đã review lệnh mua limit $84.00 (extended_hours, ask lúc đó $83.50) — không có cảnh báo. Tuy nhiên do đang ngoài giờ giao dịch chính, lệnh stop-loss -8% tự động chỉ đặt/kích hoạt được khi mở phiên chính (9:30 ET) — Hogan quyết định **hoãn, xem lại vào ngày mai** thay vì đặt lệnh mua ngoài giờ tối nay.
-- **Chưa đặt lệnh nào.** Cần xác nhận lại với Hogan vào phiên giao dịch tiếp theo trước khi mua AEHR.
-- Slot rủi ro cao (SERV cũ) hiện vẫn để cash.
+- **Vị thế 10 mã core hiện chỉ còn 7 mã** (không đổi so với entry 07-17 19:31): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL. Đã kiểm tra `get_equity_orders` từ 2026-07-17 19:31 UTC tới nay — **không có lệnh mới nào được đặt**: 3 lệnh mua CRM/TEM/ASTS mà Hogan đã duyệt hôm 07-17 (thay GOOGL/SERV/SOUN) **vẫn chưa được thực hiện** sau 3 ngày. Đây không phải lỗi của phiên routine này (read-only, không có quyền đặt lệnh) — cần Hogan lưu ý để thực hiện ở phiên tương tác có quyền đặt lệnh nếu vẫn muốn giữ quyết định đó, hoặc cho biết nếu đã đổi ý (giá 3 mã có thể đã khác thời điểm duyệt).
+- **Tài khoản (Agentic ••••0133):** total_value $5,729.72, equity_value $3,249.19, cash $2,480.53, buying_power $2,480.53, pending_deposits $0.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-17):
 
-## 2026-07-17 ~10:20 ET (14:20 UTC) — GOOGL và SOUN cùng chạm cắt lỗ (resume sau gián đoạn phiên)
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $330.35 | +7.29% | -1.02% |
+  | AMZN | $243.78 | $250.32 | +2.68% | +1.25% |
+  | MSFT | $386.75 | $391.755 | +1.30% | -0.52% |
+  | VOO | $688.26 | $687.74 | -0.08% | +0.67% |
+  | RSP | $214.93 | $213.38 | -0.72% | +0.00% |
+  | KO | $84.10 | $81.82 | -2.71% | +0.32% |
+  | JNJ | $260.69 | $252.30 | -3.22% | -0.29% |
 
-- **GOOGL:** lệnh stop-loss (đặt $343.33, -5% từ giá vốn $361.40) khớp lúc 09:38:20 ET (13:38:20 UTC): bán 1 cp @ $343.31. Lỗ đúng -5.02%/cp theo cấu hình nhóm tech.
-- **SOUN:** lệnh stop-loss (đặt $6.06, -8% từ giá vốn $6.5899) khớp lúc 09:43:17 ET (13:43:17 UTC): bán 76 cp @ $6.06 trung bình (phí $0.01). Lỗ đúng -8.03%/cp theo cấu hình nhóm rủi ro cao.
-- **Bối cảnh thị trường:** bán tháo diện rộng nhóm tech/chip sáng nay — Nasdaq -1.6%, S&P -0.8%, Dow -1%, cổ phiếu chip vào bear market sau kết quả kém từ Netflix và TSMC, Nikkei -4%, cạnh tranh AI Trung Quốc (Moonshot Kimi K3). Không phải tin xấu riêng cho từng mã:
-  - GOOGL giảm thêm do lo ngại trì hoãn ra mắt Gemini 3.5 Pro, ngay trước thềm earnings Q2 dự kiến 07-22 — không phải suy giảm fundamentals, chỉ là biến động trước earnings + risk-off chung.
-  - SOUN không có tin xấu riêng — nền tảng vẫn tích cực (Gartner Magic Quadrant Leader for Conversational AI, S-4 filing có hiệu lực 07-09, guidance doanh thu FY26 $225-260M không đổi) — mức giảm là theo đà bán tháo chung nhóm AI/tech vốn hóa nhỏ.
-  - Nguồn: [Fortune — Tech stocks lead steep global selloff](https://fortune.com/2026/07/17/tech-stocks-global-selloff-as-investors-ai-semiconductor-chips/), [Yahoo Finance — Nasdaq hammered by chips sell-off](https://finance.yahoo.com/markets/live/stock-market-today-friday-july-17-dow-sp-500-nasdaq-092345307.html)
-- **Slot trống hiện tại (3/10):** 2 rủi ro cao (slot SERV cũ — AEHR đã được Hogan chọn 07-16 nhưng CHƯA đặt lệnh, hoãn tới hôm nay; slot SOUN mới trống) + 1 tech (slot GOOGL mới trống). Cần đề xuất thay thế cho SOUN và GOOGL (tối thiểu 2 lựa chọn mỗi slot) theo quy trình CLAUDE.md — chưa tự chọn/mua.
-- Vị thế còn lại (7/10): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL — không mã nào khác chạm ngưỡng cắt lỗ/chốt lời (JNJ -2.66%, đã hồi phục so với mức sát ngưỡng tuần trước).
-- Tài khoản: cash $2,480.53, buying_power $1,676.67 (chênh lệch do tiền bán GOOGL/SOUN/HUT/SERV đang chờ settle T+1), total_value $5,733.62.
-- Đã gửi PushNotification (2 stop-loss mới cần Hogan biết + xác nhận hướng đi AEHR/thay thế).
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời thật, không mã nào biến động trong ngày vượt ngưỡng 3-5% cần tìm tin tức sâu — chỉ gọi quote/vị thế theo đúng tần suất tiết kiệm chi phí quy định trong CLAUDE.md.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~12 ngày) — nhưng lưu ý slot thay thế GOOGL/SERV/SOUN đã trễ 3 ngày so với quyết định của Hogan, nên xử lý trước khi tới mốc review tháng để tránh chồng lấn 2 việc.
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification (không có quyết định mới cần Hogan; việc CRM/TEM/ASTS đã là quyết định cũ chờ thực hiện, không phải đề xuất mới).
 
 ## 2026-07-20 ~10:56 ET (14:56 UTC) — Lấp đủ 3 slot trống: AEHR, NVDA (thay GOOGL), RKLB (thay SOUN)
 
@@ -842,3 +1062,9 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
   - *(CRWV bị loại khỏi lựa chọn ban đầu — đang có vụ kiện gian lận chứng khoán chờ xử lý, thuộc tiêu chí loại trừ theo CLAUDE.md.)*
 - **Core-10 đã đủ 10/10:** AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB (đúng cơ cấu 2 rủi ro cao / 4 tech / 2 blue-chip / 2 ETF).
 - Đã gửi PushNotification (3 lệnh mua mới + đủ lại danh mục 10 mã).
+
+## 2026-07-20 ~11:05 ET (15:05 UTC) — Đồng bộ git giữa 2 phiên + xử lý xung đột đề xuất CRM/TEM/ASTS vs AEHR/NVDA/RKLB
+
+- Khi đồng bộ lịch sử git giữa phiên chat này và phiên cloud routine tự động (đã phân kỳ 40 commit kể từ `53e2e8d`), phát hiện routine đã ghi nhận Hogan duyệt **CRM/TEM/ASTS** cho 3 slot trống (GOOGL/SERV/SOUN) từ 2026-07-17, nhưng chưa từng đặt lệnh (routine đó cấu hình read-only, không có quyền giao dịch — xem entry 07-17 09:49 ET ở trên) — quyết định đó vẫn đang chờ thực hiện qua phiên tương tác có quyền đặt lệnh, tính tới sáng nay (entry 07-20 09:46 ET) vẫn ghi "chưa được thực hiện".
+- Phiên chat này (có quyền đặt lệnh) đã độc lập trình đề xuất mới cho đúng 3 slot đó (không biết về quyết định CRM/TEM/ASTS trước đó) và Hogan đã duyệt **AEHR, NVDA (thay GOOGL), RKLB (thay SOUN)** — cả 3 lệnh đã khớp thật lúc 14:55-14:56 UTC hôm nay kèm stop-loss, xác nhận qua get_equity_positions hiện có AEHR/NVDA/RKLB, KHÔNG có CRM/TEM/ASTS trong tài khoản.
+- **Kết luận: đề xuất CRM/TEM/ASTS (07-17) coi như bị thay thế/hết hiệu lực** bởi quyết định AEHR/NVDA/RKLB (07-20, đã thực thi thật) — tương tự tiền lệ "Flag orphaned SERV/ASTS proposal as superseded" đã xử lý trước đó. Không cần đặt lệnh CRM/TEM/ASTS nữa, 3 slot đã lấp đủ.
