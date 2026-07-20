@@ -1094,3 +1094,27 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - QQQ hôm nay +0.66% (695.33→699.89) — MSFT/AMZN outperform rõ rệt, AAPL kém hơn benchmark trong ngày (-2.69%) nhưng vẫn +5.48% so với giá vốn, chưa đủ cơ sở đánh giá suy giảm 30 ngày.
 - Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~12 ngày).
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-20 ~15:31 ET (19:31 UTC) — Check-in định kỳ (routine read-only)
+
+- Vị thế 10 mã core xác nhận qua `get_equity_positions`: AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB — đủ 10/10 (2 rủi ro cao: AEHR, RKLB / 4 tech: MSFT, AAPL, AMZN, NVDA / 2 blue-chip: JNJ, KO / 2 ETF: VOO, RSP). (IREN 15 cp là vị thế sandbox, không thuộc core-10.)
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-17, $393.82 v.v.):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $329.33 | +6.96% | -1.32% |
+  | MSFT | $386.75 | $401.38 | +3.78% | +1.92% |
+  | AMZN | $243.78 | $249.705 | +2.43% | +1.00% |
+  | NVDA | $204.83 | $202.785 | -1.00% | -0.01% |
+  | RKLB | $66.46 | $65.98 | -0.72% | -2.42% |
+  | AEHR | $76.92 | $76.75 | -0.22% | -5.31%* |
+  | VOO | $688.26 | $682.62 | -0.82% | -0.08% |
+  | RSP | $214.93 | $212.39 | -1.18% | -0.46% |
+  | KO | $84.10 | $81.73 | -2.82% | +0.21% |
+  | JNJ | $260.69 | $249.46 | -4.31% | -1.41% |
+
+  *AEHR "thay đổi trong ngày" so với đóng cửa 07-17 ($81.05) là artifact so với giá **trước khi mua** (vị thế mở 07-20 sáng ở $76.92) — không phải biến động thật kể từ lúc mua, đã giải thích ở entry trước, không cần tìm tin tức lại.
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). JNJ (fractional, không stop tự động) tiếp tục drift nhẹ về phía ngưỡng -5% (-3.95% → -4.31% kể từ entry trước) nhưng mức thay đổi nhỏ, chưa phải biến động >3-5% cần tìm tin tức sâu — tiếp tục theo dõi thủ công.
+- Không mã nào có biến động trong ngày vượt ngưỡng 3-5% cần tìm tin tức mới (ngoài artifact AEHR đã giải thích ở trên).
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~12 ngày).
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
