@@ -830,3 +830,12 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản (qua get_portfolio): cash $562.88, buying_power $562.88 (không đổi so với lần check trước). total_value $5,742.93.
 - "Phần theo dõi" sandbox: (cash $562.88 + giá trị IREN 15×$40.1572≈$602.36) − $700 đệm = **~$465.24** (~66.5% mốc gốc $700) — còn xa ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên 15 cp IREN, không có lệnh mới. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-20 ~14:08 ET (18:08 UTC) — Check định kỳ (giữ nguyên IREN, đà tăng tiếp diễn nhẹ)
+
+- Vị thế sandbox: 15 cp IREN (avg cost $38.75), xác nhận qua get_equity_positions. Giá hiện $40.57 (18:08:30 UTC) vs vốn (+4.70%), vs lần check trước (13:08 ET @ $40.1572): +1.03% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- get_equity_orders từ 13:08 ET tới nay: rỗng — không có lệnh nào mới đặt/khớp/hủy. Stop-loss @ $35.65 (order id `6a5e2d0e-c7ff-4246-8d69-d7a531e5f0de`) vẫn giữ nguyên, chưa khớp.
+- Core-10 hiện tại (get_equity_positions): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB — không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $562.88, buying_power $562.88 (không đổi so với lần check trước). total_value $5,754.40.
+- "Phần theo dõi" sandbox: (cash $562.88 + giá trị IREN 15×$40.57≈$608.55) − $700 đệm = **~$471.43** (~67.3% mốc gốc $700) — còn xa ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên 15 cp IREN, không có lệnh mới — đà tăng tiếp diễn nhẹ trên cùng catalyst đã biết (hợp đồng $2.8B), chưa đạt mức chốt lời tham khảo (~$45-46.50), stop-loss vẫn giữ nguyên ở $35.65. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
