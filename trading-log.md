@@ -1026,3 +1026,23 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01).
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification (đề xuất CRM/TEM/ASTS đã gửi và được duyệt ở entry sáng nay, không có quyết định mới cần Hogan).
 
+## 2026-07-20 ~9:46 ET (13:46 UTC) — Check-in định kỳ (đầu phiên, sau 3 ngày không có entry)
+
+- **Vị thế 10 mã core hiện chỉ còn 7 mã** (không đổi so với entry 07-17 19:31): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL. Đã kiểm tra `get_equity_orders` từ 2026-07-17 19:31 UTC tới nay — **không có lệnh mới nào được đặt**: 3 lệnh mua CRM/TEM/ASTS mà Hogan đã duyệt hôm 07-17 (thay GOOGL/SERV/SOUN) **vẫn chưa được thực hiện** sau 3 ngày. Đây không phải lỗi của phiên routine này (read-only, không có quyền đặt lệnh) — cần Hogan lưu ý để thực hiện ở phiên tương tác có quyền đặt lệnh nếu vẫn muốn giữ quyết định đó, hoặc cho biết nếu đã đổi ý (giá 3 mã có thể đã khác thời điểm duyệt).
+- **Tài khoản (Agentic ••••0133):** total_value $5,729.72, equity_value $3,249.19, cash $2,480.53, buying_power $2,480.53, pending_deposits $0.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-17):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $330.35 | +7.29% | -1.02% |
+  | AMZN | $243.78 | $250.32 | +2.68% | +1.25% |
+  | MSFT | $386.75 | $391.755 | +1.30% | -0.52% |
+  | VOO | $688.26 | $687.74 | -0.08% | +0.67% |
+  | RSP | $214.93 | $213.38 | -0.72% | +0.00% |
+  | KO | $84.10 | $81.82 | -2.71% | +0.32% |
+  | JNJ | $260.69 | $252.30 | -3.22% | -0.29% |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời thật, không mã nào biến động trong ngày vượt ngưỡng 3-5% cần tìm tin tức sâu — chỉ gọi quote/vị thế theo đúng tần suất tiết kiệm chi phí quy định trong CLAUDE.md.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~12 ngày) — nhưng lưu ý slot thay thế GOOGL/SERV/SOUN đã trễ 3 ngày so với quyết định của Hogan, nên xử lý trước khi tới mốc review tháng để tránh chồng lấn 2 việc.
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification (không có quyết định mới cần Hogan; việc CRM/TEM/ASTS đã là quyết định cũ chờ thực hiện, không phải đề xuất mới).
+
