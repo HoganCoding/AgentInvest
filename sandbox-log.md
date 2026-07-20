@@ -802,3 +802,12 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 
 - Phát hiện phiên tương tác này (chat) và phiên cloud routine tự động đã phân kỳ lịch sử git (40 commit khác nhau kể từ `53e2e8d`). Đối chiếu nội dung: các entry 07-15 → 07-20 phía routine (vừa merge ở trên) là bản ghi gốc real-time đầy đủ; phần entry cùng giai đoạn phía phiên chat (bản tóm tắt "đồng bộ log" + entry ghi bù giao dịch IREN) chỉ là bản dựng lại **sau đó** từ dữ liệu lệnh, kém chi tiết hơn và trùng lặp — đã loại bỏ khi merge, giữ lại bản gốc của routine phía trên.
 - Giao dịch IREN (mua 15cp @ $38.7499, stop-loss @ $35.65, 2026-07-20 14:13 UTC) đã có log gốc đầy đủ từ routine (entry `2026-07-20 ~10:13 ET`) — không cần ghi bù, thắc mắc trước đó về "giao dịch chưa log" đã được giải đáp.
+
+## 2026-07-20 ~11:12 ET (15:12 UTC) — Check định kỳ (giữ nguyên IREN, giá đi ngang)
+
+- Vị thế sandbox: 15 cp IREN (avg cost $38.75), xác nhận qua get_equity_positions. Giá hiện $38.74 vs vốn (-0.03%) — gần như đi ngang so với lúc mua (~10:13 ET @ $38.7499), dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- Stop-loss @ $35.65 đã chuyển sang state=`confirmed`/active (order id `6a5e2d0e-c7ff-4246-8d69-d7a531e5f0de`, cumulative_quantity=0, chưa khớp) — xác nhận qua get_equity_orders.
+- Lưu ý ngoài phạm vi sandbox: phát hiện 3 vị thế mới AEHR (6cp @ $76.92), NVDA (2cp @ $204.83), RKLB (7cp @ $66.46) trong tài khoản — đã đối chiếu `trading-log.md` (entry `2026-07-20 ~10:56 ET`), đây là giao dịch core-10 đã được Hogan duyệt (lấp 3 slot trống, thay GOOGL/SOUN), KHÔNG thuộc sandbox, không hành động gì thêm ở đây.
+- Tài khoản (qua get_portfolio): cash $562.88, buying_power $562.88 (giảm mạnh so với lần check trước do 3 lệnh core-10 vừa khớp dùng chung buying_power — đúng lưu ý CLAUDE.md 2026-07-10, không phải giao dịch sandbox). total_value $5,721.44.
+- "Phần theo dõi" sandbox: (cash $562.88 + giá trị IREN 15×$38.74=$581.10) − $700 đệm = **~$443.98** (~63.4% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0 (không phải lỗ, chỉ do buying_power dùng chung với core-10). Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên 15 cp IREN, không có lệnh mới. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine, gửi 1 dòng thông báo ngắn.
