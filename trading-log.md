@@ -1068,3 +1068,29 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Khi đồng bộ lịch sử git giữa phiên chat này và phiên cloud routine tự động (đã phân kỳ 40 commit kể từ `53e2e8d`), phát hiện routine đã ghi nhận Hogan duyệt **CRM/TEM/ASTS** cho 3 slot trống (GOOGL/SERV/SOUN) từ 2026-07-17, nhưng chưa từng đặt lệnh (routine đó cấu hình read-only, không có quyền giao dịch — xem entry 07-17 09:49 ET ở trên) — quyết định đó vẫn đang chờ thực hiện qua phiên tương tác có quyền đặt lệnh, tính tới sáng nay (entry 07-20 09:46 ET) vẫn ghi "chưa được thực hiện".
 - Phiên chat này (có quyền đặt lệnh) đã độc lập trình đề xuất mới cho đúng 3 slot đó (không biết về quyết định CRM/TEM/ASTS trước đó) và Hogan đã duyệt **AEHR, NVDA (thay GOOGL), RKLB (thay SOUN)** — cả 3 lệnh đã khớp thật lúc 14:55-14:56 UTC hôm nay kèm stop-loss, xác nhận qua get_equity_positions hiện có AEHR/NVDA/RKLB, KHÔNG có CRM/TEM/ASTS trong tài khoản.
 - **Kết luận: đề xuất CRM/TEM/ASTS (07-17) coi như bị thay thế/hết hiệu lực** bởi quyết định AEHR/NVDA/RKLB (07-20, đã thực thi thật) — tương tự tiền lệ "Flag orphaned SERV/ASTS proposal as superseded" đã xử lý trước đó. Không cần đặt lệnh CRM/TEM/ASTS nữa, 3 slot đã lấp đủ.
+
+## 2026-07-20 ~13:11 ET (17:11 UTC) — Check-in định kỳ (routine read-only, xác nhận đủ 10/10)
+
+- Vị thế 10 mã core xác nhận qua `get_equity_positions`: AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB — đúng đủ 10/10 theo cơ cấu (2 rủi ro cao: AEHR, RKLB / 4 large-cap tech: MSFT, AAPL, AMZN, NVDA / 2 blue-chip: JNJ, KO / 2 ETF: VOO, RSP). (Tài khoản còn có 15 cp IREN — xác nhận qua `sandbox-log.md` đây là vị thế **sandbox**, không thuộc core-10.)
+- 3 lệnh stop-loss mới (AEHR -8% @ $70.77, NVDA -5% @ $194.59, RKLB -8% @ $61.14) đều ở state `confirmed` (active).
+- **Tài khoản (Agentic ••••0133):** total_value $5,747.03, equity_value $5,184.15, cash/buying_power $562.88.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-17):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $324.765 | +5.48% | -2.69% |
+  | MSFT | $386.75 | $400.77 | +3.63% | +1.76% |
+  | AMZN | $243.78 | $250.91 | +2.93% | +1.49% |
+  | RKLB | $66.46 | $66.64 | +0.27% | -1.45% |
+  | NVDA | $204.83 | $203.28 | -0.76% | +0.23% |
+  | AEHR | $76.92 | $76.66 | -0.34% | -5.42% (vị thế mới mua sáng nay, xem giải thích dưới) |
+  | VOO | $688.26 | $684.132 | -0.60% | +0.14% |
+  | RSP | $214.93 | $213.10 | -0.85% | -0.13% |
+  | KO | $84.10 | $81.545 | -3.04% | -0.02% |
+  | JNJ | $260.69 | $250.40 | -3.95% | -1.04% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). JNJ gần nhất (-3.95%, fractional, không có stop tự động, tiếp tục theo dõi thủ công) nhưng vẫn cách ngưỡng -5% đề xuất.
+- AEHR giảm -5.42% so với đóng cửa 07-17 ($81.05) nhưng đây là so với giá **trước khi mua** — vị thế mới mở sáng nay (~10:56 ET) ở $76.92 giữa lúc cổ phiếu đang trong pha "pop-and-fade" hậu earnings (đã ghi chi tiết ở entry ngay phía trên). So với giá vốn thực tế chỉ -0.34%, gần như đi ngang, còn cách xa ngưỡng cắt lỗ -8% ($70.77) — không cần tìm tin tức mới, đã có đầy đủ bối cảnh từ lần mua sáng nay.
+- QQQ hôm nay +0.66% (695.33→699.89) — MSFT/AMZN outperform rõ rệt, AAPL kém hơn benchmark trong ngày (-2.69%) nhưng vẫn +5.48% so với giá vốn, chưa đủ cơ sở đánh giá suy giảm 30 ngày.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~12 ngày).
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
