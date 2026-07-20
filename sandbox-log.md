@@ -507,3 +507,40 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,857.21.
 - "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$97.98=$489.90) = **~$553.80** (~79.1% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên vị thế HUT, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-15 ~14:37 ET (18:37 UTC) — Đồng bộ log (yêu cầu Hogan)
+
+- Giá HUT hiện $104.63 (last_trade_price 18:37:33 UTC) vs vốn $98.97 (**+5.72%**), vs previous close (Tue 07-14) $98.33 (**+6.41% trong ngày**). So với lần check trước (07-14 14:08 ET @ $97.98), biến động +6.79% — vượt ngưỡng 3-5%, đã tìm tin tức sâu.
+- Tin tức đã xem (WebSearch "Hut 8 HUT stock news July 15 2026"): không có tin tiêu cực. Ngược lại rất tích cực — Benchmark (Mark Palmer) duy trì Buy, **nâng price target từ $85 lên $165** (07-14) sau khi HUT chốt $16.8B hợp đồng thuê AI data center 15 năm (597 MW, hai địa điểm) và $7.5B tài trợ dự án; Lucid Capital Markets khởi tạo coverage Buy với target **$226**; bổ nhiệm E. Stanley O'Neal (cựu CEO Merrill Lynch) làm Chair mới. Earnings Q2 dự kiến 08-04. Đánh giá: đà tăng phản ánh tin cơ bản tích cực thật (không phải nhiễu/momentum đơn thuần) — không có lý do để thoát vị thế.
+  - Nguồn: [CoinCentral — Benchmark nearly doubles price target to $165](https://coincentral.com/hut-8-hut-stock-benchmark-nearly-doubles-price-target-to-165-heres-why/), [GuruFocus — HUT price target raised to $165](https://www.gurufocus.com/news/8958143/hut-maintained-by-benchmark-price-target-raised-to-165)
+- Vị thế xác nhận qua get_equity_positions: 5 cp HUT giữ nguyên (avg cost $98.97), không có vị thế sandbox nào khác. get_equity_orders từ 07-14 18:08 UTC tới nay: không có lệnh mới nào trong toàn tài khoản (khớp `trading-log.md`). WULF vẫn ngoài vị thế (cấm mua lại tới ~2026-08-06 do wash-sale).
+- Core-10 hiện tại không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV) — khớp `trading-log.md`, không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): buying power $763.90, khớp với cash $763.90 (pending_deposits $0, đã settle đầy đủ). total_value $5,917.64.
+- "Phần theo dõi" sandbox: $763.90 − $700 đệm = $63.90 cash rảnh + HUT (5×$104.63=$523.15) = **~$587.05** (~83.9% mốc gốc $700) — còn rất xa ngưỡng chốt lời $1400 và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên vị thế HUT, không có lệnh mới. Không gửi push notification (không có hành động/thay đổi thật cho sandbox dù đã kiểm tra tin tức do biến động giá vượt ngưỡng — theo quy định làm rõ 2026-07-08 trong CLAUDE.md).
+
+## 2026-07-16 ~16:52 ET (20:52 UTC) — HUT stop-loss kích hoạt, sandbox về 100% cash
+
+- Lệnh stop-loss HUT (đặt tại $91.05) đã khớp lúc 12:45:39 ET (16:45:39 UTC): bán 5 cp @ giá trung bình $90.886 (tổng $454.43, phí $0). Giá vốn $98.97 → lỗ -8.17%/cp (~-$40.42 tổng), đúng theo cấu hình cắt lỗ -8% cho nhóm rủi ro cao.
+- Đã kiểm tra tin tức HUT: không có catalyst tiêu cực riêng cho hôm nay — nền tảng vẫn tích cực (Benchmark PT $165, hợp đồng AI data center $16.8B, earnings 08-04 sắp tới). Mức giảm giá nhiều khả năng là biến động/chốt lời sau đà tăng nóng tuần trước (đỉnh ~$104 → về ~$91-92), không phải suy giảm cơ bản.
+- Sandbox hiện KHÔNG còn vị thế nào — 100% cash. "Phần theo dõi": $63.90 cash rảnh (buying power settled $763.90 − $700 đệm, số liệu trước khi khoản bán HUT settle) + $454.43 proceeds từ HUT (đang chờ settle T+1, dự kiến ~07-17) = **~$518.33** (~74.0% mốc gốc $700) — không gần $0, không đạt ngưỡng chốt lời x2 ($1400). Không có circuit breaker dừng hẳn.
+- **Wash sale:** không được mua lại HUT (hoặc mã gần tương đương) tới **2026-08-15** (30 ngày sau khi bán lỗ hôm nay).
+- Quyết định: giữ cash, chờ cơ hội mới phù hợp (agent tự quyết theo quyền tự chủ sandbox, không cần duyệt trước). Đã gửi PushNotification vì đây là thay đổi thật (stop-loss kích hoạt).
+
+## 2026-07-17 ~10:20 ET (14:20 UTC) — Check định kỳ (resume, vẫn 100% cash)
+
+- Sandbox không có vị thế nào (xác nhận qua get_equity_positions — không có HUT hay mã nào khác ngoài core-10). Không có lệnh sandbox mới nào kể từ stop-loss HUT hôm 07-16.
+- **Lưu ý:** không tính "phần theo dõi" theo công thức buying_power − $700 lần này — hôm nay core-10 vừa có 2 lệnh stop-loss lớn (GOOGL, SOUN, xem `trading-log.md`) khiến buying_power tổng ($1,676.67) tăng đột biến do tiền bán core-10 đang tạm nằm chung pool (chưa settle hết), không phản ánh đúng phần vốn sandbox. Sẽ tính lại chính xác khi buying_power ổn định (không còn proceeds core-10 mới chờ settle).
+- Không có wash-sale nào phát sinh thêm cho sandbox (HUT vẫn cấm mua lại tới 2026-08-15).
+- Quyết định: giữ cash, không có lệnh mới, không có cơ hội mới được đánh giá trong lần check này. Không gửi push riêng cho sandbox (không có thay đổi thật).
+
+## 2026-07-20 ~10:46 ET (14:46 UTC) — Ghi log bù: mở vị thế IREN (phát hiện qua kiểm tra định kỳ, không có log gốc)
+
+- **Lưu ý quan trọng:** không có phiên log gốc nào cho giao dịch này — phát hiện qua đối chiếu get_equity_orders khi Hogan yêu cầu kiểm tra trạng thái sandbox/portfolio hôm nay. Khoảng trống log 3 ngày (07-17 → 07-20) trước đó, có khả năng một phiên cloud routine khác đã đặt lệnh nhưng không ghi log đầy đủ (tương tự vấn đề duplicate/orphaned session đã gặp trước — xem lịch sử commit "Flag orphaned SERV/ASTS proposal"). Ghi lại đây từ dữ liệu lệnh xác nhận để không mất dấu vết, KHÔNG có phân tích tin tức/lý do gốc kèm theo vì không truy được.
+- **Lệnh xác nhận qua get_equity_orders:**
+  - 2026-07-20 14:13:12 UTC: mua market 15 cp IREN (Iris Energy), khớp giá TB $38.7499, tổng ~$581.25, `placed_agent: agentic`.
+  - 2026-07-20 14:13:34 UTC: đặt stop-loss GTC 15 cp @ $35.65 (≈-8% từ giá vốn — đúng khung cắt lỗ nới rộng cho nhóm biến động mạnh), trạng thái confirmed/chưa khớp.
+- Xác nhận không vi phạm wash-sale: IREN là công ty khác (Iris Energy) với HUT (Hut 8) dù cùng ngành bitcoin-miner/AI-pivot — không phải "substantially identical security", HUT vẫn cấm mua lại riêng tới 2026-08-15 (không liên quan IREN).
+- Vị thế sandbox hiện tại (xác nhận qua get_equity_positions 07-20 14:46 UTC): 15 cp IREN, giá vốn $38.75, giá hiện tại $38.79 (~+0.1%, gần như đi ngang). Không có mã sandbox nào khác.
+- **Không tính được "phần theo dõi" chính xác lần này:** buying_power toàn tài khoản $1,899.28 hiện lẫn cả cash core-10 chưa dùng cho 3 slot còn trống (AEHR chưa mua, GOOGL/SOUN chưa có mã thay thế — xem `trading-log.md` 07-17) lẫn phần cash/đệm sandbox — không tách bạch được như đã lưu ý tương tự ở lần check 07-17. Sẽ tính lại khi core-10 lấp đủ slot hoặc buying_power ổn định rõ ràng hơn.
+- **Cần làm:** xác nhận với Hogan phiên nào đã đặt lệnh này (nếu có phiên cloud routine khác đang chạy song song) để tránh trùng lặp/xung đột quyết định trong tương lai.

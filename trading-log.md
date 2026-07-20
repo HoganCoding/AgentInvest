@@ -745,3 +745,100 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - 4 mã large-cap tech: GOOGL dẫn đầu ngày (+1.29%), MSFT giảm nhẹ nhất (-0.98%) — biến động bình thường, không có vấn đề hiệu suất so với NDX.
 - Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
 - **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-15 ~14:37 ET (18:37 UTC) — Đồng bộ log (yêu cầu Hogan)
+
+- Đối chiếu qua get_equity_positions/get_equity_orders: vị thế 10 mã core không đổi (AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN, SERV), không có lệnh mới nào kể từ lần check cuối (07-14 ~13:10 UTC) tới nay. Khớp hoàn toàn với log.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-14):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $327.745 | **+6.45%** | **+4.09%** |
+  | AMZN | $243.78 | $254.81 | +4.52% | +2.96% |
+  | GOOGL | $361.40 | $372.17 | +2.98% | **+3.52%** |
+  | MSFT | $386.75 | $396.7651 | +2.59% | **+3.07%** |
+  | VOO | $688.26 | $693.5701 | +0.77% | +0.36% |
+  | SERV | $5.72 | $5.775 | +0.96% | -0.77% |
+  | SOUN | $6.59 | $6.545 | -0.68% | -2.17% |
+  | RSP | $214.93 | $213.10 | -0.85% | -0.16% |
+  | KO | $84.10 | $82.7199 | -1.64% | -0.43% |
+  | JNJ | $260.69 | $248.30 | **-4.75%** | -2.19% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). **JNJ ở -4.75%, gần sát ngưỡng cắt lỗ -5%** — đây là vị thế fractional, KHÔNG có stop-loss tự động (theo dõi thủ công theo kế hoạch ban đầu), cần theo dõi sát lần check-in tiếp theo.
+- Đã tìm tin tức JNJ (đúng ngày công bố earnings Q2 2026 như đã lưu ý 07-09): JNJ báo cáo **beat-and-raise** — EPS adjusted $2.90 (vượt ước tính $2.86), doanh thu $25.3B (+6.6% YoY, vượt ước tính $25.02B), nâng guidance FY26 adjusted EPS lên $11.68 (+8.2%), doanh thu FY26 dự kiến vượt $100B lần đầu tiên trong lịch sử 140 năm công ty. Đánh giá: tin tức cơ bản TÍCH CỰC, không phải suy giảm — mức giảm giá hôm nay nhiều khả năng là chốt lời sau định giá cao (Morningstar từng hạ 1-star, overvalued — đã ghi nhận 07-09) chứ không phải phản ứng tiêu cực với báo cáo. Không đủ điều kiện đề xuất cắt lỗ/thay mã theo CLAUDE.md (không phải fundamentals xấu đi/tin xấu), nhưng do gần ngưỡng -5% và không có stop tự động, sẽ theo dõi chặt ở lần check tiếp theo.
+  - Nguồn: [JNJ Q2 2026 Earnings Press Release — jnj.com](https://www.jnj.com/media-center/press-releases/johnson-johnson-reports-q2-2026-results-raises-2026-outlook), [Blockonomi — JNJ Q2 2026 Earnings Preview](https://blockonomi.com/johnson-johnson-jnj-q2-2026-earnings-preview-analyst-expectations-and-stock-outlook/)
+- 4 mã large-cap tech đồng loạt tăng mạnh (AAPL +4.09%, GOOGL +3.52%, MSFT +3.07%, AMZN +2.96%), vượt ngưỡng 3-5% nên đã tìm bối cảnh chung: thị trường tăng nhờ CPI tháng 6 hạ nhiệt (headline CPI -0.4% MoM, thấp hơn ước tính), củng cố kỳ vọng Fed giữ nguyên lãi suất — Nasdaq +0.9%, S&P 500 +0.4%, riêng nhóm Information Technology (XLK) +1.3%. Đây là rally toàn thị trường/ngành, không phải tin riêng từng mã — không cần hành động, chỉ ghi nhận outperform so với benchmark.
+  - Nguồn: [TradingKey — CPI Cooling Ignites AI Tech Stock Rally](https://www.tradingkey.com/analysis/stocks/us-stocks/262030310-cooling-cpi-fuels-rally-ai-tech-stocks-nvidia-micron-amd-tradingkey), [24/7 Wall St — Markets Advance on Cooling Inflation](https://247wallst.com/investing/2026/07/15/live-nasdaq-composite-markets-advance-on-cooling-inflation-chip-earnings-tailwinds/)
+- **Tài khoản (Agentic ••••0133):** total_value $5,917.64, equity_value $5,153.74, cash/buying_power $763.90 (khớp, đã settle đầy đủ, pending_deposits $0).
+- Chưa tới ngày review định kỳ 30 ngày (mốc là ngày 1 hàng tháng, kỳ tới 2026-08-01).
+- **Không có đề xuất mới lần kiểm tra này** — không gửi PushNotification (JNJ chưa chạm ngưỡng -5%, chỉ cần theo dõi sát, chưa phải circuit breaker).
+
+## 2026-07-16 ~15:27 ET (19:27 UTC) — SERV stop-loss kích hoạt, cần đề xuất thay thế
+
+- Lệnh stop-loss SERV (đặt tại $5.26) đã khớp lúc 15:27:52 ET (19:27:52 UTC): bán 87 cp @ giá trung bình $5.2684 (tổng $458.35, phí $0.01). Giá vốn $5.7199 → lỗ -7.86%/cp, đúng theo cấu hình cắt lỗ -8% đã đặt khi mua ngày 07-13.
+- Đây là lần thứ 3 nhóm rủi ro cao bị cắt lỗ liên tiếp trong ~10 ngày (IONQ 07-07 → QBTS 07-13 → SERV 07-16), cả 3 đều thuộc các ngành tăng trưởng cao biến động mạnh (quantum computing, robotics).
+- Đã thử tìm lựa chọn thay thế cùng nhóm rủi ro cao: **ASTS (1 trong 2 lựa chọn từng đề xuất cho lần thay QBTS, chưa từng mua) hiện KHÔNG phù hợp** — cổ phiếu vừa giảm -15.5% hôm nay 07-16 do công ty phát hành $1B convertible notes (lo ngại pha loãng cổ phần) và dời lịch phóng vệ tinh BlueBird sang đầu 2027; đã giảm ~60% từ đỉnh cuối tháng 5. Không đề xuất mua vào lúc này.
+- Chưa tìm được lựa chọn thứ 2 đủ chất lượng (tránh trùng ngành đã cháy 2 lần — quantum/robotics) trong lần kiểm tra này — không ép chọn đại một mã, sẽ cần nghiên cứu thêm và trình đề xuất riêng (tối thiểu 2 lựa chọn) khi có.
+- Vốn từ SERV ($458.35) hiện đang chờ settle (~07-17), tạm thời nằm ngoài buying power đã settle ($763.90 hiện tại chưa phản ánh).
+- **Vị thế còn lại (9/10 mã, tạm thời thiếu 1 slot rủi ro cao):** xem bảng P&L bên dưới.
+
+## 2026-07-16 ~16:52 ET (20:52 UTC) — Check-in định kỳ (đối soát sau stop-loss SERV)
+
+- Vị thế 10 mã core hiện tại (9/10, SERV vừa bị stop-loss chiều nay): AMZN, RSP, KO, MSFT, GOOGL, VOO, JNJ, AAPL, SOUN. HUT không thuộc core-10 (sandbox, cũng vừa bị stop-loss trưa nay, ghi ở `sandbox-log.md`).
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-15):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $332.85 | +8.10% | +1.63% |
+  | MSFT | $386.75 | $400.3769 | +3.52% | +1.20% |
+  | AMZN | $243.78 | $250.00 | +2.55% | -1.95% |
+  | VOO | $688.26 | $689.29 | +0.15% | -0.65% |
+  | RSP | $214.93 | $214.89 | -0.02% | +0.90% |
+  | KO | $84.10 | $83.9912 | -0.13% | +1.87% |
+  | GOOGL | $361.40 | $356.10 | -1.47% | -4.00% |
+  | JNJ | $260.69 | $250.8211 | -3.79% | +1.54% |
+  | SOUN | $6.59 | $6.3003 | -4.39% | -3.07% |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời (ngoài SERV đã xử lý ở trên). GOOGL giảm -4.00% trong ngày (vượt ngưỡng 3-5%, đã tìm tin tức): không có tin xấu mới riêng hôm nay — vẫn là câu chuyện capex/pha loãng đã biết từ đầu hè (guidance capex $190B kéo FCF margin xuống, đợt tăng vốn cổ phần $84.75B, Noam Shazeer rời đi) đã phản ánh vào giá nhiều tuần qua, không phải suy giảm cơ bản mới — không đủ điều kiện đề xuất theo CLAUDE.md.
+- JNJ -3.79% (fractional, không có stop-loss tự động) — đã hồi phục phần nào so với mức -4.75% ghi nhận 07-15 sau earnings beat-and-raise, không còn sát ngưỡng -5% như trước, vẫn theo dõi thủ công bình thường.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01).
+- **Đã gửi PushNotification** vì có thay đổi thật (SERV stop-loss) cần Hogan biết và cho hướng xử lý slot rủi ro cao còn trống.
+
+## 2026-07-16 ~17:20 ET (21:20 UTC) — Hogan chọn AEHR thay SERV, hoãn đặt lệnh tới mai
+
+- Từ 2 lựa chọn thay SERV (SAIL / AEHR), Hogan chọn **AEHR** (~6 cp, ~$500).
+- Đã review lệnh mua limit $84.00 (extended_hours, ask lúc đó $83.50) — không có cảnh báo. Tuy nhiên do đang ngoài giờ giao dịch chính, lệnh stop-loss -8% tự động chỉ đặt/kích hoạt được khi mở phiên chính (9:30 ET) — Hogan quyết định **hoãn, xem lại vào ngày mai** thay vì đặt lệnh mua ngoài giờ tối nay.
+- **Chưa đặt lệnh nào.** Cần xác nhận lại với Hogan vào phiên giao dịch tiếp theo trước khi mua AEHR.
+- Slot rủi ro cao (SERV cũ) hiện vẫn để cash.
+
+## 2026-07-17 ~10:20 ET (14:20 UTC) — GOOGL và SOUN cùng chạm cắt lỗ (resume sau gián đoạn phiên)
+
+- **GOOGL:** lệnh stop-loss (đặt $343.33, -5% từ giá vốn $361.40) khớp lúc 09:38:20 ET (13:38:20 UTC): bán 1 cp @ $343.31. Lỗ đúng -5.02%/cp theo cấu hình nhóm tech.
+- **SOUN:** lệnh stop-loss (đặt $6.06, -8% từ giá vốn $6.5899) khớp lúc 09:43:17 ET (13:43:17 UTC): bán 76 cp @ $6.06 trung bình (phí $0.01). Lỗ đúng -8.03%/cp theo cấu hình nhóm rủi ro cao.
+- **Bối cảnh thị trường:** bán tháo diện rộng nhóm tech/chip sáng nay — Nasdaq -1.6%, S&P -0.8%, Dow -1%, cổ phiếu chip vào bear market sau kết quả kém từ Netflix và TSMC, Nikkei -4%, cạnh tranh AI Trung Quốc (Moonshot Kimi K3). Không phải tin xấu riêng cho từng mã:
+  - GOOGL giảm thêm do lo ngại trì hoãn ra mắt Gemini 3.5 Pro, ngay trước thềm earnings Q2 dự kiến 07-22 — không phải suy giảm fundamentals, chỉ là biến động trước earnings + risk-off chung.
+  - SOUN không có tin xấu riêng — nền tảng vẫn tích cực (Gartner Magic Quadrant Leader for Conversational AI, S-4 filing có hiệu lực 07-09, guidance doanh thu FY26 $225-260M không đổi) — mức giảm là theo đà bán tháo chung nhóm AI/tech vốn hóa nhỏ.
+  - Nguồn: [Fortune — Tech stocks lead steep global selloff](https://fortune.com/2026/07/17/tech-stocks-global-selloff-as-investors-ai-semiconductor-chips/), [Yahoo Finance — Nasdaq hammered by chips sell-off](https://finance.yahoo.com/markets/live/stock-market-today-friday-july-17-dow-sp-500-nasdaq-092345307.html)
+- **Slot trống hiện tại (3/10):** 2 rủi ro cao (slot SERV cũ — AEHR đã được Hogan chọn 07-16 nhưng CHƯA đặt lệnh, hoãn tới hôm nay; slot SOUN mới trống) + 1 tech (slot GOOGL mới trống). Cần đề xuất thay thế cho SOUN và GOOGL (tối thiểu 2 lựa chọn mỗi slot) theo quy trình CLAUDE.md — chưa tự chọn/mua.
+- Vị thế còn lại (7/10): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL — không mã nào khác chạm ngưỡng cắt lỗ/chốt lời (JNJ -2.66%, đã hồi phục so với mức sát ngưỡng tuần trước).
+- Tài khoản: cash $2,480.53, buying_power $1,676.67 (chênh lệch do tiền bán GOOGL/SOUN/HUT/SERV đang chờ settle T+1), total_value $5,733.62.
+- Đã gửi PushNotification (2 stop-loss mới cần Hogan biết + xác nhận hướng đi AEHR/thay thế).
+
+## 2026-07-20 ~10:56 ET (14:56 UTC) — Lấp đủ 3 slot trống: AEHR, NVDA (thay GOOGL), RKLB (thay SOUN)
+
+- **Bối cảnh:** phiên kiểm tra hôm nay (yêu cầu Hogan) phát hiện 3 slot vẫn trống từ 07-17 (AEHR đã duyệt nhưng chưa mua; GOOGL/SOUN chưa có đề xuất thay thế). Đã trình đề xuất đầy đủ, Hogan duyệt: AEHR (mua ở giá hiện tại), NVDA (thay GOOGL), RKLB (thay SOUN).
+- **AEHR — lưu ý giá đã đổi nhiều so với lúc duyệt 07-16:** earnings Q4 vượt kỳ vọng 07-14 (EPS $0.11, doanh thu +33%, guidance FY27 +160-200%) khiến giá spike lên $110.20 rồi đảo chiều mạnh — về $81.05 (đóng cửa 07-17), tiếp tục giảm còn ~$76.93 sáng nay (mô hình "pop-and-fade"). Đã báo lại Hogan trước khi mua, Hogan xác nhận mua ở giá hiện tại.
+  - **Lệnh mua:** market 6 cp, khớp @ $76.92 TB (tổng $461.52), 14:55:46 UTC.
+  - **Stop-loss:** đặt GTC @ $70.77 (-8% từ giá vốn, đúng khung nhóm rủi ro cao).
+  - Rủi ro chính: đà giảm sau earnings pop chưa rõ đáy, biến động rất cao.
+- **NVDA (thay slot GOOGL — GOOGL cấm mua lại tới ~08-16 do wash-sale):** chọn thay vì META vì 1 cp META nguyên vượt trần 10%/vị thế (cần fractional, mất stop-loss tự động) — NVDA phù hợp hơn cho whole-share + stop tự động. Lý do: dẫn đầu compute+networking AI factory, tăng trưởng tăng tốc, 58 buy rating, target TB $301.62.
+  - **Lệnh mua:** market 2 cp, khớp @ $204.8299 TB (tổng $409.66), 14:55:47 UTC.
+  - **Stop-loss:** đặt GTC @ $194.59 (-5%, đúng khung nhóm tech).
+  - Rủi ro chính: định giá cao, phụ thuộc chu kỳ capex AI.
+- **RKLB (thay slot SOUN — SOUN cấm mua lại tới ~08-16 do wash-sale; tránh nhóm quantum/robotics đã cháy 3 lần IONQ/QBTS/SERV):** chọn thay vì HIMS theo lựa chọn Hogan. Lý do: vừa vào chỉ số Nasdaq-100, Buy consensus target $104.94 (+58% từ giá mua), hợp đồng phóng mới với NASA (PolSIR, TSIS-2).
+  - **Lệnh mua:** market 7 cp, khớp @ $66.4599 TB (tổng $465.22), 14:55:49 UTC.
+  - **Stop-loss:** đặt GTC @ $61.14 (-8%, đúng khung nhóm rủi ro cao).
+  - Rủi ro chính: vừa giảm -37%/tháng do thương vụ mua Iridium ($8B, cash+stock) gây lo ngại pha loãng, và hoãn lịch phóng — rủi ro tích hợp M&A.
+  - *(CRWV bị loại khỏi lựa chọn ban đầu — đang có vụ kiện gian lận chứng khoán chờ xử lý, thuộc tiêu chí loại trừ theo CLAUDE.md.)*
+- **Core-10 đã đủ 10/10:** AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB (đúng cơ cấu 2 rủi ro cao / 4 tech / 2 blue-chip / 2 ETF).
+- Đã gửi PushNotification (3 lệnh mua mới + đủ lại danh mục 10 mã).
