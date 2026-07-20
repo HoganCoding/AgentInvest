@@ -848,3 +848,12 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản (qua get_portfolio): cash $562.88, buying_power $562.88 (không đổi so với lần check trước). total_value $5,729.80.
 - "Phần theo dõi" sandbox: (cash $562.88 + giá trị IREN 15×$39.97≈$599.55) − $700 đệm = **~$462.43** (~66.1% mốc gốc $700) — còn xa ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên 15 cp IREN, không có lệnh mới — biến động nhẹ trong biên đã biết, chưa có catalyst mới, stop-loss vẫn giữ nguyên ở $35.65. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-20 ~16:08 ET (20:08 UTC) — Check định kỳ cuối phiên (giữ nguyên IREN, đi ngang nhẹ)
+
+- Vị thế sandbox: 15 cp IREN (avg cost $38.75), xác nhận qua get_equity_positions. Giá đóng cửa $40.26 (19:59:59 UTC) vs vốn (+3.90%), vs lần check trước (15:08 ET @ $39.97): +0.72% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- get_equity_orders từ 15:08 ET tới nay: rỗng — không có lệnh nào mới đặt/khớp/hủy. Stop-loss @ $35.65 (order id `6a5e2d0e-c7ff-4246-8d69-d7a531e5f0de`) vẫn giữ nguyên, chưa khớp.
+- Core-10 hiện tại (get_equity_positions): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB — không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $562.88, buying_power $562.88 (không đổi so với lần check trước). total_value $5,742.39.
+- "Phần theo dõi" sandbox: (cash $562.88 + giá trị IREN 15×$40.26≈$603.90) − $700 đệm = **~$466.78** (~66.7% mốc gốc $700) — còn xa ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: thị trường vừa đóng cửa (16:00 ET), giữ nguyên 15 cp IREN qua đêm, không có lệnh mới — đà tăng nhẹ tiếp diễn trên catalyst đã biết ($2.8B hợp đồng cloud), chưa đạt mức chốt lời tham khảo (~$45-46.50), stop-loss vẫn giữ nguyên ở $35.65. Chuyển sang chế độ theo dõi qua đêm, chờ phiên kế tiếp. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
