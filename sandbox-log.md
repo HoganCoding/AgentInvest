@@ -821,3 +821,12 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản (qua get_portfolio): cash $562.88, buying_power $562.88 (không đổi so với lần check trước). total_value $5,756.41.
 - "Phần theo dõi" sandbox: (cash $562.88 + giá trị IREN 15×$40.205≈$603.08) − $700 đệm = **~$465.96** (~66.6% mốc gốc $700) — còn xa ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên 15 cp IREN, không vào/thoát lệnh mới — đà tăng tiếp diễn lành mạnh trên cùng catalyst đã biết (hợp đồng $2.8B), chưa đạt mức chốt lời tham khảo (~$45-46.50), stop-loss vẫn giữ nguyên ở $35.65. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-20 ~13:08 ET (17:08 UTC) — Check định kỳ (giữ nguyên IREN, đi ngang)
+
+- Vị thế sandbox: 15 cp IREN (avg cost $38.75), xác nhận qua get_equity_positions. Giá hiện $40.1572 vs vốn (+3.63%), vs lần check trước (12:10 ET @ $40.205): -0.12% — gần như đi ngang, dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- get_equity_orders từ 12:10 ET tới nay: rỗng — không có lệnh nào mới đặt/khớp/hủy. Stop-loss @ $35.65 (order id `6a5e2d0e-c7ff-4246-8d69-d7a531e5f0de`) vẫn giữ nguyên như lần check trước.
+- Core-10 hiện tại (get_equity_positions): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB — không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $562.88, buying_power $562.88 (không đổi so với lần check trước). total_value $5,742.93.
+- "Phần theo dõi" sandbox: (cash $562.88 + giá trị IREN 15×$40.1572≈$602.36) − $700 đệm = **~$465.24** (~66.5% mốc gốc $700) — còn xa ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên 15 cp IREN, không có lệnh mới. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
