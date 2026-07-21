@@ -868,3 +868,12 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản (qua get_portfolio): cash $562.88, buying_power $562.88. total_value $5,795.06.
 - "Phần theo dõi" sandbox: (cash $562.88 + giá trị IREN 15×$41.86≈$627.90) − $700 đệm = **~$490.78** (~70.1% mốc gốc $700) — còn xa ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên 15 cp IREN, không có lệnh mới — đà tăng tiếp diễn nhẹ trên catalyst đã biết, chưa đạt mức chốt lời tham khảo (~$45-46.50), stop-loss vẫn giữ nguyên ở $35.65. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine, gửi 1 dòng thông báo ngắn.
+
+## 2026-07-21 ~10:09 ET (14:09 UTC) — Check định kỳ (giữ nguyên IREN, đi ngang nhẹ so với pre-market)
+
+- Vị thế sandbox: 15 cp IREN (avg cost $38.75), xác nhận qua get_equity_positions. Giá hiện $41.6801 (14:09:34 UTC) vs vốn (+7.56%), vs previous close $40.20 (+3.68%), vs lần check trước (09:12 ET pre-market @ $41.86): -0.43% — dưới ngưỡng 3-5%, không tìm tin tức sâu (đã xác nhận không có catalyst mới ở lần check trước).
+- get_equity_orders từ 13:12 UTC tới nay: rỗng — không có lệnh nào mới đặt/khớp/hủy. Stop-loss @ $35.65 (order id `6a5e2d0e-c7ff-4246-8d69-d7a531e5f0de`) vẫn giữ nguyên, chưa khớp.
+- Core-10 hiện tại (get_equity_positions): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB — không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $562.88, buying_power $562.88 (không đổi so với lần check trước). total_value $5,856.39.
+- "Phần theo dõi" sandbox: (cash $562.88 + giá trị IREN 15×$41.6801≈$625.20) − $700 đệm = **~$488.08** (~69.7% mốc gốc $700) — còn xa ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên 15 cp IREN, không có lệnh mới — đi ngang nhẹ so với lần check trước, chưa đạt mức chốt lời tham khảo (~$45-46.50), stop-loss vẫn giữ nguyên ở $35.65. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
