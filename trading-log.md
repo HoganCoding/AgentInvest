@@ -1150,3 +1150,9 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - JNJ tiếp tục drift gần ngưỡng cắt lỗ -5% (hiện -4.81%, fractional, không có stop tự động) — CHƯA chạm ngưỡng, chỉ ghi nhận theo dõi thủ công, không đề xuất hành động. Tin tức: tòa phúc thẩm Illinois giữ nguyên phán quyết $45M vụ kiện talc, thêm phán quyết $10.2M liên quan mesothelioma tại Minnesota — rủi ro pháp lý talc tiếp diễn nhưng không phải thông tin mới đột biến, đã là rủi ro đã biết, cổ phiếu vẫn +23.9% YTD theo nguồn ngoài. Không đủ cơ sở đề xuất bán ở mức -4.81%.
 - Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~11 ngày).
 - **Đề xuất mới:** chốt lời một phần AEHR (bán 3/6 cổ phiếu) — chờ Hogan duyệt yes/no. Đã gửi PushNotification.
+
+## 2026-07-21 — Hogan duyệt đề xuất AEHR (Yes) — CHƯA THỰC HIỆN, phiên này read-only
+
+- Hogan trả lời **"Yes"** duyệt đề xuất bán 3/6 cổ phiếu AEHR (chốt lời một phần) từ entry ngay phía trên.
+- **Phiên routine này bị giới hạn read-only trên tài khoản core-10 (704170133)** — không có quyền gọi `place_equity_order`/bất kỳ tool đặt lệnh nào, theo đúng cấu hình của tác vụ này. Lệnh bán CHƯA được đặt.
+- Cần thực hiện lệnh bán 3 cổ phiếu AEHR (thị trường) qua phiên tương tác có quyền giao dịch trên tài khoản Agentic, sau đó cập nhật log này với xác nhận khớp lệnh + dời/giữ stop-loss cho 3 cổ phiếu còn lại.
