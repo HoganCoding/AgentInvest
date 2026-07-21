@@ -857,3 +857,14 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản (qua get_portfolio): cash $562.88, buying_power $562.88 (không đổi so với lần check trước). total_value $5,742.39.
 - "Phần theo dõi" sandbox: (cash $562.88 + giá trị IREN 15×$40.26≈$603.90) − $700 đệm = **~$466.78** (~66.7% mốc gốc $700) — còn xa ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: thị trường vừa đóng cửa (16:00 ET), giữ nguyên 15 cp IREN qua đêm, không có lệnh mới — đà tăng nhẹ tiếp diễn trên catalyst đã biết ($2.8B hợp đồng cloud), chưa đạt mức chốt lời tham khảo (~$45-46.50), stop-loss vẫn giữ nguyên ở $35.65. Chuyển sang chế độ theo dõi qua đêm, chờ phiên kế tiếp. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-21 ~09:12 ET (13:12 UTC) — Check đầu tuần mới, pre-market (cloud routine, giữ nguyên IREN)
+
+- Vị thế sandbox: 15 cp IREN (avg cost $38.75), xác nhận qua get_equity_positions. Giá pre-market $41.86 (13:11 UTC) vs previous close $40.20 (+4.13%), vs vốn (+8.03%), vs lần check trước (16:08 ET hôm qua @ $40.26): +3.98% — ngay ngưỡng 3-5%, đã tìm tin tức để xác nhận không có diễn biến mới cần đánh giá lại.
+- Tin tức (WebSearch "IREN Iris Energy stock news July 21 2026"): không có catalyst mới/tiêu cực — vẫn là tiếp diễn cùng tin hợp đồng AI Cloud $2.8B và nâng mục tiêu ARR >$4B đã biết từ 07-20; có thêm tin bổ nhiệm CISO (Eric Hammersley) nhưng không phải catalyst giá đáng kể. Không có tin đảo chiều thesis.
+  - Nguồn: [stockanalysis.com](https://stockanalysis.com/stocks/iren/), [Yahoo Finance](https://finance.yahoo.com/quote/IREN/)
+- get_equity_orders từ 20:08 UTC hôm qua tới nay: rỗng — không có lệnh nào mới đặt/khớp/hủy. Stop-loss @ $35.65 (order id `6a5e2d0e-c7ff-4246-8d69-d7a531e5f0de`) vẫn giữ nguyên, chưa khớp.
+- Core-10 hiện tại (get_equity_positions): AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB — không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $562.88, buying_power $562.88. total_value $5,795.06.
+- "Phần theo dõi" sandbox: (cash $562.88 + giá trị IREN 15×$41.86≈$627.90) − $700 đệm = **~$490.78** (~70.1% mốc gốc $700) — còn xa ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên 15 cp IREN, không có lệnh mới — đà tăng tiếp diễn nhẹ trên catalyst đã biết, chưa đạt mức chốt lời tham khảo (~$45-46.50), stop-loss vẫn giữ nguyên ở $35.65. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine, gửi 1 dòng thông báo ngắn.
