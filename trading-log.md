@@ -1118,3 +1118,35 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Không mã nào có biến động trong ngày vượt ngưỡng 3-5% cần tìm tin tức mới (ngoài artifact AEHR đã giải thích ở trên).
 - Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~12 ngày).
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-21 ~09:51 ET (13:51 UTC) — Check-in định kỳ (routine read-only) — ĐỀ XUẤT MỚI: chốt lời một phần AEHR
+
+- Vị thế 10 mã core xác nhận qua `get_equity_positions`: AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB — đủ 10/10 (2 rủi ro cao: AEHR, RKLB / 4 tech: MSFT, AAPL, AMZN, NVDA / 2 blue-chip: JNJ, KO / 2 ETF: VOO, RSP). (IREN 15 cp là vị thế sandbox, không thuộc core-10 — xem `sandbox-log.md`.)
+- P&L so với giá vốn (giá hiện tại lúc 13:46 UTC, so với đóng cửa 07-20):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AEHR | $76.92 | $91.41 | **+18.83%** | **+18.16%** |
+  | AAPL | $307.90 | $323.295 | +5.00% | -1.01% |
+  | MSFT | $386.75 | $399.85 | +3.39% | -0.61% |
+  | NVDA | $204.83 | $206.92 | +1.02% | +1.79% |
+  | AMZN | $243.78 | $247.68 | +1.60% | -0.92% |
+  | RKLB | $66.46 | $66.42 | -0.06% | +1.03% |
+  | VOO | $688.26 | $684.34 | -0.57% | +0.31% |
+  | RSP | $214.93 | $212.10 | -1.32% | -0.15% |
+  | KO | $84.10 | $81.50 | -3.09% | -0.76% |
+  | JNJ | $260.69 | $248.14 | -4.81% | -0.27% |
+
+- **AEHR chạm khung chốt lời:** +18.83% so với giá vốn, trong khung +10-20% theo CLAUDE.md và vượt tối thiểu risk/reward 1:2 so với stop-loss -8% hiện tại ($70.77) — ngưỡng tối thiểu để đạt 1:2 là +16%, đã vượt.
+  - Bối cảnh: đây là tiếp nối đà tăng hậu earnings 7/15 (Q4 FY26 revenue $18.84M, +33.7% YoY; guidance FY27 $130-150M, +160-200%; bookings kỷ lục $60.7M) cùng loạt nâng target giá trong tuần: Craig-Hallum → $125 (từ $68, giữ Buy), Lake Street → $110 (từ $56, giữ Buy), Freedom Broker → $110 (từ $90, nâng lên Buy). Không có tin xấu mới.
+  - Tuy nhiên cổ phiếu cực kỳ biến động kể từ earnings: đỉnh $110 (7/15 intraday) → đáy đóng cửa $77.36 (7/20) → bật lại $91.41 hôm nay — swing "pop–fade–pop" trong vòng 1 tuần, phản ánh rủi ro thanh khoản/đầu cơ cao đặc trưng nhóm rủi ro cao.
+  - Vị thế mới mở 7/20 (~1 ngày) — bán sẽ là lãi vốn ngắn hạn (thuế suất cao hơn dài hạn theo CLAUDE.md ghi chú thuế, nhưng quy tắc thuế không override kỷ luật chốt lời khi ngưỡng đã đạt).
+
+  **Đề xuất: AEHR — Bán 3/6 cổ phiếu (chốt ~50% vị thế) tại thị trường**
+  1. Mã + hành động: AEHR, BÁN 3 cổ phiếu (giữ lại 3 cổ phiếu), lệnh thị trường.
+  2. Lý do: đã đạt khung chốt lời +10-20% (hiện +18.83%) với R:R ≥1:2 so với stop-loss -8%; khóa một phần lợi nhuận trong bối cảnh cổ phiếu đã cho thấy biến động rất mạnh 2 chiều trong cùng 1 tuần (từng giảm từ $88→$77 chỉ trong 3 ngày 7/17-7/20); giữ lại phân nửa để tiếp tục hưởng lợi nếu đà tăng theo target consensus ~$115 tiếp diễn.
+  3. Rủi ro chính: (a) nếu đà tăng tiếp tục, phần đã bán sẽ bỏ lỡ lợi nhuận thêm; (b) nếu giữ nguyên toàn bộ, rủi ro đảo chiều nhanh như đã xảy ra tuần trước; (c) lãi vốn ngắn hạn (holding period ~1 ngày) chịu thuế cao hơn dài hạn — cân nhắc nếu ưu tiên thuế hơn chốt lời.
+  4. Mức cắt lỗ/chốt lời cho phần còn giữ (3 cổ phiếu): đề xuất dời stop-loss lên breakeven ~$76.92 (từ $70.77) để bảo vệ lợi nhuận đã có, hoặc giữ nguyên $70.77 nếu Hogan muốn biên độ rộng hơn cho phần còn lại — chờ Hogan quyết định.
+- JNJ tiếp tục drift gần ngưỡng cắt lỗ -5% (hiện -4.81%, fractional, không có stop tự động) — CHƯA chạm ngưỡng, chỉ ghi nhận theo dõi thủ công, không đề xuất hành động. Tin tức: tòa phúc thẩm Illinois giữ nguyên phán quyết $45M vụ kiện talc, thêm phán quyết $10.2M liên quan mesothelioma tại Minnesota — rủi ro pháp lý talc tiếp diễn nhưng không phải thông tin mới đột biến, đã là rủi ro đã biết, cổ phiếu vẫn +23.9% YTD theo nguồn ngoài. Không đủ cơ sở đề xuất bán ở mức -4.81%.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~11 ngày).
+- **Đề xuất mới:** chốt lời một phần AEHR (bán 3/6 cổ phiếu) — chờ Hogan duyệt yes/no. Đã gửi PushNotification.
