@@ -1156,3 +1156,35 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Hogan trả lời **"Yes"** duyệt đề xuất bán 3/6 cổ phiếu AEHR (chốt lời một phần) từ entry ngay phía trên.
 - **Phiên routine này bị giới hạn read-only trên tài khoản core-10 (704170133)** — không có quyền gọi `place_equity_order`/bất kỳ tool đặt lệnh nào, theo đúng cấu hình của tác vụ này. Lệnh bán CHƯA được đặt.
 - Cần thực hiện lệnh bán 3 cổ phiếu AEHR (thị trường) qua phiên tương tác có quyền giao dịch trên tài khoản Agentic, sau đó cập nhật log này với xác nhận khớp lệnh + dời/giữ stop-loss cho 3 cổ phiếu còn lại.
+
+## 2026-07-21 ~15:32 ET (19:32 UTC) — Check-in định kỳ (routine read-only) — ĐỀ XUẤT MỚI: chốt lời phần AEHR còn lại
+
+- **Xác nhận lệnh bán AEHR (đề xuất từ entry 09:51 ET) đã được thực hiện** — qua `get_equity_orders`: lệnh `6a5f8392-d004-420f-92d8-a311d45cd034` (limit sell 3 cp, GFD) filled lúc 14:35:09 UTC (~10:35 ET) @ $94.70 TB. Đây là lệnh đặt qua phiên tương tác khác có quyền giao dịch (đúng như kế hoạch ghi ở entry trước) — routine này chỉ xác nhận, không tự đặt. Đồng thời phát hiện stop-loss cho 3 cổ phiếu AEHR còn lại đã được dời lên **$88.10** (GTC, đặt 14:36:43 UTC) — cao hơn mức breakeven $76.92 đã đề xuất, khóa lợi nhuận tối thiểu ~+14.5% nếu bị kích hoạt.
+- Vị thế 10 mã core hiện tại qua `get_equity_positions`: AMZN (2), RSP (2), KO (5), MSFT (1), VOO (0.7265 fractional), JNJ (1.918 fractional), AAPL (1.624 fractional), AEHR (3, sau khi bán 3/6), NVDA (2), RKLB (7) — đủ 10/10. (IREN 15 cp vẫn là vị thế sandbox, không thuộc core-10.)
+- Lưu ý kỹ thuật: nhiều lệnh stop-loss khác (AMZN, KO, MSFT, RKLB, NVDA, RSP) cũng được cập nhật lúc ~14:56 UTC hôm nay qua phiên có quyền giao dịch (không phải phiên routine này) — mức stop mới không hoàn toàn khớp băng -5%/-8% gốc từ giá vốn ban đầu (có thể là trailing stop theo giá hiện tại). Routine này chỉ ghi nhận trạng thái quan sát được, không có quyền diễn giải/sửa đổi.
+- P&L so với giá vốn (giá hiện tại lúc 19:31 UTC, so với đóng cửa 07-20):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **AEHR** | $76.92 | **$97.66** | **+26.96%** | **+26.24%** |
+  | AAPL | $307.90 | $327.885 | +6.49% | +0.40% |
+  | MSFT | $386.75 | $399.355 | +3.26% | -0.73% |
+  | RKLB | $66.46 | $68.26 | +2.71% | +3.83% |
+  | NVDA | $204.83 | $206.818 | +0.97% | +1.74% |
+  | VOO | $688.26 | $687.81 | -0.07% | +0.82% |
+  | AMZN | $243.78 | $247.63 | +1.58% | -0.94% |
+  | KO | $84.10 | $82.325 | -2.11% | +0.25% |
+  | RSP | $214.93 | $212.74 | -1.02% | +0.15% |
+  | JNJ | $260.69 | $249.905 | -4.14% | +0.44% |
+
+- **AEHR (3 cổ phiếu còn lại) đã vượt xa khung chốt lời +10-20%, hiện +26.96%** — đã kiểm tra tin tức vì biến động >5% trong ngày: không có catalyst MỚI kể từ entry sáng nay — cùng đợt nâng target giá đã ghi nhận (Craig-Hallum $125, Lake Street $110, Freedom Broker $110, đều từ báo cáo Q4 FY26 công bố 07-15) tiếp tục đẩy giá lên do momentum/short-covering, không phải tin tức mới trong 24h.
+  - Nguồn: [AEHR Stock Rockets As Earnings Beat Triggers Hypergrowth Outlook — TimothySykes](https://timothysykes.com/news/aehr-test-systems-aehr-news-2026_07_21-2/), [Aehr Test Systems Stock Soars on Earnings — Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/aehr-test-systems-stock-soars-160500247.html)
+
+  **Đề xuất: AEHR — Bán nốt 3 cổ phiếu còn lại (thoát toàn bộ vị thế), lệnh thị trường**
+  1. Mã + hành động: AEHR, BÁN 3 cổ phiếu (toàn bộ phần còn lại), lệnh thị trường.
+  2. Lý do: P&L đã vượt xa khung chốt lời +10-20% quy định trong CLAUDE.md (hiện +26.96%, gần gấp đôi cận trên), không có catalyst cơ bản mới kể từ lần chốt lời một phần sáng nay — chỉ là tiếp diễn momentum trên cùng tin cũ. Cổ phiếu đã cho thấy biến động cực đoan 2 chiều trong cùng 1 tuần (đỉnh $110 → đáy $77.36 → nay $97.66) — rủi ro đảo chiều nhanh (như đã xảy ra 07-17→07-20) là có thật và đã lặp lại 2 lần trong 10 ngày qua. Thoát hẳn giúp khóa toàn bộ lợi nhuận thay vì phụ thuộc vào stop-loss $88.10 (vẫn cho phép giá giảm ~-9.8% từ đỉnh hiện tại trước khi kích hoạt).
+  3. Rủi ro chính: (a) nếu đà tăng tiếp tục (target consensus mới nhất $110-125), sẽ bỏ lỡ lợi nhuận thêm; (b) lãi vốn ngắn hạn (holding period ~1 ngày cho lô mua 07-20) — thuế suất cao hơn dài hạn, nhưng quy tắc thuế trong CLAUDE.md không override kỷ luật chốt lời khi ngưỡng đã đạt/vượt xa; (c) sau khi bán, mất 1 trong 2 slot nhóm rủi ro cao — cần sàng lọc mã thay thế cùng nhóm (không mua lại AEHR trong 30 ngày nếu đây được coi như chốt lời chủ động, wash-sale chỉ áp dụng khi bán LỖ nên không bắt buộc, nhưng nên cân nhắc mã khác để đa dạng hóa).
+  4. Không áp dụng cắt lỗ/chốt lời mới (vị thế đóng hoàn toàn). Nếu Hogan muốn giữ lại một phần thay vì thoát hẳn, có thể cân nhắc phương án thay thế: giữ nguyên, chỉ dời stop-loss lên cao hơn nữa (vd. ~$92, khóa +19.6%) thay vì bán hết.
+- JNJ tiếp tục drift nhẹ về ngưỡng cắt lỗ -5% (hiện -4.14%, cải thiện nhẹ so với -4.81% chiều qua, fractional, không stop tự động) — chưa chạm ngưỡng, không có tin tức mới, tiếp tục theo dõi thủ công.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~11 ngày).
+- **Đề xuất mới:** chốt lời toàn bộ phần AEHR còn lại (bán 3/3 cổ phiếu) — chờ Hogan duyệt yes/no. Đã gửi PushNotification.
