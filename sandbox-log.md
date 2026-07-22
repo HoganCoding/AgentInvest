@@ -960,3 +960,12 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản (qua get_portfolio): cash $1,337.20 (không đổi so với lần check trước), buying_power $846.98 (không đổi so với lần check trước). total_value $5,951.98.
 - "Phần theo dõi" sandbox: (buying_power $846.98 + giá trị IREN 15×$42.76≈$641.40) − $700 đệm = **~$788.38** (~112.6% mốc gốc $700) — còn xa ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên 15 cp IREN, không có lệnh mới — đi ngang so với lần check trước, chưa đạt mức chốt lời tham khảo (~$45-46.50), stop-loss vẫn giữ nguyên ở $38.91. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-22 ~13:08 ET (17:08 UTC) — Check định kỳ (giữ nguyên IREN, hạ nhẹ)
+
+- Vị thế sandbox: 15 cp IREN (avg cost $38.75), xác nhận qua get_equity_positions. Giá hiện $41.645 (18:07:56 UTC) vs vốn (+7.47%), vs previous close $41.29 (+0.86%), vs lần check trước (12:10 ET @ $42.76): -2.60% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- get_equity_orders (symbol IREN, từ 16:10 UTC tới nay): rỗng — không có lệnh nào mới đặt/khớp/hủy. Stop-loss @ $38.91 (order id `6a5f88a0-3628-4139-9c73-91bb37e288e6`) vẫn giữ nguyên, chưa khớp, còn cách giá hiện ~6.6%.
+- Core-10 hiện tại (get_equity_positions): RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR (3cp), NVDA, RKLB — không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $1,337.20 (không đổi so với lần check trước), buying_power $846.98 (không đổi so với lần check trước). total_value $5,914.10.
+- "Phần theo dõi" sandbox: (buying_power $846.98 + giá trị IREN 15×$41.645≈$624.68) − $700 đệm = **~$771.65** (~110.2% mốc gốc $700) — còn xa ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên 15 cp IREN, không có lệnh mới — hạ nhẹ so với lần check trước, vẫn trong biên đã biết, không có catalyst mới, stop-loss vẫn giữ nguyên ở $38.91. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
