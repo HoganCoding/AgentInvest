@@ -1226,3 +1226,30 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
 
 **Chờ Hogan chọn AVGO, CSCO, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức).
+
+## 2026-07-22 ~15:32 ET (19:32 UTC) — Check-in định kỳ (routine read-only, cuối phiên)
+
+- Vị thế 9/10 core xác nhận qua `get_equity_positions` (không đổi so với entry 09:50 ET sáng nay — slot AMZN vẫn trống, chưa có lệnh mới nào kể từ 13:50 UTC hôm nay qua `get_equity_orders`): RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB. (IREN 15 cp vẫn là vị thế sandbox, không thuộc core-10.)
+- P&L so với giá vốn (giá hiện tại ~19:32 UTC, so với đóng cửa 07-21):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AEHR | $76.92 | $95.50 | +24.16% | -3.45% |
+  | AAPL | $307.90 | $324.39 | +5.36% | -1.02% |
+  | RKLB | $66.46 | $69.855 | +5.11% | +1.06% |
+  | NVDA | $204.83 | $212.88 | +3.93% | +2.70% |
+  | MSFT | $386.75 | $389.10 | +0.61% | -2.18% |
+  | VOO | $688.26 | $687.335 | -0.13% | -0.08% |
+  | RSP | $214.93 | $212.475 | -1.14% | -0.13% |
+  | KO | $84.10 | $82.53 | -1.87% | +0.68% |
+  | JNJ | $260.69 | $254.495 | -2.38% | +1.55% |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời **mới** hôm nay (AEHR đã có đề xuất chốt lời toàn bộ đang chờ duyệt từ hôm qua, không phải sự kiện mới).
+- MSFT giảm -2.18% trong ngày, mức giảm lớn nhất trong danh mục — đã tìm tin tức: nguyên nhân là lo ngại chung toàn ngành về chi tiêu vốn AI trước thềm báo cáo Q4 FY26 (dự kiến 2026-07-29) — MSFT dự kiến chi ~$190B capex năm 2026, nhà đầu tư nghi ngờ khả năng sinh lời. Đây là rủi ro/lo ngại đã biết (không phải tin xấu đột ngột riêng của MSFT — kiện tụng/gian lận/mất CEO/hạ tín nhiệm), đồng thuận analyst vẫn "Strong Buy/Buy" với target trung bình $589-592 (gấp ~1.5x giá hiện tại). P&L MSFT vẫn dương (+0.61%), còn cách rất xa ngưỡng cắt lỗ -5%. Chưa đủ điều kiện đề xuất theo CLAUDE.md — theo dõi sát quanh ngày báo cáo 07-29.
+  - Nguồn: [Microsoft MSFT Stock Slumps Below $400 as AI Spending Fears Return Pre-Earnings — FX Leaders](https://www.fxleaders.com/news/2026/07/22/microsoft-msft-stock-slumps-below-400-as-ai-spending-fears-return-pre-earnings/)
+- Nhắc lại 2 đề xuất đang chờ Hogan quyết định (chưa có phản hồi/lệnh mới nào từ khi gửi):
+  1. Chốt lời toàn bộ AEHR còn lại (3/3 cp) — đề xuất từ 07-21 ~15:32 ET, hiện vẫn +24.16% (đã hạ nhiệt nhẹ từ đỉnh +27% hôm qua nhưng vẫn trong vùng lợi nhuận rất cao).
+  2. Thay thế slot AMZN (large-cap tech) bằng AVGO hoặc CSCO — đề xuất từ 07-22 ~09:50 ET.
+- Không phải thông tin mới nên không gửi lại PushNotification cho 2 đề xuất trên (đã gửi lúc đề xuất lần đầu).
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~10 ngày).
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
