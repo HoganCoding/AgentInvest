@@ -1188,3 +1188,41 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - JNJ tiếp tục drift nhẹ về ngưỡng cắt lỗ -5% (hiện -4.14%, cải thiện nhẹ so với -4.81% chiều qua, fractional, không stop tự động) — chưa chạm ngưỡng, không có tin tức mới, tiếp tục theo dõi thủ công.
 - Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~11 ngày).
 - **Đề xuất mới:** chốt lời toàn bộ phần AEHR còn lại (bán 3/3 cổ phiếu) — chờ Hogan duyệt yes/no. Đã gửi PushNotification.
+
+## 2026-07-22 ~9:50 ET (13:50 UTC) — Check-in định kỳ (routine read-only) — AMZN bị stop-loss tự động (trailing) + ĐỀ XUẤT MỚI: thay AMZN
+
+- **AMZN đã bị bán tự động sáng nay:** lệnh `6a5f8895-8f1b-4926-95c5-30125e4a80a1` (stop_market sell, đặt lúc 14:56 UTC hôm qua 07-21 — cùng đợt cập nhật trailing stop cho AMZN/KO/MSFT/RKLB/NVDA/RSP đã ghi nhận ở entry 07-21 19:32 ET) kích hoạt lúc **09:32 ET hôm nay** (13:32:00 UTC), bán 2 cp @ $245.11 TB, stop trigger $245.18. Giá vốn $243.78 → **+0.55%** (không phải lỗ — do trailing stop đã dời sát giá thị trường hiện tại, không phải cắt lỗ -5% từ giá vốn gốc). Đây là lệnh tự động đặt sẵn từ phiên có quyền giao dịch khác, khớp bình thường — routine này chỉ ghi nhận, không tự đặt/hủy gì.
+- Đã kiểm tra toàn bộ lệnh `filled` từ 2026-07-21 00:00 UTC tới nay: chỉ có 2 lệnh khớp — AEHR (bán 3/6, đã ghi ở entry trước) và AMZN (trên). Không có stop-loss nào khác bị kích hoạt.
+- **Core hiện còn 9/10** (thiếu 1 slot large-cap tech): RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB.
+- **Tài khoản (Agentic ••••0133):** total_value $5,925.49, equity_value $4,588.29, cash $1,337.20, buying_power $846.98.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-21, ~13:47 UTC):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AEHR | $76.92 | $97.80 | **+27.14%** | -1.12% |
+  | RKLB | $66.46 | $71.055 | +6.92% | +2.80% |
+  | AAPL | $307.90 | $327.18 | +6.26% | -0.17% |
+  | MSFT | $386.75 | $393.26 | +1.68% | -1.13% |
+  | NVDA | $204.83 | $207.06 | +1.09% | -0.11% |
+  | VOO | $688.26 | $687.41 | -0.12% | -0.07% |
+  | RSP | $214.93 | $213.42 | -0.70% | +0.31% |
+  | KO | $84.10 | $82.45 | -1.96% | +0.59% |
+  | JNJ | $260.69 | $252.3115 | -3.19% | +0.68% |
+
+- Không mã nào (ngoài AEHR, đã có đề xuất chờ duyệt từ hôm qua) chạm ngưỡng cắt lỗ/chốt lời hôm nay. Không mã nào biến động trong ngày vượt 3-5% nên không cần tìm tin sâu thêm (QQQ hôm nay -0.46%, 708.97→705.69, không có gì bất thường thị trường chung).
+- **Nhắc lại đề xuất đang chờ (chưa có quyết định mới từ Hogan):** chốt lời toàn bộ AEHR còn lại (3/3 cp) từ entry 07-21 ~15:32 ET — vẫn ở vùng lợi nhuận rất cao (+27.14%), chưa thấy Hogan trả lời yes/no. Không gửi lại PushNotification cho việc này (không phải thông tin mới), chỉ nhắc trong log.
+
+### Đề xuất thay thế slot AMZN (large-cap tech) — cần Hogan chọn 1 trong 2 lựa chọn
+
+**Bối cảnh:** AMZN không bị thay do "cắt lỗ"/tin xấu — chỉ là trailing stop (đặt bởi phiên khác) khớp ở vùng giá gần hòa vốn. Portfolio vẫn cần đủ 4 mã large-cap tech theo cơ cấu CLAUDE.md nên đề xuất lấp lại slot.
+- Đã cân nhắc lại **CRM, ORCL** (2 lựa chọn từng duyệt hụt hôm 07-17, sau đó bị AEHR/NVDA/RKLB thay thế) nhưng tình hình xấu đi rõ rệt trong tuần qua: CRM bị Morgan Stanley hạ khuyến nghị 21/07 (giảm -3.6%), cổ phiếu -35.2% YTD, rủi ro cấu trúc từ AI thay thế sản phẩm lõi (nội bộ có tin AI đang thay thế Slackbot ở một số khách hàng). ORCL dòng tiền tự do âm -$24B do capex AI, S&P vừa hạ tín nhiệm xuống sát mức "junk", cổ phiếu -36.9% YTD. Cả 2 không còn phù hợp tiêu chí "minh bạch tài chính, ổn định" cho nhóm large-cap tech → **loại khỏi đề xuất lần này**.
+
+**Lựa chọn A: AVGO (Broadcom)** — giá ~$385.31 (1 cp ≈ 6.5% danh mục, giữ được stop-loss tự động). Broadcom vừa gia hạn hợp đồng cung ứng chip với Apple tới 2031 (>$30B), hợp tác hạ tầng cloud riêng với Standard Chartered, backlog AI mạnh tới FY28, đồng thuận analyst "Buy" trung bình target $501.58 (+30% so với giá hiện tại). Đang thấp hơn ~24% so với đỉnh 52 tuần do đợt bán tháo chip chung (sau tin mô hình mã nguồn mở Kimi K3 của Moonshot) — không phải vấn đề riêng của AVGO.
+- Rủi ro chính: định giá cao, phụ thuộc chu kỳ AI capex; thêm 1 mã bán dẫn sẽ khiến 2/4 slot tech (NVDA + AVGO) cùng nhóm bán dẫn AI, giảm đa dạng hóa sub-sector.
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Lựa chọn B: CSCO (Cisco)** — giá ~$113.25 (đề xuất mua 4 cp ≈ $453, ~7.6% danh mục, nguyên cổ phiếu). Q3 FY26 doanh thu $15.84B (+12% YoY), CEO nâng mục tiêu đơn hàng AI FY26 từ $5B lên $9B, tăng cổ tức năm thứ 14 liên tiếp (trả cổ tức đúng hôm nay 22/07), đồng thuận analyst nghiêng Buy (4 Strong Buy/13 Buy/8 Hold/1 Strong Sell), target TB $127.18. Đã điều chỉnh -7.7%/tuần từ đỉnh 52 tuần — điểm vào tốt hơn. Đa dạng hóa sang hạ tầng mạng/networking, khác hẳn nhóm bán dẫn AI (NVDA) và phần mềm/hardware tiêu dùng (MSFT/AAPL) đã có.
+- Rủi ro chính: lo ngại nhu cầu thiết bị networking truyền thống chậm lại, rủi ro thực thi mục tiêu đơn hàng AI $9B (cần tăng tốc mạnh trong Q4).
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Chờ Hogan chọn AVGO, CSCO, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức).
