@@ -951,3 +951,12 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản (qua get_portfolio): cash $1,337.20 (không đổi so với lần check trước), buying_power $846.98 (không đổi so với lần check trước). total_value $5,951.19.
 - "Phần theo dõi" sandbox: (buying_power $846.98 + giá trị IREN 15×$42.905≈$643.58) − $700 đệm = **~$790.56** (~112.9% mốc gốc $700) — còn xa ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên 15 cp IREN, không có lệnh mới — hạ nhẹ so với đỉnh trong phiên, vẫn trong biên đã biết, không có catalyst mới, stop-loss vẫn giữ nguyên ở $38.91. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-22 ~12:10 ET (16:10 UTC) — Check định kỳ (giữ nguyên IREN, đi ngang)
+
+- Vị thế sandbox: 15 cp IREN (avg cost $38.75), xác nhận qua get_equity_positions. Giá hiện $42.76 (16:10:13 UTC) vs vốn (+10.35%), vs previous close $41.29 (+3.56%), vs lần check trước (11:10 ET @ $42.905): -0.34% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- get_equity_orders (order_id `6a5f88a0-3628-4139-9c73-91bb37e288e6`): vẫn `state=confirmed`, GTC, stop $38.91, cumulative_quantity=0 — chưa khớp, còn cách giá hiện ~9.0%.
+- Core-10 hiện tại (get_equity_positions): RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR (3cp), NVDA, RKLB — không có mã lạ, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $1,337.20 (không đổi so với lần check trước), buying_power $846.98 (không đổi so với lần check trước). total_value $5,951.98.
+- "Phần theo dõi" sandbox: (buying_power $846.98 + giá trị IREN 15×$42.76≈$641.40) − $700 đệm = **~$788.38** (~112.6% mốc gốc $700) — còn xa ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên 15 cp IREN, không có lệnh mới — đi ngang so với lần check trước, chưa đạt mức chốt lời tham khảo (~$45-46.50), stop-loss vẫn giữ nguyên ở $38.91. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
