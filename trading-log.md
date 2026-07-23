@@ -1253,3 +1253,41 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Không phải thông tin mới nên không gửi lại PushNotification cho 2 đề xuất trên (đã gửi lúc đề xuất lần đầu).
 - Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~10 ngày).
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-23 ~9:48 ET (13:48 UTC) — Check-in định kỳ (routine read-only) — AVGO khớp lệnh (đã duyệt hôm qua) + KO bị stop-loss tự động (trailing) → ĐỀ XUẤT MỚI: thay slot blue-chip
+
+- **Xác nhận đề xuất AVGO/CSCO (07-22) đã được Hogan chọn AVGO và lệnh đã khớp:** qua `get_equity_orders`, lệnh `6a613367-...` (buy market, đặt 07-22 21:17 UTC qua phiên có quyền giao dịch khác) filled hôm nay 13:30:01 UTC, 1 cổ phiếu AVGO @ $391.52 TB. Slot large-cap tech (thay AMZN) đã lấp đủ. Routine này chỉ xác nhận, không tự đặt.
+- **KO bị bán tự động (trailing stop) sáng nay:** lệnh `6a5f8896-...` (stop_market sell, GTC, đặt 07-21 14:56 UTC — cùng đợt dời trailing stop cho AMZN/KO/MSFT/RKLB/NVDA/RSP đã ghi nhận trước đó) kích hoạt lúc mở cửa hôm nay (13:30:35 UTC, ~9:30 ET), bán hết 5 cổ phiếu, giá kích hoạt $81.29, khớp TB $81.204. Giá vốn $84.10 → **-3.44%** — không phải cắt lỗ -5% gốc mà là trailing stop đã dời sát giá (tương tự tình huống AMZN 07-22). Đây là lệnh tự động khớp bình thường theo đúng CLAUDE.md — routine này chỉ ghi nhận, không tự đặt/hủy.
+- Đã kiểm tra tin tức KO: không có catalyst tiêu cực mới — giá dao động trong biên độ bình thường, đồng thuận analyst vẫn Buy (19 Buy/1 Sell), target TB $88.30, báo cáo Q2 FY26 dự kiến 2026-07-28 (5 ngày tới). Nguồn: tổng hợp Investing.com/Yahoo Finance/stockanalysis.com (không có bài riêng lẻ đáng chú ý ngày 07-22/07-23).
+- **Core hiện còn 9/10** (thiếu 1 slot blue-chip): RSP, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB, AVGO. (IREN 15 cp vẫn là vị thế sandbox, không thuộc core-10.)
+- P&L so với giá vốn (giá hiện tại ~13:48 UTC, so với đóng cửa 07-22):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AEHR | $76.92 | $94.70 | +23.10% | +1.24% |
+  | RKLB | $66.46 | $70.555 | +6.16% | +1.15% |
+  | AAPL | $307.90 | $320.4847 | +4.09% | -1.66% |
+  | NVDA | $204.83 | $209.47 | +2.26% | -1.22% |
+  | AVGO | $391.52 | $395.99 | +1.14% | -0.21% (mới mua hôm nay) |
+  | MSFT | $386.75 | $389.04 | +0.59% | -0.33% |
+  | JNJ | $260.69 | $256.55 | -1.59% | +0.36% |
+  | RSP | $214.93 | $212.635 | -1.07% | -0.03% |
+  | VOO | $688.26 | $681.455 | -0.99% | -0.81% |
+
+- Không mã nào biến động trong ngày vượt 3-5% (AAPL -1.66% là lớn nhất) nên không cần đào sâu tin tức thêm ngoài KO. NDX 28,683.19 / SPX 7,439.99 — không có gì bất thường thị trường chung.
+- Nhắc lại đề xuất đang chờ Hogan quyết định (chưa có phản hồi mới): chốt lời toàn bộ AEHR (3/3 cp, đề xuất từ 07-21) — vẫn ở vùng lợi nhuận rất cao (+23.10%). Không gửi lại PushNotification (không phải thông tin mới).
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~9 ngày).
+
+### Đề xuất thay thế slot KO (blue-chip) — cần Hogan chọn 1 trong 2 lựa chọn
+
+**Bối cảnh:** KO không bị thay do tin xấu/fundamentals xấu đi — chỉ là trailing stop (đặt bởi phiên khác, không phải routine này) khớp ở vùng lỗ nhẹ -3.44%, gần hòa vốn. Portfolio vẫn cần đủ 2 mã blue-chip theo cơ cấu CLAUDE.md (hiện chỉ còn JNJ) nên đề xuất lấp lại slot. Vốn từ lệnh bán KO ~$406 khả dụng.
+
+**Lựa chọn A: PG (Procter & Gamble)** — giá ~$146.82 (mua 3 cổ phiếu ≈ $440, ~7.4% danh mục, nguyên cổ phiếu giữ được stop-loss tự động). Dividend King (tăng cổ tức 68 năm liên tiếp), dividend yield 2.81%, PE 22.2, beta thấp, đa dạng hóa nhiều ngành hàng tiêu dùng thiết yếu (beauty, health care, fabric/home care, baby/family care) — hồ sơ rủi ro tương đồng KO. Đã điều chỉnh -2.85% gần đây trước thềm báo cáo Q4 FY26 (dự kiến 2026-07-29), analyst dự đoán EPS giảm nhẹ YoY (~-3.4% đến -4.7%) so với cùng kỳ.
+- Rủi ro chính: biến động quanh ngày báo cáo 07-29 (chỉ 6 ngày sau khi vào lệnh) có thể gây dao động ngắn hạn; cùng nhóm hàng tiêu dùng thiết yếu như KO (JNJ đã là healthcare, ít đa dạng hóa thêm nếu chọn PG).
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Lựa chọn B: JPM (JPMorgan Chase)** — giá ~$346.82 (mua 1 cổ phiếu ≈ $347, ~5.9% danh mục, nguyên cổ phiếu). Ngân hàng lớn nhất Mỹ theo vốn hóa, PE 14.7 (rẻ hơn thị trường chung), dividend yield 1.72%, đang gần đỉnh 52 tuần ($351.24 ngày 07-15) cho thấy momentum mạnh, PB 2.58. Đa dạng hóa sang nhóm tài chính — khác hẳn nhóm hàng tiêu dùng/dược phẩm (KO/JNJ) và công nghệ đã có, giảm tương quan tổng thể danh mục.
+- Rủi ro chính: nhạy cảm với chu kỳ lãi suất và tín dụng tiêu dùng; dividend yield thấp hơn PG/KO (ít phù hợp tiêu chí "trả cổ tức đều" bằng PG dù vẫn ổn định).
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Chờ Hogan chọn PG, JPM, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
