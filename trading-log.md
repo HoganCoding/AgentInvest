@@ -1291,3 +1291,44 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
 
 **Chờ Hogan chọn PG, JPM, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
+
+## 2026-07-23 ~13:15 ET (17:15 UTC) — Check-in định kỳ (routine read-only) — MSFT bị stop-loss tự động (trailing) → ĐỀ XUẤT MỚI: thay slot large-cap tech
+
+- **MSFT bị bán tự động sáng nay:** lệnh `6a5f8898-1256-4790-a3ce-35d9ac6a8354` (stop_market sell, GTC, đặt 2026-07-21 14:56 UTC — cùng đợt trailing stop cho AMZN/KO/MSFT/RKLB/NVDA/RSP đã ghi nhận trước đó) kích hoạt lúc **14:09:02 UTC hôm nay (~10:09 ET)**, bán hết 1 cổ phiếu, giá kích hoạt $385.69, khớp @ $385.65. Giá vốn $386.75 → **-0.28%**, gần hòa vốn — trailing stop khớp sát giá thị trường, không phải cắt lỗ -5% gốc (tương tự tình huống AMZN 07-22, KO sáng nay). Đây là lệnh tự động đặt sẵn từ phiên có quyền giao dịch khác khớp bình thường theo đúng kỷ luật CLAUDE.md — routine này chỉ ghi nhận, không tự đặt/hủy.
+- Đã kiểm tra tin tức MSFT: không có catalyst tiêu cực mới/riêng biệt — tiếp tục là lo ngại chung trước thềm báo cáo Q4 FY26 (2026-07-29) về ROI của capex AI ($190B kế hoạch 2026), đã ghi nhận từ hôm qua (07-22). Không có downgrade/kiện tụng/tin xấu mới trong 24h.
+  - Nguồn: [Prediction: Microsoft Stock Will Go Parabolic After July 29 — Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/prediction-microsoft-stock-parabolic-july-232000773.html)
+- **Core hiện chỉ còn 8/10** (thiếu cả slot large-cap tech VÀ slot blue-chip từ sáng nay): RSP, VOO, JNJ, AAPL, AEHR, NVDA, RKLB, AVGO. (IREN 15 cp vẫn là vị thế sandbox, không thuộc core-10.)
+- **Tài khoản (Agentic ••••0133):** total_value $5,852.36, equity_value $4,115.01, cash $1,737.35, buying_power $945.68.
+- P&L so với giá vốn (giá hiện tại ~17:10 UTC, so với đóng cửa 07-22):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AEHR | $76.92 | $90.4775 | +17.64% | -3.27% |
+  | RKLB | $66.46 | $69.69 | +4.86% | -0.09% |
+  | AAPL | $307.90 | $320.71 | +4.16% | -1.59% |
+  | NVDA | $204.83 | $209.7625 | +2.41% | -1.08% |
+  | AVGO | $391.52 | $390.98 | -0.14% | -1.47% (mới mua 07-23) |
+  | JNJ | $260.69 | $258.21 | -0.95% | +1.01% |
+  | RSP | $214.93 | $211.845 | -1.44% | -0.40% |
+  | VOO | $688.26 | $679.09 | -1.33% | -1.16% |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời **mới** hôm nay ngoài MSFT (đã tự động khớp). AEHR vẫn trong vùng chốt lời rất cao nhưng đã có đề xuất thoát toàn bộ đang chờ Hogan từ 07-21 (không phải sự kiện mới). Không mã nào biến động trong ngày vượt 3-5% cần tìm tin tức sâu thêm (AEHR -3.27% gần ngưỡng nhưng dưới 3%, đã có đầy đủ bối cảnh từ trước).
+- SPX 7,410.68 (-0.39% so với đóng cửa hôm qua 7,439.99), NDX 28,472.89 (-0.73% so với 28,683.19) — thị trường chung điều chỉnh nhẹ, nhưng AAPL/AVGO/NVDA đều giảm mạnh hơn benchmark trong ngày (-1.1% đến -1.6%) — tiếp nối lo ngại capex AI trước mùa báo cáo (MSFT 07-29, META 07-29) đã ghi nhận từ hôm qua, chưa đủ cơ sở đánh giá "kém hiệu suất 30 ngày" theo CLAUDE.md.
+- Nhắc lại 2 đề xuất đang chờ Hogan quyết định (chưa có phản hồi/lệnh mới nào từ khi gửi):
+  1. Chốt lời toàn bộ AEHR còn lại (3/3 cp) — đề xuất từ 07-21 ~15:32 ET, hiện vẫn +17.64%.
+  2. Thay thế slot KO (blue-chip) bằng PG hoặc JPM — đề xuất từ 07-23 ~9:48 ET.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~9 ngày).
+
+### Đề xuất thay thế slot MSFT (large-cap tech) — cần Hogan chọn 1 trong 2 lựa chọn
+
+**Bối cảnh:** MSFT không bị thay do tin xấu/fundamentals xấu đi — chỉ là trailing stop (đặt bởi phiên khác, không phải routine này) khớp gần hòa vốn (-0.28%). Portfolio vẫn cần đủ 4 mã large-cap tech theo cơ cấu CLAUDE.md (hiện chỉ còn AAPL, NVDA, AVGO) nên đề xuất lấp lại slot. Đã loại CRM/ORCL (rejected 07-22 — fundamentals xấu đi rõ rệt: CRM bị Morgan Stanley hạ khuyến nghị, ORCL FCF âm/gần bị hạ tín nhiệm còn "junk"), IBM (vừa sập -25% sau cảnh báo lợi nhuận Q2 06-14, hạ dự báo cả năm, có điều tra chứng khoán), ADBE (2 lần bị hạ khuyến nghị trong tháng — Morgan Stanley xuống Underweight, BofA hạ mục tiêu giá — lo ngại cấu trúc dài hạn từ AI/Figma), NFLX (giảm 45%/12 tháng, guidance Q3 gây bán tháo sau báo cáo), GOOGL (cấm mua lại tới ~08-16 do wash-sale).
+
+**Lựa chọn A: CSCO (Cisco)** — giá ~$112.95 (**tăng +0.66%** hôm nay, ngược dòng thị trường). Đề xuất mua 4 cổ phiếu ≈ $452 (~7.7% danh mục, nguyên cổ phiếu giữ được stop-loss tự động). Đây là lựa chọn từng đưa ra 07-22 (Hogan khi đó chọn AVGO cho slot AMZN thay vì CSCO) — vẫn còn nguyên giá trị: tăng trưởng đơn hàng AI hạ tầng mạng, +52% YTD, báo cáo Q4 dự kiến ~08-11 (không có sự kiện nhị phân gần), không có tin xấu/downgrade mới. Đa dạng hóa sang networking/hạ tầng doanh nghiệp, khác hẳn nhóm bán dẫn AI (NVDA, AVGO) đã có trong danh mục.
+- Rủi ro chính: lo ngại nhu cầu thiết bị networking truyền thống chậm lại; định giá đã tăng nhiều (P/E 35.75) sau đợt tăng +52% YTD.
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Lựa chọn B: TXN (Texas Instruments)** — giá ~$282.43 (**giảm -4.0%** hôm nay, tiếp tục bán tháo sau báo cáo Q2 công bố 07-22 dù kết quả vượt kỳ vọng — Q2 doanh thu $5.46B/+23% YoY, EPS $2.14 đều vượt ước tính, nâng guidance Q3 lên $5.65-6.15B cũng vượt đồng thuận, một analyst vừa nâng target lên $390 từ $325 trước báo cáo). Phản ứng giá tiêu cực nhiều khả năng do định giá đã "priced for perfection" trước báo cáo (tăng +3.7% ngày 07-21), không phải do kết quả kém — đây có thể là điểm vào tốt hơn cho một công ty có fundamentals đang cải thiện rõ rệt. Đề xuất mua 2 cổ phiếu ≈ $565 (~9.6% danh mục, ở cận trên tỷ trọng 5-10%).
+- Rủi ro chính: **TXN vẫn là mã bán dẫn** — nếu chọn, sẽ có 3/4 slot tech cùng nhóm bán dẫn AI (NVDA, AVGO, TXN), giảm đa dạng hóa sub-sector đáng kể so với chọn CSCO; biến động ngắn hạn hậu earnings chưa ổn định.
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Chờ Hogan chọn CSCO, TXN, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
