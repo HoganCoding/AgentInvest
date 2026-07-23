@@ -1052,3 +1052,12 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - Tài khoản (qua get_portfolio): cash $2,001.50 (tăng từ $1,737.35 — hoạt động core-10, không liên quan sandbox), buying_power $945.68 (không đổi so với lần check trước). total_value $5,830.96.
 - "Phần theo dõi" sandbox: (buying_power $945.68 + giá trị IREN 15×$40.53≈$607.95) − $700 đệm = **~$853.63** (~121.9% mốc gốc $700) — còn xa ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
 - Quyết định: giữ nguyên 15 cp IREN, không có lệnh mới — giảm nhẹ so với lần check trước, nằm trong biên độ dao động đã biết, không có catalyst mới, chưa đạt mức chốt lời tham khảo (~$45-46.50), stop-loss vẫn giữ nguyên ở $38.91. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
+
+## 2026-07-23 ~16:08 ET (20:08 UTC) — Check định kỳ cuối phiên (giữ nguyên IREN, đi ngang)
+
+- Vị thế sandbox: 15 cp IREN (avg cost $38.75), xác nhận qua get_equity_positions. Giá hiện $40.59 (19:59:59 UTC, last_trade, ngay lúc đóng cửa phiên chính; non-reg $40.7509 lúc 20:08:16 UTC) vs vốn (+4.75%), vs previous close $41.28 (-1.67%), vs lần check trước (15:08 ET @ $40.53): +0.15% — dưới ngưỡng 3-5%, không tìm tin tức sâu.
+- get_equity_orders (symbol IREN, từ 19:08 UTC tới nay): rỗng — không có lệnh nào mới đặt/khớp/hủy. Stop-loss @ $38.91 (order id `6a5f88a0-3628-4139-9c73-91bb37e288e6`) vẫn giữ nguyên (xác nhận gián tiếp qua shares_held_for_sells=15, chưa khớp), còn cách giá hiện ~4.2%.
+- Core-10 hiện tại (get_equity_positions): RSP, VOO, JNJ, AAPL, NVDA, RKLB, AVGO (1cp) — không có mã lạ liên quan sandbox, không chạm vào.
+- Tài khoản (qua get_portfolio): cash $2,001.50 (không đổi so với lần check trước), buying_power $945.68 (không đổi). total_value $5,848.56.
+- "Phần theo dõi" sandbox: (buying_power $945.68 + giá trị IREN 15×$40.59≈$608.85) − $700 đệm = **~$854.53** (~122.1% mốc gốc $700) — còn xa ngưỡng chốt lời x2 ($1400) và không gần $0. Không có circuit breaker nào kích hoạt.
+- Quyết định: giữ nguyên 15 cp IREN, không có lệnh mới — đi ngang so với lần check trước (thị trường vừa đóng cửa phiên chính), không có catalyst mới, chưa đạt mức chốt lời tham khảo (~$45-46.50), stop-loss vẫn giữ nguyên ở $38.91. Không gửi push notification riêng cho quyết định này (không có hành động/thay đổi thật cho sandbox, theo quy định làm rõ 2026-07-08 trong CLAUDE.md) — chỉ ghi log theo yêu cầu quy trình cloud routine.
