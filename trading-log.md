@@ -1332,3 +1332,31 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
 
 **Chờ Hogan chọn CSCO, TXN, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
+
+## 2026-07-23 ~15:31 ET (19:31 UTC) — Check-in định kỳ (routine read-only)
+
+- Vị thế 8/10 core xác nhận qua `get_equity_positions` — **không đổi** so với entry 13:15 ET (đã kiểm tra `get_equity_orders` từ 17:15 UTC tới nay: không có lệnh mới nào khớp): RSP, VOO, JNJ, AAPL, AEHR, NVDA, RKLB, AVGO. Vẫn thiếu 1 slot large-cap tech (MSFT, bị trailing stop sáng nay) và 1 slot blue-chip (KO, bị trailing stop hôm qua). (IREN 15 cp vẫn là vị thế sandbox, không thuộc core-10.)
+- **Tài khoản (Agentic ••••0133):** total_value $5,845.81, equity_value $3,844.31, cash $2,001.50, buying_power $945.68.
+- P&L so với giá vốn (giá hiện tại ~19:31 UTC, so với đóng cửa 07-22):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AEHR | $76.92 | $88.985 | +15.68% | -4.87% |
+  | RKLB | $66.46 | $69.66 | +4.81% | -0.13% |
+  | AAPL | $307.90 | $320.29 | +4.02% | -1.72% |
+  | NVDA | $204.83 | $207.77 | +1.44% | -2.02% |
+  | JNJ | $260.69 | $259.11 | -0.61% | +1.36% |
+  | AVGO | $391.52 | $391.16 | -0.09% | -1.42% |
+  | RSP | $214.93 | $211.75 | -1.48% | -0.45% |
+  | VOO | $688.26 | $677.80 | -1.52% | -1.34% |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời **mới** hôm nay. AEHR giảm -4.87% trong ngày (vượt ngưỡng 3-5% nên đã tìm tin tức) — không có catalyst tiêu cực mới, chỉ là nhịp điều chỉnh bình thường sau đợt tăng mạnh hậu earnings tuần trước (đã tăng tới +27% so với giá vốn hôm 07-21, nay hạ nhiệt còn +15.68%) — cùng kiểu biến động 2 chiều đã ghi nhận nhiều lần, không thay đổi bản chất đề xuất chốt lời toàn bộ đang chờ Hogan duyệt.
+- SPX 7,394.65 (-0.61% so với đóng cửa 07-22) / NDX 28,394.78 (-1.01%) — thị trường tiếp tục điều chỉnh do lo ngại capex AI lan rộng: Alphabet (GOOGL, không còn nắm giữ — cấm mua lại tới ~08-16 do wash-sale) giảm ~-7% hôm nay sau khi nâng dự báo capex AI 2026 lên $195-205B và FCF Q2 âm -$5.9B dù doanh thu vượt kỳ vọng; Tesla giảm -13%. Các mã tech đang giữ (AAPL -1.72%, NVDA -2.02%, AVGO -1.42%) giảm gần tương đương hoặc nhỉnh hơn NDX một chút — phù hợp xu hướng lo ngại capex AI toàn ngành trước mùa báo cáo (MSFT/META 07-29), không phải suy giảm cơ bản riêng lẻ hay dấu hiệu kém hiệu suất 30 ngày theo tiêu chí CLAUDE.md.
+  - Nguồn: [Alphabet earnings takeaways: Q2 revenue beats, GOOGL stock sinks on 2026 capex hike — CNBC](https://www.cnbc.com/2026/07/22/google-earnings-q2-goog-live-updates.html), [Tesla falls 13%, Alphabet sinks 7% as AI spending concerns spook investors — CNBC](https://www.cnbc.com/2026/07/23/tesla-tsla-alphabet-googl-stock-today.html)
+- Nhắc lại 3 đề xuất đang chờ Hogan quyết định (chưa có phản hồi/lệnh mới nào từ khi gửi):
+  1. Chốt lời toàn bộ AEHR còn lại (3/3 cp) — đề xuất từ 07-21 ~15:32 ET, hiện +15.68%.
+  2. Thay thế slot KO (blue-chip) bằng PG hoặc JPM — đề xuất từ 07-23 ~9:48 ET.
+  3. Thay thế slot MSFT (large-cap tech) bằng CSCO hoặc TXN — đề xuất từ 07-23 ~13:15 ET.
+- Không phải thông tin mới nên không gửi lại PushNotification cho 3 đề xuất trên (đã gửi lúc đề xuất lần đầu).
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~9 ngày).
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
