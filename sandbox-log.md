@@ -1127,3 +1127,13 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - **"Phần theo dõi" sandbox** = buying_power $174.30 + giá trị vị thế OKLO (11×$40.79=$448.69) − $700 đệm = **-$77.01** — vẫn là nhiễu từ pool buying_power dùng chung với core-10 (đã giải thích các lần check trước), KHÔNG phản ánh P&L sandbox thật (vị thế OKLO chỉ -0.41% so với vốn, không lỗ đáng kể). Không kích hoạt circuit breaker nào (không gần gấp đôi $1400, không gần $0 thật sự khi tính đúng theo vị thế).
 - **Quyết định: GIỮ NGUYÊN vị thế OKLO 11cp, không thêm/bớt.** Lý do: (1) giá gần như đi ngang so với lần check trước, chưa chạm ngưỡng cần hành động; (2) stop-loss $36.05 vẫn active bảo vệ downside; (3) không có tin tiêu cực mới; (4) tránh giao dịch thêm không cần thiết (nguyên tắc hạn chế phát sinh thuế/overtrading 2026-07-07).
 - Không gửi PushNotification — không có thay đổi thật (giá đi ngang, không có hành động, buying_power không đổi), theo quy định CLAUDE.md chỉ push khi có thay đổi thật.
+
+## 2026-07-24 ~15:09 ET (19:09 UTC) — Kiểm tra định kỳ: giữ nguyên vị thế OKLO
+
+- `get_equity_positions` (704170133): vị thế sandbox OKLO **11 cổ phiếu**, avg cost $40.96 — không đổi so với lần check trước (~14:09 ET). Core-10 không đổi: RSP, VOO, JNJ, AAPL, NVDA, AVGO, PG, CRM — không chạm vào.
+- `get_equity_quotes` OKLO: **$40.48** (bid $40.44 / ask $40.48, lúc 19:08:30 UTC). So với lần check liền trước ($40.79) → **-0.76%**, dưới ngưỡng 3-5% → không cần WebSearch tin tức mới. So với avg cost $40.96 → -1.17%.
+- `get_equity_orders` (từ 18:09 UTC tới nay): rỗng — không có lệnh nào mới đặt/khớp/hủy.
+- `get_portfolio`: cash $1,620.40, buying_power **$174.30** (không đổi so với lần check trước), total_value $5,752.78.
+- **"Phần theo dõi" sandbox** = buying_power $174.30 + giá trị vị thế OKLO (11×$40.48=$445.28) − $700 đệm = **-$80.42** — tiếp tục là nhiễu từ pool buying_power dùng chung với core-10 (đã giải thích các lần check trước), KHÔNG phản ánh P&L sandbox thật (vị thế OKLO chỉ -1.17% so với vốn, không lỗ đáng kể). Không kích hoạt circuit breaker nào.
+- **Quyết định: GIỮ NGUYÊN vị thế OKLO 11cp, không thêm/bớt.** Lý do: (1) giá gần như đi ngang so với lần check trước; (2) stop-loss $36.05 vẫn active bảo vệ downside; (3) không có tin tiêu cực mới cần xem xét; (4) tránh giao dịch thêm không cần thiết (nguyên tắc hạn chế phát sinh thuế/overtrading 2026-07-07).
+- Không gửi PushNotification — không có thay đổi thật (giá đi ngang, không có hành động, buying_power không đổi), theo quy định CLAUDE.md chỉ push khi có thay đổi thật.
