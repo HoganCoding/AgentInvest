@@ -1431,3 +1431,44 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - SPX 7,428.56 (+0.46% so với đóng cửa 07-23) / NDX 28,277.18 (-0.41%) — thị trường chung tương đối bình thường, không có gì bất thường; mức giảm mạnh của RKLB/OKLO là biến động riêng nhóm đầu cơ, không phải rủi ro hệ thống.
 - Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~8 ngày). JNJ báo cáo Q2 dự kiến 2026-07-28, PG dự kiến 2026-07-29 — cần theo dõi biến động quanh 2 ngày này.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — cả 2 đề xuất trước đó đã được Hogan thực hiện qua phiên khác, không có gì mới cần duyệt. Không gửi PushNotification.
+
+## 2026-07-24 ~15:33 ET (19:33 UTC) — Check-in định kỳ (routine read-only) — RKLB bị stop-loss tự động (trailing) → ĐỀ XUẤT MỚI: thay slot rủi ro cao
+
+- **RKLB bị bán tự động vừa xảy ra (~14:41 ET / 18:41 UTC hôm nay):** lệnh `6a5f889a-...` (stop_market sell, GTC, trigger $63.77, đặt 2026-07-21 14:56 UTC — cùng đợt dời trailing stop cho AMZN/KO/MSFT/RKLB/NVDA/RSP đã ghi nhận nhiều lần trước đó) khớp bán hết 7 cổ phiếu @ $63.77 TB. Giá vốn $66.46 → lỗ thực hiện **-4.05%**. Đây là lệnh trailing stop tự động đặt sẵn từ phiên có quyền giao dịch khác khớp đúng kỷ luật rủi ro — routine này chỉ ghi nhận, không tự đặt/hủy. **Vì bán lỗ nên áp dụng wash-sale: không mua lại RKLB tới ~2026-08-23.**
+- **Core hiện còn 9/10** (thiếu 1 slot rủi ro cao): RSP, VOO, JNJ, PG, AAPL, NVDA, AVGO, CRM, OKLO.
+- **Tài khoản (Agentic ••••0133):** total_value $5,754.88, equity_value $4,134.48, cash $1,620.40, buying_power $174.30, pending_deposits $0.
+- P&L so với giá vốn (giá hiện tại ~19:32 UTC) và thay đổi trong ngày (so với đóng cửa 07-23):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $332.465 | **+8.00%** | **+3.36%** |
+  | CRM | $161.63 | $163.96 | +1.44% | +4.47% |
+  | JNJ | $260.69 | $263.23 | +0.98% | +1.52% |
+  | NVDA | $204.83 | $205.79 | +0.47% | -1.42% |
+  | PG | $146.41 | $146.72 | +0.21% | -0.17% |
+  | OKLO | $40.9637 | $40.73 | -0.57% | **-7.43%** |
+  | RSP | $214.93 | $213.4518 | -0.69% | +0.72% |
+  | VOO | $688.26 | $678.44 | -1.43% | -0.03% |
+  | AVGO | $391.52 | $380.585 | -2.79% | **-3.04%** |
+
+- SPX 7,403.46 (-0.34% so với đóng cửa 07-23) / NDX 28,112.25 (-0.58%) — thị trường chung điều chỉnh nhẹ.
+- 3 mã biến động >3% trong ngày cần tìm tin tức: **OKLO (-7.43%)**, **AVGO (-3.04%)**, và **RKLB** (vừa thoát vị thế, -8.97% trong ngày tại thời điểm bị stop):
+  - **OKLO**: không có tin xấu — ngược lại vừa nhận **DOE startup authorization cho lò phản ứng Groves** (cột mốc pháp lý quan trọng, xác nhận đánh giá an toàn/vận hành), tiếp tục tiến độ tới mục tiêu criticality đầu tiên. Mức giảm hôm nay tiếp nối đà điều chỉnh chung nhóm nuclear/SMR đã ghi nhận nhiều lần (biến động cực cao, đặc thù đã cảnh báo khi mua 07-24 sáng). Không đủ điều kiện đề xuất bán theo CLAUDE.md — chỉ theo dõi, còn cách xa stop-loss hiện có ($36.05).
+  - **AVGO**: không có tin xấu riêng — nhà đầu tư đang chốt lời/giảm tỷ trọng nhóm bán dẫn lớn nói chung dù thị trường chung tích cực hôm nay (Nasdaq -0.17%, S&P 500 +0.61% theo Benzinga), cổ phiếu vẫn trong xu hướng tăng dài hạn (+33%/12 tháng), đồng thuận vẫn Buy, target TB $513.68. Báo cáo tiếp theo 2026-09-03 (còn xa). Không đủ điều kiện đề xuất — theo dõi, có stop-loss sẵn.
+  - **RKLB** (đã thoát): mức giảm mạnh hôm nay là do dòng vốn xoay khỏi nhóm space stocks (risk-off) dù có tin tốt cụ thể (hợp đồng Không quân Mỹ $266M, thương vụ Iridium $8B đang xúc tiến) — 17 analyst đồng thuận Buy, target TB $114.33 (+76% so với giá hiện tại). Xác nhận: đây là biến động sentiment/risk-off, không phải suy giảm cơ bản — cùng kiểu nhiễu đã ghi nhận trước khi bị stop, không thay đổi đánh giá.
+  - Nguồn: [Oklo Stock Just Got a Major Win — Barchart](https://www.barchart.com/story/news/3144294/oklo-stock-just-got-a-major-win-2026-could-still-be-its-breakout-year), [What's Going on With Broadcom Stock Friday? — Benzinga](https://www.benzinga.com/markets/tech/26/07/60673102/whats-going-on-with-broadcom-stock-friday-5), [Huge News for Rocket Lab Investors — Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/huge-news-rocket-lab-investors-135000384.html), [RKLB Stock Draws Traders After Air Force Win And Iridium Deal — TimothySykes](https://timothysykes.com/news/rocket-lab-corporation-rklb-news-2026_07_22/)
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~8 ngày). JNJ báo cáo Q2 dự kiến 2026-07-28, PG dự kiến 2026-07-29 — tiếp tục theo dõi biến động quanh 2 ngày này.
+
+### Đề xuất thay thế slot RKLB (rủi ro cao) — cần Hogan chọn 1 trong 2 lựa chọn
+
+**Bối cảnh:** RKLB không bị thay do tin xấu/fundamentals xấu đi — trailing stop khớp trong đợt risk-off chung nhóm space, vẫn có tin tích cực (Air Force $266M, Iridium $8B) và đồng thuận Buy mạnh. Portfolio vẫn cần đủ 2 mã rủi ro cao theo cơ cấu CLAUDE.md (hiện chỉ còn OKLO) nên đề xuất lấp lại slot. Loại trừ các mã đang cấm mua lại do wash-sale: RXRX (tới ~08-09), IONQ (tới ~08-06), QBTS (tới ~08-12), SERV (tới ~08-15), GOOGL (tới ~08-16), SOUN (tới ~08-16), **RKLB (tới ~08-23, mới thêm)**. Loại CRWV do vụ kiện gian lận chứng khoán chờ xử lý (tiêu chí loại trừ CLAUDE.md).
+
+**Lựa chọn A: AXTI (AXT Inc.)** — giá ~$46.73 (**giảm -11.7%** hôm nay, biến động cực mạnh — "whipsaw"). Đề xuất mua 10 cổ phiếu ≈ $467.30 (~8.1% danh mục, nguyên cổ phiếu giữ được stop-loss tự động). Nhà sản xuất wafer chất nền bán dẫn (indium phosphide) phục vụ chip AI/data center, doanh thu ước tính Q2 ~$34.14M (tăng trưởng đáng kể YoY), Northland Capital tái khẳng định Outperform, nâng target lên $125 sau hội nghị NCM Growth. Vừa ký hợp đồng dài hạn indium phosphide 2027 trị giá ~$25.4M với Nanjing Casela (cam kết tối thiểu 80%). Công ty chưa có lợi nhuận (EBIT margin ~-13.1%, net margin ~-15%), phù hợp nhóm "tăng trưởng doanh thu mạnh nhưng chưa lợi nhuận".
+- Rủi ro chính: **báo cáo Q2 FY26 công bố chỉ 6 ngày sau khi vào lệnh (2026-07-30)** — rủi ro biến động cực cao quanh ngày báo cáo (đã whipsaw ±10%+ nhiều phiên gần đây); định giá đã chạy trước nhiều tin tốt.
+- Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
+
+**Lựa chọn B: ACHR (Archer Aviation)** — giá ~$4.815 (giảm -5.77% hôm nay). Đề xuất mua 95 cổ phiếu ≈ $457.43 (~7.9% danh mục, nguyên cổ phiếu). Công ty eVTOL (máy bay cất/hạ cánh thẳng đứng điện), vừa ra mắt máy bay tự hành Halo (hợp tác phát triển, giá tăng tới +19.8% phiên 07-20) và nền tảng quốc phòng Thunder, mở rộng cả mảng thương mại lẫn quốc phòng. Bảng cân đối rất mạnh: tiền mặt+đầu tư ngắn hạn ~$1.78B (riêng cash >$951M), nợ dài hạn chỉ ~$115.7M, current ratio >18 — rủi ro cạn tiền thấp hơn nhiều so với các mã pre-revenue khác. Đồng thuận target 1 năm $10.61 (+101% so với giá hiện tại). Báo cáo Q2 dự kiến **2026-08-10** (xa hơn AXTI, ít rủi ro biến động nhị phân gần hạn).
+- Rủi ro chính: pre-revenue/lỗ ròng đều đặn (EPS ước tính Q2 -$0.25), biến động annualized rất cao (~86%), giá cổ phiếu thấp dễ biến động theo tỷ lệ % lớn; ngành eVTOL còn phụ thuộc phê duyệt quy định (FAA) chưa chắc chắn về mốc thời gian thương mại hóa.
+- Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
+
+**Chờ Hogan chọn AXTI, ACHR, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
