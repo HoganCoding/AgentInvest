@@ -1399,3 +1399,35 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
 
 **Chờ Hogan chọn TEM, OKLO, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
+
+## 2026-07-24 ~13:10 ET (17:10 UTC) — Check-in định kỳ (routine read-only) — Xác nhận cả 2 đề xuất đang chờ đã được thực hiện, portfolio đủ 10/10
+
+- **Xác nhận đề xuất CSCO/TXN (07-23, slot MSFT) đã được thực hiện — Hogan/phiên có quyền giao dịch CHỌN CRM** (không phải 1 trong 2 lựa chọn đã đề xuất, mà là mã từng bị agent loại khỏi đề xuất 07-22 do fundamentals xấu đi — đây là lựa chọn của Hogan, nằm ngoài phạm vi 2 lựa chọn agent đưa ra nhưng vẫn cùng nhóm rủi ro large-cap tech nên không vi phạm nguyên tắc "không đổi nhóm rủi ro"). Qua `get_equity_orders`: lệnh `6a636d3b-...` (buy market) filled 2026-07-24 13:48:43 UTC, 3 cổ phiếu CRM @ $161.63 TB (~$484.89, ~8.4% danh mục). Stop-loss -5% đã đặt kèm: lệnh `6a636d4d-...` (stop_market sell, GTC) tại $153.55, state=`confirmed`.
+- **Xác nhận đề xuất TEM/OKLO (07-24 sáng, slot AEHR) đã được thực hiện — Hogan chọn OKLO (Lựa chọn B):** lệnh `6a639875-...` (buy market) filled 16:53:09 UTC, 11 cổ phiếu OKLO @ $40.9637 TB (~$450.60, ~7.8% danh mục). Stop-loss ban đầu đặt tại $37.69 (-8%, lệnh `6a639881-...`) sau đó bị hủy lúc 17:03 UTC và thay bằng stop mới rộng hơn tại **$36.05 (-12%, lệnh `6a639ad6-...`, state=confirmed)** — thực hiện bởi phiên có quyền giao dịch khác (không phải routine này), nhiều khả năng do biến động mạnh của nhóm nuclear/SMR trong phiên khiến -8% quá sát giá thị trường lúc đặt. Routine này chỉ ghi nhận, không có quyền diễn giải/sửa đổi.
+- **Core hiện đã đủ 10/10:** RSP, VOO, JNJ, PG, AAPL, NVDA, RKLB, AVGO, CRM, OKLO. Không còn đề xuất nào đang chờ duyệt.
+- **Tài khoản (Agentic ••••0133):** total_value $5,772.11, equity_value $4,598.10, cash $1,174.01, buying_power $174.30, pending_deposits $0.
+- P&L so với giá vốn (giá hiện tại ~17:10 UTC) và thay đổi trong ngày (so với đóng cửa 07-23):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $332.61 | **+8.03%** | **+3.40%** |
+  | CRM | $161.63 | $162.53 | +0.56% | +3.57% (mới mua hôm nay) |
+  | NVDA | $204.83 | $209.66 | +2.36% | +0.43% |
+  | JNJ | $260.69 | $262.91 | +0.85% | +1.40% |
+  | PG | $146.41 | $147.07 | +0.45% | +0.07% |
+  | OKLO | $40.9637 | $40.72 | -0.59% | -7.45% (mới mua hôm nay, so với đóng cửa hôm qua) |
+  | RSP | $214.93 | $213.315 | -0.75% | +0.66% |
+  | VOO | $688.26 | $680.54 | -1.12% | +0.28% |
+  | AVGO | $391.52 | $383.56 | -2.03% | -2.27% |
+  | RKLB | $66.46 | $64.38 | **-3.13%** | **-8.02%** |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời **mới** hôm nay (RKLB gần cách stop-loss hiện có $63.77 nhất nhưng chưa chạm; OKLO còn cách xa stop mới $36.05).
+- **RKLB -8.02% và OKLO -7.45% trong ngày** (cả 2 vượt xa ngưỡng 3-5%) — đã tìm tin tức cho cả 2:
+  - **RKLB**: tiếp tục là xu hướng giảm đã biết kéo dài từ cuối tháng 6 (đỉnh $151 → nay ~$64, -45%+ từ đỉnh) — nguyên nhân: dòng vốn xoay khỏi nhóm space stocks sau IPO SpaceX, risk-off chung nhóm đầu cơ, ARK Invest (ARKX) tiếp tục bán ra cổ phiếu. Không có tin xấu cơ bản mới — doanh thu/backlog quý gần nhất được CEO mô tả "phenomenal". Đánh giá: biến động sentiment/xoay vòng dòng tiền, không phải suy giảm cơ bản — không đủ điều kiện đề xuất theo CLAUDE.md.
+  - **OKLO**: tiếp tục điều chỉnh chung nhóm nuclear/SMR (đã giảm ~28% trong tháng qua trước cả khi mua), không có tin xấu mới riêng của OKLO hôm nay — thực ra có tin tích cực gần đây (chọn vào chương trình $200M của chính quyền Trump, 21/07). Việc mua đúng lúc nhóm đang giảm mạnh đã được lưu ý sẵn trong đề xuất sáng nay (biến động rất cao, -38.5% YTD).
+  - Nguồn: [Rocket Lab Shares Are Sliding — Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/rocket-lab-shares-sliding-investors-213900719.html), [Oklo Just Dropped 28% in a Month — Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/oklo-just-dropped-28-month-193823357.html)
+- AAPL +3.40%/CRM +3.57% trong ngày — cả 2 đều có catalyst tích cực cụ thể (không cần hành động, chỉ ghi nhận): AAPL tiếp tục đà tăng 2026 (không có tin cụ thể mới hôm nay ngoài đà chung); CRM tăng nhờ hợp đồng $1.6B với Veterans Affairs (AELA, phục vụ 17M cựu chiến binh) + cam kết đầu tư $1B vào Thụy Sĩ cho AI agentic + phân tích tích cực về chiến lược Agentforce.
+  - Nguồn: [Salesforce lands $1.6B Veterans Affairs agreement — Benzinga](https://www.benzinga.com/markets/large-cap/26/07/60664811/salesforce-lands-1-6b-veterans-affairs-agreement-as-ai-adoption-accelerates)
+- SPX 7,428.56 (+0.46% so với đóng cửa 07-23) / NDX 28,277.18 (-0.41%) — thị trường chung tương đối bình thường, không có gì bất thường; mức giảm mạnh của RKLB/OKLO là biến động riêng nhóm đầu cơ, không phải rủi ro hệ thống.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~8 ngày). JNJ báo cáo Q2 dự kiến 2026-07-28, PG dự kiến 2026-07-29 — cần theo dõi biến động quanh 2 ngày này.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — cả 2 đề xuất trước đó đã được Hogan thực hiện qua phiên khác, không có gì mới cần duyệt. Không gửi PushNotification.
