@@ -1091,3 +1091,13 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - **"Phần theo dõi" sandbox:** (buying_power $624.90 + vị thế sandbox $0) − $700 đệm = **−$75.10**, cùng mức nhiễu đã ghi nhận ở lần check trước, không phản ánh P&L sandbox thật (sandbox không có vị thế nào để lỗ, không kích hoạt circuit breaker "dừng hẳn").
 - **Quyết định: giữ nguyên trạng thái flat, KHÔNG mở vị thế mới.** Lý do: (1) buying_power thực tế vẫn thấp và không cải thiện so với lần check trước, chưa rõ ràng đủ để tách riêng phần "rảnh" cho sandbox mà không rủi ro buying-power âm; (2) không có catalyst mới nào được xem xét (không cân nhắc vào lệnh cụ thể lần này nên không cần WebSearch); (3) IREN vẫn có thể re-enter nếu có catalyst tốt (thoát ở mức lãi nhẹ, không dính wash-sale). Sẽ tiếp tục theo dõi buying_power ở lần check tiếp theo.
 - Không gửi PushNotification riêng — không có thay đổi thật (vẫn flat, không có hành động), theo quy định CLAUDE.md chỉ push khi có thay đổi thật.
+
+## 2026-07-24 ~12:08 ET (16:08 UTC) — Kiểm tra định kỳ: vẫn flat, không mở vị thế mới
+
+- `get_equity_positions` (704170133): KHÔNG có vị thế sandbox nào (flat từ khi IREN thoát lúc ~09:36 ET). Core-10 hiện tại: RSP, VOO, JNJ, AAPL, NVDA, RKLB, AVGO, PG (3cp), CRM (3cp) — không chạm vào.
+- Không có vị thế sandbox nào để so giá → không cần WebSearch tin tức theo quy trình (chỉ tìm khi có vị thế biến động >3-5% hoặc đang cân nhắc vào lệnh mới cụ thể).
+- `get_equity_orders` (từ 15:00 UTC tới nay): rỗng — không có lệnh nào mới đặt/khớp/hủy trên toàn tài khoản.
+- `get_portfolio`: cash $1,624.61, buying_power $624.90, total_value $5,793.78. Buying_power **không đổi** so với lần check trước (11:12 ET: $624.90).
+- **"Phần theo dõi" sandbox:** (buying_power $624.90 + vị thế sandbox $0) − $700 đệm = **−$75.10**, cùng mức nhiễu đã ghi nhận liên tục từ lần check ~10:14 ET hôm nay (do core-10 vừa mua PG/CRM/HIMS ăn vào pool buying_power dùng chung) — không phản ánh P&L sandbox thật (sandbox không có vị thế nào để lỗ, không kích hoạt circuit breaker "dừng hẳn").
+- **Quyết định: giữ nguyên trạng thái flat, KHÔNG mở vị thế mới.** Lý do: (1) buying_power thực tế vẫn thấp, không cải thiện so với lần check trước; (2) không có catalyst mới nào được xem xét lần này nên không cần WebSearch; (3) IREN vẫn có thể re-enter nếu có catalyst tốt (thoát ở mức lãi nhẹ trước đó, không dính wash-sale). Sẽ tiếp tục theo dõi buying_power ở lần check tiếp theo.
+- Không gửi PushNotification riêng — không có thay đổi thật (vẫn flat, không có hành động), theo quy định CLAUDE.md chỉ push khi có thay đổi thật.
