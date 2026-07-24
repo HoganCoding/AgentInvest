@@ -1360,3 +1360,42 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Không phải thông tin mới nên không gửi lại PushNotification cho 3 đề xuất trên (đã gửi lúc đề xuất lần đầu).
 - Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~9 ngày).
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-24 ~9:50 ET (13:50 UTC) — Check-in định kỳ (routine read-only) — Xác nhận PG đã khớp; phát hiện AEHR đã bị trailing stop bán hết (chốt lời) → ĐỀ XUẤT MỚI: thay slot rủi ro cao
+
+- **Xác nhận đề xuất PG/JPM (07-23) đã được chọn PG và lệnh đã khớp:** qua `get_equity_orders`, lệnh `6a6284d5-...` (buy market, đặt 2026-07-23 21:17 UTC qua phiên có quyền giao dịch khác) filled hôm nay 13:30:30 UTC, 3 cổ phiếu PG @ $146.41 TB (tổng ~$439.23). Slot blue-chip (thay KO) đã lấp đủ. Routine này chỉ xác nhận, không tự đặt.
+- **AEHR đã bị bán hết qua trailing stop — KHÔNG PHẢI mất mát, mà là CHỐT LỜI tự động:** qua `get_equity_orders`, lệnh `6a5f83fa-...` (stop_market sell, GTC, trigger $88.10, đặt 2026-07-21 14:36 UTC — cùng đợt dời trailing stop trước đó) đã khớp lúc **2026-07-23 19:01:13 UTC (~15:01 ET hôm qua)**, bán hết 3 cổ phiếu còn lại @ $88.05 TB. Giá vốn $76.92 → lãi thực hiện **+14.48%**. Đây là lệnh trailing stop tự động đặt sẵn khớp đúng kỷ luật, không phải quyết định mới — **và cũng khiến đề xuất "chốt lời toàn bộ AEHR" đang chờ Hogan duyệt từ 07-21 trở thành KHÔNG CÒN CẦN THIẾT** (vị thế đã tự đóng ở mức lãi cao qua stop tự động, không cần Hogan duyệt lệnh bán thủ công nữa).
+  - **Lưu ý:** lần check-in cuối cùng trước đó (07-23 ~15:31 ET / 19:31 UTC) đã bỏ sót sự kiện này dù xảy ra 30 phút trước đó (19:01 UTC) — vẫn báo cáo AEHR như đang nắm giữ +15.68%. Đã xác nhận lại qua `get_equity_positions` (không còn AEHR) và `get_equity_orders` (lệnh filled) trong lần kiểm tra này.
+- **Core hiện còn 8/10** — thiếu 1 slot rủi ro cao (AEHR) VÀ 1 slot large-cap tech (MSFT, đã có đề xuất CSCO/TXN chờ từ 07-23, chưa có quyết định): RSP, VOO, JNJ, PG, AAPL, NVDA, RKLB, AVGO.
+- **Tài khoản (Agentic ••••0133):** total_value $5,808.20, equity_value $3,662.30, cash $2,145.90, buying_power $1,562.27.
+- P&L so với giá vốn (giá hiện tại ~13:50 UTC, so với đóng cửa 07-23):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $326.35 | +6.00% | +1.46% |
+  | RKLB | $66.46 | $67.56 | +1.65% | -3.47% |
+  | NVDA | $204.83 | $207.60 | +1.35% | -0.56% |
+  | JNJ | $260.69 | $261.93 | +0.48% | +1.03% |
+  | PG | $146.41 | $146.15 | -0.18% | -0.56% (mới mua sáng nay) |
+  | RSP | $214.93 | $213.07 | -0.87% | +0.54% |
+  | VOO | $688.26 | $679.25 | -1.31% | +0.09% |
+  | AVGO | $391.52 | $382.80 | -2.23% | -2.46% |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời **mới** hôm nay. RKLB giảm -3.47% trong ngày (vượt nhẹ ngưỡng cần tìm tin) — đã kiểm tra: tiếp tục là nhiễu biến động đã biết (Piper Sandler Neutral 07-16/17, lo ngại pha loãng/tích hợp thương vụ Iridium $8B, kỹ thuật dưới đường SMA 20/50 ngày), không có catalyst tiêu cực mới trong 24h; báo cáo Q2 dự kiến ~08-06. P&L RKLB vẫn dương (+1.65%), còn cách xa ngưỡng cắt lỗ -8% ($61.14, đã có sẵn). AVGO -2.46% trong ngày, dưới ngưỡng 3-5%, không cần đào sâu (có sẵn trailing stop-loss xác nhận `confirmed` tại $371.94).
+  - Nguồn RKLB: [Rocket Lab Stock Is Tumbling Today — Benzinga](https://www.benzinga.com/trading-ideas/movers/26/07/60288448/rocket-lab-stock-is-tumbling-today-whats-going-on)
+- Nhắc lại đề xuất đang chờ Hogan quyết định (chưa có phản hồi/lệnh mới từ khi gửi 07-23 ~13:15 ET): thay thế slot MSFT (large-cap tech) bằng CSCO (~$113.18, +0.37% hôm nay) hoặc TXN (~$280.63, -1.53% hôm nay) — chi tiết đầy đủ ở entry 07-23. Không gửi lại PushNotification cho việc này (không phải thông tin mới).
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~8 ngày).
+
+### Đề xuất thay thế slot AEHR (rủi ro cao) — cần Hogan chọn 1 trong 2 lựa chọn
+
+**Bối cảnh:** AEHR không bị thay do tin xấu/fundamentals xấu đi — vị thế đã tự đóng qua trailing stop ở mức **lãi +14.48%** (chốt lời tự động theo đúng kỷ luật CLAUDE.md). Portfolio vẫn cần đủ 2 mã rủi ro cao theo cơ cấu (hiện chỉ còn RKLB) nên đề xuất lấp lại slot. Loại trừ các mã đang trong thời gian cấm mua lại do wash-sale: RXRX (tới ~08-09), IONQ (tới ~08-06), QBTS (tới ~08-12), SERV (tới ~08-15), GOOGL (tới ~08-16), SOUN (tới ~08-16) — AEHR không bị cấm (thoát ở mức lãi, không phải lỗ) nhưng chọn mã khác để đa dạng hóa. Loại CRWV do đang có vụ kiện gian lận chứng khoán chờ xử lý (tiêu chí loại trừ CLAUDE.md).
+
+**Lựa chọn A: TEM (Tempus AI)** — giá ~$45.10 (giảm -1.98% hôm nay, đã giảm ~22.4% YTD). Đề xuất mua 10 cổ phiếu ≈ $451 (~7.8% danh mục, nguyên cổ phiếu giữ được stop-loss tự động). AI chẩn đoán/precision oncology, vừa công bố thương vụ mua lại 87.85% cổ phần còn lại của Personalis ($1.6B, 20/07) để mở rộng thị trường MRD (theo dõi tái phát ung thư, ước tính $20B) — mở rộng chiến lược nhưng cũng là rủi ro thực thi/pha loãng M&A lớn. Đa dạng hóa sang AI-y tế, khác hẳn RKLB (không gian/phóng vệ tinh).
+- Rủi ro chính: **báo cáo Q2 2026 công bố chỉ 6 ngày sau khi vào lệnh (2026-07-30)** — biến động cao quanh ngày báo cáo, giá đã giảm trước thềm báo cáo do lo ngại; rủi ro tích hợp M&A Personalis.
+- Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
+
+**Lựa chọn B: OKLO (Oklo)** — giá ~$42.49 (giảm -3.43% hôm nay, đã giảm ~38.5% YTD từ đỉnh 52 tuần $193.84). Đề xuất mua 11 cổ phiếu ≈ $467 (~8.0% danh mục, nguyên cổ phiếu). Lò phản ứng hạt nhân module nhỏ (SMR) phục vụ nhu cầu điện AI data center — vừa được chọn (cùng X-Energy, 21/07) vào chương trình $200M của chính quyền Trump để tăng tốc lò phản ứng hạt nhân cho AI data center (đối tác công nghệ gồm Microsoft, NVIDIA); DOE đã phê duyệt Documented Safety Analysis cho lò thử nghiệm Groves (01/07), hướng tới thử nghiệm criticality đầu tiên trong tháng này. Đa dạng hóa sang năng lượng hạt nhân, khác hẳn RKLB.
+- Rủi ro chính: chưa có doanh thu đáng kể (pre-revenue), lỗ ròng hàng năm lớn; mục tiêu phát điện thương mại đầu tiên tại Idaho National Lab dự kiến cuối 2027 — catalyst còn xa; biến động rất cao (-38.5% YTD).
+- Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
+
+**Chờ Hogan chọn TEM, OKLO, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
