@@ -1177,3 +1177,13 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - **"Phần theo dõi" sandbox** = buying_power $1,620.40 + giá trị OKLO (11×$40.54=$445.94) − $700 đệm = ~$1,366.34 — vẫn là con số nhiễu do buying_power dùng chung pool với core-10 (đã giải thích các lần check trước), KHÔNG phản ánh P&L sandbox thật. P&L thực tế vị thế OKLO chỉ -$4.62 chưa thực hiện (-1.03%), không đáng kể, còn rất xa cả hai mốc circuit breaker (gấp đôi $1400 hoặc về gần $0). Không kích hoạt circuit breaker nào.
 - **Quyết định: GIỮ NGUYÊN vị thế OKLO 11cp, không thêm/bớt.** Lý do: (1) giá giảm nhẹ -2.20% so với lần check trước, dưới ngưỡng cần tìm tin tức; (2) vị thế gần hòa vốn (-1.03%), không có tín hiệu cần hành động; (3) stop-loss $36.05 vẫn active bảo vệ downside, còn cách xa; (4) không có tin tiêu cực mới cần xem xét; (5) tránh giao dịch thêm không cần thiết (nguyên tắc hạn chế phát sinh thuế/overtrading 2026-07-07).
 - Gửi PushNotification thông tin ngắn theo yêu cầu của lịch kiểm tra định kỳ hàng giờ.
+
+## 2026-07-27 ~12:15 ET (16:15 UTC) — Kiểm tra định kỳ: giữ nguyên vị thế OKLO
+
+- `get_equity_positions` (704170133): vị thế sandbox OKLO **11 cổ phiếu**, avg cost $40.96 — không đổi so với lần check trước (~11:16 ET). Core-10 không đổi: RSP, VOO, JNJ, AAPL, AVGO, PG, CRM — không chạm vào.
+- `get_equity_quotes` OKLO: **$41.08** (bid $41.03 / ask $41.12, last trade 16:14:47 UTC). So với lần check liền trước ($40.54) → **+1.33%**, dưới ngưỡng 3-5% → không cần WebSearch tin tức mới. So với avg cost $40.96 → +0.29% (gần hòa vốn).
+- `get_equity_orders` (symbol OKLO, state confirmed): stop-loss GTC vẫn active tại **$36.05** (order id `6a639ad6-7842-4a1a-befd-4f5cd95dcdb4`), chưa khớp (cumulative_quantity 0), còn cách giá hiện tại ~12.2%.
+- `get_portfolio`: cash $2,016.86, buying_power **$1,620.40** (không đổi so với lần check trước). total_value $5,797.68.
+- **"Phần theo dõi" sandbox** = buying_power $1,620.40 + giá trị OKLO (11×$41.08=$451.88) − $700 đệm = ~$1,372.28 — vẫn là con số nhiễu do buying_power dùng chung pool với core-10 (đã giải thích các lần check trước), KHÔNG phản ánh P&L sandbox thật. P&L thực tế vị thế OKLO chỉ +$1.32 chưa thực hiện (+0.29%), gần như hòa vốn, còn rất xa cả hai mốc circuit breaker. Không kích hoạt circuit breaker nào.
+- **Quyết định: GIỮ NGUYÊN vị thế OKLO 11cp, không thêm/bớt.** Lý do: (1) giá nhích nhẹ +1.33% so với lần check trước, dưới ngưỡng cần tìm tin tức; (2) vị thế gần hòa vốn, không có tín hiệu cần hành động; (3) stop-loss $36.05 vẫn active bảo vệ downside; (4) không có tin tiêu cực mới cần xem xét; (5) tránh giao dịch thêm không cần thiết (nguyên tắc hạn chế phát sinh thuế/overtrading 2026-07-07).
+- Gửi PushNotification thông tin ngắn theo yêu cầu của lịch kiểm tra định kỳ hàng giờ.
