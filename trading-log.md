@@ -1472,3 +1472,30 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
 
 **Chờ Hogan chọn AXTI, ACHR, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
+
+## 2026-07-27 ~9:47 ET (13:47 UTC) — Check-in định kỳ (routine read-only, đầu tuần)
+
+- **Xác nhận qua `get_equity_orders` (từ 07-24 20:00 UTC tới nay): không có lệnh mới nào khớp** — đề xuất thay slot rủi ro cao (AXTI/ACHR, gửi 07-24 ~15:33 ET) **vẫn đang chờ Hogan quyết định**, chưa có phản hồi/lệnh mới. Không gửi lại PushNotification (không phải thông tin mới).
+- **Core hiện còn 9/10** (thiếu 1 slot rủi ro cao, đang chờ AXTI/ACHR ở trên): RSP, VOO, JNJ, PG, AAPL, NVDA, AVGO, CRM, OKLO.
+- **Tài khoản (Agentic ••••0133):** total_value $5,807.19, equity_value $4,186.79, cash $1,620.40, buying_power $1,620.40, pending_deposits $0.
+- P&L so với giá vốn (giá hiện tại ~13:47 UTC) và thay đổi trong ngày (so với đóng cửa 07-24, phiên gần nhất trước cuối tuần):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $335.515 | **+8.97%** | +0.75% |
+  | CRM | $161.63 | $170.23 | +5.32% | **+4.01%** |
+  | OKLO | $40.9637 | $41.995 | +2.52% | **+4.34%** |
+  | JNJ | $260.69 | $264.615 | +1.51% | +0.46% |
+  | PG | $146.41 | $148.65 | +1.53% | +0.84% |
+  | RSP | $214.93 | $215.52 | +0.27% | +0.91% |
+  | VOO | $688.26 | $683.225 | -0.73% | +0.60% |
+  | AVGO | $391.52 | $384.115 | -1.89% | +0.58% |
+  | NVDA | $204.83 | $201.31 | -1.72% | -2.67% |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời (band -5%/-8% cắt lỗ, +10-20% chốt lời). AAPL (+8.97%, fractional, không có stop tự động) đang tiến gần vùng chốt lời +12% cho nhóm tech nhưng chưa tới — tiếp tục theo dõi thủ công.
+- CRM (+4.01%) và OKLO (+4.34%) vượt ngưỡng 3-5% nên đã tìm tin tức — cả 2 đều KHÔNG có catalyst mới, chỉ là tiếp diễn các tin tích cực đã ghi nhận trước đó (CRM: hợp đồng VA $1.6B đã biết từ 07-24; OKLO: DOE startup authorization cho lò Groves đã biết từ 07-22). NVDA -2.67% dưới ngưỡng cần đào sâu, nhiều khả năng nhiễu chung nhóm bán dẫn đầu tuần — không đủ điều kiện đề xuất theo CLAUDE.md.
+  - Nguồn: [Why Salesforce (CRM) Stock Is Up Today — QuiverQuant](https://www.quiverquant.com/news/Why+Salesforce+(CRM)+Stock+Is+Up+Today), [Oklo Stock Just Got a Major Win — Barchart](https://www.barchart.com/story/news/3144294/oklo-stock-just-got-a-major-win-2026-could-still-be-its-breakout-year)
+- SPX 7,457.99 / NDX 28,280.41 (giá trị hiện tại, chưa có mốc so sánh đóng cửa cuối tuần rõ ràng do gap cuối tuần) — không có dấu hiệu bất thường thị trường chung.
+- **Nhắc lịch báo cáo sắp tới:** JNJ dự kiến 2026-07-28 (mai), PG dự kiến 2026-07-29 — cần theo dõi biến động quanh 2 ngày này ở các lần check-in tới.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~5 ngày).
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
