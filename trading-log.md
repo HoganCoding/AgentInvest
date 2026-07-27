@@ -1499,3 +1499,44 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Nhắc lịch báo cáo sắp tới:** JNJ dự kiến 2026-07-28 (mai), PG dự kiến 2026-07-29 — cần theo dõi biến động quanh 2 ngày này ở các lần check-in tới.
 - Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~5 ngày).
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-27 ~13:15 ET (17:15 UTC) — Check-in định kỳ (routine read-only) — NVDA bị stop-loss tự động (trailing) → ĐỀ XUẤT MỚI: thay slot large-cap tech
+
+- **NVDA bị bán tự động sáng nay:** lệnh `6a5f889d-0f31-4a9b-9f5d-e3dda3dea746` (stop_market sell, GTC, trigger $198.22, đặt 2026-07-21 14:56 UTC — cùng đợt dời trailing stop cho AMZN/KO/MSFT/RKLB/NVDA/RSP đã ghi nhận nhiều lần trước đó) kích hoạt lúc **14:41:39 UTC hôm nay (~10:41 ET)**, bán hết 2 cổ phiếu @ $198.23 TB. Giá vốn $204.83 → lỗ thực hiện **-3.22%** — trailing stop khớp gần giá vốn, không phải cắt lỗ -5% gốc (tương tự các đợt AMZN/KO/MSFT trước đây). Đây là lệnh tự động đặt sẵn từ phiên có quyền giao dịch khác khớp đúng kỷ luật rủi ro — routine này chỉ ghi nhận, không tự đặt/hủy. **Vì bán lỗ (dù nhỏ) nên áp dụng wash-sale: không mua lại NVDA tới ~2026-08-26.**
+- **Tin tức lý do NVDA giảm:** cổ phiếu giảm ~3-4% hôm nay sau báo WSJ đưa tin Nvidia đang đàm phán bảo lãnh tài chính ~$250B cho dự án trung tâm dữ liệu AI 10-gigawatt của OpenAI tại Ohio (bảo lãnh cho lease + nợ xây dựng) — nhà đầu tư lo ngại rủi ro tài chính phát sinh ngoài mảng bán chip lõi. Đồng thuận vẫn Strong Buy (36 Buy/1 Hold), target TB $309.94. Đây là biến động sentiment/rủi ro cấu trúc mới xuất hiện, không phải suy giảm cơ bản cấp tính — nhưng lệnh trailing stop đã tự động xử lý, không cần agent quyết định thêm cho vị thế này.
+- **Core hiện còn 8/10** (thiếu 1 slot large-cap tech MỚI hôm nay + 1 slot rủi ro cao đang chờ từ 07-24): RSP, VOO, JNJ, PG, AAPL, AVGO, CRM, OKLO.
+- **Tài khoản (Agentic ••••0133):** total_value $5,798.51, equity_value $3,781.65, cash $2,016.86, buying_power $1,620.40, pending_deposits $0.
+- P&L so với giá vốn (giá hiện tại ~17:12 UTC) và thay đổi trong ngày (so với đóng cửa 07-24, phiên gần nhất trước cuối tuần):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $336.245 | **+9.20%** | +0.97% |
+  | CRM | $161.63 | $175.20 | **+8.39%** | **+7.05%** |
+  | JNJ | $260.69 | $268.18 | +2.87% | +1.81% |
+  | PG | $146.41 | $148.57 | +1.48% | +0.79% |
+  | OKLO | $40.96 | $40.83 | -0.32% | +1.44% |
+  | RSP | $214.93 | $214.65 | -0.13% | +0.51% |
+  | VOO | $688.26 | $676.82 | -1.66% | -0.34% |
+  | AVGO | $391.52 | $379.31 | **-3.12%** | -0.68% |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời **mới** hôm nay ngoài NVDA (đã tự động khớp). AAPL (+9.20%, fractional, không stop tự động) và CRM (+8.39%) đang tiến gần vùng chốt lời +10-20% nhưng chưa tới — tiếp tục theo dõi thủ công/thủ công theo dõi sát. AVGO (-3.12%) chưa chạm -5% nhưng cần theo dõi.
+- **CRM tăng +7.05% trong ngày** (vượt xa ngưỡng 3-5%, đã tìm tin tức): tiếp nối đà tăng tích cực đã biết (hợp đồng VA $1.6B, DOE win OKLO...) — cụ thể hôm nay do Guggenheim (John DiFucci) nâng khuyến nghị từ Neutral lên Buy, target giá $228 (+45% từ giá lúc đó); Q1 FY27 vượt kỳ vọng toàn diện (doanh thu +13% lên $11.13B, non-GAAP EPS $3.88 vượt 24% so với đồng thuận $3.12), nâng guidance doanh thu cả năm lên $45.9-46.2B. Không cần hành động (đã có sẵn vị thế, chưa tới ngưỡng chốt lời).
+  - Nguồn: [Salesforce (CRM) Shares Skyrocket — StockStory/Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/salesforce-crm-shares-skyrocket-know-200900382.html)
+- NDX giảm từ 28,280.41 (lúc 9:47 ET sáng nay) xuống 27,871.14 (~13:12 ET, hiện tại) — thị trường tech điều chỉnh chung trong phiên (~-1.45% intraday), phù hợp với việc NVDA/AVGO đều giảm hôm nay; không phải vấn đề riêng của danh mục.
+- **Nhắc lịch báo cáo sắp tới:** JNJ dự kiến **2026-07-28 (mai)**, PG dự kiến 2026-07-29, AMZN dự kiến 2026-07-30 (nếu được chọn thay NVDA, sẽ có báo cáo chỉ 3 ngày sau khi vào lệnh — rủi ro biến động ngay sau entry).
+- **Nhắc lại đề xuất đang chờ (chưa có quyết định mới từ Hogan):** thay thế slot rủi ro cao (RKLB) bằng AXTI hoặc ACHR — đề xuất từ 07-24 ~15:33 ET, đã xác nhận qua `get_equity_orders` không có lệnh mới nào khớp cho việc này. Không gửi lại PushNotification cho đề xuất cũ.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~5 ngày).
+
+### Đề xuất thay thế slot NVDA (large-cap tech) — cần Hogan chọn 1 trong 2 lựa chọn
+
+**Bối cảnh:** NVDA không bị thay do tin xấu/fundamentals xấu đi nghiêm trọng — trailing stop khớp gần giá vốn (-3.22%) giữa lúc cổ phiếu giảm do tin bảo lãnh tài chính OpenAI (rủi ro mới nhưng chưa xác nhận ảnh hưởng fundamentals dài hạn, đồng thuận vẫn Strong Buy). Portfolio vẫn cần đủ 4 mã large-cap tech theo cơ cấu CLAUDE.md (hiện chỉ còn AAPL, AVGO, CRM) nên đề xuất lấp lại slot. Loại trừ mã đang cấm mua lại do wash-sale liên quan large-cap tech: GOOGL (tới ~08-16), MSFT (tới ~08-22), **NVDA (tới ~08-26, mới thêm)**. Loại CRM/ORCL/IBM/ADBE/NFLX theo các lý do đã ghi nhận trước đó (fundamentals xấu đi/rủi ro cấu trúc, xem entry 07-23).
+
+**Lựa chọn A: AMZN (Amazon)** — giá ~$231.58 (giảm nhẹ -0.34% hôm nay). Đề xuất mua 2 cổ phiếu ≈ $463.16 (~8.0% danh mục, nguyên cổ phiếu giữ được stop-loss tự động). Đây là mã đã từng nắm giữ trong danh mục core (thoát vị thế 07-22 ở mức **+0.55% — lãi, không phải lỗ**, nên KHÔNG vướng wash-sale, có thể mua lại). Mảng cloud (AWS) tiếp tục tăng tốc, mảng quảng cáo ghi nhận doanh thu kỷ lục, đa dạng hóa tốt so với AAPL (hardware)/AVGO (bán dẫn)/CRM (SaaS) hiện có.
+- Rủi ro chính: **báo cáo Q2 FY26 công bố 2026-07-30, chỉ 3 ngày sau khi vào lệnh** — rủi ro biến động mạnh quanh ngày báo cáo ngay sau entry.
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Lựa chọn B: CSCO (Cisco)** — giá ~$113.56 (giảm -0.53% hôm nay). Đề xuất mua 4 cổ phiếu ≈ $454.24 (~7.8% danh mục, nguyên cổ phiếu). Đã vetting trước đó (07-22): Q3 FY26 doanh thu $15.84B (+12% YoY), CEO nâng mục tiêu đơn hàng AI FY26 từ $5B lên $9B, tăng cổ tức năm thứ 14 liên tiếp, đồng thuận nghiêng Buy, target TB $127.18. Đa dạng hóa sang hạ tầng mạng/networking, khác hẳn AAPL/AVGO/CRM đã có. Không có báo cáo thu nhập cận kề (báo cáo tiếp theo dự kiến giữa tháng 8), ít rủi ro biến động nhị phân ngay sau entry hơn AMZN.
+- Rủi ro chính: lo ngại nhu cầu thiết bị networking truyền thống chậm lại, rủi ro thực thi mục tiêu đơn hàng AI $9B.
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Chờ Hogan chọn AMZN, CSCO, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
