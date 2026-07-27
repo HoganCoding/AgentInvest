@@ -1540,3 +1540,26 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
 
 **Chờ Hogan chọn AMZN, CSCO, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
+
+## 2026-07-27 ~15:32 ET (19:32 UTC) — Check-in định kỳ (routine read-only)
+
+- **Xác nhận qua `get_equity_orders` (từ 07-27 17:15 UTC tới nay): không có lệnh mới nào khớp cho core-10.** Cả 2 đề xuất đang chờ vẫn chưa có quyết định: (1) thay slot large-cap tech (NVDA) bằng AMZN/CSCO — đề xuất từ 07-27 ~13:15 ET; (2) thay slot rủi ro cao (RKLB) bằng AXTI/ACHR — đề xuất từ 07-24 ~15:33 ET. Không gửi lại PushNotification (không phải thông tin mới).
+- **Lưu ý phân biệt:** `get_equity_positions` cho thấy tài khoản hiện có thêm 4 vị thế UBER, ACHR, AXTI, ONDS — đây là các vị thế **sandbox** (đã xác nhận qua `sandbox-log.md`, mua bởi phiên sandbox riêng ~14:06-14:25 ET hôm nay), KHÔNG thuộc core-10, không liên quan đến đề xuất thay slot RKLB ở trên (dù trùng tên AXTI/ACHR — chỉ là trùng hợp 2 phiên độc lập cùng chọn mã tương tự). Core-10 vẫn còn 8/10 vị thế: RSP, VOO, JNJ, AAPL, AVGO, PG, CRM, OKLO.
+- P&L so với giá vốn (giá hiện tại ~19:31 UTC) và thay đổi trong ngày (so với đóng cửa 07-24, phiên gần nhất trước cuối tuần):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $335.933 | **+9.11%** | +0.87% |
+  | CRM | $161.63 | $174.80 | **+8.15%** | +6.81% |
+  | JNJ | $260.69 | $267.07 | +2.45% | +1.39% |
+  | OKLO | $40.96 | $41.785 | +2.01% | +3.81% |
+  | PG | $146.41 | $148.88 | +1.69% | +1.00% |
+  | RSP | $214.93 | $215.15 | +0.10% | +0.74% |
+  | VOO | $688.26 | $679.886 | -1.22% | +0.11% |
+  | AVGO | $391.52 | $384.32 | -1.84% | +0.63% |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời **mới** hôm nay. AAPL (+9.11%, fractional, không stop tự động) và CRM (+8.15%) tiếp tục tiến gần vùng chốt lời +10-20%/+12% nhưng chưa tới ngưỡng — tiếp tục theo dõi, chưa đủ điều kiện đề xuất chốt lời.
+- SPX 7,420.08 / NDX 28,087.90 — so với đóng cửa 07-24 (SPX 7,428.56/NDX 28,277.18): SPX -0.11%, NDX -0.67%. AAPL/AVGO/CRM đều **outperform** NDX rõ rệt hôm nay (đặc biệt CRM +6.81%) — không có vấn đề hiệu suất so với benchmark.
+- Không mã nào biến động đủ mạnh để cần đào sâu tin tức mới ngoài CRM (đã có đầy đủ bối cảnh từ check-in 13:15 ET cùng ngày — Guggenheim upgrade, Q1 FY27 beat — không có catalyst mới thêm từ đó tới giờ).
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~5 ngày). JNJ báo cáo Q2 dự kiến 2026-07-28 (mai), PG dự kiến 2026-07-29 — tiếp tục theo dõi biến động quanh 2 ngày này.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
