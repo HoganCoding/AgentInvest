@@ -1312,3 +1312,11 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - `get_portfolio`: cash $2,429.50 (không đổi), buying_power **$336.44** (không đổi so với log trước — tiền bán sandbox hôm nay vẫn chưa settle thêm), total_value $5,763.93.
 - **Không có vị thế sandbox → không có circuit breaker nào để tính.** Buying power chưa cải thiện, tiếp tục tránh vào lệnh mới để chờ settle, đúng kế hoạch đã ghi ở các log trước; tiếp tục tránh 4 mã vừa lỗ hôm nay (OKLO, ACHR, ONDS, AXTI, cấm tới ~08-27).
 - **Quyết định: KHÔNG vào lệnh sandbox mới.** Không có thay đổi thật nào cần Hogan biết thêm so với log trước (GOOGL anomaly đã báo rồi, chưa có diễn biến mới, buying power chưa đổi) → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md (chỉ push khi có thay đổi thật).
+
+## 2026-07-28 ~14:10 ET (18:10 UTC) — Kiểm tra định kỳ: sandbox vẫn 100% cash, GOOGL bất thường vẫn còn nguyên, không có lệnh mới
+
+- `get_equity_positions` (704170133): **sandbox vẫn không có vị thế nào** — 100% cash, chưa tái triển khai kể từ chốt lời x2 lúc 14:20 UTC. Core-10 giữ nguyên 6 mã (RSP, VOO, JNJ, AAPL, PG, CRM) + **GOOGL (1cp, avg cost $327.65) vẫn còn** — không đổi so với log trước, chưa ai xử lý.
+- `get_equity_orders` (từ 17:09 UTC tới nay, ~1h): **rỗng** — không có lệnh mới nào (mua/bán/hủy) trên toàn tài khoản, kể cả GOOGL. Nguồn gốc lệnh GOOGL vẫn chưa được làm rõ; không thuộc thẩm quyền sandbox nên không can thiệp.
+- `get_portfolio`: cash $2,429.50 (không đổi), buying_power **$336.44** (không đổi so với log trước — tiền bán sandbox hôm nay vẫn chưa settle thêm), total_value $5,761.32.
+- **Không có vị thế sandbox → không có circuit breaker nào để tính.** Buying power chưa cải thiện, tiếp tục tránh vào lệnh mới để chờ settle, đúng kế hoạch đã ghi ở các log trước; tiếp tục tránh 4 mã vừa lỗ hôm nay (OKLO, ACHR, ONDS, AXTI, cấm tới ~08-27).
+- **Quyết định: KHÔNG vào lệnh sandbox mới.** Không có thay đổi thật nào cần Hogan biết thêm so với log trước (GOOGL anomaly đã báo rồi, chưa có diễn biến mới, buying power chưa đổi) → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md (chỉ push khi có thay đổi thật).
