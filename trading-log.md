@@ -1616,3 +1616,44 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
 
 **Chờ Hogan chọn TXN, QCOM, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
+
+## 2026-07-28 ~13:15 ET (17:15 UTC) — Check-in định kỳ (routine read-only) — Phát hiện hoạt động lệnh mới ngoài routine (GOOGL mua lại, OKLO bán) → CẢNH BÁO wash-sale + ĐỀ XUẤT MỚI: thay slot OKLO
+
+- **Qua `get_equity_orders` từ 00:00 UTC hôm nay, phát hiện 2 lệnh mới khớp sau lần check-in 9:50 ET (13:50 UTC) sáng nay, đặt bởi phiên khác (không phải routine này — routine này read-only, không đặt lệnh):**
+  1. **14:19 UTC — BÁN 11 cp OKLO @ $37.895 TB** (lệnh market, `trigger: immediate`, KHÔNG PHẢI stop-loss tự động — đây là lệnh bán chủ động của phiên khác). Giá vốn $40.9637 → lỗ thực hiện **-7.49%** (~-$33.75). Cùng batch với 3 lệnh bán sandbox (ONDS, ACHR, UBER — xem `sandbox-log.md`, không thuộc core). **Áp dụng wash-sale cho OKLO: không mua lại tới ~2026-08-27.**
+  2. **14:35 UTC — MUA 1 cp GOOGL @ $327.6499**, kèm đặt stop-loss -5% tại $311.27 (state `confirmed`).
+- **⚠️ CẢNH BÁO: lệnh mua GOOGL ở trên có khả năng VI PHẠM wash-sale rule đã quy định trong CLAUDE.md.** GOOGL từng bị bán lỗ qua stop-loss tự động ngày **2026-07-17** (giá $343.31, giá vốn $361.40, lỗ -5.00%) — theo đúng ghi chú wash-sale đã nhắc lại nhiều lần trong log này (ví dụ entry 07-17, 07-24, 07-27: "GOOGL (tới ~08-16)"), lẽ ra không nên mua lại GOOGL trước **2026-08-16**. Lệnh mua hôm nay (07-28) rơi đúng vào giữa cửa sổ cấm 30 ngày này. Routine này không có quyền hủy/sửa lệnh (chỉ read-only), chỉ ghi nhận và báo cáo để Hogan biết — có thể ảnh hưởng tới việc khấu trừ thuế của khoản lỗ GOOGL 07-17 nếu IRS coi đây là wash sale (lệnh mua lại nằm trong 30 ngày trước/sau ngày bán lỗ).
+- **Bối cảnh OKLO (để tham khảo, không phải lý do quyết định của routine này):** cổ phiếu chạm đáy 52 tuần mới ($39.48) hôm nay, tình trạng tài chính được đánh giá "WEAK" (InvestingPro), giảm ~41% so với 1 năm trước, mặc dù vẫn có tin tích cực nền (DOE startup authorization cho lò Groves, chương trình $200M của chính quyền Trump) — có thể lý do bán là quản trị rủi ro chủ động trước đà giảm tiếp diễn, nhưng routine này không biết chắc lý do của phiên khác.
+- **Core hiện tại (7/10, xác nhận qua `get_equity_positions`):** RSP, VOO (ETF, đủ 2/2); JNJ, PG (blue-chip, đủ 2/2); AAPL, CRM, GOOGL (large-cap tech, 3/4 — GOOGL vừa lấp 1 trong 2 slot tech đang chờ, xem lưu ý bên dưới); **0/2 nhóm rủi ro cao** (RKLB slot vẫn chờ AXTI/ACHR từ 07-24; OKLO slot MỚI trống hôm nay — xem đề xuất bên dưới).
+- **Lưu ý về 2 đề xuất tech đang chờ (NVDA→AMZN/CSCO từ 07-27; AVGO→TXN/QCOM từ sáng nay):** vì GOOGL đã lấp 1 slot tech, danh mục chỉ còn thiếu **1** slot tech (không phải 2) — Hogan chỉ cần chọn 1 trong 2 đề xuất đang chờ (không cần cả hai) để đủ 4/4 tech.
+- **Tài khoản (Agentic ••••0133):** total_value $5,763.20, equity_value $3,333.70, cash $2,429.50, buying_power $336.44, pending_deposits $0. Lưu ý: buying_power hiện thấp hơn nhiều so với cash (nhiều khả năng do tiền bán OKLO/sandbox hôm nay chưa settle hết trên tài khoản cash account) — cần kiểm tra buying_power thực tế trước khi Hogan đặt lệnh mua mới.
+- P&L so với giá vốn (giá hiện tại ~17:15 UTC) và thay đổi trong ngày (so với đóng cửa 07-27):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | CRM | $161.63 | $183.71 | **+13.66%** | **+5.82%** |
+  | JNJ | $260.69 | $267.74 | +2.70% | +0.67% |
+  | AAPL | $307.90 | $339.215 | +10.20% | +0.68% |
+  | GOOGL | $327.65 | $334.19 | +2.00% | +2.34% (mới mua hôm nay) |
+  | PG | $146.41 | $151.285 | +3.33% | +1.79% |
+  | RSP | $214.93 | $217.635 | +1.26% | +1.14% |
+  | VOO | $688.26 | $681.525 | -0.98% | +0.33% |
+
+- SPX 7,438.12 (+0.24% so với đóng cửa 07-27) / NDX 27,838.62 (-0.89%) — AAPL/CRM/GOOGL đều **outperform** NDX rõ rệt hôm nay.
+- **CRM đã vượt sâu vào vùng chốt lời (+13.66%, tăng thêm từ +11.24% sáng nay)** — nhắc lại đề xuất chốt lời toàn bộ 3 cp đã gửi sáng nay (9:50 ET), vẫn đang chờ Hogan quyết định, chưa có lệnh nào khớp. Tin mới hôm nay: cổ phiếu tăng +5.82%/+8% (theo nhiều nguồn) nhờ tiếp tục lan tỏa tin hợp đồng VA $1.6B + đồng thuận "Moderate Buy" (target TB $249, theo Motley Fool/CNBC) — không thay đổi đánh giá, vẫn đủ điều kiện chốt lời như đã đề xuất.
+  - Nguồn: [A $1.6 Billion Reason Salesforce (CRM) Stock Is Up Today — Yahoo Finance](https://finance.yahoo.com/technology/ai/articles/1-6-billion-reason-salesforce-182220250.html), [CRM Stock Gains 6.07% Today — JournalArta](https://journalarta.com/en/2026/07/28/crm-stock-gains-6-07-today-testing-key-resistance/)
+- Không mã nào khác chạm ngưỡng cắt lỗ/chốt lời mới. Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~4 ngày). PG báo cáo Q4 FY26 dự kiến mai (2026-07-29) — theo dõi biến động.
+
+### Đề xuất thay thế slot OKLO (rủi ro cao) — cần Hogan chọn 1 trong 2 lựa chọn
+
+**Bối cảnh:** OKLO vừa bị bán (không phải qua routine này) ở mức lỗ -7.49%, không phải qua stop-loss tự động. Danh mục cần đủ 2 mã rủi ro cao theo cơ cấu CLAUDE.md (hiện là 0/2 — cả RKLB lẫn OKLO đều trống). Loại trừ mã cấm mua lại do wash-sale: RXRX (tới ~08-09), IONQ (tới ~08-06), QBTS (tới ~08-12), SERV (tới ~08-15), GOOGL/SOUN (tới ~08-16, thuộc nhóm tech/khác — không áp dụng nhóm rủi ro cao), RKLB (tới ~08-23), NVDA (tới ~08-26, nhóm tech), AVGO (tới ~08-27, nhóm tech), **OKLO (tới ~08-27, mới thêm)**. Không trùng AXTI/ACHR (đang là 2 lựa chọn chờ cho slot RKLB riêng, để tránh nhầm lẫn 2 đề xuất). Loại POET Technologies dù có câu chuyện tăng trưởng tốt (doanh thu quang học AI +202% YoY) vì đang vướng nhiều vụ kiện liên quan tình trạng thuế + bị Marvell/Celestial AI hủy đơn hàng gần đây — rủi ro pháp lý/uy tín tương tự tiêu chí đã loại CRWV trước đó.
+
+**Lựa chọn A: SIDU (Sidus Space)** — giá ~$1.795 (giảm -2.97% hôm nay). Đề xuất mua 257 cổ phiếu ≈ $461.17 (~8.0% danh mục, nguyên cổ phiếu giữ được stop-loss tự động). Micro-cap space-as-a-service (thiết kế/sản xuất/vận hành vệ tinh thương mại), doanh thu +51% YoY, được thêm vào Russell 3000/2000/Microcap Index (26/06/2026) — đã từng đề xuất 07-07 (Hogan chọn QBTS thay), nay QBTS/RXRX/IONQ đều đã ra khỏi danh mục nên không trùng lặp. Công ty chưa có lợi nhuận (market cap ~$180M, PE âm), rủi ro thanh khoản/pha loãng cổ phần cao ở micro-cap.
+- Rủi ro chính: micro-cap, thanh khoản thấp hơn các lựa chọn khác, biến động cực cao, chưa có lợi nhuận.
+- Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
+
+**Lựa chọn B: ASTS (AST SpaceMobile)** — giá ~$57.47 (giảm -1.41% hôm nay). Đề xuất mua 8 cổ phiếu ≈ $459.76 (~8.0% danh mục, nguyên cổ phiếu). Xây dựng mạng băng thông rộng vệ tinh kết nối trực tiếp điện thoại di động tiêu chuẩn (không cần thiết bị đặc biệt), được các quỹ lớn và đối tác viễn thông (AT&T, Verizon...) quan tâm, biến động rất cao (đã giảm từ đỉnh 52 tuần $133.86 xuống ~$57, -57%). Vốn hóa lớn hơn SIDU nhiều (~$21.7B) nên thanh khoản tốt hơn, nhưng vẫn chưa có lợi nhuận (PE âm -32.77) và định giá dựa nhiều vào kỳ vọng tương lai.
+- Rủi ro chính: định giá phụ thuộc lớn vào tiến độ phóng vệ tinh/thương mại hóa dịch vụ, biến động mạnh theo tin tức ngành vệ tinh; đã giảm sâu từ đỉnh nên có thể vẫn trong xu hướng giảm.
+- Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
+
+**Chờ Hogan chọn SIDU, ASTS, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
