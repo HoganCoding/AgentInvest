@@ -1663,3 +1663,25 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
 
 **Chờ Hogan chọn SIDU, ASTS, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
+
+## 2026-07-28 ~15:31 ET (19:31 UTC) — Check-in định kỳ (routine read-only)
+
+- **Xác nhận qua `get_equity_orders` (từ 17:15 UTC tới nay): không có lệnh mới nào khớp cho core-10.** Vị thế không đổi (7/10): RSP, GOOGL, VOO, JNJ, AAPL, PG, CRM. Cả 3 đề xuất đang chờ vẫn chưa có quyết định: (1) chốt lời CRM (từ 9:50 ET); (2) thay slot large-cap tech AVGO bằng TXN/QCOM (từ 9:50 ET, lưu ý chỉ cần chọn 1 trong đề xuất này HOẶC đề xuất AMZN/CSCO từ 07-27 vì GOOGL đã lấp 1 slot); (3) thay slot rủi ro cao OKLO bằng SIDU/ASTS (từ 13:15 ET). Không gửi lại PushNotification (không có thông tin mới).
+- **Tài khoản:** total_value $5,749.29, equity_value $3,319.79, cash $2,429.50, buying_power $336.44, pending_deposits $0.
+- P&L so với giá vốn (giá hiện tại ~19:31 UTC) và thay đổi trong ngày (so với đóng cửa 07-27):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | CRM | $161.63 | $180.965 | **+11.96%** | +4.24% |
+  | AAPL | $307.90 | $339.13 | +10.15% | +0.66% |
+  | JNJ | $260.69 | $267.80 | +2.73% | +0.70% |
+  | GOOGL | $327.65 | $334.605 | +2.12% | +2.46% |
+  | PG | $146.41 | $149.28 | +1.96% | +0.44% |
+  | RSP | $214.93 | $217.50 | +1.20% | +1.08% |
+  | VOO | $688.26 | $681.62 | -0.96% | +0.34% |
+
+- CRM hạ nhiệt nhẹ so với lần kiểm tra 13:15 ET ($183.71 → $180.965) nhưng vẫn nằm sâu trong vùng chốt lời (+10-20%) — không thay đổi đánh giá, đề xuất chốt lời từ 9:50 ET vẫn còn hiệu lực, chưa cần đề xuất mới.
+- SPX 7,439.93 (~đi ngang so với 07-27) / NDX 27,870.51 (~đi ngang) — GOOGL/AAPL/CRM vẫn outperform benchmark rõ rệt trong ngày, không có mã nào kém hiệu suất đáng lo.
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời **mới**. Không có biến động >3-5% nào chưa được giải thích cần đào sâu tin tức thêm so với lần kiểm tra trước.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~4 ngày). PG báo cáo Q4 FY26 dự kiến mai (2026-07-29) — theo dõi biến động.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
