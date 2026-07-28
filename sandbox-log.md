@@ -1295,3 +1295,12 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - **Không có vị thế sandbox nào để tính circuit breaker lần này** (đã 100% cash). Theo kế hoạch từ log trước: tiếp tục chờ buying_power settle trước khi tái triển khai ~$740 vốn xoay vòng, tránh 4 mã vừa lỗ hôm nay (OKLO, ACHR, ONDS, AXTI, cấm tới ~08-27) và tránh dùng vốn khi buying_power chưa phản ánh đủ (rủi ro GFV).
 - **Quyết định: KHÔNG vào lệnh sandbox mới** — cash chưa settle đủ, không có cơ hội mới cần đánh giá gấp.
 - **Gửi PushNotification khẩn** — phát hiện lệnh mua GOOGL không khớp với bất kỳ đề xuất/quyết định nào đã ghi nhận, có dấu hiệu vi phạm wash-sale + vi phạm ranh giới core-10 (dù không phải do phiên sandbox này đặt) — cần Hogan kiểm tra ngay nguồn gốc lệnh này.
+
+## 2026-07-28 ~12:13 ET (16:13 UTC) — Kiểm tra định kỳ: sandbox vẫn 100% cash, GOOGL bất thường vẫn còn nguyên, chưa có diễn biến mới
+
+- `get_equity_positions` (704170133): **sandbox vẫn không có vị thế nào** — 100% cash, chưa tái triển khai kể từ chốt lời x2 lúc 14:20 UTC. Core-10 giữ nguyên 6 mã (RSP, VOO, JNJ, AAPL, PG, CRM) + **GOOGL (1cp, avg cost $327.65) vẫn còn** như phát hiện bất thường ở log trước (14:36 UTC) — chưa có ai xử lý/bán lại.
+- `get_equity_orders` (từ 14:36 UTC tới nay, ~1h37p): **rỗng** — không có lệnh mới nào (mua/bán/hủy) trên toàn tài khoản, kể cả GOOGL. Chưa rõ nguồn gốc lệnh GOOGL vẫn chưa được làm rõ; đây không thuộc thẩm quyền sandbox nên không can thiệp.
+- `get_equity_quotes` GOOGL (tham khảo, không phải sandbox): giá hiện tại $333.03 (16:13:56 UTC), so với đóng cửa hôm qua $326.56 → +1.98%.
+- `get_portfolio`: cash $2,429.50 (không đổi), buying_power **$336.44** (không đổi so với log trước — tiền bán sandbox hôm nay vẫn chưa settle thêm), total_value $5,762.96.
+- **Không có vị thế sandbox → không có circuit breaker nào để tính.** Buying power chưa cải thiện, tiếp tục tránh vào lệnh mới để chờ settle, đúng kế hoạch đã ghi ở log trước; cũng tiếp tục tránh 4 mã vừa lỗ hôm nay (OKLO, ACHR, ONDS, AXTI, cấm tới ~08-27).
+- **Quyết định: KHÔNG vào lệnh sandbox mới.** Không có thay đổi thật nào cần Hogan biết thêm so với log trước (GOOGL anomaly đã báo rồi, chưa có diễn biến mới) → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md (chỉ push khi có thay đổi thật).
