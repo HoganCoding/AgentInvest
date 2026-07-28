@@ -75,6 +75,12 @@
 3. Rủi ro chính cần lưu ý
 4. Mức cắt lỗ/chốt lời đề xuất cho lệnh này
 
+## Đồng bộ giữa các phiên (cloud routine vs tương tác) — mới, 2026-07-28
+Nhiều phiên (routine tự động lên lịch + phiên tương tác) cùng đọc/ghi `trading-log.md`, `sandbox-log.md` và cùng đặt lệnh trên 1 tài khoản Robinhood dùng chung — đã từng gây 2 lỗi nghiêm trọng: phân kỳ lịch sử git (2026-07-20) và sandbox tự ý bán nhầm 3 vị thế core-10 (OKLO/ACHR/UBER, 2026-07-28) vì tưởng đó là giao dịch sandbox bị lỡ chưa ghi log. Bắt buộc mọi phiên (kể cả cloud routine) tuân thủ:
+- **Pull trước khi đọc:** đầu mỗi phiên, trước khi dùng nội dung `trading-log.md`/`sandbox-log.md` để ra quyết định, chạy `git fetch` + so sánh với `origin/main` (hoặc `git pull`) — không giả định bản local đã đầy đủ, lịch sử có thể đã có commit mới từ phiên khác.
+- **Commit + push ngay sau khi ghi:** bất kỳ phiên nào sửa `CLAUDE.md`/`trading-log.md`/`sandbox-log.md` phải `git commit` và `git push` NGAY trong cùng phiên, không để tồn đọng uncommitted/unpushed sang lần kiểm tra sau.
+- **Sandbox PHẢI đối chiếu `trading-log.md` trước khi nhận 1 vị thế lạ là của mình:** khi `get_equity_positions` cho thấy 1 symbol không có trong log sandbox, KHÔNG được mặc định coi là "giao dịch sandbox bị lỡ chưa ghi log" ("ghi bù") — phải tra xem symbol đó có phải core-10 vừa mua/đang nắm giữ không trước. Nếu là core-10, sandbox tuyệt đối không được tự ý quản lý/bán vị thế đó (kể cả khi tính circuit breaker chốt lời/dừng hẳn) — chỉ ghi nhận và bỏ qua hoàn toàn.
+
 ## Ghi log
 Sau mỗi phiên phân tích, lưu tóm tắt vào file `trading-log.md`: ngày giờ, đề xuất, quyết định của tôi (yes/no), lý do nếu từ chối.
 
