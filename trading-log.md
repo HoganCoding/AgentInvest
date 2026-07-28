@@ -1999,3 +1999,12 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Không mã nào chạm ngưỡng cắt lỗ/chốt lời **mới**. Không có biến động >3-5% nào chưa được giải thích cần đào sâu tin tức thêm so với lần kiểm tra trước.
 - Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~4 ngày). PG báo cáo Q4 FY26 dự kiến mai (2026-07-29) — theo dõi biến động.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-28 ~18:59 UTC (~14:59 ET) — Bán GOOGL để dừng vi phạm wash-sale thêm (Hogan duyệt)
+
+- **Bối cảnh:** sau khi xác định nguồn gốc lệnh mua GOOGL 07-28 (xem entry `2026-07-28 ~17:19 UTC` phía trên — quyết định hợp lệ thay AVGO nhưng vi phạm wash-sale vì GOOGL từng bị bán lỗ 07-17, đề xuất lẽ ra phải loại trừ GOOGL), Hogan chọn **bán ngay để dừng phát sinh thêm rủi ro thuế** thay vì giữ hoặc chờ.
+- **Hủy stop-loss cũ** (order `6a68be28-f245-478e-a663-7d07ed642fc7`, -5% @ $311.27) — accepted.
+- **Bán 1cp GOOGL:** thị trường đã đóng cửa phiên chính (sau 16:00 ET) — đặt limit sell @ $333.37 (≈ bid, marketable) với `market_hours: extended_hours` để khớp ngay ngoài giờ thay vì chờ mở cửa mai. Filled ngay lúc 22:59:51 UTC @ **$333.37**. Order id `6a693467-80ba-46b7-8e4e-0e83fc013bd9`.
+- **P&L:** vốn $327.6499 → bán $333.37 = **+1.75%** (lãi nhẹ, ~$5.72). Vì đây là GAIN nên không tạo thêm wash-sale mới, nhưng KHÔNG xóa được vi phạm wash-sale đã phát sinh với lô lỗ GOOGL 07-17 (mua lại trong cửa sổ 30 ngày vẫn tính là wash sale cho khoản lỗ đó, bất kể lô mua lại sau đó lãi hay lỗ) — cần lưu ý khi khai thuế, có thể cần tham khảo CPA.
+- **Slot large-cap tech (thay AVGO) lại trống.** Core-10 hiện còn 6/10: RSP, VOO, JNJ, AAPL, PG, CRM — thiếu 1 slot tech (vừa trống lại do bán GOOGL) + 2 slot rủi ro cao (OKLO/ACHR bị bán nhầm bởi lỗi sandbox, xem entry root-cause) — tổng cộng đang chờ Hogan quyết định 3 đề xuất thay thế (xem `sandbox-log.md` gần cuối và trading-log.md phía trên: CRM take-profit, TXN/QCOM hoặc AMZN/CSCO cho tech, SIDU/ASTS cho rủi ro cao).
+- Không cần đề xuất thay thế GOOGL riêng ở đây — sẽ gộp chung vào đợt xử lý 3 slot đang chờ ở lần check tiếp theo.
