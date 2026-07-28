@@ -1376,3 +1376,626 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Đặt stop-loss ngay:** stop_market GTC @ **$311.27** (-5%, khung tech). Order id `6a68be28-f245-478e-a663-7d07ed642fc7`.
 - **Core-10 đủ lại 10/10:** RSP, VOO, JNJ, AAPL, PG, CRM, OKLO, UBER, ACHR, GOOGL.
 - Không cần PushNotification thêm (Hogan vừa duyệt trực tiếp "ừ, đặt đi" — chỉ là thực thi theo đề xuất đã trình).
+
+## 2026-07-28 ~17:19 UTC — Đối chiếu & giải mã: nguồn gốc lệnh mua GOOGL đã được xác định
+
+**Bối cảnh:** một phiên cloud routine song song (read-only, không đặt lệnh) đã báo động lệnh mua GOOGL (07-28 14:35 UTC) là "không rõ nguồn gốc" và nghi ngờ vi phạm wash-sale, vì routine đó không thấy log nào giải thích. Đối chiếu với lịch sử ở TRÊN (entry `2026-07-28 ~10:10 ET` và `~10:35 ET`) xác nhận: **lệnh mua GOOGL này CÓ nguồn gốc rõ ràng** — là quyết định hợp lệ của phiên tương tác (có quyền đặt lệnh) xử lý đề xuất thay slot large-cap tech sau khi AVGO bị stop-loss cùng sáng nay, Hogan đã chọn GOOGL giữa 2 lựa chọn (GOOGL/ADBE) được trình bày. Log gốc chỉ chưa kịp commit/push trước khi routine khác chạy check-in, gây hiểu lầm "không rõ nguồn gốc" — không phải giao dịch lạ/trái phép.
+
+**Tuy nhiên cảnh báo wash-sale của routine kia vẫn ĐÚNG và cần xử lý:** GOOGL từng bị stop-loss bán lỗ -5% ngày 2026-07-17 ($343.31, vốn $361.40) — mua lại ngày 07-28 (chỉ 11 ngày sau) rơi giữa cửa sổ cấm wash-sale 30 ngày (đúng ra phải chờ tới ~2026-08-16). Đây là sai sót thực sự trong khâu đề xuất (routine đề xuất AVGO→GOOGL/ADBE đã không kiểm tra chéo danh sách cấm wash-sale đủ kỹ — GOOGL lẽ ra phải bị loại khỏi danh sách lựa chọn ngay từ đầu, giống cách RXRX/IONQ/QBTS/SERV/RKLB/NVDA/AVGO/OKLO đã được loại đúng ở các đề xuất khác). Hogan đã quyết định (2026-07-28, phiên chat) **bán GOOGL ngay để dừng phát sinh thêm rủi ro thuế** — xem entry thực thi bên dưới.
+
+## 2026-07-20 ~13:11 ET (17:11 UTC) — Check-in định kỳ (routine read-only, xác nhận đủ 10/10)
+
+- Vị thế 10 mã core xác nhận qua `get_equity_positions`: AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB — đúng đủ 10/10 theo cơ cấu (2 rủi ro cao: AEHR, RKLB / 4 large-cap tech: MSFT, AAPL, AMZN, NVDA / 2 blue-chip: JNJ, KO / 2 ETF: VOO, RSP). (Tài khoản còn có 15 cp IREN — xác nhận qua `sandbox-log.md` đây là vị thế **sandbox**, không thuộc core-10.)
+- 3 lệnh stop-loss mới (AEHR -8% @ $70.77, NVDA -5% @ $194.59, RKLB -8% @ $61.14) đều ở state `confirmed` (active).
+- **Tài khoản (Agentic ••••0133):** total_value $5,747.03, equity_value $5,184.15, cash/buying_power $562.88.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-17):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $324.765 | +5.48% | -2.69% |
+  | MSFT | $386.75 | $400.77 | +3.63% | +1.76% |
+  | AMZN | $243.78 | $250.91 | +2.93% | +1.49% |
+  | RKLB | $66.46 | $66.64 | +0.27% | -1.45% |
+  | NVDA | $204.83 | $203.28 | -0.76% | +0.23% |
+  | AEHR | $76.92 | $76.66 | -0.34% | -5.42% (vị thế mới mua sáng nay, xem giải thích dưới) |
+  | VOO | $688.26 | $684.132 | -0.60% | +0.14% |
+  | RSP | $214.93 | $213.10 | -0.85% | -0.13% |
+  | KO | $84.10 | $81.545 | -3.04% | -0.02% |
+  | JNJ | $260.69 | $250.40 | -3.95% | -1.04% |
+
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). JNJ gần nhất (-3.95%, fractional, không có stop tự động, tiếp tục theo dõi thủ công) nhưng vẫn cách ngưỡng -5% đề xuất.
+- AEHR giảm -5.42% so với đóng cửa 07-17 ($81.05) nhưng đây là so với giá **trước khi mua** — vị thế mới mở sáng nay (~10:56 ET) ở $76.92 giữa lúc cổ phiếu đang trong pha "pop-and-fade" hậu earnings (đã ghi chi tiết ở entry ngay phía trên). So với giá vốn thực tế chỉ -0.34%, gần như đi ngang, còn cách xa ngưỡng cắt lỗ -8% ($70.77) — không cần tìm tin tức mới, đã có đầy đủ bối cảnh từ lần mua sáng nay.
+- QQQ hôm nay +0.66% (695.33→699.89) — MSFT/AMZN outperform rõ rệt, AAPL kém hơn benchmark trong ngày (-2.69%) nhưng vẫn +5.48% so với giá vốn, chưa đủ cơ sở đánh giá suy giảm 30 ngày.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~12 ngày).
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-20 ~15:31 ET (19:31 UTC) — Check-in định kỳ (routine read-only)
+
+- Vị thế 10 mã core xác nhận qua `get_equity_positions`: AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB — đủ 10/10 (2 rủi ro cao: AEHR, RKLB / 4 tech: MSFT, AAPL, AMZN, NVDA / 2 blue-chip: JNJ, KO / 2 ETF: VOO, RSP). (IREN 15 cp là vị thế sandbox, không thuộc core-10.)
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-17, $393.82 v.v.):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $329.33 | +6.96% | -1.32% |
+  | MSFT | $386.75 | $401.38 | +3.78% | +1.92% |
+  | AMZN | $243.78 | $249.705 | +2.43% | +1.00% |
+  | NVDA | $204.83 | $202.785 | -1.00% | -0.01% |
+  | RKLB | $66.46 | $65.98 | -0.72% | -2.42% |
+  | AEHR | $76.92 | $76.75 | -0.22% | -5.31%* |
+  | VOO | $688.26 | $682.62 | -0.82% | -0.08% |
+  | RSP | $214.93 | $212.39 | -1.18% | -0.46% |
+  | KO | $84.10 | $81.73 | -2.82% | +0.21% |
+  | JNJ | $260.69 | $249.46 | -4.31% | -1.41% |
+
+  *AEHR "thay đổi trong ngày" so với đóng cửa 07-17 ($81.05) là artifact so với giá **trước khi mua** (vị thế mở 07-20 sáng ở $76.92) — không phải biến động thật kể từ lúc mua, đã giải thích ở entry trước, không cần tìm tin tức lại.
+- Không mã nào chạm ngưỡng cắt lỗ (-5%/-8%) hay chốt lời (+10-20%). JNJ (fractional, không stop tự động) tiếp tục drift nhẹ về phía ngưỡng -5% (-3.95% → -4.31% kể từ entry trước) nhưng mức thay đổi nhỏ, chưa phải biến động >3-5% cần tìm tin tức sâu — tiếp tục theo dõi thủ công.
+- Không mã nào có biến động trong ngày vượt ngưỡng 3-5% cần tìm tin tức mới (ngoài artifact AEHR đã giải thích ở trên).
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~12 ngày).
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-21 ~09:51 ET (13:51 UTC) — Check-in định kỳ (routine read-only) — ĐỀ XUẤT MỚI: chốt lời một phần AEHR
+
+- Vị thế 10 mã core xác nhận qua `get_equity_positions`: AMZN, RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB — đủ 10/10 (2 rủi ro cao: AEHR, RKLB / 4 tech: MSFT, AAPL, AMZN, NVDA / 2 blue-chip: JNJ, KO / 2 ETF: VOO, RSP). (IREN 15 cp là vị thế sandbox, không thuộc core-10 — xem `sandbox-log.md`.)
+- P&L so với giá vốn (giá hiện tại lúc 13:46 UTC, so với đóng cửa 07-20):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AEHR | $76.92 | $91.41 | **+18.83%** | **+18.16%** |
+  | AAPL | $307.90 | $323.295 | +5.00% | -1.01% |
+  | MSFT | $386.75 | $399.85 | +3.39% | -0.61% |
+  | NVDA | $204.83 | $206.92 | +1.02% | +1.79% |
+  | AMZN | $243.78 | $247.68 | +1.60% | -0.92% |
+  | RKLB | $66.46 | $66.42 | -0.06% | +1.03% |
+  | VOO | $688.26 | $684.34 | -0.57% | +0.31% |
+  | RSP | $214.93 | $212.10 | -1.32% | -0.15% |
+  | KO | $84.10 | $81.50 | -3.09% | -0.76% |
+  | JNJ | $260.69 | $248.14 | -4.81% | -0.27% |
+
+- **AEHR chạm khung chốt lời:** +18.83% so với giá vốn, trong khung +10-20% theo CLAUDE.md và vượt tối thiểu risk/reward 1:2 so với stop-loss -8% hiện tại ($70.77) — ngưỡng tối thiểu để đạt 1:2 là +16%, đã vượt.
+  - Bối cảnh: đây là tiếp nối đà tăng hậu earnings 7/15 (Q4 FY26 revenue $18.84M, +33.7% YoY; guidance FY27 $130-150M, +160-200%; bookings kỷ lục $60.7M) cùng loạt nâng target giá trong tuần: Craig-Hallum → $125 (từ $68, giữ Buy), Lake Street → $110 (từ $56, giữ Buy), Freedom Broker → $110 (từ $90, nâng lên Buy). Không có tin xấu mới.
+  - Tuy nhiên cổ phiếu cực kỳ biến động kể từ earnings: đỉnh $110 (7/15 intraday) → đáy đóng cửa $77.36 (7/20) → bật lại $91.41 hôm nay — swing "pop–fade–pop" trong vòng 1 tuần, phản ánh rủi ro thanh khoản/đầu cơ cao đặc trưng nhóm rủi ro cao.
+  - Vị thế mới mở 7/20 (~1 ngày) — bán sẽ là lãi vốn ngắn hạn (thuế suất cao hơn dài hạn theo CLAUDE.md ghi chú thuế, nhưng quy tắc thuế không override kỷ luật chốt lời khi ngưỡng đã đạt).
+
+  **Đề xuất: AEHR — Bán 3/6 cổ phiếu (chốt ~50% vị thế) tại thị trường**
+  1. Mã + hành động: AEHR, BÁN 3 cổ phiếu (giữ lại 3 cổ phiếu), lệnh thị trường.
+  2. Lý do: đã đạt khung chốt lời +10-20% (hiện +18.83%) với R:R ≥1:2 so với stop-loss -8%; khóa một phần lợi nhuận trong bối cảnh cổ phiếu đã cho thấy biến động rất mạnh 2 chiều trong cùng 1 tuần (từng giảm từ $88→$77 chỉ trong 3 ngày 7/17-7/20); giữ lại phân nửa để tiếp tục hưởng lợi nếu đà tăng theo target consensus ~$115 tiếp diễn.
+  3. Rủi ro chính: (a) nếu đà tăng tiếp tục, phần đã bán sẽ bỏ lỡ lợi nhuận thêm; (b) nếu giữ nguyên toàn bộ, rủi ro đảo chiều nhanh như đã xảy ra tuần trước; (c) lãi vốn ngắn hạn (holding period ~1 ngày) chịu thuế cao hơn dài hạn — cân nhắc nếu ưu tiên thuế hơn chốt lời.
+  4. Mức cắt lỗ/chốt lời cho phần còn giữ (3 cổ phiếu): đề xuất dời stop-loss lên breakeven ~$76.92 (từ $70.77) để bảo vệ lợi nhuận đã có, hoặc giữ nguyên $70.77 nếu Hogan muốn biên độ rộng hơn cho phần còn lại — chờ Hogan quyết định.
+- JNJ tiếp tục drift gần ngưỡng cắt lỗ -5% (hiện -4.81%, fractional, không có stop tự động) — CHƯA chạm ngưỡng, chỉ ghi nhận theo dõi thủ công, không đề xuất hành động. Tin tức: tòa phúc thẩm Illinois giữ nguyên phán quyết $45M vụ kiện talc, thêm phán quyết $10.2M liên quan mesothelioma tại Minnesota — rủi ro pháp lý talc tiếp diễn nhưng không phải thông tin mới đột biến, đã là rủi ro đã biết, cổ phiếu vẫn +23.9% YTD theo nguồn ngoài. Không đủ cơ sở đề xuất bán ở mức -4.81%.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~11 ngày).
+- **Đề xuất mới:** chốt lời một phần AEHR (bán 3/6 cổ phiếu) — chờ Hogan duyệt yes/no. Đã gửi PushNotification.
+
+## 2026-07-21 — Hogan duyệt đề xuất AEHR (Yes) — CHƯA THỰC HIỆN, phiên này read-only
+
+- Hogan trả lời **"Yes"** duyệt đề xuất bán 3/6 cổ phiếu AEHR (chốt lời một phần) từ entry ngay phía trên.
+- **Phiên routine này bị giới hạn read-only trên tài khoản core-10 (704170133)** — không có quyền gọi `place_equity_order`/bất kỳ tool đặt lệnh nào, theo đúng cấu hình của tác vụ này. Lệnh bán CHƯA được đặt.
+- Cần thực hiện lệnh bán 3 cổ phiếu AEHR (thị trường) qua phiên tương tác có quyền giao dịch trên tài khoản Agentic, sau đó cập nhật log này với xác nhận khớp lệnh + dời/giữ stop-loss cho 3 cổ phiếu còn lại.
+
+## 2026-07-21 ~15:32 ET (19:32 UTC) — Check-in định kỳ (routine read-only) — ĐỀ XUẤT MỚI: chốt lời phần AEHR còn lại
+
+- **Xác nhận lệnh bán AEHR (đề xuất từ entry 09:51 ET) đã được thực hiện** — qua `get_equity_orders`: lệnh `6a5f8392-d004-420f-92d8-a311d45cd034` (limit sell 3 cp, GFD) filled lúc 14:35:09 UTC (~10:35 ET) @ $94.70 TB. Đây là lệnh đặt qua phiên tương tác khác có quyền giao dịch (đúng như kế hoạch ghi ở entry trước) — routine này chỉ xác nhận, không tự đặt. Đồng thời phát hiện stop-loss cho 3 cổ phiếu AEHR còn lại đã được dời lên **$88.10** (GTC, đặt 14:36:43 UTC) — cao hơn mức breakeven $76.92 đã đề xuất, khóa lợi nhuận tối thiểu ~+14.5% nếu bị kích hoạt.
+- Vị thế 10 mã core hiện tại qua `get_equity_positions`: AMZN (2), RSP (2), KO (5), MSFT (1), VOO (0.7265 fractional), JNJ (1.918 fractional), AAPL (1.624 fractional), AEHR (3, sau khi bán 3/6), NVDA (2), RKLB (7) — đủ 10/10. (IREN 15 cp vẫn là vị thế sandbox, không thuộc core-10.)
+- Lưu ý kỹ thuật: nhiều lệnh stop-loss khác (AMZN, KO, MSFT, RKLB, NVDA, RSP) cũng được cập nhật lúc ~14:56 UTC hôm nay qua phiên có quyền giao dịch (không phải phiên routine này) — mức stop mới không hoàn toàn khớp băng -5%/-8% gốc từ giá vốn ban đầu (có thể là trailing stop theo giá hiện tại). Routine này chỉ ghi nhận trạng thái quan sát được, không có quyền diễn giải/sửa đổi.
+- P&L so với giá vốn (giá hiện tại lúc 19:31 UTC, so với đóng cửa 07-20):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **AEHR** | $76.92 | **$97.66** | **+26.96%** | **+26.24%** |
+  | AAPL | $307.90 | $327.885 | +6.49% | +0.40% |
+  | MSFT | $386.75 | $399.355 | +3.26% | -0.73% |
+  | RKLB | $66.46 | $68.26 | +2.71% | +3.83% |
+  | NVDA | $204.83 | $206.818 | +0.97% | +1.74% |
+  | VOO | $688.26 | $687.81 | -0.07% | +0.82% |
+  | AMZN | $243.78 | $247.63 | +1.58% | -0.94% |
+  | KO | $84.10 | $82.325 | -2.11% | +0.25% |
+  | RSP | $214.93 | $212.74 | -1.02% | +0.15% |
+  | JNJ | $260.69 | $249.905 | -4.14% | +0.44% |
+
+- **AEHR (3 cổ phiếu còn lại) đã vượt xa khung chốt lời +10-20%, hiện +26.96%** — đã kiểm tra tin tức vì biến động >5% trong ngày: không có catalyst MỚI kể từ entry sáng nay — cùng đợt nâng target giá đã ghi nhận (Craig-Hallum $125, Lake Street $110, Freedom Broker $110, đều từ báo cáo Q4 FY26 công bố 07-15) tiếp tục đẩy giá lên do momentum/short-covering, không phải tin tức mới trong 24h.
+  - Nguồn: [AEHR Stock Rockets As Earnings Beat Triggers Hypergrowth Outlook — TimothySykes](https://timothysykes.com/news/aehr-test-systems-aehr-news-2026_07_21-2/), [Aehr Test Systems Stock Soars on Earnings — Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/aehr-test-systems-stock-soars-160500247.html)
+
+  **Đề xuất: AEHR — Bán nốt 3 cổ phiếu còn lại (thoát toàn bộ vị thế), lệnh thị trường**
+  1. Mã + hành động: AEHR, BÁN 3 cổ phiếu (toàn bộ phần còn lại), lệnh thị trường.
+  2. Lý do: P&L đã vượt xa khung chốt lời +10-20% quy định trong CLAUDE.md (hiện +26.96%, gần gấp đôi cận trên), không có catalyst cơ bản mới kể từ lần chốt lời một phần sáng nay — chỉ là tiếp diễn momentum trên cùng tin cũ. Cổ phiếu đã cho thấy biến động cực đoan 2 chiều trong cùng 1 tuần (đỉnh $110 → đáy $77.36 → nay $97.66) — rủi ro đảo chiều nhanh (như đã xảy ra 07-17→07-20) là có thật và đã lặp lại 2 lần trong 10 ngày qua. Thoát hẳn giúp khóa toàn bộ lợi nhuận thay vì phụ thuộc vào stop-loss $88.10 (vẫn cho phép giá giảm ~-9.8% từ đỉnh hiện tại trước khi kích hoạt).
+  3. Rủi ro chính: (a) nếu đà tăng tiếp tục (target consensus mới nhất $110-125), sẽ bỏ lỡ lợi nhuận thêm; (b) lãi vốn ngắn hạn (holding period ~1 ngày cho lô mua 07-20) — thuế suất cao hơn dài hạn, nhưng quy tắc thuế trong CLAUDE.md không override kỷ luật chốt lời khi ngưỡng đã đạt/vượt xa; (c) sau khi bán, mất 1 trong 2 slot nhóm rủi ro cao — cần sàng lọc mã thay thế cùng nhóm (không mua lại AEHR trong 30 ngày nếu đây được coi như chốt lời chủ động, wash-sale chỉ áp dụng khi bán LỖ nên không bắt buộc, nhưng nên cân nhắc mã khác để đa dạng hóa).
+  4. Không áp dụng cắt lỗ/chốt lời mới (vị thế đóng hoàn toàn). Nếu Hogan muốn giữ lại một phần thay vì thoát hẳn, có thể cân nhắc phương án thay thế: giữ nguyên, chỉ dời stop-loss lên cao hơn nữa (vd. ~$92, khóa +19.6%) thay vì bán hết.
+- JNJ tiếp tục drift nhẹ về ngưỡng cắt lỗ -5% (hiện -4.14%, cải thiện nhẹ so với -4.81% chiều qua, fractional, không stop tự động) — chưa chạm ngưỡng, không có tin tức mới, tiếp tục theo dõi thủ công.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~11 ngày).
+- **Đề xuất mới:** chốt lời toàn bộ phần AEHR còn lại (bán 3/3 cổ phiếu) — chờ Hogan duyệt yes/no. Đã gửi PushNotification.
+
+## 2026-07-22 ~9:50 ET (13:50 UTC) — Check-in định kỳ (routine read-only) — AMZN bị stop-loss tự động (trailing) + ĐỀ XUẤT MỚI: thay AMZN
+
+- **AMZN đã bị bán tự động sáng nay:** lệnh `6a5f8895-8f1b-4926-95c5-30125e4a80a1` (stop_market sell, đặt lúc 14:56 UTC hôm qua 07-21 — cùng đợt cập nhật trailing stop cho AMZN/KO/MSFT/RKLB/NVDA/RSP đã ghi nhận ở entry 07-21 19:32 ET) kích hoạt lúc **09:32 ET hôm nay** (13:32:00 UTC), bán 2 cp @ $245.11 TB, stop trigger $245.18. Giá vốn $243.78 → **+0.55%** (không phải lỗ — do trailing stop đã dời sát giá thị trường hiện tại, không phải cắt lỗ -5% từ giá vốn gốc). Đây là lệnh tự động đặt sẵn từ phiên có quyền giao dịch khác, khớp bình thường — routine này chỉ ghi nhận, không tự đặt/hủy gì.
+- Đã kiểm tra toàn bộ lệnh `filled` từ 2026-07-21 00:00 UTC tới nay: chỉ có 2 lệnh khớp — AEHR (bán 3/6, đã ghi ở entry trước) và AMZN (trên). Không có stop-loss nào khác bị kích hoạt.
+- **Core hiện còn 9/10** (thiếu 1 slot large-cap tech): RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB.
+- **Tài khoản (Agentic ••••0133):** total_value $5,925.49, equity_value $4,588.29, cash $1,337.20, buying_power $846.98.
+- P&L so với giá vốn và thay đổi trong ngày (so với đóng cửa 07-21, ~13:47 UTC):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AEHR | $76.92 | $97.80 | **+27.14%** | -1.12% |
+  | RKLB | $66.46 | $71.055 | +6.92% | +2.80% |
+  | AAPL | $307.90 | $327.18 | +6.26% | -0.17% |
+  | MSFT | $386.75 | $393.26 | +1.68% | -1.13% |
+  | NVDA | $204.83 | $207.06 | +1.09% | -0.11% |
+  | VOO | $688.26 | $687.41 | -0.12% | -0.07% |
+  | RSP | $214.93 | $213.42 | -0.70% | +0.31% |
+  | KO | $84.10 | $82.45 | -1.96% | +0.59% |
+  | JNJ | $260.69 | $252.3115 | -3.19% | +0.68% |
+
+- Không mã nào (ngoài AEHR, đã có đề xuất chờ duyệt từ hôm qua) chạm ngưỡng cắt lỗ/chốt lời hôm nay. Không mã nào biến động trong ngày vượt 3-5% nên không cần tìm tin sâu thêm (QQQ hôm nay -0.46%, 708.97→705.69, không có gì bất thường thị trường chung).
+- **Nhắc lại đề xuất đang chờ (chưa có quyết định mới từ Hogan):** chốt lời toàn bộ AEHR còn lại (3/3 cp) từ entry 07-21 ~15:32 ET — vẫn ở vùng lợi nhuận rất cao (+27.14%), chưa thấy Hogan trả lời yes/no. Không gửi lại PushNotification cho việc này (không phải thông tin mới), chỉ nhắc trong log.
+
+### Đề xuất thay thế slot AMZN (large-cap tech) — cần Hogan chọn 1 trong 2 lựa chọn
+
+**Bối cảnh:** AMZN không bị thay do "cắt lỗ"/tin xấu — chỉ là trailing stop (đặt bởi phiên khác) khớp ở vùng giá gần hòa vốn. Portfolio vẫn cần đủ 4 mã large-cap tech theo cơ cấu CLAUDE.md nên đề xuất lấp lại slot.
+- Đã cân nhắc lại **CRM, ORCL** (2 lựa chọn từng duyệt hụt hôm 07-17, sau đó bị AEHR/NVDA/RKLB thay thế) nhưng tình hình xấu đi rõ rệt trong tuần qua: CRM bị Morgan Stanley hạ khuyến nghị 21/07 (giảm -3.6%), cổ phiếu -35.2% YTD, rủi ro cấu trúc từ AI thay thế sản phẩm lõi (nội bộ có tin AI đang thay thế Slackbot ở một số khách hàng). ORCL dòng tiền tự do âm -$24B do capex AI, S&P vừa hạ tín nhiệm xuống sát mức "junk", cổ phiếu -36.9% YTD. Cả 2 không còn phù hợp tiêu chí "minh bạch tài chính, ổn định" cho nhóm large-cap tech → **loại khỏi đề xuất lần này**.
+
+**Lựa chọn A: AVGO (Broadcom)** — giá ~$385.31 (1 cp ≈ 6.5% danh mục, giữ được stop-loss tự động). Broadcom vừa gia hạn hợp đồng cung ứng chip với Apple tới 2031 (>$30B), hợp tác hạ tầng cloud riêng với Standard Chartered, backlog AI mạnh tới FY28, đồng thuận analyst "Buy" trung bình target $501.58 (+30% so với giá hiện tại). Đang thấp hơn ~24% so với đỉnh 52 tuần do đợt bán tháo chip chung (sau tin mô hình mã nguồn mở Kimi K3 của Moonshot) — không phải vấn đề riêng của AVGO.
+- Rủi ro chính: định giá cao, phụ thuộc chu kỳ AI capex; thêm 1 mã bán dẫn sẽ khiến 2/4 slot tech (NVDA + AVGO) cùng nhóm bán dẫn AI, giảm đa dạng hóa sub-sector.
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Lựa chọn B: CSCO (Cisco)** — giá ~$113.25 (đề xuất mua 4 cp ≈ $453, ~7.6% danh mục, nguyên cổ phiếu). Q3 FY26 doanh thu $15.84B (+12% YoY), CEO nâng mục tiêu đơn hàng AI FY26 từ $5B lên $9B, tăng cổ tức năm thứ 14 liên tiếp (trả cổ tức đúng hôm nay 22/07), đồng thuận analyst nghiêng Buy (4 Strong Buy/13 Buy/8 Hold/1 Strong Sell), target TB $127.18. Đã điều chỉnh -7.7%/tuần từ đỉnh 52 tuần — điểm vào tốt hơn. Đa dạng hóa sang hạ tầng mạng/networking, khác hẳn nhóm bán dẫn AI (NVDA) và phần mềm/hardware tiêu dùng (MSFT/AAPL) đã có.
+- Rủi ro chính: lo ngại nhu cầu thiết bị networking truyền thống chậm lại, rủi ro thực thi mục tiêu đơn hàng AI $9B (cần tăng tốc mạnh trong Q4).
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Chờ Hogan chọn AVGO, CSCO, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức).
+
+## 2026-07-22 ~15:32 ET (19:32 UTC) — Check-in định kỳ (routine read-only, cuối phiên)
+
+- Vị thế 9/10 core xác nhận qua `get_equity_positions` (không đổi so với entry 09:50 ET sáng nay — slot AMZN vẫn trống, chưa có lệnh mới nào kể từ 13:50 UTC hôm nay qua `get_equity_orders`): RSP, KO, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB. (IREN 15 cp vẫn là vị thế sandbox, không thuộc core-10.)
+- P&L so với giá vốn (giá hiện tại ~19:32 UTC, so với đóng cửa 07-21):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AEHR | $76.92 | $95.50 | +24.16% | -3.45% |
+  | AAPL | $307.90 | $324.39 | +5.36% | -1.02% |
+  | RKLB | $66.46 | $69.855 | +5.11% | +1.06% |
+  | NVDA | $204.83 | $212.88 | +3.93% | +2.70% |
+  | MSFT | $386.75 | $389.10 | +0.61% | -2.18% |
+  | VOO | $688.26 | $687.335 | -0.13% | -0.08% |
+  | RSP | $214.93 | $212.475 | -1.14% | -0.13% |
+  | KO | $84.10 | $82.53 | -1.87% | +0.68% |
+  | JNJ | $260.69 | $254.495 | -2.38% | +1.55% |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời **mới** hôm nay (AEHR đã có đề xuất chốt lời toàn bộ đang chờ duyệt từ hôm qua, không phải sự kiện mới).
+- MSFT giảm -2.18% trong ngày, mức giảm lớn nhất trong danh mục — đã tìm tin tức: nguyên nhân là lo ngại chung toàn ngành về chi tiêu vốn AI trước thềm báo cáo Q4 FY26 (dự kiến 2026-07-29) — MSFT dự kiến chi ~$190B capex năm 2026, nhà đầu tư nghi ngờ khả năng sinh lời. Đây là rủi ro/lo ngại đã biết (không phải tin xấu đột ngột riêng của MSFT — kiện tụng/gian lận/mất CEO/hạ tín nhiệm), đồng thuận analyst vẫn "Strong Buy/Buy" với target trung bình $589-592 (gấp ~1.5x giá hiện tại). P&L MSFT vẫn dương (+0.61%), còn cách rất xa ngưỡng cắt lỗ -5%. Chưa đủ điều kiện đề xuất theo CLAUDE.md — theo dõi sát quanh ngày báo cáo 07-29.
+  - Nguồn: [Microsoft MSFT Stock Slumps Below $400 as AI Spending Fears Return Pre-Earnings — FX Leaders](https://www.fxleaders.com/news/2026/07/22/microsoft-msft-stock-slumps-below-400-as-ai-spending-fears-return-pre-earnings/)
+- Nhắc lại 2 đề xuất đang chờ Hogan quyết định (chưa có phản hồi/lệnh mới nào từ khi gửi):
+  1. Chốt lời toàn bộ AEHR còn lại (3/3 cp) — đề xuất từ 07-21 ~15:32 ET, hiện vẫn +24.16% (đã hạ nhiệt nhẹ từ đỉnh +27% hôm qua nhưng vẫn trong vùng lợi nhuận rất cao).
+  2. Thay thế slot AMZN (large-cap tech) bằng AVGO hoặc CSCO — đề xuất từ 07-22 ~09:50 ET.
+- Không phải thông tin mới nên không gửi lại PushNotification cho 2 đề xuất trên (đã gửi lúc đề xuất lần đầu).
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~10 ngày).
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-23 ~9:48 ET (13:48 UTC) — Check-in định kỳ (routine read-only) — AVGO khớp lệnh (đã duyệt hôm qua) + KO bị stop-loss tự động (trailing) → ĐỀ XUẤT MỚI: thay slot blue-chip
+
+- **Xác nhận đề xuất AVGO/CSCO (07-22) đã được Hogan chọn AVGO và lệnh đã khớp:** qua `get_equity_orders`, lệnh `6a613367-...` (buy market, đặt 07-22 21:17 UTC qua phiên có quyền giao dịch khác) filled hôm nay 13:30:01 UTC, 1 cổ phiếu AVGO @ $391.52 TB. Slot large-cap tech (thay AMZN) đã lấp đủ. Routine này chỉ xác nhận, không tự đặt.
+- **KO bị bán tự động (trailing stop) sáng nay:** lệnh `6a5f8896-...` (stop_market sell, GTC, đặt 07-21 14:56 UTC — cùng đợt dời trailing stop cho AMZN/KO/MSFT/RKLB/NVDA/RSP đã ghi nhận trước đó) kích hoạt lúc mở cửa hôm nay (13:30:35 UTC, ~9:30 ET), bán hết 5 cổ phiếu, giá kích hoạt $81.29, khớp TB $81.204. Giá vốn $84.10 → **-3.44%** — không phải cắt lỗ -5% gốc mà là trailing stop đã dời sát giá (tương tự tình huống AMZN 07-22). Đây là lệnh tự động khớp bình thường theo đúng CLAUDE.md — routine này chỉ ghi nhận, không tự đặt/hủy.
+- Đã kiểm tra tin tức KO: không có catalyst tiêu cực mới — giá dao động trong biên độ bình thường, đồng thuận analyst vẫn Buy (19 Buy/1 Sell), target TB $88.30, báo cáo Q2 FY26 dự kiến 2026-07-28 (5 ngày tới). Nguồn: tổng hợp Investing.com/Yahoo Finance/stockanalysis.com (không có bài riêng lẻ đáng chú ý ngày 07-22/07-23).
+- **Core hiện còn 9/10** (thiếu 1 slot blue-chip): RSP, MSFT, VOO, JNJ, AAPL, AEHR, NVDA, RKLB, AVGO. (IREN 15 cp vẫn là vị thế sandbox, không thuộc core-10.)
+- P&L so với giá vốn (giá hiện tại ~13:48 UTC, so với đóng cửa 07-22):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AEHR | $76.92 | $94.70 | +23.10% | +1.24% |
+  | RKLB | $66.46 | $70.555 | +6.16% | +1.15% |
+  | AAPL | $307.90 | $320.4847 | +4.09% | -1.66% |
+  | NVDA | $204.83 | $209.47 | +2.26% | -1.22% |
+  | AVGO | $391.52 | $395.99 | +1.14% | -0.21% (mới mua hôm nay) |
+  | MSFT | $386.75 | $389.04 | +0.59% | -0.33% |
+  | JNJ | $260.69 | $256.55 | -1.59% | +0.36% |
+  | RSP | $214.93 | $212.635 | -1.07% | -0.03% |
+  | VOO | $688.26 | $681.455 | -0.99% | -0.81% |
+
+- Không mã nào biến động trong ngày vượt 3-5% (AAPL -1.66% là lớn nhất) nên không cần đào sâu tin tức thêm ngoài KO. NDX 28,683.19 / SPX 7,439.99 — không có gì bất thường thị trường chung.
+- Nhắc lại đề xuất đang chờ Hogan quyết định (chưa có phản hồi mới): chốt lời toàn bộ AEHR (3/3 cp, đề xuất từ 07-21) — vẫn ở vùng lợi nhuận rất cao (+23.10%). Không gửi lại PushNotification (không phải thông tin mới).
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~9 ngày).
+
+### Đề xuất thay thế slot KO (blue-chip) — cần Hogan chọn 1 trong 2 lựa chọn
+
+**Bối cảnh:** KO không bị thay do tin xấu/fundamentals xấu đi — chỉ là trailing stop (đặt bởi phiên khác, không phải routine này) khớp ở vùng lỗ nhẹ -3.44%, gần hòa vốn. Portfolio vẫn cần đủ 2 mã blue-chip theo cơ cấu CLAUDE.md (hiện chỉ còn JNJ) nên đề xuất lấp lại slot. Vốn từ lệnh bán KO ~$406 khả dụng.
+
+**Lựa chọn A: PG (Procter & Gamble)** — giá ~$146.82 (mua 3 cổ phiếu ≈ $440, ~7.4% danh mục, nguyên cổ phiếu giữ được stop-loss tự động). Dividend King (tăng cổ tức 68 năm liên tiếp), dividend yield 2.81%, PE 22.2, beta thấp, đa dạng hóa nhiều ngành hàng tiêu dùng thiết yếu (beauty, health care, fabric/home care, baby/family care) — hồ sơ rủi ro tương đồng KO. Đã điều chỉnh -2.85% gần đây trước thềm báo cáo Q4 FY26 (dự kiến 2026-07-29), analyst dự đoán EPS giảm nhẹ YoY (~-3.4% đến -4.7%) so với cùng kỳ.
+- Rủi ro chính: biến động quanh ngày báo cáo 07-29 (chỉ 6 ngày sau khi vào lệnh) có thể gây dao động ngắn hạn; cùng nhóm hàng tiêu dùng thiết yếu như KO (JNJ đã là healthcare, ít đa dạng hóa thêm nếu chọn PG).
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Lựa chọn B: JPM (JPMorgan Chase)** — giá ~$346.82 (mua 1 cổ phiếu ≈ $347, ~5.9% danh mục, nguyên cổ phiếu). Ngân hàng lớn nhất Mỹ theo vốn hóa, PE 14.7 (rẻ hơn thị trường chung), dividend yield 1.72%, đang gần đỉnh 52 tuần ($351.24 ngày 07-15) cho thấy momentum mạnh, PB 2.58. Đa dạng hóa sang nhóm tài chính — khác hẳn nhóm hàng tiêu dùng/dược phẩm (KO/JNJ) và công nghệ đã có, giảm tương quan tổng thể danh mục.
+- Rủi ro chính: nhạy cảm với chu kỳ lãi suất và tín dụng tiêu dùng; dividend yield thấp hơn PG/KO (ít phù hợp tiêu chí "trả cổ tức đều" bằng PG dù vẫn ổn định).
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Chờ Hogan chọn PG, JPM, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
+
+## 2026-07-23 ~13:15 ET (17:15 UTC) — Check-in định kỳ (routine read-only) — MSFT bị stop-loss tự động (trailing) → ĐỀ XUẤT MỚI: thay slot large-cap tech
+
+- **MSFT bị bán tự động sáng nay:** lệnh `6a5f8898-1256-4790-a3ce-35d9ac6a8354` (stop_market sell, GTC, đặt 2026-07-21 14:56 UTC — cùng đợt trailing stop cho AMZN/KO/MSFT/RKLB/NVDA/RSP đã ghi nhận trước đó) kích hoạt lúc **14:09:02 UTC hôm nay (~10:09 ET)**, bán hết 1 cổ phiếu, giá kích hoạt $385.69, khớp @ $385.65. Giá vốn $386.75 → **-0.28%**, gần hòa vốn — trailing stop khớp sát giá thị trường, không phải cắt lỗ -5% gốc (tương tự tình huống AMZN 07-22, KO sáng nay). Đây là lệnh tự động đặt sẵn từ phiên có quyền giao dịch khác khớp bình thường theo đúng kỷ luật CLAUDE.md — routine này chỉ ghi nhận, không tự đặt/hủy.
+- Đã kiểm tra tin tức MSFT: không có catalyst tiêu cực mới/riêng biệt — tiếp tục là lo ngại chung trước thềm báo cáo Q4 FY26 (2026-07-29) về ROI của capex AI ($190B kế hoạch 2026), đã ghi nhận từ hôm qua (07-22). Không có downgrade/kiện tụng/tin xấu mới trong 24h.
+  - Nguồn: [Prediction: Microsoft Stock Will Go Parabolic After July 29 — Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/prediction-microsoft-stock-parabolic-july-232000773.html)
+- **Core hiện chỉ còn 8/10** (thiếu cả slot large-cap tech VÀ slot blue-chip từ sáng nay): RSP, VOO, JNJ, AAPL, AEHR, NVDA, RKLB, AVGO. (IREN 15 cp vẫn là vị thế sandbox, không thuộc core-10.)
+- **Tài khoản (Agentic ••••0133):** total_value $5,852.36, equity_value $4,115.01, cash $1,737.35, buying_power $945.68.
+- P&L so với giá vốn (giá hiện tại ~17:10 UTC, so với đóng cửa 07-22):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AEHR | $76.92 | $90.4775 | +17.64% | -3.27% |
+  | RKLB | $66.46 | $69.69 | +4.86% | -0.09% |
+  | AAPL | $307.90 | $320.71 | +4.16% | -1.59% |
+  | NVDA | $204.83 | $209.7625 | +2.41% | -1.08% |
+  | AVGO | $391.52 | $390.98 | -0.14% | -1.47% (mới mua 07-23) |
+  | JNJ | $260.69 | $258.21 | -0.95% | +1.01% |
+  | RSP | $214.93 | $211.845 | -1.44% | -0.40% |
+  | VOO | $688.26 | $679.09 | -1.33% | -1.16% |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời **mới** hôm nay ngoài MSFT (đã tự động khớp). AEHR vẫn trong vùng chốt lời rất cao nhưng đã có đề xuất thoát toàn bộ đang chờ Hogan từ 07-21 (không phải sự kiện mới). Không mã nào biến động trong ngày vượt 3-5% cần tìm tin tức sâu thêm (AEHR -3.27% gần ngưỡng nhưng dưới 3%, đã có đầy đủ bối cảnh từ trước).
+- SPX 7,410.68 (-0.39% so với đóng cửa hôm qua 7,439.99), NDX 28,472.89 (-0.73% so với 28,683.19) — thị trường chung điều chỉnh nhẹ, nhưng AAPL/AVGO/NVDA đều giảm mạnh hơn benchmark trong ngày (-1.1% đến -1.6%) — tiếp nối lo ngại capex AI trước mùa báo cáo (MSFT 07-29, META 07-29) đã ghi nhận từ hôm qua, chưa đủ cơ sở đánh giá "kém hiệu suất 30 ngày" theo CLAUDE.md.
+- Nhắc lại 2 đề xuất đang chờ Hogan quyết định (chưa có phản hồi/lệnh mới nào từ khi gửi):
+  1. Chốt lời toàn bộ AEHR còn lại (3/3 cp) — đề xuất từ 07-21 ~15:32 ET, hiện vẫn +17.64%.
+  2. Thay thế slot KO (blue-chip) bằng PG hoặc JPM — đề xuất từ 07-23 ~9:48 ET.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~9 ngày).
+
+### Đề xuất thay thế slot MSFT (large-cap tech) — cần Hogan chọn 1 trong 2 lựa chọn
+
+**Bối cảnh:** MSFT không bị thay do tin xấu/fundamentals xấu đi — chỉ là trailing stop (đặt bởi phiên khác, không phải routine này) khớp gần hòa vốn (-0.28%). Portfolio vẫn cần đủ 4 mã large-cap tech theo cơ cấu CLAUDE.md (hiện chỉ còn AAPL, NVDA, AVGO) nên đề xuất lấp lại slot. Đã loại CRM/ORCL (rejected 07-22 — fundamentals xấu đi rõ rệt: CRM bị Morgan Stanley hạ khuyến nghị, ORCL FCF âm/gần bị hạ tín nhiệm còn "junk"), IBM (vừa sập -25% sau cảnh báo lợi nhuận Q2 06-14, hạ dự báo cả năm, có điều tra chứng khoán), ADBE (2 lần bị hạ khuyến nghị trong tháng — Morgan Stanley xuống Underweight, BofA hạ mục tiêu giá — lo ngại cấu trúc dài hạn từ AI/Figma), NFLX (giảm 45%/12 tháng, guidance Q3 gây bán tháo sau báo cáo), GOOGL (cấm mua lại tới ~08-16 do wash-sale).
+
+**Lựa chọn A: CSCO (Cisco)** — giá ~$112.95 (**tăng +0.66%** hôm nay, ngược dòng thị trường). Đề xuất mua 4 cổ phiếu ≈ $452 (~7.7% danh mục, nguyên cổ phiếu giữ được stop-loss tự động). Đây là lựa chọn từng đưa ra 07-22 (Hogan khi đó chọn AVGO cho slot AMZN thay vì CSCO) — vẫn còn nguyên giá trị: tăng trưởng đơn hàng AI hạ tầng mạng, +52% YTD, báo cáo Q4 dự kiến ~08-11 (không có sự kiện nhị phân gần), không có tin xấu/downgrade mới. Đa dạng hóa sang networking/hạ tầng doanh nghiệp, khác hẳn nhóm bán dẫn AI (NVDA, AVGO) đã có trong danh mục.
+- Rủi ro chính: lo ngại nhu cầu thiết bị networking truyền thống chậm lại; định giá đã tăng nhiều (P/E 35.75) sau đợt tăng +52% YTD.
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Lựa chọn B: TXN (Texas Instruments)** — giá ~$282.43 (**giảm -4.0%** hôm nay, tiếp tục bán tháo sau báo cáo Q2 công bố 07-22 dù kết quả vượt kỳ vọng — Q2 doanh thu $5.46B/+23% YoY, EPS $2.14 đều vượt ước tính, nâng guidance Q3 lên $5.65-6.15B cũng vượt đồng thuận, một analyst vừa nâng target lên $390 từ $325 trước báo cáo). Phản ứng giá tiêu cực nhiều khả năng do định giá đã "priced for perfection" trước báo cáo (tăng +3.7% ngày 07-21), không phải do kết quả kém — đây có thể là điểm vào tốt hơn cho một công ty có fundamentals đang cải thiện rõ rệt. Đề xuất mua 2 cổ phiếu ≈ $565 (~9.6% danh mục, ở cận trên tỷ trọng 5-10%).
+- Rủi ro chính: **TXN vẫn là mã bán dẫn** — nếu chọn, sẽ có 3/4 slot tech cùng nhóm bán dẫn AI (NVDA, AVGO, TXN), giảm đa dạng hóa sub-sector đáng kể so với chọn CSCO; biến động ngắn hạn hậu earnings chưa ổn định.
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Chờ Hogan chọn CSCO, TXN, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
+
+## 2026-07-23 ~15:31 ET (19:31 UTC) — Check-in định kỳ (routine read-only)
+
+- Vị thế 8/10 core xác nhận qua `get_equity_positions` — **không đổi** so với entry 13:15 ET (đã kiểm tra `get_equity_orders` từ 17:15 UTC tới nay: không có lệnh mới nào khớp): RSP, VOO, JNJ, AAPL, AEHR, NVDA, RKLB, AVGO. Vẫn thiếu 1 slot large-cap tech (MSFT, bị trailing stop sáng nay) và 1 slot blue-chip (KO, bị trailing stop hôm qua). (IREN 15 cp vẫn là vị thế sandbox, không thuộc core-10.)
+- **Tài khoản (Agentic ••••0133):** total_value $5,845.81, equity_value $3,844.31, cash $2,001.50, buying_power $945.68.
+- P&L so với giá vốn (giá hiện tại ~19:31 UTC, so với đóng cửa 07-22):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AEHR | $76.92 | $88.985 | +15.68% | -4.87% |
+  | RKLB | $66.46 | $69.66 | +4.81% | -0.13% |
+  | AAPL | $307.90 | $320.29 | +4.02% | -1.72% |
+  | NVDA | $204.83 | $207.77 | +1.44% | -2.02% |
+  | JNJ | $260.69 | $259.11 | -0.61% | +1.36% |
+  | AVGO | $391.52 | $391.16 | -0.09% | -1.42% |
+  | RSP | $214.93 | $211.75 | -1.48% | -0.45% |
+  | VOO | $688.26 | $677.80 | -1.52% | -1.34% |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời **mới** hôm nay. AEHR giảm -4.87% trong ngày (vượt ngưỡng 3-5% nên đã tìm tin tức) — không có catalyst tiêu cực mới, chỉ là nhịp điều chỉnh bình thường sau đợt tăng mạnh hậu earnings tuần trước (đã tăng tới +27% so với giá vốn hôm 07-21, nay hạ nhiệt còn +15.68%) — cùng kiểu biến động 2 chiều đã ghi nhận nhiều lần, không thay đổi bản chất đề xuất chốt lời toàn bộ đang chờ Hogan duyệt.
+- SPX 7,394.65 (-0.61% so với đóng cửa 07-22) / NDX 28,394.78 (-1.01%) — thị trường tiếp tục điều chỉnh do lo ngại capex AI lan rộng: Alphabet (GOOGL, không còn nắm giữ — cấm mua lại tới ~08-16 do wash-sale) giảm ~-7% hôm nay sau khi nâng dự báo capex AI 2026 lên $195-205B và FCF Q2 âm -$5.9B dù doanh thu vượt kỳ vọng; Tesla giảm -13%. Các mã tech đang giữ (AAPL -1.72%, NVDA -2.02%, AVGO -1.42%) giảm gần tương đương hoặc nhỉnh hơn NDX một chút — phù hợp xu hướng lo ngại capex AI toàn ngành trước mùa báo cáo (MSFT/META 07-29), không phải suy giảm cơ bản riêng lẻ hay dấu hiệu kém hiệu suất 30 ngày theo tiêu chí CLAUDE.md.
+  - Nguồn: [Alphabet earnings takeaways: Q2 revenue beats, GOOGL stock sinks on 2026 capex hike — CNBC](https://www.cnbc.com/2026/07/22/google-earnings-q2-goog-live-updates.html), [Tesla falls 13%, Alphabet sinks 7% as AI spending concerns spook investors — CNBC](https://www.cnbc.com/2026/07/23/tesla-tsla-alphabet-googl-stock-today.html)
+- Nhắc lại 3 đề xuất đang chờ Hogan quyết định (chưa có phản hồi/lệnh mới nào từ khi gửi):
+  1. Chốt lời toàn bộ AEHR còn lại (3/3 cp) — đề xuất từ 07-21 ~15:32 ET, hiện +15.68%.
+  2. Thay thế slot KO (blue-chip) bằng PG hoặc JPM — đề xuất từ 07-23 ~9:48 ET.
+  3. Thay thế slot MSFT (large-cap tech) bằng CSCO hoặc TXN — đề xuất từ 07-23 ~13:15 ET.
+- Không phải thông tin mới nên không gửi lại PushNotification cho 3 đề xuất trên (đã gửi lúc đề xuất lần đầu).
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~9 ngày).
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-24 ~9:50 ET (13:50 UTC) — Check-in định kỳ (routine read-only) — Xác nhận PG đã khớp; phát hiện AEHR đã bị trailing stop bán hết (chốt lời) → ĐỀ XUẤT MỚI: thay slot rủi ro cao
+
+- **Xác nhận đề xuất PG/JPM (07-23) đã được chọn PG và lệnh đã khớp:** qua `get_equity_orders`, lệnh `6a6284d5-...` (buy market, đặt 2026-07-23 21:17 UTC qua phiên có quyền giao dịch khác) filled hôm nay 13:30:30 UTC, 3 cổ phiếu PG @ $146.41 TB (tổng ~$439.23). Slot blue-chip (thay KO) đã lấp đủ. Routine này chỉ xác nhận, không tự đặt.
+- **AEHR đã bị bán hết qua trailing stop — KHÔNG PHẢI mất mát, mà là CHỐT LỜI tự động:** qua `get_equity_orders`, lệnh `6a5f83fa-...` (stop_market sell, GTC, trigger $88.10, đặt 2026-07-21 14:36 UTC — cùng đợt dời trailing stop trước đó) đã khớp lúc **2026-07-23 19:01:13 UTC (~15:01 ET hôm qua)**, bán hết 3 cổ phiếu còn lại @ $88.05 TB. Giá vốn $76.92 → lãi thực hiện **+14.48%**. Đây là lệnh trailing stop tự động đặt sẵn khớp đúng kỷ luật, không phải quyết định mới — **và cũng khiến đề xuất "chốt lời toàn bộ AEHR" đang chờ Hogan duyệt từ 07-21 trở thành KHÔNG CÒN CẦN THIẾT** (vị thế đã tự đóng ở mức lãi cao qua stop tự động, không cần Hogan duyệt lệnh bán thủ công nữa).
+  - **Lưu ý:** lần check-in cuối cùng trước đó (07-23 ~15:31 ET / 19:31 UTC) đã bỏ sót sự kiện này dù xảy ra 30 phút trước đó (19:01 UTC) — vẫn báo cáo AEHR như đang nắm giữ +15.68%. Đã xác nhận lại qua `get_equity_positions` (không còn AEHR) và `get_equity_orders` (lệnh filled) trong lần kiểm tra này.
+- **Core hiện còn 8/10** — thiếu 1 slot rủi ro cao (AEHR) VÀ 1 slot large-cap tech (MSFT, đã có đề xuất CSCO/TXN chờ từ 07-23, chưa có quyết định): RSP, VOO, JNJ, PG, AAPL, NVDA, RKLB, AVGO.
+- **Tài khoản (Agentic ••••0133):** total_value $5,808.20, equity_value $3,662.30, cash $2,145.90, buying_power $1,562.27.
+- P&L so với giá vốn (giá hiện tại ~13:50 UTC, so với đóng cửa 07-23):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $326.35 | +6.00% | +1.46% |
+  | RKLB | $66.46 | $67.56 | +1.65% | -3.47% |
+  | NVDA | $204.83 | $207.60 | +1.35% | -0.56% |
+  | JNJ | $260.69 | $261.93 | +0.48% | +1.03% |
+  | PG | $146.41 | $146.15 | -0.18% | -0.56% (mới mua sáng nay) |
+  | RSP | $214.93 | $213.07 | -0.87% | +0.54% |
+  | VOO | $688.26 | $679.25 | -1.31% | +0.09% |
+  | AVGO | $391.52 | $382.80 | -2.23% | -2.46% |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời **mới** hôm nay. RKLB giảm -3.47% trong ngày (vượt nhẹ ngưỡng cần tìm tin) — đã kiểm tra: tiếp tục là nhiễu biến động đã biết (Piper Sandler Neutral 07-16/17, lo ngại pha loãng/tích hợp thương vụ Iridium $8B, kỹ thuật dưới đường SMA 20/50 ngày), không có catalyst tiêu cực mới trong 24h; báo cáo Q2 dự kiến ~08-06. P&L RKLB vẫn dương (+1.65%), còn cách xa ngưỡng cắt lỗ -8% ($61.14, đã có sẵn). AVGO -2.46% trong ngày, dưới ngưỡng 3-5%, không cần đào sâu (có sẵn trailing stop-loss xác nhận `confirmed` tại $371.94).
+  - Nguồn RKLB: [Rocket Lab Stock Is Tumbling Today — Benzinga](https://www.benzinga.com/trading-ideas/movers/26/07/60288448/rocket-lab-stock-is-tumbling-today-whats-going-on)
+- Nhắc lại đề xuất đang chờ Hogan quyết định (chưa có phản hồi/lệnh mới từ khi gửi 07-23 ~13:15 ET): thay thế slot MSFT (large-cap tech) bằng CSCO (~$113.18, +0.37% hôm nay) hoặc TXN (~$280.63, -1.53% hôm nay) — chi tiết đầy đủ ở entry 07-23. Không gửi lại PushNotification cho việc này (không phải thông tin mới).
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~8 ngày).
+
+### Đề xuất thay thế slot AEHR (rủi ro cao) — cần Hogan chọn 1 trong 2 lựa chọn
+
+**Bối cảnh:** AEHR không bị thay do tin xấu/fundamentals xấu đi — vị thế đã tự đóng qua trailing stop ở mức **lãi +14.48%** (chốt lời tự động theo đúng kỷ luật CLAUDE.md). Portfolio vẫn cần đủ 2 mã rủi ro cao theo cơ cấu (hiện chỉ còn RKLB) nên đề xuất lấp lại slot. Loại trừ các mã đang trong thời gian cấm mua lại do wash-sale: RXRX (tới ~08-09), IONQ (tới ~08-06), QBTS (tới ~08-12), SERV (tới ~08-15), GOOGL (tới ~08-16), SOUN (tới ~08-16) — AEHR không bị cấm (thoát ở mức lãi, không phải lỗ) nhưng chọn mã khác để đa dạng hóa. Loại CRWV do đang có vụ kiện gian lận chứng khoán chờ xử lý (tiêu chí loại trừ CLAUDE.md).
+
+**Lựa chọn A: TEM (Tempus AI)** — giá ~$45.10 (giảm -1.98% hôm nay, đã giảm ~22.4% YTD). Đề xuất mua 10 cổ phiếu ≈ $451 (~7.8% danh mục, nguyên cổ phiếu giữ được stop-loss tự động). AI chẩn đoán/precision oncology, vừa công bố thương vụ mua lại 87.85% cổ phần còn lại của Personalis ($1.6B, 20/07) để mở rộng thị trường MRD (theo dõi tái phát ung thư, ước tính $20B) — mở rộng chiến lược nhưng cũng là rủi ro thực thi/pha loãng M&A lớn. Đa dạng hóa sang AI-y tế, khác hẳn RKLB (không gian/phóng vệ tinh).
+- Rủi ro chính: **báo cáo Q2 2026 công bố chỉ 6 ngày sau khi vào lệnh (2026-07-30)** — biến động cao quanh ngày báo cáo, giá đã giảm trước thềm báo cáo do lo ngại; rủi ro tích hợp M&A Personalis.
+- Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
+
+**Lựa chọn B: OKLO (Oklo)** — giá ~$42.49 (giảm -3.43% hôm nay, đã giảm ~38.5% YTD từ đỉnh 52 tuần $193.84). Đề xuất mua 11 cổ phiếu ≈ $467 (~8.0% danh mục, nguyên cổ phiếu). Lò phản ứng hạt nhân module nhỏ (SMR) phục vụ nhu cầu điện AI data center — vừa được chọn (cùng X-Energy, 21/07) vào chương trình $200M của chính quyền Trump để tăng tốc lò phản ứng hạt nhân cho AI data center (đối tác công nghệ gồm Microsoft, NVIDIA); DOE đã phê duyệt Documented Safety Analysis cho lò thử nghiệm Groves (01/07), hướng tới thử nghiệm criticality đầu tiên trong tháng này. Đa dạng hóa sang năng lượng hạt nhân, khác hẳn RKLB.
+- Rủi ro chính: chưa có doanh thu đáng kể (pre-revenue), lỗ ròng hàng năm lớn; mục tiêu phát điện thương mại đầu tiên tại Idaho National Lab dự kiến cuối 2027 — catalyst còn xa; biến động rất cao (-38.5% YTD).
+- Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
+
+**Chờ Hogan chọn TEM, OKLO, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
+
+## 2026-07-24 ~13:10 ET (17:10 UTC) — Check-in định kỳ (routine read-only) — Xác nhận cả 2 đề xuất đang chờ đã được thực hiện, portfolio đủ 10/10
+
+- **Xác nhận đề xuất CSCO/TXN (07-23, slot MSFT) đã được thực hiện — Hogan/phiên có quyền giao dịch CHỌN CRM** (không phải 1 trong 2 lựa chọn đã đề xuất, mà là mã từng bị agent loại khỏi đề xuất 07-22 do fundamentals xấu đi — đây là lựa chọn của Hogan, nằm ngoài phạm vi 2 lựa chọn agent đưa ra nhưng vẫn cùng nhóm rủi ro large-cap tech nên không vi phạm nguyên tắc "không đổi nhóm rủi ro"). Qua `get_equity_orders`: lệnh `6a636d3b-...` (buy market) filled 2026-07-24 13:48:43 UTC, 3 cổ phiếu CRM @ $161.63 TB (~$484.89, ~8.4% danh mục). Stop-loss -5% đã đặt kèm: lệnh `6a636d4d-...` (stop_market sell, GTC) tại $153.55, state=`confirmed`.
+- **Xác nhận đề xuất TEM/OKLO (07-24 sáng, slot AEHR) đã được thực hiện — Hogan chọn OKLO (Lựa chọn B):** lệnh `6a639875-...` (buy market) filled 16:53:09 UTC, 11 cổ phiếu OKLO @ $40.9637 TB (~$450.60, ~7.8% danh mục). Stop-loss ban đầu đặt tại $37.69 (-8%, lệnh `6a639881-...`) sau đó bị hủy lúc 17:03 UTC và thay bằng stop mới rộng hơn tại **$36.05 (-12%, lệnh `6a639ad6-...`, state=confirmed)** — thực hiện bởi phiên có quyền giao dịch khác (không phải routine này), nhiều khả năng do biến động mạnh của nhóm nuclear/SMR trong phiên khiến -8% quá sát giá thị trường lúc đặt. Routine này chỉ ghi nhận, không có quyền diễn giải/sửa đổi.
+- **Core hiện đã đủ 10/10:** RSP, VOO, JNJ, PG, AAPL, NVDA, RKLB, AVGO, CRM, OKLO. Không còn đề xuất nào đang chờ duyệt.
+- **Tài khoản (Agentic ••••0133):** total_value $5,772.11, equity_value $4,598.10, cash $1,174.01, buying_power $174.30, pending_deposits $0.
+- P&L so với giá vốn (giá hiện tại ~17:10 UTC) và thay đổi trong ngày (so với đóng cửa 07-23):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $332.61 | **+8.03%** | **+3.40%** |
+  | CRM | $161.63 | $162.53 | +0.56% | +3.57% (mới mua hôm nay) |
+  | NVDA | $204.83 | $209.66 | +2.36% | +0.43% |
+  | JNJ | $260.69 | $262.91 | +0.85% | +1.40% |
+  | PG | $146.41 | $147.07 | +0.45% | +0.07% |
+  | OKLO | $40.9637 | $40.72 | -0.59% | -7.45% (mới mua hôm nay, so với đóng cửa hôm qua) |
+  | RSP | $214.93 | $213.315 | -0.75% | +0.66% |
+  | VOO | $688.26 | $680.54 | -1.12% | +0.28% |
+  | AVGO | $391.52 | $383.56 | -2.03% | -2.27% |
+  | RKLB | $66.46 | $64.38 | **-3.13%** | **-8.02%** |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời **mới** hôm nay (RKLB gần cách stop-loss hiện có $63.77 nhất nhưng chưa chạm; OKLO còn cách xa stop mới $36.05).
+- **RKLB -8.02% và OKLO -7.45% trong ngày** (cả 2 vượt xa ngưỡng 3-5%) — đã tìm tin tức cho cả 2:
+  - **RKLB**: tiếp tục là xu hướng giảm đã biết kéo dài từ cuối tháng 6 (đỉnh $151 → nay ~$64, -45%+ từ đỉnh) — nguyên nhân: dòng vốn xoay khỏi nhóm space stocks sau IPO SpaceX, risk-off chung nhóm đầu cơ, ARK Invest (ARKX) tiếp tục bán ra cổ phiếu. Không có tin xấu cơ bản mới — doanh thu/backlog quý gần nhất được CEO mô tả "phenomenal". Đánh giá: biến động sentiment/xoay vòng dòng tiền, không phải suy giảm cơ bản — không đủ điều kiện đề xuất theo CLAUDE.md.
+  - **OKLO**: tiếp tục điều chỉnh chung nhóm nuclear/SMR (đã giảm ~28% trong tháng qua trước cả khi mua), không có tin xấu mới riêng của OKLO hôm nay — thực ra có tin tích cực gần đây (chọn vào chương trình $200M của chính quyền Trump, 21/07). Việc mua đúng lúc nhóm đang giảm mạnh đã được lưu ý sẵn trong đề xuất sáng nay (biến động rất cao, -38.5% YTD).
+  - Nguồn: [Rocket Lab Shares Are Sliding — Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/rocket-lab-shares-sliding-investors-213900719.html), [Oklo Just Dropped 28% in a Month — Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/oklo-just-dropped-28-month-193823357.html)
+- AAPL +3.40%/CRM +3.57% trong ngày — cả 2 đều có catalyst tích cực cụ thể (không cần hành động, chỉ ghi nhận): AAPL tiếp tục đà tăng 2026 (không có tin cụ thể mới hôm nay ngoài đà chung); CRM tăng nhờ hợp đồng $1.6B với Veterans Affairs (AELA, phục vụ 17M cựu chiến binh) + cam kết đầu tư $1B vào Thụy Sĩ cho AI agentic + phân tích tích cực về chiến lược Agentforce.
+  - Nguồn: [Salesforce lands $1.6B Veterans Affairs agreement — Benzinga](https://www.benzinga.com/markets/large-cap/26/07/60664811/salesforce-lands-1-6b-veterans-affairs-agreement-as-ai-adoption-accelerates)
+- SPX 7,428.56 (+0.46% so với đóng cửa 07-23) / NDX 28,277.18 (-0.41%) — thị trường chung tương đối bình thường, không có gì bất thường; mức giảm mạnh của RKLB/OKLO là biến động riêng nhóm đầu cơ, không phải rủi ro hệ thống.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~8 ngày). JNJ báo cáo Q2 dự kiến 2026-07-28, PG dự kiến 2026-07-29 — cần theo dõi biến động quanh 2 ngày này.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — cả 2 đề xuất trước đó đã được Hogan thực hiện qua phiên khác, không có gì mới cần duyệt. Không gửi PushNotification.
+
+## 2026-07-24 ~15:33 ET (19:33 UTC) — Check-in định kỳ (routine read-only) — RKLB bị stop-loss tự động (trailing) → ĐỀ XUẤT MỚI: thay slot rủi ro cao
+
+- **RKLB bị bán tự động vừa xảy ra (~14:41 ET / 18:41 UTC hôm nay):** lệnh `6a5f889a-...` (stop_market sell, GTC, trigger $63.77, đặt 2026-07-21 14:56 UTC — cùng đợt dời trailing stop cho AMZN/KO/MSFT/RKLB/NVDA/RSP đã ghi nhận nhiều lần trước đó) khớp bán hết 7 cổ phiếu @ $63.77 TB. Giá vốn $66.46 → lỗ thực hiện **-4.05%**. Đây là lệnh trailing stop tự động đặt sẵn từ phiên có quyền giao dịch khác khớp đúng kỷ luật rủi ro — routine này chỉ ghi nhận, không tự đặt/hủy. **Vì bán lỗ nên áp dụng wash-sale: không mua lại RKLB tới ~2026-08-23.**
+- **Core hiện còn 9/10** (thiếu 1 slot rủi ro cao): RSP, VOO, JNJ, PG, AAPL, NVDA, AVGO, CRM, OKLO.
+- **Tài khoản (Agentic ••••0133):** total_value $5,754.88, equity_value $4,134.48, cash $1,620.40, buying_power $174.30, pending_deposits $0.
+- P&L so với giá vốn (giá hiện tại ~19:32 UTC) và thay đổi trong ngày (so với đóng cửa 07-23):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $332.465 | **+8.00%** | **+3.36%** |
+  | CRM | $161.63 | $163.96 | +1.44% | +4.47% |
+  | JNJ | $260.69 | $263.23 | +0.98% | +1.52% |
+  | NVDA | $204.83 | $205.79 | +0.47% | -1.42% |
+  | PG | $146.41 | $146.72 | +0.21% | -0.17% |
+  | OKLO | $40.9637 | $40.73 | -0.57% | **-7.43%** |
+  | RSP | $214.93 | $213.4518 | -0.69% | +0.72% |
+  | VOO | $688.26 | $678.44 | -1.43% | -0.03% |
+  | AVGO | $391.52 | $380.585 | -2.79% | **-3.04%** |
+
+- SPX 7,403.46 (-0.34% so với đóng cửa 07-23) / NDX 28,112.25 (-0.58%) — thị trường chung điều chỉnh nhẹ.
+- 3 mã biến động >3% trong ngày cần tìm tin tức: **OKLO (-7.43%)**, **AVGO (-3.04%)**, và **RKLB** (vừa thoát vị thế, -8.97% trong ngày tại thời điểm bị stop):
+  - **OKLO**: không có tin xấu — ngược lại vừa nhận **DOE startup authorization cho lò phản ứng Groves** (cột mốc pháp lý quan trọng, xác nhận đánh giá an toàn/vận hành), tiếp tục tiến độ tới mục tiêu criticality đầu tiên. Mức giảm hôm nay tiếp nối đà điều chỉnh chung nhóm nuclear/SMR đã ghi nhận nhiều lần (biến động cực cao, đặc thù đã cảnh báo khi mua 07-24 sáng). Không đủ điều kiện đề xuất bán theo CLAUDE.md — chỉ theo dõi, còn cách xa stop-loss hiện có ($36.05).
+  - **AVGO**: không có tin xấu riêng — nhà đầu tư đang chốt lời/giảm tỷ trọng nhóm bán dẫn lớn nói chung dù thị trường chung tích cực hôm nay (Nasdaq -0.17%, S&P 500 +0.61% theo Benzinga), cổ phiếu vẫn trong xu hướng tăng dài hạn (+33%/12 tháng), đồng thuận vẫn Buy, target TB $513.68. Báo cáo tiếp theo 2026-09-03 (còn xa). Không đủ điều kiện đề xuất — theo dõi, có stop-loss sẵn.
+  - **RKLB** (đã thoát): mức giảm mạnh hôm nay là do dòng vốn xoay khỏi nhóm space stocks (risk-off) dù có tin tốt cụ thể (hợp đồng Không quân Mỹ $266M, thương vụ Iridium $8B đang xúc tiến) — 17 analyst đồng thuận Buy, target TB $114.33 (+76% so với giá hiện tại). Xác nhận: đây là biến động sentiment/risk-off, không phải suy giảm cơ bản — cùng kiểu nhiễu đã ghi nhận trước khi bị stop, không thay đổi đánh giá.
+  - Nguồn: [Oklo Stock Just Got a Major Win — Barchart](https://www.barchart.com/story/news/3144294/oklo-stock-just-got-a-major-win-2026-could-still-be-its-breakout-year), [What's Going on With Broadcom Stock Friday? — Benzinga](https://www.benzinga.com/markets/tech/26/07/60673102/whats-going-on-with-broadcom-stock-friday-5), [Huge News for Rocket Lab Investors — Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/huge-news-rocket-lab-investors-135000384.html), [RKLB Stock Draws Traders After Air Force Win And Iridium Deal — TimothySykes](https://timothysykes.com/news/rocket-lab-corporation-rklb-news-2026_07_22/)
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~8 ngày). JNJ báo cáo Q2 dự kiến 2026-07-28, PG dự kiến 2026-07-29 — tiếp tục theo dõi biến động quanh 2 ngày này.
+
+### Đề xuất thay thế slot RKLB (rủi ro cao) — cần Hogan chọn 1 trong 2 lựa chọn
+
+**Bối cảnh:** RKLB không bị thay do tin xấu/fundamentals xấu đi — trailing stop khớp trong đợt risk-off chung nhóm space, vẫn có tin tích cực (Air Force $266M, Iridium $8B) và đồng thuận Buy mạnh. Portfolio vẫn cần đủ 2 mã rủi ro cao theo cơ cấu CLAUDE.md (hiện chỉ còn OKLO) nên đề xuất lấp lại slot. Loại trừ các mã đang cấm mua lại do wash-sale: RXRX (tới ~08-09), IONQ (tới ~08-06), QBTS (tới ~08-12), SERV (tới ~08-15), GOOGL (tới ~08-16), SOUN (tới ~08-16), **RKLB (tới ~08-23, mới thêm)**. Loại CRWV do vụ kiện gian lận chứng khoán chờ xử lý (tiêu chí loại trừ CLAUDE.md).
+
+**Lựa chọn A: AXTI (AXT Inc.)** — giá ~$46.73 (**giảm -11.7%** hôm nay, biến động cực mạnh — "whipsaw"). Đề xuất mua 10 cổ phiếu ≈ $467.30 (~8.1% danh mục, nguyên cổ phiếu giữ được stop-loss tự động). Nhà sản xuất wafer chất nền bán dẫn (indium phosphide) phục vụ chip AI/data center, doanh thu ước tính Q2 ~$34.14M (tăng trưởng đáng kể YoY), Northland Capital tái khẳng định Outperform, nâng target lên $125 sau hội nghị NCM Growth. Vừa ký hợp đồng dài hạn indium phosphide 2027 trị giá ~$25.4M với Nanjing Casela (cam kết tối thiểu 80%). Công ty chưa có lợi nhuận (EBIT margin ~-13.1%, net margin ~-15%), phù hợp nhóm "tăng trưởng doanh thu mạnh nhưng chưa lợi nhuận".
+- Rủi ro chính: **báo cáo Q2 FY26 công bố chỉ 6 ngày sau khi vào lệnh (2026-07-30)** — rủi ro biến động cực cao quanh ngày báo cáo (đã whipsaw ±10%+ nhiều phiên gần đây); định giá đã chạy trước nhiều tin tốt.
+- Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
+
+**Lựa chọn B: ACHR (Archer Aviation)** — giá ~$4.815 (giảm -5.77% hôm nay). Đề xuất mua 95 cổ phiếu ≈ $457.43 (~7.9% danh mục, nguyên cổ phiếu). Công ty eVTOL (máy bay cất/hạ cánh thẳng đứng điện), vừa ra mắt máy bay tự hành Halo (hợp tác phát triển, giá tăng tới +19.8% phiên 07-20) và nền tảng quốc phòng Thunder, mở rộng cả mảng thương mại lẫn quốc phòng. Bảng cân đối rất mạnh: tiền mặt+đầu tư ngắn hạn ~$1.78B (riêng cash >$951M), nợ dài hạn chỉ ~$115.7M, current ratio >18 — rủi ro cạn tiền thấp hơn nhiều so với các mã pre-revenue khác. Đồng thuận target 1 năm $10.61 (+101% so với giá hiện tại). Báo cáo Q2 dự kiến **2026-08-10** (xa hơn AXTI, ít rủi ro biến động nhị phân gần hạn).
+- Rủi ro chính: pre-revenue/lỗ ròng đều đặn (EPS ước tính Q2 -$0.25), biến động annualized rất cao (~86%), giá cổ phiếu thấp dễ biến động theo tỷ lệ % lớn; ngành eVTOL còn phụ thuộc phê duyệt quy định (FAA) chưa chắc chắn về mốc thời gian thương mại hóa.
+- Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
+
+**Chờ Hogan chọn AXTI, ACHR, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
+
+## 2026-07-27 ~9:47 ET (13:47 UTC) — Check-in định kỳ (routine read-only, đầu tuần)
+
+- **Xác nhận qua `get_equity_orders` (từ 07-24 20:00 UTC tới nay): không có lệnh mới nào khớp** — đề xuất thay slot rủi ro cao (AXTI/ACHR, gửi 07-24 ~15:33 ET) **vẫn đang chờ Hogan quyết định**, chưa có phản hồi/lệnh mới. Không gửi lại PushNotification (không phải thông tin mới).
+- **Core hiện còn 9/10** (thiếu 1 slot rủi ro cao, đang chờ AXTI/ACHR ở trên): RSP, VOO, JNJ, PG, AAPL, NVDA, AVGO, CRM, OKLO.
+- **Tài khoản (Agentic ••••0133):** total_value $5,807.19, equity_value $4,186.79, cash $1,620.40, buying_power $1,620.40, pending_deposits $0.
+- P&L so với giá vốn (giá hiện tại ~13:47 UTC) và thay đổi trong ngày (so với đóng cửa 07-24, phiên gần nhất trước cuối tuần):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $335.515 | **+8.97%** | +0.75% |
+  | CRM | $161.63 | $170.23 | +5.32% | **+4.01%** |
+  | OKLO | $40.9637 | $41.995 | +2.52% | **+4.34%** |
+  | JNJ | $260.69 | $264.615 | +1.51% | +0.46% |
+  | PG | $146.41 | $148.65 | +1.53% | +0.84% |
+  | RSP | $214.93 | $215.52 | +0.27% | +0.91% |
+  | VOO | $688.26 | $683.225 | -0.73% | +0.60% |
+  | AVGO | $391.52 | $384.115 | -1.89% | +0.58% |
+  | NVDA | $204.83 | $201.31 | -1.72% | -2.67% |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời (band -5%/-8% cắt lỗ, +10-20% chốt lời). AAPL (+8.97%, fractional, không có stop tự động) đang tiến gần vùng chốt lời +12% cho nhóm tech nhưng chưa tới — tiếp tục theo dõi thủ công.
+- CRM (+4.01%) và OKLO (+4.34%) vượt ngưỡng 3-5% nên đã tìm tin tức — cả 2 đều KHÔNG có catalyst mới, chỉ là tiếp diễn các tin tích cực đã ghi nhận trước đó (CRM: hợp đồng VA $1.6B đã biết từ 07-24; OKLO: DOE startup authorization cho lò Groves đã biết từ 07-22). NVDA -2.67% dưới ngưỡng cần đào sâu, nhiều khả năng nhiễu chung nhóm bán dẫn đầu tuần — không đủ điều kiện đề xuất theo CLAUDE.md.
+  - Nguồn: [Why Salesforce (CRM) Stock Is Up Today — QuiverQuant](https://www.quiverquant.com/news/Why+Salesforce+(CRM)+Stock+Is+Up+Today), [Oklo Stock Just Got a Major Win — Barchart](https://www.barchart.com/story/news/3144294/oklo-stock-just-got-a-major-win-2026-could-still-be-its-breakout-year)
+- SPX 7,457.99 / NDX 28,280.41 (giá trị hiện tại, chưa có mốc so sánh đóng cửa cuối tuần rõ ràng do gap cuối tuần) — không có dấu hiệu bất thường thị trường chung.
+- **Nhắc lịch báo cáo sắp tới:** JNJ dự kiến 2026-07-28 (mai), PG dự kiến 2026-07-29 — cần theo dõi biến động quanh 2 ngày này ở các lần check-in tới.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~5 ngày).
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-27 ~13:15 ET (17:15 UTC) — Check-in định kỳ (routine read-only) — NVDA bị stop-loss tự động (trailing) → ĐỀ XUẤT MỚI: thay slot large-cap tech
+
+- **NVDA bị bán tự động sáng nay:** lệnh `6a5f889d-0f31-4a9b-9f5d-e3dda3dea746` (stop_market sell, GTC, trigger $198.22, đặt 2026-07-21 14:56 UTC — cùng đợt dời trailing stop cho AMZN/KO/MSFT/RKLB/NVDA/RSP đã ghi nhận nhiều lần trước đó) kích hoạt lúc **14:41:39 UTC hôm nay (~10:41 ET)**, bán hết 2 cổ phiếu @ $198.23 TB. Giá vốn $204.83 → lỗ thực hiện **-3.22%** — trailing stop khớp gần giá vốn, không phải cắt lỗ -5% gốc (tương tự các đợt AMZN/KO/MSFT trước đây). Đây là lệnh tự động đặt sẵn từ phiên có quyền giao dịch khác khớp đúng kỷ luật rủi ro — routine này chỉ ghi nhận, không tự đặt/hủy. **Vì bán lỗ (dù nhỏ) nên áp dụng wash-sale: không mua lại NVDA tới ~2026-08-26.**
+- **Tin tức lý do NVDA giảm:** cổ phiếu giảm ~3-4% hôm nay sau báo WSJ đưa tin Nvidia đang đàm phán bảo lãnh tài chính ~$250B cho dự án trung tâm dữ liệu AI 10-gigawatt của OpenAI tại Ohio (bảo lãnh cho lease + nợ xây dựng) — nhà đầu tư lo ngại rủi ro tài chính phát sinh ngoài mảng bán chip lõi. Đồng thuận vẫn Strong Buy (36 Buy/1 Hold), target TB $309.94. Đây là biến động sentiment/rủi ro cấu trúc mới xuất hiện, không phải suy giảm cơ bản cấp tính — nhưng lệnh trailing stop đã tự động xử lý, không cần agent quyết định thêm cho vị thế này.
+- **Core hiện còn 8/10** (thiếu 1 slot large-cap tech MỚI hôm nay + 1 slot rủi ro cao đang chờ từ 07-24): RSP, VOO, JNJ, PG, AAPL, AVGO, CRM, OKLO.
+- **Tài khoản (Agentic ••••0133):** total_value $5,798.51, equity_value $3,781.65, cash $2,016.86, buying_power $1,620.40, pending_deposits $0.
+- P&L so với giá vốn (giá hiện tại ~17:12 UTC) và thay đổi trong ngày (so với đóng cửa 07-24, phiên gần nhất trước cuối tuần):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $336.245 | **+9.20%** | +0.97% |
+  | CRM | $161.63 | $175.20 | **+8.39%** | **+7.05%** |
+  | JNJ | $260.69 | $268.18 | +2.87% | +1.81% |
+  | PG | $146.41 | $148.57 | +1.48% | +0.79% |
+  | OKLO | $40.96 | $40.83 | -0.32% | +1.44% |
+  | RSP | $214.93 | $214.65 | -0.13% | +0.51% |
+  | VOO | $688.26 | $676.82 | -1.66% | -0.34% |
+  | AVGO | $391.52 | $379.31 | **-3.12%** | -0.68% |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời **mới** hôm nay ngoài NVDA (đã tự động khớp). AAPL (+9.20%, fractional, không stop tự động) và CRM (+8.39%) đang tiến gần vùng chốt lời +10-20% nhưng chưa tới — tiếp tục theo dõi thủ công/thủ công theo dõi sát. AVGO (-3.12%) chưa chạm -5% nhưng cần theo dõi.
+- **CRM tăng +7.05% trong ngày** (vượt xa ngưỡng 3-5%, đã tìm tin tức): tiếp nối đà tăng tích cực đã biết (hợp đồng VA $1.6B, DOE win OKLO...) — cụ thể hôm nay do Guggenheim (John DiFucci) nâng khuyến nghị từ Neutral lên Buy, target giá $228 (+45% từ giá lúc đó); Q1 FY27 vượt kỳ vọng toàn diện (doanh thu +13% lên $11.13B, non-GAAP EPS $3.88 vượt 24% so với đồng thuận $3.12), nâng guidance doanh thu cả năm lên $45.9-46.2B. Không cần hành động (đã có sẵn vị thế, chưa tới ngưỡng chốt lời).
+  - Nguồn: [Salesforce (CRM) Shares Skyrocket — StockStory/Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/salesforce-crm-shares-skyrocket-know-200900382.html)
+- NDX giảm từ 28,280.41 (lúc 9:47 ET sáng nay) xuống 27,871.14 (~13:12 ET, hiện tại) — thị trường tech điều chỉnh chung trong phiên (~-1.45% intraday), phù hợp với việc NVDA/AVGO đều giảm hôm nay; không phải vấn đề riêng của danh mục.
+- **Nhắc lịch báo cáo sắp tới:** JNJ dự kiến **2026-07-28 (mai)**, PG dự kiến 2026-07-29, AMZN dự kiến 2026-07-30 (nếu được chọn thay NVDA, sẽ có báo cáo chỉ 3 ngày sau khi vào lệnh — rủi ro biến động ngay sau entry).
+- **Nhắc lại đề xuất đang chờ (chưa có quyết định mới từ Hogan):** thay thế slot rủi ro cao (RKLB) bằng AXTI hoặc ACHR — đề xuất từ 07-24 ~15:33 ET, đã xác nhận qua `get_equity_orders` không có lệnh mới nào khớp cho việc này. Không gửi lại PushNotification cho đề xuất cũ.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~5 ngày).
+
+### Đề xuất thay thế slot NVDA (large-cap tech) — cần Hogan chọn 1 trong 2 lựa chọn
+
+**Bối cảnh:** NVDA không bị thay do tin xấu/fundamentals xấu đi nghiêm trọng — trailing stop khớp gần giá vốn (-3.22%) giữa lúc cổ phiếu giảm do tin bảo lãnh tài chính OpenAI (rủi ro mới nhưng chưa xác nhận ảnh hưởng fundamentals dài hạn, đồng thuận vẫn Strong Buy). Portfolio vẫn cần đủ 4 mã large-cap tech theo cơ cấu CLAUDE.md (hiện chỉ còn AAPL, AVGO, CRM) nên đề xuất lấp lại slot. Loại trừ mã đang cấm mua lại do wash-sale liên quan large-cap tech: GOOGL (tới ~08-16), MSFT (tới ~08-22), **NVDA (tới ~08-26, mới thêm)**. Loại CRM/ORCL/IBM/ADBE/NFLX theo các lý do đã ghi nhận trước đó (fundamentals xấu đi/rủi ro cấu trúc, xem entry 07-23).
+
+**Lựa chọn A: AMZN (Amazon)** — giá ~$231.58 (giảm nhẹ -0.34% hôm nay). Đề xuất mua 2 cổ phiếu ≈ $463.16 (~8.0% danh mục, nguyên cổ phiếu giữ được stop-loss tự động). Đây là mã đã từng nắm giữ trong danh mục core (thoát vị thế 07-22 ở mức **+0.55% — lãi, không phải lỗ**, nên KHÔNG vướng wash-sale, có thể mua lại). Mảng cloud (AWS) tiếp tục tăng tốc, mảng quảng cáo ghi nhận doanh thu kỷ lục, đa dạng hóa tốt so với AAPL (hardware)/AVGO (bán dẫn)/CRM (SaaS) hiện có.
+- Rủi ro chính: **báo cáo Q2 FY26 công bố 2026-07-30, chỉ 3 ngày sau khi vào lệnh** — rủi ro biến động mạnh quanh ngày báo cáo ngay sau entry.
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Lựa chọn B: CSCO (Cisco)** — giá ~$113.56 (giảm -0.53% hôm nay). Đề xuất mua 4 cổ phiếu ≈ $454.24 (~7.8% danh mục, nguyên cổ phiếu). Đã vetting trước đó (07-22): Q3 FY26 doanh thu $15.84B (+12% YoY), CEO nâng mục tiêu đơn hàng AI FY26 từ $5B lên $9B, tăng cổ tức năm thứ 14 liên tiếp, đồng thuận nghiêng Buy, target TB $127.18. Đa dạng hóa sang hạ tầng mạng/networking, khác hẳn AAPL/AVGO/CRM đã có. Không có báo cáo thu nhập cận kề (báo cáo tiếp theo dự kiến giữa tháng 8), ít rủi ro biến động nhị phân ngay sau entry hơn AMZN.
+- Rủi ro chính: lo ngại nhu cầu thiết bị networking truyền thống chậm lại, rủi ro thực thi mục tiêu đơn hàng AI $9B.
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Chờ Hogan chọn AMZN, CSCO, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
+
+## 2026-07-27 ~15:32 ET (19:32 UTC) — Check-in định kỳ (routine read-only)
+
+- **Xác nhận qua `get_equity_orders` (từ 07-27 17:15 UTC tới nay): không có lệnh mới nào khớp cho core-10.** Cả 2 đề xuất đang chờ vẫn chưa có quyết định: (1) thay slot large-cap tech (NVDA) bằng AMZN/CSCO — đề xuất từ 07-27 ~13:15 ET; (2) thay slot rủi ro cao (RKLB) bằng AXTI/ACHR — đề xuất từ 07-24 ~15:33 ET. Không gửi lại PushNotification (không phải thông tin mới).
+- **Lưu ý phân biệt:** `get_equity_positions` cho thấy tài khoản hiện có thêm 4 vị thế UBER, ACHR, AXTI, ONDS — đây là các vị thế **sandbox** (đã xác nhận qua `sandbox-log.md`, mua bởi phiên sandbox riêng ~14:06-14:25 ET hôm nay), KHÔNG thuộc core-10, không liên quan đến đề xuất thay slot RKLB ở trên (dù trùng tên AXTI/ACHR — chỉ là trùng hợp 2 phiên độc lập cùng chọn mã tương tự). Core-10 vẫn còn 8/10 vị thế: RSP, VOO, JNJ, AAPL, AVGO, PG, CRM, OKLO.
+- P&L so với giá vốn (giá hiện tại ~19:31 UTC) và thay đổi trong ngày (so với đóng cửa 07-24, phiên gần nhất trước cuối tuần):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AAPL | $307.90 | $335.933 | **+9.11%** | +0.87% |
+  | CRM | $161.63 | $174.80 | **+8.15%** | +6.81% |
+  | JNJ | $260.69 | $267.07 | +2.45% | +1.39% |
+  | OKLO | $40.96 | $41.785 | +2.01% | +3.81% |
+  | PG | $146.41 | $148.88 | +1.69% | +1.00% |
+  | RSP | $214.93 | $215.15 | +0.10% | +0.74% |
+  | VOO | $688.26 | $679.886 | -1.22% | +0.11% |
+  | AVGO | $391.52 | $384.32 | -1.84% | +0.63% |
+
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời **mới** hôm nay. AAPL (+9.11%, fractional, không stop tự động) và CRM (+8.15%) tiếp tục tiến gần vùng chốt lời +10-20%/+12% nhưng chưa tới ngưỡng — tiếp tục theo dõi, chưa đủ điều kiện đề xuất chốt lời.
+- SPX 7,420.08 / NDX 28,087.90 — so với đóng cửa 07-24 (SPX 7,428.56/NDX 28,277.18): SPX -0.11%, NDX -0.67%. AAPL/AVGO/CRM đều **outperform** NDX rõ rệt hôm nay (đặc biệt CRM +6.81%) — không có vấn đề hiệu suất so với benchmark.
+- Không mã nào biến động đủ mạnh để cần đào sâu tin tức mới ngoài CRM (đã có đầy đủ bối cảnh từ check-in 13:15 ET cùng ngày — Guggenheim upgrade, Q1 FY27 beat — không có catalyst mới thêm từ đó tới giờ).
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~5 ngày). JNJ báo cáo Q2 dự kiến 2026-07-28 (mai), PG dự kiến 2026-07-29 — tiếp tục theo dõi biến động quanh 2 ngày này.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-28 ~9:50 ET (13:50 UTC) — Check-in định kỳ (routine read-only) — AVGO bị stop-loss tự động → ĐỀ XUẤT MỚI: thay slot large-cap tech; CRM chạm ngưỡng chốt lời → ĐỀ XUẤT MỚI: chốt lời
+
+- **Sửa lại thông tin báo cáo JNJ:** qua `get_earnings_results`, JNJ thực tế đã báo cáo Q2 2026 từ **2026-07-15** (EPS thực tế $2.90 vượt ước tính $2.85), không phải 07-28 như các entry trước dự kiến nhầm. PG vẫn đúng lịch báo cáo Q4 FY26 vào **2026-07-29 (mai)**.
+- **AVGO bị bán tự động sáng nay:** lệnh `6a627fed-34be-4d02-a9d6-7077411045ae` (stop_market sell, GTC, trigger $371.94, đặt 2026-07-23 20:56 UTC ngay sau khi mua) khớp lúc **2026-07-28 13:39:54 UTC (~9:39 ET)**, bán hết 1 cổ phiếu @ $371.88. Giá vốn $391.52 → lỗ thực hiện **-5.02%** (đúng ngưỡng cắt lỗ -5% mặc định large-cap tech). Đây là lệnh stop-loss tự động đặt sẵn khớp đúng kỷ luật rủi ro, không phải quyết định mới — routine này chỉ ghi nhận. **Vì bán lỗ nên áp dụng wash-sale: không mua lại AVGO tới ~2026-08-27.**
+- **Core hiện còn 7/10** — thiếu 1 slot rủi ro cao (RKLB, đề xuất AXTI/ACHR từ 07-24 vẫn chờ) VÀ 2 slot large-cap tech (NVDA, đề xuất AMZN/CSCO từ 07-27 vẫn chờ; AVGO, MỚI hôm nay — xem đề xuất bên dưới): RSP, VOO, JNJ, PG, AAPL, CRM, OKLO.
+- **Tài khoản (Agentic ••••0133):** total_value $5,776.84, equity_value $4,493.07, cash $1,283.77, buying_power $664.09, pending_deposits $0.
+- P&L so với giá vốn (giá hiện tại ~13:50 UTC) và thay đổi trong ngày (so với đóng cửa 07-27):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | CRM | $161.63 | $179.80 | **+11.24%** | +3.57% |
+  | JNJ | $260.69 | $274.16 | **+5.20%** | **+3.09%** |
+  | PG | $146.41 | $152.81 | +4.37% | +2.81% |
+  | AAPL | $307.90 | $338.28 | +9.87% | +0.41% |
+  | RSP | $214.93 | $216.79 | +0.86% | +0.75% |
+  | VOO | $688.26 | $676.96 | -1.64% | -0.35% |
+  | OKLO | $40.96 | $38.51 | -5.98% | **-7.89%** |
+
+- **CRM đã chạm ngưỡng dưới của vùng chốt lời (+10-20%)** — xem đề xuất chốt lời bên dưới.
+- **OKLO -7.89% trong ngày** (vượt xa ngưỡng 3-5%, đã tìm tin tức): không có tin xấu mới cụ thể hôm nay — tiếp tục là biến động chung nhóm nuclear/SMR (Craig-Hallum hạ xuống Hold 07-23, Barclays hạ target $82→$76 07-22, cả 2 đã vài ngày, không phải catalyst mới trong 24h); có ghi nhận vị thế short lớn (~$1.65B) đang đè giá. P&L so với giá vốn -5.98%, còn cách xa stop-loss hiện có ($36.05, -12%). Không đủ điều kiện đề xuất bán theo CLAUDE.md — tiếp tục theo dõi sát do biến động cao + short interest lớn.
+  - Nguồn: [Oklo heads into the week after DOE approval as $1.65 billion short position looms — ts2.tech](https://ts2.tech/en/oklo-nyseoklo-heads-into-the-week-after-doe-approval-as-1-65-billion-short-position-looms/)
+- **JNJ +3.09% trong ngày** — tin tích cực rõ ràng: JNJ vừa công bố **giải quyết vụ kiện talc trị giá $5.5 tỷ**, xử lý ~69.000 vụ kiện (99,75% số vụ đang chờ xử lý ở tòa liên bang/tiểu bang Mỹ), đang chờ 95% nguyên đơn đồng ý. Đây là tin tốt lớn — giảm đáng kể rủi ro pháp lý tồn đọng đã nhắc nhiều lần trước đây. Không cần hành động (đã có sẵn vị thế, không phải tín hiệu bán).
+  - Nguồn: [Johnson & Johnson Settles $5.5 Billion Talc Lawsuit — GuruFocus](https://www.gurufocus.com/news/8982204/johnson-johnson-settles-55-billion-talc-lawsuit-jnj)
+- **PG +2.81% trong ngày** — không có catalyst đơn lẻ nổi bật, khả năng là vị thế trước thềm báo cáo Q4 FY26 (mai 07-29, EPS ước tính $1.42/-3.4% YoY do cảnh báo chi phí ~$1B liên quan giá dầu Trung Đông) cộng với vài đánh giá tích cực gần đây (Jefferies, Barclays nâng target). Không cần hành động — theo dõi biến động quanh báo cáo mai.
+  - Nguồn: [Procter & Gamble Earnings Are Coming July 29 — TIKR](https://www.tikr.com/blog/procter-gamble-earnings-are-coming-july-29-the-trough-quarter-may-already-be-priced-in)
+- **CRM +3.57% trong ngày** — tiếp nối đà tăng đã biết (hợp đồng VA, tăng tốc AI agent monetization) nhưng cũng có tin trái chiều mới: **Morgan Stanley vừa hạ khuyến nghị xuống Equal Weight, cắt target mạnh từ $287 xuống $185** (chỉ còn ~3% trên giá hiện tại) — đối lập với đồng thuận chung vẫn Buy trung bình (target TB $241.72, 53 analyst). Kết hợp với việc P&L đã chạm ngưỡng chốt lời, đây là lý do đủ để đề xuất chốt lời (xem bên dưới).
+  - Nguồn: [Salesforce Inc Stock Moved Up by 8.05% on Jul 27 — TradingKey](https://www.tradingkey.com/news/market-movers/262056864-market-movers-crm-20260727), [CRM Stock Gains 6.07% Today — JournalArta](https://journalarta.com/en/2026/07/28/crm-stock-gains-6-07-today-testing-key-resistance/)
+- Nhắc lại 2 đề xuất đang chờ Hogan quyết định (chưa có phản hồi/lệnh mới nào từ khi gửi):
+  1. Thay thế slot rủi ro cao (RKLB) bằng AXTI hoặc ACHR — đề xuất từ 07-24 ~15:33 ET.
+  2. Thay thế slot large-cap tech (NVDA) bằng AMZN hoặc CSCO — đề xuất từ 07-27 ~13:15 ET.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~4 ngày).
+
+### Đề xuất 1: Chốt lời CRM (đã chạm ngưỡng +10-20%)
+
+1. **CRM — BÁN toàn bộ 3 cổ phiếu (chốt lời)**, giá thị trường hiện tại ~$179.80 (~$539.40).
+2. **Lý do:** P&L +11.24%, đã vào vùng chốt lời quy định (+10-20%, đáp ứng tối thiểu risk/reward 1:2 so với stop-loss -5% đã đặt). Đồng thời vừa có tin trái chiều mới (Morgan Stanley hạ khuyến nghị xuống Equal Weight, target mới $185 chỉ còn ~3% dư địa tăng) — làm giảm sức hấp dẫn nắm giữ thêm để chờ tới +20%.
+3. **Rủi ro chính:** (a) đây là lợi nhuận ngắn hạn (mua 07-24, mới giữ 4 ngày) — thuế suất ngắn hạn cao hơn; nếu Hogan ưu tiên tối ưu thuế có thể cân nhắc giữ thêm dù không bắt buộc theo kỷ luật chốt lời; (b) đồng thuận chung vẫn Buy (target TB $241.72) nên có khả năng bỏ lỡ đà tăng tiếp nếu bán hết; có thể cân nhắc phương án chốt lời một phần (vd. bán 1-2/3 cổ phiếu) thay vì toàn bộ.
+4. **Không có mức cắt lỗ/chốt lời mới cần đặt** (đây là lệnh thoát vị thế, không phải vào lệnh mới).
+
+### Đề xuất 2: Thay thế slot AVGO (large-cap tech) — cần Hogan chọn 1 trong 2 lựa chọn
+
+**Bối cảnh:** AVGO bị stop-loss tự động ở mức -5.02% (đúng kỷ luật, không phải tin xấu mới về công ty). Portfolio vẫn cần đủ 4 mã large-cap tech theo cơ cấu CLAUDE.md (hiện chỉ còn AAPL, CRM — CRM đang được đề xuất chốt lời ở trên, nếu Hogan duyệt thì slot large-cap tech sẽ còn trống thêm 1 nữa). Loại trừ mã cấm mua lại do wash-sale: GOOGL (tới ~08-16), MSFT (tới ~08-22), NVDA (tới ~08-26), **AVGO (tới ~08-27, mới thêm)**. Loại CRM/ORCL/IBM/ADBE/NFLX theo lý do đã ghi nhận trước đó (fundamentals xấu đi/rủi ro cấu trúc, xem entry 07-22/07-23). Không trùng với 2 lựa chọn đang chờ cho slot NVDA (AMZN/CSCO) để tránh nhầm lẫn.
+
+**Lựa chọn A: TXN (Texas Instruments)** — giá ~$277.54 (giảm -0.67% hôm nay). Đề xuất mua 1 cổ phiếu ≈ $277.54 (~4.8% danh mục — dưới cận dưới 5-10%, có thể cân nhắc mua 2 cp ≈ $555, ~9.6% danh mục nếu muốn tối đa tỷ trọng). Q2 2026 (báo cáo 07-22) vượt kỳ vọng toàn diện (EPS $2.09 vượt ước tính $1.92, doanh thu $5.46B +22.8% YoY, nâng guidance) nhưng giá giảm >5% ngay sau báo cáo do định giá đã "priced for perfection" — nay đã ổn định trở lại quanh $277-282, nhiều analyst nâng target (UBS $350→$380, Rosenblatt $330→$350), Zacks nâng lên Strong Buy. Không còn lo ngại "3/4 slot tech cùng bán dẫn" như lần đề xuất trước (07-23) vì NVDA và AVGO đều đã không còn nắm giữ.
+- Rủi ro chính: vẫn là mã bán dẫn (cùng nhóm chu kỳ với NVDA/AVGO đã bị stop trước đó dù lý do khác nhau); định giá premium sau đợt tăng giá dài hạn.
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Lựa chọn B: QCOM (Qualcomm)** — giá ~$165.23 (giảm -2.83% hôm nay). Đề xuất mua 2 cổ phiếu ≈ $330.45 (~5.7% danh mục, nguyên cổ phiếu). Định giá rẻ hơn nhóm bán dẫn nói chung (P/E forward chỉ ~15x, PEG 0.527), mảng Automotive/IoT tăng trưởng mạnh (+20% YoY, riêng auto +38% lên $1.326B), CEO xác nhận hợp đồng custom silicon với 1 hyperscaler lớn đang đúng tiến độ giao hàng cuối năm nay. Đồng thuận analyst target TB $221.23 (+31% so với giá hiện tại).
+- Rủi ro chính: **báo cáo Q3 FY26 công bố 2026-07-29, chỉ 1 ngày sau khi vào lệnh** — rủi ro biến động mạnh quanh báo cáo ngay sau entry (ước tính EPS $2.23, giảm -19.5% YoY do mảng license/handset chậm lại); đây là lý do QCOM giảm trước báo cáo hôm nay.
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Chờ Hogan chọn TXN, QCOM, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
+
+## 2026-07-28 ~13:15 ET (17:15 UTC) — Check-in định kỳ (routine read-only) — Phát hiện hoạt động lệnh mới ngoài routine (GOOGL mua lại, OKLO bán) → CẢNH BÁO wash-sale + ĐỀ XUẤT MỚI: thay slot OKLO
+
+- **Qua `get_equity_orders` từ 00:00 UTC hôm nay, phát hiện 2 lệnh mới khớp sau lần check-in 9:50 ET (13:50 UTC) sáng nay, đặt bởi phiên khác (không phải routine này — routine này read-only, không đặt lệnh):**
+  1. **14:19 UTC — BÁN 11 cp OKLO @ $37.895 TB** (lệnh market, `trigger: immediate`, KHÔNG PHẢI stop-loss tự động). Giá vốn $40.9637 → lỗ thực hiện **-7.49%** (~-$33.72). **Áp dụng wash-sale cho OKLO: không mua lại tới ~2026-08-27.**
+  2. **14:35 UTC — MUA 1 cp GOOGL @ $327.6499**, kèm đặt stop-loss -5% tại $311.27 (state `confirmed`).
+- **🔴 NGUYÊN NHÂN GỐC đã xác định qua đối chiếu `sandbox-log.md`: lệnh bán OKLO ở trên là do LỖI NHẬP NHẰNG SỔ SÁCH giữa 2 quy trình theo dõi cùng một tài khoản, không phải quyết định quản trị rủi ro của core-10 lẫn sandbox thật sự cố ý bán tài sản core.** Diễn biến đầy đủ:
+  - Vị thế OKLO (11 cp, vốn $40.9637, order `6a639875-...`) vốn dĩ là mua CHO CORE-10 lúc 07-24 ~12:53 ET (đề xuất thay slot AEHR, Hogan chọn OKLO — đã ghi đầy đủ ở entry 07-24 ~13:10 ET phía trên).
+  - Cùng ngày 07-24 ~13:08 ET, một phiên **sandbox** (quy trình riêng, tự chủ giao dịch không cần duyệt cho vốn sandbox) kiểm tra `get_equity_positions`, thấy vị thế OKLO này xuất hiện mà sandbox chưa có log tương ứng, và **NHẦM TƯỞNG đây là một lệnh mua sandbox bị lỡ chưa ghi log** — nên đã "ghi bù" và coi 11 cp OKLO này là tài sản CỦA SANDBOX từ đó về sau (xem `sandbox-log.md` dòng ~1106). Từ 07-24 đến 07-28, sandbox liên tục theo dõi/tính circuit-breaker trên chính vị thế OKLO này song song với core-10 — cả 2 quy trình cùng coi cùng 11 cổ phiếu thật là "của mình", không quy trình nào biết quy trình kia cũng đang tính.
+  - Sáng nay (07-28 ~10:20 ET), thuật toán chốt lời x2 tự động của sandbox tính "phần theo dõi" (gồm cả OKLO) đạt ngưỡng $1,400 → tự động BÁN OKLO cùng lúc với 3 vị thế sandbox thật khác (UBER, ACHR, ONDS) mà **không cần duyệt** (đúng quyền tự chủ CLAUDE.md cho vốn sandbox) — nhưng OKLO thực chất là vị thế CORE-10, không thuộc thẩm quyền tự động này. Kết quả: core-10 mất 1 vị thế (OKLO) mà KHÔNG qua đề xuất/duyệt như quy định "chỉ đề xuất, không tự đặt lệnh" áp dụng cho core-10.
+  - Sandbox routine đã tự phát hiện phần nào bất thường này và gửi PushNotification lúc ~10:20 ET (báo sự kiện chốt lời x2 + AXTI stop-loss) và ~10:36 ET (báo riêng nghi vấn GOOGL, xem dưới) — nhưng KHÔNG nhận ra rằng chính vị thế OKLO nó vừa bán thuộc về core-10. Đây là lần đầu việc này được xác nhận rõ ràng qua đối chiếu 2 log.
+  - **Rủi ro cần Hogan lưu ý:** lỗi nhập nhằng sổ sách này có thể lặp lại với các vị thế core-10 khác nếu sandbox tiếp tục hiểu nhầm vị thế core là của mình — cần cơ chế phân biệt rõ ràng hơn (vd. ghi chú instrument_id hoặc thời điểm mua vào watchlist riêng) giữa 2 quy trình dùng chung 1 tài khoản.
+- **⚠️ CẢNH BÁO RIÊNG: lệnh mua GOOGL ở trên có khả năng VI PHẠM wash-sale rule đã quy định trong CLAUDE.md** (không liên quan tới lỗi OKLO ở trên — nguồn gốc lệnh mua GOOGL vẫn CHƯA XÁC ĐỊNH được qua cả 2 log, không khớp với bất kỳ đề xuất core-10 nào đang chờ). GOOGL từng bị bán lỗ qua stop-loss tự động ngày **2026-07-17** (giá $343.31, giá vốn $361.40, lỗ -5.00%) — theo đúng ghi chú wash-sale đã nhắc lại nhiều lần trong log này, lẽ ra không nên mua lại GOOGL trước **2026-08-16**. Lệnh mua hôm nay (07-28) rơi đúng giữa cửa sổ cấm 30 ngày này, chỉ 11 ngày sau lần bán lỗ. Routine này không có quyền hủy/sửa lệnh (chỉ read-only), chỉ ghi nhận và báo cáo — sandbox routine cũng đã độc lập phát hiện và báo cùng vấn đề này lúc ~10:36 ET sáng nay.
+- **Bối cảnh OKLO (để tham khảo):** cổ phiếu chạm đáy 52 tuần mới ($39.48) hôm nay giữa đợt bán tháo chip/tech lan rộng (Nasdaq -1%, cổ phiếu memory Hàn Quốc giảm mạnh do lo ngại "AI circular financing"), tình trạng tài chính được đánh giá "WEAK" (InvestingPro), giảm ~41% so với 1 năm trước — dù vẫn có tin tích cực nền (DOE startup authorization cho lò Groves, chương trình $200M của chính quyền Trump).
+- **Core hiện tại (7/10, xác nhận qua `get_equity_positions`):** RSP, VOO (ETF, đủ 2/2); JNJ, PG (blue-chip, đủ 2/2); AAPL, CRM, GOOGL (large-cap tech, 3/4 — GOOGL vừa lấp 1 trong 2 slot tech đang chờ, xem lưu ý bên dưới); **0/2 nhóm rủi ro cao** (RKLB slot vẫn chờ AXTI/ACHR từ 07-24; OKLO slot MỚI trống hôm nay — xem đề xuất bên dưới).
+- **Lưu ý về 2 đề xuất tech đang chờ (NVDA→AMZN/CSCO từ 07-27; AVGO→TXN/QCOM từ sáng nay):** vì GOOGL đã lấp 1 slot tech, danh mục chỉ còn thiếu **1** slot tech (không phải 2) — Hogan chỉ cần chọn 1 trong 2 đề xuất đang chờ (không cần cả hai) để đủ 4/4 tech.
+- **Tài khoản (Agentic ••••0133):** total_value $5,763.20, equity_value $3,333.70, cash $2,429.50, buying_power $336.44, pending_deposits $0. Lưu ý: buying_power hiện thấp hơn nhiều so với cash (nhiều khả năng do tiền bán OKLO/sandbox hôm nay chưa settle hết trên tài khoản cash account) — cần kiểm tra buying_power thực tế trước khi Hogan đặt lệnh mua mới.
+- P&L so với giá vốn (giá hiện tại ~17:15 UTC) và thay đổi trong ngày (so với đóng cửa 07-27):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | CRM | $161.63 | $183.71 | **+13.66%** | **+5.82%** |
+  | JNJ | $260.69 | $267.74 | +2.70% | +0.67% |
+  | AAPL | $307.90 | $339.215 | +10.20% | +0.68% |
+  | GOOGL | $327.65 | $334.19 | +2.00% | +2.34% (mới mua hôm nay) |
+  | PG | $146.41 | $151.285 | +3.33% | +1.79% |
+  | RSP | $214.93 | $217.635 | +1.26% | +1.14% |
+  | VOO | $688.26 | $681.525 | -0.98% | +0.33% |
+
+- SPX 7,438.12 (+0.24% so với đóng cửa 07-27) / NDX 27,838.62 (-0.89%) — AAPL/CRM/GOOGL đều **outperform** NDX rõ rệt hôm nay.
+- **CRM đã vượt sâu vào vùng chốt lời (+13.66%, tăng thêm từ +11.24% sáng nay)** — nhắc lại đề xuất chốt lời toàn bộ 3 cp đã gửi sáng nay (9:50 ET), vẫn đang chờ Hogan quyết định, chưa có lệnh nào khớp. Tin mới hôm nay: cổ phiếu tăng +5.82%/+8% (theo nhiều nguồn) nhờ tiếp tục lan tỏa tin hợp đồng VA $1.6B + đồng thuận "Moderate Buy" (target TB $249, theo Motley Fool/CNBC) — không thay đổi đánh giá, vẫn đủ điều kiện chốt lời như đã đề xuất.
+  - Nguồn: [A $1.6 Billion Reason Salesforce (CRM) Stock Is Up Today — Yahoo Finance](https://finance.yahoo.com/technology/ai/articles/1-6-billion-reason-salesforce-182220250.html), [CRM Stock Gains 6.07% Today — JournalArta](https://journalarta.com/en/2026/07/28/crm-stock-gains-6-07-today-testing-key-resistance/)
+- Không mã nào khác chạm ngưỡng cắt lỗ/chốt lời mới. Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~4 ngày). PG báo cáo Q4 FY26 dự kiến mai (2026-07-29) — theo dõi biến động.
+
+### Đề xuất thay thế slot OKLO (rủi ro cao) — cần Hogan chọn 1 trong 2 lựa chọn
+
+**Bối cảnh:** OKLO vừa bị bán ở mức lỗ -7.49% do lỗi nhập nhằng sổ sách với sandbox (xem giải thích chi tiết ở trên) — KHÔNG phải quyết định quản trị rủi ro của core-10 (không qua đề xuất/duyệt như quy định). Danh mục cần đủ 2 mã rủi ro cao theo cơ cấu CLAUDE.md (hiện là 0/2 — cả RKLB lẫn OKLO đều trống). Loại trừ mã cấm mua lại do wash-sale: RXRX (tới ~08-09), IONQ (tới ~08-06), QBTS (tới ~08-12), SERV (tới ~08-15), GOOGL/SOUN (tới ~08-16, thuộc nhóm tech/khác — không áp dụng nhóm rủi ro cao), RKLB (tới ~08-23), NVDA (tới ~08-26, nhóm tech), AVGO (tới ~08-27, nhóm tech), **OKLO (tới ~08-27, mới thêm)**. Không trùng AXTI/ACHR (đang là 2 lựa chọn chờ cho slot RKLB riêng, để tránh nhầm lẫn 2 đề xuất). Loại POET Technologies dù có câu chuyện tăng trưởng tốt (doanh thu quang học AI +202% YoY) vì đang vướng nhiều vụ kiện liên quan tình trạng thuế + bị Marvell/Celestial AI hủy đơn hàng gần đây — rủi ro pháp lý/uy tín tương tự tiêu chí đã loại CRWV trước đó.
+
+**Lựa chọn A: SIDU (Sidus Space)** — giá ~$1.795 (giảm -2.97% hôm nay). Đề xuất mua 257 cổ phiếu ≈ $461.17 (~8.0% danh mục, nguyên cổ phiếu giữ được stop-loss tự động). Micro-cap space-as-a-service (thiết kế/sản xuất/vận hành vệ tinh thương mại), doanh thu +51% YoY, được thêm vào Russell 3000/2000/Microcap Index (26/06/2026) — đã từng đề xuất 07-07 (Hogan chọn QBTS thay), nay QBTS/RXRX/IONQ đều đã ra khỏi danh mục nên không trùng lặp. Công ty chưa có lợi nhuận (market cap ~$180M, PE âm), rủi ro thanh khoản/pha loãng cổ phần cao ở micro-cap.
+- Rủi ro chính: micro-cap, thanh khoản thấp hơn các lựa chọn khác, biến động cực cao, chưa có lợi nhuận.
+- Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
+
+**Lựa chọn B: ASTS (AST SpaceMobile)** — giá ~$57.47 (giảm -1.41% hôm nay). Đề xuất mua 8 cổ phiếu ≈ $459.76 (~8.0% danh mục, nguyên cổ phiếu). Xây dựng mạng băng thông rộng vệ tinh kết nối trực tiếp điện thoại di động tiêu chuẩn (không cần thiết bị đặc biệt), được các quỹ lớn và đối tác viễn thông (AT&T, Verizon...) quan tâm, biến động rất cao (đã giảm từ đỉnh 52 tuần $133.86 xuống ~$57, -57%). Vốn hóa lớn hơn SIDU nhiều (~$21.7B) nên thanh khoản tốt hơn, nhưng vẫn chưa có lợi nhuận (PE âm -32.77) và định giá dựa nhiều vào kỳ vọng tương lai.
+- Rủi ro chính: định giá phụ thuộc lớn vào tiến độ phóng vệ tinh/thương mại hóa dịch vụ, biến động mạnh theo tin tức ngành vệ tinh; đã giảm sâu từ đỉnh nên có thể vẫn trong xu hướng giảm.
+- Cắt lỗ đề xuất: -8%. Chốt lời: +15-20%.
+
+**Chờ Hogan chọn SIDU, ASTS, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
+
+## 2026-07-28 ~15:31 ET (19:31 UTC) — Check-in định kỳ (routine read-only)
+
+- **Xác nhận qua `get_equity_orders` (từ 17:15 UTC tới nay): không có lệnh mới nào khớp cho core-10.** Vị thế không đổi (7/10): RSP, GOOGL, VOO, JNJ, AAPL, PG, CRM. Cả 3 đề xuất đang chờ vẫn chưa có quyết định: (1) chốt lời CRM (từ 9:50 ET); (2) thay slot large-cap tech AVGO bằng TXN/QCOM (từ 9:50 ET, lưu ý chỉ cần chọn 1 trong đề xuất này HOẶC đề xuất AMZN/CSCO từ 07-27 vì GOOGL đã lấp 1 slot); (3) thay slot rủi ro cao OKLO bằng SIDU/ASTS (từ 13:15 ET). Không gửi lại PushNotification (không có thông tin mới).
+- **Tài khoản:** total_value $5,749.29, equity_value $3,319.79, cash $2,429.50, buying_power $336.44, pending_deposits $0.
+- P&L so với giá vốn (giá hiện tại ~19:31 UTC) và thay đổi trong ngày (so với đóng cửa 07-27):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | CRM | $161.63 | $180.965 | **+11.96%** | +4.24% |
+  | AAPL | $307.90 | $339.13 | +10.15% | +0.66% |
+  | JNJ | $260.69 | $267.80 | +2.73% | +0.70% |
+  | GOOGL | $327.65 | $334.605 | +2.12% | +2.46% |
+  | PG | $146.41 | $149.28 | +1.96% | +0.44% |
+  | RSP | $214.93 | $217.50 | +1.20% | +1.08% |
+  | VOO | $688.26 | $681.62 | -0.96% | +0.34% |
+
+- CRM hạ nhiệt nhẹ so với lần kiểm tra 13:15 ET ($183.71 → $180.965) nhưng vẫn nằm sâu trong vùng chốt lời (+10-20%) — không thay đổi đánh giá, đề xuất chốt lời từ 9:50 ET vẫn còn hiệu lực, chưa cần đề xuất mới.
+- SPX 7,439.93 (~đi ngang so với 07-27) / NDX 27,870.51 (~đi ngang) — GOOGL/AAPL/CRM vẫn outperform benchmark rõ rệt trong ngày, không có mã nào kém hiệu suất đáng lo.
+- Không mã nào chạm ngưỡng cắt lỗ/chốt lời **mới**. Không có biến động >3-5% nào chưa được giải thích cần đào sâu tin tức thêm so với lần kiểm tra trước.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~4 ngày). PG báo cáo Q4 FY26 dự kiến mai (2026-07-29) — theo dõi biến động.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
