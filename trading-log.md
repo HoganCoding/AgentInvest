@@ -1563,3 +1563,56 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Không mã nào biến động đủ mạnh để cần đào sâu tin tức mới ngoài CRM (đã có đầy đủ bối cảnh từ check-in 13:15 ET cùng ngày — Guggenheim upgrade, Q1 FY27 beat — không có catalyst mới thêm từ đó tới giờ).
 - Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~5 ngày). JNJ báo cáo Q2 dự kiến 2026-07-28 (mai), PG dự kiến 2026-07-29 — tiếp tục theo dõi biến động quanh 2 ngày này.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không gửi PushNotification.
+
+## 2026-07-28 ~9:50 ET (13:50 UTC) — Check-in định kỳ (routine read-only) — AVGO bị stop-loss tự động → ĐỀ XUẤT MỚI: thay slot large-cap tech; CRM chạm ngưỡng chốt lời → ĐỀ XUẤT MỚI: chốt lời
+
+- **Sửa lại thông tin báo cáo JNJ:** qua `get_earnings_results`, JNJ thực tế đã báo cáo Q2 2026 từ **2026-07-15** (EPS thực tế $2.90 vượt ước tính $2.85), không phải 07-28 như các entry trước dự kiến nhầm. PG vẫn đúng lịch báo cáo Q4 FY26 vào **2026-07-29 (mai)**.
+- **AVGO bị bán tự động sáng nay:** lệnh `6a627fed-34be-4d02-a9d6-7077411045ae` (stop_market sell, GTC, trigger $371.94, đặt 2026-07-23 20:56 UTC ngay sau khi mua) khớp lúc **2026-07-28 13:39:54 UTC (~9:39 ET)**, bán hết 1 cổ phiếu @ $371.88. Giá vốn $391.52 → lỗ thực hiện **-5.02%** (đúng ngưỡng cắt lỗ -5% mặc định large-cap tech). Đây là lệnh stop-loss tự động đặt sẵn khớp đúng kỷ luật rủi ro, không phải quyết định mới — routine này chỉ ghi nhận. **Vì bán lỗ nên áp dụng wash-sale: không mua lại AVGO tới ~2026-08-27.**
+- **Core hiện còn 7/10** — thiếu 1 slot rủi ro cao (RKLB, đề xuất AXTI/ACHR từ 07-24 vẫn chờ) VÀ 2 slot large-cap tech (NVDA, đề xuất AMZN/CSCO từ 07-27 vẫn chờ; AVGO, MỚI hôm nay — xem đề xuất bên dưới): RSP, VOO, JNJ, PG, AAPL, CRM, OKLO.
+- **Tài khoản (Agentic ••••0133):** total_value $5,776.84, equity_value $4,493.07, cash $1,283.77, buying_power $664.09, pending_deposits $0.
+- P&L so với giá vốn (giá hiện tại ~13:50 UTC) và thay đổi trong ngày (so với đóng cửa 07-27):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | CRM | $161.63 | $179.80 | **+11.24%** | +3.57% |
+  | JNJ | $260.69 | $274.16 | **+5.20%** | **+3.09%** |
+  | PG | $146.41 | $152.81 | +4.37% | +2.81% |
+  | AAPL | $307.90 | $338.28 | +9.87% | +0.41% |
+  | RSP | $214.93 | $216.79 | +0.86% | +0.75% |
+  | VOO | $688.26 | $676.96 | -1.64% | -0.35% |
+  | OKLO | $40.96 | $38.51 | -5.98% | **-7.89%** |
+
+- **CRM đã chạm ngưỡng dưới của vùng chốt lời (+10-20%)** — xem đề xuất chốt lời bên dưới.
+- **OKLO -7.89% trong ngày** (vượt xa ngưỡng 3-5%, đã tìm tin tức): không có tin xấu mới cụ thể hôm nay — tiếp tục là biến động chung nhóm nuclear/SMR (Craig-Hallum hạ xuống Hold 07-23, Barclays hạ target $82→$76 07-22, cả 2 đã vài ngày, không phải catalyst mới trong 24h); có ghi nhận vị thế short lớn (~$1.65B) đang đè giá. P&L so với giá vốn -5.98%, còn cách xa stop-loss hiện có ($36.05, -12%). Không đủ điều kiện đề xuất bán theo CLAUDE.md — tiếp tục theo dõi sát do biến động cao + short interest lớn.
+  - Nguồn: [Oklo heads into the week after DOE approval as $1.65 billion short position looms — ts2.tech](https://ts2.tech/en/oklo-nyseoklo-heads-into-the-week-after-doe-approval-as-1-65-billion-short-position-looms/)
+- **JNJ +3.09% trong ngày** — tin tích cực rõ ràng: JNJ vừa công bố **giải quyết vụ kiện talc trị giá $5.5 tỷ**, xử lý ~69.000 vụ kiện (99,75% số vụ đang chờ xử lý ở tòa liên bang/tiểu bang Mỹ), đang chờ 95% nguyên đơn đồng ý. Đây là tin tốt lớn — giảm đáng kể rủi ro pháp lý tồn đọng đã nhắc nhiều lần trước đây. Không cần hành động (đã có sẵn vị thế, không phải tín hiệu bán).
+  - Nguồn: [Johnson & Johnson Settles $5.5 Billion Talc Lawsuit — GuruFocus](https://www.gurufocus.com/news/8982204/johnson-johnson-settles-55-billion-talc-lawsuit-jnj)
+- **PG +2.81% trong ngày** — không có catalyst đơn lẻ nổi bật, khả năng là vị thế trước thềm báo cáo Q4 FY26 (mai 07-29, EPS ước tính $1.42/-3.4% YoY do cảnh báo chi phí ~$1B liên quan giá dầu Trung Đông) cộng với vài đánh giá tích cực gần đây (Jefferies, Barclays nâng target). Không cần hành động — theo dõi biến động quanh báo cáo mai.
+  - Nguồn: [Procter & Gamble Earnings Are Coming July 29 — TIKR](https://www.tikr.com/blog/procter-gamble-earnings-are-coming-july-29-the-trough-quarter-may-already-be-priced-in)
+- **CRM +3.57% trong ngày** — tiếp nối đà tăng đã biết (hợp đồng VA, tăng tốc AI agent monetization) nhưng cũng có tin trái chiều mới: **Morgan Stanley vừa hạ khuyến nghị xuống Equal Weight, cắt target mạnh từ $287 xuống $185** (chỉ còn ~3% trên giá hiện tại) — đối lập với đồng thuận chung vẫn Buy trung bình (target TB $241.72, 53 analyst). Kết hợp với việc P&L đã chạm ngưỡng chốt lời, đây là lý do đủ để đề xuất chốt lời (xem bên dưới).
+  - Nguồn: [Salesforce Inc Stock Moved Up by 8.05% on Jul 27 — TradingKey](https://www.tradingkey.com/news/market-movers/262056864-market-movers-crm-20260727), [CRM Stock Gains 6.07% Today — JournalArta](https://journalarta.com/en/2026/07/28/crm-stock-gains-6-07-today-testing-key-resistance/)
+- Nhắc lại 2 đề xuất đang chờ Hogan quyết định (chưa có phản hồi/lệnh mới nào từ khi gửi):
+  1. Thay thế slot rủi ro cao (RKLB) bằng AXTI hoặc ACHR — đề xuất từ 07-24 ~15:33 ET.
+  2. Thay thế slot large-cap tech (NVDA) bằng AMZN hoặc CSCO — đề xuất từ 07-27 ~13:15 ET.
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~4 ngày).
+
+### Đề xuất 1: Chốt lời CRM (đã chạm ngưỡng +10-20%)
+
+1. **CRM — BÁN toàn bộ 3 cổ phiếu (chốt lời)**, giá thị trường hiện tại ~$179.80 (~$539.40).
+2. **Lý do:** P&L +11.24%, đã vào vùng chốt lời quy định (+10-20%, đáp ứng tối thiểu risk/reward 1:2 so với stop-loss -5% đã đặt). Đồng thời vừa có tin trái chiều mới (Morgan Stanley hạ khuyến nghị xuống Equal Weight, target mới $185 chỉ còn ~3% dư địa tăng) — làm giảm sức hấp dẫn nắm giữ thêm để chờ tới +20%.
+3. **Rủi ro chính:** (a) đây là lợi nhuận ngắn hạn (mua 07-24, mới giữ 4 ngày) — thuế suất ngắn hạn cao hơn; nếu Hogan ưu tiên tối ưu thuế có thể cân nhắc giữ thêm dù không bắt buộc theo kỷ luật chốt lời; (b) đồng thuận chung vẫn Buy (target TB $241.72) nên có khả năng bỏ lỡ đà tăng tiếp nếu bán hết; có thể cân nhắc phương án chốt lời một phần (vd. bán 1-2/3 cổ phiếu) thay vì toàn bộ.
+4. **Không có mức cắt lỗ/chốt lời mới cần đặt** (đây là lệnh thoát vị thế, không phải vào lệnh mới).
+
+### Đề xuất 2: Thay thế slot AVGO (large-cap tech) — cần Hogan chọn 1 trong 2 lựa chọn
+
+**Bối cảnh:** AVGO bị stop-loss tự động ở mức -5.02% (đúng kỷ luật, không phải tin xấu mới về công ty). Portfolio vẫn cần đủ 4 mã large-cap tech theo cơ cấu CLAUDE.md (hiện chỉ còn AAPL, CRM — CRM đang được đề xuất chốt lời ở trên, nếu Hogan duyệt thì slot large-cap tech sẽ còn trống thêm 1 nữa). Loại trừ mã cấm mua lại do wash-sale: GOOGL (tới ~08-16), MSFT (tới ~08-22), NVDA (tới ~08-26), **AVGO (tới ~08-27, mới thêm)**. Loại CRM/ORCL/IBM/ADBE/NFLX theo lý do đã ghi nhận trước đó (fundamentals xấu đi/rủi ro cấu trúc, xem entry 07-22/07-23). Không trùng với 2 lựa chọn đang chờ cho slot NVDA (AMZN/CSCO) để tránh nhầm lẫn.
+
+**Lựa chọn A: TXN (Texas Instruments)** — giá ~$277.54 (giảm -0.67% hôm nay). Đề xuất mua 1 cổ phiếu ≈ $277.54 (~4.8% danh mục — dưới cận dưới 5-10%, có thể cân nhắc mua 2 cp ≈ $555, ~9.6% danh mục nếu muốn tối đa tỷ trọng). Q2 2026 (báo cáo 07-22) vượt kỳ vọng toàn diện (EPS $2.09 vượt ước tính $1.92, doanh thu $5.46B +22.8% YoY, nâng guidance) nhưng giá giảm >5% ngay sau báo cáo do định giá đã "priced for perfection" — nay đã ổn định trở lại quanh $277-282, nhiều analyst nâng target (UBS $350→$380, Rosenblatt $330→$350), Zacks nâng lên Strong Buy. Không còn lo ngại "3/4 slot tech cùng bán dẫn" như lần đề xuất trước (07-23) vì NVDA và AVGO đều đã không còn nắm giữ.
+- Rủi ro chính: vẫn là mã bán dẫn (cùng nhóm chu kỳ với NVDA/AVGO đã bị stop trước đó dù lý do khác nhau); định giá premium sau đợt tăng giá dài hạn.
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Lựa chọn B: QCOM (Qualcomm)** — giá ~$165.23 (giảm -2.83% hôm nay). Đề xuất mua 2 cổ phiếu ≈ $330.45 (~5.7% danh mục, nguyên cổ phiếu). Định giá rẻ hơn nhóm bán dẫn nói chung (P/E forward chỉ ~15x, PEG 0.527), mảng Automotive/IoT tăng trưởng mạnh (+20% YoY, riêng auto +38% lên $1.326B), CEO xác nhận hợp đồng custom silicon với 1 hyperscaler lớn đang đúng tiến độ giao hàng cuối năm nay. Đồng thuận analyst target TB $221.23 (+31% so với giá hiện tại).
+- Rủi ro chính: **báo cáo Q3 FY26 công bố 2026-07-29, chỉ 1 ngày sau khi vào lệnh** — rủi ro biến động mạnh quanh báo cáo ngay sau entry (ước tính EPS $2.23, giảm -19.5% YoY do mảng license/handset chậm lại); đây là lý do QCOM giảm trước báo cáo hôm nay.
+- Cắt lỗ đề xuất: -5%. Chốt lời: +12%.
+
+**Chờ Hogan chọn TXN, QCOM, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
