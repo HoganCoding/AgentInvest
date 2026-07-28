@@ -2008,3 +2008,17 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **P&L:** vốn $327.6499 → bán $333.37 = **+1.75%** (lãi nhẹ, ~$5.72). Vì đây là GAIN nên không tạo thêm wash-sale mới, nhưng KHÔNG xóa được vi phạm wash-sale đã phát sinh với lô lỗ GOOGL 07-17 (mua lại trong cửa sổ 30 ngày vẫn tính là wash sale cho khoản lỗ đó, bất kể lô mua lại sau đó lãi hay lỗ) — cần lưu ý khi khai thuế, có thể cần tham khảo CPA.
 - **Slot large-cap tech (thay AVGO) lại trống.** Core-10 hiện còn 6/10: RSP, VOO, JNJ, AAPL, PG, CRM — thiếu 1 slot tech (vừa trống lại do bán GOOGL) + 2 slot rủi ro cao (OKLO/ACHR bị bán nhầm bởi lỗi sandbox, xem entry root-cause) — tổng cộng đang chờ Hogan quyết định 3 đề xuất thay thế (xem `sandbox-log.md` gần cuối và trading-log.md phía trên: CRM take-profit, TXN/QCOM hoặc AMZN/CSCO cho tech, SIDU/ASTS cho rủi ro cao).
 - Không cần đề xuất thay thế GOOGL riêng ở đây — sẽ gộp chung vào đợt xử lý 3 slot đang chờ ở lần check tiếp theo.
+
+## 2026-07-28 ~23:04 UTC (~19:04 ET) — Hogan quyết định: CRM trail stop-loss + mua TXN (slot tech #1), 3 mục còn lại để sau
+
+- **CRM:** Hogan hỏi ý kiến agent về CRM (+11.96%, chưa tới ngưỡng cảnh báo +15-20% cho nhóm tech nên về kỹ thuật chưa cần chốt lời) — agent đề xuất giữ nguyên 3cp nhưng dời trailing stop-loss lên gần đỉnh hơn (stop cũ $153.55 chưa được trail dù giá đã tạo đỉnh mới nhiều lần từ 07-27). Hogan đồng ý.
+  - Đỉnh giá trong ngày (5-phút bars, get_equity_historicals): **$184.52** (15:30 UTC).
+  - Hủy stop-loss cũ (`6a636d4d-c7ef-4841-8bb6-3d132cb6e465`, $153.55) — accepted.
+  - Đặt stop-loss mới: stop_market GTC @ **$175.29** (-5% từ đỉnh $184.52, khung tech). Order id `6a69356b-2930-4322-9356-a9063e8a789d`, state `queued` (thị trường đã đóng cửa, sẽ active khi mở cửa lại).
+- **Slot tech #1 (thay AVGO/GOOGL):** Hogan chọn **TXN** (Texas Instruments) trong 2 lựa chọn TXN/QCOM đã đề xuất sáng nay.
+  - Mua 1cp TXN, market order — do thị trường đã đóng cửa, đặt theo `regular_hours` (Hogan chọn queue chờ mở cửa thay vì khớp ngay ngoài giờ). Order id `6a693599-c56c-4cd9-b7a4-419a97163561`, state `queued`, sẽ khớp lúc mở cửa chính thức ~9:30 ET ngày mai (2026-07-29). Chưa có giá khớp thật — cần đặt stop-loss (-5%, khung tech) ở lần check đầu tiên ngày mai sau khi xác nhận filled.
+- **3 mục còn lại — Hogan chọn "để sau", CHƯA quyết định:**
+  1. Slot tech #2 (thay NVDA/UBER): AMZN vs CSCO.
+  2. Slot rủi ro cao #1 (thay AEHR/OKLO): SIDU vs ASTS.
+  3. Slot rủi ro cao #2 (thay RKLB/ACHR): **chưa có đề xuất nghiên cứu** — đây là slot mới phát sinh từ sự kiện bán nhầm ACHR sáng nay (ACHR từng là quyết định thay thế RKLB đã duyệt 07-27, không phải chỉ là 1 trong 2 lựa chọn đang chờ), cần nghiên cứu 2 lựa chọn mới ở lần check tiếp theo trước khi trình Hogan.
+- **Core-10 sau các lệnh trên (chờ TXN khớp):** RSP, VOO, JNJ, AAPL, PG, CRM, TXN (chờ fill) = 7/10 dự kiến — còn thiếu 1 tech + 2 rủi ro cao.
