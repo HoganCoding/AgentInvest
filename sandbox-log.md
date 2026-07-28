@@ -802,3 +802,81 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 
 - Phát hiện phiên tương tác này (chat) và phiên cloud routine tự động đã phân kỳ lịch sử git (40 commit khác nhau kể từ `53e2e8d`). Đối chiếu nội dung: các entry 07-15 → 07-20 phía routine (vừa merge ở trên) là bản ghi gốc real-time đầy đủ; phần entry cùng giai đoạn phía phiên chat (bản tóm tắt "đồng bộ log" + entry ghi bù giao dịch IREN) chỉ là bản dựng lại **sau đó** từ dữ liệu lệnh, kém chi tiết hơn và trùng lặp — đã loại bỏ khi merge, giữ lại bản gốc của routine phía trên.
 - Giao dịch IREN (mua 15cp @ $38.7499, stop-loss @ $35.65, 2026-07-20 14:13 UTC) đã có log gốc đầy đủ từ routine (entry `2026-07-20 ~10:13 ET`) — không cần ghi bù, thắc mắc trước đó về "giao dịch chưa log" đã được giải đáp.
+
+## 2026-07-21 ~10:24 ET (14:24 UTC) — Check định kỳ (có vị thế IREN, không có hành động)
+
+- Vị thế sandbox: IREN 15cp, giá vốn $38.75, giá hiện tại $41.385 (+6.81% P&L, +2.95% trong ngày). Stop-loss GTC @ $35.65 vẫn active, chưa chạm.
+- HUT vẫn cấm mua lại tới ~2026-08-15, WULF vẫn cấm mua lại tới ~2026-08-06 (wash-sale) — không đổi.
+- get_equity_orders từ 07-20 15:05 UTC tới nay: rỗng — không có lệnh sandbox mới.
+- "Phần theo dõi" sandbox: buying_power ($562.88) + giá trị IREN ($620.775) − $700 đệm = **~$483.66** — thấp hơn mốc gốc $700, nhưng do pool cash dùng chung vừa bị core-10 rút ~$1,336 để mua AEHR/NVDA/RKLB hôm 07-20 (không phải sandbox lỗ thật — bản thân IREN đang lời +6.8%). Không áp dụng circuit breaker dừng hẳn vì đây là hiện tượng pool chung đã ghi chú trước, không phải sandbox mất giá trị.
+- Không có circuit breaker chốt lời (chưa x2) hay dừng hẳn nào kích hoạt thật. Không gửi PushNotification (không có hành động/thay đổi thật cho sandbox).
+
+## 2026-07-21 ~10:56 ET (14:56 UTC) — Trailing stop-loss IREN (theo quy tắc mới)
+
+- Áp dụng quy tắc trailing stop-loss mới cho IREN: đỉnh giá thực tế kể từ lúc mua (07-20 14:13 UTC) là $42.2898 (07-21 hôm nay, 14:30 UTC) — cao hơn nhiều so với giá mua $38.75.
+- Hủy stop-loss cũ ($35.65, dựa trên giá vốn -8%), đặt lại stop-loss mới **$38.91** (-8% từ đỉnh $42.2898). Order id `6a5f88a0-3628-4139-9c73-91bb37e288e6`, state confirmed.
+- Giá hiện tại ~$41.86, buffer ~7.0% tới stop mới — vẫn thoải mái, không gần chạm.
+- Vị thế IREN (15cp, vốn $38.75) hiện lãi tạm tính +8.0% tại giá hiện tại, được bảo vệ tốt hơn nhiều so với mức bảo vệ cũ.
+
+## 2026-07-21 ~13:54 ET (17:54 UTC) — Check định kỳ (không có hành động)
+
+- IREN 15cp, giá hiện tại $41.855 (+8.02% P&L). Stop-loss trailing $38.91 vẫn active, buffer ~7.6%, chưa gần chạm.
+- Không có lệnh sandbox mới nào khớp từ lần check trước.
+
+## 2026-07-21 ~15:36 ET (19:36 UTC) — Check định kỳ (không có hành động)
+
+- IREN 15cp, giá hiện tại $40.94 (+5.65% P&L, lùi nhẹ từ $41.855 lúc check trước). Stop-loss trailing $38.91 vẫn active, buffer ~5.2%.
+- Không có lệnh sandbox mới.
+
+## 2026-07-22 ~17:05 ET (21:05 UTC) — Check định kỳ (không có hành động)
+
+- IREN 15cp, giá đóng cửa hiện tại $41.28 (+6.53% P&L, nhích nhẹ từ $40.94 lúc check trước). Stop-loss trailing $38.91 vẫn active, buffer ~5.7%. Không có lệnh sandbox mới nào khớp.
+- Tài khoản: buying_power $846.98 (tăng do proceeds bán AMZN của phần core-10 vừa settle — pool dùng chung, không phải sandbox lời thêm).
+- "Phần theo dõi" sandbox: buying_power ($846.98) + giá trị IREN (15×$41.28=$619.20) − $700 đệm = **~$766.18** (~109.5% mốc gốc $700) — chưa đạt ngưỡng chốt lời x2 ($1400), không gần $0. Không có circuit breaker nào kích hoạt.
+- Không gửi PushNotification riêng cho sandbox (không có hành động/thay đổi thật) — chỉ ghi log.
+
+## 2026-07-23 ~16:56 ET (20:56 UTC) — Check định kỳ (không có hành động)
+
+- IREN 15cp, giá hiện tại $40.59 (+4.75% P&L, lùi nhẹ từ $41.28 hôm qua). Stop-loss trailing $38.91 vẫn active, buffer ~4.1%, chưa gần chạm. Không có lệnh sandbox mới.
+- "Phần theo dõi" sandbox: buying_power ($945.68) + giá trị IREN (15×$40.59=$608.85) − $700 đệm = **~$854.53** (~122% mốc gốc $700) — lưu ý buying_power hôm nay tăng chủ yếu do proceeds bán KO/MSFT/AEHR bên core-10 vừa settle (pool dùng chung), không phải lời thêm của sandbox. Chưa đạt ngưỡng chốt lời x2 ($1400), không gần $0. Không có circuit breaker nào kích hoạt.
+- Không gửi PushNotification riêng cho sandbox (không có hành động/thay đổi thật) — chỉ ghi log.
+
+## 2026-07-24 ~9:36 ET (13:36 UTC) — Stop-loss IREN kích hoạt (đóng vị thế, lãi nhẹ)
+
+- **Stop-loss trailing đã filled:** lệnh `6a5f88a0-3628-4139-9c73-91bb37e288e6` khớp lúc 13:36:31 UTC — bán hết 15cp IREN @ giá TB **$38.91**, đúng mức stop trailing đã đặt 07-21 (-8% từ đỉnh $42.2898). Giá vốn $38.7499 → **lãi thực hiện +0.42%** (~$2.38, sau phí $0.02) — đây là GAIN nên không dính wash-sale, có thể mua lại IREN bất cứ lúc nào nếu có catalyst mới.
+- Bối cảnh: IREN giảm -4.25% so với đóng cửa hôm qua lúc phát hiện (giá hiện tại ~$38.86 vs close $40.58) — vượt ngưỡng 3-5% nhưng lệnh stop đã tự động khớp trước khi cần đánh giá thêm; đây là kỷ luật cắt lỗ/bảo toàn lợi nhuận tự động, không phải quyết định mới.
+- **Sandbox hiện tại: 100% cash, không có vị thế nào.** Vốn sandbox thực (tách riêng khỏi pool chung, theo dõi qua dòng tiền của chính giao dịch IREN): $581.25 (mua) → $583.63 (bán) — tăng nhẹ, không kích hoạt ngưỡng chốt lời x2 ($1400) hay dừng hẳn (gần $0).
+- **Lưu ý về "phần theo dõi" theo buying_power thô lúc này:** buying_power đo được ngay sau sự kiện là $624.90 — con số này bị nhiễu nặng do cùng lúc core-10 vừa đặt mua CRM ($485)+HIMS ($452) từ pool chung ngay sau khi IREN settle, KHÔNG phản ánh sandbox mất giá trị. Dùng công thức thô (buying_power − $700 đệm) sẽ ra số âm/gây hiểu nhầm kích hoạt circuit breaker — bỏ qua, dùng dòng tiền thực của giao dịch sandbox ở trên làm chuẩn thay thế lần này.
+- **Chưa vào lệnh mới.** Sẽ tìm cơ hội entry mới (nhóm rủi ro cao/biến động, không trùng mã vừa thoát trong 30 ngày nếu là loss — IREN là gain nên không bị cấm) ở lần check tiếp theo.
+- **Gửi PushNotification** vì đây là thay đổi thật (stop-loss kích hoạt, đóng vị thế).
+
+## 2026-07-24 ~9:58 ET (13:58 UTC) — Sàng lọc cơ hội entry mới, quyết định ĐỨNG NGOÀI
+
+- **Bối cảnh vĩ mô quan trọng:** hôm qua (07-23) nhóm Magnificent 7 mất **$797 tỷ vốn hóa** (phiên tệ nhất kể từ tháng 4/2025, -4.8%), do lo ngại "bong bóng chi tiêu AI" — Alphabet nâng dự báo capex lên $205B, Tesla lợi nhuận kém kỳ vọng + Musk cảnh báo 2026 là "năm capex khổng lồ". Nasdaq 100 -1.9%, S&P 500 -1.2%. Nguồn: [Bloomberg](https://www.bloomberg.com/news/articles/2026-07-23/magnificent-7-loses-767-billion-as-ai-skeptics-dump-tech-stocks).
+- **Nhóm bitcoin-miner/AI-infra pivot (IREN, CIFR, HUT, WULF) — nhóm quen thuộc nhất của sandbox — đồng loạt giảm mạnh sáng nay do lây từ lo ngại AI-capex trên, KHÔNG phải tin xấu riêng công ty nào:** so với đóng cửa hôm qua — CIFR -5.43% ($25.82→$24.42), HUT -4.35% ($117.67→$112.55), WULF -4.19% ($20.05→$19.21), IREN -6.36% ($40.58→$38.00, tiếp tục giảm sau khi stop-loss của mình khớp @$38.91 sáng nay). Có nguồn còn ghi nhận có lúc miner stocks giảm tới ~20% trong đợt bán tháo này.
+- **Đánh giá:** đuổi theo mua lại đúng nhóm vừa bị stop-loss, ngay trong ngày thị trường risk-off diện rộng vì lo ngại định giá AI, là rủi ro bắt dao rơi — không phải "catalyst xác nhận" theo tiêu chí đã dùng thành công trước đây (hợp đồng/doanh thu cụ thể). HUT và WULF còn đang trong cửa sổ cấm mua lại do wash-sale (tới ~08-15 và ~08-06). CIFR và IREN không bị cấm nhưng không có lý do để nghĩ đợt giảm hôm nay sẽ đảo chiều nhanh hơn phần còn lại của nhóm AI-trade đang bị nghi ngờ.
+- **Đã xem xét AMKR** (semiconductor packaging, +17% after-hours 07-23 nhờ thỏa thuận $1.5B với Nvidia mở rộng đóng gói chip AI) — catalyst công ty cụ thể, thật, xác nhận qua nhiều nguồn (Bloomberg, IR chính thức Amkor). Tuy nhiên: (a) quote hiện tại ($65.33) trùng khớp previous_close, chưa xác nhận được mức tăng thực tế đã phản ánh vào giá phiên chính hôm nay hay chưa; (b) đây là công ty vốn hóa ~$25B, đã có lãi, không thuộc profile "small/mid-cap tăng trưởng >30%/năm chưa lợi nhuận" hay "biến động cao mới được quỹ mạo hiểm chú ý" theo tiêu chí nhóm rủi ro cao trong CLAUDE.md — phù hợp hơn với nhóm large-cap tech (core-10) nếu có, không phải sandbox.
+- **Quyết định: KHÔNG mở vị thế mới hôm nay.** Giữ nguyên 100% cash sandbox (~$583.63 theo dòng tiền thực từ IREN). Sẽ tiếp tục theo dõi nhóm bitcoin-miner/AI-infra xem có ổn định/hồi phục với volume xác nhận không, và theo dõi diễn biến rộng hơn của "AI-capex selloff" trước khi cân nhắc entry mới — không ép giao dịch khi không có catalyst đủ mạnh/độc lập với rủi ro vĩ mô đang lan rộng.
+- Không gửi PushNotification (không có hành động/thay đổi thật) — chỉ ghi log.
+
+## 2026-07-27 ~14:08 ET (18:08-18:25 UTC) — Đính chính vốn sandbox thực + MUA AXTI/ONDS (chia 2 mã)
+
+- **Đính chính quan trọng:** con số "~$583.63" dùng ở các entry trước (07-24) chỉ là tiền thu về từ RIÊNG lệnh bán IREN, KHÔNG phải tổng vốn sandbox — đã gây hiểu nhầm cho Hogan là sandbox "lỗ hết". Truy lại `get_pnl_trade_history` (span=all) để tính đúng: 3 lệnh sandbox đã đóng — WULF (-$38.25, 07-07), HUT (-$40.42, 07-16), IREN (+$2.40, 07-24) → **tổng lỗ ròng -$76.27**. Vốn Đầu Tư = $700 gốc − $76.27 = **~$623.73** (không phải $583.63). Đệm vẫn nguyên $700, chưa từng bị rút (rà toàn bộ log, không có lần nào dùng tới 30% đệm). Tổng 2 phần: ~$1,323.73 (so với gốc $1,400).
+- Nhân tiện đối chiếu core-10 riêng: realized P&L core-10 (tách khỏi 3 lệnh sandbox trên trong cùng `get_pnl_trade_history`) = **-$210.70** (14 lệnh, 3 thắng/11 thua); unrealized trên 10 vị thế hiện tại = **+$91.55**; tổng core-10 ~-$119.15. Chi tiết xem `trading-log.md` nếu cần.
+- **Quyết định chia vốn 2 mã thay vì dồn hết 1 mã** (theo yêu cầu Hogan, giảm rủi ro tập trung 1 cổ phiếu biến động mạnh):
+  - **AXTI** (AXT Inc — chất bán dẫn substrate AI-datacenter): doanh thu ~$88.3M/năm, chưa lợi nhuận (EBIT margin -13%), hợp đồng wafer indium phosphide $25.4M với Nanjing Casela (2027, 80% take-or-pay), Northland nâng target $90→$125 (Outperform). +247% từ đầu năm nhưng hôm nay ổn định (~-0.35% so đóng cửa 07-24, đã dip-hồi phục trong phiên).
+  - **ONDS** (Ondas Holdings — quốc phòng/chống drone): vốn hóa $4.35B, doanh thu Q1 2026 +793% YoY, operating margin vẫn -93.9% (chưa lợi nhuận thật). Hợp đồng chống UAV $6.9M với Bộ Quốc phòng Úc (20/7), mua DZYNE Technologies ($875.8M), hợp tác Lockheed Martin (Sanctum platform), >$150M đơn hàng quốc phòng Q2-to-date. Consensus PT $19.81 (+190%), Needham Buy. Giảm 57% từ đỉnh 2026, hôm nay ổn định (~-1.15%).
+  - Cả hai không dính wash-sale, đa dạng hóa tốt (bán dẫn AI-datacenter vs quốc phòng/drone, khác hẳn nhóm bitcoin-miner đã đứng ngoài sáng nay). SPY/QQQ hôm nay -0.15%/-0.62% — không vi phạm bộ lọc benchmark giảm mạnh.
+- **Lệnh mua AXTI:** market 6cp, khớp @ giá vốn TB **$47.00**, tổng $282.00. Order id `6a67a290-e03e-4bcb-be8a-f12ed4ea33d1`.
+  - Stop-loss: stop_market GTC @ **$41.36** (-12%, khung rủi ro cao). Order id `6a67a299-d8af-495a-ad89-19350d68ba0c`.
+- **Lệnh mua ONDS:** market 40cp, khớp @ giá vốn TB **$7.7277**, tổng $309.11. Order id `6a67a291-49ae-402c-9dad-0a8fadac772a`.
+  - Stop-loss: stop_market GTC @ **$6.80** (-12%, khung rủi ro cao). Order id `6a67a29a-5490-4a75-b78e-6cbba016a4e9`.
+- **Sandbox sau lệnh:** 2 vị thế mới (AXTI, ONDS), tổng ~$591.11 đã dùng trong ~$623.73 vốn Đầu Tư, còn ~$32.62 tiền mặt dự phòng.
+- **Đã gửi PushNotification** (thay đổi thật — mở 2 vị thế mới + đặt stop-loss); có thể không gửi được nếu Hogan đang active trong phiên (tool tự báo not sent khi trùng lặp).
+
+## 2026-07-28 ~10:10 ET (14:10 UTC) — AXTI bị stop-loss, sandbox còn 1 vị thế (ONDS)
+
+- **AXTI — stop-loss quẹt lúc 9:36:14 ET (13:36:14 UTC) hôm nay:** bán hết 6cp @ $41.30 TB (lệnh đặt 07-27, -12% từ giá vốn theo khung rủi ro cao). Giá vốn $47.00 → lỗ thực hiện **-12.13%** (~$34.20). Thực thi tự động đúng kỷ luật trailing stop-loss. Wash-sale: không mua lại AXTI tới ~2026-08-27.
+- **ONDS** (còn lại): 40cp, giá vốn $7.7277, giá hiện tại $7.505 (-2.88% P&L, **-6.42% trong ngày** so đóng cửa hôm qua $8.02). Đã tra tin: chủ yếu do báo cáo Pentagon về thiếu hụt sản xuất drone (lo ngại execution risk của Ondas trước lượng đơn hàng tăng) + tâm lý risk-off chung nhóm growth/tech hôm nay (không phải sự kiện nghiêm trọng mới riêng công ty). Stop-loss trailing $6.80, buffer còn 9.39% — chưa gần chạm, không cần hành động.
+- **Vốn sandbox thực (dòng tiền riêng):** AXTI mua $282.00 → bán $247.80 (lỗ **-$34.20**); ONDS mua $309.11, giá trị hiện tại ~$300.20 (tạm lỗ chưa thực hiện -$8.91). Chưa chạm ngưỡng chốt lời x2 ($1400) hay dừng hẳn (gần $0).
+- **Đã gửi PushNotification** báo AXTI bị stop-loss.

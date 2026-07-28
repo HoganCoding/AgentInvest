@@ -39,9 +39,15 @@
 - **ETF (2 mã):** đa dạng hóa rộng (ví dụ theo chỉ số thị trường chung hoặc theo ngành).
 
 ## Quản trị rủi ro
-- Cắt lỗ (stop-loss): -5% đến -10% từ giá mua (mặc định -5% cho nhóm rủi ro cao/blue-chip, có thể nới đến -10% cho nhóm biến động mạnh nếu tôi xác nhận)
-- Chốt lời (take-profit): +10% đến +20% (tối thiểu tỷ lệ risk/reward 1:2 so với mức cắt lỗ)
-- Tỷ trọng tối đa 1 mã: 5-10% tổng danh mục Agentic account
+- **Cắt lỗ (stop-loss) — trailing theo đỉnh giá (cập nhật 2026-07-24):** tính theo % lùi từ **giá cao nhất đã đạt được kể từ khi mua** (không phải cố định từ giá mua ban đầu nữa) — mặc định -5% cho nhóm tech/blue-chip, **-12% cho nhóm rủi ro cao/biến động mạnh** (nới từ -8%/-10% cũ, xem lý do bên dưới). Stop-loss CHỈ được dời LÊN theo đỉnh giá mới, KHÔNG BAO GIỜ dời xuống. Cập nhật mỗi lần kiểm tra định kỳ nếu giá đã tạo đỉnh mới kể từ lần cập nhật gần nhất — với core-10 cần đề xuất/thực hiện qua phiên có quyền đặt lệnh như bình thường, với sandbox agent tự cập nhật theo quyền tự chủ đã có. Khi dời stop-loss, phải hủy lệnh stop-loss cũ trước rồi mới đặt lệnh mới (không thể sửa trực tiếp), lưu ý cổ phiếu có thể đang bị giữ bởi lệnh cũ (`shares_held_for_sells`) nên cần hủy trước khi bán/đổi.
+  - **Vì sao nới lên -12% (2026-07-24):** review `get_pnl_trade_history` cho thấy realized P&L tổng -$254.94 (15 lệnh đã đóng: 4 thắng/+$91.79, 11 thua/-$346.73 — win rate 26.7%, lỗ trung bình/lệnh > lãi trung bình/lệnh). Phần lớn lệnh thua đến từ nhóm rủi ro cao (IONQ, QBTS, RXRX, SOUN, SERV, HIMS, WULF, HUT) — các mã này dao động tự nhiên 5-10%+/ngày, nên stop -8% cũ gần như trùng biên độ nhiễu bình thường, bị quẹt trước khi biết xu hướng thật. Nới stop lên -12% để giảm tỷ lệ bị quẹt bởi nhiễu ngắn hạn.
+- **Tỷ trọng nhóm rủi ro cao: giảm xuống ~5% danh mục/mã (cập nhật 2026-07-24)** thay vì 7-10% như các nhóm khác — để giữ rủi ro tính bằng $ mỗi lệnh gần như không đổi so với trước khi nới stop (-8%×7.5% ≈ -12%×5% ≈ 0.6% danh mục/lệnh). Các nhóm còn lại (tech/blue-chip/ETF) vẫn theo tỷ trọng 5-10% như cũ.
+- **Chốt lời (take-profit) — cập nhật 2026-07-24, khác nhau theo nhóm:**
+  - **Nhóm rủi ro cao:** +15% lãi tích lũy từ giá vốn là ngưỡng BÁN MẶC ĐỊNH 50% vị thế (chốt lời chủ động một phần, không chỉ cảnh báo) — theo đúng cách đã hiệu quả với AEHR (2 đợt bán +23.1%/+14.47%, lệnh thắng đậm nhất trong lịch sử tài khoản). Phần còn lại (50%) tiếp tục chạy theo trailing stop-loss như bình thường. Core-10 vẫn cần tôi duyệt trước khi bán; sandbox agent tự quyết theo quyền tự chủ đã có.
+  - **Nhóm tech/blue-chip/ETF:** giữ nguyên như cũ — +15% đến +20% là ngưỡng CẢNH BÁO, không tự động bán, agent đề xuất cân nhắc chốt lời một phần/toàn bộ khi chạm ngưỡng.
+- **Bộ lọc trước khi vào lệnh mới — chỉ áp dụng nhóm rủi ro cao (mới, 2026-07-24):**
+  - Cần xác nhận giá đã ổn định/có volume xác nhận thật (ít nhất 1 phiên) trước khi mua — KHÔNG mua ngay giữa lúc chính mã đó hoặc cả nhóm ngành đang giảm mạnh trong phiên (tránh lặp lại tình huống QBTS mua giữa lúc nhóm quantum -8.7%/ngày).
+  - KHÔNG mở vị thế rủi ro cao mới vào ngày benchmark liên quan (SPY/QQQ hoặc ETF ngành tương ứng) đang giảm >1.5-2% trong phiên — tránh lặp lại tình huống HIMS (mua đúng lúc thị trường bắt đầu bán tháo vì lo AI-capex, bị quẹt trong chưa đầy 1 giờ).
 - Số tiền tối đa mỗi lệnh đề xuất: 1-10%
 - Tần suất kiểm tra/phân tích: 2-3 lần/ngày (ví dụ 9:45, 13h, 15:30 giờ ET Mỹ) — tránh overtrading
 - Loại cổ phiếu (nguyên/fractional): linh hoạt theo từng lệnh, không cố định một kiểu.
