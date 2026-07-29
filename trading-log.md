@@ -2121,3 +2121,28 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **4 ứng viên đã nghiên cứu:** NNE (Nano Nuclear Energy, microreactor, hợp đồng Air Force SBIR 21/07), OUST (Ouster, lidar, chứng nhận NVIDIA DRIVE Hyperion, vừa gọi vốn $200M), APLD (Applied Digital, AI data center, KQKD 27/07 beat mạnh +407% doanh thu YoY), IREN (Iris Energy, chuyển hướng AI cloud từ crypto mining, ARR guidance nâng lên $4B+, khách hàng Microsoft/NVIDIA).
 - **Phát hiện:** cả 4 mã đều giảm mạnh riêng lẻ hôm nay (NNE -4.05%, OUST -2.53%, RDW -4.49%, RGTI -4.17%, APLD -6.01%, IREN -6.19%) trong khi SPY (+0.08%), QQQ (+0.38%), IWM (+0.02%) đều đi ngang/tăng nhẹ — không phải bán tháo theo thị trường/nhóm ngành chung, có vẻ dòng tiền đang rút khỏi nhóm "story stock" đầu cơ nói chung hôm nay, chưa xác định rõ catalyst.
 - **Quyết định (Hogan chọn "để sau"):** hoãn chọn/mua bất kỳ mã nào cho slot này — đúng theo bộ lọc CLAUDE.md 2026-07-24 (không mua rủi ro cao khi chính mã đang giảm mạnh trong phiên). APLD được đánh giá là ứng viên chất lượng tốt nhất (KQKD thật, không phải hype) nếu giá ổn định lại ở lần kiểm tra sau. Core-10 tạm thời vẫn 9/10, thiếu 1 slot rủi ro cao.
+
+## 2026-07-29 ~15:32 ET (19:32 UTC) — Check-in định kỳ (routine read-only) — Fed giữ nguyên lãi suất, nhóm ngân hàng bán tháo (JPM); không có đề xuất mới
+
+- **Sync:** local main đã lỗi thời so với origin (37 commit riêng vs 51 commit riêng, phân kỳ do force-update trước đó) nhưng đối chiếu nội dung cho thấy toàn bộ 37 commit local (đến 07-23) đã có mặt tương đương/đầy đủ hơn trong lịch sử origin (tới 07-29) — không có thông tin riêng nào bị mất. Reset local về `origin/main` (`731514b`) để đồng bộ sạch, không cần merge thủ công.
+- **Xác nhận qua `get_equity_orders` (từ 18:53 UTC tới nay):** không có lệnh mới nào khớp. Core-10 vẫn 9/10: RSP, VOO, JNJ, AAPL, TXN, CRM, JPM, AMZN, ASTS — thiếu 1 slot rủi ro cao (thay ACHR, đang hoãn theo quyết định 14:53 ET).
+- **Tài khoản (Agentic ••••0133):** total_value $5,734.98, equity_value $3,904.26, cash $1,830.72, buying_power $1,395.15, pending_deposits $0.
+- P&L so với giá vốn (giá hiện tại ~19:32 UTC) và thay đổi trong ngày (so với đóng cửa 07-28):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **CRM** | $161.63 | $189.875 | **+17.47%** | +4.61% |
+  | AAPL | $307.90 | $341.335 | +10.86% | +0.37% |
+  | JNJ | $260.69 | $265.40 | +1.81% | -0.50% |
+  | RSP | $214.93 | $216.54 | +0.75% | -0.53% |
+  | TXN | $278.95 | $277.65 | -0.47% | +0.21% |
+  | JPM | $347.97 | $345.81 | -0.62% | **-3.22%** |
+  | AMZN | $231.73 | $229.565 | -0.93% | -0.56% |
+  | ASTS | $55.47 | $54.795 | -1.22% | **-3.10%** |
+  | VOO | $688.26 | $675.70 | -1.83% | -0.77% |
+
+- **Bối cảnh vĩ mô (WebSearch):** Fed giữ nguyên lãi suất hôm nay nhưng có 3 thành viên (Hammack, Kashkari, Logan) bất đồng muốn TĂNG lãi suất — thị trường phản ứng tiêu cực bất ngờ, Dow -1.7%, S&P -0.7%, Nasdaq -0.6%. **Nhóm ngân hàng bị bán mạnh nhất** (thị trường kỳ vọng cắt lãi suất sớm hơn bị dội gáo nước lạnh — lãi suất cao hơn dự kiến bất lợi cho biên lợi nhuận cho vay của bank). Đây là lý do JPM giảm -3.22% hôm nay — **hoàn toàn do yếu tố vĩ mô/ngành (sector-wide), không phải tin tiêu cực riêng của JPM** (JPM vẫn đang có tin tích cực: tăng cổ tức 10%, chương trình mua lại cổ phiếu mới $50B, KQKD Q2 mạnh +14.8% doanh thu, Citi vừa nâng target lên $360 hôm 07-20). JPM cách stop-loss ($330.57) còn ~4.4%, chưa breach.
+- **ASTS -3.10%** hôm nay tiếp tục xu hướng giảm đã biết từ đợt phát hành trái phiếu chuyển đổi $1B giữa tháng 7 (lo ngại dilution) + tâm lý risk-off chung của thị trường hôm nay — không có tin tiêu cực mới phát sinh riêng cho ASTS trong 24h qua. Cách stop-loss (-12% từ đỉnh mua $55.47 → $48.81) còn ~10.9%, chưa breach. KQKD tiếp theo 2026-08-10, cần theo dõi.
+- **CRM** tạo đỉnh mới trong phiên hôm nay ($190.18 lúc 18:50 UTC), nhỉnh hơn đỉnh hôm qua dùng để đặt stop ($189.37 → stop $179.90 đã đặt 14:53 ET). Mức trail mới về lý thuyết ≈ $180.67 (-5% từ $190.18) — chênh lệch rất nhỏ (~$0.77, đã được Hogan xử lý sáng nay), không phải thông tin mới đáng kể, để dành cho phiên có quyền đặt lệnh tiếp theo gộp chung, không cần đề xuất riêng lẻ.
+- Không có mã nào breach ngưỡng cắt lỗ/chốt lời mới, không có tin tiêu cực nghiêm trọng riêng lẻ nào (litigation/gian lận/mất CEO/hạ bậc tín nhiệm) cho bất kỳ mã nào. Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~3 ngày).
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — biến động JPM/ASTS đều giải thích được bằng yếu tố vĩ mô/ngành, không đạt ngưỡng CLAUDE.md để đề xuất hành động. Không gửi PushNotification.
