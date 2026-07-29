@@ -2102,3 +2102,15 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 **Đã gửi PushNotification** (đề xuất dời stop CRM + cân nhắc chốt lời một phần là thông tin mới cần Hogan biết).
 
 - Không mã nào khác chạm ngưỡng cắt lỗ/chốt lời mới. Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~3 ngày).
+
+## 2026-07-29 ~14:38 ET (18:38 UTC) — Hogan duyệt xử lý 4/5 việc đang chờ: bán PG→mua JPM, mua AMZN (slot tech #2), mua ASTS (slot rủi ro cao #1), dời stop CRM
+
+- **Bối cảnh:** phiên tương tác này trình bày 5 việc đang chờ (từ check-in 9:50/13:11 ET), Hogan chọn cụ thể cho từng việc qua AskUserQuestion — coi đây là preview/duyệt hợp lệ theo CLAUDE.md, tiến hành đặt lệnh thật ngay trong phiên.
+- **Bán PG (toàn bộ 3cp):** hủy stop-loss cũ (`6a636d2e...` $139.09) trước, sau đó bán market — khớp lúc 18:38:31 UTC @ **$145.19/cp**, lỗ thực hiện nhẹ **-0.83%** (~-$3.66) so với vốn $146.41. Đúng theo kỷ luật cắt lỗ trailing -5% blue-chip đã phá vỡ sáng nay (xem entry 9:50 ET). **Wash-sale: cấm mua lại PG tới ~2026-08-28.**
+- **Mua JPM (slot blue-chip thay PG):** 1cp market, khớp @ **$347.9724**. Đặt stop-loss GTC -5% @ **$330.57** (order `6a6a48c0...`).
+- **Mua AMZN (slot tech #2 thay NVDA/UBER):** 2cp market, khớp @ **$231.73** (~$463.46, ~8.0% danh mục). Đặt stop-loss GTC -5% @ **$220.14** (order `6a6a48c1...`).
+- **Mua ASTS (slot rủi ro cao #1 thay AEHR/OKLO):** 5cp market, khớp @ **$55.4671** (~$277.34, ~4.8% danh mục — đúng tỷ trọng ~5% quy định 2026-07-24 cho nhóm rủi ro cao). Đặt stop-loss GTC **-12%** (khung rủi ro cao) @ **$48.81** (order `6a6a48c2...`).
+- **CRM — dời trailing stop-loss:** hủy lệnh cũ (`6a69356b...` $175.29), đặt lệnh mới GTC -5% (khung tech) từ đỉnh phiên $189.37 → **$179.90** (order `6a6a48a9...`, confirmed). Hogan chọn chỉ dời stop, không chốt lời một phần.
+- **Khoảng trống vận hành xử lý luôn:** TXN chưa từng có stop-loss kể từ khi mua 07-29 — đặt bổ sung GTC -5% (khung tech) từ giá vốn $278.95 → **$265.00** (order `6a6a48c3...`), lấp khoảng trống đã ghi nhận nhiều lần ở các log trước.
+- **Core-10 sau các lệnh trên (9/10):** RSP, VOO, JNJ, AAPL, TXN, CRM, JPM, AMZN, ASTS — còn thiếu **1 slot rủi ro cao #2** (thay ACHR, bị bán nhầm bởi lỗi sandbox 07-28) — **CHƯA có đề xuất nghiên cứu**, cần thực hiện ở lần check tiếp theo trước khi trình Hogan.
+- **Không cần gửi PushNotification thêm** — đây là hành động trong cùng phiên tương tác trực tiếp với Hogan, ông đã trực tiếp xác nhận từng lựa chọn.
