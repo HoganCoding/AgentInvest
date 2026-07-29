@@ -1357,3 +1357,12 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - `get_portfolio`: cash $2,483.92, buying_power **$2,483.92** — tăng nhẹ so với lần check 09:17 ET ($2,468.36). Không có vị thế sandbox nào đang mở nên không cần tính "phần theo dõi"/circuit breaker.
 - **Thị trường (SPY/QQQ, tham khảo, không kích hoạt ngưỡng cần tìm tin tức sâu):** SPY $735.96 (-0.66% so với đóng cửa 07-28), QQQ $669.90 (-0.83%) — giảm nhẹ, dưới ngưỡng -1.5/-2% cấm mở vị thế rủi ro cao mới (CLAUDE.md 2026-07-24), nhưng **Fed vẫn chưa công bố quyết định lãi suất** (dự kiến chiều nay, thường ~14:00 ET) — điều kiện hoãn tái triển khai từ lần check trước (09:17 ET) vẫn còn nguyên, chưa có cơ sở mới để đổi quyết định.
 - **Quyết định: KHÔNG vào lệnh sandbox mới, tiếp tục giữ 100% cash.** Không có thay đổi thật nào so với lần check trước (vẫn cùng lý do chờ Fed + xác nhận ổn định nhóm risk-on) → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-07-29 ~11:13 ET (15:13 UTC) — Kiểm tra định kỳ: sandbox vẫn 100% cash, chưa tới giờ quyết định Fed, tiếp tục hoãn tái triển khai
+
+- **Sync đầu phiên:** `git pull` — local đã khớp `origin/main` (`c122df6`). Không có xung đột.
+- `get_equity_positions` (704170133): **sandbox vẫn không có vị thế nào** — 100% cash. Toàn bộ 7 vị thế trên tài khoản đều là core-10: RSP, VOO, JNJ, AAPL, PG (đang chờ Hogan duyệt bán do phá stop-loss sáng nay — xem `trading-log.md`), CRM, TXN — không có mã lạ nào cần đối chiếu wash-sale/cross-attribution lần này.
+- `get_equity_orders` (từ 14:12 UTC tới nay, ~1h): **rỗng** — không có lệnh mới nào trên toàn tài khoản.
+- `get_portfolio`: cash $2,483.92, buying_power **$2,483.92** — không đổi so với lần check trước (10:12 ET). Không có vị thế sandbox nào đang mở nên không cần tính "phần theo dõi"/circuit breaker.
+- **Thị trường (SPY/QQQ, tham khảo):** SPY $734.94 (-0.80% so với đóng cửa 07-28), QQQ $667.84 (-1.14%) — giảm thêm nhẹ so với lần check trước (-0.66%/-0.83%), nhưng vẫn dưới ngưỡng -1.5/-2% cấm mở vị thế rủi ro cao mới. Mức thay đổi không đủ lớn (< 3-5%) để cần tìm tin tức sâu thêm. **Fed vẫn chưa công bố quyết định lãi suất** (dự kiến ~14:00 ET / 18:00 ET, còn ~3 tiếng nữa) — điều kiện hoãn tái triển khai vẫn còn nguyên.
+- **Quyết định: KHÔNG vào lệnh sandbox mới, tiếp tục giữ 100% cash.** Không có thay đổi thật nào so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
