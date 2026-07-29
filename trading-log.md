@@ -2022,3 +2022,47 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
   2. Slot rủi ro cao #1 (thay AEHR/OKLO): SIDU vs ASTS.
   3. Slot rủi ro cao #2 (thay RKLB/ACHR): **chưa có đề xuất nghiên cứu** — đây là slot mới phát sinh từ sự kiện bán nhầm ACHR sáng nay (ACHR từng là quyết định thay thế RKLB đã duyệt 07-27, không phải chỉ là 1 trong 2 lựa chọn đang chờ), cần nghiên cứu 2 lựa chọn mới ở lần check tiếp theo trước khi trình Hogan.
 - **Core-10 sau các lệnh trên (chờ TXN khớp):** RSP, VOO, JNJ, AAPL, PG, CRM, TXN (chờ fill) = 7/10 dự kiến — còn thiếu 1 tech + 2 rủi ro cao.
+
+## 2026-07-29 ~9:50 ET (13:50 UTC) — Check-in định kỳ (routine read-only) — PG phá ngưỡng trailing stop-loss sau báo cáo Q4 yếu → ĐỀ XUẤT MỚI: bán PG + thay slot blue-chip
+
+- **Sync:** `git fetch`/kiểm tra origin/main trước khi đọc — local đã khớp origin (`9442682`, gồm commit sandbox 07-29 09:17 ET). Không có xung đột.
+- **Xác nhận qua `get_equity_orders`:** TXN đã khớp lệnh mua lúc mở cửa (13:30:01 UTC) @ **$278.95/cp** (1 cp) — đúng như kế hoạch từ tối qua. **CRM stop-loss mới ($175.29, trailed từ đỉnh $184.52) đã chuyển sang `confirmed`.** Core-10 hiện đủ 7/10: RSP, VOO, JNJ, AAPL, PG, CRM, TXN — vẫn thiếu 1 slot tech (AMZN vs CSCO đang chờ) + 2 slot rủi ro cao (SIDU vs ASTS đang chờ; slot #2 thay ACHR chưa có đề xuất nghiên cứu).
+- **⚠️ Lưu ý vận hành: TXN vừa khớp lệnh CHƯA có stop-loss thật trên sàn** — cần phiên có quyền đặt lệnh đặt stop_market -5% (khung tech) ở lần kiểm tra tiếp theo có quyền ghi.
+- **Tài khoản (Agentic ••••0133):** total_value $5,747.10, equity_value $3,263.18, cash $2,483.92, buying_power $2,483.92, pending_deposits $0.
+- P&L so với giá vốn (giá hiện tại ~13:50 UTC) và thay đổi trong ngày (so với đóng cửa 07-28):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | CRM | $161.63 | $183.84 | +13.75% | +1.29% |
+  | AAPL | $307.90 | $342.715 | +11.31% | +0.78% |
+  | JNJ | $260.69 | $267.16 | +2.48% | +0.16% |
+  | TXN | $278.95 | $278.94 | 0.00% | +0.67% (vừa khớp sáng nay) |
+  | RSP | $214.93 | $217.615 | +1.25% | -0.03% |
+  | VOO | $688.26 | $679.82 | -1.23% | -0.17% |
+  | **PG** | $146.41 | $144.58 | **-1.25%** | **-2.89%** |
+
+- SPX 7,414.05 (-0.35% so với 07-28) / NDX 27,687.06 (-0.66%) — thị trường chung giảm nhẹ, PG giảm mạnh hơn nhiều lần beta thị trường → biến động đặc thù công ty (idiosyncratic), không phải theo dòng chung.
+
+### 🔴 PG: phá ngưỡng trailing stop-loss (-5% từ đỉnh) sau báo cáo Q4 FY26 yếu
+
+- **Tin tức (sáng nay, 07-29):** P&G báo cáo Q4/FY26 — EPS điều chỉnh $1.43 (nhỉnh hơn ước tính $1.41) nhưng **doanh thu $21.2B thấp hơn ước tính $21.38B**, organic sales đi ngang (0% tăng trưởng), CEO Jejurikar chuyển sang ghế chủ tịch HĐQT từ 01/08. Thị trường phản ứng tiêu cực do lo ngại nhu cầu tiêu dùng yếu — cổ phiếu giảm hơn 3% ngay khi mở cửa. Nguồn: [CNBC](https://www.cnbc.com/2026/07/29/procter-gamble-pg-q4-2026-earnings.html), [Quartz](https://qz.com/procter-gamble-earnings-sales-miss-weak-demand-072926).
+- **Kỹ thuật:** đỉnh giá kể từ khi mua (07-24, giá vốn $146.41) đạt **$153.68** (pre-market 07-28). Ngưỡng trailing stop-loss blue-chip (-5% từ đỉnh) = **$146.00**. Giá hiện tại $144.58 (đáy trong phiên sáng nay chạm $143.00) → đã giảm **-5.92% đến -6.94% từ đỉnh**, **phá ngưỡng -5%**.
+- **Khoảng trống vận hành phát hiện được:** lệnh stop-loss thật trên sàn (GTC stop_market, order `6a636d2e-...`) vẫn đang đặt ở **$139.09** — đúng bằng -5% từ giá vốn gốc $146.41, **CHƯA từng được dời lên** dù giá đã tạo đỉnh mới nhiều lần từ 07-24 đến 07-28 (lên tới $153.68). Đây là lỗi quy trình của các phiên trước (không phải phiên này, chỉ read-only) — đã để lọt một đợt giảm mà lẽ ra kỷ luật trailing-stop phải chặn lại sớm hơn nhiều so với mức lỗ hiện tại.
+- **Đề xuất:**
+  1. **Bán PG — 3 cổ phiếu (toàn bộ vị thế) — market order.** Lý do: ngưỡng cắt lỗ trailing -5% (blue-chip) đã bị phá vỡ theo đúng kỷ luật CLAUDE.md, đồng thời có tin xấu thật (doanh thu miss, organic sales đi ngang, lo ngại nhu cầu tiêu dùng) củng cố tín hiệu kỹ thuật — không phải phản ứng thái quá với nhiễu ngắn hạn. Đây là hành động cắt lỗ theo kỷ luật đã đặt ra, không tính là giao dịch "chốt sổ" không cần thiết theo quy tắc hạn chế thuế.
+     - Rủi ro chính: lỗ thực hiện nhẹ so với giá vốn (~-1.25%, ~-$5.48) nhưng đã mất phần lớn lợi nhuận tạm tính từng có (+4.9% so với giá vốn hôm 07-28 15:31 ET); rủi ro ngược lại là bỏ lỡ nếu giá hồi phục nhanh sau phản ứng thái quá của thị trường với tin miss doanh thu nhẹ.
+     - Mức cắt lỗ/chốt lời: N/A — đây chính là hành động cắt lỗ.
+     - **Lưu ý wash-sale:** bán PG lúc này (dù lỗ nhẹ) sẽ mở khóa cấm mua lại PG tới **~2026-08-28** (30 ngày).
+  2. **Thay slot blue-chip — cần Hogan chọn 1 trong 2:**
+
+     **Lựa chọn A: JPM (JPMorgan Chase)** — giá ~$353.83 (mua 1 cổ phiếu ≈ $354, ~6.2% danh mục, nguyên cổ phiếu). Ngân hàng lớn nhất Mỹ, PE 14.7 (rẻ), dividend yield 1.72%, gần đỉnh 52 tuần ($359.30, 07-28), PB 2.58. Đa dạng hóa sang nhóm tài chính — khác hẳn JNJ (healthcare) và nhóm hàng tiêu dùng thiết yếu (KO/PG) vừa liên tiếp bị stop-loss. Từng được đề xuất 07-23 (Hogan chọn PG thay) — nay PG đã ra khỏi danh mục nên không trùng lặp.
+     - Rủi ro chính: nhạy cảm chu kỳ lãi suất/tín dụng tiêu dùng; dividend yield thấp hơn nhóm tiêu dùng thiết yếu.
+     - Cắt lỗ đề xuất: -5% (trailing). Chốt lời: cảnh báo ở +15-20%.
+
+     **Lựa chọn B: PEP (PepsiCo)** — giá ~$144.53 (mua 3 cổ phiếu ≈ $434, ~7.6% danh mục, nguyên cổ phiếu). Dividend Aristocrat, dividend yield cao 4.12%, PE 18.3. Vừa tạo đáy 52 tuần ($133.73, 07-23) và đang hồi phục (+1.17% hôm nay dù PG giảm mạnh — phản ứng thị trường khác nhau dù cùng ngành hàng tiêu dùng), có thể là cơ hội định giá hấp dẫn sau điều chỉnh sâu.
+     - Rủi ro chính: cùng nhóm hàng tiêu dùng thiết yếu như PG/KO vừa liên tiếp bị stop-loss — rủi ro tương quan với chủ đề "nhu cầu tiêu dùng yếu" vừa đánh PG hôm nay; đã ở gần đáy 52 tuần nên cần xác nhận xu hướng đảo chiều thật trước khi tin tưởng hoàn toàn.
+     - Cắt lỗ đề xuất: -5% (trailing). Chốt lời: cảnh báo ở +15-20%.
+
+  **Chờ Hogan duyệt bán PG + chọn JPM, PEP, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
+
+- Không mã nào khác chạm ngưỡng cắt lỗ/chốt lời mới. Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~3 ngày).
