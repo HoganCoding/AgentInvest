@@ -2065,4 +2065,40 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 
   **Chờ Hogan duyệt bán PG + chọn JPM, PEP, hoặc chỉ định mã khác trước khi đặt lệnh** (phiên routine này read-only, không tự đặt lệnh dưới mọi hình thức). Đã gửi PushNotification.
 
+## 2026-07-29 ~13:11 ET (17:11 UTC) — Check-in định kỳ (routine read-only) — CRM vượt ngưỡng cảnh báo chốt lời (+15-20%) + cần dời trailing stop; TXN vẫn thiếu stop-loss bảo vệ
+
+- **Sync:** `git fetch`/fast-forward thành công (`15d1481` → `76d7350`, +125 commit từ phiên khác gồm cả CLAUDE.md/sandbox-log.md/trading-log.md cập nhật) — không xung đột.
+- **Xác nhận qua `get_equity_orders`:** không có lệnh mới nào khớp cho core-10 kể từ lần kiểm tra 9:50 ET sáng nay. Vị thế vẫn nguyên 7/10: RSP, VOO, JNJ, AAPL, PG, CRM, TXN. 4 vấn đề đang chờ Hogan quyết định, chưa có phản hồi: (1) slot tech #2 — AMZN vs CSCO; (2) slot rủi ro cao #1 — SIDU vs ASTS; (3) slot rủi ro cao #2 (thay ACHR) — chưa có đề xuất nghiên cứu; (4) MỚI sáng nay — bán PG (phá trailing stop -5%) + thay JPM/PEP cho slot blue-chip.
+- **Tài khoản (Agentic ••••0133):** total_value $5,750.32, equity_value $3,266.40, cash $2,483.92, buying_power $2,483.92, pending_deposits $0.
+- P&L so với giá vốn (giá hiện tại ~17:11 UTC) và thay đổi trong ngày (so với đóng cửa 07-28):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **CRM** | $161.63 | $188.14 | **+16.40%** | **+3.66%** |
+  | AAPL | $307.90 | $341.85 | +11.02% | +0.52% |
+  | JNJ | $260.69 | $267.08 | +2.45% | +0.13% |
+  | RSP | $214.93 | $216.615 | +0.78% | -0.49% |
+  | TXN | $278.95 | $274.155 | -1.72% | -1.05% |
+  | VOO | $688.26 | $676.485 | -1.71% | -0.66% |
+  | PG | $146.41 | $145.3884 | -0.70% | -2.35% |
+
+- Tra `get_equity_historicals` (5-phút, CRM): đỉnh giá trong phiên hôm nay đạt **$189.37** (~16:00 UTC), vượt đỉnh trước đó $184.52 (ghi nhận 07-28) — xu hướng tăng liên tục, không có tín hiệu đảo chiều rõ. WebSearch không tìm thấy tin tiêu cực mới trong 24h qua cho CRM — đà tăng vẫn đến từ tin cũ đã ghi nhận (hợp đồng VA $1.6B, đà AI agent monetization), không phải catalyst mới hôm nay.
+  - Nguồn: [Why Is Salesforce Stock Surging Tuesday? — Benzinga](https://www.benzinga.com/trading-ideas/movers/26/07/60738580/why-is-salesforce-stock-surging-tuesday), [Salesforce (CRM) Stock Still Trades Below Fair Value — Simply Wall St](https://simplywall.st/stocks/us/software/nyse-crm/salesforce/news/salesforce-crm-stock-still-trades-below-fair-value)
+- PG tiếp tục giảm thêm (-2.35% trong ngày, cộng dồn từ đợt bán tháo sau báo cáo Q4 hôm qua) — không có tin mới ngoài những gì đã ghi nhận sáng nay; củng cố thêm cho đề xuất bán PG đang chờ, không phải luận điểm mới.
+- Không mã nào khác biến động >3-5% cần đào sâu thêm tin tức. Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~3 ngày).
+
+### Đề xuất mới: dời trailing stop-loss CRM lên đỉnh mới + cân nhắc chốt lời một phần (nhóm tech, ngưỡng cảnh báo +15-20%)
+
+1. **CRM — dời trailing stop-loss lên ~$179.90** (-5% từ đỉnh phiên hôm nay $189.37, khung tech), thay cho lệnh stop hiện tại $175.29 (đặt hôm qua 07-28 từ đỉnh cũ $184.52, đã lỗi thời do giá tạo đỉnh mới). Cần hủy lệnh cũ (`6a69356b-2930-4322-9356-a9063e8a789d`) rồi đặt lệnh mới — thực hiện qua phiên có quyền đặt lệnh (routine này read-only).
+2. **Lý do:** P&L đã vượt rõ ngưỡng cảnh báo chốt lời nhóm tech (+15-20%, hiện +16.40%, lần đầu vượt mốc 15% kể từ khi mua) — theo CLAUDE.md đây là ngưỡng CẢNH BÁO (không tự động bán) nên đề xuất Hogan cân nhắc: (a) chỉ dời trailing stop lên để khóa bớt lợi nhuận và tiếp tục giữ toàn bộ 3cp, HOẶC (b) chốt lời một phần (vd. bán 1/3 cp ≈ $62.7) để hiện thực hóa lợi nhuận, phần còn lại chạy theo trailing stop mới — tương tự cách đã áp dụng hiệu quả với AEHR trước đây (dù đó là nhóm rủi ro cao có ngưỡng bán tự động, CRM thuộc nhóm tech nên đây vẫn là đề xuất cân nhắc, không bắt buộc).
+3. **Rủi ro chính:** (a) đây là lợi nhuận đến nay mới ~5 ngày nắm giữ (mua 07-24) — bán sẽ chịu thuế suất ngắn hạn, nên nếu Hogan ưu tiên tối ưu thuế có thể chọn chỉ dời stop, không bán; (b) đồng thuận analyst vẫn Buy trung bình (target TB ~$241.72) nên có thể còn dư địa tăng nếu giữ nguyên; (c) Morgan Stanley đã hạ khuyến nghị xuống Equal Weight (target $185, thấp hơn giá hiện tại) từ 07-27 — vẫn là tín hiệu trái chiều cần lưu ý dù chưa có tin mới hôm nay.
+4. **Mức cắt lỗ/chốt lời:** trailing stop mới đề xuất $179.90 (-5% từ đỉnh); nếu bán một phần, không cần đặt chốt lời mới cho phần bán (thực hiện ngay), phần giữ lại tiếp tục theo trailing stop.
+
+### Nhắc nhở vận hành: TXN vẫn chưa có stop-loss bảo vệ
+
+- TXN khớp lệnh mua sáng nay (07-29 13:30 UTC, 1cp @ $278.95) nhưng đến giờ vẫn CHƯA có lệnh stop-loss nào trên sàn (`get_equity_orders` xác nhận không có stop order cho TXN). Nhắc lại cần phiên có quyền đặt lệnh đặt stop_market -5% (khung tech, ≈ $265.00 từ giá vốn $278.95, hoặc theo giá hiện tại nếu đã có đỉnh mới) sớm nhất có thể.
+- Phụ chú nhỏ: RSP stop hiện tại ($205.15, đặt 07-21) đã hơi lỗi thời so với đỉnh gần đây ($218.05, 07-28) — có thể cân nhắc dời lên ~$207.15 ở lần có quyền đặt lệnh tiếp theo, không khẩn cấp bằng CRM/TXN ở trên.
+
+**Đã gửi PushNotification** (đề xuất dời stop CRM + cân nhắc chốt lời một phần là thông tin mới cần Hogan biết).
+
 - Không mã nào khác chạm ngưỡng cắt lỗ/chốt lời mới. Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~3 ngày).
