@@ -2146,3 +2146,44 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **CRM** tạo đỉnh mới trong phiên hôm nay ($190.18 lúc 18:50 UTC), nhỉnh hơn đỉnh hôm qua dùng để đặt stop ($189.37 → stop $179.90 đã đặt 14:53 ET). Mức trail mới về lý thuyết ≈ $180.67 (-5% từ $190.18) — chênh lệch rất nhỏ (~$0.77, đã được Hogan xử lý sáng nay), không phải thông tin mới đáng kể, để dành cho phiên có quyền đặt lệnh tiếp theo gộp chung, không cần đề xuất riêng lẻ.
 - Không có mã nào breach ngưỡng cắt lỗ/chốt lời mới, không có tin tiêu cực nghiêm trọng riêng lẻ nào (litigation/gian lận/mất CEO/hạ bậc tín nhiệm) cho bất kỳ mã nào. Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn ~3 ngày).
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — biến động JPM/ASTS đều giải thích được bằng yếu tố vĩ mô/ngành, không đạt ngưỡng CLAUDE.md để đề xuất hành động. Không gửi PushNotification.
+
+## 2026-07-30 ~9:50 ET (13:50 UTC) — Check-in định kỳ (routine read-only, sync git) — CRM bị stop-loss (chốt lời), core-10 còn 8/10 + ĐỀ XUẤT MỚI thay slot large-cap tech
+
+- **Sync đầu phiên:** local main đã phân kỳ so với origin (37 vs 51 commit riêng, do 1 lần force-update trước đó). Đối chiếu nội dung: cả 4 điểm xung đột (2 trong `trading-log.md`, 2 trong `sandbox-log.md`) đều có phần local trống — local không có thông tin riêng nào bị mất, chỉ thiếu các entry mà origin đã có. Đã merge giữ nguyên toàn bộ nội dung origin (không mất dữ liệu), `CLAUDE.md` merge sạch không xung đột. Commit `06681a4`, push thành công lên `main`.
+- **CRM — trailing stop-loss khớp lúc 9:32:20 ET (13:32:20 UTC) sáng nay:** bán hết 3cp @ $179.61 TB (lệnh đặt 07-29 18:38 UTC sau khi Hogan duyệt dời trail lên $179.90 từ đỉnh $189.37). Giá vốn $161.63 → **lãi thực hiện +11.12%** (~$53.94) — đây là CHỐT LỜI qua trailing stop, không phải lỗ. Không phát sinh wash-sale (bán có lãi). Thực thi tự động đúng kỷ luật, không cần duyệt.
+- **Core-10 hiện còn 8/10** (thiếu 1 slot large-cap tech do CRM + vẫn thiếu 1 slot rủi ro cao do ACHR từ 07-28, đang hoãn theo quyết định 07-29 14:53 ET): RSP, VOO, JNJ, AAPL, TXN, JPM, AMZN, ASTS.
+- P&L & thay đổi trong ngày (so với đóng cửa 07-29, giá ~9:50 ET/13:50 UTC hôm nay):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AMZN | $231.73 | $235.085 | +1.45% | **+3.72%** |
+  | JPM | $347.97 | $346.785 | -0.34% | +0.60% |
+  | ASTS | $55.47 | $57.14 | +3.01% | **+7.75%** |
+  | TXN | $278.95 | $279.01 | +0.02% | +2.84% |
+  | RSP | $214.93 | $214.75 | -0.08% | -0.45% |
+  | VOO | $688.26 | $677.64 | -1.53% | +1.05% |
+  | JNJ | $260.69 | $256.38 | -1.65% | -3.45% |
+  | AAPL | $307.90 | $331.47 | +7.66% | -1.99% |
+
+- **Bối cảnh vĩ mô lớn hôm nay — mùa báo cáo Big Tech phân hóa mạnh:** MSFT báo cáo tối qua (07-29) vượt kỳ vọng mạnh (doanh thu $90.01B > ước tính $87.62B, Azure +43% constant currency, FY26 Azure vượt $100B lần đầu) → cổ phiếu +14-15% hôm nay. META báo cáo cùng tối, EPS $6.18 hụt ước tính ~$1.04, guidance Q3 doanh thu $61-64B (cận dưới thấp hơn kỳ vọng $63.15B), FCF Q2 sập -91% → cổ phiếu -9-10%. QQQ +2.67%, SPY +1.09% hôm nay — thị trường chung tăng, phân hóa mạnh trong nhóm AI-capex giữa "kẻ thắng người thua". Nguồn: [CNBC](https://www.cnbc.com/2026/07/30/microsoft-msft-meta-stock-today-earnings.html).
+- **JNJ -3.45%** hôm nay — không có tin tiêu cực mới, tiếp tục drift giảm sau báo cáo Q2 (07-15, đã biết) do mảng MedTech tăng trưởng yếu hơn kỳ vọng dù mảng Innovative Medicine và tổng thể vượt kỳ vọng. Đây là rủi ro đã biết, không phải suy giảm cơ bản đột ngột mới — P&L vẫn -1.65%, còn xa ngưỡng theo dõi. Không đủ điều kiện đề xuất theo CLAUDE.md.
+- **ASTS +7.75%** hôm nay — Scotiabank nâng bậc lên Sector Perform (từ Underperform) ngày 07-28, công ty tái khẳng định guidance doanh thu 2026 $150-200M, kế hoạch phóng thêm 3 vệ tinh BlueBird đầu tháng 8. Tin tích cực nhưng không phải catalyst đột phá — P&L +3.01%, còn xa ngưỡng chốt lời +15%. Không cần hành động.
+- **AMZN +3.72%** hôm nay — thị trường tăng trước giờ công bố KQKD Q2 2026 (báo cáo tối nay 5pm ET/2pm PT, sau giờ đóng cửa). Kỳ vọng: EPS $1.82 (từ $1.68), doanh thu +17.3% lên $196.71B. **Cần theo dõi sát biến động after-hours/phiên mai** — đây là sự kiện earnings risk lớn nhất sắp tới cho danh mục.
+- **Không có mã nào breach ngưỡng cắt lỗ/chốt lời mới.** Không có tin xấu nghiêm trọng (kiện tụng/gian lận/mất CEO/hạ tín nhiệm) cho bất kỳ mã đang giữ nào.
+- **Lưu ý vận hành (không phải đề xuất mua/bán, cần phiên có quyền đặt lệnh xử lý ở lần kiểm tra tiếp theo):** stop-loss RSP ($205.15, đặt 07-21) đã lỗi thời so với đỉnh 07-28 ($218.05) — nên dời lên ~$207.15 (-5%). JPM stop ($330.57, đặt từ giá vốn 07-29) nên xem xét dời theo đỉnh $359.30 (07-28) → ~$341.34 (-5%) nếu vẫn còn hiệu lực khi phiên tới kiểm tra.
+
+### ĐỀ XUẤT MỚI — thay slot large-cap tech (thế chỗ CRM), 2 lựa chọn chờ Hogan duyệt
+
+- **Bối cảnh:** đã loại các ứng viên tech "hiển nhiên" vì lý do cụ thể hôm nay: MSFT (wash-sale cấm tới ~2026-08-22, dù vừa +15% rất hấp dẫn), NVDA/AVGO/GOOGL (đều đang trong lệnh cấm wash-sale từ các lần bán lỗ trước), META (vừa lao dốc -9-10% sau earnings miss, rủi ro sự kiện cao ngay sau khi mua), ADBE (giảm -6.8% sau báo cáo Q2 không ấn tượng dù beat, CFO Dan Durn vừa rời sang Marvell trong khi công ty đã không có CEO chính thức từ tháng 3 — rủi ro quản trị nghiêm trọng, KHÔNG đạt tiêu chí "báo cáo tài chính minh bạch/ổn định"), NOW (giảm -5.5% sau khi IBM cảnh báo KQKD Q2 gợi ý khách hàng doanh nghiệp đang cắt giảm ngân sách phần mềm — rủi ro ngành thực, không phải nhiễu).
+
+- **Lựa chọn A: CSCO (Cisco Systems)** — $113.73/cp (+1.1% hôm nay, ổn định giữa lúc thị trường biến động mạnh). Vốn hóa $463.8B, PE 35.75, dividend yield 1.50% (đã tăng cổ tức, trả đều — gần giống hồ sơ blue-chip). Doanh thu quý gần nhất kỷ lục $15.8B, đơn hàng AI hyperscaler cả năm nâng lên $9B, CFO dự phóng ít nhất $6B doanh thu AI hyperscale FY27. Rủi ro: báo cáo KQKD tiếp theo dự kiến đầu tháng 8 (event risk gần), tăng trưởng networking truyền thống chậm lại, một số lo ngại thực thi mục tiêu AI order $9B cần tăng tốc mạnh Q4. Đề xuất mua **3cp market (~$341, ~6.0% danh mục)**, stop-loss -5% từ giá vốn khi khớp.
+- **Lựa chọn B: PANW (Palo Alto Networks)** — $315.99/cp (+0.6% hôm nay). Vốn hóa $257.9B, dẫn đầu ngành an ninh mạng, vừa hoàn tất thương vụ mua CyberArk $25B (mở rộng vào AI agentic/machine identity), loạt nâng target tháng 7 (BofA $420, Needham $425, Wells Fargo $420, Arete $433). Rủi ro: định giá rất cao (PE ~291 theo dữ liệu Robinhood, ~101x theo nguồn ngoài — tùy công thức), gần đỉnh 52 tuần ($368.80, 07-17), không trả cổ tức, phần lớn tăng trưởng đã phản ánh vào giá. Đề xuất mua **1cp market (~$316, ~5.5% danh mục)**, stop-loss -5% từ giá vốn khi khớp.
+- Cả hai không dính wash-sale, không trùng nhóm ngành đang nắm giữ nặng (TXN=semis, AMZN=cloud/retail, AAPL=consumer hardware) — CSCO thiên về hạ tầng mạng/AI datacenter, PANW thiên về bảo mật, đa dạng hóa tốt.
+- **Chờ Hogan chọn CSCO/PANW (hoặc mã khác)** cho slot large-cap tech.
+
+### Slot rủi ro cao #2 (thay ACHR) — tiếp tục hoãn, không phải đề xuất mới
+
+- 4 ứng viên đã nghiên cứu hôm qua (NNE, OUST, APLD, IREN) đều tăng vọt hôm nay: APLD +19.9%, NNE +8.1%, OUST +8.6%, IREN +24.1% — phản ứng dây chuyền tích cực từ KQKD AI-capex mạnh của MSFT tối qua, đúng như nhóm "AI data center rebound" (các mã này đã giảm 35-43% trong tháng trước khi bật lại). Đây là biến động cực đoan cùng chiều tăng, không phải giảm — nhưng mua đuổi ngay giữa lúc tăng 20%+ trong 1 phiên là rủi ro "chasing" cao, đi ngược tinh thần bộ lọc CLAUDE.md 2026-07-24 (cần xác nhận ổn định giá qua ít nhất 1 phiên trước khi mua nhóm rủi ro cao). **Tiếp tục hoãn** — chờ giá ổn định lại sau đợt tăng nóng này ở lần kiểm tra tiếp theo, chưa cần Hogan quyết định gì thêm lúc này.
+
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc 2026-08-01, còn 2 ngày).
+- **Đã gửi PushNotification** — có đề xuất mới (thay slot large-cap tech CSCO/PANW) cần Hogan xem/duyệt.
