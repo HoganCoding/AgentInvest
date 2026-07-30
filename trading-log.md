@@ -2187,3 +2187,12 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc 2026-08-01, còn 2 ngày).
 - **Đã gửi PushNotification** — có đề xuất mới (thay slot large-cap tech CSCO/PANW) cần Hogan xem/duyệt.
+
+## 2026-07-30 ~10:11 ET (14:11 UTC) — Hogan duyệt CSCO cho slot large-cap tech (thay CRM), đã đặt lệnh
+
+- **Bối cảnh:** phiên tương tác này trình bày lại đề xuất CSCO/PANW từ check-in sáng nay (9:50 ET) kèm xác nhận tin tức mới nhất (cả 2 vẫn ổn định, không tin xấu) — Hogan chọn **CSCO** qua AskUserQuestion, coi là preview/duyệt hợp lệ theo CLAUDE.md.
+- **Mua CSCO:** 3cp market, review trước (bid $113.57/ask $113.62, không cảnh báo broker) → khớp @ **$113.6088/cp** (~$340.83, ~6.0% danh mục) lúc 14:11:15 UTC (order `6a6b5b83...`).
+- **Stop-loss:** đặt GTC stop_market -5% (khung tech) từ giá vốn → **$107.93** (order `6a6b5b8d...`).
+- **Core-10 sau lệnh này (9/10):** RSP, VOO, JNJ, AAPL, TXN, JPM, AMZN, ASTS, CSCO — còn thiếu 1 slot rủi ro cao (thay ACHR, đang hoãn từ 07-29).
+- Việc vận hành còn tồn (chưa xử lý lần này): dời stop-loss RSP ($205.15→~$207.15) và JPM ($330.57→~$341.34) theo đỉnh mới — ghi nhận lại từ check-in sáng nay, chưa khẩn cấp.
+- **Không cần gửi PushNotification thêm** — hành động trong cùng phiên tương tác trực tiếp, Hogan đã xác nhận trực tiếp.
