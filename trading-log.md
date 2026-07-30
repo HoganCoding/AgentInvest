@@ -2196,3 +2196,11 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Core-10 sau lệnh này (9/10):** RSP, VOO, JNJ, AAPL, TXN, JPM, AMZN, ASTS, CSCO — còn thiếu 1 slot rủi ro cao (thay ACHR, đang hoãn từ 07-29).
 - Việc vận hành còn tồn (chưa xử lý lần này): dời stop-loss RSP ($205.15→~$207.15) và JPM ($330.57→~$341.34) theo đỉnh mới — ghi nhận lại từ check-in sáng nay, chưa khẩn cấp.
 - **Không cần gửi PushNotification thêm** — hành động trong cùng phiên tương tác trực tiếp, Hogan đã xác nhận trực tiếp.
+
+## 2026-07-30 ~10:14 ET (14:14 UTC) — Dời trailing stop-loss RSP + JPM theo đỉnh mới
+
+- **Bối cảnh:** xử lý việc vận hành tồn đọng ghi nhận từ check-in sáng nay (9:50 ET) — RSP/JPM stop đã lỗi thời so với đỉnh giá 07-28, Hogan yêu cầu dời luôn trong phiên này.
+- **Xác nhận đỉnh chưa bị vượt hôm nay:** RSP hiện $214.33 (< đỉnh $218.05, 07-28), JPM hiện $349.075 (< đỉnh $359.30, 07-28) — mức tính từ log sáng nay vẫn đúng.
+- **RSP:** hủy stop cũ (`6a5f88a1...` $205.15, đặt 07-21) → xác nhận `cancelled` → đặt mới GTC stop_market -5% từ đỉnh $218.05 → **$207.15** (order `6a6b5c48...`).
+- **JPM:** hủy stop cũ (`6a6a48c0...` $330.57, đặt từ giá vốn 07-29) → xác nhận `cancelled` → đặt mới GTC stop_market -5% từ đỉnh $359.30 → **$341.34** (order `6a6b5c4a...`).
+- **Không cần gửi PushNotification** — hành động trong phiên tương tác trực tiếp, Hogan đã yêu cầu trực tiếp.
