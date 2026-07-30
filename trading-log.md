@@ -2204,3 +2204,28 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **RSP:** hủy stop cũ (`6a5f88a1...` $205.15, đặt 07-21) → xác nhận `cancelled` → đặt mới GTC stop_market -5% từ đỉnh $218.05 → **$207.15** (order `6a6b5c48...`).
 - **JPM:** hủy stop cũ (`6a6a48c0...` $330.57, đặt từ giá vốn 07-29) → xác nhận `cancelled` → đặt mới GTC stop_market -5% từ đỉnh $359.30 → **$341.34** (order `6a6b5c4a...`).
 - **Không cần gửi PushNotification** — hành động trong phiên tương tác trực tiếp, Hogan đã yêu cầu trực tiếp.
+
+## 2026-07-30 ~13:10 ET (17:10 UTC) — Check-in định kỳ (routine read-only, sync git) — không có đề xuất mới; ghi nhận JNJ cắt giảm guidance (M&A), theo dõi cho review 08-01
+
+- **Sync đầu phiên:** `git pull` — local đã ngang bằng `origin/main` (`566c596`), không có commit mới từ phiên khác kể từ lần cập nhật stop RSP/JPM lúc 10:14 ET. Không xung đột.
+- **Xác nhận qua `get_equity_positions`/`get_equity_orders`:** không có lệnh mới nào khớp kể từ 10:14 ET. Core-10 vẫn 9/10: RSP, VOO, JNJ, AAPL, TXN, JPM, AMZN, ASTS, CSCO — thiếu 1 slot rủi ro cao (thay ACHR, đang hoãn từ 07-29, 4 ứng viên NNE/OUST/APLD/IREN đã tăng nóng 8-24%/ngày hôm qua nên vẫn chưa ổn định để mua).
+- **Stop-loss hiện tại (đã xác nhận `confirmed`, chưa bị vượt hôm nay):** JPM $341.34, RSP $207.15, CSCO $107.93, TXN $265.00, ASTS $48.81 (-12%), AMZN $220.14. AAPL/JNJ/VOO vẫn là fractional share (mua theo $ hôm 07-06) nên không có stop tự động — vẫn là giới hạn đã biết, cần theo dõi thủ công, không phải vấn đề mới.
+- P&L so với giá vốn và thay đổi trong ngày (giá ~13:10 ET/17:10 UTC, so với đóng cửa 07-29):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | ASTS | $55.47 | $56.39 | +1.66% | **+6.34%** |
+  | AMZN | $231.73 | $238.44 | +2.89% | **+5.20%** |
+  | TXN | $278.95 | $281.40 | +0.88% | **+3.72%** |
+  | JPM | $347.97 | $352.08 | +1.18% | +2.14% |
+  | VOO | $688.26 | $680.09 | -1.19% | +1.41% |
+  | AAPL | $307.90 | $332.39 | +7.95% | -1.71% |
+  | CSCO | $113.61 | $113.18 | -0.38% | +0.62% |
+  | RSP | $214.93 | $214.63 | -0.14% | -0.51% |
+  | JNJ | $260.69 | $255.85 | -1.86% | **-3.65%** |
+
+- **AMZN +5.20%:** chạy trước giờ công bố KQKD Q2 2026 tối nay (sau đóng cửa, ~5pm ET) — không phải phản ứng sau báo cáo. Kỳ vọng thị trường: EPS $1.82 (từ $1.68), doanh thu ~$196.97B (+18% YoY), options định giá biến động ±6.9% sau tin. Đây là rủi ro sự kiện lớn nhất danh mục hiện tại — cần theo dõi sát ở lần kiểm tra tiếp theo (sau khi báo cáo ra, dự kiến sáng mai). Không hành động gì lúc này (chưa có kết quả).
+- **TXN +3.72%, ASTS +6.34%:** không tìm thấy tin tức mới riêng cho từng mã trong 24h qua — nhiều khả năng ăn theo tâm lý tích cực chung nhóm bán dẫn/AI-capex sau KQKD MSFT hôm 07-29 (đã ghi nhận log sáng nay) và đà hồi phục nhóm risk-on tiếp diễn từ hôm qua. ASTS vẫn còn cách stop-loss -12% khá xa (~13.4%). Không đạt ngưỡng CLAUDE.md để hành động (không phải tin xấu, không breach stop/take-profit).
+- **JNJ -3.65% — phát hiện mới (nguồn: [TipRanks](https://www.tipranks.com/news/company-announcements/johnson-johnson-updates-guidance-after-firefly-sail-deals), [SEC 8-K](https://www.sec.gov/Archives/edgar/data/0000200406/000020040626000163/jnj-20260729.htm)):** JNJ công bố hoàn tất mua Firefly Bio ($1B cash, in-process R&D charge ~$1B quý 3) + thỏa thuận chiến lược với Sail Biomedicines (~$785M gồm $465M đầu tư cổ phần) ngày 07-29 sau giờ đóng cửa. Hệ quả: **hạ guidance EPS điều chỉnh 2026 xuống $10.96-$11.11** (từ $11.60-$11.75 trước đó), ước giảm thêm $1.36 EPS năm 2027. Đây là quyết định chiến lược (đầu tư mở rộng pipeline biotech/degrader-antibody platform), không phải suy giảm hoạt động kinh doanh cốt lõi hay tin xấu dạng kiện tụng/gian lận/mất CEO — nhưng là thông tin cơ bản (fundamentals) mới, đáng cân nhắc kỹ tại review định kỳ 30 ngày sắp tới (mốc 2026-08-01, còn 2 ngày) theo đúng tiêu chí CLAUDE.md ("yếu tố cơ bản xấu đi rõ rệt" + "hiệu suất kém hơn benchmark"). P&L hiện tại vẫn chỉ -1.86%, còn cách stop-loss -5% khoảng 3.2%, chưa breach — **không đề xuất bán ngay**, nhưng sẽ đưa việc này vào phân tích review 08-01.
+- **Không mã nào breach ngưỡng cắt lỗ/chốt lời.** Không có tin xấu nghiêm trọng mới (kiện tụng/gian lận/mất CEO/hạ tín nhiệm) cho các mã còn lại.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — AMZN/TXN/ASTS biến động giải thích được bằng yếu tố thị trường/sự kiện đã biết trước, JNJ có tin mới nhưng chưa đạt ngưỡng hành động ngay (để dành cho review 30 ngày 08-01). Không gửi PushNotification.
