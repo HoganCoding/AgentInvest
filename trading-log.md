@@ -2229,3 +2229,29 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **JNJ -3.65% — phát hiện mới (nguồn: [TipRanks](https://www.tipranks.com/news/company-announcements/johnson-johnson-updates-guidance-after-firefly-sail-deals), [SEC 8-K](https://www.sec.gov/Archives/edgar/data/0000200406/000020040626000163/jnj-20260729.htm)):** JNJ công bố hoàn tất mua Firefly Bio ($1B cash, in-process R&D charge ~$1B quý 3) + thỏa thuận chiến lược với Sail Biomedicines (~$785M gồm $465M đầu tư cổ phần) ngày 07-29 sau giờ đóng cửa. Hệ quả: **hạ guidance EPS điều chỉnh 2026 xuống $10.96-$11.11** (từ $11.60-$11.75 trước đó), ước giảm thêm $1.36 EPS năm 2027. Đây là quyết định chiến lược (đầu tư mở rộng pipeline biotech/degrader-antibody platform), không phải suy giảm hoạt động kinh doanh cốt lõi hay tin xấu dạng kiện tụng/gian lận/mất CEO — nhưng là thông tin cơ bản (fundamentals) mới, đáng cân nhắc kỹ tại review định kỳ 30 ngày sắp tới (mốc 2026-08-01, còn 2 ngày) theo đúng tiêu chí CLAUDE.md ("yếu tố cơ bản xấu đi rõ rệt" + "hiệu suất kém hơn benchmark"). P&L hiện tại vẫn chỉ -1.86%, còn cách stop-loss -5% khoảng 3.2%, chưa breach — **không đề xuất bán ngay**, nhưng sẽ đưa việc này vào phân tích review 08-01.
 - **Không mã nào breach ngưỡng cắt lỗ/chốt lời.** Không có tin xấu nghiêm trọng mới (kiện tụng/gian lận/mất CEO/hạ tín nhiệm) cho các mã còn lại.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — AMZN/TXN/ASTS biến động giải thích được bằng yếu tố thị trường/sự kiện đã biết trước, JNJ có tin mới nhưng chưa đạt ngưỡng hành động ngay (để dành cho review 30 ngày 08-01). Không gửi PushNotification.
+
+## 2026-07-30 ~15:32 ET (19:32 UTC) — Check-in định kỳ (routine read-only, sync git) — AMZN beat mạnh KQKD, ASTS tiếp tục tăng nóng; không có đề xuất mới
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD, `git checkout main` + fast-forward từ `origin/main` (51 commit, tới `d7fbfad`) — không có xung đột, không mất dữ liệu.
+- **Xác nhận qua `get_equity_orders` (từ 13:10 ET tới nay):** không có lệnh mới khớp. Core-10 vẫn 9/10: RSP, VOO, JNJ, AAPL, TXN, JPM, AMZN, ASTS, CSCO — thiếu 1 slot rủi ro cao (thay ACHR, đang hoãn từ 07-29).
+- **Tài khoản (Agentic ••••0133):** total_value $5,726.31, equity_value $3,697.61, cash $2,028.70, buying_power $1,489.89.
+- P&L so với giá vốn và thay đổi trong ngày (giá ~15:32 ET/19:32 UTC, so với đóng cửa 07-29):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | ASTS | $55.47 | $57.85 | +4.29% | **+9.09%** |
+  | AMZN | $231.73 | $239.715 | +3.45% | **+5.76%** |
+  | JPM | $347.97 | $351.825 | +1.11% | +2.06% |
+  | TXN | $278.95 | $278.60 | -0.13% | +2.69% |
+  | CSCO | $113.61 | $113.85 | +0.21% | +1.22% |
+  | VOO | $688.26 | $681.845 | -0.93% | +1.67% |
+  | RSP | $214.93 | $215.135 | +0.10% | -0.28% |
+  | AAPL | $307.90 | $333.11 | +8.19% | -1.50% |
+  | JNJ | $260.69 | $255.73 | -1.90% | **-3.69%** |
+
+- **AMZN +5.76% (WebSearch xác nhận):** báo cáo KQKD Q2 2026 sau giờ đóng cửa hôm qua — beat mạnh: EPS $2.78 so với ước tính $1.64, doanh thu +16.6% YoY, operating income +30%, AWS tăng trưởng 28% (nhanh nhất 15 quý), biên lợi nhuận AWS 37.7%. Tin tích cực rõ ràng, không phải catalyst cần hành động (không breach chốt lời +15-20% nhóm tech, P&L mới +3.45%). Nguồn: [CNBC](https://www.cnbc.com/2026/07/30/amazon-amzn-q2-earnings-report-2026.html).
+- **ASTS +9.09%:** tiếp nối đà tăng từ hôm qua (+6.34% 07-29, nâng bậc Scotiabank 07-28) — không tìm thấy catalyst tiêu cực hay tin gian lận/kiện tụng mới; WebSearch trả về một số dữ liệu giá cũ/không khớp (nguồn nhiễu cho mã biến động cao), không dùng để thay thế quote thời gian thực. P&L +4.29%, còn xa ngưỡng cảnh báo chốt lời +15-20% nhóm rủi ro cao (core-10 vẫn cần Hogan duyệt nếu chạm ngưỡng, khác sandbox).
+- **Lưu ý vận hành (không phải đề xuất, cần phiên có quyền đặt lệnh xử lý sau):** stop-loss ASTS hiện tại $48.81 (-12% từ giá vốn $55.47, đặt 07-29) đã tụt khá xa so với đỉnh phiên hôm nay (~$57.85+) — mức trail lý thuyết mới ≈ $50.91 (-12% từ đỉnh). Không khẩn cấp (còn cách giá hiện tại ~12%), gộp chung vào lần có quyền đặt lệnh tiếp theo.
+- **JNJ -3.69%:** tiếp tục giảm, không có tin mới ngoài guidance cut đã ghi nhận sáng nay (Firefly/Sail M&A) — để dành phân tích cho review định kỳ 08-01 (còn 2 ngày).
+- **Không mã nào breach ngưỡng cắt lỗ/chốt lời.** Không có tin xấu nghiêm trọng mới (kiện tụng/gian lận/mất CEO/hạ tín nhiệm) cho bất kỳ mã nào.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — AMZN/ASTS biến động đều là tin tích cực đã giải thích được, JNJ là câu chuyện đã biết chờ review 08-01. Không gửi PushNotification.
