@@ -2330,3 +2330,27 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Không mã nào khác breach ngưỡng cắt lỗ/chốt lời mới.** Không có tin xấu nghiêm trọng mới cho các mã còn lại (RSP/VOO/JNJ/TXN/JPM/CSCO/ASTS) — biến động trong ngày đều nhỏ, giải thích được bằng thị trường chung.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc 2026-08-01, còn <1 ngày — sẽ gộp AAPL/JNJ/slot rủi ro cao còn thiếu vào phân tích review đó nếu Hogan chưa quyết định trước lúc đó).
 - **Đã gửi PushNotification** — đề xuất mới cân nhắc chốt lời một phần AMZN (đã vượt ngưỡng cảnh báo +15%).
+
+## 2026-07-31 ~15:30 ET (19:31 UTC) — Check-in định kỳ (routine read-only, sync git) — Không có đề xuất mới lần kiểm tra này
+
+- **Sync đầu phiên:** `git pull` — đã up to date với `origin/main` (`e4ef817`), không xung đột.
+- **Xác nhận qua `get_equity_orders`/`get_equity_positions`:** không có lệnh nào khớp kể từ check-in 13:10 ET — core-10 vẫn 9/10 nguyên vẹn: RSP, VOO, JNJ, AAPL, TXN, JPM, AMZN, ASTS, CSCO (thiếu 1 slot rủi ro cao, thay ACHR, hoãn từ 07-29). Cả 2 đề xuất đang chờ Hogan (bán AAPL 9:50 ET, chốt lời 1 phần AMZN 13:10 ET) đều CHƯA có lệnh khớp nào tương ứng.
+- P&L so với giá vốn (giá ~15:30 ET/19:31 UTC, so với đóng cửa 07-30):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **AMZN** | $231.73 | $272.45 | **+17.57%** | +15.69% |
+  | CSCO | $113.61 | $116.195 | +2.28% | +2.32% |
+  | ASTS | $55.47 | $59.12 | +6.58% | +1.16% |
+  | JPM | $347.97 | $352.66 | +1.35% | +0.52% |
+  | RSP | $214.93 | $215.39 | +0.21% | +0.00% |
+  | VOO | $688.26 | $686.62 | -0.24% | +0.71% |
+  | JNJ | $260.69 | $257.44 | -1.25% | +0.63% |
+  | TXN | $278.95 | $276.995 | -0.70% | -0.63% |
+  | **AAPL** | $307.90 | $305.265 | -0.86% | -8.45% |
+
+- **AMZN — tiếp tục nới rộng thêm so với 13:10 ET (+16.85%→+17.57%), đỉnh mới $272.45.** Không có tin mới nào khác ngoài đà tăng hậu KQKD đã ghi nhận trước đó — không cần WebSearch lại. Đề xuất chốt lời 1 phần đã gửi lúc 13:10 ET **vẫn còn nguyên giá trị**, không có gì thay đổi hướng đi. Không gửi PushNotification lặp lại.
+- **AAPL — hồi nhẹ so với 13:10 ET (-2.17%→-0.86%, giá $301.225→$305.265), nhưng vẫn giảm mạnh trong ngày (-8.45%) so với đóng cửa hôm qua.** Đề xuất bán AAPL gửi lúc 9:50 ET vẫn đang chờ Hogan, chưa có gì thay đổi để rút lại hay củng cố thêm — không cần WebSearch bổ sung (tin tức đã cập nhật đầy đủ ở 2 lần kiểm tra trước).
+- **Các mã còn lại (RSP/VOO/JNJ/TXN/JPM/CSCO/ASTS):** biến động trong ngày đều nhỏ (<2.5%), không có mã nào breach ngưỡng cắt lỗ/chốt lời mới, không cần tra tin tức.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc 2026-08-01, ngày mai).
+- **Không gửi PushNotification** — không có đề xuất mới, cả 2 đề xuất đang chờ (AAPL bán, AMZN chốt lời 1 phần) không đổi, tránh lặp lại thông báo.
