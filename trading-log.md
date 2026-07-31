@@ -2255,3 +2255,44 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **JNJ -3.69%:** tiếp tục giảm, không có tin mới ngoài guidance cut đã ghi nhận sáng nay (Firefly/Sail M&A) — để dành phân tích cho review định kỳ 08-01 (còn 2 ngày).
 - **Không mã nào breach ngưỡng cắt lỗ/chốt lời.** Không có tin xấu nghiêm trọng mới (kiện tụng/gian lận/mất CEO/hạ tín nhiệm) cho bất kỳ mã nào.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — AMZN/ASTS biến động đều là tin tích cực đã giải thích được, JNJ là câu chuyện đã biết chờ review 08-01. Không gửi PushNotification.
+
+## 2026-07-31 ~9:50 ET (13:50 UTC) — Check-in định kỳ (routine read-only, sync git) — AAPL lao dốc sau KQKD, breach trailing stop hiệu lực (fractional, không stop tự động) — ĐỀ XUẤT BÁN + thay thế
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD lúc bắt đầu phiên — `git checkout main` + fast-forward từ `origin/main` (2 commit sandbox mới, `9db3270`), không xung đột, không mất dữ liệu.
+- **Xác nhận qua `get_equity_orders`:** không có lệnh mới nào khớp kể từ lần check-in cuối (07-30 ~15:32 ET). Core-10 vẫn 9/10: RSP, VOO, JNJ, AAPL, TXN, JPM, AMZN, ASTS, CSCO — thiếu 1 slot rủi ro cao (thay ACHR, đang hoãn từ 07-29).
+- **Tài khoản (Agentic ••••0133):** total_value $5,738.92, equity_value $3,710.22, cash/buying_power $2,028.70, pending_deposits $0.
+- P&L so với giá vốn và thay đổi trong ngày (giá ~9:50 ET/13:50 UTC, so với đóng cửa 07-30):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | AMZN | $231.73 | $266.46 | **+14.99%** | **+13.15%** |
+  | ASTS | $55.47 | $58.41 | +5.29% | -0.06% |
+  | CSCO | $113.61 | $115.875 | +2.00% | +2.04% |
+  | JPM | $347.97 | $351.77 | +1.09% | +0.26% |
+  | RSP | $214.93 | $214.95 | +0.01% | -0.20% |
+  | VOO | $688.26 | $682.81 | -0.79% | +0.15% |
+  | TXN | $278.95 | $277.355 | -0.57% | -0.50% |
+  | JNJ | $260.69 | $254.805 | -2.26% | -0.41% |
+  | **AAPL** | $307.90 | $304.56 | -1.08% | **-8.66%** |
+
+- **AAPL — lao dốc -8.66% sau KQKD Q3 FY2026 (báo cáo tối 07-30):** EPS $2.02 beat ($1.89 ước tính), doanh thu $109.4B beat ($108.86B ước tính), iPhone +22% YoY vượt kỳ vọng, Mac vượt mạnh — NHƯNG doanh thu Services $30.74B **miss** ước tính $31.22B, cộng lo ngại margin pressure/guidance tăng trưởng chậm lại → cổ phiếu giảm mạnh sau giờ (~-6.65%) và tiếp tục giảm khi mở cửa hôm nay. Nguồn: [QZ](https://qz.com/apple-q3-2026-earnings-record-june-quarter-073026), [CNBC](https://www.cnbc.com/2026/07/31/apple-aapl-amazon-amzn-stock-today.html), [Investing.com transcript](https://www.investing.com/news/transcripts/earnings-call-transcript-apple-beats-q3-2026-estimates-shares-fall-after-hours-93CH-4826459).
+- **Kiểm tra đỉnh giá kể từ khi mua (`get_equity_historicals`, daily bars 07-06→07-30):** đỉnh intraday cao nhất = **$344.5699** (07-29). Trailing stop -5% (khung tech) từ đỉnh này = **~$327.34**. Giá hiện tại $304.56 đã **breach rõ ràng** ngưỡng này (thấp hơn thêm ~7 điểm % nữa, không phải chạm biên nhẹ). Vì AAPL là **fractional share** (mua bằng $500 ban đầu 07-03) nên KHÔNG có lệnh stop-loss tự động trên sàn — đây đúng là tình huống "theo dõi thủ công" CLAUDE.md đã lường trước, và ngưỡng nay đã bị phá vỡ rõ ràng bởi tin tức thật (services miss + lo ngại guidance), không phải nhiễu ngắn hạn.
+
+### ĐỀ XUẤT — Bán toàn bộ AAPL (cắt lỗ theo kỷ luật trailing stop hiệu lực) + 2 lựa chọn thay thế slot large-cap tech (chờ Hogan duyệt/chọn, routine này KHÔNG tự đặt lệnh)
+
+1. **AAPL — BÁN toàn bộ 1.623903 cp (thị giá, ≈ $304.56/cp ≈ $494.68).**
+   - **Lý do:** trailing stop hiệu lực khung tech (-5% từ đỉnh $344.5699 → ~$327.34) đã bị phá vỡ rõ ràng (giá hiện $304.56, thấp hơn ngưỡng ~7 điểm %) sau tin xấu thật (Services revenue miss, lo ngại margin/guidance chậm lại) — đúng kỷ luật cắt lỗ CLAUDE.md, áp dụng thủ công vì vị thế fractional không có stop tự động.
+   - **Rủi ro chính:** (a) bán ngay có thể bỏ lỡ hồi phục nếu thị trường phản ứng thái quá với phần miss tương đối nhỏ (Services chỉ miss ~1.5%, iPhone/Mac đều beat mạnh) — nhưng trì hoãn dựa trên dự đoán hồi phục đi ngược kỷ luật trailing-stop đã đặt ra; (b) đây là lệnh bán LỖ nhẹ so với giá vốn gốc (-1.08%, ~-$5.42) → kích hoạt **wash-sale, cấm mua lại AAPL tới ~2026-08-30**.
+   - **Mức cắt lỗ/chốt lời:** N/A — đây chính là hành động cắt lỗ.
+
+2. **Thay slot large-cap tech — 2 lựa chọn (chờ Hogan chọn, KHÔNG tự chọn):**
+
+   **Lựa chọn A: ORCL (Oracle)** — $129.37/cp (+1.4% hôm nay, +8% hôm qua sau tin mở rộng hợp tác Gemini AI với Google Cloud). Backlog hợp đồng chính phủ lớn (Bộ Quốc phòng ~$7B/10 năm, Hải quân ~$3.3-7B), khả năng thắng thầu cloud chính phủ Nhật Bản. Forward P/E 14.93 (rẻ so với ngành), PEG 0.61 (định giá hấp dẫn so với tăng trưởng kỳ vọng +33% doanh thu). Rủi ro: chi phí tài chính data center tăng (~$100M/năm do quy định collateral bang Wisconsin), gánh nặng nợ/capex AI lớn. Lưu ý đa dạng hóa: sẽ là slot tech thứ 3 thiên hướng cloud/AI-infra (cùng AMZN, CSCO) — có phần trùng chủ đề nếu chọn.
+      - Cắt lỗ đề xuất: -5% (trailing, khung tech). Chốt lời: cảnh báo +15-20%.
+
+   **Lựa chọn B: PANW (Palo Alto Networks)** — $329.96/cp (+1.3% hôm nay). Dẫn đầu an ninh mạng, ARR tăng mạnh, loạt nâng target tháng 7 (Wells Fargo $420, Morgan Stanley $387, Needham $425). Đã từng đề xuất 07-30 (Hogan chọn CSCO thay), vẫn còn hợp lệ (không wash-sale, không tin xấu mới). Đa dạng hóa tốt hơn ORCL vì khác hẳn nhóm cloud/AI-infra đã có (AMZN/CSCO/TXN) — thêm nhóm bảo mật. Rủi ro: định giá rất cao (PE ~290+), đã tăng +387% trong 5 năm, biến động cao hơn nhóm tech thông thường (từng giảm ~6% một phiên vì lo ngại định giá).
+      - Cắt lỗ đề xuất: -5% (trailing, khung tech). Chốt lời: cảnh báo +15-20%.
+
+- **AMZN +14.99% so với giá vốn (đỉnh mới, sát ngay dưới ngưỡng cảnh báo chốt lời tech +15-20%):** tiếp tục đà tăng sau KQKD Q2 vượt xa kỳ vọng (EPS $5.75 vs $1.82 ước tính, doanh thu $200.61B, AWS +37% YoY — nhanh nhất 15 quý, Zoox nhận giấy phép thương mại đầu tiên từ NHTSA 07-30). Đây chỉ là ghi nhận theo dõi (P&L +14.99%, chưa chính thức vượt ngưỡng +15%) — chưa phải đề xuất hành động bắt buộc, nhưng cần theo dõi sát ở lần kiểm tra tiếp theo; nếu vượt hẳn 15% có thể cân nhắc đề xuất chốt lời một phần.
+- Không mã nào khác breach ngưỡng cắt lỗ/chốt lời. Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn 1 ngày — sẽ gộp AAPL/JNJ/slot rủi ro cao còn thiếu vào phân tích review đó nếu Hogan chưa quyết định trước).
+- **Đã gửi PushNotification** — đề xuất bán AAPL cần Hogan duyệt (cắt lỗ theo kỷ luật, biến động lớn -8.66%/ngày).
