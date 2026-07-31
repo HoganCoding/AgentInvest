@@ -2296,3 +2296,37 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **AMZN +14.99% so với giá vốn (đỉnh mới, sát ngay dưới ngưỡng cảnh báo chốt lời tech +15-20%):** tiếp tục đà tăng sau KQKD Q2 vượt xa kỳ vọng (EPS $5.75 vs $1.82 ước tính, doanh thu $200.61B, AWS +37% YoY — nhanh nhất 15 quý, Zoox nhận giấy phép thương mại đầu tiên từ NHTSA 07-30). Đây chỉ là ghi nhận theo dõi (P&L +14.99%, chưa chính thức vượt ngưỡng +15%) — chưa phải đề xuất hành động bắt buộc, nhưng cần theo dõi sát ở lần kiểm tra tiếp theo; nếu vượt hẳn 15% có thể cân nhắc đề xuất chốt lời một phần.
 - Không mã nào khác breach ngưỡng cắt lỗ/chốt lời. Chưa tới ngày review định kỳ 30 ngày (mốc 2026-08-01, còn 1 ngày — sẽ gộp AAPL/JNJ/slot rủi ro cao còn thiếu vào phân tích review đó nếu Hogan chưa quyết định trước).
 - **Đã gửi PushNotification** — đề xuất bán AAPL cần Hogan duyệt (cắt lỗ theo kỷ luật, biến động lớn -8.66%/ngày).
+
+## 2026-07-31 ~13:10 ET (17:10 UTC) — Check-in định kỳ (routine read-only, sync git) — AMZN vượt ngưỡng cảnh báo chốt lời tech +15%; AAPL tiếp tục giảm với tin xấu mới xác nhận thêm lý do bán; đề xuất AAPL từ 9:50 ET vẫn chờ Hogan
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD lúc bắt đầu — `git checkout main` + fast-forward từ `origin/main` (7 commit, tới `0187bd0`, toàn bộ là log sandbox), không xung đột, không mất dữ liệu.
+- **Xác nhận qua `get_equity_orders`/`get_equity_positions`:** không có lệnh nào khớp kể từ check-in 9:50 ET — AAPL vẫn còn nguyên 1.623903cp trong tài khoản (đề xuất bán 9:50 ET **vẫn đang chờ Hogan duyệt**, chưa có quyết định). Core-10 vẫn 9/10: RSP, VOO, JNJ, AAPL, TXN, JPM, AMZN, ASTS, CSCO — thiếu 1 slot rủi ro cao (thay ACHR, hoãn từ 07-29).
+- P&L so với giá vốn và thay đổi trong ngày (giá ~13:10 ET/17:10 UTC, so với đóng cửa 07-30):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **AMZN** | $231.73 | $270.775 | **+16.85%** | +14.99% |
+  | CSCO | $113.61 | $115.55 | +1.71% | +1.75% |
+  | JPM | $347.97 | $353.22 | +1.51% | +0.68% |
+  | ASTS | $55.47 | $57.9476 | +4.46% | -0.84% |
+  | RSP | $214.93 | $215.18 | +0.12% | -0.09% |
+  | VOO | $688.26 | $684.56 | -0.54% | +0.41% |
+  | JNJ | $260.69 | $257.29 | -1.30% | +0.57% |
+  | TXN | $278.95 | $275.945 | -1.08% | -1.01% |
+  | **AAPL** | $307.90 | $301.225 | -2.17% | **-9.66%** |
+
+- **AAPL — giảm thêm -9.66% hôm nay (đã -8.66% hôm qua), P&L nay chuyển sang ÂM -2.17%:** WebSearch xác nhận đây không chỉ là dư chấn earnings hôm qua mà có thêm tin/hành động mới củng cố lý do bán: nhiều ngân hàng cắt price target xuống dưới $300 sau báo cáo (Morgan Stanley, Barclays — theo TradingKey), một hãng phân tích hạ bậc khuyến nghị (MarketBeat), Ủy ban Châu Âu mở thủ tục không tuân thủ mới về quy định "steering" App Store, và kiểm tra chuỗi cung ứng thời gian thực cho thấy lô hàng iPhone tại Trung Quốc tiếp tục co lại. Nguồn: [FX Leaders](https://www.fxleaders.com/news/2026/07/31/why-apple-aapl-stock-down-today-services-miss-post-earnings-selloff/), [TradingKey](https://www.tradingkey.com/analysis/stocks/us-stocks/262067827-aapl-q3-earnings-price-target-cuts-below-300-morgan-stanley-barclays-tradingkey), [MarketBeat](https://www.marketbeat.com/instant-alerts/apple-nasdaqaapl-shares-gap-down-on-analyst-downgrade-2026-07-31/), [Invezz](https://invezz.com/news/2026/07/30/apple-stock-falls-after-china-services-performance-miss-expectations/).
+  - **Không tạo đề xuất mới** — đề xuất BÁN AAPL + thay ORCL/PANW đã gửi lúc 9:50 ET sáng nay vẫn còn nguyên giá trị và nay có thêm căn cứ củng cố (price target cuts, downgrade, EU proceeding, China iPhone giảm) chứ không có gì thay đổi hướng đề xuất. Không gửi PushNotification lặp lại cho cùng 1 đề xuất đang chờ duyệt — chỉ ghi log bổ sung căn cứ.
+- **AMZN — vượt ngưỡng cảnh báo chốt lời nhóm tech (+15-20%) lần đầu tiên, P&L +16.85%:** WebSearch xác nhận đây là tiếp diễn phản ứng tích cực sau KQKD Q2 vượt xa kỳ vọng (07-30) — 8 hãng nâng price target hôm nay (JPMorgan $330→$365, KeyCorp $335→$350, Baird $310, BofA $320), không có tin xấu. Theo CLAUDE.md, ngưỡng +15-20% cho nhóm tech/blue-chip/ETF là **cảnh báo, không tự động bán** — agent đề xuất Hogan cân nhắc, không tự quyết.
+
+### ĐỀ XUẤT MỚI (cảnh báo chốt lời, không bắt buộc) — cân nhắc chốt lời một phần AMZN
+
+1. **AMZN — cân nhắc BÁN 1/2 vị thế (1 trong 2 cp, thị giá ≈ $270.78) để chốt lời một phần.**
+   - **Lý do:** P&L đã đạt +16.85%, vượt ngưỡng cảnh báo chốt lời +15-20% quy định cho nhóm large-cap tech trong CLAUDE.md. Đà tăng có nền tảng thật (AWS +37% YoY nhanh nhất 15 quý, biên lợi nhuận AWS 37.7%, giới phân tích đồng loạt nâng target) — không phải lý do phải bán ngay, nhưng đủ điều kiện để cân nhắc khóa một phần lợi nhuận theo đúng kỷ luật đã đặt ra, tránh để toàn bộ lãi "bốc hơi" nếu thị trường đảo chiều.
+   - **Rủi ro chính:** (a) nếu bán, mất cơ hội hưởng tiếp đà tăng nếu momentum AWS/AI tiếp diễn (giá mục tiêu trung bình mới ~$313-365, còn dư địa tăng theo phân tích); (b) nếu giữ nguyên, rủi ro toàn bộ lãi chưa thực hiện co lại nếu có điều chỉnh thị trường chung hoặc tin xấu bất ngờ; (c) đây là lệnh bán có lãi nên KHÔNG kích hoạt wash-sale, nhưng sẽ phát sinh thuế lãi vốn ngắn hạn (mua 07-06, chưa đủ 1 năm) — cần cân nhắc theo nguyên tắc hạn chế thuế trong CLAUDE.md, có thể là lý do để ưu tiên GIỮ nguyên và chỉ dời stop-loss chặt hơn thay vì bán.
+   - **Lựa chọn thay thế nếu không muốn bán:** dời trailing stop-loss AMZN chặt hơn (vd. lên mức bảo toàn phần lớn lợi nhuận, ví dụ trail -5% từ đỉnh mới) thay vì bán, để vừa tránh thuế ngắn hạn vừa giới hạn rủi ro giảm — cần phiên có quyền đặt lệnh xử lý nếu Hogan chọn hướng này.
+   - **Mức cắt lỗ/chốt lời:** đây chính là đề xuất chốt lời một phần; không có mức mới nào khác đề xuất thêm cho phần giữ lại ngoài trailing stop -5% hiện hành.
+
+- **Không mã nào khác breach ngưỡng cắt lỗ/chốt lời mới.** Không có tin xấu nghiêm trọng mới cho các mã còn lại (RSP/VOO/JNJ/TXN/JPM/CSCO/ASTS) — biến động trong ngày đều nhỏ, giải thích được bằng thị trường chung.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc 2026-08-01, còn <1 ngày — sẽ gộp AAPL/JNJ/slot rủi ro cao còn thiếu vào phân tích review đó nếu Hogan chưa quyết định trước lúc đó).
+- **Đã gửi PushNotification** — đề xuất mới cân nhắc chốt lời một phần AMZN (đã vượt ngưỡng cảnh báo +15%).
