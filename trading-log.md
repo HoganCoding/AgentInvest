@@ -2487,3 +2487,26 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Việc cần xử lý ở phiên có quyền đặt lệnh (chỉ vận hành nếu Hogan duyệt đề xuất trên):** hủy lệnh stop hiện tại cho 5cp (@ $55.89, order `6a70cb73`) trước, bán 3cp theo đề xuất, rồi đặt lại lệnh stop mới cho 2cp còn lại.
 - **Review định kỳ 30 ngày (mốc 2026-08-01) đã quá hạn 2 ngày**, chưa có phiên nào thực hiện đầy đủ — vẫn cần ưu tiên ở lần kiểm tra tới (JNJ guidance cut 07-29 + 2 slot còn thiếu cần đưa vào phân tích này).
 - **Đã gửi PushNotification** — đề xuất mới (ASTS chốt lời 1 phần +15%) cần Hogan xem/duyệt.
+
+## 2026-08-03 ~15:32 ET (19:32 UTC) — Check-in định kỳ (routine read-only, sync git) — Không có đề xuất mới; khép lại review 30 ngày quá hạn cho JNJ (không đạt ngưỡng thay thế)
+
+- **Sync đầu phiên:** `git pull` — đã up to date với `origin/main` (`1d4013d`, các commit mới đều là sandbox check-in), không xung đột.
+- **Xác nhận qua `get_equity_orders`** (từ 13:11 ET tới nay): **không có lệnh nào khớp** — cả 3 đề xuất đang chờ (thay slot tech ORCL/PANW từ 07-31, thay slot rủi ro cao IREN/APLD từ 13:15 ET, bán 1 phần ASTS từ 13:11 ET) **vẫn chưa có quyết định từ Hogan**. Core-10 vẫn 8/10 nguyên vẹn: AMZN(1cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JNJ(1.917986cp), JPM(1cp), ASTS(5cp), CSCO(3cp).
+- P&L so với giá vốn (giá ~15:31 ET/19:31 UTC, so với đóng cửa 07-31):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **ASTS** | $55.47 | $64.06 | **+15.49%** | **+8.61%** |
+  | **AMZN** | $231.73 | $284.58 | **+22.82%** | +4.79% |
+  | MSFT | $488.00 | $490.075 | +0.43% | +5.46% |
+  | VOO | $688.26 | $697.15 | +1.29% | +1.53% |
+  | CSCO | $113.61 | $115.98 | +2.09% | -0.01% |
+  | JPM | $347.97 | $351.75 | +1.09% | -0.01% |
+  | RSP | $214.93 | $217.07 | +1.00% | +0.96% |
+  | JNJ | $260.69 | $254.65 | -2.32% | -0.66% |
+
+- **ASTS/AMZN/MSFT — không có tin mới, tiếp diễn các catalyst đã ghi nhận trong ngày** (ASTS: phóng vệ tinh BlueBird 08-05 + nâng khuyến nghị B. Riley; AMZN/MSFT: đà tăng hậu KQKD Q2). Cả 3 đề xuất đang chờ (ORCL/PANW, IREN/APLD, bán 1 phần ASTS) **vẫn còn nguyên giá trị**, không có gì thay đổi hướng đi — không gửi PushNotification lặp lại.
+- **JNJ — khép lại phần review 30 ngày còn thiếu (quá hạn từ 2026-08-01):** `get_equity_historicals` (07-01→07-31) cho thấy JNJ đi ngang/nhẹ dương trong tháng (mở $253.25 → đóng $256.35, ~+1.2%) trước khi giảm dần sau tin cắt giảm guidance 07-29 (giá hiện $254.65, P&L -2.32%, chưa breach ngưỡng stop -5%). WebSearch xác nhận không có tin xấu nghiêm trọng mới kể từ 07-29 (kiện tụng/gian lận/mất CEO/hạ tín nhiệm) — chỉ có Goldman Sachs bỏ JNJ khỏi "Conviction List" tháng 8 (không phải hạ khuyến nghị bán), trong khi target giá trung bình các hãng khác vẫn $260-305 (trên giá hiện tại), nhờ thực thi tốt ở mảng dược phẩm/MedTech. **Không đạt tiêu chí thay thế theo CLAUDE.md** (không underperform nghiêm trọng 30 ngày, không tin xấu nghiêm trọng, fundamentals chưa xấu đi rõ rệt ngoài guidance cut đã biết) — không đề xuất thay JNJ. Review 30 ngày coi như đã hoàn tất cho core-10 hiện tại (2 slot còn thiếu — tech/rủi ro cao — đã có đề xuất thay thế đang chờ Hogan chọn từ trước).
+  - Nguồn: [TradingKey](https://www.tradingkey.com/news/market-movers/262064743-market-movers-jnj-20260730), [TheStreet](https://www.thestreet.com/investing/jnj-profit-warning-biotech-deals).
+- **Các mã còn lại (RSP/VOO/JPM/CSCO):** biến động trong ngày nhỏ, không breach ngưỡng cắt lỗ/chốt lời mới, không cần tra tin tức.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng mới, không tin xấu nghiêm trọng mới, 3 đề xuất đang chờ không đổi. Không gửi PushNotification.
