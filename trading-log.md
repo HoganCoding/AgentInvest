@@ -2354,3 +2354,30 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Các mã còn lại (RSP/VOO/JNJ/TXN/JPM/CSCO/ASTS):** biến động trong ngày đều nhỏ (<2.5%), không có mã nào breach ngưỡng cắt lỗ/chốt lời mới, không cần tra tin tức.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc 2026-08-01, ngày mai).
 - **Không gửi PushNotification** — không có đề xuất mới, cả 2 đề xuất đang chờ (AAPL bán, AMZN chốt lời 1 phần) không đổi, tránh lặp lại thông báo.
+
+## 2026-08-03 ~9:47 ET (13:47 UTC) — Check-in định kỳ (routine read-only, sync git) — AMZN tiếp tục rally mạnh (+23.8% P&L), TXN áp sát stop-loss (-0.48%), ASTS cần dời trailing stop; không có đề xuất mới
+
+- **Sync đầu phiên:** `git pull` — đã up to date với `origin/main` (`ab704dc`, các commit mới đều là sandbox check-in), không xung đột.
+- **Xác nhận qua `get_equity_orders`** (từ 2026-07-31 19:31 UTC tới nay): **không có lệnh nào khớp** — cả 2 đề xuất đang chờ (bán AAPL 07-31 9:50 ET, chốt lời 1 phần AMZN 07-31 13:10 ET) **vẫn chưa có quyết định từ Hogan**. Core-10 vẫn 9/10: RSP, VOO, JNJ, AAPL, TXN, JPM, AMZN, ASTS, CSCO — thiếu 1 slot rủi ro cao (thay ACHR, hoãn từ 07-29).
+- **Tài khoản (Agentic ••••0133):** total_value $5,782.81, equity_value $3,754.11, cash/buying_power $2,028.70, pending_deposits $0.
+- P&L so với giá vốn và thay đổi trong ngày (giá ~9:47 ET/13:47 UTC, so với đóng cửa 07-31 — phiên giao dịch đầu tiên sau cuối tuần):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **AMZN** | $231.73 | $286.88 | **+23.80%** | **+5.63%** |
+  | ASTS | $55.47 | $59.79 | +7.79% | +1.37% |
+  | JPM | $347.97 | $352.88 | +1.41% | +0.31% |
+  | CSCO | $113.61 | $114.87 | +1.11% | -0.97% |
+  | RSP | $214.93 | $216.385 | +0.68% | +0.64% |
+  | VOO | $688.26 | $690.90 | +0.38% | +0.62% |
+  | AAPL | $307.90 | $305.775 | -0.69% | -1.01% |
+  | JNJ | $260.69 | $253.16 | -2.89% | -1.24% |
+  | **TXN** | $278.95 | $266.28 | **-4.54%** | **-3.43%** |
+
+- **AMZN — vượt xa ngưỡng cảnh báo chốt lời tech (+15-20%), nay +23.80% so với giá vốn, đỉnh mới $286.88.** WebSearch xác nhận vẫn là tiếp diễn đà tăng hậu KQKD Q2 (AWS +36.7% YoY, tốc độ nhanh nhất 18 quý, AI revenue run-rate >$25B, cam kết đầu tư thêm $35B vào OpenAI), Citi nâng target $325→$350 hôm nay (03/08) — không có tin xấu. Đề xuất chốt lời 1 phần đã gửi 07-31 13:10 ET **vẫn còn nguyên giá trị và nay càng quá hạn xem xét** (đã vượt xa mốc 20% ban đầu) — không gửi lại push (đề xuất đã chờ duyệt, tránh lặp thông báo), nhưng lưu ý Hogan nên quyết định sớm vì phần lãi chưa thực hiện đang tăng nhanh. Nguồn: [TradingKey](https://www.tradingkey.com/analysis/stocks/us-stocks/262070362-amazon-amzn-stock-forecast-august-3-2026-aws-37-percent-openai-35b-tradingkey), [Finbold](https://finbold.com/analysts-predict-amazon-amzn-stock-price-in-next-12-months/).
+- **TXN — giảm thêm -3.43% hôm nay (không phải tin mới), giá $266.28 chỉ còn cách stop-loss GTC đã đặt ($265.00, -5% từ giá vốn $278.95, confirmed từ 07-29) đúng **$1.28 (-0.48%)**.** WebSearch không tìm thấy catalyst tiêu cực mới riêng cho hôm nay — vẫn là câu chuyện đã biết từ báo cáo 07-22 (KQKD vượt kỳ vọng nhưng guidance/lo ngại nhu cầu công nghiệp chậm lại khiến giá tiếp tục "priced for perfection" sell-off, đã giảm ~16% từ đỉnh 52 tuần $334). QQQ chỉ +0.27% hôm nay nên đây không phải rủi ro hệ thống ngành, mà là yếu tố riêng của TXN. **Không phải đề xuất** — đây là lệnh stop-loss GTC đã có sẵn trên sàn, sẽ tự động khớp nếu breach (đúng theo CLAUDE.md, không cần Hogan duyệt lại), chỉ ghi nhận để theo dõi sát ở lần kiểm tra tiếp theo.
+- **Lưu ý vận hành (không phải đề xuất, cần phiên có quyền đặt lệnh xử lý sau): ASTS cần dời trailing stop lên.** Đỉnh giá kể từ khi mua (07-29, `get_equity_historicals`): cao nhất đạt được là **$61.20** (phiên 07-31). Trailing -12% (khung rủi ro cao) từ đỉnh này = **~$53.86**, cao hơn đáng kể so với stop hiện tại $48.81 (đặt từ giá vốn gốc 07-29, chưa từng dời). Không khẩn cấp (giá hiện tại $59.79 còn cách xa cả 2 mức) nhưng cần gộp vào lần có quyền đặt lệnh tiếp theo để bảo toàn lợi nhuận tốt hơn.
+- **AAPL — đề xuất bán (07-31 9:50 ET) vẫn đang chờ Hogan, vẫn còn hiệu lực:** giá đã hồi nhẹ về gần giá vốn (-0.69%) nhưng vẫn thấp hơn nhiều so với ngưỡng trail -5% tính từ đỉnh $344.5699 (~$327.34) — chưa có gì thay đổi để rút lại đề xuất.
+- **JNJ -1.24% hôm nay, -2.89% so với giá vốn — chưa breach stop -5%.** Lưu ý: mốc review định kỳ 30 ngày (2026-08-01) **đã qua 2 ngày** mà chưa có phiên nào thực hiện review đầy đủ (lần check-in core-10 gần nhất trước phiên này là 07-31 ~15:30 ET) — JNJ (guidance cut Firefly/Sail 07-29) và slot rủi ro cao còn thiếu (thay ACHR) vẫn đang chờ được đưa vào review đó. Phiên này không tự thực hiện review đầy đủ (cần phân tích sâu hơn nhiều mã cùng lúc) — khuyến nghị lần kiểm tra tiếp theo ưu tiên thực hiện.
+- **Không mã nào breach ngưỡng cắt lỗ/chốt lời mới trong lần kiểm tra này.** Không có tin xấu nghiêm trọng mới (kiện tụng/gian lận/mất CEO/hạ tín nhiệm) cho mã nào.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — AMZN/TXN biến động đều giải thích được (tin tốt đã biết / câu chuyện guidance đã biết), 2 đề xuất đang chờ (AAPL bán, AMZN chốt lời) không đổi. Không gửi PushNotification.
