@@ -2419,3 +2419,21 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Dời trailing stop-loss ASTS: hủy lệnh cũ $48.81 → đặt lệnh mới ~$55.89 (-12% từ đỉnh $63.51).
 
 - **Đã gửi PushNotification** — TXN vừa bị stop-loss (sự kiện thật cần Hogan biết) + đề xuất mới thay slot tech cần chọn.
+
+## 2026-08-03 ~13:10 ET (17:10 UTC) — Hogan duyệt: MSFT thay slot tech, bán toàn bộ AAPL, chốt lời 1/2 AMZN — đã thực hiện
+
+**Quyết định của Hogan:** "1.MSFT, 2.bán AAPL, 3.chốt lời AMZN" — duyệt cả 3 đề xuất đang chờ (thay slot tech TXN bằng MSFT, bán cắt lỗ AAPL, chốt lời một nửa AMZN).
+
+**Lệnh đã đặt và khớp (giá ~13:09 ET/17:09 UTC):**
+1. **AMZN — bán 1/2 vị thế (1 cp) chốt lời:** hủy stop-loss GTC cũ (2 cp, stop $220.14, đặt từ giá vốn gốc — chưa từng dời dù giá đã tăng hơn +20%) → bán 1 cp @ **$284.764** (market) → +22.89% so với giá vốn $231.73. Đặt lại stop-loss GTC mới cho 1 cp còn lại: **-5% từ đỉnh giá thật kể từ khi mua** (`get_equity_historicals` xác nhận đỉnh = $287.16, phiên hôm nay 13:45 UTC, cao hơn đỉnh 07-31 $273.23) → stop mới **$272.80** (thay vì chỉ tính từ giá vốn như cũ — sửa luôn phần trailing bị bỏ sót trước đây).
+2. **AAPL — bán toàn bộ 1.623903 cp cắt lỗ:** @ **$306.831** (market) ≈ $498.31. Lỗ nhẹ so với giá vốn $307.90 (~-0.35%). **Wash-sale: cấm mua lại AAPL tới ~2026-08-30** (giữ nguyên hạn từ đề xuất 07-31).
+3. **MSFT — mua 1 cp thay slot tech:** @ **$488.0047** (market) ≈ $488.00. Đặt stop-loss GTC mới: -5% từ giá mua (chưa có đỉnh mới) = **$463.60**.
+
+**Housekeeping đi kèm (không phải đề xuất mới, thực hiện theo chính sách trailing stop đã quy định, tận dụng phiên có quyền đặt lệnh):**
+- **ASTS — dời trailing stop-loss:** hủy stop cũ $48.81 (từ giá vốn gốc 07-29) → đặt lại **$55.89** (-12% từ đỉnh giá thật $63.51, phiên 08-03).
+
+**Core-10 sau các lệnh — 8/10 vị thế:** AMZN (1cp), RSP, VOO, JNJ, MSFT (mới), JPM, ASTS, CSCO. Vẫn thiếu 1 slot rủi ro cao (thay ACHR, hoãn từ 07-29) — chưa có đề xuất mới cho slot này.
+
+**Lưu ý thuế:** lệnh bán AMZN (lãi, mua 07-06) và AAPL (lỗ nhẹ, mua 07-03) đều là short-term (chưa giữ đủ 1 năm) — AMZN phát sinh thuế lãi vốn ngắn hạn, AAPL wash-sale áp dụng như đã nêu.
+
+- **Không cần PushNotification thêm** — đây là thực hiện các đề xuất đã duyệt qua chat trực tiếp, không phải đề xuất mới chờ xác nhận (theo đúng quy định 2026-07-09 về không lặp push sau khi đã duyệt).
