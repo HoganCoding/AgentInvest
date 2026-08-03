@@ -2419,3 +2419,40 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Dời trailing stop-loss ASTS: hủy lệnh cũ $48.81 → đặt lệnh mới ~$55.89 (-12% từ đỉnh $63.51).
 
 - **Đã gửi PushNotification** — TXN vừa bị stop-loss (sự kiện thật cần Hogan biết) + đề xuất mới thay slot tech cần chọn.
+
+
+## 2026-08-03 ~13:11 ET (17:11 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — Phát hiện phiên khác (có quyền đặt lệnh) vừa xử lý 4/4 việc đang chờ trong ~1 phút qua; ASTS vượt ngưỡng chốt lời +15% → ĐỀ XUẤT MỚI bán 1 phần
+
+- **Sync đầu phiên:** `git pull` — local đã chậm 18 commit so với `origin/main` (log sandbox + core-10 09:47/13:05 ET), fast-forward về `e586347`, không xung đột.
+- **Phát hiện qua `get_equity_orders`/`get_equity_positions`:** giữa lúc phiên này khởi động (~17:09-17:10 UTC), một phiên KHÁC có quyền đặt lệnh (`placed_agent: agentic`, không phải phiên routine read-only này) đã xử lý toàn bộ các việc đang chờ ghi trong entry 13:05 ET trước đó:
+  1. **Bán AAPL toàn bộ** 1.623903cp @ $306.831 (lỗ nhẹ -0.35% so với giá vốn $307.90) — đúng đề xuất cắt lỗ đã gửi 07-31 9:50 ET. Wash-sale: cấm mua lại AAPL tới ~2026-09-02.
+  2. **Bán AMZN 1 phần** 1cp @ $284.764 (chốt lời, đúng đề xuất gửi 07-31 13:10 ET) — còn lại 1cp, giá vốn giữ nguyên $231.73. Đặt stop-loss GTC mới cho phần còn lại @ $272.80.
+  3. **Mua MSFT** (Lựa chọn A trong đề xuất TXN 13:05 ET hôm nay) 1cp @ $488.0047 — lấp slot tech thay TXN. Đặt stop-loss GTC -5% @ $463.60.
+  4. **Dời trailing stop ASTS** từ $48.81 → $55.89 (-12% từ đỉnh $63.51) — đúng việc vận hành đã nêu ở entry trước, hủy lệnh cũ (`6a6a48c2`), đặt lệnh mới (`6a70cb73`).
+  - Đây khớp với cơ chế "Đồng bộ giữa các phiên" (CLAUDE.md 2026-07-28) — một phiên tương tác khác (có quyền đặt lệnh, presumably Hogan duyệt trực tiếp) xử lý các đề xuất đang chờ. Phiên này (read-only) không đặt/hủy bất kỳ lệnh nào, chỉ xác nhận và ghi nhận.
+- **Core-10 hiện tại (8/10, xác nhận `get_equity_positions`):** AMZN(1cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JNJ(1.917986cp), JPM(1cp), ASTS(5cp), CSCO(3cp) — thiếu 2 slot: **1 large-cap tech** (thay AAPL, vừa bán — đề xuất ORCL/PANW đã gửi 07-31 vẫn còn hiệu lực, giờ đã actionable vì AAPL đã bán xong thật) + **1 rủi ro cao** (thay ACHR, hoãn từ 07-29, chưa có ứng viên ổn định).
+- Tài khoản (Agentic ••••0133): total_value $5,799.40, equity_value $3,210.68, cash $2,588.72, buying_power $1,540.70.
+- P&L so với giá vốn và thay đổi trong ngày (giá ~13:11 ET/17:11 UTC, so với đóng cửa 07-31):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **ASTS** | $55.47 | $63.845 | **+15.10%** | **+8.25%** |
+  | **AMZN** | $231.73 | $284.63 | **+22.85%** | +4.80% |
+  | **MSFT** | $488.00 | $488.23 | +0.05% | +5.06% (kể từ đóng cửa 07-31, trước khi mua) |
+  | VOO | $688.26 | $695.43 | +1.04% | +1.28% |
+  | CSCO | $113.61 | $114.95 | +1.17% | -0.90% |
+  | JPM | $347.97 | $351.62 | +1.05% | -0.05% |
+  | RSP | $214.93 | $216.35 | +0.66% | +0.62% |
+  | JNJ | $260.69 | $252.74 | -3.05% | -1.41% |
+
+### ĐỀ XUẤT MỚI — ASTS vượt ngưỡng chốt lời +15% (nhóm rủi ro cao) → bán 1 phần
+
+1. **ASTS — BÁN 3 cổ phiếu** (~60% vị thế 5cp — số gần nhất với mốc 50% do số lẻ cổ phiếu, có thể cân nhắc 2cp/40% nếu Hogan muốn giữ nhiều hơn cho phần chạy tiếp) @ giá thị trường hiện tại (~$63.845, tổng ~$191.5). Giữ lại 2cp (40%) tiếp tục chạy theo trailing stop.
+2. **Lý do:** ASTS đã đạt **+15.10%** lãi tích lũy từ giá vốn $55.47 → vượt ngưỡng chốt lời chủ động 50% quy định cho nhóm rủi ro cao (CLAUDE.md 2026-07-24, theo đúng cách đã hiệu quả với AEHR trước đây). Catalyst xác nhận thật (không phải nhiễu): phóng vệ tinh BlueBird dự kiến **2026-08-05** phục vụ thị trường Nhật Bản (đối tác Rakuten, kỳ vọng gấp đôi tốc độ tải xuống); B. Riley vừa nâng khuyến nghị lên Buy (target $85). [Nguồn: stockinvest.us, finance.yahoo.com]
+3. **Rủi ro chính:** sự kiện phóng vệ tinh 08-05 mang rủi ro 2 chiều — nếu thành công giá có thể tiếp tục tăng (bỏ lỡ phần đã bán), nếu trễ lịch/thất bại kỹ thuật giá có thể giảm mạnh (rủi ro "buy the rumor, sell/dump the news" hoặc ngược lại); ASTS vẫn là mã biến động cao, phần còn lại (2cp) vẫn chịu rủi ro đó.
+4. **Cắt lỗ/chốt lời cho phần còn lại (2cp):** giữ nguyên trailing stop-loss hiện tại đã dời lên $55.89 (-12% từ đỉnh $63.845/63.51), tiếp tục dời lên theo đỉnh mới ở các lần kiểm tra sau; không đặt thêm ngưỡng chốt lời cứng cho phần còn lại, để chạy theo xu hướng.
+- **Việc cần xử lý ở phiên có quyền đặt lệnh (không phải đề xuất mua/bán mới, chỉ vận hành nếu Hogan duyệt đề xuất trên):** hủy lệnh stop hiện tại cho 5cp (@ $55.89, order `6a70cb73`) trước, bán 3cp theo đề xuất, rồi đặt lại lệnh stop mới cho 2cp còn lại (giữ mức $55.89 hoặc cao hơn nếu đỉnh mới đã hình thành).
+- **Slot tech thay AAPL:** đề xuất ORCL/PANW đã gửi 07-31 ~9:50 ET vẫn còn nguyên, giờ đã actionable (AAPL đã bán xong) — không cần nghiên cứu lại, chỉ chờ Hogan chọn.
+- **Slot rủi ro cao thay ACHR:** vẫn hoãn, chưa có ứng viên đủ ổn định (theo quyết định 07-29 14:53 ET) — không phải trọng tâm phiên này.
+- **Review định kỳ 30 ngày (mốc 2026-08-01) đã quá hạn 2 ngày**, chưa có phiên nào thực hiện đầy đủ — vẫn cần ưu tiên ở lần kiểm tra tới (JNJ guidance cut 07-29 + 2 slot còn thiếu cần đưa vào phân tích này).
+- **Đã gửi PushNotification** — đề xuất mới (ASTS chốt lời 1 phần +15%) cần Hogan xem/duyệt, cùng thông báo phiên khác đã xử lý AAPL/AMZN/MSFT/ASTS-stop trong lúc này.
