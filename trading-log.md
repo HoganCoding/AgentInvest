@@ -2437,3 +2437,24 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 **Lưu ý thuế:** lệnh bán AMZN (lãi, mua 07-06) và AAPL (lỗ nhẹ, mua 07-03) đều là short-term (chưa giữ đủ 1 năm) — AMZN phát sinh thuế lãi vốn ngắn hạn, AAPL wash-sale áp dụng như đã nêu.
 
 - **Không cần PushNotification thêm** — đây là thực hiện các đề xuất đã duyệt qua chat trực tiếp, không phải đề xuất mới chờ xác nhận (theo đúng quy định 2026-07-09 về không lặp push sau khi đã duyệt).
+
+## 2026-08-03 ~13:15 ET (17:15 UTC) — Theo yêu cầu Hogan: nghiên cứu 2 lựa chọn cho slot rủi ro cao #2 (thay ACHR, còn trống từ 07-29)
+
+- **Sàng lọc wash-sale (tính tới 08-03):** loại RXRX (tới ~08-09), IONQ (tới ~08-06), QBTS (tới ~08-12), SERV (tới ~08-15), RKLB (tới ~08-23), OKLO (tới ~08-27), AAPL (tới ~08-30, khác nhóm nhưng loại trừ chung), TXN (tới ~09-02, khác nhóm). Tránh trùng nhóm không gian với ASTS đang giữ.
+- **4 ứng viên đã theo dõi liên tục từ 07-29 (NNE/OUST/APLD/IREN):** tất cả vẫn đang trong đà rally mạnh phiên thứ 3 liên tiếp kể từ 07-31 — so với đóng cửa 07-31: NNE +8.6%, OUST +6.8%, APLD +7.0%, IREN +7.1%. SPY +1.27%/QQQ +1.60% hôm nay (không vi phạm ngưỡng cấm mở vị thế mới -1.5/-2%) nhưng bản thân nhóm này vẫn CHƯA có phiên đóng cửa ổn định/consolidate thật sự — vẫn là biến động trong phiên đang tăng, đúng tình trạng đã ghi nhận suốt từ 07-31 đến nay.
+- **2 ứng viên chất lượng tốt nhất (loại OUST vì earnings 06/08 chỉ còn 3 ngày — event risk cao; loại NNE vì không có catalyst riêng mới, chỉ ăn theo nhóm):**
+
+### ĐỀ XUẤT — thay slot rủi ro cao #2 (ACHR) — 2 lựa chọn, chờ Hogan chọn (KHÔNG tự chọn)
+
+**Lựa chọn A: IREN (IREN Limited)** — $39.40/cp (+7.1% so với đóng cửa 07-31).
+- **Lý do:** chuyển hướng từ crypto mining sang AI cloud, vừa ký thêm hợp đồng nhiều năm trị giá $2.8B với các AI developer lớn (Microsoft, NVIDIA, Perplexity, Figure AI, Together AI, Fluidstack, Fireworks AI, Fal AI, Hume AI +1 khách mới) — nâng mục tiêu AI Cloud ARR cuối năm từ $3.7B lên >$4B. Bernstein khởi tạo khuyến nghị Mua 07-31. Consensus FactSet: 11 Buy/3 Overweight/2 Hold/1 Sell, target trung vị $85.50 — dư địa lớn dù đã hồi 30%+ từ đáy tháng trước (vẫn -50% từ đỉnh 52 tuần $76.87).
+- **Rủi ro chính:** đã tăng hơn +100% qua 3 phiên rally liên tiếp — mua ngay lúc này là mua đuổi giữa momentum cực đoan (đi ngược bộ lọc CLAUDE.md 2026-07-24 yêu cầu chờ ổn định giá). Biến động cực cao (đã từng -50% từ đỉnh cũ), phụ thuộc nhiều vào 1 nhóm khách hàng AI tập trung.
+- **Đề xuất size:** 7cp market (~$276, ~4.76% danh mục). Cắt lỗ: **-12% từ giá vốn = ~$34.67** (chưa có đỉnh mới, tính từ giá vốn tới khi có đỉnh mới). Chốt lời: cảnh báo/bán 50% ở +15% (~$45.31), theo đúng quy tắc nhóm rủi ro cao.
+
+**Lựa chọn B: APLD (Applied Digital)** — $29.32/cp (+7.0% so với đóng cửa 07-31).
+- **Lý do:** KQKD Q4 FY2026 (27/07) vượt xa kỳ vọng — doanh thu +407% YoY đạt $258.7M, đánh bại ước tính $94.83M, EPS dương bất ngờ so với dự báo lỗ. Vừa ký thỏa thuận cấp điện 430MW với Montana-Dakota Utilities cho dự án AI factory "Polaris Forge 3" (dự kiến vận hành 08-2027). Target trung bình phân tích $72.54-73.05 (tiềm năng ~+150-160% từ giá hiện tại) — đây là câu chuyện tăng trưởng có KQKD thật hỗ trợ, không phải hype thuần túy.
+- **Rủi ro chính:** cùng nhóm "AI data center rebound" nên biến động gần như song hành IREN (rủi ro tương quan cao nếu chọn cả 2 — nhưng đây là 2 lựa chọn thay thế nhau, không phải mua cả 2). Cũng đang mua đuổi giữa rally 3 phiên, cùng rủi ro "chasing" như IREN. Có giao dịch nội bộ bán ra gần đây (insider sale ghi nhận đầu tháng 8, quy mô ~17% cổ phần cá nhân giám đốc) — không phải tín hiệu tích cực dù chưa phải cờ đỏ nghiêm trọng.
+- **Đề xuất size:** 10cp market (~$293, ~5.06% danh mục). Cắt lỗ: **-12% từ giá vốn = ~$25.80**. Chốt lời: cảnh báo/bán 50% ở +15% (~$33.72).
+
+- **Lưu ý về thời điểm vào lệnh:** cả 2 vẫn đang trong đà tăng chưa xác nhận đóng cửa ổn định theo đúng bộ lọc CLAUDE.md 2026-07-24 — khuyến nghị chờ ít nhất 1 phiên đóng cửa đi ngang/consolidate trước khi vào lệnh thật, nhưng trình sẵn 2 lựa chọn để Hogan quyết định chọn mã + thời điểm (có thể chọn vào ngay chấp nhận rủi ro chasing, hoặc chờ xác nhận ổn định).
+- Nguồn: [24/7 Wall St](https://247wallst.com/investing/2026/07/29/iren-terawulf-and-applied-digital-are-all-down-30-in-a-month-is-more-pain-coming-for-data-center-stocks/), [ts2.tech IREN](https://ts2.tech/en/iren-nasdaqiren-shares-add-to-30-bounce-await-key-ai-revenue-test/), [Applied Digital Q4 8-K](https://www.sec.gov/Archives/edgar/data/1144879/000114487926000029/apldq326earningsrelease.htm).
