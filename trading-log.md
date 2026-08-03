@@ -2381,3 +2381,41 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **JNJ -1.24% hôm nay, -2.89% so với giá vốn — chưa breach stop -5%.** Lưu ý: mốc review định kỳ 30 ngày (2026-08-01) **đã qua 2 ngày** mà chưa có phiên nào thực hiện review đầy đủ (lần check-in core-10 gần nhất trước phiên này là 07-31 ~15:30 ET) — JNJ (guidance cut Firefly/Sail 07-29) và slot rủi ro cao còn thiếu (thay ACHR) vẫn đang chờ được đưa vào review đó. Phiên này không tự thực hiện review đầy đủ (cần phân tích sâu hơn nhiều mã cùng lúc) — khuyến nghị lần kiểm tra tiếp theo ưu tiên thực hiện.
 - **Không mã nào breach ngưỡng cắt lỗ/chốt lời mới trong lần kiểm tra này.** Không có tin xấu nghiêm trọng mới (kiện tụng/gian lận/mất CEO/hạ tín nhiệm) cho mã nào.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — AMZN/TXN biến động đều giải thích được (tin tốt đã biết / câu chuyện guidance đã biết), 2 đề xuất đang chờ (AAPL bán, AMZN chốt lời) không đổi. Không gửi PushNotification.
+
+## 2026-08-03 ~13:05 ET (17:05 UTC) — Kiểm tra định kỳ (theo yêu cầu): TXN đã bị stop-loss GTC tự động khớp lúc 9:50 ET (~3 phút sau lần check-in trước) — ĐỀ XUẤT thay thế slot tech; ASTS áp sát ngưỡng chốt lời +15% nhóm rủi ro cao
+
+- **Sync đầu phiên:** `git pull` — local đã chậm 12 commit so với `origin/main` (toàn bộ là log sandbox + 1 log core-10 09:47 ET), fast-forward về `b9fdaff`, không xung đột.
+- **Xác nhận qua `get_equity_orders`:** lệnh stop GTC đặt 2026-07-29 cho TXN (stop $265.00, -5% từ giá vốn $278.95) đã **khớp lúc 2026-08-03 13:50:05 UTC (9:50:05 ET)** — bán 1 cp @ $265.00 (order `6a6a48c3...`). Đây là tự động theo đúng cơ chế trailing stop đã đặt sẵn, KHÔNG cần Hogan duyệt (đúng quy định CLAUDE.md). Không có lệnh nào khác khớp kể từ đó.
+- **Core-10 hiện còn 8/10 vị thế:** AMZN, RSP, VOO, JNJ, AAPL, JPM, ASTS, CSCO — thiếu **2 slot**: 1 rủi ro cao (thay ACHR, hoãn từ 07-29) + 1 large-cap tech (thay TXN, vừa stop-loss hôm nay).
+- **Tài khoản (Agentic ••••0133):** total_value $5,798.11, equity_value $3,504.41, cash $2,293.70 (bao gồm $265 tiền bán TXN chưa settle), buying_power $2,028.70.
+- P&L so với giá vốn và thay đổi trong ngày (giá ~13:02 ET/17:02 UTC, so với đóng cửa 07-31):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **AMZN** | $231.73 | $284.74 | **+22.90%** | +4.85% |
+  | **ASTS** | $55.47 | $63.51 | **+14.49%** | **+7.68%** |
+  | JPM | $347.97 | $351.99 | +1.16% | +0.06% |
+  | CSCO | $113.61 | $114.94 | +1.17% | -0.91% |
+  | VOO | $688.26 | $695.13 | +1.00% | +1.23% |
+  | RSP | $214.93 | $216.315 | +0.64% | +0.61% |
+  | AAPL | $307.90 | $306.44 | -0.47% | -0.80% |
+  | JNJ | $260.69 | $252.89 | -2.99% | -1.35% |
+
+- **TXN — đóng vị thế lỗ -4.86% (~-$13.95), bán @ $265.00 vs giá vốn $278.95.** Wash-sale: cấm mua lại TXN tới khoảng **2026-09-02** (30 ngày). Đây là lệnh cắt lỗ đúng kỷ luật trailing stop đã đặt, không phải quyết định tùy ý.
+- **ASTS +14.49% so với giá vốn — sát ngay ngưỡng +15% chốt lời một phần nhóm rủi ro cao (CLAUDE.md 2026-07-24).** Đỉnh giá kể từ khi mua vẫn là $63.51 hôm nay (đỉnh mới). Core-10 cần Hogan duyệt trước khi bán (khác sandbox) — nếu vượt hẳn 15% ở lần kiểm tra tới, sẽ đề xuất bán 50% chốt lời theo đúng công thức đã quy định. Đồng thời nhắc lại: stop-loss ASTS hiện $48.81 (từ giá vốn gốc) đã lạc hậu nhiều so với đỉnh mới — trail -12% từ đỉnh $63.51 ≈ **$55.89**, cần dời trong đề xuất dưới đây.
+- **AMZN +22.90%, JNJ/AAPL không đổi hướng:** đề xuất chốt lời 1 phần AMZN (gửi 07-31 13:10 ET) và đề xuất bán AAPL (gửi 07-31 9:50 ET) đều **vẫn đang chờ Hogan quyết định**, chưa có gì thay đổi để rút lại.
+
+### ĐỀ XUẤT MỚI 1 — Thay slot large-cap tech (TXN vừa stop-loss) — 2 lựa chọn (chờ Hogan chọn, KHÔNG tự chọn)
+
+**Lựa chọn A: MSFT (Microsoft)** — $488.68/cp (+5.16% so với đóng cửa 07-31, đã tăng ~9% kể từ báo cáo KQKD 07-30). Q2 FY2026: doanh thu Azure/cloud tăng mạnh, beat kỳ vọng rõ rệt, thị trường phản ứng rất tích cực (một trong các mã tốt nhất mùa earnings big-tech vừa qua). Thanh khoản cao nhất nhóm mega-cap, minh bạch tài chính, đa dạng hóa tốt (đã có AMZN/CSCO thiên AI-infra/cloud, MSFT thêm software/enterprise). Rủi ro: đã tăng mạnh 3 phiên liên tiếp sau earnings, mua ngay lúc này có rủi ro đuổi giá ngắn hạn (chasing) dù nền tảng tốt; định giá cao (P/E ~35+).
+   - Cắt lỗ đề xuất: -5% (trailing, khung tech). Chốt lời: cảnh báo +15-20%.
+
+**Lựa chọn B: GOOGL (Alphabet)** — $375.88/cp (+5.55% so với đóng cửa 07-31). Q2 2026: doanh thu $119.8B beat kỳ vọng, Google Cloud +82% YoY (tăng tốc mạnh), nhưng đã nâng capex 2026 lên $195-205B (từ $180-190B) gây lo ngại chi phí — cổ phiếu từng giảm ~15% cuối tháng 7 vì lo capex trước khi hồi phục về vùng hiện tại. Đa dạng hóa qua search/ads + cloud, khác hẳn AMZN/CSCO. Rủi ro: capex tăng cao gây áp lực margin dài hạn, đã hồi phục mạnh từ đáy nên cũng có rủi ro đuổi giá, biến động gần đây lớn hơn MSFT (từng -15% trong vài phiên).
+   - Cắt lỗ đề xuất: -5% (trailing, khung tech). Chốt lời: cảnh báo +15-20%.
+
+- **Lưu ý đa dạng hóa:** cả 2 đều khác nhóm ORCL/PANW đã đề xuất riêng cho slot AAPL (07-31, còn chờ duyệt) — nếu Hogan duyệt cả 2 thay thế (AAPL + TXN) cùng lúc, tránh chọn trùng theme quá nhiều (vd. không nên chọn ORCL cho AAPL và MSFT/GOOGL cho TXN nếu muốn đa dạng ngành tối đa — nhưng đây là lựa chọn của Hogan, agent chỉ nêu quan sát).
+
+### Việc cần xử lý ở phiên có quyền đặt lệnh (không phải đề xuất mua/bán mới, chỉ vận hành)
+- Dời trailing stop-loss ASTS: hủy lệnh cũ $48.81 → đặt lệnh mới ~$55.89 (-12% từ đỉnh $63.51).
+
+- **Đã gửi PushNotification** — TXN vừa bị stop-loss (sự kiện thật cần Hogan biết) + đề xuất mới thay slot tech cần chọn.
