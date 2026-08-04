@@ -2534,3 +2534,28 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **RSP/VOO/JPM:** biến động trong ngày nhỏ (JPM +1.51% đáng chú ý nhẹ nhưng không có tin riêng, có thể ăn theo đà tăng chung nhóm tài chính), không breach ngưỡng nào.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng mới cần đề xuất mới (ASTS/AMZN đều là diễn biến tiếp nối của tình huống đã ghi nhận và có đề xuất/hành động sẵn), không tin xấu nghiêm trọng nào phát sinh. 3 đề xuất đang chờ (ORCL/PANW, IREN/APLD, bán 1 phần ASTS) không đổi. Không gửi PushNotification.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng mới, không tin xấu nghiêm trọng mới, 3 đề xuất đang chờ không đổi. Không gửi PushNotification.
+
+## 2026-08-04 ~13:11 ET (17:11 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — Không có đề xuất mới; ASTS +26.7% (đỉnh mới $70.26, earnings 08-10 phát hiện mới), 3 đề xuất cũ vẫn chờ Hogan
+
+- **Sync đầu phiên:** `git pull` — đã up to date với `origin/main` (`b07cb4c`, các commit mới nhất đều là sandbox check-in), không xung đột.
+- **Xác nhận qua `get_equity_orders`** (từ 09-48 ET sáng nay tới nay): **không có lệnh nào khớp** — cả 3 đề xuất đang chờ (thay slot tech ORCL/PANW từ 07-31, thay slot rủi ro cao IREN/APLD từ 08-03 13:15 ET, bán 1 phần ASTS chốt lời từ 08-03 13:11 ET) **vẫn chưa có quyết định từ Hogan**. Core-10 vẫn 8/10 nguyên vẹn: AMZN(1cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JNJ(1.917986cp), JPM(1cp), ASTS(5cp), CSCO(3cp).
+- P&L so với giá vốn (giá ~13:10 ET/17:10 UTC, so với đóng cửa 08-03):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **ASTS** | $55.47 | $70.26 | **+26.68%** | **+10.61%** |
+  | **AMZN** | $231.73 | $278.57 | **+20.20%** | -1.92% |
+  | CSCO | $113.61 | $120.85 | +6.37% | +4.31% |
+  | JPM | $347.97 | $360.40 | +3.57% | +2.20% |
+  | VOO | $688.26 | $708.78 | +2.98% | +1.78% |
+  | MSFT | $488.00 | $495.32 | +1.50% | +1.57% |
+  | RSP | $214.93 | $219.73 | +2.23% | +1.21% |
+  | JNJ | $260.69 | $253.565 | -2.74% | -0.33% |
+
+- **ASTS +10.61% hôm nay, đỉnh mới $70.26 — đề xuất bán 1 phần (3cp/60%, gửi 08-03 13:11 ET) nay càng cấp thiết hơn, +26.68% so với giá vốn.** WebSearch xác nhận: đà tăng tiếp diễn trước phóng vệ tinh BlueBird 11-13 (dự kiến trong nửa đầu tháng 8 từ Cape Canaveral, phục vụ thị trường Nhật Bản/Rakuten) — **phát hiện mới: AST SpaceMobile sẽ báo cáo KQKD ngày 2026-08-10** (EPS ước lỗ -$0.29, doanh thu ước $34.54M, cùng tuần với phóng vệ tinh) — thêm 1 lớp rủi ro sự kiện (earnings) mà đề xuất chốt lời 1 phần ban đầu (08-03) chưa tính tới. Giá mục tiêu trung bình phân tích $81.13 (Hold), B. Riley Buy $85, Piper Sandler Overweight $100, Scotiabank Sector Perform $50.80 (phân kỳ rộng, phản ánh rủi ro 2 chiều thật). Đề xuất bán 3cp đang chờ vẫn còn nguyên giá trị, không phải đề xuất mới (cùng bản chất quyết định, chỉ thêm dữ kiện earnings 08-10 hỗ trợ thêm lý do chốt lời sớm trước sự kiện kép phóng vệ tinh + earnings) — không gửi push lặp lại theo đúng tiền lệ 08-03/08-04 (không có thay đổi bản chất quyết định cần Hogan xác nhận mới), nhưng khuyến nghị mạnh Hogan quyết định trước 08-05 (phóng vệ tinh) hoặc chậm nhất trước 08-10 (earnings) để tránh rủi ro sự kiện kép trên toàn bộ 5cp.
+- **CSCO +4.31% hôm nay, đỉnh mới, P&L +6.37%.** WebSearch xác nhận: UBS tái khẳng định Buy, target $132 (đóng cửa $119.55 hôm qua); tiếp diễn đà tăng nhóm AI-infrastructure/hardware sau khi thị trường phản ứng tích cực với guidance quý gần nhất và tích hợp thành công các thương vụ M&A gần đây (SaaS/an ninh mạng, giảm phụ thuộc doanh thu hardware theo chu kỳ). Không có tin tiêu cực. Chưa chạm ngưỡng cảnh báo chốt lời tech (+15-20%) — chỉ ghi nhận theo dõi, không phải đề xuất.
+- **JPM +2.20% hôm nay — biến động rộng cùng thị trường** (VOO +1.78%, RSP +1.21%, MSFT +1.57% cùng tăng), không tìm thấy tin riêng cho JPM — có vẻ là rally chung thị trường/nhóm tài chính, không breach ngưỡng nào.
+- **AMZN -1.92% hôm nay nhưng vẫn +20.20% so với giá vốn — không phải tín hiệu xấu, tiếp diễn điều chỉnh nhẹ sau đợt tăng mạnh hậu KQKD/vượt $3T vốn hóa đã ghi nhận hôm qua.** Đề xuất chốt lời đã thực hiện 1 nửa (08-03); phần còn lại (1cp) vẫn chạy theo trailing stop $272.80, không cần điều chỉnh.
+- **JNJ -0.33% hôm nay, -2.74% so với giá vốn — chưa breach stop -5%.** Không có gì mới, review 30 ngày đã khép lại.
+- **RSP/VOO/MSFT:** tăng đồng loạt theo đà thị trường chung, không breach ngưỡng nào, không cần tra tin riêng.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng mới cần đề xuất mới riêng biệt (ASTS là tiếp nối tình huống đã có đề xuất/hành động sẵn, chỉ thêm dữ kiện earnings 08-10 hỗ trợ thêm), không tin xấu nghiêm trọng nào phát sinh. 3 đề xuất đang chờ (ORCL/PANW, IREN/APLD, bán 1 phần ASTS) không đổi. Không gửi PushNotification.
