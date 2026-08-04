@@ -1688,6 +1688,17 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **Đánh giá:** không có gì mới — vẫn CHƯA có phiên đóng cửa ổn định để xác nhận theo bộ lọc CLAUDE.md 2026-07-24. **Tiếp tục hoãn toàn bộ nhóm**, không vào lệnh mới.
 - **Quyết định: KHÔNG vào lệnh sandbox mới, tiếp tục giữ 100% cash.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
 
+## 2026-08-04 ~15:09 ET (19:09 UTC) — Kiểm tra định kỳ: sandbox vẫn 100% cash; nhóm ứng viên rủi ro cao đi ngang so với lần check trước (dưới ngưỡng đào tin), OUST daily +12% — tiếp tục hoãn
+
+- **Sync đầu phiên:** `git pull` — local detached HEAD 36 commit chậm; `git checkout main && git merge --ff-only origin/main` fast-forward về `1a41349`, không xung đột.
+- `get_equity_positions` (704170133): **sandbox vẫn không có vị thế nào** — 100% cash. 8 vị thế trên tài khoản đều là core-10 (đối chiếu khớp `trading-log.md`): AMZN, RSP, MSFT, VOO, JNJ, JPM, ASTS, CSCO — không có mã lạ nào cần đối chiếu wash-sale/cross-attribution lần này.
+- `get_equity_orders` (từ 18:11 UTC tới nay): **rỗng** — không có lệnh mới nào trên toàn tài khoản.
+- `get_portfolio`: cash $2,588.72, buying_power **$2,588.72** — không đổi so với lần check trước (14:11 ET). Không có vị thế sandbox nào đang mở nên không cần tính "phần theo dõi"/circuit breaker.
+- **Thị trường (SPY/QQQ):** SPY $772.85 (+2.00% so với đóng cửa 08-03 $757.67), QQQ $724.79 (+3.53% so với đóng cửa $700.07) — rally mạnh tiếp diễn (phiên thứ 5 liên tiếp), không vượt ngưỡng cấm mở vị thế rủi ro cao mới (-1.5/-2%).
+- **Nhóm ứng viên rủi ro cao (NNE/OUST/APLD/IREN)** so với đóng cửa 08-03: NNE $18.3836 (+4.57%), OUST $47.63 (+12.13%), APLD $31.795 (+7.82%), IREN $41.0365 (+3.24%). So với lần check trước (14:11 ET, ~1h): NNE +1.51%, OUST +1.82%, APLD +1.39%, IREN +0.14% — tất cả dưới ngưỡng 3-5%, không cần WebSearch tin mới (OUST daily +12.13% phần lớn đã xảy ra trước 14:11 ET, đã ghi nhận, không phải diễn biến mới).
+- **Đánh giá:** không có gì mới — vẫn là phiên rally thứ 5 liên tiếp (07-31→08-04), CHƯA có nhịp điều chỉnh/đi ngang thực sự để xác nhận theo bộ lọc CLAUDE.md 2026-07-24. OUST còn 2 ngày tới earnings (06/08), rủi ro gap risk không đổi, càng kém hấp dẫn để vào mới. **Tiếp tục hoãn toàn bộ nhóm**, không vào lệnh mới.
+- **Quyết định: KHÔNG vào lệnh sandbox mới, tiếp tục giữ 100% cash.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
 ## 2026-08-04 ~09:12 ET (13:12 UTC) — Kiểm tra đầu phiên (pre-market): sandbox vẫn 100% cash; NNE/OUST vượt ngưỡng 3-5% pre-market nhưng không có catalyst mới, chưa mở cửa nên chưa thể đánh giá phiên ổn định — tiếp tục hoãn
 
 - **Sync đầu phiên:** `git pull origin main` — local đã chậm 27 commit, fast-forward về `8b4fddb`, không xung đột.
