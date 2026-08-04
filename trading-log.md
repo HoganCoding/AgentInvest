@@ -2509,4 +2509,28 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **JNJ — khép lại phần review 30 ngày còn thiếu (quá hạn từ 2026-08-01):** `get_equity_historicals` (07-01→07-31) cho thấy JNJ đi ngang/nhẹ dương trong tháng (mở $253.25 → đóng $256.35, ~+1.2%) trước khi giảm dần sau tin cắt giảm guidance 07-29 (giá hiện $254.65, P&L -2.32%, chưa breach ngưỡng stop -5%). WebSearch xác nhận không có tin xấu nghiêm trọng mới kể từ 07-29 (kiện tụng/gian lận/mất CEO/hạ tín nhiệm) — chỉ có Goldman Sachs bỏ JNJ khỏi "Conviction List" tháng 8 (không phải hạ khuyến nghị bán), trong khi target giá trung bình các hãng khác vẫn $260-305 (trên giá hiện tại), nhờ thực thi tốt ở mảng dược phẩm/MedTech. **Không đạt tiêu chí thay thế theo CLAUDE.md** (không underperform nghiêm trọng 30 ngày, không tin xấu nghiêm trọng, fundamentals chưa xấu đi rõ rệt ngoài guidance cut đã biết) — không đề xuất thay JNJ. Review 30 ngày coi như đã hoàn tất cho core-10 hiện tại (2 slot còn thiếu — tech/rủi ro cao — đã có đề xuất thay thế đang chờ Hogan chọn từ trước).
   - Nguồn: [TradingKey](https://www.tradingkey.com/news/market-movers/262064743-market-movers-jnj-20260730), [TheStreet](https://www.thestreet.com/investing/jnj-profit-warning-biotech-deals).
 - **Các mã còn lại (RSP/VOO/JPM/CSCO):** biến động trong ngày nhỏ, không breach ngưỡng cắt lỗ/chốt lời mới, không cần tra tin tức.
+
+## 2026-08-04 ~09:48 ET (13:48 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — Không có đề xuất mới; ASTS/CSCO biến động mạnh nhưng đã giải thích, 3 đề xuất cũ vẫn chờ Hogan
+
+- **Sync đầu phiên:** `git pull` — đã up to date với `origin/main` (`d17cbc4`, các commit mới nhất đều là sandbox check-in), không xung đột.
+- **Xác nhận qua `get_equity_orders`** (từ 08-03 19:32 UTC tới nay): **không có lệnh nào khớp** — cả 3 đề xuất đang chờ (thay slot tech ORCL/PANW từ 07-31, thay slot rủi ro cao IREN/APLD từ 08-03 13:15 ET, bán 1 phần ASTS chốt lời từ 08-03 13:11 ET) **vẫn chưa có quyết định từ Hogan**. Core-10 vẫn 8/10 nguyên vẹn: AMZN(1cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JNJ(1.917986cp), JPM(1cp), ASTS(5cp), CSCO(3cp).
+- P&L so với giá vốn (giá ~09:46 ET/13:46 UTC, so với đóng cửa 08-03):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **ASTS** | $55.47 | $68.695 | **+23.85%** | **+8.15%** |
+  | **AMZN** | $231.73 | $276.67 | **+19.40%** | -2.58% |
+  | CSCO | $113.61 | $120.815 | +6.34% | +4.28% |
+  | JPM | $347.97 | $357.985 | +2.88% | +1.51% |
+  | VOO | $688.26 | $700.63 | +1.80% | +0.61% |
+  | MSFT | $488.00 | $488.45 | +0.09% | +0.16% |
+  | RSP | $214.93 | $217.04 | +0.98% | -0.03% |
+  | JNJ | $260.69 | $252.05 | -3.29% | -0.93% |
+
+- **ASTS +8.15% hôm nay, đỉnh mới $68.695 — đã vượt xa mốc +15% chốt lời 1 phần đã đề xuất (08-03 13:11 ET, lúc đó mới +15.10%/$63.845).** WebSearch xác nhận vẫn cùng catalyst đã biết: phóng vệ tinh BlueBird 11/12/13 dự kiến **2026-08-05 (ngày mai)** từ Cape Canaveral phục vụ thị trường Nhật Bản (Rakuten) — không có tin mới nào khác. Đề xuất bán 3cp (60%) đang chờ **vẫn còn nguyên giá trị và nay càng cấp thiết hơn** (lãi chưa thực hiện lớn hơn, đồng thời sự kiện phóng vệ tinh ngày mai mang rủi ro 2 chiều rõ rệt) — không gửi push lặp lại (đề xuất đã chờ duyệt từ hôm qua, không có thay đổi về bản chất quyết định), nhưng khuyến nghị Hogan cân nhắc quyết định sớm trước khi phóng vệ tinh ngày mai.
+- **CSCO +4.28% hôm nay, đỉnh mới, P&L +6.34%.** WebSearch không tìm thấy catalyst tin tức cụ thể riêng cho hôm nay (không có 8-K/tin tức breaking) — có vẻ tiếp diễn đà tăng chung nhóm AI-infrastructure/hardware đã kéo dài suốt 2026 (+46% YTD tính đến gần đây), earnings tiếp theo còn xa (19/08). Chưa chạm ngưỡng cảnh báo chốt lời tech (+15-20%) — chỉ ghi nhận theo dõi, không phải đề xuất.
+- **AMZN -2.58% hôm nay (từ đỉnh $284.02 hôm qua) nhưng vẫn +19.40% so với giá vốn — không phải tín hiệu xấu.** WebSearch xác nhận: AMZN vừa lần đầu vượt vốn hóa $3 nghìn tỷ hôm qua (07-30 KQKD đẩy AWS +37% YoY), hôm nay điều chỉnh nhẹ sau tin Bezos bán ~$4 tỷ cổ phiếu — nhưng đây là kế hoạch bán đã lên lịch từ 11/2025 (10b5-1 plan), không phải tín hiệu tiêu cực mới. Đề xuất chốt lời AMZN đã thực hiện 1 nửa (08-03); phần còn lại (1cp) vẫn chạy theo trailing stop $272.80, không cần điều chỉnh gì thêm.
+- **JNJ -0.93% hôm nay, -3.29% so với giá vốn — chưa breach stop -5%.** Review 30 ngày đã khép lại ở lần kiểm tra trước (08-03 15:32 ET), không có gì mới để bổ sung.
+- **RSP/VOO/JPM:** biến động trong ngày nhỏ (JPM +1.51% đáng chú ý nhẹ nhưng không có tin riêng, có thể ăn theo đà tăng chung nhóm tài chính), không breach ngưỡng nào.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng mới cần đề xuất mới (ASTS/AMZN đều là diễn biến tiếp nối của tình huống đã ghi nhận và có đề xuất/hành động sẵn), không tin xấu nghiêm trọng nào phát sinh. 3 đề xuất đang chờ (ORCL/PANW, IREN/APLD, bán 1 phần ASTS) không đổi. Không gửi PushNotification.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng mới, không tin xấu nghiêm trọng mới, 3 đề xuất đang chờ không đổi. Không gửi PushNotification.
