@@ -2559,3 +2559,25 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **JNJ -0.33% hôm nay, -2.74% so với giá vốn — chưa breach stop -5%.** Không có gì mới, review 30 ngày đã khép lại.
 - **RSP/VOO/MSFT:** tăng đồng loạt theo đà thị trường chung, không breach ngưỡng nào, không cần tra tin riêng.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng mới cần đề xuất mới riêng biệt (ASTS là tiếp nối tình huống đã có đề xuất/hành động sẵn, chỉ thêm dữ kiện earnings 08-10 hỗ trợ thêm), không tin xấu nghiêm trọng nào phát sinh. 3 đề xuất đang chờ (ORCL/PANW, IREN/APLD, bán 1 phần ASTS) không đổi. Không gửi PushNotification.
+
+## 2026-08-04 ~15:31 ET (19:31 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — Không có đề xuất mới; các mã đi ngang so với lần kiểm tra trước (13:11 ET), 3 đề xuất cũ vẫn chờ Hogan
+
+- **Sync đầu phiên:** `git pull` — đã up to date với `origin/main` (`18ba3c2`, các commit mới nhất đều là sandbox check-in), không xung đột.
+- **Xác nhận qua `get_equity_orders`** (từ 13:11 ET tới nay): **không có lệnh nào khớp** — cả 3 đề xuất đang chờ (thay slot tech ORCL/PANW từ 07-31, thay slot rủi ro cao IREN/APLD từ 08-03 13:15 ET, bán 1 phần ASTS chốt lời từ 08-03 13:11 ET) **vẫn chưa có quyết định từ Hogan**. Core-10 vẫn 8/10 nguyên vẹn: AMZN(1cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JNJ(1.917986cp), JPM(1cp), ASTS(5cp), CSCO(3cp).
+- P&L so với giá vốn (giá ~15:31 ET/19:31 UTC, so với đóng cửa 08-03):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **ASTS** | $55.47 | $70.50 | **+27.10%** | +10.99% |
+  | **AMZN** | $231.73 | $277.425 | **+19.73%** | -2.32% |
+  | CSCO | $113.61 | $121.18 | +6.66% | +4.59% |
+  | JPM | $347.97 | $358.80 | +3.11% | +1.75% |
+  | VOO | $688.26 | $709.985 | +3.16% | +1.95% |
+  | MSFT | $488.00 | $496.875 | +1.82% | +1.90% |
+  | RSP | $214.93 | $220.23 | +2.47% | +1.44% |
+  | JNJ | $260.69 | $254.14 | -2.51% | -0.11% |
+
+- **Tất cả các mã đi ngang so với lần kiểm tra 13:11 ET (~2 giờ trước) — biến động lớn nhất chỉ ±0.44% (JPM -0.44%, ASTS +0.34%)** → dưới ngưỡng 3-5% cần tra tin tức sâu theo quy định tiết kiệm chi phí (CLAUDE.md), không WebSearch thêm lần này.
+- **ASTS** tiếp tục giữ đỉnh mới ($70.50) — đề xuất bán 3cp (60%) chốt lời đang chờ (gửi 08-03 13:11 ET, nhắc lại về earnings 08-10 ở lần kiểm tra 13:11 ET hôm nay) **vẫn còn nguyên giá trị, không có thay đổi bản chất** — không gửi push lặp lại theo đúng tiền lệ đã áp dụng nhất quán từ 08-03. Phóng vệ tinh BlueBird dự kiến 08-05 (ngày mai) vẫn là mốc thời gian đáng chú ý nhất.
+- **CSCO/AMZN/JPM/VOO/MSFT/RSP/JNJ:** không có gì mới, chưa breach ngưỡng cắt lỗ/chốt lời nào chưa được ghi nhận.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng mới, biến động trong ngày quá nhỏ so với lần kiểm tra trước để cần tra tin. 3 đề xuất đang chờ (ORCL/PANW, IREN/APLD, bán 1 phần ASTS) không đổi. Không gửi PushNotification.
