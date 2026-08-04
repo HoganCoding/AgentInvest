@@ -1745,3 +1745,14 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **Nhóm ứng viên rủi ro cao (NNE/OUST/APLD/IREN)** so với đóng cửa 08-03: NNE $18.20 (+3.53%), OUST $47.245 (+11.22%), APLD $31.38 (+6.41%), IREN $40.705 (+2.40%). So với lần check trước (12:14 ET, ~1h): NNE +0.39%, OUST +0.84%, APLD +0.46%, IREN -1.38% — tất cả dưới ngưỡng 3-5%, không cần WebSearch tin mới.
 - **Đánh giá:** không có gì mới — vẫn là phiên rally thứ 5 liên tiếp (07-31→08-04), CHƯA có nhịp điều chỉnh/đi ngang thực sự để xác nhận theo bộ lọc CLAUDE.md 2026-07-24. OUST daily +11.22%, còn 2 ngày tới earnings (06/08) — rủi ro gap risk không đổi, càng kém hấp dẫn để vào mới. **Tiếp tục hoãn toàn bộ nhóm**, không vào lệnh mới.
 - **Quyết định: KHÔNG vào lệnh sandbox mới, tiếp tục giữ 100% cash.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-04 ~14:11 ET (18:11 UTC) — Kiểm tra định kỳ: sandbox vẫn 100% cash; nhóm ứng viên rủi ro cao đi ngang/hạ nhiệt nhẹ so với lần check trước (dưới ngưỡng đào tin) — tiếp tục hoãn
+
+- **Sync đầu phiên:** `git pull origin main` — local đã ở tip (`5121129`), không có commit mới kể từ lần check trước (13:11 ET), không xung đột.
+- `get_equity_positions` (704170133): **sandbox vẫn không có vị thế nào** — 100% cash. 8 vị thế trên tài khoản đều là core-10 (đối chiếu khớp `trading-log.md`): AMZN, RSP, MSFT, VOO, JNJ, JPM, ASTS, CSCO — không có mã lạ nào cần đối chiếu wash-sale/cross-attribution lần này.
+- `get_equity_orders` (từ 17:11 UTC tới nay): **rỗng** — không có lệnh mới nào trên toàn tài khoản.
+- `get_portfolio`: cash $2,588.72, buying_power **$2,588.72** — không đổi so với lần check trước (13:11 ET). Không có vị thế sandbox nào đang mở nên không cần tính "phần theo dõi"/circuit breaker.
+- **Thị trường (SPY/QQQ):** SPY $771.995 (+1.89% so với đóng cửa 08-03 $757.67), QQQ $722.71 (+3.24% so với đóng cửa $700.07) — rally mạnh tiếp diễn, không vượt ngưỡng cấm mở vị thế rủi ro cao mới (-1.5/-2%).
+- **Nhóm ứng viên rủi ro cao (NNE/OUST/APLD/IREN)** so với đóng cửa 08-03: NNE $18.11 (+3.02%), OUST $46.78 (+10.13%), APLD $31.36 (+6.34%), IREN $40.9772 (+3.08%). So với lần check trước (13:11 ET, ~1h): NNE -0.49%, OUST -0.98%, APLD -0.06%, IREN +0.67% — tất cả dưới ngưỡng 3-5%, không cần WebSearch tin mới.
+- **Đánh giá:** không có gì mới — vẫn là phiên rally thứ 5 liên tiếp (07-31→08-04), CHƯA có nhịp điều chỉnh/đi ngang thực sự để xác nhận theo bộ lọc CLAUDE.md 2026-07-24. OUST còn 2 ngày tới earnings (06/08), rủi ro gap risk không đổi. **Tiếp tục hoãn toàn bộ nhóm**, không vào lệnh mới.
+- **Quyết định: KHÔNG vào lệnh sandbox mới, tiếp tục giữ 100% cash.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
