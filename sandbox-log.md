@@ -1723,3 +1723,15 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
   - **OUST:** earnings đúng lịch **06/08/2026 (2 ngày tới)** — không có tin mới ngoài lịch earnings đã biết, rally +10% hôm nay có thể là kỳ vọng trước KQKD, rủi ro gap risk 2 chiều càng cấp thiết khi càng gần ngày báo cáo.
 - **Đánh giá:** dù đây là hồi phục từ đáy (không phải bong bóng mới), bộ lọc CLAUDE.md 2026-07-24 vẫn yêu cầu ít nhất 1 phiên ổn định/đi ngang có volume xác nhận trước khi vào lệnh — hôm nay là phiên tăng mạnh thứ 4 liên tiếp (SPY/QQQ cũng rally +1.3%/+2.5%), chưa có nhịp điều chỉnh/đi ngang nào để xác nhận. Mua đuổi giữa chuỗi tăng liên tiếp vẫn có rủi ro mua đỉnh ngắn hạn cao, đặc biệt OUST trước earnings 2 ngày tới. **Tiếp tục hoãn toàn bộ nhóm**, chờ nhịp đi ngang/điều chỉnh nhẹ thực sự trước khi cân nhắc vào lệnh.
 - **Quyết định: KHÔNG vào lệnh sandbox mới, tiếp tục giữ 100% cash.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+
+## 2026-08-04 ~12:14 ET (16:14 UTC) — Kiểm tra định kỳ: sandbox vẫn 100% cash; nhóm ứng viên rủi ro cao đi ngang so với lần check trước (dưới ngưỡng đào tin) dù daily change vẫn cao — tiếp tục hoãn
+
+- **Sync đầu phiên:** `git pull origin main` — local detached HEAD 31 commit chậm; `git checkout main && git merge origin/main --ff-only` fast-forward về `7d11bae`, không xung đột.
+- `get_equity_positions` (704170133): **sandbox vẫn không có vị thế nào** — 100% cash. 8 vị thế trên tài khoản đều là core-10 (đối chiếu khớp `trading-log.md`): AMZN, RSP, MSFT, VOO, JNJ, JPM, ASTS, CSCO — không có mã lạ nào cần đối chiếu wash-sale/cross-attribution lần này.
+- `get_equity_orders` (từ 15:11 UTC tới nay): **rỗng** — không có lệnh mới nào trên toàn tài khoản.
+- `get_portfolio`: cash $2,588.72, buying_power **$2,588.72** — không đổi so với lần check trước (11:11 ET). Không có vị thế sandbox nào đang mở nên không cần tính "phần theo dõi"/circuit breaker.
+- **Thị trường (SPY/QQQ):** SPY $768.40 (+1.42% so với đóng cửa 08-03 $757.67), QQQ $719.03 (+2.71% so với đóng cửa $700.07) — rally tiếp diễn, không vượt ngưỡng cấm mở vị thế rủi ro cao mới (-1.5/-2%).
+- **Nhóm ứng viên rủi ro cao (NNE/OUST/APLD/IREN)** so với đóng cửa 08-03: NNE $18.13 (+4.99%), OUST $46.85 (+10.30%), APLD $31.235 (+5.92%), IREN $41.275 (+3.84%). So với lần check trước (11:11 ET, ~1h): NNE +0.95%, OUST +0.28%, APLD +0.50%, IREN -0.91% — tất cả dưới ngưỡng 3-5%, không cần WebSearch tin mới (phần lớn mức tăng daily đã xảy ra trước 11:11 ET, đã ghi nhận lần trước, không phải diễn biến mới).
+- **Đánh giá:** không có gì mới so với lần check trước — vẫn là phiên rally thứ 5 liên tiếp (07-31→08-04), CHƯA có nhịp điều chỉnh/đi ngang thực sự để xác nhận theo bộ lọc CLAUDE.md 2026-07-24. OUST còn 2 ngày tới earnings (06/08), rủi ro gap risk không đổi. **Tiếp tục hoãn toàn bộ nhóm**, không vào lệnh mới.
+- **Quyết định: KHÔNG vào lệnh sandbox mới, tiếp tục giữ 100% cash.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
