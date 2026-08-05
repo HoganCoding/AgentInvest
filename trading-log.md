@@ -2625,3 +2625,16 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Hogan chọn KHÔNG bán** — giữ nguyên 5cp, chỉ yêu cầu dời trailing stop-loss theo đỉnh mới (housekeeping đã nêu kèm đề xuất, đề xuất bán 3cp/60% coi như bị từ chối lần này).
 - **Dời stop-loss:** hủy lệnh cũ ($55.89, order `6a70cb73`, đặt từ đỉnh $63.51 ngày 08-03) → **cancelled** thành công. Đặt lại GTC stop_market mới **-12% từ đỉnh $70.50 (08-04) = $62.04** cho toàn bộ 5cp (order `6a735179`).
 - **Không cần PushNotification thêm** — Hogan đã xác nhận trực tiếp trong phiên tương tác này.
+
+## 2026-08-05 ~11:16 ET (15:16 UTC) — Hogan yêu cầu rà soát tỷ trọng, mua thêm AMZN/ORCL/CSCO để nâng tỷ trọng lên gần 9-10% (nhóm tech/blue-chip/ETF, dựa trên CLAUDE.md "1-10%/lệnh")
+
+- **Bối cảnh:** rà soát 9 vị thế cho thấy phân bổ lệch: VOO 8.79%, MSFT 8.34%, JNJ 8.38% (gần đủ 9%), ORCL 7.38%, RSP 7.49%, CSCO 6.21%, JPM 6.15%, ASTS 5.82% (nhóm rủi ro cao, giữ nguyên theo ngoại lệ ~5%), AMZN 4.73% (thấp nhất). Hogan chọn nâng AMZN + ORCL (mua thêm 1cp mỗi mã) + CSCO (+1cp) — RSP/JPM bỏ qua lần này vì whole-share sẽ overshoot quá 10% (RSP→11.2%, JPM→12.3%).
+- **Mua AMZN 1cp:** review (bid $276.29/ask $276.35) → khớp @ **$276.3968** lúc 15:16:16 UTC (order `6a7353c0`) → tổng 2cp, nâng lên **9.45% danh mục**.
+- **Mua ORCL 1cp:** review (bid $144.01/ask $144.18) → khớp @ **$144.0399** lúc 15:16:18 UTC (order `6a7353c1`) → tổng 4cp, nâng lên **9.84% danh mục**.
+- **Mua CSCO 1cp:** review (bid $121.76/ask $121.80) → khớp @ **$121.7299** lúc 15:16:19 UTC (order `6a7353c3`) → tổng 4cp, nâng lên **8.28% danh mục** (vẫn dưới 9% do whole-share, Hogan chọn +1cp thay vì +2cp để tránh vượt 10%).
+- **Cập nhật stop-loss theo số lượng mới (đã hủy lệnh cũ, đặt lại):**
+  - AMZN: hủy stop cũ (1cp @ $272.80, order `6a70cb62`) → đặt lại GTC -5% từ đỉnh $287.16 (không đổi) cho **2cp @ $272.80** (order `6a7353f5`).
+  - ORCL: hủy stop cũ (3cp @ $137.12, order `6a734ff1`) → đặt lại GTC -5% từ giá vốn ~$144.34 (chưa có đỉnh mới) cho **4cp @ $137.12** (order `6a7353f7`).
+  - CSCO: hủy stop cũ (3cp @ $107.93, order `6a6b5b8d`, đặt từ 07-30, đã lỗi thời) → `get_equity_historicals` xác nhận đỉnh mới kể từ mua = **$121.90** (08-04) → đặt lại GTC -5% cho **4cp @ $115.81** (order `6a7353f8`), housekeeping tận dụng luôn dịp gộp lệnh.
+- **Core-10 sau các lệnh này (9/10, không đổi số slot):** AMZN(2cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JNJ(1.917986cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp) — vẫn thiếu 1 slot rủi ro cao (thay ACHR, đang chờ phiên ổn định).
+- **Không cần PushNotification thêm** — Hogan đã xác nhận trực tiếp trong phiên tương tác này.
