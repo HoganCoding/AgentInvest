@@ -2681,3 +2681,12 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Đây là thực thi tự động đúng kỷ luật trailing stop-loss, không cần duyệt trước** — phát hiện khi Hogan hỏi trực tiếp trong phiên, không phải do routine check phát hiện trước.
 - **Core-10 sau lệnh này (8/9 vị thế đang có):** RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp), XOM(3cp) — thiếu **2 slot**: 1 rủi ro cao (thay ACHR, đang chờ phiên ổn định) + **1 large-cap tech mới (thay AMZN)** — cần đề xuất 2 lựa chọn theo quy trình CLAUDE.md.
 - **Không cần PushNotification thêm** — Hogan đã hỏi trực tiếp và biết trong cùng phiên tương tác này.
+
+## 2026-08-05 ~12:05 ET (16:05 UTC) — Lấp slot tech vừa trống (thay AMZN), Hogan chọn CRM, đã đặt lệnh + stop-loss
+
+- **Nghiên cứu 2 lựa chọn** (loại GOOGL/AVGO/NVDA/AAPL/TXN khỏi danh sách do đang wash-sale): **CRM** (thắng hợp đồng VA $1.6B, target +30% upside, Erste Group nâng Buy, nhưng Morgan Stanley vừa hạ Equal Weight target $287→$185, -26.68% YTD) vs **ADBE** (vừa mua Topaz Labs AI, Q2 doanh thu kỷ lục, nhưng Morgan Stanley hạ mạnh Underweight target $365→$240, -60.3%/5 năm). Lưu ý cả 2 đều vừa bị Morgan Stanley hạ khuyến nghị gần đây — không có lựa chọn nào "sạch" hoàn toàn.
+- **Hogan chọn CRM** qua AskUserQuestion.
+- **Mua CRM:** review trước (bid $191.10/ask $191.24, không cảnh báo broker) → 3cp market, khớp @ **$191.2399/cp** (~$573.72, ~9.77% danh mục) lúc 16:05:05 UTC (order `6a735f31`).
+- **Stop-loss:** đặt GTC stop_market -5% (khung tech) từ giá vốn → **$181.68** (order `6a735f43`).
+- **Core-10 sau lệnh này (9/9 vị thế đang có):** RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp), XOM(3cp), **CRM(3cp, mới)** — chỉ còn thiếu **1 slot rủi ro cao** (thay ACHR, đang chờ phiên đóng cửa ổn định để trình lại IREN/APLD).
+- **Không cần PushNotification thêm** — Hogan đã xác nhận trực tiếp trong phiên tương tác này.
