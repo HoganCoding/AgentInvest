@@ -2673,3 +2673,11 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Đánh giá theo 3 tiêu chí CLAUDE.md:** không mã nào underperform benchmark đáng kể, không tin xấu nghiêm trọng, không dấu hiệu fundamentals xấu đi rõ rệt cho RSP/VOO/ASTS/JPM/CSCO.
 - **Kết luận: không đề xuất thay thế mã nào từ quy trình review 30 ngày này.** JNJ đã xử lý riêng (cắt lỗ theo kỷ luật trailing stop hôm nay, không thuộc quy trình review tháng). Review 30 ngày coi như đã hoàn tất đúng đầy đủ cho kỳ 08-01 (chạy bù muộn 4 ngày).
 - **Không cần PushNotification** — không có đề xuất hành động mới, chỉ là kết luận review không thay đổi.
+
+## 2026-08-05 ~12:00 ET (16:00 UTC) — Stop-loss AMZN tự động khớp (trailing -5% từ đỉnh $287.16 → $272.80), phát hiện qua kiểm tra của Hogan
+
+- **Bối cảnh:** AMZN giảm mạnh trong phiên (giá hiện $272.75, -1.68% so với đóng cửa 08-04 $277.42) sau khi đã top-up thêm 1cp sáng nay (~11:16 ET). Lệnh stop-loss GTC đặt lúc 11:17 ET (order `6a7353f5`, -5% từ đỉnh $287.16, áp dụng cho cả 2cp) tự động kích hoạt lúc **16:00:06 UTC**.
+- **Khớp:** bán toàn bộ **2.0cp @ $272.80** (giá stop), phí $0.02. `get_pnl_trade_history` xác nhận **lãi thực hiện +$37.47 (+7.37% tổng thể)** — lot gốc (mua 07-29 @ $231.73) lãi đậm bù cho lot mới (mua sáng nay 08-05 @ $276.3968) lỗ nhẹ ~-1.3%; ghi nhận dưới dạng 1 giao dịch lãi ròng, không phát sinh wash-sale riêng lẻ.
+- **Đây là thực thi tự động đúng kỷ luật trailing stop-loss, không cần duyệt trước** — phát hiện khi Hogan hỏi trực tiếp trong phiên, không phải do routine check phát hiện trước.
+- **Core-10 sau lệnh này (8/9 vị thế đang có):** RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp), XOM(3cp) — thiếu **2 slot**: 1 rủi ro cao (thay ACHR, đang chờ phiên ổn định) + **1 large-cap tech mới (thay AMZN)** — cần đề xuất 2 lựa chọn theo quy trình CLAUDE.md.
+- **Không cần PushNotification thêm** — Hogan đã hỏi trực tiếp và biết trong cùng phiên tương tác này.
