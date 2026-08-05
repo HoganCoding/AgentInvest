@@ -2690,3 +2690,26 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Stop-loss:** đặt GTC stop_market -5% (khung tech) từ giá vốn → **$181.68** (order `6a735f43`).
 - **Core-10 sau lệnh này (9/9 vị thế đang có):** RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp), XOM(3cp), **CRM(3cp, mới)** — chỉ còn thiếu **1 slot rủi ro cao** (thay ACHR, đang chờ phiên đóng cửa ổn định để trình lại IREN/APLD).
 - **Không cần PushNotification thêm** — Hogan đã xác nhận trực tiếp trong phiên tương tác này.
+
+## 2026-08-05 ~13:14 ET (17:14 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — Không có đề xuất mới; 9/9 vị thế đang có đi ngang, không breach ngưỡng nào
+
+- **Sync đầu phiên:** local branch `main` là con trỏ cũ đã phân kỳ (dừng ở commit 07-30, 123 vs 55 commit khác nhau so với `origin/main`) — diff kiểm tra chỉ thuần insertions (không mất nội dung), nên `git reset --hard origin/main` để đồng bộ về `c6440ae` (mới nhất, gồm các sandbox check-in tới 13:11 ET). Không xung đột cần resolve thủ công.
+- **Xác nhận qua `get_equity_orders`** (từ 16:05 UTC — thời điểm lệnh CRM khớp — tới nay): **không có lệnh nào mới** ngoài cặp lệnh CRM (mua + stop-loss) đã ghi log ở lần trước. `get_equity_positions` xác nhận core-10 đang có đúng 9/9 vị thế đã log: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp), XOM(3cp), CRM(3cp) — vẫn thiếu 1 slot rủi ro cao (thay ACHR, đề xuất IREN/APLD từ 08-03 còn hiệu lực, đang chờ phiên đóng cửa ổn định vì phiên hôm nay chưa đóng cửa).
+- P&L so với giá vốn (giá ~13:14 ET/17:14 UTC, so với đóng cửa 08-04):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **ASTS** | $55.47 | $68.04 | **+22.66%** | -3.23% |
+  | CSCO | $115.64 | $122.4381 | +5.90% | +0.57% |
+  | JPM | $347.97 | $360.37 | +3.56% | +0.80% |
+  | VOO | $688.26 | $709.1941 | +3.04% | +0.03% |
+  | RSP | $214.93 | $219.91 | +2.32% | -0.15% |
+  | XOM | $151.60 | $151.80 | +0.13% | -1.40% |
+  | MSFT | $488.00 | $488.935 | +0.19% | -0.79% |
+  | CRM | $191.24 | $192.09 | +0.44% | +0.58% |
+  | ORCL | $144.26 | $144.035 | -0.16% | -1.17% |
+
+- **ASTS -3.23% hôm nay — vượt nhẹ ngưỡng 3% nhưng so với lần kiểm tra gần nhất (11:06 ET, $68.17/-3.03%) gần như đi ngang (~-0.19%, dưới ngưỡng 3-5% cần tra tin mới theo CLAUDE.md)** — tin phóng vệ tinh BlueBird 11-13 thành công đã được xác nhận đầy đủ ở lần kiểm tra 09:46 ET sáng nay, không có diễn biến mới. Không breach trailing stop -12% từ đỉnh $70.50 (ngưỡng $62.04, còn cách xa). Đề xuất bán 1 phần đã bị Hogan từ chối trong phiên tương tác 11:06 ET hôm nay (chỉ dời stop-loss) — không lặp lại đề xuất.
+- **CSCO/JPM/VOO/RSP/XOM/MSFT/CRM/ORCL:** biến động trong ngày đều nhỏ (dưới 1.5%), không breach ngưỡng cắt lỗ/chốt lời nào.
+- **Slot rủi ro cao (thay ACHR) vẫn trống**, chờ phiên đóng cửa ổn định theo bộ lọc CLAUDE.md 2026-07-24 trước khi trình lại đề xuất IREN/APLD (phiên hôm nay chưa đóng cửa).
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng, không tin xấu nghiêm trọng nào phát sinh, không có mã nào cần WebSearch sâu (biến động dưới ngưỡng 3-5% so với lần kiểm tra trước). Không gửi PushNotification.
