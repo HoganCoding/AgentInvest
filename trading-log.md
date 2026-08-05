@@ -2603,3 +2603,12 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
   - Nguồn: [Investing.com](https://www.investing.com/news/company-news/ast-spacemobile-schedules-satellite-launch-for-august-5-93CH-4816245), [Space.com](https://www.space.com/space-exploration/launches-spacecraft/spacex-launches-ast-spacemobile-11-13-direct-to-cell-satellites), [StockTitan](https://www.stocktitan.net/news/ASTS/ast-space-mobile-announces-launch-date-for-blue-bird-satellites-11-swgyogjcas2h.html).
 - **CSCO/AMZN/JPM/VOO/MSFT/RSP/JNJ:** biến động trong ngày đều nhỏ (dưới ngưỡng 3%), không breach ngưỡng cắt lỗ/chốt lời nào, không cần tra tin riêng.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — ASTS là tiếp nối tình huống đã có đề xuất/hành động sẵn (không phải đề xuất mới), không mã nào khác breach ngưỡng, không tin xấu nghiêm trọng nào phát sinh. 3 đề xuất đang chờ (ORCL/PANW, IREN/APLD, bán 1 phần ASTS) không đổi. Không gửi PushNotification.
+
+## 2026-08-05 ~10:55 ET (14:55 UTC) — Hogan yêu cầu trình lại đề xuất #1 (slot large-cap tech, thay AAPL), chọn ORCL, đã đặt lệnh + stop-loss
+
+- **Bối cảnh:** đề xuất ORCL/PANW gốc từ 07-31 (~9:50 ET) đã chờ 5 ngày — cập nhật lại giá/tin tức trước khi trình: cả hai đã tăng ~11% kể từ 07-31 (ORCL $129.37→$144.62, PANW $329.96→$366.89). ORCL: chuỗi 3 phiên tăng (Google Cloud partnership, hợp đồng CACI $400M, tích hợp Gemini AI, backlog kỷ lục $638B) nhưng FCF âm nặng -$23.69B, vẫn -28% YTD. PANW: +110% YoY, Q3 FY2026 beat (EPS $0.85 vs $0.79, DT $3.0B +31% YoY), Capital One nâng Overweight target $421, nhưng định giá rất cao (~73% trên fair value ước tính), earnings tiếp theo 08-24. Lưu ý mới so với 07-31: danh mục nay đã có thêm MSFT (mua 08-03) — nếu chọn ORCL sẽ có 4/8 vị thế cùng thiên hướng cloud/AI-infra (AMZN/MSFT/CSCO/ORCL), tập trung ngành cao hơn PANW.
+- **Hogan chọn ORCL** qua AskUserQuestion (preview/duyệt hợp lệ theo CLAUDE.md).
+- **Mua ORCL:** review trước (bid $144.24/ask $144.35, không cảnh báo broker) → 3cp market, khớp @ **$144.3409/cp** (~$433.02, ~7.4% danh mục) lúc 14:59:13 UTC (order `6a734fc1`).
+- **Stop-loss:** đặt GTC stop_market -5% (khung tech) từ giá vốn → **$137.12** (order `6a734ff1`).
+- **Core-10 sau lệnh này (9/10):** AMZN(1cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JNJ(1.917986cp), JPM(1cp), ASTS(5cp), CSCO(3cp), **ORCL(3cp, mới)** — còn thiếu 1 slot rủi ro cao (thay ACHR, đề xuất IREN/APLD từ 08-03 vẫn chờ). Đề xuất bán 1 phần ASTS (08-03) cũng vẫn chờ.
+- **Không cần PushNotification thêm** — Hogan đã xác nhận trực tiếp trong phiên tương tác này.
