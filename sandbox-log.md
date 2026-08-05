@@ -1779,6 +1779,17 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **Đánh giá:** phiên đóng cửa chính thức thứ 5 liên tiếp cả nhóm tăng mạnh (07-31→08-04), vẫn CHƯA có nhịp điều chỉnh/đi ngang thực sự để xác nhận theo bộ lọc CLAUDE.md 2026-07-24. OUST còn 2 ngày tới earnings (06/08) — rủi ro gap risk càng cận kề, càng kém hấp dẫn để vào mới. **Tiếp tục hoãn toàn bộ nhóm**, chờ nhịp đi ngang/điều chỉnh nhẹ thực sự xác nhận ổn định trước khi cân nhắc vào lệnh — sẽ đánh giá lại đầu phiên ngày mai (08-05) nếu nhóm hạ nhiệt.
 - **Quyết định: KHÔNG vào lệnh sandbox mới, tiếp tục giữ 100% cash.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
 
+## 2026-08-05 ~10:19 ET (14:19 UTC) — Kiểm tra định kỳ: sandbox vẫn 100% cash; nhóm ứng viên rủi ro cao đi ngang so với lần check trước (dưới ngưỡng đào tin), thị trường mở cửa xanh — tiếp tục hoãn
+
+- **Sync đầu phiên:** `git pull origin main` — local đã ở tip `1ea534f` (không có commit mới ảnh hưởng sandbox kể từ lần check trước 09:20 ET), không xung đột.
+- `get_equity_positions` (704170133): **sandbox vẫn không có vị thế nào** — 100% cash. 8 vị thế trên tài khoản đều là core-10 (đối chiếu khớp `trading-log.md`): AMZN, RSP, MSFT, VOO, JNJ, JPM, ASTS, CSCO — không có mã lạ nào cần đối chiếu wash-sale/cross-attribution lần này.
+- `get_equity_orders` (từ 13:20 UTC tới nay): **rỗng** — không có lệnh mới nào trên toàn tài khoản.
+- `get_portfolio`: cash $2,590.14, buying_power **$2,590.14** — không đổi so với lần check trước (09:20 ET). Không có vị thế sandbox nào đang mở nên không cần tính "phần theo dõi"/circuit breaker.
+- **Thị trường (SPY/QQQ):** SPY $776.12 (+0.63% so với đóng cửa 08-04 $771.33), QQQ $726.61 (+0.38% so với đóng cửa $723.85) — mở cửa xanh nhẹ, không vượt ngưỡng cấm mở vị thế rủi ro cao mới.
+- **Nhóm ứng viên rủi ro cao (NNE/OUST/APLD/IREN)** so với đóng cửa 08-04: NNE $18.25 (+0.44%), OUST $46.39 (-3.03%), APLD $31.085 (-0.59%), IREN $40.605 (-0.60%). So với lần check trước (09:20 ET pre-market, ~1h): NNE +0.83%, OUST +1.29%, APLD +0.93%, IREN +1.29% — tất cả dưới ngưỡng 3-5%, không cần WebSearch tin mới (OUST đã hồi nhẹ từ đáy pre-market -4.27%, không phải diễn biến mới cần tra).
+- **Đánh giá:** nhóm tiếp tục pullback nhẹ so với đóng cửa hôm qua (đúng như nhịp điều chỉnh mong đợi sau chuỗi 5 phiên rally), nhưng biến động so với lần check gần nhất quá nhỏ để xác nhận đây là phiên ổn định/đi ngang thực sự theo bộ lọc CLAUDE.md 2026-07-24 — cần theo dõi thêm tới cuối phiên. OUST vẫn còn 1 ngày tới earnings (08-06), rủi ro gap risk không đổi. **Tiếp tục hoãn toàn bộ nhóm**, không vào lệnh mới.
+- **Quyết định: KHÔNG vào lệnh sandbox mới, tiếp tục giữ 100% cash.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
 ## 2026-08-05 ~09:20 ET (13:20 UTC) — Kiểm tra đầu phiên (pre-market): sandbox vẫn 100% cash; nhóm ứng viên rủi ro cao hạ nhiệt/pullback so với đóng cửa hôm qua (OUST -4.27% vượt ngưỡng, đã WebSearch — không có tin xấu, chỉ là chốt lời trước earnings 08-06 ngày mai) — tiếp tục hoãn
 
 - **Sync đầu phiên:** `git status` cho thấy HEAD detached đúng tip `origin/main` (`b7e03d0`); `git checkout main && git merge --ff-only origin/main` — fast-forward sạch, không xung đột.
