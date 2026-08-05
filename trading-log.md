@@ -2618,3 +2618,10 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Bối cảnh:** cập nhật lại đề xuất IREN/APLD gốc từ 08-03 (13:15 ET) trước khi trình: IREN $39.40→$40.05 (vừa hoàn tất mua Mirantis $625M bổ sung software layer, BofA công bố sở hữu 5.8% cổ phần), APLD $29.32→$30.55 (B. Riley nâng target $75 từ $66 ngày 08-01). Cả hai đang pullback nhẹ trong phiên sáng nay (IREN -1.96%, APLD -2.30% so với đóng cửa 08-04) sau chuỗi rally nhiều phiên — nhưng phiên CHƯA đóng cửa nên chưa đủ xác nhận "phiên ổn định" theo bộ lọc CLAUDE.md 2026-07-24. SPY +0.30%/QQQ -0.08%, không vi phạm ngưỡng cấm mở vị thế mới.
 - **Hogan chọn "Chờ xác nhận phiên ổn định"** qua AskUserQuestion — không vào lệnh lúc này, đúng theo khuyến nghị mặc định của bộ lọc. Đề xuất IREN/APLD vẫn còn hiệu lực cho lần kiểm tra sau khi có phiên đóng cửa ổn định/đi ngang thật sự.
 - Không đặt lệnh nào. Không cần PushNotification (quyết định trực tiếp trong phiên tương tác).
+
+## 2026-08-05 ~11:06 ET (15:06 UTC) — Hogan yêu cầu trình lại đề xuất #3 (ASTS chốt lời 1 phần) — chọn KHÔNG bán, chỉ dời trailing stop-loss theo đỉnh mới
+
+- **Bối cảnh:** cập nhật lại đề xuất bán 3cp (60%) từ 08-03 trước khi trình: ASTS $68.17 (-3.03% hôm nay, đỉnh gần nhất $70.50 hôm qua), P&L +22.90% so với giá vốn $55.47. Tin mới: phóng vệ tinh BlueBird 11/12/13 thành công sáng nay (Cape Canaveral), BlueBird vừa được công nhận Guinness World Record (mảng ăng-ten thương mại lớn nhất LEO), đối tác Nhật Bản/Rakuten tiếp tục tiến triển (liên doanh vệ tinh sở hữu ngang nhau) — không có tin xấu mới. Earnings vẫn đúng lịch 2026-08-10 (5 ngày nữa).
+- **Hogan chọn KHÔNG bán** — giữ nguyên 5cp, chỉ yêu cầu dời trailing stop-loss theo đỉnh mới (housekeeping đã nêu kèm đề xuất, đề xuất bán 3cp/60% coi như bị từ chối lần này).
+- **Dời stop-loss:** hủy lệnh cũ ($55.89, order `6a70cb73`, đặt từ đỉnh $63.51 ngày 08-03) → **cancelled** thành công. Đặt lại GTC stop_market mới **-12% từ đỉnh $70.50 (08-04) = $62.04** cho toàn bộ 5cp (order `6a735179`).
+- **Không cần PushNotification thêm** — Hogan đã xác nhận trực tiếp trong phiên tương tác này.
