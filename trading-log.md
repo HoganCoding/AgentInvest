@@ -2581,3 +2581,25 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **ASTS** tiếp tục giữ đỉnh mới ($70.50) — đề xuất bán 3cp (60%) chốt lời đang chờ (gửi 08-03 13:11 ET, nhắc lại về earnings 08-10 ở lần kiểm tra 13:11 ET hôm nay) **vẫn còn nguyên giá trị, không có thay đổi bản chất** — không gửi push lặp lại theo đúng tiền lệ đã áp dụng nhất quán từ 08-03. Phóng vệ tinh BlueBird dự kiến 08-05 (ngày mai) vẫn là mốc thời gian đáng chú ý nhất.
 - **CSCO/AMZN/JPM/VOO/MSFT/RSP/JNJ:** không có gì mới, chưa breach ngưỡng cắt lỗ/chốt lời nào chưa được ghi nhận.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng mới, biến động trong ngày quá nhỏ so với lần kiểm tra trước để cần tra tin. 3 đề xuất đang chờ (ORCL/PANW, IREN/APLD, bán 1 phần ASTS) không đổi. Không gửi PushNotification.
+
+## 2026-08-05 ~09:46 ET (13:46 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — Không có đề xuất mới; phóng vệ tinh ASTS thành công nhưng giá "bán theo tin", 3 đề xuất cũ vẫn chờ Hogan
+
+- **Sync đầu phiên:** `git pull` — HEAD ở trạng thái detached, đã `git checkout main` rồi fast-forward 40 commit về `origin/main` (`ff113ad`, toàn bộ là sandbox check-in), không xung đột.
+- **Xác nhận qua `get_equity_orders`** (từ 08-04 19:31 UTC tới nay): **không có lệnh nào khớp** — cả 3 đề xuất đang chờ (thay slot tech ORCL/PANW từ 07-31, thay slot rủi ro cao IREN/APLD từ 08-03 13:15 ET, bán 1 phần ASTS chốt lời từ 08-03 13:11 ET) **vẫn chưa có quyết định từ Hogan**. Core-10 vẫn 8/10 nguyên vẹn: AMZN(1cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JNJ(1.917986cp), JPM(1cp), ASTS(5cp), CSCO(3cp).
+- P&L so với giá vốn (giá ~09:46 ET/13:46 UTC, so với đóng cửa 08-04):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **ASTS** | $55.47 | $68.20 | **+22.96%** | **-3.00%** |
+  | **AMZN** | $231.73 | $277.78 | **+19.87%** | +0.13% |
+  | CSCO | $113.61 | $122.445 | +7.78% | +0.58% |
+  | JPM | $347.97 | $360.15 | +3.50% | +0.74% |
+  | VOO | $688.26 | $712.76 | +3.56% | +0.53% |
+  | MSFT | $488.00 | $490.49 | +0.51% | -0.47% |
+  | RSP | $214.93 | $220.51 | +2.60% | +0.13% |
+  | JNJ | $260.69 | $255.16 | -2.12% | +0.09% |
+
+- **ASTS -3.00% hôm nay (đỉnh gần nhất $70.50 hôm qua) — vượt ngưỡng 3% cần tra tin.** WebSearch xác nhận: phóng vệ tinh BlueBird 11/12/13 đã diễn ra thành công lúc 3:50 AM ET hôm nay từ Cape Canaveral (SpaceX Falcon 9) — vệ tinh thế hệ mới, mảng ăng-ten ~2.400 sq ft (lớn nhất từng triển khai ở LEO), tốc độ tải xuống gấp ~2x thế hệ đầu. Đây là tin **tích cực về mặt kỹ thuật/tiến độ**, không có tin xấu nào (không kiện tụng/tai nạn phóng/hạ tín nhiệm) — mức giảm -3% hôm nay là phản ứng kiểu "bán theo tin" (sell-the-news) sau khi giá đã chạy trước sự kiện (+27% so với giá vốn tính tới hôm qua), không phải tín hiệu xấu về fundamentals. **Đề xuất bán 3cp (60%) chốt lời đang chờ (từ 08-03) vẫn còn nguyên giá trị và nay càng có lý** — sự kiện phóng vệ tinh (nguồn rủi ro 2 chiều đã nêu) nay đã qua mà giá lại giảm, cùng lúc earnings 08-10 (5 ngày nữa) vẫn còn phía trước. Không breach stop -12% từ đỉnh (ngưỡng ~$62.04 từ đỉnh $70.50) — chưa cần cắt lỗ. Không gửi push lặp lại (cùng bản chất quyết định đã chờ từ 08-03, không có thay đổi mới cần xác nhận) nhưng nhắc lại khuyến nghị Hogan quyết định sớm trước earnings 08-10.
+  - Nguồn: [Investing.com](https://www.investing.com/news/company-news/ast-spacemobile-schedules-satellite-launch-for-august-5-93CH-4816245), [Space.com](https://www.space.com/space-exploration/launches-spacecraft/spacex-launches-ast-spacemobile-11-13-direct-to-cell-satellites), [StockTitan](https://www.stocktitan.net/news/ASTS/ast-space-mobile-announces-launch-date-for-blue-bird-satellites-11-swgyogjcas2h.html).
+- **CSCO/AMZN/JPM/VOO/MSFT/RSP/JNJ:** biến động trong ngày đều nhỏ (dưới ngưỡng 3%), không breach ngưỡng cắt lỗ/chốt lời nào, không cần tra tin riêng.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — ASTS là tiếp nối tình huống đã có đề xuất/hành động sẵn (không phải đề xuất mới), không mã nào khác breach ngưỡng, không tin xấu nghiêm trọng nào phát sinh. 3 đề xuất đang chờ (ORCL/PANW, IREN/APLD, bán 1 phần ASTS) không đổi. Không gửi PushNotification.
