@@ -2650,3 +2650,12 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Core-10 sau lệnh này (8/9 vị thế đang có):** AMZN(2cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp) — thiếu **2 slot**: 1 rủi ro cao (thay ACHR, đang chờ phiên ổn định) + **1 blue-chip mới (thay JNJ)** — cần đề xuất 2 lựa chọn theo quy trình CLAUDE.md, chưa có đề xuất nào ở lần ghi log này.
 - **Bài học vận hành (ghi nhận để tránh lặp lại):** với vị thế fractional không có stop-loss tự động, các lần kiểm tra định kỳ cần so P&L với **đỉnh giá thật** (`get_equity_historicals` từ ngày mua) chứ không phải chỉ so với giá vốn khi đánh giá ngưỡng cắt lỗ trailing.
 - **Không cần PushNotification thêm** — Hogan đã xác nhận trực tiếp trong phiên tương tác này (phát hiện + quyết định cắt lỗ đều diễn ra trong cùng phiên chat).
+
+## 2026-08-05 ~11:28 ET (15:28 UTC) — Lấp slot blue-chip vừa trống (thay JNJ), Hogan chọn XOM, đã đặt lệnh + stop-loss
+
+- **Nghiên cứu 2 lựa chọn** (loại KO/PG khỏi danh sách do đang wash-sale tới ~08-22/~08-28): **PEP** (cổ tức 4.12%, PE 18.3 rẻ hơn lịch sử, nhưng Bắc Mỹ tăng trưởng yếu, Citi vừa hạ Neutral) vs **XOM** (lợi nhuận quý mạnh nhất 4 năm $14.5B, DT $116B vượt xa ước tính $97.7B, cổ tức Q3 $1.03/cp, nhưng EPS hụt nhẹ ước tính, phụ thuộc giá dầu vĩ mô).
+- **Hogan chọn XOM** qua AskUserQuestion.
+- **Mua XOM:** review trước (bid $151.77/ask $151.81, không cảnh báo broker) → 3cp market, khớp @ **$151.5999/cp** (~$454.80, ~7.75% danh mục) lúc 15:28:17 UTC (order `6a735691`).
+- **Stop-loss:** đặt GTC stop_market -5% (khung blue-chip) từ giá vốn → **$144.02** (order `6a7356af`).
+- **Core-10 sau lệnh này (9/9 vị thế đang có):** AMZN(2cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp), **XOM(3cp, mới)** — chỉ còn thiếu **1 slot rủi ro cao** (thay ACHR, đang chờ phiên đóng cửa ổn định để trình lại IREN/APLD).
+- **Không cần PushNotification thêm** — Hogan đã xác nhận trực tiếp trong phiên tương tác này.
