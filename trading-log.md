@@ -2659,3 +2659,17 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Stop-loss:** đặt GTC stop_market -5% (khung blue-chip) từ giá vốn → **$144.02** (order `6a7356af`).
 - **Core-10 sau lệnh này (9/9 vị thế đang có):** AMZN(2cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp), **XOM(3cp, mới)** — chỉ còn thiếu **1 slot rủi ro cao** (thay ACHR, đang chờ phiên đóng cửa ổn định để trình lại IREN/APLD).
 - **Không cần PushNotification thêm** — Hogan đã xác nhận trực tiếp trong phiên tương tác này.
+
+## 2026-08-05 ~11:35 ET (15:35 UTC) — Chạy bù quy trình review 30 ngày (mốc 08-01, Hogan phát hiện chưa chạy đầy đủ)
+
+- **Bối cảnh:** review 30 ngày (mốc 08-01) trước đó chỉ khép được phần JNJ (08-03 15:32 ET), chưa chạy đầy đủ 3 tiêu chí CLAUDE.md cho toàn bộ danh mục. Hogan yêu cầu chạy lại đúng quy trình.
+- **Phạm vi:** chỉ áp dụng cho vị thế đủ dữ liệu — RSP/VOO (mua ~07-06, dùng cửa sổ 07-06→08-04), ASTS/JPM/CSCO (mua muộn hơn 07-29/07-29/07-30, dùng ngày mua thực tế làm mốc thay vì cửa sổ chung). MSFT (mua 08-03)/ORCL/XOM (mua hôm nay) quá mới, chưa đủ 30 ngày — loại khỏi kỳ review này, sẽ vào diện ở kỳ ~09-01.
+- **Kết quả so benchmark (`get_equity_historicals`):**
+  - RSP +2.41% vs SPY +3.02% (chênh -0.61pp, không đáng kể).
+  - VOO +3.03% vs SPY +3.02% (bám sát, đúng bản chất ETF theo dõi S&P).
+  - ASTS +25.7% (từ giá vốn $55.47, mua ~07-29) — vượt trội mạnh, không có benchmark nhóm rủi ro cao cụ thể nhưng rõ ràng không underperform.
+  - JPM +3.44% (từ giá vốn $347.97, mua ~07-29) vs XLF +1.03% cùng kỳ — vượt trội +2.4pp.
+  - CSCO +8.03% (từ giá vốn $113.61, mua ~07-30) vs QQQ +7.28% cùng kỳ — vượt trội nhẹ +0.75pp.
+- **Đánh giá theo 3 tiêu chí CLAUDE.md:** không mã nào underperform benchmark đáng kể, không tin xấu nghiêm trọng, không dấu hiệu fundamentals xấu đi rõ rệt cho RSP/VOO/ASTS/JPM/CSCO.
+- **Kết luận: không đề xuất thay thế mã nào từ quy trình review 30 ngày này.** JNJ đã xử lý riêng (cắt lỗ theo kỷ luật trailing stop hôm nay, không thuộc quy trình review tháng). Review 30 ngày coi như đã hoàn tất đúng đầy đủ cho kỳ 08-01 (chạy bù muộn 4 ngày).
+- **Không cần PushNotification** — không có đề xuất hành động mới, chỉ là kết luận review không thay đổi.
