@@ -1824,7 +1824,14 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **Đánh giá:** không có gì mới so với lần check trước — cả nhóm tiếp tục đi ngang/pullback nhẹ, chưa đủ phiên đóng cửa xác nhận ổn định theo bộ lọc CLAUDE.md 2026-07-24. OUST còn 1 ngày tới earnings (08-06 sau giờ đóng cửa) — vẫn tránh vào mới. **Tiếp tục hoãn toàn bộ nhóm**, không vào lệnh mới.
 - **Quyết định: KHÔNG vào lệnh sandbox mới, tiếp tục giữ 100% cash.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
 
-## 2026-08-05 ~12:15 ET (16:15 UTC) — Kiểm tra định kỳ: sandbox vẫn 100% cash; nhóm ứng viên rủi ro cao đi ngang so với lần check trước (dưới ngưỡng đào tin) — tiếp tục hoãn
+## 2026-08-05 ~13:11 ET (17:11 UTC) — Kiểm tra định kỳ: sandbox vẫn 100% cash; nhóm ứng viên rủi ro cao đi ngang/giảm nhẹ so với lần check trước (dưới ngưỡng đào tin) — tiếp tục hoãn
+
+- **Sync đầu phiên:** `git pull origin main` — local đã ở tip `e3089ae` (không có commit mới kể từ lần check trước 12:15 ET), không xung đột.
+- `get_equity_positions` (704170133): **sandbox vẫn không có vị thế nào** — 100% cash. 9 vị thế trên tài khoản đều là core-10 (đối chiếu khớp `trading-log.md` mới nhất): RSP, MSFT, VOO, CRM, JPM, ASTS, CSCO, ORCL, XOM — không có mã lạ nào cần đối chiếu wash-sale/cross-attribution lần này.
+- **Nhóm ứng viên rủi ro cao (NNE/OUST/APLD/IREN)** so với đóng cửa 08-04: NNE $17.87 (-1.65%), OUST $45.64 (-4.60%), APLD $30.21 (-3.39%), IREN $39.935 (-2.24%). So với lần check trước (12:15 ET, ~1h): NNE -0.78%, OUST -0.26%, APLD -1.47%, IREN -1.54% — tất cả dưới ngưỡng 3-5%, không cần WebSearch tin mới.
+- **Thị trường (SPY/QQQ):** SPY $771.245 (-0.01% so với đóng cửa 08-04), QQQ $720.755 (-0.43% so với đóng cửa 08-04) — gần như đi ngang, không vượt ngưỡng cấm mở vị thế rủi ro cao mới (-1.5/-2%).
+- **Đánh giá:** cả nhóm tiếp tục pullback nhẹ, chưa có phiên đóng cửa xác nhận ổn định/đi ngang thực sự theo bộ lọc CLAUDE.md 2026-07-24. OUST còn 1 ngày tới earnings (08-06 sau giờ đóng cửa) — vẫn tránh vào mới vì rủi ro gap risk. **Tiếp tục hoãn toàn bộ nhóm**, không vào lệnh mới. Không kiểm tra buying_power/pool vì sandbox không có vị thế và không cân nhắc lệnh mới lần này.
+- **Quyết định: KHÔNG vào lệnh sandbox mới, tiếp tục giữ 100% cash.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
 
 - **Sync đầu phiên:** `git pull origin main` — local ở `b9646ea` (54 commit chậm do nhiều lệnh core-10 sáng nay: cắt lỗ JNJ, mua XOM, mua CRM, stop AMZN tự khớp, review 30 ngày...); `git checkout main` (từ detached HEAD) rồi fast-forward về `29a2098` — không xung đột.
 - `get_equity_positions` (704170133): **sandbox vẫn không có vị thế nào** — 100% cash. 9 vị thế trên tài khoản đều là core-10 (đối chiếu khớp `trading-log.md` mới nhất): RSP, MSFT, VOO, CRM (mới, thay AMZN), JPM, ASTS, CSCO, ORCL, XOM (mới, thay JNJ) — không có mã lạ nào cần đối chiếu wash-sale/cross-attribution lần này.
