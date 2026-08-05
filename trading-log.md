@@ -2713,3 +2713,27 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **CSCO/JPM/VOO/RSP/XOM/MSFT/CRM/ORCL:** biến động trong ngày đều nhỏ (dưới 1.5%), không breach ngưỡng cắt lỗ/chốt lời nào.
 - **Slot rủi ro cao (thay ACHR) vẫn trống**, chờ phiên đóng cửa ổn định theo bộ lọc CLAUDE.md 2026-07-24 trước khi trình lại đề xuất IREN/APLD (phiên hôm nay chưa đóng cửa).
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng, không tin xấu nghiêm trọng nào phát sinh, không có mã nào cần WebSearch sâu (biến động dưới ngưỡng 3-5% so với lần kiểm tra trước). Không gửi PushNotification.
+
+## 2026-08-05 ~15:32 ET (19:32 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — Không có đề xuất mới; 9/9 vị thế đi ngang, slot rủi ro cao vẫn chờ phiên ổn định
+
+- **Sync đầu phiên:** local `main` lại là con trỏ cũ đã phân kỳ (dừng ở 07-30, 123 vs 55 commit khác nhau so với `origin/main`) — diff kiểm tra chỉ thuần insertions (không mất nội dung: +372 dòng sandbox-log.md, +458 dòng trading-log.md), nên `git reset --hard origin/main` để đồng bộ về `f676f99` (mới nhất, gồm các sandbox check-in tới 15:11 ET). Không xung đột cần resolve thủ công.
+- **Xác nhận qua `get_equity_orders`** (từ 17:14 UTC tới nay): **không có lệnh nào mới**. `get_equity_positions` xác nhận core-10 đang có đúng 9/9 vị thế đã log: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp), XOM(3cp), CRM(3cp) — vẫn thiếu 1 slot rủi ro cao (thay ACHR, đề xuất IREN/APLD từ 08-03 còn hiệu lực, đang chờ phiên đóng cửa ổn định).
+- P&L so với giá vốn (giá ~15:32 ET/19:32 UTC, so với đóng cửa 08-04):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **ASTS** | $55.47 | $68.715 | **+23.89%** | -2.27% |
+  | CSCO | $115.64 | $123.04 | +6.40% | +1.07% |
+  | JPM | $347.97 | $359.93 | +3.44% | +0.67% |
+  | VOO | $688.26 | $709.315 | +3.06% | +0.05% |
+  | RSP | $214.93 | $219.88 | +2.30% | -0.16% |
+  | CRM | $191.24 | $192.375 | +0.59% | +0.72% |
+  | ORCL | $144.26 | $144.84 | +0.40% | -0.62% |
+  | MSFT | $488.00 | $489.81 | +0.37% | -0.61% |
+  | XOM | $151.60 | $151.595 | -0.003% | -1.54% |
+
+- **So với lần kiểm tra gần nhất (13:14 ET):** tất cả các mã đi ngang, thay đổi lớn nhất chỉ ~±0.6-0.8pp — dưới ngưỡng 3-5% cần tra tin sâu, không WebSearch thêm.
+- **ASTS** -2.27% hôm nay, vẫn cách xa trailing stop -12% từ đỉnh $70.50 (ngưỡng $62.04). Không breach, không có tin mới kể từ 09:46 ET (đã xác nhận phóng vệ tinh thành công).
+- **Slot rủi ro cao (thay ACHR) vẫn trống** — kiểm tra thêm IREN/APLD/NNE/OUST: cả 4 mã tiếp tục pullback trong phiên hôm nay (IREN -3.72%, APLD -3.26%, OUST -4.02%, NNE -0.55% so với đóng cửa 08-04) — chưa có phiên ổn định/đi ngang thật sự theo bộ lọc CLAUDE.md 2026-07-24, đề xuất IREN/APLD vẫn tiếp tục hoãn, không trình lại lần này.
+- SPY +0.04%/QQQ -0.44% — thị trường chung đi ngang, không vi phạm ngưỡng cấm mở vị thế rủi ro cao mới nhưng cũng không phải lý do để vội vào lệnh.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng cắt lỗ/chốt lời, không tin xấu nghiêm trọng nào phát sinh, nhóm ứng viên rủi ro cao vẫn chưa đủ điều kiện xác nhận ổn định. Không gửi PushNotification.
