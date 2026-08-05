@@ -2638,3 +2638,15 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
   - CSCO: hủy stop cũ (3cp @ $107.93, order `6a6b5b8d`, đặt từ 07-30, đã lỗi thời) → `get_equity_historicals` xác nhận đỉnh mới kể từ mua = **$121.90** (08-04) → đặt lại GTC -5% cho **4cp @ $115.81** (order `6a7353f8`), housekeeping tận dụng luôn dịp gộp lệnh.
 - **Core-10 sau các lệnh này (9/10, không đổi số slot):** AMZN(2cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JNJ(1.917986cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp) — vẫn thiếu 1 slot rủi ro cao (thay ACHR, đang chờ phiên ổn định).
 - **Không cần PushNotification thêm** — Hogan đã xác nhận trực tiếp trong phiên tương tác này.
+
+## 2026-08-05 ~11:20 ET (15:20 UTC) — Hogan yêu cầu làm tròn JNJ đủ 2cp, phát hiện trailing stop -5% (tính đúng theo đỉnh thật) đã bị breach từ trước — cắt lỗ theo kỷ luật
+
+- **Mua JNJ 0.082014cp** (fractional, để làm tròn 1.917986cp → 2.0cp): review (bid $256.73/ask $256.79) → khớp @ **$256.7623** lúc 15:20:37 UTC (order `6a7354c5`), ~$21.06.
+- **VOO:** Hogan chọn KHÔNG làm tròn (mua thêm 0.27353cp lên 1.0cp sẽ đưa vị thế lên ~12.09% danh mục, vượt trần 10% CLAUDE.md) — giữ nguyên 0.72647cp (8.79%).
+- **Phát hiện khi chuẩn bị đặt stop-loss cho JNJ (lần đầu có thể đặt tự động vì đã tròn 2.0cp, không còn fractional):** `get_equity_historicals` (07-01→08-04) cho thấy đỉnh giá thật kể từ khi mua = **$274.90** (07-28) — trailing stop -5% đúng chính sách CLAUDE.md 2026-07-24 phải là **$261.16**, nhưng giá hiện tại chỉ $256.865 → **đã breach ngưỡng này ~1.56 điểm % từ trước**, không được phát hiện ở các lần check trước (08-03 15:32 ET, 08-04, 08-05 sáng) vì các lần đó so P&L với **giá vốn** (-2.1% đến -3.3%, chưa breach -5%) thay vì so với **đỉnh giá thật** theo đúng chính sách trailing — sai sót trong áp dụng chính sách cho vị thế fractional (không có lệnh GTC tự động để tự trigger, phải theo dõi thủ công nhưng đã tính sai chuẩn so sánh).
+- **Hogan chọn cắt lỗ ngay theo kỷ luật** (không xem xét ngoại lệ dù JNJ không có tin xấu mới).
+- **Bán JNJ toàn bộ 2.0cp:** review (bid $256.68/ask $256.80, không cảnh báo broker) → khớp @ **$256.5001/cp** lúc 15:22:36 UTC (order `6a73553c`), phí $0.02, tổng thu ~$512.98. Giá vốn blended ~$521.06 (1.917986cp gốc @ $260.69 + 0.082014cp mới @ $256.76) → **lỗ thực hiện ~-$8.10 (-1.55%)**.
+- **Wash-sale: cấm mua lại JNJ tới ~2026-09-04** (30 ngày từ lệnh bán lỗ này).
+- **Core-10 sau lệnh này (8/9 vị thế đang có):** AMZN(2cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp) — thiếu **2 slot**: 1 rủi ro cao (thay ACHR, đang chờ phiên ổn định) + **1 blue-chip mới (thay JNJ)** — cần đề xuất 2 lựa chọn theo quy trình CLAUDE.md, chưa có đề xuất nào ở lần ghi log này.
+- **Bài học vận hành (ghi nhận để tránh lặp lại):** với vị thế fractional không có stop-loss tự động, các lần kiểm tra định kỳ cần so P&L với **đỉnh giá thật** (`get_equity_historicals` từ ngày mua) chứ không phải chỉ so với giá vốn khi đánh giá ngưỡng cắt lỗ trailing.
+- **Không cần PushNotification thêm** — Hogan đã xác nhận trực tiếp trong phiên tương tác này (phát hiện + quyết định cắt lỗ đều diễn ra trong cùng phiên chat).
