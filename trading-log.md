@@ -2761,3 +2761,27 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **CSCO/JPM/VOO/RSP/MSFT/XOM/ORCL:** biến động trong ngày đều nhỏ (dưới 1%), không breach ngưỡng cắt lỗ/chốt lời nào, không cần tra tin thêm.
 - **Slot rủi ro cao (thay ACHR) vẫn trống** — kiểm tra nhanh IREN ($38.29, -1.54% so với đóng cửa 08-05), APLD ($28.965, -3.03%), OUST ($44.88, -0.53%), NNE ($17.78, -0.56%): pullback nhẹ đầu phiên, chưa phải phiên đóng cửa ổn định mới theo bộ lọc CLAUDE.md 2026-07-24 (đã có 1 lần pullback+phục hồi trước đó nhưng cần theo dõi thêm để xác nhận). Không trình lại đề xuất IREN/APLD lần này — chờ diễn biến rõ hơn.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — CRM có tin đáng chú ý (từ chức lãnh đạo kỹ thuật) nhưng chưa breach stop-loss, chưa đạt ngưỡng "nghiêm trọng" để đề xuất thay thế; các mã còn lại đi ngang, không breach ngưỡng nào. Không gửi PushNotification.
+
+## 2026-08-06 ~13:14 ET (17:14 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — Không có đề xuất mới; CRM phục hồi nhẹ so với sáng nay, slot rủi ro cao vẫn chờ phiên đóng cửa ổn định
+
+- **Sync đầu phiên:** `git pull origin main` → không có commit mới kể từ lần kiểm tra 09:48 ET ngoại trừ các sandbox check-in (không ảnh hưởng core-10). Repo có branch `main` cục bộ ở trạng thái detached HEAD trỏ đúng `origin/main` (`c7f431d`) — đã `git checkout -B main origin/main` để gắn lại branch, không có xung đột.
+- **Xác nhận qua `get_equity_orders`** (từ 2026-08-06 00:00 UTC tới nay): **rỗng, không có lệnh mới nào**. `get_equity_positions` xác nhận core-10 đang có đúng 9/9 vị thế đã log: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp), XOM(3cp), CRM(3cp) — vẫn thiếu 1 slot rủi ro cao (thay ACHR, đề xuất IREN/APLD từ 08-03 còn hiệu lực).
+- P&L so với giá vốn (giá ~13:14 ET/17:14 UTC, so với đóng cửa 08-05):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **ASTS** | $55.47 | $69.65 | **+25.57%** | +1.86% |
+  | CSCO | $115.64 | $120.89 | +4.54% | -0.50% |
+  | VOO | $688.26 | $706.30 | +2.62% | -0.18% |
+  | JPM | $347.97 | $355.74 | +2.23% | -0.97% |
+  | MSFT | $488.00 | $496.29 | +1.70% | +1.81% |
+  | RSP | $214.93 | $218.375 | +1.60% | -0.62% |
+  | XOM | $151.60 | $153.63 | +1.34% | +1.32% |
+  | ORCL | $144.26 | $144.287 | +0.02% | -0.07% |
+  | **CRM** | $191.24 | $184.71 | **-3.42%** | **-4.29%** |
+
+- **CRM $184.71, gần như đi ngang so với lần kiểm tra 09:48 ET ($184.13, chỉ +0.3%)** — dưới ngưỡng 3-5% cần tra tin mới, không WebSearch thêm; tin từ chức Srini Tallapragada (President & Chief Engineering/Customer Success) đã xác nhận đầy đủ ở lần kiểm tra trước, không phải CEO, chưa đạt mức "nghiêm trọng" theo CLAUDE.md. Stop-loss GTC vẫn nguyên $181.68 (-5% từ giá vốn, chưa có đỉnh mới), giá hiện tại cách stop ~$3.03 (~1.6%), **chưa breach**. Không đề xuất bán/thay thế.
+- **ASTS +25.57% P&L, +1.86% trong ngày** — chưa tạo đỉnh mới so với $70.50 (08-04, giá hiện $69.65 vẫn dưới đỉnh đó) nên trailing stop -12% giữ nguyên $62.04, còn cách xa. Đề xuất bán 1 phần đã bị Hogan từ chối 08-05 ~11:06 ET (chỉ dời stop-loss) — không có diễn biến/thông tin mới nên không lặp lại đề xuất.
+- **CSCO/VOO/JPM/MSFT/RSP/XOM/ORCL:** biến động trong ngày đều nhỏ (dưới 2%), không breach ngưỡng cắt lỗ/chốt lời nào, không cần tra tin thêm.
+- **Slot rủi ro cao (thay ACHR) vẫn trống** — kiểm tra IREN ($39.23, +0.87%), APLD ($29.73, -0.47%), NNE ($17.78, -0.56%), OUST ($45.505, +0.85%) so với đóng cửa 08-05: cả 4 mã đi ngang nhẹ giữa phiên hôm nay (chưa đóng cửa) — SPY -0.21%/QQQ -0.26% (thị trường chung cũng đi ngang, không vi phạm ngưỡng cấm mở vị thế mới nhưng không phải lý do vội vào lệnh). Theo bộ lọc CLAUDE.md 2026-07-24 cần xác nhận **phiên đã đóng cửa** ổn định trước khi mua — phiên hôm nay chưa đóng cửa, và OUST có báo cáo lợi nhuận tối nay (theo sandbox-log.md) có thể ảnh hưởng biến động cả nhóm ngày mai — tiếp tục hoãn đề xuất IREN/APLD, chờ phiên đóng cửa ổn định sau khi biết kết quả earnings OUST.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng cắt lỗ/chốt lời, không tin xấu nghiêm trọng mới phát sinh, nhóm ứng viên rủi ro cao vẫn chưa đủ điều kiện xác nhận ổn định (chờ đóng cửa + earnings OUST tối nay). Không gửi PushNotification.
