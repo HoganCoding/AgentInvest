@@ -2737,3 +2737,27 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Slot rủi ro cao (thay ACHR) vẫn trống** — kiểm tra thêm IREN/APLD/NNE/OUST: cả 4 mã tiếp tục pullback trong phiên hôm nay (IREN -3.72%, APLD -3.26%, OUST -4.02%, NNE -0.55% so với đóng cửa 08-04) — chưa có phiên ổn định/đi ngang thật sự theo bộ lọc CLAUDE.md 2026-07-24, đề xuất IREN/APLD vẫn tiếp tục hoãn, không trình lại lần này.
 - SPY +0.04%/QQQ -0.44% — thị trường chung đi ngang, không vi phạm ngưỡng cấm mở vị thế rủi ro cao mới nhưng cũng không phải lý do để vội vào lệnh.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng cắt lỗ/chốt lời, không tin xấu nghiêm trọng nào phát sinh, nhóm ứng viên rủi ro cao vẫn chưa đủ điều kiện xác nhận ổn định. Không gửi PushNotification.
+
+## 2026-08-06 ~09:48 ET (13:48 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — Không có đề xuất mới; CRM giảm mạnh do CEO cấp cao từ chức (chưa breach stop-loss), slot rủi ro cao vẫn chờ phiên ổn định
+
+- **Sync đầu phiên:** local branch `main` ở trạng thái detached HEAD trỏ đúng `origin/main` (`95dc025`) nhưng branch `main` cục bộ là con trỏ cũ đã phân kỳ (dừng ở 07-30, "unrelated histories" so với `origin/main` do lịch sử đã bị rewrite ở nhánh remote). Kiểm tra diff `main` vs `origin/main`: chỉ thuần insertions (+396 dòng sandbox-log.md, +482 dòng trading-log.md, 0 deletions) — không mất nội dung — nên `git reset --hard origin/main` để đồng bộ về `95dc025` (mới nhất, gồm sandbox check-in pre-market 08-06 ~09:19 ET). Không xung đột cần resolve thủ công.
+- **Xác nhận qua `get_equity_orders`** (từ 2026-08-06 00:00 UTC tới nay): **rỗng, không có lệnh mới nào**. `get_equity_positions` xác nhận core-10 đang có đúng 9/9 vị thế đã log: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp), XOM(3cp), CRM(3cp) — vẫn thiếu 1 slot rủi ro cao (thay ACHR, đề xuất IREN/APLD từ 08-03 còn hiệu lực, đang chờ phiên đóng cửa ổn định).
+- P&L so với giá vốn (giá ~09:48 ET/13:48 UTC, so với đóng cửa 08-05):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **ASTS** | $55.47 | $68.95 | **+24.30%** | +0.83% |
+  | CSCO | $115.64 | $121.615 | +5.17% | +0.09% |
+  | JPM | $347.97 | $360.26 | +3.53% | +0.28% |
+  | VOO | $688.26 | $708.96 | +3.01% | +0.19% |
+  | RSP | $214.93 | $219.375 | +2.07% | -0.16% |
+  | MSFT | $488.00 | $492.05 | +0.83% | +0.94% |
+  | XOM | $151.60 | $151.98 | +0.25% | +0.23% |
+  | ORCL | $144.26 | $144.02 | -0.17% | -0.26% |
+  | **CRM** | $191.24 | $184.13 | **-3.72%** | **-4.59%** |
+
+- **CRM -4.59% trong ngày — vượt ngưỡng 3-5%, đã WebSearch:** nguyên nhân là **Srini Tallapragada, President & Chief Engineering and Customer Success Officer, tuyên bố từ chức hiệu lực 08-06 sau 14 năm gắn bó** — không phải CEO (Marc Benioff vẫn tại vị), không có tin gian lận/kiện tụng/hạ tín nhiệm đi kèm. Đây là rủi ro quản trị đáng chú ý (mất lãnh đạo kỹ thuật cấp cao) nhưng chưa đạt mức "nghiêm trọng" theo tiêu chí CLAUDE.md (mất CEO đột ngột/kiện tụng/gian lận kế toán) để kích hoạt đề xuất thay thế ngay — CRM mới nắm giữ 1 ngày (từ 08-05), stop-loss GTC vẫn nguyên tại **$181.68** (-5% từ giá vốn $191.24, chưa có đỉnh mới nên chưa dời), giá hiện tại $184.13 vẫn cách stop ~$2.45 (~1.3%), **chưa breach**. Không đề xuất bán/thay thế — để stop-loss tự động xử lý nếu tiếp tục giảm, tránh vi phạm nguyên tắc hạn chế giao dịch phát sinh thuế/không chase tin ngắn hạn 1 ngày sau khi mới mua. Nguồn: kết quả WebSearch tổng hợp từ stockanalysis.com/Investing.com/CNBC (giá $192.98 đóng cửa 08-05, giảm 4.1% pre-market do tin từ chức).
+- **ASTS:** +24.30% P&L, đi ngang trong ngày (+0.83%), chưa tạo đỉnh mới so với $70.50 (08-04) nên trailing stop -12% giữ nguyên $62.04, còn cách xa. Đề xuất bán 1 phần đã bị Hogan từ chối 08-05 ~11:06 ET (chỉ dời stop-loss) — không lặp lại đề xuất do chưa có diễn biến/thông tin mới.
+- **CSCO/JPM/VOO/RSP/MSFT/XOM/ORCL:** biến động trong ngày đều nhỏ (dưới 1%), không breach ngưỡng cắt lỗ/chốt lời nào, không cần tra tin thêm.
+- **Slot rủi ro cao (thay ACHR) vẫn trống** — kiểm tra nhanh IREN ($38.29, -1.54% so với đóng cửa 08-05), APLD ($28.965, -3.03%), OUST ($44.88, -0.53%), NNE ($17.78, -0.56%): pullback nhẹ đầu phiên, chưa phải phiên đóng cửa ổn định mới theo bộ lọc CLAUDE.md 2026-07-24 (đã có 1 lần pullback+phục hồi trước đó nhưng cần theo dõi thêm để xác nhận). Không trình lại đề xuất IREN/APLD lần này — chờ diễn biến rõ hơn.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — CRM có tin đáng chú ý (từ chức lãnh đạo kỹ thuật) nhưng chưa breach stop-loss, chưa đạt ngưỡng "nghiêm trọng" để đề xuất thay thế; các mã còn lại đi ngang, không breach ngưỡng nào. Không gửi PushNotification.
