@@ -2810,3 +2810,31 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **CSCO/VOO/MSFT/JPM/RSP/XOM/ORCL:** biến động trong ngày đều nhỏ, không breach ngưỡng cắt lỗ/chốt lời nào, không cần tra tin thêm.
 - **Slot rủi ro cao (thay ACHR) vẫn trống** — kiểm tra IREN ($38.53, -0.93%), APLD ($29.405, -1.56%), NNE ($17.665, -1.20%), OUST ($45.40, +0.62%) so với đóng cửa 08-05: nhóm đi ngang/nhẹ giảm, chưa phải phiên đóng cửa ổn định theo bộ lọc CLAUDE.md 2026-07-24. SPY -0.14%/QQQ -0.28% — thị trường chung đi ngang, không vi phạm ngưỡng cấm nhưng cũng không phải lý do vội vào lệnh. OUST báo cáo lợi nhuận tối nay vẫn chưa diễn ra — tiếp tục hoãn đề xuất IREN/APLD tới khi có phiên đóng cửa ổn định sau earnings.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng cắt lỗ/chốt lời, không tin xấu nghiêm trọng mới phát sinh, nhóm ứng viên rủi ro cao vẫn chưa đủ điều kiện xác nhận ổn định (chờ đóng cửa + earnings OUST tối nay). Không gửi PushNotification.
+
+## 2026-08-07 ~09:52 ET (13:52 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — ĐỀ XUẤT dời trailing stop-loss ASTS theo đỉnh mới bị bỏ sót ($74.08); còn lại 8/9 vị thế đi ngang, slot rủi ro cao vẫn chờ phiên đóng cửa ổn định
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD đúng `origin/main`. `git checkout main && git pull origin main` → fast-forward 2 commit (sandbox check-in tới 09:24 ET), không xung đột.
+- **Xác nhận qua `get_equity_orders`** (từ 19:31 UTC 08-06 tới nay): **rỗng, không có lệnh nào mới**. `get_equity_positions` xác nhận core-10 đang có đúng 9/9 vị thế đã log: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp), XOM(3cp), CRM(3cp) — vẫn thiếu 1 slot rủi ro cao (thay ACHR).
+- P&L so với giá vốn (giá ~09:52 ET/13:52 UTC, so với đóng cửa 08-06):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **ASTS** | $55.47 | $69.6094 | **+25.49%** | +3.34% |
+  | CSCO | $115.64 | $121.445 | +5.02% | +0.47% |
+  | MSFT | $488.00 | $504.735 | +3.43% | +0.97% |
+  | VOO | $688.26 | $709.645 | +3.11% | +0.46% |
+  | JPM | $347.97 | $354.00 | +1.73% | -0.65% |
+  | RSP | $214.93 | $219.165 | +1.97% | +0.27% |
+  | ORCL | $144.26 | $144.55 | +0.20% | +0.75% |
+  | XOM | $151.60 | $151.66 | +0.04% | -2.05% |
+  | CRM | $191.24 | $190.925 | -0.16% | +2.22% |
+
+- **PHÁT HIỆN: đỉnh giá ASTS thật ($74.08, phiên 08-06) cao hơn đỉnh $70.50 mà các lần log gần đây vẫn dùng để giữ nguyên trailing stop.** Kiểm tra `get_equity_historicals` (day bars, từ 07-29): phiên 08-06 có `high_price=$74.08` — rõ ràng cao hơn đỉnh $70.50 (08-04, thực ra full-day high đúng của 08-04 là $71.27 theo historicals, còn $70.50 chỉ là giá tại 1 thời điểm kiểm tra giữa phiên trước đó) đã dùng nhiều lần liên tiếp trong log 08-05/08-06. Đối chiếu `get_equity_orders` xác nhận lệnh stop-loss GTC hiện tại (`6a735179`, đặt 08-05) vẫn ở mức **$62.04** (-12% từ đỉnh $70.50 cũ) — chưa được cập nhật theo đỉnh mới.
+- **ĐỀ XUẤT (chỉ dời stop-loss, không bán, không đổi mã):**
+  1. **ASTS — dời trailing stop-loss:** hủy lệnh GTC stop_market cũ (`6a735179`, $62.04) → đặt lệnh mới GTC stop_market **$65.19** (-12% từ đỉnh giá thật $74.08, phiên 08-06), áp dụng cho toàn bộ 5cp.
+  2. **Lý do:** theo CLAUDE.md, trailing stop chỉ được dời LÊN theo đỉnh giá mới, không dời xuống; đỉnh $74.08 chưa từng được dùng để cập nhật, nên stop hiện tại đang bảo toàn ít lợi nhuận hơn mức đáng lẽ phải có. Đây không phải đề xuất bán (Hogan đã từ chối bán 1 phần chốt lời ngày 08-05 ~11:06 ET, không lặp lại) — chỉ là cập nhật kỹ thuật đúng quy tắc trailing đã thống nhất.
+  3. **Rủi ro chính:** ASTS vẫn biến động cao (dao động ±3-10%/phiên gần đây); mức -12% từ đỉnh giữ nguyên biên độ đã quy định cho nhóm rủi ro cao (không thắt chặt thêm so với công thức), nên không làm tăng rủi ro bị quẹt bởi nhiễu ngắn hạn so với thiết kế ban đầu.
+  4. **Mức đề xuất:** cắt lỗ mới $65.19 (thay cho $62.04 hiện tại); không đổi công thức chốt lời (P&L hiện +25.49%, đã vượt xa ngưỡng +15%, nhưng đề xuất bán 1 phần đã bị từ chối trước đó và không có thông tin mới để trình lại).
+- **CSCO/MSFT/VOO/JPM/RSP/ORCL/CRM:** biến động trong ngày đều nhỏ hoặc dưới ngưỡng 3% so với lần kiểm tra gần nhất (08-06 15:31 ET) — CRM $190.925 (+2.86% so với lần trước $185.61), ASTS +2.76% so với lần trước ($67.74) — cả hai dưới ngưỡng 3-5% cần tra tin sâu, không WebSearch thêm. XOM -2.05% trong ngày (so đóng cửa) nhưng chỉ -1.75% so với lần kiểm tra trước ($154.36) — dưới ngưỡng, không cần tra tin.
+- **Slot rủi ro cao (thay ACHR) vẫn trống** — kiểm tra IREN ($38.805, +2.31%), APLD ($29.05, +0.66%), OUST ($45.37, -0.46%), NNE ($18.32, +4.03%) so với đóng cửa 08-06: phản ứng trái chiều sau earnings OUST (rev beat/EPS miss, theo sandbox-log.md sáng nay), chưa phải phiên đã đóng cửa (mới 09:52 ET) nên chưa thể xác nhận "phiên ổn định" theo bộ lọc CLAUDE.md 2026-07-24. Tiếp tục hoãn đề xuất IREN/APLD, chờ đóng cửa hôm nay.
+- **Gửi PushNotification** — đây là đề xuất thật (dời stop-loss ASTS) cần Hogan xác nhận trước khi thực hiện (phiên này read-only, không tự đặt/hủy lệnh).
