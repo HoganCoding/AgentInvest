@@ -2838,3 +2838,12 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **CSCO/MSFT/VOO/JPM/RSP/ORCL/CRM:** biến động trong ngày đều nhỏ hoặc dưới ngưỡng 3% so với lần kiểm tra gần nhất (08-06 15:31 ET) — CRM $190.925 (+2.86% so với lần trước $185.61), ASTS +2.76% so với lần trước ($67.74) — cả hai dưới ngưỡng 3-5% cần tra tin sâu, không WebSearch thêm. XOM -2.05% trong ngày (so đóng cửa) nhưng chỉ -1.75% so với lần kiểm tra trước ($154.36) — dưới ngưỡng, không cần tra tin.
 - **Slot rủi ro cao (thay ACHR) vẫn trống** — kiểm tra IREN ($38.805, +2.31%), APLD ($29.05, +0.66%), OUST ($45.37, -0.46%), NNE ($18.32, +4.03%) so với đóng cửa 08-06: phản ứng trái chiều sau earnings OUST (rev beat/EPS miss, theo sandbox-log.md sáng nay), chưa phải phiên đã đóng cửa (mới 09:52 ET) nên chưa thể xác nhận "phiên ổn định" theo bộ lọc CLAUDE.md 2026-07-24. Tiếp tục hoãn đề xuất IREN/APLD, chờ đóng cửa hôm nay.
 - **Gửi PushNotification** — đây là đề xuất thật (dời stop-loss ASTS) cần Hogan xác nhận trước khi thực hiện (phiên này read-only, không tự đặt/hủy lệnh).
+
+
+## 2026-08-07 ~10:50 ET (14:50 UTC) — Thực hiện đề xuất dời trailing stop-loss ASTS (đã duyệt trong phiên tương tác)
+
+- **Bối cảnh:** đề xuất từ phiên 09:52 ET hôm nay (dời stop ASTS theo đỉnh thật $74.08 ngày 08-06, bị bỏ sót trước đó) — Hogan xác nhận duyệt trong phiên tương tác này.
+- **Đã thực hiện:** hủy lệnh stop-loss GTC cũ `6a735179` ($62.04, đặt 08-05) → xác nhận `cancelled`. Đặt lệnh GTC stop_market mới `6a75f0be`: bán 5cp ASTS, stop **$65.19** (-12% từ đỉnh $74.08, phiên 08-06) → xác nhận `confirmed`.
+- **Snapshot P&L core-10 tại thời điểm này (so với giá vốn):** ASTS +25.30% ($69.50 vs vốn $55.47), CSCO +3.50%, VOO +3.17%, MSFT +3.18%, JPM +2.45%, RSP +2.40%, CRM +1.45%, XOM +0.71%, ORCL +0.60%. Không mã nào breach stop-loss. Tổng unrealized ~+$151.58. Slot rủi ro cao (thay ACHR) vẫn trống, chờ IREN/APLD/NNE/OUST xác nhận phiên ổn định.
+- **Sandbox (704170133):** vẫn 100% cash, buying_power $1,623.93, không có vị thế nào — không đổi so với lần check gần nhất.
+- Không cần PushNotification thêm — Hogan đã xác nhận trực tiếp trong phiên tương tác này.
