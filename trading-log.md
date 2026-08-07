@@ -2870,3 +2870,27 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **CSCO/VOO/JPM/MSFT/RSP/XOM/ORCL/CRM:** biến động trong ngày đều nhỏ (dưới 2.5%), không breach ngưỡng cắt lỗ/chốt lời nào, không cần tra tin thêm.
 - **Slot rủi ro cao (thay ACHR) vẫn trống** — kiểm tra IREN ($38.975, +2.76% so với đóng cửa 08-06), APLD ($28.79, -0.24%), NNE ($18.85, +7.04%), OUST ($44.52, -2.33%): IREN đóng cửa xanh cả 08-06 (+1.8%) và đang xanh tiếp hôm nay (+2.76%) — bắt đầu có dấu hiệu 2 phiên liên tiếp ổn định, nhưng **thị trường (phiên hôm nay) chưa đóng cửa** (mới ~13:14 ET) nên chưa thể xác nhận "phiên đã đóng cửa ổn định" theo đúng bộ lọc CLAUDE.md 2026-07-24 — chưa đủ cơ sở trình đề xuất lấp slot lần này, để dành đánh giá đầy đủ ở lần kiểm tra cuối phiên (~15:30 ET) sau khi có giá đóng cửa chính thức. SPY +0.45%/QQQ +0.83% — thị trường chung tăng, không vi phạm ngưỡng cấm mở vị thế mới.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng cắt lỗ/chốt lời, không tin xấu nghiêm trọng mới phát sinh, nhóm ứng viên rủi ro cao (IREN đáng chú ý nhất) vẫn cần chờ phiên đóng cửa chính thức trước khi đủ điều kiện trình đề xuất theo bộ lọc CLAUDE.md. Không gửi PushNotification.
+
+## 2026-08-07 ~15:31 ET (19:31 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — Không có đề xuất mới; IREN/NNE tăng mạnh trong ngày (có catalyst thật) nhưng phiên chưa đóng cửa, chưa đủ điều kiện lấp slot rủi ro cao
+
+- **Sync đầu phiên:** `git pull origin main` — đã up to date với `origin/main` (`92cb071`), không có commit mới nào kể từ lần kiểm tra 13:14 ET ngoài các sandbox check-in, không xung đột.
+- **Xác nhận qua `get_equity_orders`** (từ 17:14 UTC tới nay): **rỗng, không có lệnh nào mới**. `get_equity_positions` xác nhận core-10 vẫn đúng 9/9 vị thế đã log: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp), XOM(3cp), CRM(3cp) — vẫn thiếu 1 slot rủi ro cao (thay ACHR).
+- P&L so với giá vốn (giá ~15:31 ET/19:31 UTC, so với đóng cửa 08-06):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày |
+  |---|---|---|---|---|
+  | **ASTS** | $55.47 | $70.36 | **+26.85%** | +4.45% |
+  | CRM | $191.24 | $192.2175 | +0.51% | +2.92% |
+  | CSCO | $115.64 | $121.24 | +4.84% | +0.30% |
+  | VOO | $688.26 | $710.405 | +3.22% | +0.57% |
+  | JPM | $347.97 | $358.53 | +3.04% | +0.63% |
+  | MSFT | $488.00 | $501.52 | +2.77% | +0.33% |
+  | RSP | $214.93 | $220.15 | +2.43% | +0.72% |
+  | ORCL | $144.26 | $145.68 | +0.98% | +1.54% |
+  | XOM | $151.60 | $152.45 | +0.56% | -1.54% |
+
+- **So với lần kiểm tra gần nhất (13:14 ET):** tất cả các mã đang nắm giữ thay đổi rất nhỏ (dưới 1.2pp), kể cả ASTS (-1.2% so với $71.22 lần trước) và CRM (+0.58%) — dưới ngưỡng 3-5% cần tra tin sâu, không WebSearch thêm cho các vị thế đang giữ.
+- **Slot rủi ro cao (thay ACHR) vẫn trống** — kiểm tra IREN ($40.56, **+6.93%** so với đóng cửa 08-06), APLD ($29.145, +0.99%), NNE ($18.99, **+7.84%**), OUST ($43.99, -3.49%): IREN/NNE biến động đáng kể (>5%) nên đã WebSearch. **IREN:** không có tin tiêu cực; catalyst xác nhận thật đang tiếp diễn — hoàn tất mua lại Mirantis (công bố 08-04, thêm lớp phần mềm cloud cho hạ tầng AI hiện có), $2.8 tỷ hợp đồng khách hàng đa năm mới (công bố 07-20, nâng target doanh thu 2026 lên >$4 tỷ), Bernstein nâng khuyến nghị Buy cuối tháng 7 — không phát hiện catalyst mới riêng cho hôm nay, có vẻ là tiếp diễn đà tăng theo nhóm AI-datacenter + thị trường chung tăng (SPY +0.56%, QQQ +1.03% hôm nay, không vi phạm ngưỡng cấm mở vị thế rủi ro cao mới). Earnings IREN dự kiến 08-27 (chưa tới). **NNE** không tra riêng do không phải ứng viên hàng đầu hiện tại (theo dõi phụ). [Nguồn: CNN, Investing.com, CNBC, Yahoo Finance, Simply Wall St, Morningstar, TradingView, MarketBeat qua WebSearch]
+- **Đánh giá bộ lọc CLAUDE.md 2026-07-24:** IREN nay đã có 2 phiên liên tiếp xanh gần đây (08-06 +1.8%, và đang xanh mạnh 08-07) với catalyst thật hỗ trợ (không phải chỉ nhiễu/hype ngắn hạn) — dấu hiệu tích cực nhất từ trước tới nay cho slot còn trống. Tuy nhiên **phiên hôm nay CHƯA đóng cửa** tại thời điểm kiểm tra (~15:31 ET, đóng cửa 16:00 ET) — theo đúng bộ lọc yêu cầu "phiên đã đóng cửa ổn định", vẫn chưa đủ cơ sở trình đề xuất chính thức lần này. Sẽ đánh giá lại ở lần kiểm tra kế tiếp (routine sau, ~09:45 ET ngày mai hoặc phiên tương tác) với giá đóng cửa chính thức 08-07 trong tay — nếu xác nhận đóng cửa xanh, đủ điều kiện trình đề xuất IREN thay ACHR.
+- **CSCO/VOO/JPM/MSFT/RSP/ORCL/XOM/CRM:** biến động trong ngày đều nhỏ, không breach ngưỡng cắt lỗ/chốt lời nào.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng cắt lỗ/chốt lời, không tin xấu nghiêm trọng phát sinh; IREN có tín hiệu tích cực rõ hơn nhưng phiên chưa đóng cửa nên chưa đủ điều kiện theo bộ lọc CLAUDE.md — chờ xác nhận đóng cửa ở lần kiểm tra sau. Không gửi PushNotification.
