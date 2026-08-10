@@ -2921,3 +2921,28 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
   - APLD $29.99 (+2.64%), NNE $18.4791 (-1.97%), OUST $44.0639 (+1.53%) so với đóng cửa 08-07: biến động hai chiều nhẹ, không có ứng viên nào vượt trội hơn IREN, không tra tin riêng.
   - SPY -0.01%/QQQ -0.17% so với đóng cửa 08-07 — thị trường chung gần như đi ngang, không vi phạm ngưỡng cấm mở vị thế mới, nhưng cũng không phải yếu tố thúc đẩy quyết định IREN hôm nay.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng cắt lỗ/chốt lời, XOM tăng tốt do tin tích cực (không cần hành động), IREN vẫn là ứng viên hàng đầu cho slot rủi ro cao nhưng đang đảo chiều giảm ngay sau spike cuối tuần nên chưa đủ điều kiện theo bộ lọc — chờ xác nhận ổn định thêm ở lần kiểm tra sau. Không gửi PushNotification.
+
+## 2026-08-10 ~13:15 ET (17:15 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — Không có đề xuất mới; ASTS/IREN đều giảm >3% so với đóng cửa 08-07 nhưng không có tin xấu, slot rủi ro cao vẫn chưa đủ điều kiện
+
+- **Sync đầu phiên:** `git pull origin main` — up to date, không có commit mới kể từ lần kiểm tra 09:57 ET sáng nay, không xung đột.
+- **Xác nhận qua `get_equity_orders`** (từ 13:57 UTC tới nay): **rỗng, không có lệnh nào mới**. `get_equity_positions` xác nhận core-10 vẫn đúng 9/9 vị thế đã log, không đổi: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp), XOM(3cp), CRM(3cp) — vẫn thiếu 1 slot rủi ro cao (thay ACHR).
+- P&L so với giá vốn (giá ~13:15 ET/17:15 UTC, so với đóng cửa 08-07):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi so với đóng cửa 08-07 |
+  |---|---|---|---|---|
+  | **ASTS** | $55.47 | $69.42 | **+25.15%** | **-3.50%** |
+  | ORCL | $144.26 | $151.18 | +4.80% | +2.83% |
+  | XOM | $151.60 | $158.82 | +4.76% | +3.78% |
+  | CSCO | $115.64 | $124.195 | +7.40% | +2.28% |
+  | MSFT | $488.00 | $507.68 | +4.03% | +1.54% |
+  | CRM | $191.24 | $198.09 | +3.58% | +2.78% |
+  | VOO | $688.26 | $710.71 | +3.26% | ~0.00% |
+  | RSP | $214.93 | $220.2165 | +2.46% | +0.06% |
+  | JPM | $347.97 | $357.52 | +2.74% | ~0.00% |
+
+- **ASTS -3.50% so với đóng cửa 08-07 (đã WebSearch do vượt ngưỡng 3%):** không có tin xấu — chỉ là nghỉ/điều chỉnh sau đà tăng mạnh cuối tuần trước (đỉnh $74.08 ngày 08-06), không có catalyst tiêu cực mới. Ghi nhận: **AST SpaceMobile có buổi quarterly business update conference call tối nay 5:00pm ET (2026-08-10)** — chưa diễn ra tại thời điểm kiểm tra, thị trường chưa phản ứng, cần theo dõi ở lần kiểm tra kế tiếp sau khi có kết quả/guidance. Chưa tạo đỉnh mới so với $74.08 nên trailing stop -12% giữ nguyên $65.19 (lệnh GTC `6a75f0be` vẫn `confirmed`, không có order mới). Giá hiện tại cách stop ~$4.23 (~6.1%), chưa breach. P&L +25.15% vẫn vượt ngưỡng chốt lời +15% nhưng đề xuất bán 1 phần đã bị từ chối 08-05, không có thông tin mới đủ trọng lượng để trình lại (earnings call tối nay chưa diễn ra) — không lặp lại đề xuất.
+- **XOM +3.78% so với đóng cửa 08-07:** tiếp diễn đà tăng tích cực đã ghi nhận sáng nay (giá dầu tăng, TD Cowen nâng target $168, kết quả Q2 mạnh) — không có tin mới, không cần hành động.
+- **ORCL +2.83%, CSCO +2.28%, CRM +2.78%, MSFT +1.54%:** đều dưới ngưỡng 3% so với đóng cửa 08-07, không cần tra tin thêm — biến động chung nhóm tech tăng.
+- **VOO/RSP/JPM:** gần như đi ngang, không breach ngưỡng nào.
+- **Slot rủi ro cao (thay ACHR) — cập nhật (đã WebSearch do IREN biến động >3%):** IREN $39.78 (**-3.52%** so với đóng cửa 08-07 $41.23), tiếp tục đảo chiều giảm sang phiên thứ 2 liên tiếp sau spike +8.73% hôm 08-07 — không có tin xấu mới (vẫn câu chuyện Mirantis/Microsoft/NVIDIA cũ), nhưng xác nhận đây KHÔNG phải "phiên ổn định" theo bộ lọc CLAUDE.md 2026-07-24 — giá đang tiếp tục điều chỉnh xuống chứ chưa giữ được vùng giá sau spike. APLD $29.27 (+0.17%), NNE $18.49 (-1.91%), OUST $42.67 (-1.69%) — không có ứng viên nào nổi bật hơn. **Quyết định: tiếp tục hoãn đề xuất IREN, chờ xác nhận ổn định (ngừng giảm, giữ vùng giá) ở phiên đóng cửa sắp tới.** SPY -0.01%/QQQ -0.07% — thị trường chung đi ngang, không vi phạm ngưỡng cấm.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng cắt lỗ/chốt lời; ASTS/IREN giảm >3% đều do điều chỉnh kỹ thuật sau đà tăng mạnh, không phải tin xấu; slot rủi ro cao vẫn chưa đủ điều kiện theo bộ lọc. Lưu ý theo dõi ASTS quarterly update call tối nay (5pm ET) ở lần kiểm tra kế tiếp. Không gửi PushNotification.
