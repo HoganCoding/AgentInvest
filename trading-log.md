@@ -2894,3 +2894,30 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Đánh giá bộ lọc CLAUDE.md 2026-07-24:** IREN nay đã có 2 phiên liên tiếp xanh gần đây (08-06 +1.8%, và đang xanh mạnh 08-07) với catalyst thật hỗ trợ (không phải chỉ nhiễu/hype ngắn hạn) — dấu hiệu tích cực nhất từ trước tới nay cho slot còn trống. Tuy nhiên **phiên hôm nay CHƯA đóng cửa** tại thời điểm kiểm tra (~15:31 ET, đóng cửa 16:00 ET) — theo đúng bộ lọc yêu cầu "phiên đã đóng cửa ổn định", vẫn chưa đủ cơ sở trình đề xuất chính thức lần này. Sẽ đánh giá lại ở lần kiểm tra kế tiếp (routine sau, ~09:45 ET ngày mai hoặc phiên tương tác) với giá đóng cửa chính thức 08-07 trong tay — nếu xác nhận đóng cửa xanh, đủ điều kiện trình đề xuất IREN thay ACHR.
 - **CSCO/VOO/JPM/MSFT/RSP/ORCL/XOM/CRM:** biến động trong ngày đều nhỏ, không breach ngưỡng cắt lỗ/chốt lời nào.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng cắt lỗ/chốt lời, không tin xấu nghiêm trọng phát sinh; IREN có tín hiệu tích cực rõ hơn nhưng phiên chưa đóng cửa nên chưa đủ điều kiện theo bộ lọc CLAUDE.md — chờ xác nhận đóng cửa ở lần kiểm tra sau. Không gửi PushNotification.
+
+## 2026-08-10 ~09:57 ET (13:57 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — Không có đề xuất mới sau cuối tuần; IREN đảo chiều giảm sáng thứ Hai ngay sau phiên đóng cửa xanh +8.73% thứ Sáu, chưa đủ điều kiện lấp slot rủi ro cao
+
+- **Sync đầu phiên:** `git pull origin main` — fast-forward, không xung đột. Không có commit mới nào tới core-10 kể từ lần kiểm tra 08-07 ~15:31 ET ngoài các sandbox check-in cuối tuần/pre-market (sandbox vẫn 100% cash, đang theo dõi kế hoạch IREN riêng — không liên quan tới core-10, không đụng tới vị thế/quyết định core-10).
+- **Xác nhận qua `get_equity_orders`** (từ 19:31 UTC 08-07 tới nay): **rỗng, không có lệnh nào mới** trong 3 ngày qua (thị trường đóng cửa cuối tuần 08-08/08-09). `get_equity_positions` xác nhận core-10 vẫn đúng 9/9 vị thế đã log, không đổi: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp), XOM(3cp), CRM(3cp) — vẫn thiếu 1 slot rủi ro cao (thay ACHR).
+- P&L so với giá vốn (giá ~09:57 ET/13:57 UTC, so với đóng cửa 08-07 — phiên gần nhất trước cuối tuần):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi so với đóng cửa 08-07 |
+  |---|---|---|---|---|
+  | **ASTS** | $55.47 | $70.59 | **+27.28%** | -1.88% |
+  | CSCO | $115.64 | $123.68 | +6.95% | +1.85% |
+  | XOM | $151.60 | $157.83 | +4.11% | **+3.13%** |
+  | VOO | $688.26 | $710.705 | +3.26% | ~0.00% |
+  | MSFT | $488.00 | $506.14 | +3.72% | +1.23% |
+  | JPM | $347.97 | $358.78 | +3.11% | +0.35% |
+  | ORCL | $144.26 | $148.17 | +2.71% | +0.78% |
+  | RSP | $214.93 | $219.90 | +2.31% | -0.09% |
+  | CRM | $191.24 | $193.57 | +1.22% | +0.43% |
+
+- **XOM +3.13% so với đóng cửa 08-07 (đã WebSearch do chạm ngưỡng 3%):** không có tin xấu — dầu thô (WTI) tăng ~+1.8% và TD Cowen nâng price target XOM lên $168 (từ $155) ngày 08-07, cộng thêm kết quả Q2 mạnh (lợi nhuận $14.5 tỷ, sản lượng kỷ lục Guyana/Permian) đã biết trước đó. Đây là diễn biến tích cực (giá dầu + nâng khuyến nghị), không phải catalyst tiêu cực → không cần hành động, chỉ ghi nhận.
+- **ASTS -1.88% so với đóng cửa 08-07** — đi ngang trong biên độ bình thường, chưa tạo đỉnh mới so với $74.08 (08-06) nên trailing stop -12% giữ nguyên $65.19 (lệnh GTC `6a75f0be` vẫn `confirmed`, xác nhận qua không có order mới), còn cách xa (~9.4pp). Không breach. P&L +27.28% vẫn vượt xa ngưỡng chốt lời +15% nhưng đề xuất bán 1 phần đã bị Hogan từ chối 08-05 ~11:06 ET, không có thông tin/diễn biến mới để trình lại — không lặp lại đề xuất.
+- **CSCO/VOO/MSFT/JPM/ORCL/RSP/CRM:** biến động so với đóng cửa 08-07 đều nhỏ (dưới 2%), không breach ngưỡng cắt lỗ/chốt lời nào, không cần tra tin thêm.
+- **Slot rủi ro cao (thay ACHR) — đánh giá lại sau cuối tuần (đã WebSearch do IREN/APLD/NNE biến động >2% hai chiều):**
+  - **IREN** $40.105 (**-2.73%** so với đóng cửa 08-07 $41.23, phiên đã đóng cửa xanh +8.73% hôm đó): tin tức xác nhận không có catalyst tiêu cực mới cuối tuần — vẫn là câu chuyện cũ (Mirantis acquisition hoàn tất 08-04, hợp đồng Microsoft/NVIDIA, mục tiêu doanh thu >$4 tỷ), nhưng có ghi nhận stock "slipped as a bold AI bet tests nerves" và 1 nguồn kỹ thuật (StockInvest.us) xếp hạng "Sell Candidate" (technical score -1.24) tính tới 08-07 — tín hiệu thận trọng, không phải tin xấu cụ thể. **Đánh giá theo bộ lọc CLAUDE.md 2026-07-24:** phiên 08-07 đóng cửa xanh mạnh (+8.73%) đã đạt điều kiện "đóng cửa" nhưng đây là một cú tăng vọt (spike) chứ không phải "ổn định" theo đúng tinh thần bộ lọc; sáng nay (mới ~30 phút đầu phiên) IREN đang **đảo chiều giảm ngay sau spike** — đúng kiểu tình huống bộ lọc muốn tránh (mua ngay khi mã đang giảm sau một đợt tăng chưa được xác nhận ổn định). **Quyết định: chưa đủ điều kiện trình đề xuất lần này** — cần thêm ít nhất 1 phiên đóng cửa cho thấy IREN giữ được vùng giá sau nhịp điều chỉnh sáng nay (không tiếp tục giảm sâu) trước khi coi là "ổn định" thật sự.
+  - APLD $29.99 (+2.64%), NNE $18.4791 (-1.97%), OUST $44.0639 (+1.53%) so với đóng cửa 08-07: biến động hai chiều nhẹ, không có ứng viên nào vượt trội hơn IREN, không tra tin riêng.
+  - SPY -0.01%/QQQ -0.17% so với đóng cửa 08-07 — thị trường chung gần như đi ngang, không vi phạm ngưỡng cấm mở vị thế mới, nhưng cũng không phải yếu tố thúc đẩy quyết định IREN hôm nay.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng cắt lỗ/chốt lời, XOM tăng tốt do tin tích cực (không cần hành động), IREN vẫn là ứng viên hàng đầu cho slot rủi ro cao nhưng đang đảo chiều giảm ngay sau spike cuối tuần nên chưa đủ điều kiện theo bộ lọc — chờ xác nhận ổn định thêm ở lần kiểm tra sau. Không gửi PushNotification.
