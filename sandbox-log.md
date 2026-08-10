@@ -2111,3 +2111,14 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **Nhóm ứng viên rủi ro cao (IREN/OUST/APLD/NNE)** so với đóng cửa 08-07: IREN $39.83 (**-3.40%**), OUST $42.755 (-1.49%), APLD $29.27 (+0.17%), NNE $18.57 (-1.49%). So với lần check trước (12:16 ET, IREN $39.49/-4.22%): IREN +0.86%, OUST +0.58%, APLD +0.00%, NNE -0.05% — tất cả dưới ngưỡng 3-5%, không cần WebSearch tin mới.
 - **Đánh giá:** IREN nhích nhẹ lên so với lần check trước (đỡ được phần nào đà giảm sáng nay) nhưng vẫn cách đóng cửa thứ Sáu ~$41.23 khoảng -3.4%, chưa đủ để coi là đã "giữ/lấy lại vùng giá" theo bộ lọc CLAUDE.md 2026-07-24. Không có ứng viên nào khác trong nhóm nổi bật hơn. Tiếp tục hoãn toàn bộ nhóm.
 - **Quyết định: KHÔNG vào lệnh sandbox lần kiểm tra này, tiếp tục giữ 100% cash.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-10 ~14:13 ET (18:13 UTC) — Kiểm tra định kỳ (routine, sync git): sandbox vẫn 100% cash; IREN giảm thêm nhẹ so với lần check trước, vẫn -4.63% so với đóng cửa thứ Sáu, chưa ổn định — tiếp tục hoãn
+
+- **Sync đầu phiên:** `git pull origin main` — fast-forward, không có commit mới kể từ lần check trước (13:11 ET), không xung đột.
+- `get_equity_positions` (704170133): **sandbox vẫn không có vị thế nào** — 100% cash. 9 vị thế trên tài khoản đều là core-10 (đối chiếu khớp `trading-log.md` mới nhất): RSP(2cp), MSFT(1cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp), XOM(3cp) — không có mã lạ nào cần đối chiếu wash-sale/cross-attribution lần này.
+- `get_equity_orders` (từ 17:11 UTC tới nay): **rỗng** — không có lệnh mới nào trên toàn tài khoản.
+- `get_portfolio`: cash **$1,623.93**, buying_power **$1,623.93** — không đổi, toàn bộ đã settle, cao hơn nhiều mốc đệm $700 đang theo dõi. Không có vị thế sandbox nào đang mở nên không cần tính "phần theo dõi"/circuit breaker.
+- **Thị trường (SPY/QQQ)** so với đóng cửa 08-07: SPY $772.81 (-0.06%), QQQ $721.22 (-0.25%) — gần như đi ngang, không vi phạm ngưỡng cấm mở vị thế rủi ro cao mới.
+- **Nhóm ứng viên rủi ro cao (IREN/OUST/APLD/NNE)** so với đóng cửa 08-07: IREN $39.32 (**-4.63%**), OUST $42.08 (-3.04%), APLD $29.30 (+0.27%), NNE $18.50 (-1.86%). So với lần check trước (13:11 ET, IREN $39.83/-3.40%): IREN -1.28%, OUST -1.58%, APLD +0.10%, NNE -0.38% — tất cả dưới ngưỡng 3-5%, không cần WebSearch tin mới.
+- **Đánh giá:** IREN giảm thêm nhẹ so với lần check trước, tiếp tục xa mốc "ổn định" (giữ/lấy lại vùng đóng cửa thứ Sáu ~$41.23) theo bộ lọc CLAUDE.md 2026-07-24 — chưa có dấu hiệu ngừng giảm/hồi phục rõ ràng. Không có ứng viên nào khác trong nhóm nổi bật hơn. Tiếp tục hoãn toàn bộ nhóm.
+- **Quyết định: KHÔNG vào lệnh sandbox lần kiểm tra này, tiếp tục giữ 100% cash.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
