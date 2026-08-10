@@ -2987,3 +2987,21 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
   4. **Không có lệnh mua/bán cổ phiếu nào trong đề xuất này** — chỉ là 7 lệnh hủy + 7 lệnh đặt lại stop-loss GTC ở mức cao hơn.
 - **Slot rủi ro cao (thay ACHR) — cập nhật nhanh:** IREN $39.20 (**-4.93%** so với đóng cửa 08-07 $41.23), tiếp tục giảm sang phiên thứ 2 liên tiếp sau spike 08-07 (đóng cửa 08-06 $37.93 → đỉnh 08-07 $41.30 → nay $39.20) — vẫn KHÔNG phải "phiên ổn định" theo bộ lọc CLAUDE.md 2026-07-24, tiếp tục hoãn đề xuất. APLD $29.54 (+1.10%), NNE $18.635 (-1.14%), OUST $42.02 (-3.18%) — không có ứng viên nổi bật hơn.
 - **Gửi PushNotification** — đây là đề xuất thật (dời 7 lệnh trailing stop-loss) cần Hogan xác nhận/duyệt trước khi thực hiện (phiên này read-only, không tự đặt/hủy lệnh).
+
+## 2026-08-10 ~16:33 ET (20:33 UTC) — Thực hiện đề xuất dời 7 trailing stop-loss (đã duyệt qua phiên tương tác)
+
+- **Quyết định của Hogan: DUYỆT** đề xuất dời stop-loss từ lần kiểm tra ~15:33 ET cùng ngày.
+- Đã hủy 7 lệnh GTC stop_market cũ (xác nhận `cancelled` qua `get_equity_orders`), sau đó đặt lại 7 lệnh GTC stop_market mới cùng số lượng, tất cả `queued` (sau giờ đóng cửa 16:00 ET, sẽ chuyển `confirmed` khi mở phiên tiếp theo):
+
+  | Mã | Stop cũ | Stop mới | Số lượng | Order ID mới |
+  |---|---|---|---|---|
+  | RSP | $207.15 | **$210.04** | 2cp | 6a7a357e-a362-46a0-a20d-99efa9b1d139 |
+  | MSFT | $463.60 | **$487.15** | 1cp | 6a7a357f-72d9-4519-b258-c91f4d16c1e1 |
+  | JPM | $341.34 | **$344.85** | 1cp | 6a7a3580-13d8-4fa4-8518-3007b941d1d5 |
+  | CSCO | $115.81 | **$118.47** | 4cp | 6a7a3582-69d1-4ec9-aeb5-8a3cacc1cd10 |
+  | ORCL | $137.12 | **$144.39** | 4cp | 6a7a3583-0c61-4aa9-955d-d01db9989d93 |
+  | XOM | $144.02 | **$152.34** | 3cp | 6a7a3584-ecde-4795-8d9b-8e6bbb0aeb6a |
+  | CRM | $181.68 | **$188.27** | 3cp | 6a7a3585-21f6-42c0-a9aa-a5ae811ab2c6 |
+
+- ASTS ($65.19, đặt 08-07) và VOO (fractional, theo dõi thủ công) không đổi — đỉnh $74.08 của ASTS chưa bị vượt.
+- Không có mua/bán cổ phiếu nào trong thao tác này, chỉ dời stop-loss theo đúng công thức trailing -5% từ đỉnh giá thật (tech/blue-chip/ETF).
