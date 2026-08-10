@@ -2946,3 +2946,44 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **VOO/RSP/JPM:** gần như đi ngang, không breach ngưỡng nào.
 - **Slot rủi ro cao (thay ACHR) — cập nhật (đã WebSearch do IREN biến động >3%):** IREN $39.78 (**-3.52%** so với đóng cửa 08-07 $41.23), tiếp tục đảo chiều giảm sang phiên thứ 2 liên tiếp sau spike +8.73% hôm 08-07 — không có tin xấu mới (vẫn câu chuyện Mirantis/Microsoft/NVIDIA cũ), nhưng xác nhận đây KHÔNG phải "phiên ổn định" theo bộ lọc CLAUDE.md 2026-07-24 — giá đang tiếp tục điều chỉnh xuống chứ chưa giữ được vùng giá sau spike. APLD $29.27 (+0.17%), NNE $18.49 (-1.91%), OUST $42.67 (-1.69%) — không có ứng viên nào nổi bật hơn. **Quyết định: tiếp tục hoãn đề xuất IREN, chờ xác nhận ổn định (ngừng giảm, giữ vùng giá) ở phiên đóng cửa sắp tới.** SPY -0.01%/QQQ -0.07% — thị trường chung đi ngang, không vi phạm ngưỡng cấm.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng cắt lỗ/chốt lời; ASTS/IREN giảm >3% đều do điều chỉnh kỹ thuật sau đà tăng mạnh, không phải tin xấu; slot rủi ro cao vẫn chưa đủ điều kiện theo bộ lọc. Lưu ý theo dõi ASTS quarterly update call tối nay (5pm ET) ở lần kiểm tra kế tiếp. Không gửi PushNotification.
+
+## 2026-08-10 ~15:33 ET (19:33 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — ĐỀ XUẤT dời trailing stop-loss cho 7/9 vị thế (đỉnh giá đã vượt xa mức stop hiện tại sau chuỗi phiên tăng); không breach cắt lỗ/chốt lời nào
+
+- **Sync đầu phiên:** `git pull origin main` — up to date, không có commit mới kể từ lần kiểm tra 13:15 ET, không xung đột.
+- **Xác nhận qua `get_equity_orders`** (từ 17:15 UTC tới nay): **rỗng, không có lệnh nào mới**. `get_equity_positions` xác nhận core-10 vẫn đúng 9/9 vị thế đã log, không đổi: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp), XOM(3cp), CRM(3cp) — vẫn thiếu 1 slot rủi ro cao (thay ACHR).
+- P&L so với giá vốn (giá ~15:33 ET/19:33 UTC, so với đóng cửa 08-07):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi so với đóng cửa 08-07 |
+  |---|---|---|---|---|
+  | ASTS | $55.47 | $69.06 | +24.51% | -4.00% |
+  | XOM | $151.60 | $159.29 | +5.07% | **+4.09%** |
+  | ORCL | $144.26 | $151.43 | +4.97% | +3.00% |
+  | CSCO | $115.64 | $123.85 | +7.10% | +1.99% |
+  | CRM | $191.24 | $197.13 | +3.08% | +2.28% |
+  | MSFT | $488.00 | $504.835 | +3.45% | +0.97% |
+  | JPM | $347.97 | $358.325 | +2.97% | +0.23% |
+  | RSP | $214.93 | $220.155 | +2.43% | +0.03% |
+  | VOO | $688.26 | $710.48 | +3.23% | ~0.00% |
+
+- **ASTS -4.00%, XOM +4.09% so với đóng cửa 08-07** — cả hai đã được WebSearch đầy đủ ở lần kiểm tra 13:15 ET hôm nay (chỉ thêm ~0.3-0.5pp so với lúc đó, không phải diễn biến mới), không tra tin lại. Không breach ngưỡng nào. Nhắc lại: ASTS có quarterly update call tối nay 5pm ET, chưa diễn ra.
+- **PHÁT HIỆN: rà soát `get_equity_orders` (state=confirmed) + `get_equity_historicals` (day + 30 phút, từ 07-28 tới nay) cho thấy 7/9 vị thế đã tạo đỉnh giá mới cao hơn đáng kể so với đỉnh dùng để đặt stop-loss hiện tại — các lần kiểm tra gần đây chỉ so sánh % biến động trong ngày để quyết định có cần tra tin, không rà lại đỉnh trailing-stop, nên các đợt tăng liên tiếp (07-30 → nay) chưa được phản ánh vào stop-loss theo đúng quy tắc CLAUDE.md "cập nhật mỗi lần kiểm tra nếu giá đã tạo đỉnh mới kể từ lần cập nhật gần nhất".**
+
+  | Mã | Stop hiện tại (đặt lúc) | Đỉnh dùng lúc đặt | Đỉnh thật cao nhất kể từ đó | Ngày đỉnh mới | Stop mới đề xuất (-5%) |
+  |---|---|---|---|---|---|
+  | RSP | $207.15 (07-30) | ~$218.05 | $221.0902 | 08-05 | **$210.04** |
+  | MSFT | $463.60 (08-03) | $488.00 (cost) | $512.79 | 08-10 (hôm nay) | **$487.15** |
+  | JPM | $341.34 (07-30) | ~$359.30 | $363.00 | 08-04 | **$344.85** |
+  | CSCO | $115.81 (08-05) | ~$121.90 | $124.7103 | 08-10 (hôm nay) | **$118.47** |
+  | ORCL | $137.12 (08-05) | ~$144.34 | $151.99 | 08-10 (hôm nay) | **$144.39** |
+  | XOM | $144.02 (08-05) | $151.60 (cost) | $160.36 | 08-10 (hôm nay) | **$152.34** |
+  | CRM | $181.68 (08-05) | $191.24 (cost) | $198.184 | 08-10 (hôm nay) | **$188.27** |
+
+  (ASTS: đã cập nhật đúng 08-07, đỉnh thật $74.08 chưa bị vượt — không cần đổi. VOO: fractional, không có stop tự động, theo dõi thủ công.)
+
+- **ĐỀ XUẤT (chỉ dời stop-loss theo đỉnh giá thật, KHÔNG bán, KHÔNG đổi mã, đúng công thức trailing -5% cho nhóm tech/blue-chip/ETF):**
+  1. **Hành động cho từng mã ở trên:** hủy lệnh GTC stop_market cũ → đặt lệnh GTC stop_market mới ở mức "Stop mới đề xuất" (cột cuối bảng), giữ nguyên số lượng hiện có (RSP 2cp, MSFT 1cp, JPM 1cp, CSCO 4cp, ORCL 4cp, XOM 3cp, CRM 3cp).
+  2. **Lý do:** CLAUDE.md quy định trailing stop chỉ được dời LÊN theo đỉnh giá mới, cập nhật mỗi lần kiểm tra định kỳ nếu đã có đỉnh mới — nhưng các lần kiểm tra gần đây (từ 07-30 tới nay) chỉ theo dõi % biến động trong ngày để quyết định tra tin, không đối chiếu lại đỉnh trailing-stop, nên các đợt tăng giá liên tiếp của nhóm (đặc biệt phiên tăng mạnh hôm nay: XOM +4.1%, ORCL +3.0%, CSCO +2.0%, CRM +2.3%, MSFT +1.0%) chưa được khóa lời qua stop-loss. Dời stop lên giúp bảo toàn thêm lợi nhuận đã đạt được nếu thị trường đảo chiều, không thay đổi biên độ rủi ro đã quy định (-5% từ đỉnh).
+  3. **Rủi ro chính:** không có rủi ro tăng thêm so với thiết kế ban đầu (vẫn giữ đúng -5% từ đỉnh thật, không thắt chặt/nới lỏng biên độ); rủi ro duy nhất là bị quẹt bởi điều chỉnh kỹ thuật bình thường sau chuỗi tăng nếu thị trường pullback nhẹ trong vài phiên tới — đây là đánh đổi cố hữu của trailing stop, không phải rủi ro mới phát sinh từ đề xuất này.
+  4. **Không có lệnh mua/bán cổ phiếu nào trong đề xuất này** — chỉ là 7 lệnh hủy + 7 lệnh đặt lại stop-loss GTC ở mức cao hơn.
+- **Slot rủi ro cao (thay ACHR) — cập nhật nhanh:** IREN $39.20 (**-4.93%** so với đóng cửa 08-07 $41.23), tiếp tục giảm sang phiên thứ 2 liên tiếp sau spike 08-07 (đóng cửa 08-06 $37.93 → đỉnh 08-07 $41.30 → nay $39.20) — vẫn KHÔNG phải "phiên ổn định" theo bộ lọc CLAUDE.md 2026-07-24, tiếp tục hoãn đề xuất. APLD $29.54 (+1.10%), NNE $18.635 (-1.14%), OUST $42.02 (-3.18%) — không có ứng viên nổi bật hơn.
+- **Gửi PushNotification** — đây là đề xuất thật (dời 7 lệnh trailing stop-loss) cần Hogan xác nhận/duyệt trước khi thực hiện (phiên này read-only, không tự đặt/hủy lệnh).
