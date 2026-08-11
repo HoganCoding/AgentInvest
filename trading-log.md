@@ -3080,3 +3080,28 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Lý do chọn IREN:** hợp đồng Mirantis $2.8B hoàn tất, BofA mua 5.8% stake đầu tháng 8 — catalyst nội tại công ty (không chỉ ăn theo đà chung ngành). Thị trường lúc đặt: SPY -0.24%, QQQ -0.36% — không chạm ngưỡng cấm mở vị thế rủi ro cao mới. Không dính wash-sale (chưa từng nắm giữ/bán IREN trong 30 ngày qua).
 - Core-10 giờ đủ **10/10 slot**: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), XOM(3cp), CRM(3cp), NOW(3cp), **IREN(7cp, mới)**. Không còn slot trống nào.
 - **Rủi ro chính:** IREN có lịch sử biến động thất thường (spike +8.7% thứ Sáu rồi đảo chiều giảm liên tục cả phiên thứ Hai tuần trước), vẫn thấp hơn đỉnh $41.23 thứ Sáu — cần theo dõi sát các lần kiểm tra tiếp theo.
+
+## 2026-08-11 ~15:31 ET (19:31 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — Không có đề xuất mới; ASTS earnings tối 08-10 (miss doanh thu + lỗ BB7) nhưng giá vẫn tăng, IREN kiểm tra lần đầu sau khi mua không có tin xấu
+
+- **Sync đầu phiên:** `git pull origin main` (đã `git checkout main` từ trạng thái detached HEAD trước đó) — fast-forward 38 commit từ các phiên sandbox/core-10 khác trong ngày, không xung đột. Không có commit core-10 nào mới kể từ lần ghi log 13:53 ET (mua IREN) tới nay.
+- **Xác nhận qua `get_equity_orders`** (từ 17:53 UTC tới nay): rỗng ngoài cặp lệnh IREN (mua + stop-loss GTC $35.25) đã ghi log ở lần trước, cả hai `confirmed`/`filled`. `get_equity_positions` xác nhận core-10 đủ **10/10** không đổi: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), XOM(3cp), CRM(3cp), NOW(3cp), IREN(7cp). (Lưu ý: `get_equity_positions` còn hiện OUST 7cp — đây là vị thế **sandbox**, đã đối chiếu `sandbox-log.md` xác nhận mua 08-11 ~13:47 ET, KHÔNG phải core-10, bỏ qua theo đúng quy tắc '## Đồng bộ giữa các phiên'.)
+- P&L so với giá vốn (giá ~15:31 ET/19:31 UTC, so với đóng cửa 08-10):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss | Cách stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $71.6095 | **+29.11%** | **+4.14%** | $65.19 | ~9.0% |
+  | XOM | $151.60 | $160.04 | +5.57% | +0.16% | $152.34 | ~4.8% |
+  | CSCO | $115.64 | $120.77 | +4.44% | -1.47% | $118.47 | ~1.9% |
+  | JPM | $347.97 | $362.53 | +4.19% | +0.76% | $344.85 | ~4.9% |
+  | IREN | $40.0591 | $40.175 | +0.29% | **+3.70%** | $35.25 | ~12.3% |
+  | NOW | $126.6299 | $127.24 | +0.48% | -0.16% | $120.30 | ~5.5% |
+  | MSFT | $488.00 | $502.94 | +3.06% | -0.62% | $487.15 | ~3.1% |
+  | VOO | $688.26 | $708.52 | +2.94% | -0.30% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $220.86 | +2.76% | +0.29% | $210.04 | ~4.9% |
+  | CRM | $191.24 | $197.01 | +3.02% | -0.25% | $188.27 | ~4.4% |
+
+- **ASTS +4.14% trong ngày (đã WebSearch do vượt ngưỡng 3-5%):** AST SpaceMobile công bố kết quả Q2 2026 tối 08-10 — doanh thu $31.5M (thấp hơn kỳ vọng $35.18M), lỗ điều chỉnh/cp $0.77 (kỳ vọng lỗ $0.26) do khoản lỗ $125.9M liên quan sự cố phóng vệ tinh BB7 ("involuntary conversion"). Giá giảm nhẹ đầu phiên trước giờ mở cửa (-2.8%) nhưng đã đảo chiều tăng mạnh trong phiên — công ty **giữ nguyên guidance doanh thu cả năm $150-200M** và thanh khoản pro forma **>$3.7 tỷ** (sau đợt phát hành trái phiếu chuyển đổi $1.15 tỷ tháng 7). Thị trường có vẻ đọc đây là tin tốt ròng (lỗ do sự cố 1 lần, không phải suy giảm nền tảng kinh doanh) — không coi là "tin xấu nghiêm trọng"/"fundamentals xấu đi rõ rệt" theo tiêu chí CLAUDE.md. Giá $71.6095 vẫn **dưới đỉnh thật $74.08** (phiên 08-06) nên trailing stop -12% giữ nguyên $65.19, không cần dời. P&L +29.11% tiếp tục vượt xa ngưỡng chốt lời chủ động +15% cho nhóm rủi ro cao, nhưng đề xuất bán 1 phần đã bị Hogan từ chối 08-05 ~11:06 ET và diễn biến earnings hôm nay (dù là thông tin mới) có phản ứng giá ròng là TÍCH CỰC chứ không phải tiêu cực — không đủ căn cứ mới theo hướng ủng hộ bán để lặp lại đề xuất đã bị từ chối. Không đề xuất bán.
+- **IREN +3.70% trong ngày (đã WebSearch, lần kiểm tra đầu tiên sau khi mua ~13:53 ET hôm nay):** không có tin xấu — Bernstein (Gautam Chhugani) duy trì khuyến nghị Mua, target $100 (từ 07-30); không có catalyst tiêu cực mới trong 24h. Giá $40.175 chỉ nhỉnh nhẹ trên giá vốn $40.0591, chưa đủ tạo đỉnh mới đáng kể để dời stop-loss (-12%, $35.25 giữ nguyên).
+- **CSCO -1.47%, MSFT -0.62%, VOO -0.30%, CRM -0.25%, NOW -0.16%, RSP +0.29%, XOM +0.16%, JPM +0.76%:** đều dưới ngưỡng 3% so với đóng cửa 08-10, không cần tra tin thêm. Không mã nào breach ngưỡng cắt lỗ/chốt lời.
+- **Core-10 đã đủ 10/10 slot** (không còn slot trống nào cần lấp) — không có review 30-ngày định kỳ nào tới hạn trước 2026-09-01.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng cắt lỗ; ngưỡng chốt lời ASTS đã breach từ trước nhưng đề xuất bán vẫn đang bị từ chối và tin earnings hôm nay không đủ trọng lượng mới để lặp lại. Không gửi PushNotification.
