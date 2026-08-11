@@ -3029,3 +3029,36 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **XOM/JPM/CRM/RSP/VOO:** tăng nhẹ hoặc đi ngang, không breach ngưỡng chốt lời/cắt lỗ nào.
 - **Slot rủi ro cao (thay ACHR):** IREN $40.21 (+3.79% so với đóng cửa 08-10 $38.74) — vẫn trong chuỗi biến động qua lại (08-06 $37.93 → 08-07 $41.23 spike → 08-10 $38.74 giảm → nay tăng lại), phiên hôm nay chưa đóng cửa nên chưa thể đánh giá "ổn định" theo bộ lọc CLAUDE.md 2026-07-24. APLD $29.41 (+1.20%), NNE $18.38 (-1.02%), OUST $44.825 (+6.39%, đã kiểm tra sơ bộ nhưng chưa phải ứng viên hàng đầu, không tra tin sâu do IREN vẫn là ứng viên chính đang theo dõi). Tiếp tục hoãn đề xuất.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng cắt lỗ/chốt lời (ORCL gần nhất nhưng chưa chạm, để stop-loss tự động xử lý theo đúng kỷ luật); không tin xấu mới phát sinh ngoài luận điểm đã biết. Không gửi PushNotification.
+
+## 2026-08-11 ~13:16 ET (17:16 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — ORCL đã bị stop-loss tự động khớp; ĐỀ XUẤT 2 lựa chọn thay slot large-cap tech
+
+- **Sync đầu phiên:** `git pull origin main` — fast-forward, không xung đột (kéo về thêm các commit sandbox check-in trong khoảng 09:57-13:11 ET hôm nay, không liên quan core-10).
+- **Xác nhận qua `get_equity_orders` (symbol=ORCL):** lệnh GTC stop_market `6a7a3583...` (trigger $144.39, đặt 08-10 sau khi dời theo đỉnh $151.99) đã khớp **16:24:43 UTC hôm nay (~12:24 ET)** — bán hết 4cp @ $144.39 TB. Giá vốn $144.26 → **lãi thực hiện +0.09%** (~+$0.52, gần hòa vốn) — đây là lệnh tự động đúng kỷ luật trailing stop, không phải quyết định mới, routine này chỉ ghi nhận. **Vì bán CÓ LÃI (dù rất nhỏ) nên KHÔNG áp dụng wash-sale cho ORCL** — kỹ thuật có thể mua lại ngay, nhưng luận điểm bear đã biết (FCF âm nặng do capex AI, S&P gần hạ xuống "junk", Michael Burry vẫn short) chưa thay đổi nên không đưa ORCL vào danh sách ứng viên thay thế.
+- `get_equity_positions` xác nhận core-10 còn **8/10**: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), XOM(3cp), CRM(3cp) — thiếu 1 slot large-cap tech (vừa trống do ORCL) + 1 slot rủi ro cao (thay ACHR, đang hoãn từ nhiều phiên trước).
+- P&L so với giá vốn (giá ~13:16 ET/17:16 UTC, so với đóng cửa 08-10):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss | Cách stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $69.24 | +24.83% | +0.70% | $65.19 | ~5.8% |
+  | XOM | $151.60 | $159.91 | +5.48% | +0.08% | $152.34 | ~4.7% |
+  | CSCO | $115.64 | $120.76 | +4.43% | -1.48% | $118.47 | ~1.9% |
+  | CRM | $191.24 | $197.25 | +3.14% | -0.13% | $188.27 | ~4.6% |
+  | JPM | $347.97 | $362.75 | +4.25% | +0.82% | $344.85 | ~4.9% |
+  | VOO | $688.26 | $708.15 | +2.89% | -0.35% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $220.665 | +2.67% | +0.20% | $210.04 | ~4.8% |
+  | MSFT | $488.00 | $502.25 | +2.92% | -0.75% | $487.15 | ~3.0% |
+
+- **CSCO -1.48% trong ngày, khoảng cách tới stop thu hẹp còn ~1.9%** (do stop đặt theo đỉnh $124.71 ngày 08-10, chưa breach) — dưới ngưỡng 3% cần tra tin, chỉ ghi nhận theo dõi, không hành động. Các mã còn lại biến động nhỏ, không breach ngưỡng nào.
+- **Slot rủi ro cao (thay ACHR):** IREN $39.91 (+3.02% so với đóng cửa 08-10), tiếp tục dao động trong biên độ đã biết, phiên chưa đóng cửa — chưa đủ điều kiện theo bộ lọc CLAUDE.md 2026-07-24, tiếp tục hoãn. Không có ứng viên mới nổi bật.
+
+### ĐỀ XUẤT MỚI — thay slot large-cap tech (thế chỗ ORCL vừa bị stop-loss), 2 lựa chọn chờ Hogan duyệt
+
+- **Sàng lọc loại trừ:** đã held (MSFT/CSCO/CRM), ORCL bản thân (luận điểm bear chưa đổi), wash-sale còn hiệu lực tính tới hôm nay — GOOGL (tới ~08-16), NVDA (tới ~08-26), AVGO (tới ~08-27), AAPL (tới ~08-30), TXN (tới ~09-02); loại IBM/ADBE/NFLX do lý do cơ bản/quản trị đã ghi nhận trước đó (07-22/07-23, chưa có tín hiệu cải thiện được xác nhận lại lần này).
+- **Lựa chọn A: PANW (Palo Alto Networks)** — $385.43/cp (đã tăng mạnh, +5.8% phiên 08-10 nhờ tin về mối lo bảo mật AI-agent thúc đẩy nhu cầu cybersecurity toàn ngành). Vốn hóa lớn, dẫn đầu ngành an ninh mạng, ARR tăng mạnh sau thương vụ CyberArk $25B. Đây là lựa chọn đã được nghiên cứu 2 lần trước (07-30, 08-05) nhưng Hogan chưa chọn — vẫn hợp lệ, không wash-sale, không tin xấu mới. Đề xuất mua **1cp market (~$385, ~6.5% danh mục)**, stop-loss -5% từ giá vốn khi khớp.
+  - Rủi ro chính: định giá rất cao (P/E ~290+), Trung Quốc vừa mở review an ninh quốc gia với sản phẩm Palo Alto (06/08, chưa nêu cụ thể sản phẩm/chế tài, giá cổ phiếu vẫn ổn định), báo cáo KQKD tiếp theo 09-01 (event risk trong ~3 tuần).
+- **Lựa chọn B: NOW (ServiceNow)** — $126.52/cp (đi ngang, -0.72% hôm nay). Vốn hóa lớn, dẫn đầu nền tảng workflow/AI doanh nghiệp, vừa nâng dự báo doanh thu cả năm 2026 lên $15.76-15.78 tỷ (từ thấp hơn trước), đẩy mạnh mảng "Autonomous Security" mới. Đồng thuận 49 analyst "Strong Buy", target trung bình $143.39 (~+13% từ giá hiện tại). Không wash-sale, không tin xấu.
+  - Rủi ro chính: Goldman Sachs vừa loại NOW khỏi "US Conviction List" (30/07 — không phải hạ khuyến nghị, chỉ bớt ưu tiên hàng đầu); định giá vẫn cao dù thấp hơn PANW; phụ thuộc chu kỳ chi tiêu phần mềm doanh nghiệp.
+- Cả hai không dính wash-sale, không trùng nhóm ngành đang nắm giữ nặng (CSCO=networking/AI infra, CRM=SaaS CRM, MSFT=cloud/AI) — PANW thiên bảo mật, NOW thiên workflow/ITSM AI, đa dạng hóa tốt.
+- **Chờ Hogan chọn PANW/NOW (hoặc mã khác)** cho slot large-cap tech.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
+- **Đã gửi PushNotification** — có 2 sự kiện cần Hogan biết: (1) ORCL đã tự động bị stop-loss (gần hòa vốn), (2) đề xuất mới thay slot large-cap tech (PANW/NOW) cần duyệt.
