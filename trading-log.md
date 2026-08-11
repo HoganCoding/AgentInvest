@@ -3062,3 +3062,11 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Chờ Hogan chọn PANW/NOW (hoặc mã khác)** cho slot large-cap tech.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
 - **Đã gửi PushNotification** — có 2 sự kiện cần Hogan biết: (1) ORCL đã tự động bị stop-loss (gần hòa vốn), (2) đề xuất mới thay slot large-cap tech (PANW/NOW) cần duyệt.
+
+## 2026-08-11 ~13:40 ET (17:40 UTC) — Thực hiện đề xuất thay slot large-cap tech (đã duyệt qua phiên tương tác): mua NOW
+
+- **Quyết định của Hogan: DUYỆT lựa chọn B (NOW/ServiceNow)** cho slot large-cap tech thay ORCL, từ đề xuất lúc ~13:16 ET cùng ngày.
+- **Mua NOW:** lệnh limit 3cp @ $126.70 (đủ để trigger nhanh, sát ask $126.61 lúc đặt), đã `filled` toàn bộ, giá TB thực khớp **$126.6299/cp** (~$379.89 tổng, ~6.4% danh mục). Order ID: `6a7b5e87-f2ad-4d2a-9fa6-5e9f5e8537be`.
+- **Đặt stop-loss GTC stop_market:** bán 3cp @ trigger **$120.30** (-5% từ giá vốn $126.6299, theo đúng công thức trailing -5% nhóm tech). Order ID: `6a7b5ec9-fbf5-4c5a-88bc-e596353bc37f`, trạng thái `unconfirmed` lúc đặt (thị trường đang mở, sẽ chuyển `confirmed`).
+- Core-10 giờ đủ **9/10 slot**: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), XOM(3cp), CRM(3cp), **NOW(3cp, mới)**. Chỉ còn thiếu 1 slot rủi ro cao (thay ACHR), vẫn đang hoãn do IREN/OUST chưa đủ 1 phiên xác nhận ổn định theo bộ lọc CLAUDE.md 2026-07-24.
+- Không có ảnh hưởng thuế bất thường — đây là mua mới, không liên quan wash-sale (NOW chưa từng nắm giữ/bán trong 30 ngày qua).
