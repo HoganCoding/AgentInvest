@@ -3005,3 +3005,27 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 
 - ASTS ($65.19, đặt 08-07) và VOO (fractional, theo dõi thủ công) không đổi — đỉnh $74.08 của ASTS chưa bị vượt.
 - Không có mua/bán cổ phiếu nào trong thao tác này, chỉ dời stop-loss theo đúng công thức trailing -5% từ đỉnh giá thật (tech/blue-chip/ETF).
+
+## 2026-08-11 ~09:57 ET (13:57 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — Không có đề xuất mới; ORCL giảm -3.84% trong ngày, rất gần trailing stop (~0.6%) nhưng là tiếp diễn luận điểm xấu đã biết từ trước, để stop-loss tự động xử lý
+
+- **Sync đầu phiên:** `git pull origin main` — đã up to date với `origin/main`, không có commit mới nào kể từ lần kiểm tra 08-10 ~16:33 ET, không xung đột.
+- **Xác nhận qua `get_equity_orders`** (từ 20:33 UTC 08-10 tới nay): **rỗng, không có lệnh nào mới khớp**. Cả 8 lệnh GTC stop-loss (7 lệnh vừa dời hôm qua + ASTS $65.19) đều `confirmed`. `get_equity_positions` xác nhận core-10 vẫn đúng 9/9 vị thế đã log, không đổi: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), ORCL(4cp), XOM(3cp), CRM(3cp) — vẫn thiếu 1 slot rủi ro cao (thay ACHR).
+- P&L so với giá vốn (giá ~09:57 ET/13:57 UTC, so với đóng cửa 08-10):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày (so đóng cửa 08-10) | Stop-loss hiện tại | Cách stop |
+  |---|---|---|---|---|---|---|
+  | XOM | $151.60 | $160.365 | +5.79% | +0.36% | $152.34 | ~5.0% |
+  | JPM | $347.97 | $362.60 | +4.20% | +0.78% | $344.85 | ~4.9% |
+  | CSCO | $115.64 | $120.98 | +4.62% | **-1.30%** | $118.47 | ~2.1% |
+  | CRM | $191.24 | $198.42 | +3.76% | +0.46% | $188.27 | ~5.1% |
+  | VOO | $688.26 | $710.4715 | +3.22% | ~0.00% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $221.10 | +2.87% | +0.40% | $210.04 | ~5.0% |
+  | MSFT | $488.00 | $501.03 | +2.67% | -0.99% | $487.15 | ~2.8% |
+  | ASTS | $55.47 | $67.21 | +21.19% | -2.25% | $65.19 | ~3.0% |
+  | **ORCL** | $144.26 | $145.25 | +0.69% | **-3.84%** | $144.39 | **~0.6%** |
+
+- **ORCL -3.84% trong ngày (đã WebSearch do vượt ngưỡng 3-5%), hiện chỉ còn cách trailing stop ~0.6% ($145.25 vs stop $144.39):** không tìm thấy catalyst tiêu cực mới riêng trong 24h qua — đây là tiếp diễn luận điểm bear đã biết và đã được nêu rõ với Hogan khi mua ORCL 08-05 (FCF âm -$23.7B do capex AI, S&P hạ tín nhiệm xuống BBB- sát "junk", Michael Burry duy trì vị thế short/put dài hạn kể từ ~$145 dù đã chốt lời 1 nửa). Không có tin tức/sự kiện mới hôm nay (downgrade mới, kiện tụng, mất khách hàng) — chỉ là giá tiếp tục điều chỉnh trong xu hướng đã biết. **Không tạo đề xuất bán chủ động** — theo đúng CLAUDE.md, cắt lỗ là kỷ luật tự động (trailing stop -5% đã đặt đúng theo đỉnh giá thật $151.99 ngày 08-10, chưa breach), nếu giá tiếp tục giảm và chạm $144.39 thì lệnh GTC sẽ tự khớp bình thường — không cần preview/duyệt thêm cho việc đó. Nếu ORCL bị stop trong phiên tới, lần kiểm tra kế tiếp sẽ cần đề xuất 2 lựa chọn thay thế cho slot large-cap tech (loại trừ CRM/ORCL bản thân/IBM/ADBE/NFLX như các lý do đã ghi nhận trước đó nếu vẫn còn hiệu lực, và loại bất kỳ mã nào đang trong cửa sổ cấm mua lại do wash-sale).
+- **CSCO -1.30%, MSFT -0.99%, ASTS -2.25%:** đều dưới ngưỡng 3% so với đóng cửa 08-10, không cần tra tin thêm — nhóm tech điều chỉnh nhẹ chung phiên sáng nay. Không mã nào breach ngưỡng cắt lỗ.
+- **XOM/JPM/CRM/RSP/VOO:** tăng nhẹ hoặc đi ngang, không breach ngưỡng chốt lời/cắt lỗ nào.
+- **Slot rủi ro cao (thay ACHR):** IREN $40.21 (+3.79% so với đóng cửa 08-10 $38.74) — vẫn trong chuỗi biến động qua lại (08-06 $37.93 → 08-07 $41.23 spike → 08-10 $38.74 giảm → nay tăng lại), phiên hôm nay chưa đóng cửa nên chưa thể đánh giá "ổn định" theo bộ lọc CLAUDE.md 2026-07-24. APLD $29.41 (+1.20%), NNE $18.38 (-1.02%), OUST $44.825 (+6.39%, đã kiểm tra sơ bộ nhưng chưa phải ứng viên hàng đầu, không tra tin sâu do IREN vẫn là ứng viên chính đang theo dõi). Tiếp tục hoãn đề xuất.
+- **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng cắt lỗ/chốt lời (ORCL gần nhất nhưng chưa chạm, để stop-loss tự động xử lý theo đúng kỷ luật); không tin xấu mới phát sinh ngoài luận điểm đã biết. Không gửi PushNotification.
