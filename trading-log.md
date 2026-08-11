@@ -3070,3 +3070,13 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Đặt stop-loss GTC stop_market:** bán 3cp @ trigger **$120.30** (-5% từ giá vốn $126.6299, theo đúng công thức trailing -5% nhóm tech). Order ID: `6a7b5ec9-fbf5-4c5a-88bc-e596353bc37f`, trạng thái `unconfirmed` lúc đặt (thị trường đang mở, sẽ chuyển `confirmed`).
 - Core-10 giờ đủ **9/10 slot**: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), XOM(3cp), CRM(3cp), **NOW(3cp, mới)**. Chỉ còn thiếu 1 slot rủi ro cao (thay ACHR), vẫn đang hoãn do IREN/OUST chưa đủ 1 phiên xác nhận ổn định theo bộ lọc CLAUDE.md 2026-07-24.
 - Không có ảnh hưởng thuế bất thường — đây là mua mới, không liên quan wash-sale (NOW chưa từng nắm giữ/bán trong 30 ngày qua).
+
+## 2026-08-11 ~13:53 ET (17:53 UTC) — Thực hiện đề xuất lấp slot rủi ro cao (thay ACHR): mua IREN (đã duyệt qua phiên tương tác)
+
+- **Bối cảnh:** sau nhiều tuần hoãn liên tục chờ IREN/OUST "đóng cửa xác nhận ổn định hoàn hảo", Hogan nhắc core-10 cũng được phép linh hoạt miễn vẫn theo đúng tiêu chí chọn mã ban đầu (biến động cao + được tổ chức/quỹ quan tâm gần đây, HOẶC tăng trưởng doanh thu >30%/năm chưa có lợi nhuận), không cần cứng nhắc chờ đúng điều kiện "1 phiên đóng cửa" trên đúng cùng nhóm mã cố định.
+- **2 lựa chọn đã đề xuất:** (A) OUST — nhưng đã có vị thế trong sandbox (7cp, mua ~13:47 ET cùng ngày), chọn thêm cho core-10 sẽ tăng tập trung rủi ro đơn lẻ dù 2 sổ tách biệt; (B) IREN — mã hoàn toàn mới, tách biệt khỏi sandbox, đa dạng hóa tốt hơn. **Hogan chọn IREN.**
+- **Mua IREN:** lệnh limit 7cp @ $40.15 (sát ask $40.05 lúc đặt), đã `filled` toàn bộ, giá TB thực khớp **$40.0591/cp** (~$280.41 tổng, ~4.7% danh mục). Order ID: `6a7b6192-d776-4486-9d25-cbd93735148a`.
+- **Đặt stop-loss GTC stop_market:** bán 7cp @ trigger **$35.25** (-12% từ giá vốn $40.0591, theo đúng công thức trailing -12% nhóm rủi ro cao CLAUDE.md 2026-07-24). Order ID: `6a7b6199-007b-4dfd-b61c-aca3a7e9d09d`, trạng thái `unconfirmed` lúc đặt (thị trường đang mở, sẽ chuyển `confirmed`).
+- **Lý do chọn IREN:** hợp đồng Mirantis $2.8B hoàn tất, BofA mua 5.8% stake đầu tháng 8 — catalyst nội tại công ty (không chỉ ăn theo đà chung ngành). Thị trường lúc đặt: SPY -0.24%, QQQ -0.36% — không chạm ngưỡng cấm mở vị thế rủi ro cao mới. Không dính wash-sale (chưa từng nắm giữ/bán IREN trong 30 ngày qua).
+- Core-10 giờ đủ **10/10 slot**: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), XOM(3cp), CRM(3cp), NOW(3cp), **IREN(7cp, mới)**. Không còn slot trống nào.
+- **Rủi ro chính:** IREN có lịch sử biến động thất thường (spike +8.7% thứ Sáu rồi đảo chiều giảm liên tục cả phiên thứ Hai tuần trước), vẫn thấp hơn đỉnh $41.23 thứ Sáu — cần theo dõi sát các lần kiểm tra tiếp theo.
