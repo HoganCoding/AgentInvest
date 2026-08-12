@@ -3192,3 +3192,28 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Quyết định của Hogan: DUYỆT** đề xuất dời stop-loss IREN từ $35.25 lên $39.31 (đỉnh $44.67 × 0.88, đúng công thức trailing -12% nhóm rủi ro cao).
 - **Đã hủy lệnh GTC stop_market cũ** (`6a7b6199-007b-4dfd-b61c-aca3a7e9d09d` @ $35.25, xác nhận `cancelled`) và **đặt lệnh mới** GTC stop_market bán 7cp @ trigger **$39.31** (Order ID `6a7cb408-8a32-47e0-9842-97cf7cd1ab55`, `unconfirmed` lúc đặt, đang giờ giao dịch nên sẽ sớm chuyển `confirmed`).
 - Không có mua/bán cổ phiếu nào — chỉ dời stop-loss theo đúng đỉnh giá thật đã xác nhận trong phiên.
+
+## 2026-08-12 ~15:31 ET (19:31 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — IREN chưa có đỉnh mới, ASTS +3.71% do dư âm KQKD tích cực; không breach, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch` cho thấy `origin/main` đã forced-update (73f139f, các check-in sandbox 14:11/15:09 ET xen giữa) — checkout lại `main` và reset về `origin/main`, xác nhận không có commit core-10 nào mới kể từ lần kiểm tra 13:14 ET / dời stop IREN 13:57 ET hôm nay.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10**, không đổi: RSP(2cp), MSFT(1cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), CSCO(4cp), XOM(3cp), NOW(3cp). `get_equity_orders` từ 13:09 ET tới nay: rỗng, không có lệnh core-10 nào mới/khớp. (OUST 7cp là vị thế sandbox, không quản lý.)
+- P&L so với giá vốn (giá ~15:31 ET/19:31 UTC, so với đóng cửa 08-11):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Khoảng cách tới stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $74.29 | +33.95% | +3.71% | $65.19 | ~12.2% |
+  | IREN | $40.06 | $43.92 | +9.63% | +10.49% | $39.31 | ~10.5% |
+  | CSCO | $115.64 | $123.70 | +6.97% | +2.72% | $118.47 | ~4.2% |
+  | XOM | $151.60 | $159.77 | +5.39% | -0.02% | $152.34 | ~4.7% |
+  | JPM | $347.97 | $365.68 | +5.09% | +1.01% | $344.85 | ~5.7% |
+  | RSP | $214.93 | $221.275 | +2.95% | +0.27% | $210.04 | ~5.1% |
+  | VOO | $688.26 | $710.49 | +3.23% | +0.29% | (fractional, thủ công) | — |
+  | CRM | $191.24 | $192.945 | +0.89% | -2.29% | $188.27 | ~2.4% |
+  | MSFT | $488.00 | $494.40 | +1.31% | -1.87% | $487.15 | ~1.5% |
+  | NOW | $126.63 | $124.57 | -1.63% | -2.33% | $120.30 | ~3.4% |
+
+- **IREN +10.49% trong ngày (WebSearch không cần lặp lại — đã xác nhận catalyst thật lúc 13:57 ET hôm nay):** `get_equity_historicals` (5min bars, 13:30-19:31 UTC) xác nhận đỉnh phiên cao nhất vẫn là **$44.67** (bar 13:30 UTC, ngay đầu phiên) — giá hiện tại $43.92 chưa vượt đỉnh này, không có đỉnh mới kể từ lần dời stop lên $39.31 lúc 13:57 ET. Không cần hành động thêm.
+- **ASTS +3.71% trong ngày (biên giáp ngưỡng 3-5%, đã WebSearch để chắc chắn):** tin tức xác nhận đây là dư âm tích cực từ báo cáo KQKD Q2 công bố hôm thứ Hai (08-10) — cổ phiếu tiếp tục nhích lên nhờ management tự tin về lộ trình mở rộng vệ tinh (đã có 13 BlueBird trên quỹ đạo sau đợt phóng 11/12/13) và mục tiêu doanh thu gần $1 tỷ. Không phải catalyst mới/tiêu cực, không đổi kết luận. Giá hiện tại $74.29 tạo đỉnh mới rất nhẹ so với đỉnh cũ ($74.18 ghi nhận lúc 13:14 ET) — chênh không đáng kể để trình dời stop riêng, tiếp tục theo dõi gộp vào lần sau nếu đỉnh tăng thêm rõ rệt. Take-profit +15% nhóm khác (cảnh báo, không tự bán) đã ở mức rất cao (+33.95%) nhưng đây là thông tin lặp lại đã từng trình 08-05 và bị từ chối — không có tin/lý do mới để trình lại.
+- **CSCO/XOM/JPM/RSP/VOO/CRM/MSFT/NOW:** biến động trong biên độ bình thường hoặc tiếp diễn narrative đã biết (CRM/NOW/MSFT vẫn dư âm rotation SaaS ghi nhận ở lần kiểm tra 13:14 ET), không breach ngưỡng cắt lỗ/chốt lời nào, không cần WebSearch thêm.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
+- **Không có đề xuất mua/bán/dời lệnh mới lần kiểm tra này** — không mã nào breach ngưỡng; IREN chưa có đỉnh mới; ASTS có đỉnh mới nhưng quá nhỏ để trình riêng. Không gửi PushNotification.
