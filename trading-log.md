@@ -3105,3 +3105,28 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **CSCO -1.47%, MSFT -0.62%, VOO -0.30%, CRM -0.25%, NOW -0.16%, RSP +0.29%, XOM +0.16%, JPM +0.76%:** đều dưới ngưỡng 3% so với đóng cửa 08-10, không cần tra tin thêm. Không mã nào breach ngưỡng cắt lỗ/chốt lời.
 - **Core-10 đã đủ 10/10 slot** (không còn slot trống nào cần lấp) — không có review 30-ngày định kỳ nào tới hạn trước 2026-09-01.
 - **Không có đề xuất mua/bán mới lần kiểm tra này** — không mã nào breach ngưỡng cắt lỗ; ngưỡng chốt lời ASTS đã breach từ trước nhưng đề xuất bán vẫn đang bị từ chối và tin earnings hôm nay không đủ trọng lượng mới để lặp lại. Không gửi PushNotification.
+
+## 2026-08-12 ~09:40 ET (13:40 UTC) — Kiểm tra định kỳ (phiên tương tác, sync git) — IREN spike đầu phiên rồi rút lại, chưa dời stop; không có đề xuất mới
+
+- **Sync đầu phiên:** `git pull origin main` — fast-forward 5 commit (sandbox check-in 08-11 16:12 ET tới 08-12 09:20 ET, gồm việc sandbox dời stop OUST lên $40.87), không xung đột.
+- `get_equity_positions` (704170133) xác nhận core-10 đủ **10/10 slot** không đổi: RSP(2cp), MSFT(1cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), CSCO(4cp), XOM(3cp), NOW(3cp). (Vị thế OUST 7cp trên tài khoản là sandbox, đã đối chiếu `sandbox-log.md`, không quản lý.)
+- `get_equity_orders` (state=confirmed): đủ 9 lệnh GTC stop-loss, tất cả `confirmed`, không mã nào breach.
+- Tổng tài khoản: **$5,938.99** (equity $4,715.83 + cash $1,223.16), buying power $1,223.16 (đã settle hết).
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss | Cách stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $73.185 | +31.94% | +2.17% | $65.19 | ~10.9% |
+  | CSCO | $115.64 | $122.785 | +6.18% | +1.95% | $118.47 | ~3.5% |
+  | IREN | $40.0591 | $42.70 | +6.60% | **+7.42%** | $35.25 | ~17.4% |
+  | XOM | $151.60 | $157.755 | +4.06% | -1.28% | $152.34 | ~3.4% |
+  | JPM | $347.97 | $362.63 | +4.21% | +0.16% | $344.85 | ~4.9% |
+  | VOO | $688.26 | $710.12 | +3.18% | +0.24% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $221.01 | +2.83% | +0.14% | $210.04 | ~4.9% |
+  | MSFT | $488.00 | $498.66 | +2.18% | -1.02% | $487.15 | ~2.3% |
+  | CRM | $191.24 | $195.865 | +2.42% | -0.81% | $188.27 | ~3.9% |
+  | NOW | $126.6299 | $124.89 | -1.37% | -2.08% | $120.30 | ~3.7% |
+
+- **IREN +7.42% trong ngày (đã WebSearch do vượt ngưỡng 3-5%):** `get_equity_historicals` (5min, extended, từ 08-11 13:30 UTC) cho thấy đỉnh cao nhất $44.67 xảy ra ngay đầu phiên chính hôm nay (13:30 UTC/9:30 ET), sau đó giá rút về $42.70 (giảm ~4.4% từ đỉnh chỉ trong ~10 phút đầu phiên). WebSearch không tìm thấy tin xấu mới — chỉ có tin nền đã biết (Mirantis acquisition hoàn tất 08-04), không có catalyst tiêu cực. **Chưa dời trailing stop-loss lên theo đỉnh $44.67** — do đây mới là 10 phút đầu phiên, IREN có tiền lệ spike đầu phiên rồi đảo chiều (thứ Sáu 08-07 → thứ Hai 08-10), chưa đủ xác nhận theo tinh thần thận trọng đã áp dụng trước đây (tương tự cách xử lý đỉnh pre-market của OUST sáng nay). Sẽ đối chiếu lại đỉnh thật ở lần kiểm tra kế tiếp; nếu đà tăng giữ được tới cuối phiên sẽ đề xuất dời stop khi đó.
+- **ASTS +31.94%** tiếp tục vượt xa ngưỡng chốt lời chủ động +15% nhóm rủi ro cao, nhưng đề xuất bán 1 phần đã bị Hogan từ chối 08-05 và chưa có căn cứ mới (tin tức/fundamentals) để lặp lại đề xuất — chỉ ghi nhận, không đề xuất lại.
+- Các mã còn lại biến động trong biên độ bình thường (<3% so đóng cửa hôm qua), không breach ngưỡng cắt lỗ/chốt lời nào.
+- **Không có đề xuất mua/bán mới, không hủy/dời lệnh nào trong lần kiểm tra này** — không gửi PushNotification, chỉ ghi log.
