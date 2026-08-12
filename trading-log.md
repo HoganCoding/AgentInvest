@@ -3185,3 +3185,10 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **XOM/CSCO/RSP/VOO:** biến động trong biên độ bình thường (dưới 2% so đóng cửa 08-11), không breach ngưỡng nào, không cần tra tin thêm.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
 - **Không có đề xuất mua/bán/dời lệnh mới lần kiểm tra này** — không mã nào breach ngưỡng cắt lỗ/chốt lời (MSFT gần nhất ở ~1.3% nhưng chưa chạm, để stop-loss tự động xử lý theo đúng kỷ luật); JPM/ASTS có đỉnh mới nhưng chênh lệch stop quá nhỏ để trình riêng; CRM/NOW/MSFT giảm cùng lúc do rotation SaaS đã biết, không phải tin xấu mới. Không gửi PushNotification.
+
+## 2026-08-12 ~13:57 ET (17:57 UTC) — Thực hiện đề xuất dời stop-loss IREN (đã duyệt qua phiên tương tác)
+
+- **Bối cảnh:** kiểm tra lúc 13:54 ET cùng ngày, IREN vẫn giữ +9.7% trong ngày, `get_equity_historicals` xác nhận đỉnh phiên chính $44.67 (9:30 ET) đã giữ được biên $42.06-$43.99 suốt hơn 4 tiếng — không còn là spike-rồi-mất-hút. WebSearch xác nhận catalyst thật: IREN nâng mục tiêu ARR lên >$4.0 tỷ (từ $3.7 tỷ) nhờ ~$2.8 tỷ hợp đồng multi-year mới, ~85% ARR đã có hợp đồng, cộng hưởng đà tăng ngành AI-infra sau KQKD CoreWeave/Nebius (nâng guidance, backlog $104 tỷ). Không có tin xấu.
+- **Quyết định của Hogan: DUYỆT** đề xuất dời stop-loss IREN từ $35.25 lên $39.31 (đỉnh $44.67 × 0.88, đúng công thức trailing -12% nhóm rủi ro cao).
+- **Đã hủy lệnh GTC stop_market cũ** (`6a7b6199-007b-4dfd-b61c-aca3a7e9d09d` @ $35.25, xác nhận `cancelled`) và **đặt lệnh mới** GTC stop_market bán 7cp @ trigger **$39.31** (Order ID `6a7cb408-8a32-47e0-9842-97cf7cd1ab55`, `unconfirmed` lúc đặt, đang giờ giao dịch nên sẽ sớm chuyển `confirmed`).
+- Không có mua/bán cổ phiếu nào — chỉ dời stop-loss theo đúng đỉnh giá thật đã xác nhận trong phiên.
