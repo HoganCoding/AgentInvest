@@ -3157,3 +3157,31 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **ASTS +31.53%/CSCO +6.32%:** dưới ngưỡng cảnh báo chốt lời riêng của nhóm (ASTS đã breach +15% từ 08-05, đề xuất bán trước đó vẫn bị từ chối, không có thông tin mới đủ trọng lượng để lặp lại — theo đúng tiền lệ các lần kiểm tra gần đây). CSCO dưới ngưỡng cảnh báo +15-20% nhóm tech.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
 - **Không có đề xuất mua/bán/dời lệnh mới lần kiểm tra này** (đề xuất dời stop IREN đã rút lại theo lý do ở trên) — không gửi PushNotification.
+
+## 2026-08-12 ~13:14 ET (17:14 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — QQQ +0.92% nhưng MSFT/CRM/NOW đều giảm (rotation khỏi SaaS/mega-cap software); không breach, không có đề xuất mới
+
+- **Sync đầu phiên:** `git pull origin main` — fast-forward, không có commit core-10 mới kể từ lần kiểm tra 09:47 ET hôm nay (chỉ có các sandbox check-in xen giữa, không liên quan).
+- **Xác nhận qua `get_equity_orders`** (từ 13:47 UTC tới nay): **rỗng, không có lệnh core-10 nào mới/khớp**. `get_equity_positions` xác nhận core-10 vẫn đủ **10/10**, không đổi: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), XOM(3cp), CRM(3cp), NOW(3cp), IREN(7cp). (OUST 7cp trên tài khoản vẫn là vị thế sandbox, đối chiếu `sandbox-log.md`, không quản lý.)
+- P&L so với giá vốn (giá ~13:14 ET/17:14 UTC, so với đóng cửa 08-11):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Cách stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $74.18 | **+33.73%** | +3.56% | $65.19 | ~12.1% |
+  | IREN | $40.0591 | $42.855 | +6.98% | **+7.81%** | $35.25 | ~17.7% |
+  | XOM | $151.60 | $159.4475 | +5.18% | -0.22% | $152.34 | ~4.5% |
+  | JPM | $347.97 | $365.015 | +4.90% | +0.82% | $344.85 | ~5.5% |
+  | CSCO | $115.64 | $122.466 | +5.90% | +1.69% | $118.47 | ~3.3% |
+  | VOO | $688.26 | $710.54 | +3.24% | +0.30% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $220.80 | +2.73% | +0.05% | $210.04 | ~4.9% |
+  | MSFT | $488.00 | $493.74 | +1.18% | **-2.00%** | $487.15 | **~1.3%** |
+  | CRM | $191.24 | $192.4622 | +0.64% | -2.54% | $188.27 | ~2.2% |
+  | NOW | $126.6299 | $123.87 | -2.18% | -2.88% | $120.30 | ~2.9% |
+
+- **IREN +7.81% trong ngày (đã WebSearch do vượt ngưỡng 3-5%):** đỉnh phiên hôm nay vẫn là $44.67 (thiết lập ngay đầu phiên, đã ghi nhận ở 2 entry trước 09:40/09:47 ET), giá hiện tại $42.855 vẫn thấp hơn đỉnh đó — không có đỉnh mới. Tin tức: đà tăng do **cả nhóm hạ tầng AI được đẩy lên nhờ kết quả quý của CoreWeave (nâng guidance doanh thu cả năm lên $12.4-13.2 tỷ, backlog $104 tỷ) và Nebius (EBITDA điều chỉnh dương $236.2M)** — không phải tin riêng của IREN, chỉ là hiệu ứng lan tỏa nhóm ngành tích cực. Không có catalyst tiêu cực. Chưa đủ 1 phiên đóng cửa xác nhận đỉnh mới giữ vững nên tiếp tục chưa dời stop, đồng nhất với quyết định 2 lần kiểm tra trước trong ngày.
+- **ASTS +3.56% trong ngày:** giá hiện tại $74.18 vừa vượt nhẹ đỉnh cũ $74.08 (dùng đặt stop 08-06/08-07) — về lý thuyết tạo đỉnh mới, nhưng mức tăng chỉ +$0.10 (~0.1%), nếu dời stop theo công thức -12% thì mức mới ≈ $65.28 so với $65.19 hiện tại (chênh $0.09) — không đáng kể để trình đề xuất riêng, giữ nguyên. Tin tức nền tảng: tiếp tục tích cực (dịch vụ direct-to-cell "imminent" tại UK với Vodafone, đã khởi động tại Nhật, phóng thành công vệ tinh BlueBird 11/12/13 hôm 08-05) — không phải catalyst mới trong 24h qua, không đổi kết luận đã có (không lặp lại đề xuất bán đã bị từ chối 08-05).
+- **JPM:** giá hiện tại $365.015 nhỉnh hơn đỉnh cũ dùng đặt stop ($363.12, ghi nhận ở entry 09:47 ET) — chênh ~$1.90, nếu dời thì stop mới ≈ $346.76 so với $344.85 hiện tại (chênh ~$1.91, ~0.5% giá). Tương tự tiền lệ RSP/JPM ở entry 09:47 ET cùng ngày (chênh dưới $0.15 được coi là không đáng kể) — mức này lớn hơn nhưng vẫn nhỏ, chưa đủ trọng lượng để trình đề xuất dời stop riêng lẻ hôm nay; sẽ gộp vào lần cập nhật kế tiếp nếu đỉnh tiếp tục tăng thêm.
+- **MSFT -2.00% trong ngày, khoảng cách tới stop thu hẹp còn ~1.3% (sát nhất trong danh mục hiện tại):** dưới ngưỡng 3% nhưng đã chủ động WebSearch do khoảng cách tới stop hẹp. Không tìm thấy tin xấu riêng của Microsoft — vẫn đồng thuận Strong Buy (53 analyst, target TB $567.20, +12.9%), tin gần nhất tích cực (cổ tức $0.91 ex-date 08-20, chip AI Maia 300 sắp ra mắt, mở data center lớn nhất tại Ấn Độ). **Phát hiện: MSFT giảm cùng lúc với CRM (-2.54%) và NOW (-2.88%) trong khi QQQ +0.92%/SPY +0.31% — phân kỳ rõ với thị trường chung.** WebSearch riêng cho thấy đây là tiếp diễn câu chuyện vĩ mô đã biết ("SaaSpocalypse" — lo ngại AI agent làm giảm nhu cầu license SaaS theo đầu người, ngân sách doanh nghiệp dịch chuyển từ phần mềm sang hạ tầng AI) đã ảnh hưởng CRM/NOW/Snowflake nhiều tháng qua, không phải catalyst mới riêng của MSFT hôm nay (MSFT không phải pure-play SaaS, ít bị ảnh hưởng trực tiếp hơn CRM/NOW). Chưa breach stop-loss, chỉ còn cách ~1.3% — nếu tiếp tục giảm sẽ tự động khớp theo đúng kỷ luật trailing stop, không cần hành động chủ động.
+- **CRM -2.54%, NOW -2.88% trong ngày:** cùng chung nguyên nhân "SaaSpocalypse" rotation nêu trên — đã được đánh giá tương tự cho NOW ở các entry 08-11/08-12 sáng nay (không phải tin xấu mới, vẫn Strong Buy). Không breach stop-loss (CRM cách ~2.2%, NOW cách ~2.9%). Đây là narrative vĩ mô đã kéo dài nhiều tháng (theo kết quả WebSearch, có nguồn từ tháng 2/2026), không phải "fundamentals xấu đi rõ rệt" mới phát sinh — không đủ căn cứ để đề xuất bán chủ động, để trailing stop-loss tự động xử lý nếu tiếp tục giảm.
+- **XOM/CSCO/RSP/VOO:** biến động trong biên độ bình thường (dưới 2% so đóng cửa 08-11), không breach ngưỡng nào, không cần tra tin thêm.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
+- **Không có đề xuất mua/bán/dời lệnh mới lần kiểm tra này** — không mã nào breach ngưỡng cắt lỗ/chốt lời (MSFT gần nhất ở ~1.3% nhưng chưa chạm, để stop-loss tự động xử lý theo đúng kỷ luật); JPM/ASTS có đỉnh mới nhưng chênh lệch stop quá nhỏ để trình riêng; CRM/NOW/MSFT giảm cùng lúc do rotation SaaS đã biết, không phải tin xấu mới. Không gửi PushNotification.
