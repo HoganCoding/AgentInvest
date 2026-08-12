@@ -3130,3 +3130,30 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **ASTS +31.94%** tiếp tục vượt xa ngưỡng chốt lời chủ động +15% nhóm rủi ro cao, nhưng đề xuất bán 1 phần đã bị Hogan từ chối 08-05 và chưa có căn cứ mới (tin tức/fundamentals) để lặp lại đề xuất — chỉ ghi nhận, không đề xuất lại.
 - Các mã còn lại biến động trong biên độ bình thường (<3% so đóng cửa hôm qua), không breach ngưỡng cắt lỗ/chốt lời nào.
 - **Không có đề xuất mua/bán mới, không hủy/dời lệnh nào trong lần kiểm tra này** — không gửi PushNotification, chỉ ghi log.
+
+## 2026-08-12 ~09:47 ET (13:47 UTC) — Kiểm tra định kỳ (routine read-only, sync git) — đồng thuận với lần kiểm tra 09:40 ET: chưa đủ căn cứ dời stop IREN, không có đề xuất mới
+
+- **Sync đầu phiên:** `git pull origin main` — phát hiện commit mới từ phiên tương tác song song (entry ~09:40 ET ở trên, cách lần kiểm tra này chỉ ~7 phút) sau khi đã đặt lệnh push riêng → xảy ra xung đột merge do cả 2 phiên cùng append vào cuối file gần như đồng thời; đã resolve theo đúng quy tắc '## Đồng bộ giữa các phiên' (giữ cả 2 nội dung, không ghi đè). **Trước khi resolve, entry này ban đầu có dự thảo đề xuất dời trailing stop-loss IREN lên $39.31** dựa trên đỉnh phiên $44.67 — nhưng sau khi đọc entry 09:40 ET (đã có sẵn trên remote, viết trước entry này ~7 phút), thấy phiên đó đã cân nhắc đúng dữ liệu này (đỉnh $44.67 đầu phiên rồi rút về ~$42.70) và **chủ động quyết định CHƯA dời stop** — lý do: đỉnh mới chỉ hình thành trong ~10 phút đầu phiên, IREN có tiền lệ spike-rồi-đảo-chiều (08-07→08-10), cần thêm thời gian xác nhận đà tăng giữ được trước khi khóa lời bằng cách dời stop. **Đồng ý với lý do này — rút lại dự thảo đề xuất, không trình lên Hogan lần này** (tránh gửi 2 quyết định mâu thuẫn nhau trong cùng buổi sáng về cùng 1 vấn đề).
+- **Xác nhận qua `get_equity_orders`** (từ 19:31 UTC 08-11 tới nay): chỉ có 1 lệnh mới — stop-loss GTC của **OUST 7cp @ trigger $40.87** (`6a7c732f...`, `placed_agent: agentic`), đối chiếu `sandbox-log.md` xác nhận đây là vị thế **sandbox** (mua 08-11, dời stop tự động theo quyền tự chủ sandbox), KHÔNG phải core-10 — bỏ qua theo đúng quy tắc '## Đồng bộ giữa các phiên'. Không có lệnh core-10 nào mới. `get_equity_positions` xác nhận core-10 vẫn đủ **10/10**, không đổi: RSP(2cp), MSFT(1cp), VOO(0.72647cp), JPM(1cp), ASTS(5cp), CSCO(4cp), XOM(3cp), CRM(3cp), NOW(3cp), IREN(7cp).
+- P&L so với giá vốn (giá ~09:47 ET/13:47 UTC, so với đóng cửa 08-11) — số liệu gần khớp entry 09:40 ET (chênh vài phút):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Cách stop |
+  |---|---|---|---|---|---|---|
+  | **IREN** | $40.0591 | $43.10 | **+7.58%** | **+8.41%** | $35.25 | ~18.2% |
+  | ASTS | $55.47 | $72.96 | +31.53% | +1.86% | $65.19 | ~10.6% |
+  | CSCO | $115.64 | $122.96 | +6.32% | +2.10% | $118.47 | ~3.6% |
+  | XOM | $151.60 | $158.525 | +4.57% | -0.80% | $152.34 | ~3.9% |
+  | JPM | $347.97 | $363.08 | +4.34% | +0.29% | $344.85 | ~5.0% |
+  | VOO | $688.26 | $710.04 | +3.16% | +0.23% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $220.37 | +2.53% | -0.15% | $210.04 | ~4.7% |
+  | MSFT | $488.00 | $496.82 | +1.80% | -1.39% | $487.15 | ~2.0% |
+  | CRM | $191.24 | $193.905 | +1.39% | -1.81% | $188.27 | ~3.0% |
+  | NOW | $126.6299 | $123.50 | -2.47% | **-3.17%** | $120.30 | ~2.6% |
+
+- **IREN:** xem lý do "chưa dời stop" ở trên (thống nhất với entry 09:40 ET). Đỉnh $44.67 đầu phiên, hiện đã rút về $43.10 — vẫn thấp hơn đỉnh, chưa có phiên đóng cửa xác nhận giữ được vùng giá mới. P&L +7.58% từ giá vốn, chưa chạm ngưỡng chốt lời +15%.
+- **RSP/JPM:** đỉnh thật kể từ lần cập nhật gần nhất (08-11: RSP $221.23, JPM $363.12) chỉ nhỉnh hơn đỉnh cũ dùng đặt stop vài cent — chênh lệch stop mới ước tính dưới $0.15/mã, không đáng kể để trình đề xuất riêng, giữ nguyên stop hiện tại.
+- **MSFT/CSCO/XOM/CRM:** chưa tạo đỉnh mới nào cao hơn đỉnh đã dùng để đặt stop hiện tại (đều thấp hơn đỉnh 08-10) — không cần cập nhật.
+- **NOW -3.17% trong ngày (đã WebSearch do vượt ngưỡng 3%):** không tìm thấy tin xấu riêng — vẫn đồng thuận "Strong Buy" (49 analyst, target TB $140.25, +13% từ giá hiện tại), tin gần nhất đều tích cực (mở văn phòng Brazil, đẩy mạnh "Autonomous Security"). Có vẻ là điều chỉnh kỹ thuật/chốt lời sau đà tăng mạnh từ báo cáo Q2 (22/07). Chưa breach stop-loss ($120.30, cách ~2.6%), không phải fundamentals xấu đi — không hành động, để stop-loss tự động xử lý nếu tiếp tục giảm.
+- **ASTS +31.53%/CSCO +6.32%:** dưới ngưỡng cảnh báo chốt lời riêng của nhóm (ASTS đã breach +15% từ 08-05, đề xuất bán trước đó vẫn bị từ chối, không có thông tin mới đủ trọng lượng để lặp lại — theo đúng tiền lệ các lần kiểm tra gần đây). CSCO dưới ngưỡng cảnh báo +15-20% nhóm tech.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
+- **Không có đề xuất mua/bán/dời lệnh mới lần kiểm tra này** (đề xuất dời stop IREN đã rút lại theo lý do ở trên) — không gửi PushNotification.
