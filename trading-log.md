@@ -3324,3 +3324,28 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **RSP/MSFT/VOO/CRM/JPM/XOM/NOW/AMD:** biến động trong biên độ bình thường (dưới 3% so đóng cửa 08-12), không breach ngưỡng cắt lỗ/chốt lời nào, không cần WebSearch thêm.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
 - **Không có đề xuất mua/bán/dời stop nào lần kiểm tra này** — không mã nào breach ngưỡng, không có tin xấu nghiêm trọng nào cần phản ứng. Không gửi PushNotification (đúng quy tắc — chỉ gửi khi có đề xuất thật).
+
+## 2026-08-13 ~15:34 ET (19:34 UTC) — Kiểm tra định kỳ (routine tự động, sync git) — CRM/NOW bật lại mạnh, IREN tiếp tục lùi gần stop hơn; không breach, không tin xấu
+
+- **Sync đầu phiên:** `git pull` ban đầu lỗi do repo ở trạng thái detached HEAD và local branch `main` cũ đã phân kỳ hẳn với `origin/main` (55 vs 51 commit, "unrelated histories" — cùng nguyên nhân force-update lịch sử đã ghi nhận ở lần kiểm tra 13:20 ET hôm nay). Đã xác minh nội dung: root commit squash của `origin/main` (5086c60, 08-10) đã chứa đầy đủ nội dung các entry cũ của local `main` (kể cả entry 08-06 ~15:31 ET) — không có dữ liệu riêng nào bị mất. Đã chạy `git checkout -B main origin/main` để đồng bộ. Không có commit core-10 nào mới kể từ lần kiểm tra 13:20 ET hôm nay.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi: RSP(2cp), MSFT(1cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), NOW(3cp), AMD(1cp). `get_equity_orders` (từ 17:20 UTC tới nay): rỗng — không có lệnh core-10 nào mới/khớp.
+- P&L so với giá vốn (giá ~15:34 ET/19:34 UTC, so với đóng cửa 08-12):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Khoảng cách tới stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $71.66 | +29.21% | -3.57% | $65.19 | ~9.0% |
+  | IREN | $40.06 | $44.05 | +9.96% | +0.87% | $43.04 | ~2.3% |
+  | XOM | $151.60 | $158.78 | +4.74% | -0.61% | $152.34 | ~4.1% |
+  | JPM | $347.97 | $363.26 | +4.39% | -0.53% | $344.85 | ~5.1% |
+  | CRM | $191.24 | $200.735 | +4.97% | +3.83% | $188.27 | ~6.2% |
+  | VOO | $688.26 | $715.26 | +3.92% | +0.72% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $222.825 | +3.67% | +0.79% | $210.04 | ~5.7% |
+  | MSFT | $488.00 | $497.817 | +2.01% | +1.10% | $487.15 | ~2.1% |
+  | NOW | $126.63 | $127.75 | +0.88% | +2.25% | $120.30 | ~5.8% |
+  | AMD | $494.58 | $486.865 | -1.56% | +0.81% | $469.85 | ~3.5% |
+
+- **CRM +4.44% và NOW +4.01% so với lần kiểm tra 13:20 ET (đã WebSearch cả hai do vượt ngưỡng 3-5%):** không tìm thấy tin tức mới nào giải thích đợt bật tăng buổi chiều — CRM vẫn đối mặt narrative cũ về đầu tư AI chậm (CIO survey giảm ưu tiên ngân sách), NOW có tin tích cực về sản phẩm AI bảo mật tự động nhưng đã công bố từ đầu tháng 8 (không phải catalyst mới hôm nay). Nhiều khả năng đây là hồi phục kỹ thuật/mean-reversion sau đợt giảm do rotation "SaaSpocalypse" đã ghi nhận các lần kiểm tra trước, không phải tin nền tảng mới. Không breach ngưỡng nào (CRM cách stop ~6.2%, NOW ~5.8%), không cần hành động.
+- **IREN tiếp tục lùi thêm, khoảng cách tới stop thu hẹp còn ~2.3% (sát nhất danh mục, đã WebSearch):** giá từ $45.23 (13:20 ET) xuống $44.05 — không có đỉnh mới kể từ đỉnh phiên $49.185 dùng đặt stop $43.04, không cần dời stop. Không tìm thấy tin xấu — vẫn đà tăng nền tảng nguyên vẹn (Microsoft chấp nhận triển khai Horizon 1, hoàn tất thâu tóm Mirantis, đồng thuận Buy target $100). Đây là tiếp diễn chốt lời tự nhiên sau đà tăng mạnh đầu tuần, chưa breach — nếu giảm thêm sẽ tự động khớp theo đúng kỷ luật trailing stop, không cần hành động chủ động.
+- **ASTS/XOM/JPM/RSP/MSFT/VOO/AMD:** biến động trong biên độ bình thường (dưới 3% so lần kiểm tra trước), không breach ngưỡng cắt lỗ/chốt lời nào, không cần WebSearch thêm.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
+- **Không có đề xuất mua/bán/dời stop nào lần kiểm tra này** — không mã nào breach ngưỡng, IREN chưa có đỉnh mới để dời stop, CRM/NOW bật tăng không có tin xấu/tốt mới đủ trọng lượng. Không gửi PushNotification.
