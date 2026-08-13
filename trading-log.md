@@ -3277,3 +3277,25 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Dời stop-loss IREN:** trước khi dời, `get_equity_historicals` (5min, 09:30-09:55 ET) xác nhận đỉnh phiên thật tính tới thời điểm đặt lệnh là **$48.91** (bar 09:50-09:55 ET) — cao hơn mức $48.13 dùng trong đề xuất 09:49 ET (giá tiếp tục tăng thêm sau khi đề xuất được ghi log). Đã **hủy lệnh GTC cũ** (`6a7cb408...` @ $39.31, xác nhận `cancelled`) và **đặt lệnh mới** GTC stop_market bán toàn bộ 7cp @ trigger **$43.04** (đỉnh $48.91 × 0.88, đúng công thức trailing -12% nhóm rủi ro cao) — cao hơn mức $42.35 đề xuất ban đầu do dùng đỉnh mới nhất. Order ID: `6a7dccf7-87af-45c1-99f0-cf3b72695eff`, `unconfirmed` lúc đặt.
 - **Core-10 trở lại đủ 10/10 slot:** RSP(2cp), MSFT(1cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), NOW(3cp), **AMD(1cp, mới)**.
 - Không có mua/bán cổ phiếu nào khác trong đợt thực hiện này ngoài AMD (mua mới) — IREN chỉ dời stop, không đổi số lượng nắm giữ.
+
+## 2026-08-13 ~09:58 ET (13:58 UTC) — Kiểm tra định kỳ (phiên tương tác, sync git) — Xác nhận AMD/IREN sau khi thực hiện, không mã nào breach
+
+- **Sync đầu phiên:** `git fetch` — up to date, không có commit mới.
+- `get_equity_positions` xác nhận core-10 đủ **10/10 slot**: RSP(2cp), MSFT(1cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), NOW(3cp), **AMD(1cp)**. `get_equity_orders` (từ 13:56:20 UTC tới nay): rỗng — không có lệnh mới, đồng nghĩa lệnh stop-loss AMD ($469.85) và IREN ($43.04) vừa đặt vẫn nguyên trạng, chưa breach.
+- P&L so với giá vốn (giá ~09:58 ET/13:58 UTC, so với đóng cửa 08-12):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Khoảng cách tới stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $73.73 | +32.94% | -0.78% | $65.19 | ~11.6% |
+  | IREN | $40.06 | $48.73 | +21.64% | +11.60% | $43.04 | ~11.7% |
+  | XOM | $151.60 | $158.49 | +4.55% | -0.79% | $152.34 | ~3.9% |
+  | JPM | $347.97 | $362.83 | +4.27% | -0.64% | $344.85 | ~5.0% |
+  | VOO | $688.26 | $714.82 | +3.86% | +0.65% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $222.18 | +3.37% | +0.50% | $210.04 | ~5.5% |
+  | CRM | $191.24 | $195.46 | +2.21% | +1.11% | $188.27 | ~3.7% |
+  | MSFT | $488.00 | $498.935 | +2.24% | +1.32% | $487.15 | ~2.4% |
+  | AMD | $494.58 | $495.40 | +0.17% | (mới mua) | $469.85 | ~5.2% |
+  | NOW | $126.63 | $125.38 | -0.99% | +0.35% | $120.30 | ~4.1% |
+
+- **IREN:** giá hiện tại $48.73 vẫn thấp hơn đỉnh $48.91 vừa dùng để dời stop lúc 09:56 ET — chưa có đỉnh mới, không cần dời thêm.
+- Không mã nào breach ngưỡng cắt lỗ/chốt lời. Không có đề xuất mới lần kiểm tra này — không gửi PushNotification.
