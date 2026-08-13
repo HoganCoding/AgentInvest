@@ -2375,3 +2375,14 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - `get_portfolio`: cash **$1,676.44** (bao gồm ~$453.28 unsettled từ CSCO stop-loss của core-10 sáng nay — không phải sandbox), buying_power **$1,223.16**.
 - **Phần theo dõi sandbox (circuit breaker):** OUST 7cp × $47.69 = **$333.83** + phần cash sandbox còn lại theo dõi trên giấy (~$382, không đổi) ≈ **~$715.8** — quanh mốc gốc $700, còn rất xa ngưỡng chốt lời x2 (~$1400) và ngưỡng dừng hẳn (~$0). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động thêm** (chưa dời stop, chờ xác nhận đỉnh giữ được trong phiên). Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-13 ~09:59 ET (13:59 UTC) — Dời trailing stop-loss OUST theo đỉnh phiên mới (tự chủ sandbox, không cần duyệt)
+
+- **Sync đầu phiên:** cùng lần `git fetch` với core-10 ở trên (`trading-log.md`) — up to date, không xung đột.
+- `get_equity_positions`: sandbox vẫn đúng **1 vị thế OUST 7cp** @ giá vốn $45.43 — không đổi. Core-10 đủ 10/10 slot (AMD vừa lấp slot thay CSCO sáng nay, xem `trading-log.md`) — không quản lý.
+- `get_equity_historicals` (5min, 09:30-09:55 ET): giá đã giữ biên **$46.81-$47.88** suốt ~28 phút kể từ mở cửa (không phải spike-rồi-rút như 3-5 phút đầu phiên lúc 09:35 ET) — đủ xác nhận đà tăng giữ được, tương tự tiêu chí vừa áp dụng cho IREN (core-10) cùng sáng nay.
+- **Đã hủy lệnh GTC stop-loss cũ** (`6a7c732f...` @ $40.87, xác nhận `cancelled`) và **đặt lệnh mới** GTC stop_market bán 7cp @ trigger **$42.13** (đỉnh phiên $47.88 × 0.88, đúng công thức trailing -12% nhóm rủi ro cao). Order ID: `6a7dcdbe-6334-46ff-92a6-a26052c5dc8c`, `unconfirmed` lúc đặt.
+- `get_equity_quotes` OUST: giá hiện tại **$47.65** so với giá vốn $45.43 → **+4.88%**; so với đóng cửa hôm qua $46.12 → +3.32%. Chưa breach ngưỡng chốt lời +15% nhóm rủi ro cao.
+- `get_portfolio`: cash $1,181.86, buying_power $728.58 (giảm so với lần check trước do lệnh mua AMD của core-10 sáng nay — không phải sandbox).
+- **Phần theo dõi sandbox (circuit breaker):** OUST 7cp × $47.65 = **$333.55** + phần cash sandbox còn lại theo dõi trên giấy (~$382, không đổi) ≈ **~$715.6** — quanh mốc gốc $700, còn rất xa ngưỡng chốt lời x2 (~$1400) và ngưỡng dừng hẳn (~$0). Không breach ngưỡng nào.
+- **Quyết định: chỉ dời stop-loss theo đỉnh mới, không mua/bán thêm.** Đây là hành động tự chủ trong quyền hạn sandbox (dời trailing stop), không phải giao dịch mới — không gửi PushNotification, chỉ ghi log theo quy định CLAUDE.md.
