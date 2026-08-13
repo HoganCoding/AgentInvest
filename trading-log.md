@@ -3299,3 +3299,28 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 
 - **IREN:** giá hiện tại $48.73 vẫn thấp hơn đỉnh $48.91 vừa dùng để dời stop lúc 09:56 ET — chưa có đỉnh mới, không cần dời thêm.
 - Không mã nào breach ngưỡng cắt lỗ/chốt lời. Không có đề xuất mới lần kiểm tra này — không gửi PushNotification.
+
+## 2026-08-13 ~13:20 ET (17:20 UTC) — Kiểm tra định kỳ (routine tự động, sync git) — IREN/ASTS rút lui từ đỉnh phiên nhưng chưa breach stop, không có tin xấu
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD trỏ đúng tip `origin/main` (1db302c); local branch `main` cũ đã phân kỳ (55 vs 51 commit, "unrelated histories" — hệ quả của force-update trước đó từ phiên khác). Đã `git checkout -B main origin/main` để đưa local main khớp hẳn với `origin/main` (không mất dữ liệu — local main cũ không có nội dung nào ngoài những gì `origin/main` đã có, diff chỉ thêm, không xóa). Không có commit core-10 nào mới kể từ lần kiểm tra 09:58 ET hôm nay.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi: RSP(2cp), MSFT(1cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), NOW(3cp), AMD(1cp). `get_equity_orders` (từ 13:58 ET tới nay): chỉ có 1 lệnh — stop-loss GTC sandbox OUST @ $42.13 (đối chiếu `sandbox-log.md`, không phải core-10, bỏ qua theo đúng quy tắc '## Đồng bộ giữa các phiên'). Không có lệnh core-10 nào mới/khớp.
+- P&L so với giá vốn (giá ~13:20 ET/17:20 UTC, so với đóng cửa 08-12):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Khoảng cách tới stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $72.01 | +29.83% | -3.09% | $65.19 | ~9.5% |
+  | IREN | $40.06 | $45.23 | +12.90% | +3.57% | $43.04 | ~4.8% |
+  | XOM | $151.60 | $158.925 | +4.83% | -0.52% | $152.34 | ~4.3% |
+  | JPM | $347.97 | $363.485 | +4.46% | -0.46% | $344.85 | ~5.1% |
+  | VOO | $688.26 | $714.61 | +3.83% | +0.62% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $221.925 | +3.25% | +0.38% | $210.04 | ~5.4% |
+  | CRM | $191.24 | $192.20 | +0.50% | -0.58% | $188.27 | ~2.0% |
+  | AMD | $494.58 | $495.30 | +0.15% | +2.56% | $469.85 | ~5.4% |
+  | MSFT | $488.00 | $494.40 | +1.31% | +0.40% | $487.15 | ~1.5% |
+  | NOW | $126.63 | $122.825 | -3.01% | -1.69% | $120.30 | ~2.1% |
+
+- **IREN rút lui đáng kể từ đỉnh phiên (>3-5% ngưỡng, đã WebSearch kiểm tra tin xấu):** `get_equity_historicals` (5min) xác nhận đỉnh phiên thật là **$49.185** (bar 14:00 UTC), sau đó giảm dần đều (không phải rơi đột ngột/panic) xuống $45.23 hiện tại — giảm ~8% từ đỉnh trong hơn 3 giờ, khối lượng giảm dần theo giá (không có volume bán tháo bất thường). WebSearch không tìm thấy tin xấu nào — đây là chốt lời tự nhiên sau đà tăng mạnh (+22% từ đáy hôm qua tới đỉnh sáng nay) khi câu chuyện tăng trưởng AI-infra vẫn nguyên vẹn (đối tác Microsoft, ARR >$4.0 tỷ, rating Buy trung bình, target giá trung vị $80). Giá hiện $45.23 vẫn cách stop-loss $43.04 khoảng **4.8%** — chưa breach. Đỉnh thực tế $49.185 chỉ cao hơn đỉnh dùng đặt stop ($48.91) 0.56% → công thức trailing -12% cho ra stop mới ~$43.28, chênh lệch không đáng kể (~$0.24) so với stop hiện tại — chưa đủ ý nghĩa để đề xuất dời ngay, sẽ theo dõi tiếp.
+- **ASTS giảm -3.09% trong ngày (đã WebSearch kiểm tra):** không có tin xấu — bài phân tích gần nhất chỉ đề cập định giá "fully valued" sau đà tăng 19x/3 năm, không phải cảnh báo cơ bản mới. Vẫn còn cách stop-loss $65.19 khoảng 9.5% — chưa breach, không cần hành động.
+- **RSP/MSFT/VOO/CRM/JPM/XOM/NOW/AMD:** biến động trong biên độ bình thường (dưới 3% so đóng cửa 08-12), không breach ngưỡng cắt lỗ/chốt lời nào, không cần WebSearch thêm.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
+- **Không có đề xuất mua/bán/dời stop nào lần kiểm tra này** — không mã nào breach ngưỡng, không có tin xấu nghiêm trọng nào cần phản ứng. Không gửi PushNotification (đúng quy tắc — chỉ gửi khi có đề xuất thật).
