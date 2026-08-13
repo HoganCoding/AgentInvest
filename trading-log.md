@@ -3217,3 +3217,27 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **CSCO/XOM/JPM/RSP/VOO/CRM/MSFT/NOW:** biến động trong biên độ bình thường hoặc tiếp diễn narrative đã biết (CRM/NOW/MSFT vẫn dư âm rotation SaaS ghi nhận ở lần kiểm tra 13:14 ET), không breach ngưỡng cắt lỗ/chốt lời nào, không cần WebSearch thêm.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
 - **Không có đề xuất mua/bán/dời lệnh mới lần kiểm tra này** — không mã nào breach ngưỡng; IREN chưa có đỉnh mới; ASTS có đỉnh mới nhưng quá nhỏ để trình riêng. Không gửi PushNotification.
+
+## 2026-08-13 ~09:35 ET (13:35 UTC) — Kiểm tra định kỳ (phiên tương tác, sync git) — Phát hiện CSCO đã bị stop-loss tự động khớp lúc mở cửa; core-10 còn 9/10 slot; IREN tạo đỉnh mới đầu phiên, chưa dời stop
+
+- **Sync đầu phiên:** `git fetch` + `git pull origin main` — fast-forward 3 commit (sandbox check-in tới 08-12 15:09 ET), không xung đột.
+- **Phát hiện: CSCO đã bị stop-loss tự động khớp.** `get_equity_positions` xác nhận core-10 hiện chỉ còn **9/10 slot**: RSP(2cp), MSFT(1cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), NOW(3cp) — CSCO không còn trong danh sách. `get_equity_orders(CSCO)` xác nhận lệnh GTC stop_market bán 4cp @ trigger $118.47 (đặt 08-10 sau khi dời theo đỉnh) đã `filled` lúc **2026-08-13 09:30:00 ET** (ngay đầu phiên), giá khớp trung bình **$113.32/cp**. Giá vốn $115.64 → lỗ thực hiện nhỏ **-2.01%** (~-$9.28 tổng) — đúng kỷ luật trailing stop-loss tự động khớp qua đêm/đầu phiên, không phải quyết định thủ công của phiên nào. Không có lệnh core-10 nào khác khớp/mới kể từ lần kiểm tra 08-12 15:31 ET.
+- P&L so với giá vốn (giá ~09:35 ET/13:35 UTC, so với đóng cửa 08-12):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Khoảng cách tới stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $74.225 | +33.81% | -0.11% | $65.19 | ~12.2% |
+  | IREN | $40.0591 | $46.935 | +17.17% | **+7.48%** | $39.31 | ~16.2% |
+  | JPM | $347.97 | $364.315 | +4.70% | -0.24% | $344.85 | ~5.3% |
+  | XOM | $151.60 | $158.655 | +4.65% | -0.69% | $152.34 | ~4.0% |
+  | VOO | $688.26 | $712.27 | +3.49% | +0.30% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $221.98 | +3.28% | +0.41% | $210.04 | ~5.4% |
+  | CRM | $191.24 | $195.29 | +2.12% | +1.02% | $188.27 | ~3.6% |
+  | MSFT | $488.00 | $495.245 | +1.48% | +0.57% | $487.15 | ~1.6% |
+  | NOW | $126.63 | $124.845 | -1.41% | -0.08% | $120.30 | ~3.6% |
+
+- **IREN +7.48% trong ngày (WebSearch — không tìm tin mới, tiếp diễn catalyst đã biết):** `get_equity_historicals` (5min, đầu phiên) cho thấy đỉnh mới **$47.01** đã hình thành chỉ ~3-5 phút sau mở cửa 09:30 ET, vượt đỉnh cũ $44.67 dùng đặt stop hiện tại ($39.31). Không có tin xấu — đà tăng vẫn là tiếp diễn câu chuyện ARR >$4.0 tỷ + rally nhóm AI-infra đã ghi nhận từ 08-12. Theo đúng tiền lệ (không chase đỉnh hình thành trong vài phút đầu phiên, chờ xác nhận giữ được biên giá trong phiên), **chưa dời trailing stop-loss** — sẽ đối chiếu lại đỉnh thật ở lần kiểm tra kế tiếp trong phiên.
+- **ASTS/JPM/XOM/RSP/CRM/MSFT/NOW:** biến động trong biên độ bình thường (dưới 3% so đóng cửa 08-12) hoặc đi ngang, không breach ngưỡng cắt lỗ/chốt lời nào, không cần WebSearch thêm. MSFT khoảng cách tới stop hẹp nhất (~1.6%) nhưng chưa breach.
+- **Core-10 hiện còn 9/10 slot** (nhóm large-cap công nghệ mất 1/4 do CSCO bị stop-loss) — chưa đề xuất mã thay thế ngay trong lần kiểm tra này, sẽ trình khi có ứng viên phù hợp theo đúng quy trình (tối thiểu 2 lựa chọn, cần Hogan duyệt).
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
+- **Không có đề xuất mua/dời lệnh chủ động nào lần kiểm tra này** ngoài việc ghi nhận CSCO đã tự động thoát theo kỷ luật stop-loss — không gửi PushNotification (đây là core-10, không thuộc phạm vi PushNotification tự động của sandbox; đã báo trực tiếp qua phiên tương tác này).
