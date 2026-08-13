@@ -3267,3 +3267,13 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **RSP/MSFT/VOO/CRM/JPM/ASTS/XOM/NOW:** biến động trong biên độ bình thường (dưới 3% so đóng cửa 08-12), chưa tạo đỉnh mới đáng kể để cần dời stop riêng, không breach ngưỡng nào, không cần WebSearch thêm.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
 - **Tóm tắt hành động cần Hogan:** (1) chọn PANW hoặc AMD (hoặc từ chối) để lấp slot tech thay CSCO; (2) duyệt dời stop-loss IREN lên $42.35 + bán ~4cp chốt lời một phần. Đã gửi PushNotification.
+
+## 2026-08-13 ~09:56 ET (13:56 UTC) — Thực hiện đề xuất 09:49 ET (đã duyệt qua phiên tương tác): mua AMD lấp slot tech thay CSCO; giữ nguyên IREN, dời stop-loss theo đỉnh mới
+
+- **Quyết định của Hogan:** "mua AMD, giữ IREN và dời stop loss" — chọn **AMD** (không chọn PANW) để lấp slot large-cap tech thay CSCO; với IREN, **giữ nguyên toàn bộ 7cp** (từ chối đề xuất bán ~4cp chốt lời một phần), chỉ **dời trailing stop-loss** theo đỉnh mới.
+- **Mua AMD:** lệnh limit 1cp @ $494.60 (sát ask $494.47 lúc đặt, để bảo vệ giá), đã `filled` toàn bộ, giá khớp thực **$494.58/cp** (~8.3% danh mục, total_value ~$5,973 trước lệnh). Order ID: `6a7dccf0-ac99-44b8-928d-c6cdbd8da6e7`.
+- **Đặt stop-loss GTC stop_market cho AMD:** bán 1cp @ trigger **$469.85** (-5% từ giá vốn $494.58, theo đúng công thức trailing -5% nhóm tech). Order ID: `6a7dcd02-807e-4284-b1e3-a8c71842d35d`, `unconfirmed` lúc đặt (đang giờ giao dịch, sẽ sớm chuyển `confirmed`).
+- **Không dính wash-sale:** AMD chưa từng nắm giữ/bán trong 30 ngày qua.
+- **Dời stop-loss IREN:** trước khi dời, `get_equity_historicals` (5min, 09:30-09:55 ET) xác nhận đỉnh phiên thật tính tới thời điểm đặt lệnh là **$48.91** (bar 09:50-09:55 ET) — cao hơn mức $48.13 dùng trong đề xuất 09:49 ET (giá tiếp tục tăng thêm sau khi đề xuất được ghi log). Đã **hủy lệnh GTC cũ** (`6a7cb408...` @ $39.31, xác nhận `cancelled`) và **đặt lệnh mới** GTC stop_market bán toàn bộ 7cp @ trigger **$43.04** (đỉnh $48.91 × 0.88, đúng công thức trailing -12% nhóm rủi ro cao) — cao hơn mức $42.35 đề xuất ban đầu do dùng đỉnh mới nhất. Order ID: `6a7dccf7-87af-45c1-99f0-cf3b72695eff`, `unconfirmed` lúc đặt.
+- **Core-10 trở lại đủ 10/10 slot:** RSP(2cp), MSFT(1cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), NOW(3cp), **AMD(1cp, mới)**.
+- Không có mua/bán cổ phiếu nào khác trong đợt thực hiện này ngoài AMD (mua mới) — IREN chỉ dời stop, không đổi số lượng nắm giữ.
