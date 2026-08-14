@@ -2503,3 +2503,14 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - Giá hiện tại $48.235 (so vốn $45.43 → +6.17%; so đóng cửa hôm qua $45.13 → +6.87%). Khoảng cách tới stop ~11.2%, chưa breach, chưa chạm ngưỡng chốt lời +15%.
 - Phần theo dõi sandbox: OUST 7cp × $48.235 = $337.65 + cash sandbox theo dõi (~$382) ≈ ~$719.6. Không breach ngưỡng nào.
 - Không có hành động mới — không gửi PushNotification (không có thay đổi thật so với lần ghi log trước).
+
+## 2026-08-14 ~11:20 ET (15:20 UTC) — Kiểm tra định kỳ (routine tự động, sync git): OUST +4.62% so với giá vốn, rút nhẹ từ đỉnh — không hành động
+
+- **Sync đầu phiên:** `git fetch origin` phát hiện 2 nhánh mới (`claude/status-check-w2968t`, `worktree-sandbox-check-0707`, không liên quan) và `main` đã cập nhật tới `8344b65`; local đang detached HEAD đúng tip nên `git checkout -B main origin/main` để gắn lại nhánh — không xung đột, không mất commit.
+- `get_equity_positions` (704170133): sandbox vẫn đúng **1 vị thế: OUST 7cp** @ giá vốn $45.43 — không đổi. Core-10 đủ 10/10 slot, khớp `trading-log.md` mới nhất: RSP(2cp), MSFT(1cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), NOW(3cp), AMD(1cp) — không có mã lạ nào cần đối chiếu wash-sale/cross-attribution.
+- `get_equity_orders` (từ 14:46 UTC tới nay): **rỗng** — không có lệnh mới nào trên toàn tài khoản (stop-loss OUST $42.85 vẫn nguyên trạng, không bị hủy/khớp).
+- `get_equity_quotes` OUST: giá hiện tại **$47.53** so với giá vốn $45.43 → **+4.62%**; so với đóng cửa hôm qua $45.13 → +5.31%; so với lần check trước (10:46 ET, $48.235) → **-1.47%** — rút nhẹ từ đỉnh phiên $48.69, dưới ngưỡng 3-5%, không cần WebSearch tin mới.
+- Giá hiện tại $47.53 vẫn thấp hơn đỉnh phiên $48.69 đã dùng dời stop lúc 10:39 ET — không có đỉnh mới, không cần dời thêm. Stop-loss GTC stop_market @ $42.85 vẫn còn hiệu lực, chưa breach (còn cách ~9.9%). Chưa chạm ngưỡng chốt lời +15% nhóm rủi ro cao (đang +4.62%).
+- `get_portfolio`: cash **$1,181.86**, buying_power **$1,181.86** — không đổi so với lần check trước.
+- **Phần theo dõi sandbox (circuit breaker):** OUST 7cp × $47.53 = **$332.71** + phần cash sandbox còn lại theo dõi trên giấy (~$382, không đổi) ≈ **~$714.7** — quanh mốc gốc $700, còn rất xa ngưỡng chốt lời x2 (~$1400) và ngưỡng dừng hẳn (~$0). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động thêm, tiếp tục giữ nguyên vị thế OUST với stop-loss hiện tại ($42.85).** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
