@@ -3418,3 +3418,27 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **RSP/MSFT/VOO/JPM/XOM:** biến động trong biên độ bình thường (dưới 2% so đóng cửa 08-13), `get_equity_historicals` (30min) xác nhận không mã nào tạo đỉnh mới vượt mức đã dùng đặt stop hiện tại, không cần hành động.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
 - **Tóm tắt hành động cần Hogan:** duyệt dời stop-loss AMD từ $481.96 lên $485.90 (hoặc từ chối/chờ thêm). Đã gửi PushNotification.
+
+## 2026-08-14 ~13:11 ET (17:11 UTC) — Kiểm tra định kỳ (routine tự động, sync git) — Không mã nào breach, đề xuất dời stop AMD (12:08 ET) vẫn chờ duyệt
+
+- **Sync đầu phiên:** `git pull` — local `main` sau `origin/main` 10 commit, đã fast-forward thành công, không xung đột.
+- `get_equity_positions` xác nhận core-10 đủ **10/10 slot**, không đổi: RSP(2cp), MSFT(1cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), NOW(3cp), AMD(1cp). (OUST 7cp là sandbox, bỏ qua theo quy tắc đồng bộ.) `get_equity_orders` (từ 16:08 UTC tới nay): chỉ có 1 lệnh mới — sandbox OUST dời stop lên $43.89 (bỏ qua, không phải core-10). Không có lệnh core-10 nào mới/khớp — nghĩa là đề xuất dời stop-loss AMD lên $485.90 từ lần kiểm tra 12:08 ET **vẫn chưa được thực hiện/duyệt**, stop AMD hiện tại vẫn là $481.96.
+- P&L so với giá vốn (giá ~13:11 ET/17:11 UTC, so với đóng cửa 08-13):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Khoảng cách tới stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $70.32 | +26.77% | -1.68% | $65.19 | ~7.3% |
+  | IREN | $40.06 | $44.89 | +12.06% | +0.29% | $43.04 | ~4.1% |
+  | XOM | $151.60 | $161.22 | +6.34% | +1.65% | $152.34 | ~5.5% |
+  | JPM | $347.97 | $362.485 | +4.17% | -0.17% | $344.85 | ~4.9% |
+  | VOO | $688.26 | $713.24 | +3.63% | -0.24% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $222.67 | +3.60% | -0.03% | $210.04 | ~5.7% |
+  | CRM | $191.24 | $196.80 | +2.91% | -2.27% | $188.27 | ~4.3% |
+  | AMD | $494.58 | $503.31 | +1.76% | +4.20% | $481.96 (đề xuất $485.90 chờ duyệt) | ~4.2% |
+  | MSFT | $488.00 | $496.275 | +1.69% | -0.12% | $487.15 | ~1.8% |
+  | NOW | $126.63 | $125.05 | -1.25% | -1.73% | $120.30 | ~3.8% |
+
+- **AMD:** giá hiện $503.31 vẫn thấp hơn đỉnh phiên $511.4717 đã dùng để tính đề xuất dời stop lên $485.90 (gửi lúc 12:08 ET, đã PushNotification, chưa thấy Hogan phản hồi/lệnh thực hiện) — không có đỉnh mới, không cần tính lại. Nhắc lại đề xuất cũ, không phải đề xuất mới.
+- So với lần kiểm tra 12:08 ET, tất cả các mã biến động dưới 2% — không mã nào vượt ngưỡng 3-5% cần WebSearch sâu thêm.
+- Không mã nào breach ngưỡng cắt lỗ/chốt lời. Chưa tới ngày review định kỳ 30 ngày (mốc kế tiếp 2026-09-01).
+- **Không có đề xuất MỚI nào lần kiểm tra này** — đề xuất dời stop AMD vẫn là đề xuất cũ (12:08 ET) đang chờ duyệt, không gửi thêm PushNotification để tránh trùng lặp.
