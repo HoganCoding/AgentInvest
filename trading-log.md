@@ -3388,3 +3388,33 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - `get_equity_orders` xác nhận stop-loss AMD mới (`6a7f2a0a...` @ $481.96) đã chuyển trạng thái `confirmed`. Các stop-loss khác không đổi: RSP $210.04, MSFT $487.15, JPM $344.85, XOM $152.34, CRM $188.27, NOW $120.30, ASTS $65.19, IREN $43.04.
 - P&L nhanh (giá ~10:46 ET): ASTS +28.19%, IREN +11.66% (khoảng cách tới stop thu hẹp còn ~3.8% do giá rút từ đỉnh, chưa breach), XOM +6.09%, JPM +4.86%, VOO +3.79%, RSP +3.58%, CRM +2.53%, AMD +2.26%, MSFT +2.25%, NOW -2.27%. Không mã nào breach.
 - Không có đề xuất/hành động mới.
+
+## 2026-08-14 ~12:08 ET (16:08 UTC) — Kiểm tra định kỳ (routine tự động, sync git) — AMD tạo đỉnh mới cao hơn, đề xuất dời stop-loss thêm; các mã khác không breach
+
+- **Sync đầu phiên:** `git pull` — đã up to date với `origin/main` (không có commit mới từ phiên khác kể từ 10:46 ET).
+- `get_equity_positions` xác nhận core-10 đủ **10/10 slot**, không đổi: RSP(2cp), MSFT(1cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), NOW(3cp), AMD(1cp). (Vị thế OUST 7cp trong tài khoản là sandbox, không thuộc core-10 — bỏ qua theo đúng quy tắc đồng bộ.) `get_equity_orders` (từ 08-14 00:00 UTC): chỉ 2 lệnh GTC stop hiện hành — AMD @ $481.96 (`confirmed`) và OUST @ $42.85 (sandbox, bỏ qua). Không có lệnh core-10 nào khớp/mới ngoài 2 lệnh đã biết.
+- P&L so với giá vốn (giá ~12:08 ET/16:08 UTC, so với đóng cửa 08-13):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Khoảng cách tới stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $69.785 | +25.81% | -2.43% | $65.19 | ~6.6% |
+  | IREN | $40.06 | $44.08 | +10.03% | -1.52% | $43.04 | ~2.4% |
+  | XOM | $151.60 | $160.80 | +6.07% | +1.38% | $152.34 | ~5.3% |
+  | JPM | $347.97 | $363.195 | +4.38% | +0.02% | $344.85 | ~5.1% |
+  | VOO | $688.26 | $713.60 | +3.68% | -0.19% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $222.825 | +3.67% | +0.04% | $210.04 | ~5.7% |
+  | CRM | $191.24 | $197.585 | +3.32% | -1.88% | $188.27 | ~4.7% |
+  | AMD | $494.58 | $497.81 | +0.65% | +3.06% | $481.96 | ~3.2% |
+  | MSFT | $488.00 | $497.97 | +2.04% | +0.22% | $487.15 | ~2.2% |
+  | NOW | $126.63 | $125.675 | -0.75% | -1.24% | $120.30 | ~4.5% |
+
+- **AMD +3.06% trong ngày, tạo đỉnh mới cao hơn đỉnh dùng đặt stop hiện tại (đã WebSearch — vượt ngưỡng 3%):** `get_equity_historicals` (5min, 09:30 ET tới nay) xác nhận đỉnh phiên thật là **$511.4717** (bar 10:35-10:40 ET/14:35-14:40 UTC) — cao hơn mức $507.33 dùng đặt stop hiện tại ($481.96) lúc 10:45 ET. Giá đã rút về $497.81 (~2.7% dưới đỉnh) tại thời điểm kiểm tra. WebSearch xác nhận không có tin xấu — tiếp diễn narrative tích cực: KQKD Q2 (08-04) doanh thu $11.54B (+50.1% YoY, vượt ước tính $11.31B), Data Center +>2x lên $6.72B; Baird (Tristan Gerra) vừa **nâng target lên $1,250** (cao nhất Street), dự phóng doanh thu AI GPU platform $147B vào 2030; đồng thuận vẫn Strong Buy (42 analyst). Rủi ro nhắc tới (cạnh tranh Nvidia, mảng Gaming -31% YoY) không phải tin mới, đã phản ánh trong giá.
+  - Theo công thức trailing -5% nhóm tech từ đỉnh mới: stop mới = $511.4717 × 0.95 ≈ **$485.90** — cao hơn $481.96 hiện tại (+$3.94, ~0.8%).
+  - **Đề xuất: dời stop-loss AMD từ $481.96 lên $485.90** (hủy lệnh GTC cũ `6a7f2a0a...`, đặt lệnh GTC stop_market mới bán 1cp @ trigger $485.90) — đúng kỷ luật trailing stop, khóa thêm chút lợi nhuận dù mức dời nhỏ.
+  - **Rủi ro chính:** mức dời nhỏ (~0.8%), nếu AMD dao động ngang trong biên độ bình thường có thể quẹt sớm hơn cần thiết; tuy nhiên đây đúng theo quy tắc "chỉ dời lên, không dời xuống" và đỉnh mới đã được xác nhận rõ ràng qua dữ liệu 5 phút, không phải nhiễu.
+  - **Chờ Hogan duyệt trước khi thực hiện** (core-10, không thuộc quyền tự chủ sandbox).
+- **IREN khoảng cách tới stop thu hẹp còn ~2.4% (sát nhất danh mục):** giá $44.08 vẫn dưới đỉnh $48.91 dùng đặt stop $43.04 hiện tại — chưa có đỉnh mới, không cần dời. Nếu giảm thêm sẽ tự động khớp theo đúng kỷ luật, không cần hành động chủ động.
+- **ASTS -2.43%, CRM -1.88%, NOW -1.24% trong ngày:** đều dưới ngưỡng 3-5% cần WebSearch sâu, không có dấu hiệu bất thường, không breach ngưỡng nào.
+- **RSP/MSFT/VOO/JPM/XOM:** biến động trong biên độ bình thường (dưới 2% so đóng cửa 08-13), `get_equity_historicals` (30min) xác nhận không mã nào tạo đỉnh mới vượt mức đã dùng đặt stop hiện tại, không cần hành động.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
+- **Tóm tắt hành động cần Hogan:** duyệt dời stop-loss AMD từ $481.96 lên $485.90 (hoặc từ chối/chờ thêm). Đã gửi PushNotification.
