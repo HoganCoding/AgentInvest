@@ -2474,3 +2474,14 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - `get_portfolio`: cash **$1,181.86**, buying_power **$1,181.86** (bằng cash — không có unsettled funds treo). Buying power tăng so với lần check trước ($728.58) — không phải do sandbox, có thể do lệnh core-10 nào đó đã settle qua đêm; không ảnh hưởng vốn sandbox theo dõi trên giấy.
 - **Phần theo dõi sandbox (circuit breaker):** OUST 7cp × $46.00 = **$322.00** + phần cash sandbox còn lại theo dõi trên giấy (~$382, không đổi) ≈ **~$704.0** — quanh mốc gốc $700, còn rất xa ngưỡng chốt lời x2 (~$1400) và ngưỡng dừng hẳn (~$0). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động thêm, tiếp tục giữ nguyên vị thế OUST với stop-loss hiện tại ($42.13).** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-14 ~10:39 ET (14:39 UTC) — Kiểm tra định kỳ (phiên tương tác): OUST tạo đỉnh phiên mới $48.69, dời trailing stop lên $42.85
+
+- **Sync đầu phiên:** `git fetch` phát hiện local sau `origin/main` 10 commit (tới `c557804`) — đã `git pull` fast-forward, không xung đột.
+- `get_equity_positions` (704170133): sandbox vẫn đúng **1 vị thế: OUST 7cp** @ giá vốn $45.43. Core-10 đủ 10/10 slot, khớp `trading-log.md`: RSP(2cp), MSFT(1cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), NOW(3cp), AMD(1cp) — không có mã lạ.
+- `get_equity_historicals` (5min, 09:30 ET tới nay) xác nhận đỉnh phiên thật **$48.69** (bar 10:05 ET) — vượt đỉnh cũ $47.88 dùng đặt stop $42.13 hiện tại (đặt lúc check-in 08-13 09:59 ET).
+- **Đã dời trailing stop-loss OUST:** hủy lệnh GTC cũ (`6a7dcdbe...` @ $42.13, xác nhận `cancelled`), đặt lệnh mới GTC stop_market bán toàn bộ 7cp @ trigger **$42.85** (đỉnh $48.69 × 0.88, đúng công thức trailing -12% nhóm rủi ro cao). Order ID: `6a7f28a0-02bc-4f19-a56a-a8c28926961c`, `unconfirmed` lúc đặt (trong quyền tự chủ sandbox, không cần duyệt).
+- Giá hiện tại lúc kiểm tra: $47.84 (so với giá vốn $45.43 → +5.30%; so với đóng cửa hôm qua $45.13 → +6.00%). Chưa chạm ngưỡng chốt lời +15% nhóm rủi ro cao.
+- `get_portfolio`: cash **$1,181.86**, buying_power **$1,181.86**.
+- **Phần theo dõi sandbox (circuit breaker):** OUST 7cp × $47.84 = **$334.88** + phần cash sandbox còn lại theo dõi trên giấy (~$382, không đổi) ≈ **~$716.9** — trên mốc gốc $700 nhẹ, còn rất xa ngưỡng chốt lời x2 (~$1400) và ngưỡng dừng hẳn (~$0). Không breach ngưỡng nào.
+- **Quyết định: chỉ dời trailing stop-loss theo đỉnh mới (bắt buộc theo quy định), không mua/bán thêm.** Có thay đổi thật (dời stop) → đã gửi PushNotification.

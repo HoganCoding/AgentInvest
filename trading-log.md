@@ -3349,3 +3349,30 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **ASTS/XOM/JPM/RSP/MSFT/VOO/AMD:** biến động trong biên độ bình thường (dưới 3% so lần kiểm tra trước), không breach ngưỡng cắt lỗ/chốt lời nào, không cần WebSearch thêm.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
 - **Không có đề xuất mua/bán/dời stop nào lần kiểm tra này** — không mã nào breach ngưỡng, IREN chưa có đỉnh mới để dời stop, CRM/NOW bật tăng không có tin xấu/tốt mới đủ trọng lượng. Không gửi PushNotification.
+
+## 2026-08-14 ~10:39 ET (14:39 UTC) — Kiểm tra định kỳ (phiên tương tác, sync git) — AMD tạo đỉnh mới +5% trong ngày, đề xuất dời stop-loss
+
+- **Sync đầu phiên:** `git fetch` phát hiện local sau `origin/main` 10 commit — đã `git pull` fast-forward, không xung đột.
+- `get_equity_positions` xác nhận core-10 đủ **10/10 slot**, không đổi: RSP(2cp), MSFT(1cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), NOW(3cp), AMD(1cp). `get_equity_orders` (từ 08-14 00:00 UTC tới nay): rỗng — không có lệnh core-10 nào mới/khớp.
+- P&L so với giá vốn (giá ~10:39 ET/14:39 UTC, so với đóng cửa 08-13):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Khoảng cách tới stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $71.465 | +28.85% | -0.08% | $65.19 | ~8.8% |
+  | IREN | $40.06 | $45.29 | +13.06% | +1.18% | $43.04 | ~5.0% |
+  | XOM | $151.60 | $160.875 | +6.12% | +1.43% | $152.34 | ~5.3% |
+  | JPM | $347.97 | $365.175 | +4.95% | +0.57% | $344.85 | ~5.6% |
+  | VOO | $688.26 | $714.22 | +3.77% | -0.10% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $222.67 | +3.60% | -0.03% | $210.04 | ~5.7% |
+  | CRM | $191.24 | $196.49 | +2.75% | -2.42% | $188.27 | ~4.2% |
+  | AMD | $494.58 | $507.33 | +2.58% | **+5.03%** | $469.85 | ~7.4% |
+  | MSFT | $488.00 | $499.00 | +2.25% | +0.43% | $487.15 | ~2.4% |
+  | NOW | $126.63 | $123.865 | -2.18% | -2.66% | $120.30 | ~2.9% |
+
+- **AMD +5.03% trong ngày, tạo đỉnh mới rõ rệt (đã WebSearch — vượt ngưỡng 3-5%):** `get_equity_historicals` (5min, 09:30 ET tới nay) xác nhận đỉnh phiên (đang tiếp diễn, giá vẫn tăng) đạt **$507.33** — không có tin xấu, WebSearch xác nhận consensus vẫn "Strong Buy" (42 analyst, không ai khuyến nghị bán), tiếp diễn narrative tích cực từ đầu tháng 8 (data-center/AI). Đỉnh dùng đặt stop hiện tại chỉ là giá vốn mua $494.58 (stop $469.85 = -5% từ giá vốn, chưa từng dời theo đỉnh). Theo công thức trailing -5% nhóm tech từ đỉnh mới: stop mới = $507.33 × 0.95 ≈ **$481.96** — cao hơn đáng kể so với $469.85 hiện tại (+$12.11, ~2.5%).
+  - **Đề xuất: dời stop-loss AMD từ $469.85 lên $481.96** (hủy lệnh GTC cũ, đặt lệnh GTC stop_market mới bán 1cp @ trigger $481.96) — khóa thêm lợi nhuận theo đúng kỷ luật trailing stop, giá vẫn đang tăng nên có thể đỉnh thực tế cao hơn nữa nếu chờ xác nhận cuối phiên.
+  - **Rủi ro chính:** nếu AMD đảo chiều mạnh trong phần còn lại phiên, đỉnh $507.33 có thể chưa phải đỉnh cuối cùng — dời sớm không sai nhưng có thể cần dời lại nếu giá tiếp tục tăng thêm hôm nay.
+  - **Chờ Hogan duyệt trước khi thực hiện** (core-10, không thuộc quyền tự chủ sandbox).
+- **IREN/XOM/JPM/VOO/RSP/CRM/MSFT/NOW:** biến động trong biên độ bình thường hoặc chưa tạo đỉnh mới vượt mốc dùng đặt stop hiện tại, không breach ngưỡng cắt lỗ/chốt lời nào.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
+- **Tóm tắt hành động cần Hogan:** duyệt dời stop-loss AMD lên $481.96 (hoặc từ chối/chờ thêm). Đã gửi PushNotification.
