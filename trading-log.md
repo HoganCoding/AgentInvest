@@ -3442,3 +3442,27 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - So với lần kiểm tra 12:08 ET, tất cả các mã biến động dưới 2% — không mã nào vượt ngưỡng 3-5% cần WebSearch sâu thêm.
 - Không mã nào breach ngưỡng cắt lỗ/chốt lời. Chưa tới ngày review định kỳ 30 ngày (mốc kế tiếp 2026-09-01).
 - **Không có đề xuất MỚI nào lần kiểm tra này** — đề xuất dời stop AMD vẫn là đề xuất cũ (12:08 ET) đang chờ duyệt, không gửi thêm PushNotification để tránh trùng lặp.
+
+## 2026-08-14 ~15:31 ET (19:31 UTC) — Kiểm tra định kỳ (routine tự động, sync git) — Không breach, đề xuất dời stop AMD (12:08 ET) vẫn chờ duyệt
+
+- **Sync đầu phiên:** `git pull` — local `main` sau `origin/main` 15 commit (HEAD trước đó ở trạng thái detached, đã checkout lại `main` và fast-forward), không xung đột.
+- `get_equity_positions` xác nhận core-10 đủ **10/10 slot**, không đổi: RSP(2cp), MSFT(1cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), NOW(3cp), AMD(1cp). (OUST 7cp là sandbox, bỏ qua theo quy tắc đồng bộ.) `get_equity_orders` (từ 17:11 UTC tới nay): không có lệnh core-10 nào mới/khớp — đề xuất dời stop-loss AMD lên $485.90 (từ 12:08 ET) **vẫn chưa được duyệt/thực hiện**, stop AMD hiện tại vẫn $481.96.
+- P&L so với giá vốn (giá ~15:31 ET/19:31 UTC, so với đóng cửa 08-13):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Khoảng cách tới stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $70.615 | +27.32% | -1.27% | $65.19 | ~7.7% |
+  | IREN | $40.06 | $44.535 | +11.16% | -0.50% | $43.04 | ~3.4% |
+  | XOM | $151.60 | $159.91 | +5.48% | +0.82% | $152.34 | ~4.7% |
+  | JPM | $347.97 | $362.80 | +4.26% | -0.09% | $344.85 | ~5.0% |
+  | VOO | $688.26 | $713.46 | +3.66% | -0.21% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $222.76 | +3.64% | +0.01% | $210.04 | ~5.7% |
+  | CRM | $191.24 | $196.55 | +2.78% | -2.39% | $188.27 | ~4.4% |
+  | AMD | $494.58 | $508.665 | +2.85% | +5.32% | $481.96 (đề xuất $485.90 chờ duyệt) | ~5.3% |
+  | MSFT | $488.00 | $495.51 | +1.54% | -0.28% | $487.15 | ~1.7% |
+  | NOW | $126.63 | $124.699 | -1.53% | -1.98% | $120.30 | ~3.5% |
+
+- **AMD +5.32% trong ngày, giá $508.665 vẫn THẤP HƠN đỉnh phiên $511.4717 đã dùng để tính đề xuất dời stop lên $485.90 (gửi 12:08 ET)** — chưa tạo đỉnh mới vượt mốc đó, không cần tính lại đề xuất. Nhắc lại đề xuất cũ, chưa thấy Hogan duyệt/lệnh thực hiện.
+- So với lần kiểm tra 13:11 ET, biến động lớn nhất là XOM +0.82%, CRM -2.39% — đều dưới ngưỡng 3-5% cần WebSearch sâu thêm, không có dấu hiệu bất thường.
+- Không mã nào breach ngưỡng cắt lỗ/chốt lời. Chưa tới ngày review định kỳ 30 ngày (mốc kế tiếp 2026-09-01).
+- **Không có đề xuất MỚI nào lần kiểm tra này** — đề xuất dời stop AMD vẫn là đề xuất cũ (12:08 ET) đang chờ duyệt, không gửi thêm PushNotification để tránh trùng lặp.
