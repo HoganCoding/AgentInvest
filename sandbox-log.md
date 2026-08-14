@@ -2514,3 +2514,17 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - `get_portfolio`: cash **$1,181.86**, buying_power **$1,181.86** — không đổi so với lần check trước.
 - **Phần theo dõi sandbox (circuit breaker):** OUST 7cp × $47.53 = **$332.71** + phần cash sandbox còn lại theo dõi trên giấy (~$382, không đổi) ≈ **~$714.7** — quanh mốc gốc $700, còn rất xa ngưỡng chốt lời x2 (~$1400) và ngưỡng dừng hẳn (~$0). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động thêm, tiếp tục giữ nguyên vị thế OUST với stop-loss hiện tại ($42.85).** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-14 ~12:21 ET (16:21 UTC) — OUST +4.63% từ lần check trước, dời trailing stop lên đỉnh mới
+
+- **Sync đầu phiên:** `git pull` — đã up to date, không có commit mới từ phiên khác.
+- `get_equity_positions` (704170133): sandbox vẫn đúng **1 vị thế: OUST 7cp** @ giá vốn $45.43. Core-10 đủ 10/10 slot, khớp `trading-log.md`: RSP(2cp), MSFT(1cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), NOW(3cp), AMD(1cp) — không có mã lạ nào cần đối chiếu wash-sale/cross-attribution.
+- `get_equity_quotes` OUST: giá hiện tại **$49.73** (16:20:51 UTC) so với giá vốn $45.43 → **+9.46%**; so với đóng cửa hôm qua $45.13 → +10.19%; so với lần check trước (11:20 ET, $47.53) → **+4.63%** — vượt ngưỡng 3-5%, đã WebSearch tin tức.
+- **Tin tức (WebSearch):** không có tin xấu mới. Đà tăng tiếp diễn theo narrative tích cực đã biết: KQKD Q2 doanh thu $54.63M (+56% YoY), EPS $0.27 (vượt ước tính $0.14); Oppenheimer nâng price target lên $57 (giữ Outperform) trước KQKD; Roth MKM giữ Buy; thắng hợp đồng Utah BlueCity (traffic management) có thể mở rộng doanh thu tại Mỹ/Âu/Á. Không có catalyst tiêu cực nào được tìm thấy — biến động hôm nay là momentum tăng tiếp diễn, không phải nhiễu bất thường.
+  - Nguồn: [Simply Wall St - stock climbed](https://simplywall.st/stocks/us/tech/nasdaq-oust/ouster/news/ouster-oust-stock-climbed-what-is-behind-the-move), [Simply Wall St - revenue momentum](https://simplywall.st/stocks/us/tech/nasdaq-oust/ouster/news/ouster-oust-stock-can-revenue-momentum-justify-a-142x-ps)
+- `get_equity_historicals` (5min, từ 09:30 ET/13:30 UTC) xác nhận đỉnh phiên thật **$49.87** (bar 16:15-16:20 UTC) — cao hơn đỉnh $48.69 dùng đặt stop hiện tại ($42.85, đặt lúc 10:39 ET). Theo công thức trailing -12% nhóm rủi ro cao từ đỉnh mới: stop mới = $49.87 × 0.88 ≈ **$43.89** — cao hơn stop cũ $42.85.
+- **Hành động: dời trailing stop-loss OUST lên đỉnh mới.** Hủy lệnh stop cũ `6a7f28a0...` @ $42.85 (state → `cancelled`, xác nhận qua get_equity_orders), đặt lệnh GTC stop_market mới bán 7cp @ trigger **$43.89**, order id `6a7f409e-127d-4452-98a3-145f337d8ab6` (state=unconfirmed lúc đặt, theo đúng kỷ luật "chỉ dời lên, không dời xuống", sandbox tự quyết theo quyền tự chủ đã có).
+- Chưa chạm ngưỡng chốt lời +15% từng phần nhóm rủi ro cao (đang +9.46%, còn cách ~5.5 điểm %).
+- `get_portfolio`: cash **$1,181.86**, buying_power **$1,181.86** — không đổi.
+- **Phần theo dõi sandbox (circuit breaker):** OUST 7cp × $49.73 = **$348.11** + phần cash sandbox còn lại theo dõi trên giấy (~$382, không đổi) ≈ **~$730.1** — trên mốc gốc $700, còn rất xa ngưỡng chốt lời +15% từng phần (đã tính riêng ở trên), ngưỡng chốt lời x2 (~$1400) và ngưỡng dừng hẳn (~$0). Không breach ngưỡng nào.
+- **Có hành động thật (dời stop-loss) → đã gửi PushNotification.**
