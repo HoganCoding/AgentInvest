@@ -2485,3 +2485,10 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - `get_portfolio`: cash **$1,181.86**, buying_power **$1,181.86**.
 - **Phần theo dõi sandbox (circuit breaker):** OUST 7cp × $47.84 = **$334.88** + phần cash sandbox còn lại theo dõi trên giấy (~$382, không đổi) ≈ **~$716.9** — trên mốc gốc $700 nhẹ, còn rất xa ngưỡng chốt lời x2 (~$1400) và ngưỡng dừng hẳn (~$0). Không breach ngưỡng nào.
 - **Quyết định: chỉ dời trailing stop-loss theo đỉnh mới (bắt buộc theo quy định), không mua/bán thêm.** Có thay đổi thật (dời stop) → đã gửi PushNotification.
+
+## 2026-08-14 ~10:46 ET (14:46 UTC) — Xác nhận lệnh dời stop OUST đã confirmed, không breach
+
+- `get_equity_orders` xác nhận stop-loss OUST mới (`6a7f28a0...` @ $42.85) đã chuyển trạng thái `confirmed`.
+- Giá hiện tại $48.235 (so vốn $45.43 → +6.17%; so đóng cửa hôm qua $45.13 → +6.87%). Khoảng cách tới stop ~11.2%, chưa breach, chưa chạm ngưỡng chốt lời +15%.
+- Phần theo dõi sandbox: OUST 7cp × $48.235 = $337.65 + cash sandbox theo dõi (~$382) ≈ ~$719.6. Không breach ngưỡng nào.
+- Không có hành động mới — không gửi PushNotification (không có thay đổi thật so với lần ghi log trước).

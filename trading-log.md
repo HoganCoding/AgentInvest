@@ -3382,3 +3382,9 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Quyết định của Hogan:** "duyệt AMD dời stop lên $481.96" — duyệt đúng mức đề xuất.
 - Đã hủy lệnh GTC cũ (`6a7dcd02...` @ $469.85, xác nhận `cancelled`) và đặt lệnh mới GTC stop_market bán 1cp AMD @ trigger **$481.96** (đỉnh $507.33 × 0.95, đúng công thức trailing -5% nhóm tech). Order ID: `6a7f2a0a-35ef-4244-a223-9f1164d028e6`, `unconfirmed` lúc đặt.
 - Không có thay đổi số lượng nắm giữ — chỉ dời stop-loss.
+
+## 2026-08-14 ~10:46 ET (14:46 UTC) — Xác nhận lệnh dời stop AMD đã confirmed, không mã nào breach
+
+- `get_equity_orders` xác nhận stop-loss AMD mới (`6a7f2a0a...` @ $481.96) đã chuyển trạng thái `confirmed`. Các stop-loss khác không đổi: RSP $210.04, MSFT $487.15, JPM $344.85, XOM $152.34, CRM $188.27, NOW $120.30, ASTS $65.19, IREN $43.04.
+- P&L nhanh (giá ~10:46 ET): ASTS +28.19%, IREN +11.66% (khoảng cách tới stop thu hẹp còn ~3.8% do giá rút từ đỉnh, chưa breach), XOM +6.09%, JPM +4.86%, VOO +3.79%, RSP +3.58%, CRM +2.53%, AMD +2.26%, MSFT +2.25%, NOW -2.27%. Không mã nào breach.
+- Không có đề xuất/hành động mới.
