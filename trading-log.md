@@ -3519,3 +3519,34 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Mua PANW:** lệnh limit 1cp @ $377.30 (sát ask lúc đặt), đã `filled` toàn bộ, giá TB thực khớp **$377.1399/cp** (~$377.14 tổng, ~6.4% danh mục). Order ID: `6a8313b9-285a-47f8-b3d5-3a35a9ed6023`. Đặt stop-loss GTC stop_market bán 1cp @ trigger **$358.28** (-5% từ giá vốn, nhóm tech). Order ID: `6a8313c6-d2a6-4ad7-bbf4-b326b7bbc2c0`.
 - **Core-10 giờ đủ lại 10/10 slot:** RSP(2cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), AMD(1cp), **AMZN(2cp, mới)**, **PANW(1cp, mới)**.
 - Không vi phạm wash-sale — AMZN từng nắm giữ nhưng thoát có lãi (+0.55%, 07-22); PANW chưa từng nắm giữ.
+
+## 2026-08-17 ~13:14 ET (17:14 UTC) — Kiểm tra định kỳ (phiên tương tác, sync git) — IREN tạo đỉnh mới, đề xuất dời stop-loss; các mã khác không breach
+
+- **Sync đầu phiên:** `git fetch` + `git pull` — local sau `origin/main` 2 commit (2 lần check sandbox), đã fast-forward, không xung đột.
+- `get_equity_positions` xác nhận core-10 đủ **10/10 slot**, không đổi: RSP(2cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), AMD(1cp), AMZN(2cp), PANW(1cp). (OUST 7cp là sandbox, bỏ qua theo quy tắc đồng bộ.)
+- P&L so với giá vốn (giá ~13:14 ET/17:14 UTC, so với đóng cửa 08-14):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Đổi so với đóng cửa 08-14 | Stop-loss hiện tại | Khoảng cách tới stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $71.97 | +29.75% | +1.39% | $65.19 | ~9.4% |
+  | XOM | $151.60 | $161.48 | +6.53% | +0.86% | $152.34 | ~5.7% |
+  | JPM | $347.97 | $364.67 | +4.80% | +0.50% | $344.85 | ~5.4% |
+  | AMD | $494.58 | $510.69 | +3.26% | -0.72% | $490.08 | ~4.0% |
+  | VOO | $688.26 | $711.89 | +3.43% | -0.24% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $221.55 | +3.08% | -0.55% | $210.04 | ~5.2% |
+  | IREN | $40.06 | $46.21 | +15.35% | **+4.88%** | $43.04 | ~6.9% (đỉnh mới, xem dưới) |
+  | PANW | $377.14 | $374.08 | -0.81% | -2.65% | $358.28 | ~4.2% |
+  | AMZN | $261.47 | $258.92 | -0.98% | -1.42% | $248.40 | ~4.1% |
+  | CRM | $191.24 | $190.76 | -0.25% | -2.78% | $188.27 | ~1.3% (sát nhất danh mục) |
+
+- **IREN +4.88% trong ngày, vượt ngưỡng 3-5% — đã WebSearch:** `get_equity_historicals` (5min, 09:30 ET tới nay) xác nhận đỉnh phiên thật **$46.5899** (bar 12:35-12:40 ET/16:35-16:40 UTC), cao hơn đỉnh $45.31 dùng đặt stop hiện tại ($43.04). Không có tin xấu — tiếp diễn narrative tích cực: hoàn tất thâu tóm Mirantis $625M (công bố 08-04, cổ phiếu +4% khi đó), đà tăng nhóm AI-datacenter/bitcoin-miner tiếp diễn 2 phiên liên tiếp (+10% rồi +10% nữa theo tin trước đó), earnings tiếp theo 08-27 (rủi ro sự kiện gần).
+  - Theo công thức trailing -5% nhóm tech từ đỉnh mới: stop mới = $46.5899 × 0.95 ≈ **$44.26** — cao hơn $43.04 hiện tại (+$1.22, ~2.8%).
+  - **Đề xuất: dời stop-loss IREN từ $43.04 lên $44.26** (hủy lệnh GTC cũ `6a7dccf7...`, đặt lệnh GTC stop_market mới bán 7cp @ trigger $44.26) — khóa thêm lợi nhuận theo đúng kỷ luật trailing stop.
+  - **Rủi ro chính:** earnings 08-27 sắp tới có thể gây biến động mạnh 2 chiều; dời stop sớm giúp khóa lời nhưng nếu giá tiếp tục tăng trước earnings có thể cần dời thêm.
+  - **Chờ Hogan duyệt trước khi thực hiện** (core-10, không thuộc quyền tự chủ sandbox).
+- **CRM khoảng cách tới stop chỉ còn ~1.3% (sát nhất danh mục)** — giảm 2.78% hôm nay, tiếp diễn áp lực SaaS đã ghi nhận nhiều lần, chưa breach. Sẽ tự động khớp nếu tiếp tục giảm, không cần hành động chủ động.
+- **AMZN/PANW giảm nhẹ (-1.42%/-2.65%) kể từ khi mua sáng nay** — trong biên độ bình thường, chưa breach, không cần WebSearch sâu.
+- **ASTS/XOM/JPM/AMD/VOO/RSP:** biến động trong biên độ bình thường, chưa tạo đỉnh mới vượt mốc dùng đặt stop hiện tại (AMD đỉnh $515.87 vẫn cao nhất, giá hiện $510.69 chưa vượt).
+- **Sandbox OUST:** $49.52 (+1.67% so đóng cửa 08-14), dưới đỉnh phiên trước đó dùng dời stop 13:11 ET ($51.8494) — không có đỉnh mới, stop $45.63 vẫn hiệu lực, chưa breach (~7.9%). Không hành động, không cần ghi thêm (đã ghi sandbox-log.md riêng).
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
+- **Tóm tắt hành động cần Hogan:** duyệt dời stop-loss IREN từ $43.04 lên $44.26 (hoặc từ chối/chờ thêm). Đã gửi PushNotification.
