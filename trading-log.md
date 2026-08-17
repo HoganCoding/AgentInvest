@@ -3550,3 +3550,9 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Sandbox OUST:** $49.52 (+1.67% so đóng cửa 08-14), dưới đỉnh phiên trước đó dùng dời stop 13:11 ET ($51.8494) — không có đỉnh mới, stop $45.63 vẫn hiệu lực, chưa breach (~7.9%). Không hành động, không cần ghi thêm (đã ghi sandbox-log.md riêng).
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
 - **Tóm tắt hành động cần Hogan:** duyệt dời stop-loss IREN từ $43.04 lên $44.26 (hoặc từ chối/chờ thêm). Đã gửi PushNotification.
+
+## 2026-08-17 ~13:27 ET (17:27 UTC) — Thực hiện đề xuất 13:14 ET (đã duyệt qua phiên tương tác): dời stop-loss IREN
+
+- **Quyết định của Hogan:** "duyệt dời stop IREN lên $44.26" — duyệt đúng mức đề xuất.
+- Đã hủy lệnh GTC cũ `6a7dccf7-87af-45c1-99f0-cf3b72695eff` @ $43.04 (xác nhận `cancelled`) và đặt lệnh mới GTC stop_market bán 7cp IREN @ trigger **$44.26** (đỉnh phiên $46.5899 x 0.95, đúng công thức trailing -5% nhóm tech). Order ID: `6a834484-f65f-4e15-a614-735cf4a0b66a`, xác nhận `confirmed`.
+- Không có thay đổi số lượng nắm giữ — chỉ dời stop-loss.
