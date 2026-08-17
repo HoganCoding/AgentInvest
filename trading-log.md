@@ -3510,3 +3510,12 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Chờ Hogan chọn 2/3 lựa chọn** (hoặc mã khác) để lấp đủ 2 slot large-cap tech. Core-10 vẫn cần Hogan duyệt trước khi đặt lệnh mua (khác sandbox).
 
 - **Tóm tắt hành động cần Hogan:** (1) chọn 2 trong 3 (PANW/AMZN/GOOGL) để lấp 2 slot large-cap tech thay MSFT+NOW; (2) duyệt đề xuất cập nhật dời stop-loss AMD lên $490.08 (thay thế đề xuất $485.90 cũ đã lỗi thời). Đã gửi PushNotification.
+
+## 2026-08-17 ~09:59 ET (13:59 UTC) — Thực hiện đề xuất 09:52 ET (đã duyệt qua phiên tương tác): dời stop AMD, mua AMZN 2cp + PANW 1cp lấp 2 slot tech trống
+
+- **Quyết định của Hogan:** "1.dời stop loss amd, 2.amznx2, pawn" — duyệt dời stop AMD lên $490.08; chọn AMZN (2cp) + PANW (1cp) trong 3 lựa chọn đề xuất (không chọn GOOGL).
+- **Dời stop-loss AMD:** hủy lệnh GTC cũ `6a7f2a0a...` @ $481.96 (xác nhận `cancelled`), đặt lệnh mới GTC stop_market bán 1cp @ trigger **$490.08** (đỉnh phiên $515.8681 × 0.95). Order ID: `6a8313c4-d3e6-47d7-b7e5-b3bf85bf3619`.
+- **Mua AMZN:** lệnh limit 2cp @ $261.48 (sát ask lúc đặt), đã `filled` toàn bộ, giá TB thực khớp **$261.47/cp** (~$522.94 tổng, ~8.9% danh mục lúc mua). Order ID: `6a8313b8-262b-491a-af36-473e5f5408b9`. Đặt stop-loss GTC stop_market bán 2cp @ trigger **$248.40** (-5% từ giá vốn, nhóm tech). Order ID: `6a8313c5-f480-451b-a5e3-9a38a81d581c`.
+- **Mua PANW:** lệnh limit 1cp @ $377.30 (sát ask lúc đặt), đã `filled` toàn bộ, giá TB thực khớp **$377.1399/cp** (~$377.14 tổng, ~6.4% danh mục). Order ID: `6a8313b9-285a-47f8-b3d5-3a35a9ed6023`. Đặt stop-loss GTC stop_market bán 1cp @ trigger **$358.28** (-5% từ giá vốn, nhóm tech). Order ID: `6a8313c6-d2a6-4ad7-bbf4-b326b7bbc2c0`.
+- **Core-10 giờ đủ lại 10/10 slot:** RSP(2cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), AMD(1cp), **AMZN(2cp, mới)**, **PANW(1cp, mới)**.
+- Không vi phạm wash-sale — AMZN từng nắm giữ nhưng thoát có lãi (+0.55%, 07-22); PANW chưa từng nắm giữ.
