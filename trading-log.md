@@ -3466,3 +3466,47 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - So với lần kiểm tra 13:11 ET, biến động lớn nhất là XOM +0.82%, CRM -2.39% — đều dưới ngưỡng 3-5% cần WebSearch sâu thêm, không có dấu hiệu bất thường.
 - Không mã nào breach ngưỡng cắt lỗ/chốt lời. Chưa tới ngày review định kỳ 30 ngày (mốc kế tiếp 2026-09-01).
 - **Không có đề xuất MỚI nào lần kiểm tra này** — đề xuất dời stop AMD vẫn là đề xuất cũ (12:08 ET) đang chờ duyệt, không gửi thêm PushNotification để tránh trùng lặp.
+
+## 2026-08-17 ~09:52 ET (13:52 UTC) — Kiểm tra định kỳ (routine tự động, sync git) — MSFT và NOW đã bị trailing stop-loss tự động khớp sáng nay đầu phiên; core-10 còn 8/10 slot — ĐỀ XUẤT 3 lựa chọn thay 2 slot large-cap tech; AMD tạo đỉnh mới, đề xuất cập nhật dời stop
+
+- **Sync đầu phiên:** local `main` sau `origin/main` 18 commit (HEAD trước đó ở trạng thái detached), đã checkout lại `main` và fast-forward thành công, không xung đột.
+- **Phát hiện: MSFT và NOW đã bị stop-loss GTC tự động khớp lúc mở cửa hôm nay (qua cuối tuần dài từ lần kiểm tra 08-14 15:31 ET):**
+  - **MSFT:** lệnh `6a7a357f...` (trigger $487.15, đặt 08-10 theo đỉnh $512.79) khớp **13:43:31 UTC (~9:43 ET)**, bán hết 1cp @ $487.15. Giá vốn $488.00 → lỗ thực hiện rất nhỏ **-0.17%** (~-$0.85). **Wash-sale: cấm mua lại MSFT tới ~2026-09-16.**
+  - **NOW:** lệnh `6a7b5ec9...` (trigger $120.30, đặt 08-11 tại giá vốn, chưa từng dời vì chưa tạo đỉnh mới) khớp **13:44:47 UTC (~9:44 ET)**, bán hết 3cp @ $120.29. Giá vốn $126.6299 → lỗ thực hiện **-5.01%** (đúng ngưỡng cắt lỗ -5% mặc định nhóm tech). **Wash-sale: cấm mua lại NOW tới ~2026-09-16.**
+  - Cả 2 đều là lệnh GTC tự động đặt sẵn khớp đúng kỷ luật trailing stop, không phải quyết định mới của phiên nào — routine này chỉ ghi nhận.
+  - **Bối cảnh (đã WebSearch):** đây là tiếp diễn rõ rệt câu chuyện "SaaSpocalypse" đã ghi nhận nhiều lần trước (08-13 MSFT giảm cùng CRM/NOW trong khi QQQ dương) — MSFT đã giảm >25% từ đầu năm 2026, ServiceNow/Salesforce mất hơn nửa vốn hóa trong năm nay do lo ngại AI agent (đặc biệt sau Claude Cowork) sẽ thay thế mô hình SaaS thu phí theo đầu người. Không phải tin xấu mới riêng của MSFT/NOW hôm nay — không có sự kiện/tin tức tiêu cực đơn lẻ mới trong 24h qua, chỉ là tiếp diễn xu hướng cấu trúc đã biết và đã cảnh báo trước đó.
+- **Core-10 hiện còn 8/10 slot:** RSP(2cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), AMD(1cp) — thiếu **2 slot large-cap tech** (thay MSFT + NOW).
+- P&L nhanh (giá ~09:52 ET, so với đóng cửa 08-14 do cuối tuần):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi từ 08-14 | Stop-loss hiện tại | Khoảng cách tới stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $74.105 | **+33.61%** | +4.41% | $65.19 | ~12.0% |
+  | AMD | $494.58 | $513.93 | +3.91% | -0.09% (đỉnh mới trong phiên) | $481.96 | ~6.2% |
+  | IREN | $40.06 | $44.62 | +11.38% | +1.27% | $43.04 | ~3.5% |
+  | JPM | $347.97 | $365.15 | +4.94% | +0.64% | $344.85 | ~5.6% |
+  | XOM | $151.60 | $160.17 | +5.65% | +0.04% | $152.34 | ~4.9% |
+  | VOO | $688.26 | $713.20 | +3.63% | -0.06% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $221.92 | +3.25% | -0.38% | $210.04 | ~5.4% |
+  | CRM | $191.24 | $190.90 | -0.18% | -2.71% | $188.27 | ~1.4% |
+
+- **CRM khoảng cách tới stop thu hẹp còn ~1.4% (sát nhất danh mục), giảm cùng đợt "SaaSpocalypse" với MSFT/NOW vừa bị stop** — chưa breach, sẽ tự động khớp nếu tiếp tục giảm, không cần hành động chủ động (đúng kỷ luật, không chase/không bán sớm hơn stop đã đặt).
+- **AMD tạo đỉnh mới cao hơn kể từ đề xuất 08-14 12:08 ET (chưa được duyệt):** `get_equity_historicals` (5min, đầu phiên hôm nay) xác nhận đỉnh phiên **$515.8681** (bar 09:30-09:35 ET) — cao hơn đỉnh $511.4717 (08-14) dùng cho đề xuất $485.90 đang chờ. Đề xuất cũ nay đã lỗi thời (giá đã tạo đỉnh cao hơn).
+  - **Đề xuất cập nhật: dời stop-loss AMD từ $481.96 lên $490.08** (= $515.8681 × 0.95, thay thế đề xuất $485.90 cũ) — hủy lệnh GTC cũ `6a7f2a0a...`, đặt lệnh GTC stop_market mới bán 1cp @ trigger $490.08.
+  - **Rủi ro chính:** nếu AMD điều chỉnh mạnh trong phần còn lại phiên, đỉnh $515.87 (mới thiết lập đầu phiên) có thể chưa giữ vững; nhưng đúng kỷ luật trailing stop, chỉ dời lên không dời xuống.
+- **ASTS +33.61%, tiếp tục vượt xa ngưỡng chốt lời chủ động +15% nhóm rủi ro cao** — đề xuất bán 1 phần đã bị Hogan từ chối 2026-08-05 ~11:06 ET, không có tin/diễn biến mới (chỉ tiếp diễn đà tăng đã biết, phóng vệ tinh BlueBird 11/12/13 thành công 08-05, đang sản xuất tới BlueBird 42) — không đủ căn cứ mới để lặp lại đề xuất đã bị từ chối, theo đúng tiền lệ nhất quán từ 08-05.
+- **IREN/JPM/XOM/VOO/RSP:** biến động trong biên độ bình thường hoặc chưa tạo đỉnh mới vượt mốc dùng đặt stop hiện tại, không breach ngưỡng cắt lỗ/chốt lời nào.
+
+### ĐỀ XUẤT — Lấp 2 slot large-cap tech (thay MSFT + NOW): 3 lựa chọn, Hogan chọn 2
+
+- **Sàng lọc loại trừ:** đã held (CRM/AMD), MSFT/NOW bản thân (wash-sale tới ~09-16, mới), CSCO (wash-sale tới ~09-12), AVGO (wash-sale tới ~08-27), NVDA (wash-sale tới ~08-26), AAPL (wash-sale tới ~08-30), TXN (wash-sale tới ~09-02), ORCL (luận điểm bear chưa đổi — FCF âm nặng, S&P gần "junk", Michael Burry vẫn short), IBM/ADBE/NFLX (lý do cơ bản/quản trị đã ghi nhận 07-22/07-23, chưa re-verify lần này). GOOGL: wash-sale từ lần bán lỗ 07-17 đã hết hạn (~08-16, hôm qua) — kỹ thuật hợp lệ trở lại.
+
+- **Lựa chọn A: PANW (Palo Alto Networks)** — $377.34/cp (-1.81% hôm nay, nhưng đang gần đỉnh 52 tuần, +123% trong 52 tuần, +9.33% tháng qua tính tới 08-12). Dẫn đầu ngành an ninh mạng, hưởng lợi trực tiếp từ lo ngại AI-agent bị lợi dụng hack thực tế (khác hẳn rủi ro "AI thay thế SaaS" vừa khiến MSFT/NOW bị stop) — RBC vừa nâng target lên $434 (từ $330, 08-14), đà tăng cả ngành cybersecurity được Palantir "kéo theo" sau KQKD bùng nổ. Đã nghiên cứu 4 lần trước (07-30, 08-05, 08-10, 08-13) nhưng Hogan luôn chọn mã khác — vẫn hợp lệ, không wash-sale, không tin xấu. Rủi ro chính: định giá rất cao (PE ~290+), earnings tiếp theo đầu tháng 9 (rủi ro sự kiện). Đề xuất mua **1cp market (~$377, ~6.5% danh mục)**, stop-loss -5% từ giá vốn khi khớp.
+
+- **Lựa chọn B: AMZN (Amazon)** — $262.73/cp (+0.03% hôm nay). Q2 2026 doanh thu $200.6B (+20% YoY), operating income +43%, AWS tái tăng tốc lên 37% (nhanh nhất 18 quý, run-rate $169B), giá đã tăng ~15-17% sau KQKD. Từng nắm giữ trong danh mục (thoát 07-22 ở mức **+0.55% — lãi, không phải lỗ**, không dính wash-sale). Đa dạng hóa cloud/retail, khác hẳn CRM (SaaS)/AMD (bán dẫn). Rủi ro chính: capex AI $220B (nâng từ dự kiến ban đầu) gây lo ngại margin dài hạn; định giá đã phản ánh phần lớn tin tốt sau rally.
+
+- **Lựa chọn C: GOOGL (Alphabet)** — $345.01/cp (-0.26% hôm nay). Google Cloud Q2 tăng tốc lên 82% YoY ($24.8B), nâng capex cả năm lên $195-205B, cổ phiếu đã phục hồi hết phần giảm sau KQKD, +20% YTD. Wash-sale từ lần bán lỗ 07-17 (-5.00%) đã hết hạn hôm qua (~08-16) — hợp lệ trở lại. Lưu ý: từng có sự cố mua nhầm GOOGL trong cửa sổ wash-sale (07-28, đã bán lại để dừng vi phạm thêm) — sự cố đó là lỗi quy trình đặt lệnh ngoài routine, không liên quan tới chất lượng cơ bản của GOOGL. Rủi ro chính: cùng nhóm hyperscaler-capex với AMZN nếu chọn cả 2 (tăng tương quan, nên cân nhắc đa dạng nếu chọn cả A+B+C).
+
+- **Khuyến nghị của agent (không bắt buộc):** ưu tiên PANW (đa dạng hóa nhóm ngành tốt nhất — bảo mật, ít tương quan với rủi ro "AI thay thế SaaS/hyperscaler capex" đã ảnh hưởng MSFT/NOW) + 1 trong AMZN/GOOGL (cả 2 đều tốt, GOOGL cloud tăng tốc mạnh hơn nhưng AMZN đa dạng hơn về mảng retail).
+- **Chờ Hogan chọn 2/3 lựa chọn** (hoặc mã khác) để lấp đủ 2 slot large-cap tech. Core-10 vẫn cần Hogan duyệt trước khi đặt lệnh mua (khác sandbox).
+
+- **Tóm tắt hành động cần Hogan:** (1) chọn 2 trong 3 (PANW/AMZN/GOOGL) để lấp 2 slot large-cap tech thay MSFT+NOW; (2) duyệt đề xuất cập nhật dời stop-loss AMD lên $490.08 (thay thế đề xuất $485.90 cũ đã lỗi thời). Đã gửi PushNotification.
