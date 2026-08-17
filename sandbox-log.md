@@ -2571,3 +2571,14 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - `get_portfolio`: cash **$1,181.86**, buying_power **$1,181.86** — không đổi so với lần check trước.
 - **Phần theo dõi sandbox (circuit breaker):** OUST 7cp × $48.70 = **$340.90** + phần cash sandbox còn lại theo dõi trên giấy (~$382, không đổi) ≈ **~$722.9** — trên mốc gốc $700 nhẹ, còn rất xa ngưỡng chốt lời x2 (~$1400) và ngưỡng dừng hẳn (~$0). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động thêm, tiếp tục giữ nguyên vị thế OUST với stop-loss hiện tại ($43.89).** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-17 ~09:18 ET (13:18 UTC) — Kiểm tra định kỳ (routine tự động, sync git, phiên đầu tuần sau cuối tuần): OUST +1.60% so với lần check trước (08-14), chưa có đỉnh mới — không hành động
+
+- **Sync đầu phiên:** `git pull` — đã up to date với `origin/main` (`c13a1df`), không có commit mới từ phiên khác kể từ lần kiểm tra cuối 08-14 16:11 ET.
+- `get_equity_positions` (704170133): sandbox vẫn đúng **1 vị thế: OUST 7cp** @ giá vốn $45.43 — không đổi qua cuối tuần. Core-10 đủ 10/10 slot, khớp `trading-log.md` mới nhất: RSP(2cp), MSFT(1cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), NOW(3cp), AMD(1cp) — không có mã lạ nào cần đối chiếu wash-sale/cross-attribution.
+- `get_equity_orders` (từ 08-14 20:11 UTC tới nay): **rỗng** — không có lệnh mới/khớp nào trên toàn tài khoản qua cuối tuần (stop-loss OUST GTC stop_market @ $43.89 vẫn nguyên trạng, không bị hủy/khớp).
+- `get_equity_quotes` OUST: giá tham chiếu gần nhất (pre-market) **$49.48** (13:17:58 UTC) so với giá vốn $45.43 → **+8.92%**; so với đóng cửa phiên trước (08-14) $48.71 → +1.58%; so với lần check trước (08-14 16:11 ET, $48.70) → **+1.60%** — dưới ngưỡng 3-5%, không cần WebSearch tin mới. Thị trường chưa mở cửa chính thức (9:18 ET, trước 9:30 ET) nên giá này là pre-market, có thể biến động khi mở cửa.
+- Giá $49.48 vẫn thấp hơn đỉnh phiên $49.87 đã dùng dời stop lúc 08-14 12:21 ET — không có đỉnh mới, không cần dời thêm. Stop-loss GTC stop_market @ $43.89 vẫn còn hiệu lực, chưa breach (còn cách ~11.3%). Chưa chạm ngưỡng chốt lời +15% từng phần nhóm rủi ro cao (đang +8.92%).
+- `get_portfolio`: cash **$1,181.86**, buying_power **$1,181.86** — không đổi so với lần check trước, không có unsettled funds.
+- **Phần theo dõi sandbox (circuit breaker):** OUST 7cp × $49.48 = **$346.36** + phần cash sandbox còn lại theo dõi trên giấy (~$382, không đổi) ≈ **~$728.4** — trên mốc gốc $700 nhẹ, còn rất xa ngưỡng chốt lời x2 (~$1400) và ngưỡng dừng hẳn (~$0). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động thêm, tiếp tục giữ nguyên vị thế OUST với stop-loss hiện tại ($43.89).** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
