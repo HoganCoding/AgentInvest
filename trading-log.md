@@ -3593,3 +3593,27 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **CRM vẫn sát stop nhất (~1.3%)** nhưng chưa breach — không hành động, để tự động khớp theo kỷ luật nếu tiếp tục giảm.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
 - **Không có đề xuất mới lần kiểm tra này** — không breach cắt lỗ/chốt lời, không tin xấu mới, không đỉnh giá mới đáng kể cần dời stop. Không gửi PushNotification (không có thay đổi thật).
+
+## 2026-08-17 ~15:31 ET (19:31 UTC) — Kiểm tra định kỳ (routine tự động, sync git) — không có đề xuất mới
+
+- **Sync đầu phiên:** local `main` sau `origin/main` (HEAD trước đó ở trạng thái detached), đã checkout lại `main` và fast-forward, không xung đột.
+- `get_equity_positions` xác nhận core-10 đủ **10/10 slot**, không đổi: RSP(2cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), AMD(1cp), AMZN(2cp), PANW(1cp). (OUST 7cp là sandbox, bỏ qua theo quy tắc đồng bộ.) `get_equity_orders` từ 18:21 UTC (lần kiểm tra trước) tới nay: không có lệnh core-10 nào mới/khớp.
+- P&L so với giá vốn (giá ~15:31 ET/19:31 UTC, so với đóng cửa 08-14):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Stop-loss hiện tại | Khoảng cách tới stop |
+  |---|---|---|---|---|---|
+  | ASTS | $55.47 | $70.85 | +27.73% | $65.19 | ~8.6% |
+  | XOM | $151.60 | $161.29 | +6.39% | $152.34 | ~5.6% |
+  | IREN | $40.06 | $45.06 | +12.48% | $44.26 | ~1.8% (sát stop nhất) |
+  | JPM | $347.97 | $362.20 | +4.09% | $344.85 | ~4.8% |
+  | VOO | $688.26 | $710.54 | +3.24% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $220.91 | +2.78% | $210.04 | ~4.9% |
+  | AMD | $494.58 | $505.71 | +2.25% | $490.08 | ~3.1% |
+  | CRM | $191.24 | $191.36 | +0.06% | $188.27 | ~1.6% |
+  | PANW | $377.14 | $376.82 | -0.08% | $358.28 | ~4.9% |
+  | AMZN | $261.47 | $260.58 | -0.34% | $248.40 | ~4.7% |
+
+- **So với lần kiểm tra gần nhất (~14:21 ET cùng ngày, ~70 phút trước):** tất cả 10 mã dao động trong biên độ bình thường (dưới ±1% so với giá tại lần kiểm tra trước), không mã nào vượt ngưỡng 3-5% cần WebSearch sâu. IREN giảm nhẹ so với lần trước (chưa tạo đỉnh mới vượt $46.59 đã dùng đặt stop $44.26) — không cần dời thêm.
+- **IREN (~1.8%) và CRM (~1.6%) vẫn là 2 mã sát stop-loss nhất danh mục** nhưng chưa breach — không hành động, để tự động khớp theo kỷ luật nếu tiếp tục giảm.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
+- **Không có đề xuất mới lần kiểm tra này** — không breach cắt lỗ/chốt lời, không tin xấu mới, không đỉnh giá mới đáng kể cần dời stop. Không gửi PushNotification (không có thay đổi thật).
