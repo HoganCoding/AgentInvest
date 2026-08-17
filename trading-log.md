@@ -3569,3 +3569,27 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Quyết định của Hogan:** "giữ nguyên ASTS, không bán, theo tiền lệ 08-05" — từ chối cân nhắc lại đề xuất chốt lời một phần dù có diễn biến mới (Deutsche Bank hạ target xuống $93, xu hướng hạ target liên tục trong năm).
 - Không có thay đổi vị thế — ASTS 5cp tiếp tục giữ nguyên, stop-loss trailing hiện tại $65.19 không đổi.
 - Ghi nhận nhất quán với tiền lệ 08-05: không lặp lại đề xuất chốt lời trừ khi có diễn biến thực sự mới đủ mạnh (đã đưa ra tin Deutsche Bank lần này, Hogan vẫn quyết định giữ).
+
+## 2026-08-17 ~14:21 ET (18:21 UTC) — Kiểm tra định kỳ (routine tự động, sync git) — không có đề xuất mới
+
+- **Sync đầu phiên:** `git pull` — local đã up to date với `origin/main` (a55c75f..cee3e58, đã có sẵn từ trước khi bắt đầu), không xung đột.
+- `get_equity_positions` xác nhận core-10 đủ **10/10 slot**, không đổi: RSP(2cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), AMD(1cp), AMZN(2cp), PANW(1cp). (OUST 7cp là sandbox, bỏ qua theo quy tắc đồng bộ.)
+- P&L so với giá vốn (giá ~14:21 ET/18:21 UTC, so với đóng cửa 08-14):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Stop-loss hiện tại | Khoảng cách tới stop |
+  |---|---|---|---|---|---|
+  | ASTS | $55.47 | $71.11 | +28.20% | $65.19 | ~8.3% |
+  | XOM | $151.60 | $162.20 | +6.99% | $152.34 | ~6.1% |
+  | JPM | $347.97 | $362.90 | +4.29% | $344.85 | ~5.0% |
+  | IREN | $40.06 | $45.51 | +13.60% | $44.26 | ~2.7% |
+  | VOO | $688.26 | $710.95 | +3.30% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $221.19 | +2.91% | $210.04 | ~5.0% |
+  | AMD | $494.58 | $508.42 | +2.80% | $490.08 | ~3.6% |
+  | PANW | $377.14 | $374.36 | -0.74% | $358.28 | ~4.3% |
+  | CRM | $191.24 | $190.80 | -0.23% | $188.27 | ~1.3% (sát nhất danh mục) |
+  | AMZN | $261.47 | $259.93 | -0.59% | $248.40 | ~4.4% |
+
+- **So với lần kiểm tra gần nhất (~13:14-13:40 ET cùng ngày, ~40-70 phút trước):** tất cả 10 mã dao động trong biên độ bình thường (dưới ±1.5% so với giá tại lần kiểm tra trước), không mã nào vượt ngưỡng 3-5% cần WebSearch sâu. AMD chưa vượt đỉnh phiên $515.87 đã dùng đặt stop $490.08; IREN chưa vượt đỉnh phiên $46.59 đã dùng đặt stop $44.26 (giá hiện $45.51 thấp hơn đỉnh đó) — không có đỉnh mới nào cần dời stop thêm.
+- **CRM vẫn sát stop nhất (~1.3%)** nhưng chưa breach — không hành động, để tự động khớp theo kỷ luật nếu tiếp tục giảm.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
+- **Không có đề xuất mới lần kiểm tra này** — không breach cắt lỗ/chốt lời, không tin xấu mới, không đỉnh giá mới đáng kể cần dời stop. Không gửi PushNotification (không có thay đổi thật).
