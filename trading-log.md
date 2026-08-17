@@ -3563,3 +3563,9 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Piper Sandler (08-12) đưa target $98 — không rõ chi tiết đầy đủ (nguồn chặn truy cập), nhưng cùng vùng giá quanh $93-98, thấp hơn nhiều target cũ.
 - **Không phải tin xấu nghiêm trọng** (không kiện tụng/gian lận/mất CEO) — cả 2 target ($93, $98) vẫn cao hơn giá hiện tại ~$71.78 (+~30% upside hàm ý), rating vẫn Hold/Buy tùy hãng, không phải Sell. Nhưng LÀ diễn biến mới (xu hướng hạ target liên tục + lý do cạnh tranh cụ thể) kể từ lần đề xuất chốt lời một phần bị từ chối 08-05 (khi đó chưa có thông tin này).
 - **Không tự đề xuất lại chốt lời** trong lần kiểm tra này (chỉ ghi nhận tin theo yêu cầu) — đã trình bày tin cho Hogan, chờ Hogan quyết định có muốn cân nhắc lại đề xuất chốt lời một phần (ASTS hiện +29.4% từ vốn, đã vượt xa ngưỡng +15%) hay tiếp tục giữ nguyên theo tiền lệ 08-05.
+
+## 2026-08-17 ~13:40 ET (17:40 UTC) — Quyết định của Hogan: giữ nguyên ASTS, không chốt lời một phần dù có tin Deutsche Bank hạ target
+
+- **Quyết định của Hogan:** "giữ nguyên ASTS, không bán, theo tiền lệ 08-05" — từ chối cân nhắc lại đề xuất chốt lời một phần dù có diễn biến mới (Deutsche Bank hạ target xuống $93, xu hướng hạ target liên tục trong năm).
+- Không có thay đổi vị thế — ASTS 5cp tiếp tục giữ nguyên, stop-loss trailing hiện tại $65.19 không đổi.
+- Ghi nhận nhất quán với tiền lệ 08-05: không lặp lại đề xuất chốt lời trừ khi có diễn biến thực sự mới đủ mạnh (đã đưa ra tin Deutsche Bank lần này, Hogan vẫn quyết định giữ).
