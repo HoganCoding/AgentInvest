@@ -2608,4 +2608,18 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - Chưa chạm ngưỡng chốt lời +15% từng phần nhóm rủi ro cao (đang +9.97%, còn cách ~5 điểm %).
 - `get_portfolio`: cash **$1,129.80**, buying_power **$281.78** — không đổi so với lần check trước (do core-10 mua AMZN/PANW sáng nay, pool dùng chung, không ảnh hưởng vị thế sandbox).
 - **Phần theo dõi sandbox (circuit breaker):** OUST 7cp × $49.96 = **$349.72** + phần cash sandbox còn lại theo dõi trên giấy (~$382, không đổi) ≈ **~$731.7** — trên mốc gốc $700, còn rất xa ngưỡng chốt lời +15% từng phần (đã tính riêng ở trên), ngưỡng chốt lời x2 (~$1400) và ngưỡng dừng hẳn (~$0). Không breach ngưỡng nào.
+
+## 2026-08-17 ~14:09 ET (18:09 UTC) — Kiểm tra định kỳ (routine tự động, sync git): OUST rút ~6.8% từ đỉnh phiên, không có đỉnh mới, không có tin xấu — không hành động
+
+- **Sync đầu phiên:** `git pull` — local đã ở tip `origin/main`, không có commit mới từ phiên khác kể từ lần kiểm tra 13:11 ET (13:14/13:27/13:35/13:40 ET là các entry core-10, không liên quan sandbox), không xung đột.
+- `get_equity_positions` (704170133): sandbox vẫn đúng **1 vị thế: OUST 7cp** @ giá vốn $45.43 — không đổi. Core-10 đủ 10/10 slot, khớp `trading-log.md` mới nhất: RSP(2cp), VOO(0.72647cp), IREN(7cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), AMD(1cp), AMZN(2cp), PANW(1cp) — không có mã lạ nào cần đối chiếu wash-sale/cross-attribution.
+- `get_equity_orders` OUST (từ 17:11 UTC tới nay): chỉ có lệnh stop-loss GTC stop_market @ $45.63 (`6a8340cd...`, state `confirmed`) — không bị hủy/khớp, vẫn nguyên trạng.
+- `get_equity_quotes` OUST: giá hiện tại **$48.33** (18:09:21 UTC) so với giá vốn $45.43 → **+6.38%**; so với đóng cửa phiên trước (08-14) $48.71 → -0.78%; so với lần check trước (13:11 ET, $49.96) → **-3.26%** — vượt nhẹ ngưỡng 3%, đã kiểm tra thêm.
+- `get_equity_historicals` (5min, 13:30-18:00 UTC) xác nhận đỉnh phiên thật vẫn là **$51.8494** (bar 15:55-16:00 UTC = 11:55 ET, trước lần check 13:11 ET) — không có đỉnh mới nào hình thành sau đó, giá đã giảm đều từ đỉnh xuống $48.33 hiện tại (~-6.8% từ đỉnh). Không cần dời stop (chỉ dời lên khi có đỉnh mới, đỉnh vẫn không đổi so với lần check trước).
+- **Tin tức (WebSearch nhanh):** không tìm thấy tin xấu/catalyst mới ngày 08-17. Vẫn là các thông tin đã biết (KQKD Q2 mạnh công bố 08-06, Oppenheimer target $57, target trung bình $54.57). Đợt rút giá hiện tại có vẻ là chốt lời/điều chỉnh kỹ thuật bình thường sau đà tăng mạnh 2 phiên liên tiếp (từ ~$45 lên đỉnh $51.85), không phải phản ứng với tin tức mới.
+  - Nguồn: [stockanalysis.com - OUST](https://stockanalysis.com/stocks/oust/), [Nasdaq - OUST news](https://www.nasdaq.com/market-activity/stocks/oust/news-headlines)
+- Giá $48.33 vẫn cách stop-loss hiện tại $45.63 khoảng **~5.6%** — chưa breach. Chưa chạm ngưỡng chốt lời +15% từng phần nhóm rủi ro cao (đang +6.38%, đã lùi xa khỏi mức +9.97% của lần check trước).
+- `get_portfolio`: cash **$1,129.80**, buying_power **$281.78** — không đổi so với lần check trước.
+- **Phần theo dõi sandbox (circuit breaker):** OUST 7cp × $48.33 = **$338.31** + phần cash sandbox còn lại theo dõi trên giấy (~$382, không đổi) ≈ **~$720.3** — trên mốc gốc $700, còn rất xa ngưỡng chốt lời x2 (~$1400) và ngưỡng dừng hẳn (~$0). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động thêm, tiếp tục giữ nguyên vị thế OUST với stop-loss hiện tại ($45.63).** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
 - **Có hành động thật (dời stop-loss) → sẽ gửi PushNotification.**
