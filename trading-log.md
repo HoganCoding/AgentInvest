@@ -3556,3 +3556,10 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Quyết định của Hogan:** "duyệt dời stop IREN lên $44.26" — duyệt đúng mức đề xuất.
 - Đã hủy lệnh GTC cũ `6a7dccf7-87af-45c1-99f0-cf3b72695eff` @ $43.04 (xác nhận `cancelled`) và đặt lệnh mới GTC stop_market bán 7cp IREN @ trigger **$44.26** (đỉnh phiên $46.5899 x 0.95, đúng công thức trailing -5% nhóm tech). Order ID: `6a834484-f65f-4e15-a614-735cf4a0b66a`, xác nhận `confirmed`.
 - Không có thay đổi số lượng nắm giữ — chỉ dời stop-loss.
+
+## 2026-08-17 ~13:35 ET (17:35 UTC) — Kiểm tra tin tức ASTS theo yêu cầu Hogan — Deutsche Bank hạ target lần nữa xuống $93 (từ $106), tiếp diễn xu hướng hạ target từ đầu năm; chưa đề xuất hành động mới
+
+- **Deutsche Bank hạ price target ASTS xuống $93 (từ $106) hôm nay 08-17, giữ rating Hold** — tiếp diễn chuỗi hạ target trong năm: $139 → $117 (do Amazon thâu tóm Globalstar, lo ngại cạnh tranh direct-to-device) → hạ rating Buy→Hold kèm target $106 (29/05) → nay $93 (08-17). Lý do gốc (từ báo cáo trước) là mô hình định giá lại giả định giá cước thấp hơn ~15% do cạnh tranh trực tiếp gia tăng trong mảng direct-to-device satellite.
+- Piper Sandler (08-12) đưa target $98 — không rõ chi tiết đầy đủ (nguồn chặn truy cập), nhưng cùng vùng giá quanh $93-98, thấp hơn nhiều target cũ.
+- **Không phải tin xấu nghiêm trọng** (không kiện tụng/gian lận/mất CEO) — cả 2 target ($93, $98) vẫn cao hơn giá hiện tại ~$71.78 (+~30% upside hàm ý), rating vẫn Hold/Buy tùy hãng, không phải Sell. Nhưng LÀ diễn biến mới (xu hướng hạ target liên tục + lý do cạnh tranh cụ thể) kể từ lần đề xuất chốt lời một phần bị từ chối 08-05 (khi đó chưa có thông tin này).
+- **Không tự đề xuất lại chốt lời** trong lần kiểm tra này (chỉ ghi nhận tin theo yêu cầu) — đã trình bày tin cho Hogan, chờ Hogan quyết định có muốn cân nhắc lại đề xuất chốt lời một phần (ASTS hiện +29.4%25 từ vốn, đã vượt xa ngưỡng +15%25) hay tiếp tục giữ nguyên theo tiền lệ 08-05.
