@@ -2671,3 +2671,13 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **Phần theo dõi sandbox (circuit breaker):** OUST đã bán hết → phần Đầu Tư giờ 100% cash = cash trước đó theo dõi (~$382) + proceeds bán OUST ($311.64) ≈ **~$693.6** — giảm nhẹ (~-0.9%) so với mốc gốc $700 do khoản lỗ nhỏ, còn rất xa ngưỡng dừng hẳn (gần $0) và ngưỡng chốt lời x2 (~$1400). Không breach ngưỡng nào.
 - **Quyết định: không mở vị thế mới ngay trong lần kiểm tra này** — thị trường đang risk-off diện rộng (lợi suất tăng vọt, dầu tăng), chưa xác nhận ổn định/volume thật theo bộ lọc "trước khi vào lệnh mới" (CLAUDE.md 2026-07-24). Sẽ cân nhắc mã mới ở lần kiểm tra tiếp theo khi thị trường ổn định hơn.
 - **Có sự kiện thật (stop-loss tự động khớp) → đã gửi PushNotification.**
+
+## 2026-08-18 ~10:14 ET (14:14 UTC) — Kiểm tra định kỳ (routine tự động, sync git): sandbox vẫn 100% cash sau stop-loss OUST, thị trường vẫn risk-off (QQQ -1.69%) — chưa mở vị thế mới
+
+- **Sync đầu phiên:** `git fetch` + so sánh `origin/main` — local đã ở tip `a344ac8`, không có commit mới từ phiên khác kể từ lần kiểm tra 10:10 ET, không xung đột.
+- `get_equity_positions` (704170133): **sandbox không có vị thế nào** (xác nhận đúng theo log 10:10 ET — OUST đã bị trailing stop bán hết lúc mở cửa). Core-10 8/10 slot: AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), PANW(1cp) — khớp đúng `trading-log.md` mới nhất, không có mã lạ nào cần đối chiếu wash-sale/cross-attribution.
+- **Wash-sale ghi nhớ:** cấm mua lại OUST tới ~2026-09-17 (bán lỗ -2.00% sáng nay).
+- `get_portfolio`: cash **$2,234.67**, buying_power **$1,129.80** (phần unsettled còn lại từ giao dịch core-10/sandbox trước đó).
+- **Đánh giá cơ hội mới:** `get_equity_quotes` SPY/QQQ — SPY $767.94 (-0.61% so với đóng cửa hôm qua $772.67), QQQ $717.50 (**-1.69%** so với đóng cửa hôm qua $729.87). Theo bộ lọc "trước khi vào lệnh mới" nhóm rủi ro cao (CLAUDE.md 2026-07-24): không mở vị thế rủi ro cao mới khi benchmark liên quan giảm >1.5-2% trong phiên — QQQ -1.69% đã ở trong vùng cấm này (tiếp diễn đà bán tháo vĩ mô do lợi suất trái phiếu tăng vọt + giá dầu tăng, đã ghi nhận ở lần check pre-market 09:15 ET). **Không tìm mã mới lần này.**
+- **Phần theo dõi sandbox (circuit breaker):** 100% cash ≈ **~$693.6** (không đổi so với lần check 10:10 ET) — dưới mốc gốc $700 nhẹ do khoản lỗ nhỏ từ OUST, còn rất xa ngưỡng dừng hẳn (gần $0) và ngưỡng chốt lời x2 (~$1400). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động — tiếp tục giữ 100% cash, chờ thị trường ổn định hơn (QQQ về dưới ngưỡng -1.5%) trước khi cân nhắc mở vị thế rủi ro cao mới.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
