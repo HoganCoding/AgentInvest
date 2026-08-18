@@ -2692,3 +2692,13 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - `get_equity_quotes` SPY/QQQ: SPY $767.88 (-0.62% so với đóng cửa hôm qua $772.67), QQQ $716.98 (**-1.77%** so với đóng cửa hôm qua $729.87) — vẫn trong vùng cấm mở vị thế rủi ro cao mới theo bộ lọc CLAUDE.md (>1.5-2%), gần như không đổi so với lần check trước (-1.69%) → không cần WebSearch tin mới, chưa đủ điều kiện tìm mã mới.
 - **Phần theo dõi sandbox (circuit breaker):** 100% cash ≈ **~$693.6** (không đổi so với lần check 10:14 ET) — dưới mốc gốc $700 nhẹ do khoản lỗ nhỏ từ OUST, còn rất xa ngưỡng dừng hẳn (gần $0) và ngưỡng chốt lời x2 (~$1400). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động — tiếp tục giữ 100% cash, chờ thị trường ổn định hơn (QQQ về dưới ngưỡng -1.5%) trước khi cân nhắc mở vị thế rủi ro cao mới.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-18 ~13:10 ET (17:10 UTC) — Kiểm tra định kỳ (routine tự động, sync git): vẫn 100% cash, QQQ cải thiện nhẹ lên -1.52% (vẫn sát vùng cấm) — chưa mở vị thế mới
+
+- **Sync đầu phiên:** `git pull origin main` — fast-forward, không xung đột (đã cập nhật commit mới nhất trước khi đọc log).
+- `get_equity_positions` (704170133): **sandbox không có vị thế nào** (khớp log 10:10-11:15 ET — OUST đã bị trailing stop bán hết sáng nay, chưa mở lại). Core-10 8/10 slot không đổi: AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), PANW(1cp) — khớp `trading-log.md`, không có mã lạ nào cần đối chiếu wash-sale/cross-attribution.
+- **Wash-sale ghi nhớ:** cấm mua lại OUST tới ~2026-09-17.
+- `get_portfolio`: cash **$2,234.67**, buying_power **$1,129.80** — không đổi so với lần check 11:15 ET.
+- `get_equity_quotes` SPY/QQQ: SPY $768.71 (-0.51% so với đóng cửa hôm qua $772.67), QQQ $718.76 (**-1.52%** so với đóng cửa hôm qua $729.87) — cải thiện nhẹ so với lần check trước (-1.77% lúc 11:15 ET) nhưng vẫn ở ngay rìa/trong vùng cấm mở vị thế rủi ro cao mới theo bộ lọc CLAUDE.md (>1.5-2%). Chưa đủ biên an toàn để coi là "đã ổn định" — không WebSearch thêm, chưa tìm mã mới lần này.
+- **Phần theo dõi sandbox (circuit breaker):** 100% cash ≈ **~$693.6** (không đổi so với lần check trước) — dưới mốc gốc $700 nhẹ do khoản lỗ nhỏ từ OUST, còn rất xa ngưỡng dừng hẳn (gần $0) và ngưỡng chốt lời x2 (~$1400). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động — tiếp tục giữ 100% cash, chờ QQQ ổn định rõ hơn dưới -1.5% trước khi cân nhắc mở vị thế rủi ro cao mới.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
