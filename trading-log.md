@@ -3687,3 +3687,13 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **JPM/VOO/RSP/AMZN/PANW:** biến động trong biên độ bình thường, chưa tạo đỉnh mới vượt mốc dùng đặt stop hiện tại, không breach ngưỡng nào.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01). Slot rủi ro cao vẫn tạm hoãn theo lý do đã nêu sáng nay (QQQ vẫn risk-off, chưa xác nhận ổn định).
 - **Không gửi PushNotification lần này** — 2 đề xuất chính (XOM stop, chọn GOOGL/PLTR) không đổi về bản chất so với thông báo đã gửi sáng nay (chỉ Hogan chưa phản hồi), việc tinh chỉnh XOM lên $157.10 và đề xuất mới CRM $188.48 đều là các điều chỉnh rất nhỏ (<0.2%) không đủ trọng yếu để làm phiền thêm trong cùng ngày — đã ghi đầy đủ vào log để Hogan xem khi phản hồi các đề xuất đang chờ.
+
+## 2026-08-18 ~14:23 ET (18:23 UTC) — Hogan duyệt cả 3 đề xuất đang chờ (phiên tương tác): dời stop XOM/CRM, mua GOOGL lấp slot tech thay AMD
+
+- **Quyết định của Hogan:** "duyệt hết: dời stop XOM và CRM, mua GOOGL" — duyệt toàn bộ 3 đề xuất đang chờ từ các lần kiểm tra trước.
+- **Xác nhận wash-sale GOOGL trước khi mua:** GOOGL bán lỗ -5.00% ngày 07-17, wash-sale 30 ngày hết hạn 08-16 — hôm nay 08-18 đã qua mốc 2 ngày, hợp lệ mua lại (không tính lần mua nhầm 07-28 đã bán lại cùng ngày).
+- **1) Dời stop-loss XOM:** hủy lệnh GTC cũ (`6a7a3584...`, trigger $152.34) — xác nhận `cancelled`. Đặt lệnh GTC stop_market mới bán 3cp @ trigger **$157.10** (`6a84a2f1...`).
+- **2) Dời stop-loss CRM:** hủy lệnh GTC cũ (`6a7a3585...`, trigger $188.27) — xác nhận `cancelled`. Đặt lệnh GTC stop_market mới bán 3cp @ trigger **$188.48** (`6a84a2f2...`).
+- **3) Mua GOOGL lấp slot large-cap tech (thay AMD):** đặt lệnh limit mua 1cp @ $343.82 (marketable, ~giá ask lúc đó) — khớp ngay lúc 18:22:55 UTC @ **$343.7982** (`6a84a2ff...`). Đặt kèm stop-loss GTC stop_market bán 1cp @ trigger **$326.61** (= $343.7982 × 0.95, mức -5% mặc định nhóm tech) (`6a84a305...`).
+- **Core-10 nay đủ 9/10 slot:** AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), PANW(1cp), **GOOGL(1cp, mới)** — vẫn thiếu 1 slot rủi ro cao (thay IREN, tạm hoãn chờ QQQ ổn định, QQQ hiện -1.65%).
+- **Có hành động thật (2 lệnh dời stop + 1 lệnh mua mới) → sẽ gửi PushNotification.**
