@@ -2713,6 +2713,17 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **Phần theo dõi sandbox (circuit breaker):** 100% cash ≈ **~$693.6** (không đổi) — dưới mốc gốc $700 nhẹ do khoản lỗ nhỏ từ OUST, còn rất xa ngưỡng dừng hẳn (gần $0) và ngưỡng chốt lời x2 (~$1400). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động — tiếp tục giữ 100% cash, chờ QQQ ổn định rõ hơn dưới -1.5% trước khi cân nhắc mở vị thế rủi ro cao mới.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
 
+## 2026-08-18 ~16:08 ET (20:08 UTC) — Kiểm tra định kỳ (routine tự động, sync git, gần/ngay giờ đóng cửa): vẫn 100% cash, QQQ -1.68% (đi ngang, vẫn trong vùng cấm) — chưa mở vị thế mới
+
+- **Sync đầu phiên:** `git pull origin main` — đã up to date với `origin/main`, không có commit mới từ phiên khác kể từ lần kiểm tra 15:09 ET, không xung đột.
+- `get_equity_positions` (704170133): **sandbox không có vị thế nào**. Tất cả 9 vị thế trả về đều khớp đúng core-10 theo `trading-log.md` mới nhất: AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), PANW(1cp) — không có mã lạ nào cần đối chiếu wash-sale/cross-attribution. Core-10 vẫn 9/10 slot, thiếu 1 slot rủi ro cao (thay IREN).
+- `get_equity_orders` (từ 19:09 UTC tới nay): **rỗng** — không có lệnh sandbox nào mới.
+- **Wash-sale ghi nhớ:** cấm mua lại OUST tới ~2026-09-17.
+- `get_portfolio`: cash **$1,890.87**, buying_power **$786.00** — không đổi so với lần check trước.
+- `get_equity_quotes` SPY/QQQ: SPY $767.42 (last trade 19:59:59 UTC, -0.68% so với đóng cửa hôm qua $772.67), QQQ $717.59 (last trade 19:59:59 UTC, **-1.68%** so với đóng cửa hôm qua $729.87) — gần như đi ngang so với lần check trước (-1.70% lúc 15:09 ET), vẫn trong vùng cấm mở vị thế rủi ro cao mới theo bộ lọc CLAUDE.md (>1.5-2%). Mức thay đổi dưới ngưỡng 3-5% — không cần WebSearch tin mới.
+- **Phần theo dõi sandbox (circuit breaker):** 100% cash ≈ **~$693.6** (không đổi) — dưới mốc gốc $700 nhẹ do khoản lỗ nhỏ từ OUST, còn rất xa ngưỡng dừng hẳn (gần $0) và ngưỡng chốt lời x2 (~$1400). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động — tiếp tục giữ 100% cash, chờ QQQ ổn định rõ hơn dưới -1.5% trước khi cân nhắc mở vị thế rủi ro cao mới.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
 ## 2026-08-18 ~15:09 ET (19:09 UTC) — Kiểm tra định kỳ (routine tự động, sync git): vẫn 100% cash, QQQ -1.70% (đi ngang, vẫn trong vùng cấm) — chưa mở vị thế mới
 
 - **Sync đầu phiên:** `git pull origin main` — fast-forward, không xung đột, đã có commit mới nhất (bao gồm GOOGL 14:23 ET và các routine core-10/sandbox trước đó).
