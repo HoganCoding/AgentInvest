@@ -3661,3 +3661,29 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Theo đúng bộ lọc "trước khi vào lệnh mới" (CLAUDE.md 2026-07-24): không mở vị thế rủi ro cao mới khi benchmark liên quan đang giảm mạnh trong phiên. QQQ hôm nay -1.42% (gần ngưỡng -1.5-2%), cộng thêm chính IREN vừa bị stop và ASTS (mã rủi ro cao còn lại) đang giảm -6.34% cùng phiên — đây không phải thời điểm lý tưởng để mở vị thế rủi ro cao mới. Sẽ đề xuất cụ thể ở lần kiểm tra tiếp theo khi có xác nhận ổn định/volume thật (đúng tiền lệ AXTI/ONDS 07-24, OUST/IREN đầu 08-2026).
 
 - **Tóm tắt hành động cần Hogan:** (1) duyệt dời stop-loss XOM từ $152.34 lên $157.01; (2) chọn GOOGL hoặc PLTR (hoặc mã khác) để lấp slot large-cap tech thay AMD. Đã gửi PushNotification.
+
+## 2026-08-18 ~13:11 ET (17:11 UTC) — Kiểm tra định kỳ (routine tự động, sync git) — không có hành động khớp mới; 2 đề xuất cũ (XOM stop, chọn GOOGL/PLTR) vẫn chờ Hogan; cập nhật nhỏ đỉnh giá XOM/CRM
+
+- **Sync đầu phiên:** local ở trạng thái detached HEAD (main a55c75f), đã `git checkout main` + fast-forward 38 commit từ `origin/main` (→859cd94), không xung đột.
+- `get_equity_positions` xác nhận core-10 vẫn **8/10 slot**, không đổi kể từ lần kiểm tra 09:50 ET sáng nay: AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), PANW(1cp) — vẫn thiếu 1 slot rủi ro cao (thay IREN) và 1 slot large-cap tech (thay AMD). `get_equity_orders` từ 13:50 UTC (lần kiểm tra trước) tới nay: không có lệnh nào mới/khớp — 2 đề xuất từ 09:50 ET (dời stop XOM, chọn GOOGL/PLTR) **vẫn đang chờ Hogan**, chưa thấy quyết định qua phiên tương tác nào.
+- P&L nhanh (giá ~13:11 ET/17:11 UTC, so với đóng cửa 08-17):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Khoảng cách tới stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $67.78 | +22.19% | -4.72% | $65.19 | ~3.8% |
+  | XOM | $151.60 | $164.70 | +8.62% | +2.01% (đỉnh mới) | $152.34 (đề xuất $157.01 chờ duyệt) | ~7.5% |
+  | CRM | $191.24 | $198.00 | +3.54% | +3.68% (đỉnh mới) | $188.27 | ~4.9% |
+  | JPM | $347.97 | $360.55 | +3.62% | -0.11% | $344.85 | ~4.3% |
+  | VOO | $688.26 | $706.48 | +2.65% | -0.53% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $220.88 | +2.77% | +0.04% | $210.04 | ~4.9% |
+  | PANW | $377.14 | $373.98 | -0.84% | -0.47% | $358.28 | ~4.2% |
+  | AMZN | $261.47 | $261.81 | +0.13% | +0.19% | $248.40 | ~5.1% |
+
+- **ASTS -4.72% trong ngày (đã cải thiện so với -6.34% lúc 09:50 ET)** — cùng bối cảnh risk-off đã ghi nhận sáng nay (QQQ -1.55% hiện tại, tương đương ~-1.42% sáng nay), không có catalyst công ty mới, chưa breach stop ($65.19, cách ~3.8%). Không cần WebSearch lại (đã kiểm tra sáng nay, không có diễn biến mới).
+- **XOM tạo đỉnh phiên mới $165.37 (11:30 ET/15:30 UTC), cao hơn đỉnh $165.27 dùng tính đề xuất $157.01 sáng nay** — chênh lệch rất nhỏ (~$0.10). Cập nhật đề xuất: stop mới = $165.37 × 0.95 ≈ **$157.10** (thay cho $157.01), vẫn là cùng một đề xuất đang chờ Hogan, chỉ tinh chỉnh theo đỉnh mới nhất.
+- **CRM +3.68% trong ngày, tạo đỉnh phiên mới $198.40 (12:05-12:10 ET/16:05-16:10 UTC), vượt đỉnh $198.18 dùng đặt stop hiện tại ($188.27) — đã WebSearch:** không có tin xấu, không có catalyst đơn lẻ hôm nay được xác nhận — tiếp diễn đà phục hồi đã có (+17.85% trong tháng qua, vượt trội nhóm Computer/Tech -0.41%), phân tích đồng thuận vẫn "Buy" (target trung bình $242.29, +26.87% từ giá hiện tại theo báo cáo gần nhất). **Lưu ý mới: CRM báo cáo KQKD ngày 26/08/2026 (8 ngày tới)** — rủi ro sự kiện gần, biến động 2 chiều có thể lớn quanh ngày đó.
+  - **Đề xuất MỚI: dời stop-loss CRM từ $188.27 lên $188.48** (= $198.40 × 0.95) — hủy lệnh GTC cũ, đặt lệnh GTC stop_market mới bán 3cp @ trigger $188.48. Mức tăng rất nhỏ (~$0.21, ~0.11%) nhưng đúng kỷ luật trailing stop (chỉ dời lên, không dời xuống) theo CLAUDE.md.
+  - **Rủi ro chính:** earnings 08-26 sắp tới có thể gây biến động mạnh; dời stop sớm giúp khóa thêm lời nhưng không bảo vệ khỏi gap-down sau KQKD (stop-loss GTC market có thể khớp giá xấu hơn trigger nếu gap qua đêm).
+- **JPM/VOO/RSP/AMZN/PANW:** biến động trong biên độ bình thường, chưa tạo đỉnh mới vượt mốc dùng đặt stop hiện tại, không breach ngưỡng nào.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01). Slot rủi ro cao vẫn tạm hoãn theo lý do đã nêu sáng nay (QQQ vẫn risk-off, chưa xác nhận ổn định).
+- **Không gửi PushNotification lần này** — 2 đề xuất chính (XOM stop, chọn GOOGL/PLTR) không đổi về bản chất so với thông báo đã gửi sáng nay (chỉ Hogan chưa phản hồi), việc tinh chỉnh XOM lên $157.10 và đề xuất mới CRM $188.48 đều là các điều chỉnh rất nhỏ (<0.2%) không đủ trọng yếu để làm phiền thêm trong cùng ngày — đã ghi đầy đủ vào log để Hogan xem khi phản hồi các đề xuất đang chờ.
