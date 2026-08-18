@@ -3697,3 +3697,30 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **3) Mua GOOGL lấp slot large-cap tech (thay AMD):** đặt lệnh limit mua 1cp @ $343.82 (marketable, ~giá ask lúc đó) — khớp ngay lúc 18:22:55 UTC @ **$343.7982** (`6a84a2ff...`). Đặt kèm stop-loss GTC stop_market bán 1cp @ trigger **$326.61** (= $343.7982 × 0.95, mức -5% mặc định nhóm tech) (`6a84a305...`).
 - **Core-10 nay đủ 9/10 slot:** AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), PANW(1cp), **GOOGL(1cp, mới)** — vẫn thiếu 1 slot rủi ro cao (thay IREN, tạm hoãn chờ QQQ ổn định, QQQ hiện -1.65%).
 - **Có hành động thật (2 lệnh dời stop + 1 lệnh mua mới) → sẽ gửi PushNotification.**
+
+## 2026-08-18 ~15:31 ET (19:31 UTC) — Kiểm tra định kỳ (routine tự động, sync git) — đề xuất dời stop CRM thêm lần nữa (đỉnh mới sau khi lệnh 14:23 ET khớp); không có hành động khớp mới
+
+- **Sync đầu phiên:** local ở trạng thái detached HEAD (main a55c75f), đã `git checkout main` + fast-forward 42 commit từ `origin/main` (→40cb8b6), không xung đột.
+- `get_equity_positions` xác nhận core-10 vẫn **9/10 slot**, không đổi kể từ lần 14:23 ET: AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), PANW(1cp), GOOGL(1cp) — vẫn thiếu 1 slot rủi ro cao (thay IREN). `get_equity_orders` từ 18:23 UTC tới nay: không có lệnh nào mới khớp — chỉ có lệnh stop-loss GOOGL (`6a84a305...`, trigger $326.61) đang chờ như đã đặt.
+- P&L nhanh (giá ~15:31 ET/19:31 UTC, so với đóng cửa 08-17):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Khoảng cách tới stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $67.34 | +21.40% | -5.34% | $65.19 | ~3.2% |
+  | XOM | $151.60 | $165.26 | +9.02% | +2.35% (đỉnh mới nhẹ $165.46) | $157.10 | ~4.9% |
+  | CRM | $191.24 | $198.48 | +3.79% | +3.93% (đỉnh mới $199.41) | $188.48 | ~5.0% |
+  | JPM | $347.97 | $362.29 | +4.11% | +0.37% | $344.85 | ~4.9% |
+  | VOO | $688.26 | $706.13 | +2.60% | -0.58% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $220.68 | +2.67% | -0.05% | $210.04 | ~4.8% |
+  | GOOGL | $343.80 | $344.08 | +0.08% | +0.02% | $326.61 | ~5.1% |
+  | PANW | $377.14 | $374.87 | -0.60% | -0.24% | $358.28 | ~4.4% |
+  | AMZN | $261.47 | $260.18 | -0.49% | -0.43% | $248.40 | ~4.5% |
+
+- **ASTS -5.34% trong ngày nhưng chỉ -0.65% so với lần kiểm tra 13:11 ET (~2h trước)** — cùng bối cảnh risk-off đã ghi nhận cả ngày (QQQ -1.63% hiện tại, SPY -0.58%), không có catalyst công ty mới, không có đỉnh giá mới, chưa breach stop ($65.19, cách ~3.2%). Không cần WebSearch thêm (biến động dưới ngưỡng 3-5% cần kiểm tra sâu tính từ lần check gần nhất).
+- **XOM tạo đỉnh phiên mới nhẹ $165.46 (19:20 UTC), cao hơn đỉnh $165.37 dùng đặt stop hiện tại $157.10** — chênh lệch rất nhỏ (stop lý thuyết mới ≈ $157.19, chỉ +$0.09/+0.06% so với stop hiện tại). Theo tiền lệ 13:11 ET hôm nay (bỏ qua điều chỉnh <0.2%), **không đề xuất dời thêm lần này** — sẽ gộp vào lần kiểm tra sau nếu đỉnh tiếp tục nới rộng đáng kể hơn.
+- **CRM +3.93% trong ngày, tạo đỉnh phiên mới $199.41 (18:20 UTC/14:20 ET), cao hơn đáng kể đỉnh $198.40 dùng đặt stop hiện tại $188.48 (+0.51%)** — không có tin xấu mới (đã kiểm tra tin tức tại lần 13:11 ET, chưa có diễn biến mới trong ~2h qua), tiếp diễn đà tăng đã ghi nhận. Theo công thức trailing -5% nhóm tech: stop mới = $199.41 × 0.95 ≈ **$189.44**.
+  - **Đề xuất: dời stop-loss CRM từ $188.48 lên $189.44** (hủy lệnh GTC cũ `6a84a2f2...`, đặt lệnh GTC stop_market mới bán 3cp @ trigger $189.44). Khóa thêm ~$0.96/cp lợi nhuận, hợp lý trước KQKD CRM ngày 26/08 (8 ngày tới, rủi ro biến động 2 chiều).
+  - **Chờ Hogan duyệt trước khi thực hiện** (core-10, không thuộc quyền tự chủ sandbox).
+- **JPM/VOO/RSP/GOOGL/PANW/AMZN:** biến động trong biên độ bình thường, chưa tạo đỉnh mới đáng kể, không breach ngưỡng nào.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01). Slot rủi ro cao vẫn tạm hoãn — QQQ hôm nay dao động quanh -1.4% đến -1.7% cả ngày, vẫn trong vùng risk-off theo bộ lọc CLAUDE.md (không mở vị thế rủi ro cao mới khi benchmark giảm >1.5-2%/phiên).
+- **Tóm tắt hành động cần Hogan:** duyệt dời stop-loss CRM từ $188.48 lên $189.44 (hoặc từ chối/chờ thêm). Đã gửi PushNotification.
