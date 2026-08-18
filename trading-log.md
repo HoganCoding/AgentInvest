@@ -3617,3 +3617,47 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **IREN (~1.8%) và CRM (~1.6%) vẫn là 2 mã sát stop-loss nhất danh mục** nhưng chưa breach — không hành động, để tự động khớp theo kỷ luật nếu tiếp tục giảm.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
 - **Không có đề xuất mới lần kiểm tra này** — không breach cắt lỗ/chốt lời, không tin xấu mới, không đỉnh giá mới đáng kể cần dời stop. Không gửi PushNotification (không có thay đổi thật).
+
+## 2026-08-18 ~09:50 ET (13:50 UTC) — Kiểm tra định kỳ (routine tự động, sync git) — IREN và AMD bị trailing stop-loss tự động khớp sáng nay đầu phiên; core-10 còn 8/10 slot — ĐỀ XUẤT 2 lựa chọn thay slot large-cap tech (AMD); slot rủi ro cao (IREN) tạm hoãn chờ ổn định; đề xuất dời stop XOM
+
+- **Sync đầu phiên:** local ở trạng thái detached HEAD, đã `git checkout main` + fast-forward 33 commit từ `origin/main` (a55c75f→cc96bba), không xung đột.
+- **Phát hiện: IREN và AMD đã bị stop-loss GTC tự động khớp lúc mở cửa hôm nay:**
+  - **IREN:** lệnh `6a834484...` (trigger $44.26, đặt 08-17 13:27 ET theo đỉnh $46.5899) khớp **13:30:00 UTC (~9:30 ET)**, bán hết 7cp @ $43.60. Giá vốn $40.0591 → **lãi thực hiện +8.84%** (chốt lời theo trailing stop, không phải lỗ — không dính wash-sale). Đây là slot **rủi ro cao** (mua 08-11 thay ACHR/OKLO lineage — lưu ý: các lần kiểm tra 08-17 đã áp nhầm công thức trailing -5% nhóm tech thay vì -12% nhóm rủi ro cao cho IREN kể từ khi mua, nên đã chốt sớm hơn mức lẽ ra đúng theo CLAUDE.md; không thể sửa hồi tố vì lệnh đã khớp, chỉ ghi nhận để tránh lặp lại sai sót phân loại nhóm rủi ro ở các mã tương lai).
+  - **AMD:** lệnh `6a8313c4...` (trigger $490.08, đặt 08-17 09:59 ET theo đỉnh $515.8681) khớp **13:30:01 UTC (~9:30 ET)**, bán hết 1cp @ $488.03. Giá vốn $494.58 → **lỗ thực hiện -1.32%** (~-$6.55). **Wash-sale: cấm mua lại AMD tới ~2026-09-17.** Đây là slot **large-cap tech** (mua 08-13 thay CSCO).
+  - Cả 2 đều là lệnh GTC tự động đặt sẵn khớp đúng kỷ luật trailing stop, không phải quyết định mới của phiên nào — routine này chỉ ghi nhận.
+  - **Bối cảnh phiên:** ngày risk-off rộng — SPY -0.53%, QQQ -1.42% (Nasdaq futures đầu phiên -1.19%) tính tới ~13:50 UTC; AMD giảm thêm do chốt lời sau khi tăng +187% trong 12 tháng qua + vừa phát hành $4.75B senior notes hôm qua, không phải tin xấu cơ bản riêng công ty. IREN cũng giảm nhẹ cùng nhịp nhóm tăng trưởng/đầu cơ.
+- **Core-10 hiện còn 8/10 slot:** AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), ASTS(5cp), XOM(3cp), PANW(1cp) — thiếu **1 slot rủi ro cao** (thay IREN) và **1 slot large-cap tech** (thay AMD).
+- P&L nhanh các mã còn giữ (giá ~09:50 ET/13:50 UTC, so với đóng cửa 08-17):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Khoảng cách tới stop |
+  |---|---|---|---|---|---|---|
+  | ASTS | $55.47 | $66.63 | +20.13% | **-6.34%** | $65.19 | ~2.2% (sát nhất danh mục) |
+  | JPM | $347.97 | $361.73 | +3.95% | +0.21% | $344.85 | ~4.7% |
+  | XOM | $151.60 | $163.64 | +7.96% | +1.35% (đỉnh mới) | $152.34 | ~7.0% |
+  | VOO | $688.26 | $706.64 | +2.67% | -0.51% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $221.13 | +2.88% | +0.15% | $210.04 | ~5.0% |
+  | CRM | $191.24 | $195.34 | +2.14% | +2.29% | $188.27 | ~7.5% (chưa vượt đỉnh dùng đặt stop $198.18) |
+  | AMZN | $261.47 | $259.37 | -0.80% | -0.74% | $248.40 | ~4.5% |
+  | PANW | $377.14 | $372.82 | -1.15% | -0.78% | $358.28 | ~4.2% |
+
+- **ASTS -6.34% trong ngày, khoảng cách tới stop thu hẹp còn ~2.2% (sát nhất danh mục)** — đã WebSearch: không có catalyst tiêu cực riêng công ty mới trong 24h (tin gần nhất vẫn là KQKD Q2 08-11 đã biết, phóng vệ tinh BlueBird 08-05); mức giảm phù hợp với ngày risk-off rộng nhóm tăng trưởng/đầu cơ (QQQ -1.42%). Chưa breach ngưỡng -12% trailing ($65.19) — không hành động, để tự động khớp theo kỷ luật nếu tiếp tục giảm.
+- **XOM tạo đỉnh phiên mới $165.27 (09:30-09:35 ET), vượt đỉnh dùng đặt stop hiện tại (~$160.36, tương ứng stop $152.34) ~3.06% — đã WebSearch:** không có tin xấu — ngược lại tích cực: KQKD Q2 lợi nhuận ròng $14.5B (hơn gấp đôi cùng kỳ), cổ tức $1.03/cp (ex-date 08-17), giá dầu đang tăng. Theo công thức trailing -5% nhóm blue-chip: stop mới = $165.27 × 0.95 ≈ **$157.01**.
+  - **Đề xuất: dời stop-loss XOM từ $152.34 lên $157.01** (hủy lệnh GTC cũ, đặt lệnh GTC stop_market mới bán 3cp @ trigger $157.01).
+  - **Chờ Hogan duyệt trước khi thực hiện** (core-10, không thuộc quyền tự chủ sandbox).
+- **CRM +2.29% trong ngày nhưng chưa vượt đỉnh $198.18 đã dùng đặt stop $188.27** — không cần dời thêm dù khoảng cách tới stop đã giãn ra (~7.5% so với ~1.6% lần kiểm tra trước, do giá phục hồi).
+- **JPM/VOO/RSP/AMZN/PANW:** biến động trong biên độ bình thường, chưa tạo đỉnh mới, không breach ngưỡng nào.
+
+### ĐỀ XUẤT — Lấp slot large-cap tech (thay AMD): 2 lựa chọn, Hogan chọn 1
+
+- **Sàng lọc loại trừ:** đã held (CRM/PANW/AMZN), AMD (wash-sale tới ~09-17, mới), MSFT/NOW (wash-sale tới ~09-16), NVDA (tới ~08-26), AVGO (tới ~08-27), AAPL (tới ~08-30), TXN (tới ~09-02), CSCO (tới ~09-12), ORCL (luận điểm bear chưa đổi), IBM/ADBE/NFLX (lý do cơ bản/quản trị đã ghi nhận trước, chưa re-verify lần này), **META (mới loại: KQKD Q2 08-29 EPS $6.18 miss ước tính $7.19, FCF sụp xuống $784M — thấp nhất gần 4 năm, cổ phiếu -13.3% YTD — fundamentals xấu đi rõ rệt, không đạt tiêu chí chọn mã)**.
+
+- **Lựa chọn A: GOOGL (Alphabet)** — $... (xem giá lúc đề xuất qua get_equity_quotes trước khi đặt lệnh nếu được chọn). Cloud Q2 tăng tốc 82% YoY, EPS Q2 $9.11 (gấp 3 ước tính), Berkshire Hathaway vừa tăng mạnh cổ phần (nay là 1 trong các khoản nắm giữ lớn nhất). Từng nắm giữ trong core-10, thoát lỗ 07-17 (-5.00%) — wash-sale đã hết hạn từ 08-16, hợp lệ mua lại. Đa dạng hóa tốt so với CRM (SaaS)/PANW (bảo mật)/AMZN (đã có). Rủi ro chính: capex AI cả năm nâng lên $195-205B (lo ngại margin dài hạn); Jeff Dean (chief scientist) và một số lãnh đạo AI cấp cao vừa rời công ty (rủi ro nhân sự, chưa rõ ảnh hưởng); tranh chấp cạnh tranh AI Overviews với báo chí Pháp (rủi ro pháp lý, còn nhỏ).
+- **Lựa chọn B: PLTR (Palantir)** — ~$174/cp (giảm ~16% từ đỉnh $207.52). KQKD Q2 doanh thu $1.94B (+93% YoY, vượt ước tính $1.80B), EPS $0.41 vượt ước tính $0.33 (+24%), doanh thu thương mại Mỹ +149% YoY, nâng guidance cả năm. Đa dạng hóa mạnh nhất trong 2 lựa chọn (phần mềm dữ liệu/AI doanh nghiệp+chính phủ, khác hẳn cloud/SaaS/bảo mật hiện có), chưa từng nắm giữ trong core-10 (không wash-sale). Rủi ro chính: định giá cực cao (PE ~150, P/S ~74) — biến động mạnh 2 chiều, dễ điều chỉnh sâu nếu tăng trưởng chậm lại hoặc thị trường risk-off (như hôm nay).
+- **Khuyến nghị của agent (không bắt buộc):** GOOGL — fundamentals/định giá cân bằng hơn, ít rủi ro "định giá quá cao bị chốt lời" hơn PLTR trong ngày risk-off như hôm nay.
+- **Chờ Hogan chọn 1/2 lựa chọn** (hoặc mã khác) để lấp slot large-cap tech.
+
+### Slot rủi ro cao (thay IREN): TẠM HOÃN chưa đề xuất mã cụ thể
+
+- Theo đúng bộ lọc "trước khi vào lệnh mới" (CLAUDE.md 2026-07-24): không mở vị thế rủi ro cao mới khi benchmark liên quan đang giảm mạnh trong phiên. QQQ hôm nay -1.42% (gần ngưỡng -1.5-2%), cộng thêm chính IREN vừa bị stop và ASTS (mã rủi ro cao còn lại) đang giảm -6.34% cùng phiên — đây không phải thời điểm lý tưởng để mở vị thế rủi ro cao mới. Sẽ đề xuất cụ thể ở lần kiểm tra tiếp theo khi có xác nhận ổn định/volume thật (đúng tiền lệ AXTI/ONDS 07-24, OUST/IREN đầu 08-2026).
+
+- **Tóm tắt hành động cần Hogan:** (1) duyệt dời stop-loss XOM từ $152.34 lên $157.01; (2) chọn GOOGL hoặc PLTR (hoặc mã khác) để lấp slot large-cap tech thay AMD. Đã gửi PushNotification.
