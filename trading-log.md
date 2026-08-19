@@ -3802,3 +3802,15 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Bối cảnh benchmark:** QQQ -0.10%, SPY +0.32% — không risk-off rõ rệt, nhưng đã rà soát lại các ứng viên growth (AEHR, CIFR, APLD, LUNR, RKLB) — **tất cả vẫn đỏ sàn hôm nay** (AEHR -10.5%, LUNR -6.1%, RKLB -3.8%, APLD -2.2%, CIFR -1.5%), tiếp diễn tình trạng luân chuyển ra khỏi nhóm growth đã ghi nhận từ sáng. HIMS xanh (+7.9%) nhưng vẫn cấm wash-sale tới ~08-23 (4 ngày nữa). Theo đúng bộ lọc CLAUDE.md — **KHÔNG đề xuất mua nhóm rủi ro cao lúc này**, sẽ kiểm tra lại các lần tới.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
 - **Tóm tắt hành động cần Hogan:** (1) duyệt dời stop CRM ($188.48→$197.55, THAY THẾ 2 đề xuất cũ), AMZN ($248.40→$251.89, mới), GOOGL ($326.61→$329.39, mới) — cộng với 2 đề xuất cũ vẫn chờ (XOM $158.97, RSP $211.44); (2) chọn QCOM hoặc UBER (hoặc mã khác) lấp slot large-cap tech thay PANW. **Có sự kiện thật (PANW bị stop) + đề xuất mới → sẽ gửi PushNotification.**
+
+## 2026-08-19 ~13:33 ET (17:33 UTC) — Hogan duyệt qua phiên tương tác: dời cả 5 stop-loss, mua QCOM lấp slot large-cap tech thay PANW
+
+- **Quyết định của Hogan:** "dời, mua QCOM" — duyệt toàn bộ 5 đề xuất dời stop đang chờ + chọn QCOM (không chọn UBER).
+- **1) Dời stop-loss CRM:** hủy lệnh GTC cũ (`6a84a2f2...`, trigger $188.48) — xác nhận `cancelled`. Đặt lệnh GTC stop_market mới bán 3cp @ trigger **$197.55** (`6a85e8ae...`).
+- **2) Dời stop-loss AMZN:** hủy lệnh GTC cũ (`6a8313c5...`, trigger $248.40) — xác nhận `cancelled`. Đặt lệnh GTC stop_market mới bán 2cp @ trigger **$251.89** (`6a85e8af...`).
+- **3) Dời stop-loss GOOGL:** hủy lệnh GTC cũ (`6a84a305...`, trigger $326.61) — xác nhận `cancelled`. Đặt lệnh GTC stop_market mới bán 1cp @ trigger **$329.39** (`6a85e8b0...`).
+- **4) Dời stop-loss XOM:** hủy lệnh GTC cũ (`6a84a2f1...`, trigger $157.10) — xác nhận `cancelled`. Đặt lệnh GTC stop_market mới bán 3cp @ trigger **$158.97** (`6a85e8b1...`).
+- **5) Dời stop-loss RSP:** hủy lệnh GTC cũ (`6a7a357e...`, trigger $210.04) — xác nhận `cancelled`. Đặt lệnh GTC stop_market mới bán 2cp @ trigger **$211.44** (`6a85e8b2...`).
+- **6) Mua QCOM lấp slot large-cap tech (thay PANW):** đặt lệnh limit mua 2cp @ $162.30 (marketable, ~giá ask lúc đó) — khớp ngay lúc 17:32:39 UTC @ **$162.2399** (`6a85e8b7...`). Đặt kèm stop-loss GTC stop_market bán 2cp @ trigger **$154.13** (= $162.2399 × 0.95, mức -5% mặc định nhóm tech) (`6a85e8bd...`).
+- **Core-10 nay đủ 8/10 slot:** AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp), GOOGL(1cp), **QCOM(2cp, mới)** — vẫn thiếu 2 slot rủi ro cao (thay IREN + ASTS, tạm hoãn chờ nhóm growth ổn định).
+- **Có hành động thật (5 lệnh dời stop + 1 lệnh mua mới) → sẽ gửi PushNotification.**
