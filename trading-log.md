@@ -3760,3 +3760,45 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Sẽ đề xuất cụ thể ở lần kiểm tra tiếp theo** khi có xác nhận ổn định/volume thật của 1 vài ứng viên trong nhóm growth, đúng tiền lệ đã áp dụng nhiều lần trước đây.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
 - **Có đề xuất mới cần duyệt (dời stop CRM/XOM/RSP) → sẽ gửi PushNotification.**
+
+## 2026-08-19 ~13:17 ET (17:17 UTC) — Kiểm tra định kỳ (routine tự động, sync git) — PANW bị trailing stop-loss tự động khớp giữa phiên (lỗ -4.99%, wash-sale tới ~09-18), core-10 còn 7/10; đề xuất 3 lần dời stop (AMZN/GOOGL mới, CRM cập nhật lớn); đề xuất 2 lựa chọn lấp slot tech; slot rủi ro cao vẫn tạm hoãn
+
+- **Sync đầu phiên:** local ở trạng thái detached HEAD (main a55c75f), đã `git checkout main` + fast-forward tới `2e6a759` (bao gồm các lần kiểm tra sandbox 10:14-13:14 ET hôm nay), không xung đột.
+- **Phát hiện: PANW đã bị stop-loss GTC tự động khớp giữa phiên hôm nay, ngay khoảng thời gian lần kiểm tra trước (10:03 ET) đang chạy.** Lệnh `6a8313c6...` (trigger $358.28, đặt 08-17 theo đỉnh $377.14 lúc mua) khớp **14:02:31 UTC (~10:02 ET)**, bán 1cp @ **$358.31**. Giá vốn $377.1399 → **lỗ thực hiện -$18.83 (-4.99%)**. **Wash-sale: cấm mua lại PANW tới ~2026-09-18.** Đây là slot **large-cap tech** (mua 08-17 thay ORCL). Đã WebSearch: không có tin xấu riêng công ty — PANW giảm cùng nhịp chốt lời rộng khắp nhóm cybersecurity định giá cao (Wells Fargo vẫn vừa nâng target lên $475, giữ Overweight) — đúng kỷ luật trailing stop hoạt động như thiết kế, không phải dấu hiệu xấu đi về fundamentals.
+- **Core-10 hiện còn 7/10 slot:** AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp), GOOGL(1cp) — thiếu **1 slot large-cap tech** (thay PANW) và **2 slot rủi ro cao** (IREN từ 08-18, ASTS từ sáng 08-19).
+- P&L nhanh các mã còn giữ (giá ~13:17 ET/17:17 UTC, so với đóng cửa 08-18 — QQQ -0.10%, SPY +0.32%, thị trường đi ngang):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Đề xuất mới |
+  |---|---|---|---|---|---|---|
+  | CRM | $191.24 | $206.26 | +7.87% | +5.17% (đỉnh mới $207.95) | $188.48 | **$197.55** |
+  | XOM | $151.60 | $166.53 | +9.85% | +0.59% | $157.10 | (giữ đề xuất cũ $158.97, chưa duyệt) |
+  | RSP | $214.93 | $222.41 | +3.48% | +1.19% | $210.04 | (giữ đề xuất cũ $211.44, chưa duyệt) |
+  | JPM | $347.97 | $357.91 | +2.86% | -1.47% | $344.85 | không đổi (~3.65% tới stop) |
+  | VOO | $688.26 | $707.72 | +2.83% | +0.33% | (fractional, thủ công) | — |
+  | AMZN | $261.47 | $264.29 | +1.08% | +1.87% (đỉnh mới $265.15) | $248.40 | **$251.89** |
+  | GOOGL | $343.80 | $344.25 | +0.13% | +0.10% (đỉnh mới $346.73) | $326.61 | **$329.39** |
+
+- **CRM +5.17% trong ngày, tạo đỉnh phiên mới $207.95 (~11:55 ET), vượt xa đỉnh $200.20 dùng cho đề xuất dời stop sáng nay (10:03 ET, $190.19 — chưa được duyệt) và đỉnh $199.41 dùng cho đề xuất hôm qua ($189.44 — cũng chưa duyệt).** Đã WebSearch (do biến động >3-5% kể từ đỉnh dùng đề xuất trước): không có tin xấu — tiếp diễn đà tăng, 2 hãng nâng target trong tuần (Citi $187→$204, Wells Fargo $200→$205), hợp đồng AI-agent bảo mật với US Army/Missionforce. **CRM báo cáo KQKD 08-26 (7 ngày tới)** — rủi ro sự kiện lớn sắp tới.
+  - **Đề xuất: dời stop-loss CRM từ $188.48 lên $197.55** (= $207.95 × 0.95) — hủy lệnh GTC cũ `6a84a2f2...`, đặt lệnh GTC stop_market mới bán 3cp @ trigger $197.55. Đề xuất này THAY THẾ cả 2 đề xuất dời stop CRM trước đó chưa được duyệt ($189.44 ngày 08-18, $190.19 sáng 08-19) — dùng số này, bỏ qua 2 số cũ.
+- **AMZN +1.87% trong ngày, LẦN ĐẦU TIÊN vượt giá vốn $261.47 kể từ khi mua** (đỉnh phiên mới $265.15 lúc ~12:00 ET) — trước nay luôn dưới giá vốn nên chưa từng cần dời stop. Không có tin tức đặc biệt, biến động cùng nhịp thị trường đi ngang nhẹ nhàng tăng.
+  - **Đề xuất: dời stop-loss AMZN từ $248.40 (mức -5% gốc từ giá mua) lên $251.89** (= $265.15 × 0.95) — hủy lệnh GTC cũ `6a8313c5...`, đặt lệnh GTC stop_market mới bán 2cp @ trigger $251.89.
+- **GOOGL +0.10% trong ngày nhưng tạo đỉnh phiên mới $346.73 (~12:00 ET), vượt đỉnh $344.84 dùng đặt stop ban đầu $326.61 (mức -5% gốc từ giá mua 08-18).**
+  - **Đề xuất: dời stop-loss GOOGL từ $326.61 lên $329.39** (= $346.73 × 0.95) — hủy lệnh GTC cũ `6a84a305...`, đặt lệnh GTC stop_market mới bán 1cp @ trigger $329.39.
+- **XOM/RSP:** giá hiện tại vẫn dưới đỉnh đã dùng cho đề xuất dời stop đang chờ từ lần kiểm tra 10:03 ET sáng nay ($158.97/$211.44) — không cần cập nhật thêm, giữ nguyên 2 đề xuất đó.
+- **JPM:** -1.47% trong ngày, chưa tạo đỉnh mới, cách stop ~3.65%, không breach, không đề xuất.
+- **Tất cả các đề xuất dời stop trên là core-10, cần Hogan duyệt trước khi thực hiện** — bản thân routine kiểm tra này KHÔNG có quyền đặt/hủy lệnh (read-only).
+
+### ĐỀ XUẤT — Lấp slot large-cap tech (thay PANW): 2 lựa chọn, Hogan chọn 1
+
+- **Sàng lọc loại trừ:** đã held (AMZN/GOOGL/CRM), PANW bản thân (wash-sale tới ~09-18, mới), AMD (tới ~09-17), NVDA (tới ~08-26), AVGO (tới ~08-27), AAPL (tới ~08-30), TXN (tới ~09-02), CSCO (tới ~09-12), MSFT/NOW (tới ~09-16), ORCL (luận điểm bear chưa đổi — FCF âm nặng, S&P gần "junk"), IBM/NFLX (lý do cơ bản/quản trị đã ghi nhận trước, chưa re-verify lần này), META (fundamentals xấu đi rõ rệt, KQKD Q2 miss — loại từ 08-18), **ADBE (re-verify hôm nay: VẪN chưa có CEO chính thức — Narayen thông báo từ chức từ 12/03/2026, hơn 5 tháng qua vẫn chưa công bố người kế nhiệm, dù có tin tích cực ngắn hạn — BlackRock nâng cổ phần >10% (~$8.4B), CLSA khởi động Outperform $300 — rủi ro quản trị treo lơ lửng quá lâu vẫn chưa đạt tiêu chí "minh bạch/ổn định", tiếp tục loại)**.
+
+- **Lựa chọn A: QCOM (Qualcomm)** — $162.39/cp (+1.37% hôm nay). Đề xuất mua **2cp market (~$325, ~5.5% danh mục)**. Đang giao dịch dưới target trung bình analyst ($203.63, ~+25% upside). KQKD Q3 (29/07) doanh thu $9.95B vượt ước tính $9.69B dù giảm nhẹ YoY, đang chuyển dịch sang AI/thị trường ngoài handset. Không có báo cáo KQKD gần (kế tiếp 04/11) — không có rủi ro sự kiện gần. Đa dạng hóa tốt (bán dẫn di động/AI, khác hẳn AMZN/GOOGL/CRM). Rủi ro chính: mảng handset giảm -20% YoY, thiếu hụt nguồn cung memory ảnh hưởng guidance, cạnh tranh từ chip tự thiết kế của khách hàng lớn (Apple, Samsung).
+- **Lựa chọn B: UBER (Uber Technologies)** — $78.11/cp (+4.62% hôm nay, phục hồi sau nhịp giảm đầu tháng). Đề xuất mua **4cp market (~$312, ~5.3% danh mục)**. Từng nắm giữ trong sandbox (thoát lãi +2.75% ngày 07-27, không dính wash-sale, hợp lệ). Consensus "Buy" (50 analyst, target TB $101.5, +33.7% upside), Jefferies vừa đặt 'Franchise Pick' target $110 (09/08). Gross bookings Q2 +24% YoY. Đa dạng hóa mạnh (nền tảng di chuyển/giao hàng, khác hẳn 3 mã tech hiện có). Rủi ro chính: guidance Q3 vừa gây thất vọng thị trường đầu tháng (giảm -5.3% ngày 05/08), Waymo có thể chấm dứt hợp tác autonomous driving, rủi ro pháp lý/quy định phí ẩn từ FTC.
+- **Khuyến nghị của agent (không bắt buộc):** QCOM — ít rủi ro sự kiện gần hơn (không có KQKD sắp tới), định giá còn dư địa theo target analyst, biến động thấp hơn UBER.
+- **Chờ Hogan chọn 1/2 lựa chọn** (hoặc mã khác) để lấp slot large-cap tech.
+
+### Slot rủi ro cao (thay IREN + ASTS, 2 slot trống): vẫn TẠM HOÃN
+
+- **Bối cảnh benchmark:** QQQ -0.10%, SPY +0.32% — không risk-off rõ rệt, nhưng đã rà soát lại các ứng viên growth (AEHR, CIFR, APLD, LUNR, RKLB) — **tất cả vẫn đỏ sàn hôm nay** (AEHR -10.5%, LUNR -6.1%, RKLB -3.8%, APLD -2.2%, CIFR -1.5%), tiếp diễn tình trạng luân chuyển ra khỏi nhóm growth đã ghi nhận từ sáng. HIMS xanh (+7.9%) nhưng vẫn cấm wash-sale tới ~08-23 (4 ngày nữa). Theo đúng bộ lọc CLAUDE.md — **KHÔNG đề xuất mua nhóm rủi ro cao lúc này**, sẽ kiểm tra lại các lần tới.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
+- **Tóm tắt hành động cần Hogan:** (1) duyệt dời stop CRM ($188.48→$197.55, THAY THẾ 2 đề xuất cũ), AMZN ($248.40→$251.89, mới), GOOGL ($326.61→$329.39, mới) — cộng với 2 đề xuất cũ vẫn chờ (XOM $158.97, RSP $211.44); (2) chọn QCOM hoặc UBER (hoặc mã khác) lấp slot large-cap tech thay PANW. **Có sự kiện thật (PANW bị stop) + đề xuất mới → sẽ gửi PushNotification.**
