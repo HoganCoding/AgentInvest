@@ -3814,3 +3814,34 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **6) Mua QCOM lấp slot large-cap tech (thay PANW):** đặt lệnh limit mua 2cp @ $162.30 (marketable, ~giá ask lúc đó) — khớp ngay lúc 17:32:39 UTC @ **$162.2399** (`6a85e8b7...`). Đặt kèm stop-loss GTC stop_market bán 2cp @ trigger **$154.13** (= $162.2399 × 0.95, mức -5% mặc định nhóm tech) (`6a85e8bd...`).
 - **Core-10 nay đủ 8/10 slot:** AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp), GOOGL(1cp), **QCOM(2cp, mới)** — vẫn thiếu 2 slot rủi ro cao (thay IREN + ASTS, tạm hoãn chờ nhóm growth ổn định).
 - **Có hành động thật (5 lệnh dời stop + 1 lệnh mua mới) → sẽ gửi PushNotification.**
+
+## 2026-08-19 ~15:31 ET (19:31 UTC) — Kiểm tra định kỳ (routine tự động, sync git) — đề xuất dời stop-loss AMZN (đỉnh mới); slot rủi ro cao vẫn tạm hoãn (nhóm growth tiếp tục đỏ sàn dù benchmark đi ngang)
+
+- **Sync đầu phiên:** local đã ở đúng `origin/main` (76b7286), không có commit mới nào từ phiên khác kể từ lần duyệt QCOM lúc 17:33 UTC, không cần fast-forward/merge.
+- `get_equity_positions` xác nhận core-10 vẫn **8/10 slot**, không đổi kể từ lần 13:33 ET: AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp), GOOGL(1cp), QCOM(2cp) — vẫn thiếu 2 slot rủi ro cao (thay IREN + ASTS). `get_equity_orders` từ 17:33 UTC tới nay: không có lệnh nào mới/khớp.
+- P&L nhanh (giá ~15:31 ET/19:31 UTC, so với đóng cửa 08-18):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Đỉnh dùng đặt stop | Đỉnh hiện tại |
+  |---|---|---|---|---|---|---|---|
+  | CRM | $191.24 | $207.07 | +8.29% | +5.58% | $197.55 | $207.95 | $207.07 (chưa vượt) |
+  | XOM | $151.60 | $165.22 | +9.00% | -0.20% | $158.97 | $167.34 | $165.22 (chưa vượt) |
+  | QCOM | $162.24 | $162.53 | +0.18% | +1.46% (mới mua ~13:32 ET) | $154.13 | $162.24 (giá mua) | $162.53 (chưa đủ để cập nhật) |
+  | RSP | $214.93 | $222.16 | +3.36% | +1.08% | $211.44 | $222.57 | $222.16 (chưa vượt) |
+  | VOO | $688.26 | $707.78 | +2.83% | +0.34% | (fractional, thủ công) | — | — |
+  | AMZN | $261.47 | $266.20 | +1.81% | +2.60% (**đỉnh mới**) | $251.89 | $265.15 | **$266.20** |
+  | GOOGL | $343.80 | $344.46 | +0.19% | +0.08% | $329.39 | $346.73 | $344.46 (chưa vượt) |
+  | JPM | $347.97 | $357.03 | +2.60% | -1.71% | $344.85 | $362.29 | $357.03 (chưa vượt) |
+
+- **AMZN tạo đỉnh phiên mới $266.20 (19:31 UTC/15:31 ET), vượt đỉnh $265.15 dùng đặt stop hiện tại $251.89** (kiểm tra bar 5 phút 13:30-19:29 UTC xác nhận đỉnh trong phiên tăng dần đều, không có tin tức đột biến — biến động cùng nhịp SPY +0.33% hôm nay, không cần WebSearch thêm). Theo công thức trailing -5% nhóm tech: stop mới = $266.20 × 0.95 ≈ **$252.89**.
+  - **Đề xuất: dời stop-loss AMZN từ $251.89 lên $252.89** (hủy lệnh GTC cũ `6a85e8af...`, đặt lệnh GTC stop_market mới bán 2cp @ trigger $252.89). Chênh lệch ~$1.00 (~0.4%) — đủ lớn để đề xuất theo tiền lệ (khác các lần chênh <0.1% trước đây bị bỏ qua).
+  - **Rủi ro chính:** AMZN không có sự kiện earnings gần, biến động chủ yếu theo thị trường chung; dời stop khóa thêm lời (+1.81% từ giá vốn) nhưng thu hẹp biên độ chấp nhận biến động ngắn hạn.
+  - **Chờ Hogan duyệt trước khi thực hiện** (core-10, không thuộc quyền tự chủ sandbox).
+- **CRM/XOM/RSP/GOOGL/JPM/QCOM:** giá hiện tại đều dưới đỉnh đã dùng đặt stop hiện có (hoặc mới mua/chưa đủ dữ liệu với QCOM) — không cần cập nhật thêm.
+
+### Slot rủi ro cao (thay IREN + ASTS, 2 slot trống): vẫn TẠM HOÃN
+
+- **Bối cảnh benchmark:** QQQ -0.02%, SPY +0.33% so với đóng cửa hôm qua — đi ngang, không risk-off.
+- **Rà soát lại các ứng viên growth đã theo dõi:** AEHR -11.42%, LUNR -5.44%, RKLB -3.77%, CIFR -2.30%, APLD -2.28% — **tất cả vẫn đỏ sàn mạnh hôm nay dù benchmark đi ngang**, tiếp diễn luân chuyển ra khỏi nhóm growth đã ghi nhận suốt từ sáng 08-19. Theo bộ lọc CLAUDE.md (không mua giữa lúc chính mã/nhóm đang giảm mạnh trong phiên) — **KHÔNG đề xuất mua nhóm này lúc này.**
+- **HIMS +13.24% hôm nay** (mã duy nhất xanh mạnh) nhưng vẫn đang trong lệnh cấm wash-sale tới ~2026-08-23 (4 ngày nữa) — chưa đủ điều kiện mua lại.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
+- **Có đề xuất mới cần duyệt (dời stop AMZN) → sẽ gửi PushNotification.**
