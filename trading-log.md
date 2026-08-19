@@ -3724,3 +3724,39 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **JPM/VOO/RSP/GOOGL/PANW/AMZN:** biến động trong biên độ bình thường, chưa tạo đỉnh mới đáng kể, không breach ngưỡng nào.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01). Slot rủi ro cao vẫn tạm hoãn — QQQ hôm nay dao động quanh -1.4% đến -1.7% cả ngày, vẫn trong vùng risk-off theo bộ lọc CLAUDE.md (không mở vị thế rủi ro cao mới khi benchmark giảm >1.5-2%/phiên).
 - **Tóm tắt hành động cần Hogan:** duyệt dời stop-loss CRM từ $188.48 lên $189.44 (hoặc từ chối/chờ thêm). Đã gửi PushNotification.
+
+## 2026-08-19 ~10:03 ET (14:03 UTC) — Kiểm tra định kỳ (routine tự động, sync git) — ASTS bị trailing stop-loss tự động khớp sáng nay (lãi +17.53%), core-10 còn 8/10, CẢ 2 slot rủi ro cao đang trống; đề xuất dời stop CRM/XOM/RSP theo đỉnh mới; slot rủi ro cao tạm hoãn (nhóm growth đỏ sàn dù benchmark xanh)
+
+- **Sync đầu phiên:** local ở trạng thái detached HEAD (main a55c75f), đã `git checkout main` + fast-forward 45 commit từ `origin/main` (→4de1133), không xung đột.
+- **Phát hiện: ASTS đã bị stop-loss GTC tự động khớp sáng nay trước khi kiểm tra.** `get_equity_positions` không còn ASTS. `get_equity_orders` (kể cả không lọc symbol, từ 00:00 UTC hôm nay) trả về rỗng — có vẻ là độ trễ báo cáo của tool này; xác nhận qua `get_pnl_trade_history` (span=month, symbol=ASTS): bán **5cp @ $65.188** lúc **2026-08-19T13:31:08Z (~9:31 ET)**, khớp đúng trigger stop $65.19 đã đặt theo đỉnh trước đó. Giá vốn $55.47 → **lãi thực hiện +$48.60 (+17.53%)** — chốt lời theo trailing stop (không phải lỗ, KHÔNG dính wash-sale, có thể mua lại ASTS bất cứ lúc nào nếu có lý do). Đây là lệnh tự động theo đúng kỷ luật đã đặt sẵn từ trước, không phải quyết định mới của phiên nào.
+- **Core-10 hiện còn 8/10 slot:** AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp), PANW(1cp), GOOGL(1cp) — thiếu **CẢ 2 slot rủi ro cao** (IREN từ 08-18 ~09:50 ET, nay thêm ASTS từ sáng nay).
+- P&L nhanh các mã còn giữ (giá ~10:03 ET/14:03 UTC, so với đóng cửa 08-18):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Khoảng cách tới stop |
+  |---|---|---|---|---|---|---|
+  | XOM | $151.60 | $167.34 | +10.38% | +1.08% (đỉnh mới) | $157.10 (đề xuất $158.97) | ~5.0% |
+  | CRM | $191.24 | $200.20 | +4.69% | +2.07% (đỉnh mới) | $188.48 (đề xuất $190.19, thay thế đề xuất $189.44 hôm qua chưa được duyệt) | ~5.0% |
+  | JPM | $347.97 | $359.72 | +3.38% | -0.97% | $344.85 | ~4.13% |
+  | RSP | $214.93 | $222.57 | +3.55% | +1.26% (đỉnh mới) | $210.04 (đề xuất $211.44) | ~5.0% |
+  | VOO | $688.26 | $707.91 | +2.86% | +0.36% | (fractional, thủ công) | — |
+  | GOOGL | $343.80 | $341.93 | -0.54% | -0.66% | $326.61 | ~4.48% |
+  | AMZN | $261.47 | $259.51 | -0.75% | +0.02% | $248.40 | ~4.28% |
+  | PANW | $377.14 | $365.77 | -3.01% | -2.24% | $358.28 | ~2.05% (sát nhất danh mục) |
+
+- **XOM, CRM, RSP đều tạo đỉnh phiên mới hôm nay** — theo công thức trailing -5% (nhóm blue-chip/tech/ETF):
+  - **XOM:** đỉnh mới $167.34 → stop mới = $167.34 × 0.95 ≈ **$158.97** (từ $157.10).
+  - **CRM:** đỉnh mới $200.20 → stop mới = $200.20 × 0.95 ≈ **$190.19** (từ $188.48; đề xuất này THAY THẾ đề xuất $189.44 gửi hôm qua 15:31 ET — Hogan chưa duyệt, giá đã lên cao hơn nữa).
+  - **RSP:** đỉnh mới $222.57 → stop mới = $222.57 × 0.95 ≈ **$211.44** (từ $210.04, đề xuất mới lần đầu — trước đó RSP chưa từng tạo đỉnh đủ để cần dời).
+  - **Chờ Hogan duyệt cả 3 trước khi thực hiện** (core-10, không thuộc quyền tự chủ sandbox).
+- **PANW -2.24% trong ngày, khoảng cách tới stop thu hẹp còn ~2.05% (sát nhất danh mục)** — đã WebSearch: không có tin xấu (Wells Fargo vừa nâng target lên $475, KQKD tiếp theo 09-01, chỉ là điều chỉnh nhẹ sau chuỗi tăng, PANW vẫn trên MA200). Chưa breach — không hành động, để tự động khớp theo kỷ luật nếu tiếp tục giảm.
+- **JPM/VOO/AMZN/GOOGL:** biến động trong biên độ bình thường, chưa tạo đỉnh mới, không breach ngưỡng nào.
+
+### Slot rủi ro cao (thay IREN + ASTS, 2 slot trống): vẫn TẠM HOÃN, chưa đề xuất mã cụ thể
+
+- **Bối cảnh benchmark:** QQQ +0.07%, SPY +0.34% so với đóng cửa hôm qua — KHÔNG risk-off (khác hẳn 08-18), về lý thuyết không bị chặn bởi bộ lọc "benchmark giảm >1.5-2%/phiên".
+- **Tuy nhiên đã rà soát 1 loạt ứng viên rủi ro cao khả dĩ (AEHR, CIFR, APLD, LUNR)** qua `get_equity_quotes` — **tất cả đều đỏ sàn mạnh hôm nay dù benchmark xanh** (AEHR -12.5%, LUNR -8.0%, CIFR -6.5%, APLD -5.8%) — đây là yếu điểm mang tính riêng lẻ/luân chuyển ngành (rotation ra khỏi nhóm growth quá nóng), không phải risk-off toàn thị trường. Theo đúng bộ lọc "không mua ngay giữa lúc chính mã đó đang giảm mạnh trong phiên" (CLAUDE.md 2026-07-24, tránh lặp lại QBTS/HIMS) — **KHÔNG đề xuất mua bất kỳ mã nào trong nhóm này lúc này.**
+- **HIMS là mã duy nhất tăng hôm nay (+6.3%)** nhưng vẫn đang trong lệnh cấm mua lại do wash-sale tới **~2026-08-23** (bán lỗ -8.05% ngày 07-24) — chưa đủ điều kiện.
+- **Các mã rủi ro cao khác đã cân nhắc trước đó đều đang bị cấm wash-sale hoặc bị loại có chủ đích:** RKLB (tới ~08-23), OKLO/ACHR/ONDS/AXTI (tới ~08-27), OUST (tới ~09-17), CRWV/POET (loại do vướng kiện tụng). IONQ/QBTS/RGTI (nhóm quantum, tránh lặp lại bài học "cháy 3 lần").
+- **Sẽ đề xuất cụ thể ở lần kiểm tra tiếp theo** khi có xác nhận ổn định/volume thật của 1 vài ứng viên trong nhóm growth, đúng tiền lệ đã áp dụng nhiều lần trước đây.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
+- **Có đề xuất mới cần duyệt (dời stop CRM/XOM/RSP) → sẽ gửi PushNotification.**
