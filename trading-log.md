@@ -3919,3 +3919,27 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Quyết định của Hogan:** "Ok dời" — duyệt đề xuất dời stop-loss QCOM từ lần kiểm tra routine 13:12 ET cùng ngày.
 - **Dời stop-loss QCOM:** hủy lệnh GTC cũ (`6a85e8bd...`, trigger $154.13) — xác nhận `cancelled`. Đặt lệnh GTC stop_market mới bán 2cp @ trigger **$156.84** (`6a873662...`) — xác nhận `confirmed`. (Lần đặt đầu tiên timeout kết nối, không tạo order; retry cùng ref_id idempotent thành công, không trùng lệnh.)
 - **Có hành động thật (1 lệnh dời stop) → sẽ gửi PushNotification.**
+
+## 2026-08-20 ~15:32 ET (19:32 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 vẫn 8/10 slot, KHÔNG có đề xuất mới; không stop-loss/chốt lời nào chạm ngưỡng, không đỉnh mới cần dời stop
+
+- **Sync đầu phiên:** `git fetch` + checkout main → khớp `origin/main` (739c967, gồm lệnh sandbox mua 20cp CIFR + duyệt dời stop QCOM 13:16 ET). Không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn **8/10 slot**, không đổi: AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp), GOOGL(1cp), QCOM(2cp) — thiếu 2 slot rủi ro cao (thay IREN + ASTS). (Vị thế CIFR 20cp trong tài khoản là **sandbox** — commit 739c967 "sandbox: mua 20cp CIFR" — bỏ qua hoàn toàn theo quy tắc đồng bộ, không phải core-10.)
+- **Benchmark (15:32 ET):** SPY $763.34 (-0.74% so đóng cửa hôm qua), QQQ $710.93 (-0.72%). Đỏ nhẹ, KHÔNG risk-off (dưới ngưỡng -1.5-2%).
+- **P&L nhanh (giá ~15:32 ET/19:32 UTC):**
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Đỉnh dùng đặt stop |
+  |---|---|---|---|---|---|---|
+  | CRM | $191.24 | $206.79 | +8.13% | +0.34% | $197.55 | $207.95 |
+  | XOM | $151.60 | $166.72 | +9.97% | +1.18% | $159.70 | $168.64 |
+  | QCOM | $162.24 | $160.54 | -1.05% | -0.85% | $156.84 | $165.09 |
+  | RSP | $214.93 | $220.66 | +2.67% | -0.63% | $211.44 | $222.57 |
+  | VOO | $688.26 | $701.61 | +1.94% | -0.75% | (fractional, thủ công) | — |
+  | AMZN | $261.47 | $261.15 | -0.12% | -1.77% | $252.89 | $266.20 |
+  | GOOGL | $343.80 | $341.11 | -0.78% | -1.05% | $329.39 | $346.73 |
+  | JPM | $347.97 | $352.32 | +1.25% | -1.38% | $344.85 | $362.29 |
+
+- **Không stop-loss nào bị breach; không mã nào chạm ngưỡng cảnh báo chốt lời (+15-20% nhóm tech/blue-chip).** XOM cao nhất +9.97%, CRM +8.13% — còn xa ngưỡng.
+- **Không có đỉnh mới cần dời stop:** giá hiện tại của mọi mã đều DƯỚI đỉnh đã dùng đặt stop hiện có (giá đã trôi xuống từ lần kiểm tra 13:12 ET — XOM/QCOM đã dời stop trong phiên hôm nay rồi, nay chưa tạo đỉnh cao hơn). XOM có đỉnh phiên $168.64 (từ lần trước) nhưng chênh lệch stop chỉ +0.32% — vẫn dưới ngưỡng "đủ lớn", không đề xuất lại.
+- **Biến động trong ngày:** mọi mã đều dưới ±1.8%, không mã nào vượt ngưỡng 3-5% cần WebSearch tin tức sâu.
+- **Slot rủi ro cao (thay IREN + ASTS, 2 slot trống): vẫn TẠM HOÃN** — benchmark đỏ nhẹ + nhóm growth chưa xác nhận ổn định ≥1 phiên theo bộ lọc CLAUDE.md 2026-07-24. HIMS/RKLB vẫn trong cửa sổ cấm wash-sale tới ~08-23. Chưa tới ngày review định kỳ 30 ngày (mốc kế tiếp 2026-09-01).
+- **KẾT LUẬN: Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật).
