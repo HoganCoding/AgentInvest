@@ -3875,3 +3875,9 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Rà soát lại các ứng viên growth đã theo dõi:** AEHR -1.82%, LUNR -2.48%, RKLB -2.49% (vẫn đỏ), CIFR +1.32%, APLD +2.09% (xanh nhẹ) — tín hiệu trái chiều, chưa đủ "ít nhất 1 phiên xác nhận ổn định/xanh đồng loạt" theo bộ lọc CLAUDE.md 2026-07-24. HIMS +5.88% (xanh mạnh nhất) nhưng vẫn cấm wash-sale tới ~2026-08-23 (3 ngày nữa). RKLB cũng đang cấm wash-sale tới ~08-23.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
 - **Có đề xuất mới cần duyệt (dời stop XOM) → sẽ gửi PushNotification.**
+
+## 2026-08-20 ~09:53 ET (13:53 UTC) — Hogan duyệt qua phiên tương tác: dời stop-loss XOM
+
+- **Quyết định của Hogan:** "Ok dời" — duyệt đề xuất dời stop-loss XOM từ lần kiểm tra routine 09:47 ET cùng ngày.
+- **Dời stop-loss XOM:** hủy lệnh GTC cũ (`6a85e8b1...`, trigger $158.97) — xác nhận `cancelled`. Đặt lệnh GTC stop_market mới bán 3cp @ trigger **$159.70** (`6a8706b7...`) — xác nhận `confirmed`.
+- **Có hành động thật (1 lệnh dời stop) → sẽ gửi PushNotification.**
