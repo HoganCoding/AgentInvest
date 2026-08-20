@@ -3881,3 +3881,35 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Quyết định của Hogan:** "Ok dời" — duyệt đề xuất dời stop-loss XOM từ lần kiểm tra routine 09:47 ET cùng ngày.
 - **Dời stop-loss XOM:** hủy lệnh GTC cũ (`6a85e8b1...`, trigger $158.97) — xác nhận `cancelled`. Đặt lệnh GTC stop_market mới bán 3cp @ trigger **$159.70** (`6a8706b7...`) — xác nhận `confirmed`.
 - **Có hành động thật (1 lệnh dời stop) → sẽ gửi PushNotification.**
+
+## 2026-08-20 ~13:12 ET (17:12 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 vẫn 8/10 slot, đề xuất dời stop-loss QCOM (đỉnh mới $165.09); slot rủi ro cao vẫn tạm hoãn
+
+- **Sync đầu phiên:** `git pull origin main` — remote có force-update history mới (a55c75f→0db142f, các lần kiểm tra sandbox 10:14-13:14 ET hôm nay + duyệt dời stop XOM 09:53 ET), local đã khớp `origin/main`, không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn **8/10 slot**, không đổi: AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp), GOOGL(1cp), QCOM(2cp) — thiếu 2 slot rủi ro cao (thay IREN + ASTS). `get_equity_orders`: không có lệnh nào mới/khớp kể từ lần duyệt XOM 13:53 UTC (không stop-loss nào bị quẹt).
+- **Benchmark:** SPY -0.44% ($765.71 vs $769.06), QQQ -0.58% ($711.90 vs $716.08) so với đóng cửa hôm qua — nhẹ đỏ, không risk-off.
+- P&L nhanh (giá ~13:12 ET/17:12 UTC, so với đóng cửa 08-19):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Đỉnh dùng đặt stop | Đỉnh hiện tại (intraday) |
+  |---|---|---|---|---|---|---|---|
+  | CRM | $191.24 | $207.04 | +8.26% | +0.46% | $197.55 | $207.95 | $207.88 (chưa vượt) |
+  | XOM | $151.60 | $167.56 | +10.53% | +1.69% | $159.70 | $168.10 | $168.64 (đỉnh mới nhẹ, xem dưới) |
+  | QCOM | $162.24 | $163.49 | +0.77% | +0.98% | $154.13 | $162.24 (giá mua) | **$165.09 (đỉnh mới rõ, bar 15:00 UTC)** |
+  | RSP | $214.93 | $221.11 | +2.88% | -0.43% | $211.44 | $222.57 | $221.11 (chưa vượt) |
+  | VOO | $688.26 | $703.85 | +2.27% | -0.43% | (fractional, thủ công) | — | — |
+  | AMZN | $261.47 | $262.02 | +0.21% | -1.44% | $252.89 | $266.20 | $262.02 (chưa vượt) |
+  | GOOGL | $343.80 | $341.48 | -0.67% | -0.94% | $329.39 | $346.73 | $341.48 (chưa vượt) |
+  | JPM | $347.97 | $354.14 | +1.77% | -0.87% | $344.85 | $362.29 | $354.14 (chưa vượt) |
+
+### ĐỀ XUẤT — Dời stop-loss QCOM (đỉnh mới rõ ràng, trailing chưa từng cập nhật kể từ khi mua 08-19)
+- **Bối cảnh:** QCOM mua 08-19 @ $162.24, stop ban đầu $154.13 (= -5% gốc từ giá mua). Từ khi mua chỉ đi ngang quanh giá vốn, chưa từng dời stop. Hôm nay tạo **đỉnh phiên mới $165.09** (bar 15:00-15:05 UTC, xác nhận qua `get_equity_historicals` 5min), vượt rõ giá mua $162.24. Thay đổi trong ngày +0.98% (dưới ngưỡng 3-5% nên không WebSearch sâu — biến động cùng nhịp bán dẫn, không có sự kiện đột biến; KQKD kế tiếp 04/11 còn xa).
+- **Đề xuất: dời stop-loss QCOM từ $154.13 lên $156.84** (= $165.09 × 0.95, trailing -5% nhóm tech) — hủy lệnh GTC cũ (`6a85e8bd...`, trigger $154.13), đặt lệnh GTC stop_market mới bán 2cp @ trigger **$156.84**. Chênh lệch +$2.71 (+1.76%) — dời đáng kể, khóa vị thế về gần sát hòa vốn (giá mua $162.24, stop mới $156.84 ≈ -3.3% từ giá vốn thay vì -5%).
+- **Rủi ro chính:** QCOM biến động ~1-2%/ngày theo nhóm bán dẫn; dời stop thu hẹp biên độ chấp nhận biến động ngắn hạn, nhưng bảo vệ trước khả năng đảo chiều sau khi vừa tạo đỉnh. Chưa tới ngưỡng cảnh báo chốt lời (+15-20%).
+- **Chờ Hogan duyệt trước khi thực hiện** (core-10, routine read-only, KHÔNG có quyền đặt/hủy lệnh).
+
+### Không đề xuất dời stop XOM lần này (đỉnh mới quá nhỏ)
+- XOM tạo đỉnh phiên $168.64 (bar 15:40-15:45 UTC), vượt đỉnh $168.10 dùng đặt stop $159.70 vừa duyệt sáng nay. Stop trailing sẽ là $168.64 × 0.95 ≈ $160.21, chỉ +$0.51 (+0.32%) so với $159.70. **Dưới ngưỡng "đủ lớn" (~0.4%) đã dùng trong các tiền lệ, và stop XOM vừa được dời ~3.5h trước** — không đề xuất lại lần này để tránh nhiễu, sẽ gộp nếu XOM tiếp tục tạo đỉnh cao hơn ở lần kiểm tra sau.
+
+### Slot rủi ro cao (thay IREN + ASTS, 2 slot trống): vẫn TẠM HOÃN
+- **Rà soát ứng viên growth:** AEHR -2.53%, LUNR -5.16%, RKLB -4.80% (đỏ mạnh, nhất là space/small-cap), CIFR +2.52%, APLD -0.98%, HIMS +3.26% — tín hiệu trái chiều, chưa đủ "ít nhất 1 phiên xác nhận ổn định/xanh đồng loạt" theo bộ lọc CLAUDE.md 2026-07-24. HIMS xanh nhưng vẫn cấm wash-sale tới ~2026-08-23 (3 ngày nữa); RKLB cũng cấm tới ~08-23. **KHÔNG đề xuất mua nhóm rủi ro cao lúc này.**
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
+- **Có đề xuất mới cần duyệt (dời stop QCOM) → sẽ gửi PushNotification.**
