@@ -3845,3 +3845,33 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **HIMS +13.24% hôm nay** (mã duy nhất xanh mạnh) nhưng vẫn đang trong lệnh cấm wash-sale tới ~2026-08-23 (4 ngày nữa) — chưa đủ điều kiện mua lại.
 - **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
 - **Có đề xuất mới cần duyệt (dời stop AMZN) → sẽ gửi PushNotification.**
+
+## 2026-08-20 ~09:47 ET (13:47 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 vẫn 8/10 slot, đề xuất dời stop-loss XOM (đỉnh mới); slot rủi ro cao vẫn tạm hoãn
+
+- **Sync đầu phiên:** `git pull` — remote đã có force-update history mới (a55c75f→e3310cf) từ phiên khác, local sau pull đã khớp `origin/main`, không có conflict.
+- `get_equity_positions` xác nhận core-10 vẫn **8/10 slot**, không đổi so với lần kiểm tra cuối (08-19 ~15:31 ET): AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp), GOOGL(1cp), QCOM(2cp) — vẫn thiếu 2 slot rủi ro cao (thay IREN + ASTS). `get_equity_orders` từ 19:35 UTC hôm qua tới nay: không có lệnh nào mới/khớp (không có stop-loss nào bị quẹt qua đêm).
+- **Benchmark:** SPY -0.24%, QQQ -0.41% so với đóng cửa hôm qua — đi ngang nhẹ, không risk-off.
+- P&L nhanh (giá ~09:47 ET/13:47 UTC, so với đóng cửa 08-19):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Đỉnh dùng đặt stop | Đỉnh hiện tại |
+  |---|---|---|---|---|---|---|---|
+  | CRM | $191.24 | $206.75 | +8.13% | +0.32% | $197.55 | $207.95 | $206.75 (chưa vượt) |
+  | XOM | $151.60 | $167.86 | +10.72% | +1.88% | $158.97 | $167.34 | **$168.10 (đỉnh mới, xác nhận qua historicals 5min)** |
+  | QCOM | $162.24 | $162.59 | +0.22% | +0.42% | $154.13 | $162.24 | $162.59 (chênh <0.5%, chưa đủ ngưỡng cập nhật) |
+  | RSP | $214.93 | $221.43 | +3.02% | -0.29% | $211.44 | $222.57 | $221.43 (chưa vượt) |
+  | VOO | $688.26 | $705.24 | +2.47% | -0.24% | (fractional, thủ công) | — | — |
+  | AMZN | $261.47 | $263.32 | +0.71% | -0.95% | $252.89 | $266.20 | $263.32 (chưa vượt) |
+  | GOOGL | $343.80 | $343.46 | -0.10% | -0.37% | $329.39 | $346.73 | $343.46 (chưa vượt) |
+  | JPM | $347.97 | $354.23 | +1.80% | -0.85% | $344.85 | $362.29 | $354.23 (chưa vượt) |
+
+- **XOM tạo đỉnh phiên mới $168.10 (bar 13:40-13:45 UTC, xác nhận qua `get_equity_historicals` 5min), vượt đỉnh $167.34 dùng đặt stop hiện tại $158.97.** Thay đổi trong ngày +1.88% — dưới ngưỡng 3-5% nên không cần WebSearch sâu (biến động nhẹ theo nhóm năng lượng, không có sự kiện đột biến). Theo công thức trailing -5% nhóm blue-chip: stop mới = $168.10 × 0.95 ≈ **$159.70**.
+  - **Đề xuất: dời stop-loss XOM từ $158.97 lên $159.70** (hủy lệnh GTC cũ, đặt lệnh GTC stop_market mới bán 3cp @ trigger $159.70). Chênh lệch ~$0.73 (~0.46%) — đủ lớn để đề xuất theo tiền lệ.
+  - **Rủi ro chính:** XOM chưa có sự kiện earnings gần, biến động chủ yếu theo giá năng lượng/thị trường chung; dời stop khóa thêm lời (+10.72% từ giá vốn, chưa tới ngưỡng cảnh báo chốt lời +15-20%) nhưng thu hẹp biên độ chấp nhận biến động ngắn hạn.
+  - **Chờ Hogan duyệt trước khi thực hiện** (core-10, không thuộc quyền tự chủ sandbox).
+- **CRM/RSP/AMZN/GOOGL/JPM/QCOM:** giá hiện tại đều dưới đỉnh đã dùng đặt stop hiện có (hoặc chênh lệch quá nhỏ với QCOM) — không cần cập nhật thêm.
+
+### Slot rủi ro cao (thay IREN + ASTS, 2 slot trống): vẫn TẠM HOÃN
+
+- **Rà soát lại các ứng viên growth đã theo dõi:** AEHR -1.82%, LUNR -2.48%, RKLB -2.49% (vẫn đỏ), CIFR +1.32%, APLD +2.09% (xanh nhẹ) — tín hiệu trái chiều, chưa đủ "ít nhất 1 phiên xác nhận ổn định/xanh đồng loạt" theo bộ lọc CLAUDE.md 2026-07-24. HIMS +5.88% (xanh mạnh nhất) nhưng vẫn cấm wash-sale tới ~2026-08-23 (3 ngày nữa). RKLB cũng đang cấm wash-sale tới ~08-23.
+- **Chưa tới ngày review định kỳ 30 ngày** (mốc kế tiếp 2026-09-01).
+- **Có đề xuất mới cần duyệt (dời stop XOM) → sẽ gửi PushNotification.**
