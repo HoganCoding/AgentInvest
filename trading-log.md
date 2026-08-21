@@ -3967,3 +3967,32 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Biến động trong ngày:** mọi mã đều dưới ±1.5%, không mã nào vượt ngưỡng 3-5% cần WebSearch tin tức sâu.
 - **Slot rủi ro cao (thay IREN + ASTS, 2 slot trống): vẫn TẠM HOÃN** — dù benchmark hôm nay xanh nhẹ, chưa có xác nhận ổn định ≥1 phiên đầy đủ cho nhóm growth theo bộ lọc CLAUDE.md 2026-07-24 (mới đầu phiên). HIMS/RKLB vẫn trong cửa sổ cấm wash-sale tới ~08-23. Chưa tới ngày review định kỳ 30 ngày (mốc kế tiếp 2026-09-01).
 - **KẾT LUẬN: Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật).
+
+## 2026-08-21 ~13:11 ET (17:11 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 vẫn 8/10 slot, đề xuất dời stop-loss CRM (đỉnh mới $211.06); slot rủi ro cao vẫn tạm hoãn
+
+- **Sync đầu phiên:** `git pull origin main` — fast-forward 8b33198→1543d05 (2 commit sandbox mới: dời stop CIFR + kiểm tra định kỳ 13:09 ET). Không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn **8/10 slot**, không đổi: AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp), GOOGL(1cp), QCOM(2cp) — thiếu 2 slot rủi ro cao (thay IREN + ASTS). (CIFR 20cp là sandbox, bỏ qua.) `get_equity_orders` từ 13:46 UTC (lần kiểm tra trước) tới nay: không có lệnh nào mới/khớp — không stop-loss nào bị quẹt.
+- **Benchmark:** SPY $766.23 (+0.48% so đóng cửa 08-20), QQQ $713.67 (+0.39%) — xanh nhẹ, không risk-off.
+- P&L nhanh (giá ~13:11 ET/17:11 UTC, so đóng cửa 08-20), kèm đỉnh intraday xác nhận qua `get_equity_historicals` (5-30min bar, từ 13:30 UTC tới nay):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Đỉnh dùng đặt stop | Đỉnh intraday hôm nay |
+  |---|---|---|---|---|---|---|---|
+  | CRM | $191.24 | $209.97 | +9.81% | +2.21% | $197.55 | $207.95 | **$211.06 (đỉnh mới rõ, bar 15:50 UTC)** |
+  | XOM | $151.60 | $165.64 | +9.24% | -0.31% | $159.70 | $168.64 | $168.00 (chưa vượt) |
+  | QCOM | $162.24 | $160.68 | -0.96% | -0.04% | $156.84 | $165.09 | $163.33 (chưa vượt) |
+  | RSP | $214.93 | $221.79 | +3.19% | +0.68% | $211.44 | $222.57 | $222.14 (chưa vượt) |
+  | VOO | $688.26 | $704.33 | +2.34% | +0.47% | (fractional, thủ công) | — | — |
+  | AMZN | $261.47 | $259.13 | -0.89% | -0.38% | $252.89 | $266.20 | $261.08 (chưa vượt) |
+  | GOOGL | $343.80 | $345.33 | +0.45% | +1.37% | $329.39 | $346.73 | $345.93 (chưa vượt) |
+  | JPM | $347.97 | $350.74 | +0.80% | -0.23% | $344.85 | $362.29 | $356.86 (chưa vượt) |
+
+### ĐỀ XUẤT — Dời stop-loss CRM (đỉnh mới, chênh lệch đáng kể)
+- **Bối cảnh:** CRM tạo đỉnh phiên mới **$211.06** (bar 15:50-15:55 UTC / 11:50 ET, xác nhận qua `get_equity_historicals` 5min), vượt đỉnh $207.95 đang dùng đặt stop hiện tại ($197.55). Trong ngày +2.21%, dưới ngưỡng 3-5% nên không cần WebSearch tin tức sâu — tiếp diễn đà tăng đã ghi nhận các lần kiểm tra trước, chưa có catalyst mới. Lưu ý CRM báo cáo KQKD 26/08/2026 (5 ngày tới) — rủi ro sự kiện gần.
+- **Đề xuất: dời stop-loss CRM từ $197.55 lên $200.51** (= $211.06 × 0.95, trailing -5% nhóm tech) — hủy lệnh GTC cũ, đặt lệnh GTC stop_market mới bán 3cp @ trigger **$200.51**. Chênh lệch +$2.96 (+1.50%) so với stop hiện tại — đủ lớn để cập nhật (tương tự tiền lệ dời QCOM 08-20, +1.76%; khác với XOM 08-20 bị bỏ qua vì chênh chỉ +0.32%).
+- **Rủi ro chính:** CRM đã +9.81% từ giá vốn, gần nửa đường tới ngưỡng cảnh báo chốt lời (+15-20%); báo cáo KQKD 26/08 có thể gây biến động 2 chiều mạnh trước khi có thể dời stop thêm lần nữa.
+- **Mức cắt lỗ đề xuất cho lệnh dời này:** $200.51 (thay $197.55). Không phải lệnh mua/bán mới nên không có mức chốt lời riêng — CRM vẫn theo dõi ngưỡng cảnh báo chốt lời chung +15-20% của nhóm tech.
+- **Chờ Hogan duyệt trước khi thực hiện** (core-10, routine read-only, KHÔNG có quyền đặt/hủy lệnh).
+
+### Slot rủi ro cao (thay IREN + ASTS, 2 slot trống): vẫn TẠM HOÃN
+- Chưa tới ngày review định kỳ 30 ngày (mốc kế tiếp 2026-09-01). HIMS/RKLB vẫn trong cửa sổ cấm wash-sale tới ~08-23. Không rà soát lại ứng viên mới lần này (không có thay đổi bối cảnh so với lần kiểm tra 09:46 ET sáng nay).
+- **Có đề xuất mới cần duyệt (dời stop CRM) → sẽ gửi PushNotification.**
