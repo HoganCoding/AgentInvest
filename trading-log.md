@@ -3943,3 +3943,27 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Biến động trong ngày:** mọi mã đều dưới ±1.8%, không mã nào vượt ngưỡng 3-5% cần WebSearch tin tức sâu.
 - **Slot rủi ro cao (thay IREN + ASTS, 2 slot trống): vẫn TẠM HOÃN** — benchmark đỏ nhẹ + nhóm growth chưa xác nhận ổn định ≥1 phiên theo bộ lọc CLAUDE.md 2026-07-24. HIMS/RKLB vẫn trong cửa sổ cấm wash-sale tới ~08-23. Chưa tới ngày review định kỳ 30 ngày (mốc kế tiếp 2026-09-01).
 - **KẾT LUẬN: Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật).
+
+## 2026-08-21 ~09:46 ET (13:46 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 vẫn 8/10 slot, KHÔNG có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch` + checkout main → khớp `origin/main` (6b5a68b, gồm 2 commit sandbox mới — kiểm tra CIFR). Không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn **8/10 slot**, không đổi: AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp), GOOGL(1cp), QCOM(2cp) — thiếu 2 slot rủi ro cao (thay IREN + ASTS). (Vị thế CIFR 20cp trong tài khoản là **sandbox**, không phải core-10 — bỏ qua theo quy tắc đồng bộ.)
+- **Benchmark (09:46 ET, đầu phiên):** SPY $765.29 (+0.35% so đóng cửa hôm qua), QQQ $712.35 (+0.20%). Xanh nhẹ, không risk-off.
+- **P&L nhanh (giá ~09:46 ET/13:46 UTC):**
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Đỉnh dùng đặt stop |
+  |---|---|---|---|---|---|---|
+  | CRM | $191.24 | $206.10 | +7.79% | +0.33% | $197.55 | $207.95 |
+  | XOM | $151.60 | $166.79 | +10.00% | +0.38% | $159.70 | $168.64 |
+  | QCOM | $162.24 | $160.97 | -0.78% | +0.14% | $156.84 | $165.09 |
+  | RSP | $214.93 | $221.33 | +2.98% | +0.47% | $211.44 | $222.57 |
+  | VOO | $688.26 | $703.40 | +2.20% | +0.34% | (fractional, thủ công) | — |
+  | AMZN | $261.47 | $257.63 | -1.47% | -0.95% | $252.89 | $266.20 |
+  | GOOGL | $343.80 | $341.97 | -0.53% | +0.38% | $329.39 | $346.73 |
+  | JPM | $347.97 | $356.51 | +2.46% | +1.41% | $344.85 | $362.29 |
+
+- **Không stop-loss nào bị breach; không mã nào chạm ngưỡng cảnh báo chốt lời (+15-20%).** XOM cao nhất +10.00%, CRM +7.79% — còn xa ngưỡng.
+- **Không có đỉnh mới cần dời stop:** giá hiện tại mọi mã đều dưới đỉnh đã dùng đặt stop hiện có — chưa đủ căn cứ dời thêm.
+- **Biến động trong ngày:** mọi mã đều dưới ±1.5%, không mã nào vượt ngưỡng 3-5% cần WebSearch tin tức sâu.
+- **Slot rủi ro cao (thay IREN + ASTS, 2 slot trống): vẫn TẠM HOÃN** — dù benchmark hôm nay xanh nhẹ, chưa có xác nhận ổn định ≥1 phiên đầy đủ cho nhóm growth theo bộ lọc CLAUDE.md 2026-07-24 (mới đầu phiên). HIMS/RKLB vẫn trong cửa sổ cấm wash-sale tới ~08-23. Chưa tới ngày review định kỳ 30 ngày (mốc kế tiếp 2026-09-01).
+- **KẾT LUẬN: Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật).
