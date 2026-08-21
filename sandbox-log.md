@@ -3014,3 +3014,15 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **KHÔNG chốt lời, KHÔNG cắt lỗ thủ công:** vị thế đang -4.54% từ giá vốn, còn cách stop-loss tự động ~3.0% — để stop-loss GTC đã đặt tự xử lý theo kỷ luật, không can thiệp thêm.
 - **Phần theo dõi sandbox (circuit breaker):** cash sandbox ~$365.8 (không đổi) + giá trị CIFR 20cp × $15.645 = $312.90 ≈ **~$678.7** — quanh mốc gốc $700, còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động — tiếp tục giữ 20cp CIFR, stop-loss $15.17 nguyên trạng.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-21 ~15:08 ET (19:08 UTC) — Kiểm tra định kỳ (routine tự động, sync git): CIFR nhích +0.73% so lần check trước, vẫn giữ 20cp, stop-loss $15.17 chưa bị quẹt
+
+- **Sync đầu phiên:** `git pull origin main` — đã up to date với `77244bc` (không có commit mới kể từ lần check trước). Không conflict.
+- `get_equity_positions` (704170133): 9 vị thế. **Sandbox sở hữu: CIFR 20cp @ giá vốn $16.39** — không đổi. 8 vị thế còn lại khớp đúng core-10 theo `trading-log.md`: AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp), QCOM(2cp) — **KHÔNG đụng tới, không tính vào phần theo dõi sandbox**.
+- `get_equity_orders` CIFR: lệnh stop-loss GTC `6a875f58...` trigger **$15.17** ở trạng thái `confirmed` — chưa bị quẹt (giá hiện tại còn cách ~3.7%).
+- `get_portfolio`: cash **$1,925.93**, buying_power **$1,925.93** — không đổi so với lần check trước.
+- `get_equity_quotes`: **CIFR $15.76** (đóng cửa hôm qua $17.21 → **-8.42%**; so giá vốn $16.39 → **-3.84%**; so lần check trước $15.645 → **+0.73%**, dưới ngưỡng 3-5% → không WebSearch). SPY $766.28 (**+0.48%** so đóng cửa $762.60), QQQ $713.61 (**+0.38%**) — thị trường xanh nhẹ, CIFR hồi nhẹ theo đà chung, chưa lấy lại đỉnh.
+- **Không có đỉnh mới hôm nay** (đỉnh cao nhất vẫn là $17.24 từ phiên 08-20) → **không dời trailing stop-loss thêm**, giữ nguyên trigger $15.17.
+- **KHÔNG chốt lời, KHÔNG cắt lỗ thủ công:** vị thế đang -3.84% từ giá vốn, còn cách stop-loss tự động ~3.7% — để stop-loss GTC đã đặt tự xử lý theo kỷ luật, không can thiệp thêm.
+- **Phần theo dõi sandbox (circuit breaker):** cash sandbox ~$365.8 (không đổi) + giá trị CIFR 20cp × $15.76 = $315.20 ≈ **~$681.0** — quanh mốc gốc $700, còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động — tiếp tục giữ 20cp CIFR, stop-loss $15.17 nguyên trạng.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
