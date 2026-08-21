@@ -2940,3 +2940,15 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **KHÔNG mua thêm lần này** (dù vẫn giữ dư địa starter): đã hết giờ giao dịch chính thức, và nên xem phiên kế tiếp có giữ được mức $17 hay chỉ là spike cuối phiên trước khi cân nhắc nâng lên full position.
 - **Phần theo dõi sandbox (circuit breaker):** cash sandbox ~$365.8 + giá trị CIFR 20cp × $17.235 = $344.70 ≈ **~$710.5** (tăng từ ~$693.6, đã vượt lại mốc gốc $700) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
 - **Có hành động thật (dời stop-loss) → GỬI PushNotification** theo quy định CLAUDE.md.
+
+## 2026-08-21 ~09:14 ET (13:14 UTC) — Kiểm tra định kỳ (routine tự động, sync git): vẫn giữ CIFR 20cp, giá tiền phiên $17.4955 (+1.51% so lần check trước), stop-loss $15.17 active — chưa mở cửa chính thức, chưa đủ cơ sở dời stop thêm
+
+- **Sync đầu phiên:** `git pull` — "Already up to date", không có commit mới từ phiên khác kể từ log 16:11 ET hôm qua (bao gồm 2 nhánh mới tạo `claude/status-check-w2968t`, `worktree-sandbox-check-0707`, không ảnh hưởng `main`).
+- `get_equity_positions` (704170133): 9 vị thế. **Sandbox sở hữu: CIFR 20cp @ giá vốn $16.39** — không đổi. 8 vị thế còn lại khớp đúng core-10 theo `trading-log.md`: AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp), QCOM(2cp) — **KHÔNG đụng tới, không tính vào phần theo dõi sandbox**.
+- `get_equity_orders` CIFR: lệnh stop-loss GTC `6a875f58...` trigger **$15.17** ở trạng thái `confirmed` (đã active từ khi mở cửa, `last_transaction_at` 12:22 UTC hôm nay) — không bị quẹt.
+- `get_portfolio`: cash **$1,925.93**, buying_power **$1,925.93** — không đổi so với lần check trước (không có lệnh core-10 nào chen vào pool dùng chung).
+- `get_equity_quotes` (giá tiền phiên trước giờ mở cửa chính thức 9:30 ET): **CIFR $17.4955** (+1.66% so đóng cửa hôm qua $17.21, **+6.75% so giá vốn $16.39**, **+1.51% so lần check trước $17.235** — dưới ngưỡng 3-5% nên không WebSearch tin tức). SPY $765.68 (**+0.40%**), QQQ $715.22 (**+0.60%**) — cả hai xanh nhẹ tiền phiên, không risk-off.
+- **Chưa mở cửa chính thức (13:14 UTC = 9:14 ET, còn ~16 phút)** — giá tiền phiên thanh khoản thấp, chưa đủ cơ sở xác nhận đỉnh mới bằng volume thật để dời trailing stop-loss theo bộ lọc CLAUDE.md. Đỉnh dùng đặt stop hiện tại vẫn là $17.24 (từ phiên 08-20). Sẽ đánh giá lại sau khi mở cửa chính thức.
+- **KHÔNG chốt lời:** +6.75% từ giá vốn chưa tới ngưỡng +15% chốt lời 50% của nhóm rủi ro cao.
+- **Phần theo dõi sandbox (circuit breaker):** cash sandbox ~$365.8 + giá trị CIFR 20cp × $17.4955 = $349.91 ≈ **~$715.7** — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động — tiếp tục giữ 20cp CIFR, chờ mở cửa chính thức để đánh giá đỉnh mới/dời stop.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
