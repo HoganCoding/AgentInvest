@@ -3996,3 +3996,29 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 ### Slot rủi ro cao (thay IREN + ASTS, 2 slot trống): vẫn TẠM HOÃN
 - Chưa tới ngày review định kỳ 30 ngày (mốc kế tiếp 2026-09-01). HIMS/RKLB vẫn trong cửa sổ cấm wash-sale tới ~08-23. Không rà soát lại ứng viên mới lần này (không có thay đổi bối cảnh so với lần kiểm tra 09:46 ET sáng nay).
 - **Có đề xuất mới cần duyệt (dời stop CRM) → sẽ gửi PushNotification.**
+
+## 2026-08-21 ~15:32 ET (19:32 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 vẫn 8/10 slot, KHÔNG có đề xuất mới; đề xuất dời stop CRM lúc 13:11 ET vẫn CHỜ Hogan duyệt
+
+- **Sync đầu phiên:** `git pull` — đã ở đúng `origin/main` (66f74f1, không có commit mới từ phiên khác kể từ lần kiểm tra 13:11 ET). Không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn **8/10 slot**, không đổi: AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp), GOOGL(1cp), QCOM(2cp) — thiếu 2 slot rủi ro cao (thay IREN + ASTS). (CIFR 20cp là sandbox, bỏ qua.) `get_equity_orders` từ 17:11 UTC (lần kiểm tra trước) tới nay: **không có lệnh nào mới/khớp** — đề xuất dời stop CRM ($197.55→$200.51) từ lần kiểm tra 13:11 ET vẫn CHƯA được Hogan duyệt (chưa thấy lệnh hủy/đặt mới), stop hiện tại vẫn $197.55.
+- **Benchmark:** SPY $766.13 (+0.46% so đóng cửa 08-20), QQQ $713.73 (+0.39%) — xanh nhẹ, không risk-off.
+- P&L nhanh (giá ~15:32 ET/19:32 UTC, so đóng cửa 08-20):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Đỉnh dùng đặt stop | Đỉnh intraday hôm nay |
+  |---|---|---|---|---|---|---|---|
+  | CRM | $191.24 | $208.16 | +8.87% | +1.33% | $197.55 (đề xuất $200.51 đang chờ duyệt) | $207.95 | $211.06 (13:11 ET, chưa vượt thêm) |
+  | XOM | $151.60 | $164.995 | +8.82% | -0.69% | $159.70 | $168.64 | $164.995 (chưa vượt) |
+  | QCOM | $162.24 | $161.255 | -0.61% | +0.32% | $156.84 | $165.09 | $161.255 (chưa vượt) |
+  | RSP | $214.93 | $221.565 | +3.09% | +0.58% | $211.44 | $222.57 | $221.565 (chưa vượt) |
+  | VOO | $688.26 | $704.20 | +2.32% | +0.46% | (fractional, thủ công) | — | — |
+  | AMZN | $261.47 | $259.575 | -0.73% | -0.21% | $252.89 | $266.20 | $259.575 (chưa vượt) |
+  | GOOGL | $343.80 | $345.56 | +0.51% | +1.44% | $329.39 | $346.73 | $345.56 (chưa vượt) |
+  | JPM | $347.97 | $352.24 | +1.23% | +0.20% | $344.85 | $362.29 | $352.24 (chưa vượt) |
+
+- **Không stop-loss nào bị breach; không mã nào chạm ngưỡng cảnh báo chốt lời (+15-20%).** CRM cao nhất +8.87%, XOM +8.82% — còn xa ngưỡng.
+- **Không có đỉnh mới nào vượt đỉnh đã dùng đặt stop hiện có** (kể cả đỉnh $211.06 của CRM dùng cho đề xuất đang chờ duyệt) — không cần đề xuất dời stop thêm lần này ngoài đề xuất CRM đã gửi lúc 13:11 ET.
+
+### Slot rủi ro cao (thay IREN + ASTS, 2 slot trống): vẫn TẠM HOÃN
+- **Rà soát nhanh ứng viên growth (giá ~19:32 UTC so đóng cửa 08-20):** AEHR -3.83%, APLD -5.13% (đỏ mạnh), LUNR +3.07%, RKLB +0.18% (xanh nhẹ/đi ngang), HIMS +6.22% (xanh mạnh nhất nhưng vẫn cấm wash-sale tới ~08-23, 2 ngày nữa) — tín hiệu trái chiều, chưa đủ "xác nhận ổn định/xanh đồng loạt" theo bộ lọc CLAUDE.md 2026-07-24 dù benchmark xanh nhẹ. **KHÔNG đề xuất mua nhóm rủi ro cao lúc này.**
+- Chưa tới ngày review định kỳ 30 ngày (mốc kế tiếp 2026-09-01).
+- **KẾT LUẬN: Không có đề xuất mới lần kiểm tra này** (đề xuất dời stop CRM từ 13:11 ET vẫn còn hiệu lực, chờ Hogan duyệt). Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động MỚI thật; đề xuất CRM đã push ở lần kiểm tra trước rồi).
