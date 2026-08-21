@@ -2952,3 +2952,16 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **KHÔNG chốt lời:** +6.75% từ giá vốn chưa tới ngưỡng +15% chốt lời 50% của nhóm rủi ro cao.
 - **Phần theo dõi sandbox (circuit breaker):** cash sandbox ~$365.8 + giá trị CIFR 20cp × $17.4955 = $349.91 ≈ **~$715.7** — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động — tiếp tục giữ 20cp CIFR, chờ mở cửa chính thức để đánh giá đỉnh mới/dời stop.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-21 ~10:12 ET (14:12 UTC) — Kiểm tra định kỳ (routine tự động, sync git): CIFR pullback -4.86% so lần check trước (đã WebSearch, không có tin xấu), vẫn giữ 20cp, stop-loss $15.17 chưa bị quẹt
+
+- **Sync đầu phiên:** local ở detached HEAD tại `3b81fc1` (khớp `origin/main`) → `git checkout main` + `git pull origin main`: fast-forward 2 commit mới (core-10 routine check 08-21 09:46 ET, không có đề xuất mới) — không conflict, không mất dữ liệu.
+- `get_equity_positions` (704170133): 9 vị thế. **Sandbox sở hữu: CIFR 20cp @ giá vốn $16.39** — không đổi. 8 vị thế còn lại khớp đúng core-10 theo `trading-log.md`: AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp), QCOM(2cp) — **KHÔNG đụng tới, không tính vào phần theo dõi sandbox**.
+- `get_equity_orders` CIFR: lệnh stop-loss GTC `6a875f58...` trigger **$15.17** ở trạng thái `confirmed` — chưa bị quẹt.
+- `get_portfolio`: cash **$1,925.93**, buying_power **$1,925.93** — không đổi so với lần check trước (không có lệnh core-10 nào chen vào pool dùng chung).
+- `get_equity_quotes`: **CIFR $16.645** (đóng cửa hôm qua $17.21 → **-3.28%**; so giá vốn $16.39 → **+1.56%**; so lần check trước tiền phiên $17.4955 → **-4.86%**, vượt ngưỡng 3-5% → có WebSearch). SPY $765.21 (**+0.34%** so đóng cửa $762.60), QQQ $711.355 (**+0.06%** so đóng cửa $710.93) — thị trường xanh nhẹ/đi ngang, **pullback của CIFR là đặc thù riêng mã, không phải do thị trường chung**.
+- **WebSearch tin tức CIFR:** không có tin xấu mới. Bối cảnh đã biết: Clear Street Buy (16/08), JPM Buy nhưng hạ target $23→$22 (07/08), dòng tiền bullish ghi nhận 14/08 (+7.79%). Phiên 08-20 dao động $15.58-$17.24 (biên độ rộng, biến động tự nhiên của nhóm HPC/miner). Nhận định: pullback hiện tại nhiều khả năng là chốt lời sau đà tăng +8.46% hôm qua, không phải phản ứng với tin xấu. Nguồn: [TipRanks](https://www.tipranks.com/news/topic/cifr), [CNBC](https://www.cnbc.com/quotes/CIFR), [Yahoo Finance](https://finance.yahoo.com/quote/CIFR/).
+- **Không có đỉnh mới hôm nay** (đỉnh cao nhất vẫn là $17.24 từ phiên 08-20) → **không dời trailing stop-loss thêm**, giữ nguyên trigger $15.17.
+- **KHÔNG chốt lời:** +1.56% từ giá vốn còn xa ngưỡng +15%.
+- **Phần theo dõi sandbox (circuit breaker):** cash sandbox ~$365.8 (không đổi) + giá trị CIFR 20cp × $16.645 = $332.90 ≈ **~$698.7** — quanh mốc gốc $700, còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động — tiếp tục giữ 20cp CIFR, stop-loss $15.17 nguyên trạng.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
