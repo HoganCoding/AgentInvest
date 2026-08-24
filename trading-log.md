@@ -4063,3 +4063,43 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Quyết định của Hogan:** "Dời crm" — duyệt đề xuất cập nhật dời stop-loss CRM từ lần kiểm tra routine 09:47 ET cùng ngày (mức $201.60, thay thế đề xuất $200.51 cũ chưa duyệt).
 - **Dời stop-loss CRM:** hủy lệnh GTC cũ (`6a85e8ae...`, trigger $197.55) — xác nhận `cancelled`. Đặt lệnh GTC stop_market mới bán 3cp @ trigger **$201.60** (`6a8c4ccc...`) — xác nhận `confirmed`.
 - **Có hành động thật (1 lệnh dời stop) → sẽ gửi PushNotification.**
+
+## 2026-08-24 ~13:12 ET (17:12 UTC) — Kiểm tra định kỳ (routine tự động, sync git): STOP-LOSS QCOM đã tự động khớp (lỗ nhẹ); core-10 còn 7/10 slot; đề xuất dời stop-loss GOOGL (đỉnh mới); slot rủi ro cao + slot tech (QCOM) vẫn tạm hoãn tới review 09-01
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD tại `44f6df8` (khớp `origin/main`) — đã `git checkout main` + `git pull origin main`, fast-forward 8b33198→44f6df8 (17 commit mới, gồm phê duyệt dời stop CRM 09:53 ET và các lần kiểm tra sandbox). Không conflict.
+- `get_equity_positions`: core-10 hiện còn **7/10 slot** — AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp). **QCOM KHÔNG còn trong danh sách vị thế.**
+
+### GHI NHẬN — Stop-loss QCOM đã tự động khớp (không cần duyệt, chỉ ghi log)
+- `get_equity_orders` (symbol=QCOM) xác nhận: lệnh GTC stop_market bán 2cp @ trigger $156.84 (đặt 08-20, Hogan đã duyệt) đã **`filled`** lúc **13:50:10 UTC hôm nay**, khớp giá **$156.76**.
+- **P&L thực hiện:** mua $162.24/cp (08-19) → bán $156.76/cp → **-3.38%/cp, lỗ thực hiện ~-$10.96** (2cp).
+- **Bối cảnh:** đúng như lo ngại ghi nhận lần kiểm tra 09:47 ET sáng nay (giá khi đó $157.33, sát stop $156.84, không có catalyst tiêu cực riêng của QCOM — mức giảm phù hợp đà bán tháo chung nhóm bán dẫn/tech, QQQ khi đó -1.29%). Giá tiếp tục giảm sâu hơn trong phiên, chạm stop và tự động khớp. Đây là stop-loss tự động theo lệnh GTC đã được duyệt trước — KHÔNG cần duyệt thêm, không phải hành động của phiên này.
+- **Wash-sale:** QCOM vừa bán lỗ hôm nay → **cấm mua lại QCOM (hoặc mã gần tương đương) tới ~2026-09-23** (30 ngày) theo CLAUDE.md.
+- Core-10 giờ thiếu **3 slot**: 2 rủi ro cao (thay IREN+ASTS, trống từ trước) + 1 large-cap tech (thay QCOM, trống từ hôm nay).
+
+- **Benchmark (13:12 ET/17:12 UTC, so đóng cửa 08-21):** SPY $764.72 (-0.13%), QQQ $708.93 (-0.63%) — đỏ nhẹ, đỡ hơn nhiều so với đầu phiên (SPY -0.35%/QQQ -1.29% lúc 09:47 ET), không risk-off.
+- P&L nhanh (giá ~13:12 ET/17:12 UTC):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Đỉnh dùng đặt stop |
+  |---|---|---|---|---|---|---|
+  | CRM | $191.24 | $209.555 | +9.60% | +0.18% | $201.60 (vừa dời 09:53 ET) | $212.21 |
+  | XOM | $151.60 | $162.65 | +7.29% | -1.49% | $159.70 | $168.64 |
+  | RSP | $214.93 | $221.52 | +3.07% | -0.07% | $211.44 | $222.57 |
+  | VOO | $688.26 | $702.94 | +2.13% | -0.11% | (fractional, thủ công) | — |
+  | JPM | $347.97 | $355.82 | +2.26% | +1.21% | $344.85 | $362.29 |
+  | AMZN | $261.47 | $262.725 | +0.48% | +1.58% | $252.89 | $266.20 |
+  | GOOGL | $343.80 | $349.855 | +1.76% | +1.46% | $329.39 | **$346.73 → đỉnh mới $351.60** |
+
+- **Không stop-loss nào bị breach (ngoài QCOM đã khớp); không mã nào chạm ngưỡng cảnh báo chốt lời (+15-20%).** CRM cao nhất +9.60% — còn xa ngưỡng.
+- **Biến động trong ngày mọi mã còn lại đều dưới ±1.6%** — không cần WebSearch tin tức sâu thêm (QCOM đã có tin tức từ lần kiểm tra trước, không có catalyst mới).
+
+### ĐỀ XUẤT — Dời stop-loss GOOGL (đỉnh mới $351.60)
+- **Bối cảnh:** GOOGL tạo đỉnh phiên mới **$351.60** (bar 15:50-15:55 UTC, xác nhận qua `get_equity_historicals` 5min), vượt đỉnh $346.73 đang dùng đặt stop hiện tại ($329.39). Trong ngày +1.46%, dưới ngưỡng 3-5%, không có catalyst mới cần WebSearch — tiếp diễn đà tăng.
+- **Đề xuất: dời stop-loss GOOGL từ $329.39 lên $334.02** (= $351.60 × 0.95, trailing -5% nhóm tech) — hủy lệnh GTC cũ, đặt lệnh GTC stop_market mới bán 1cp @ trigger **$334.02**. Chênh lệch +$4.63 (+1.41%) so với stop hiện tại — đủ lớn để cập nhật (tương đương tiền lệ dời CRM 08-21, +1.50%).
+- **Rủi ro chính:** GOOGL đã +1.76% từ giá vốn (mới có lãi gần đây, chưa lớn); dời stop khóa bớt phần lãi nhỏ nhưng thu hẹp biên độ chấp nhận biến động ngắn hạn.
+- **Mức cắt lỗ đề xuất cho lệnh dời này:** $334.02 (thay $329.39).
+- **Chờ Hogan duyệt trước khi thực hiện** (core-10, routine read-only, KHÔNG có quyền đặt/hủy lệnh).
+
+### Slot rủi ro cao (thay IREN + ASTS) + slot tech (thay QCOM, mới trống hôm nay): vẫn TẠM HOÃN, gộp vào review định kỳ 2026-09-01
+- Không đề xuất thay thế vội ngay sau stop-loss QCOM — tránh phản ứng thái quá, đợi gộp chung vào đợt review định kỳ 30 ngày sắp tới (còn 7 ngày, mốc 2026-09-01) cùng 2 slot rủi ro cao đang chờ. QCOM tự nó bị cấm wash-sale nên không thể là ứng viên thay thế cho chính slot của nó dù muốn.
+- Rà soát nhanh ứng viên growth không thực hiện lại lần này (không có thay đổi bối cảnh đáng kể so với lần kiểm tra sáng nay — vẫn đỏ mạnh đồng loạt).
+- **Có đề xuất mới cần duyệt (dời stop GOOGL lên $334.02) và có sự kiện quan trọng cần Hogan biết (stop-loss QCOM đã khớp, lỗ -$10.96) → sẽ gửi PushNotification.**
