@@ -4057,3 +4057,9 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Rà soát ứng viên growth (giá ~13:48 UTC so đóng cửa 08-21):** AEHR -7.36%, LUNR -7.70%, RKLB -3.82%, CIFR -2.22%, APLD -1.95%, HIMS -8.67% — **đỏ mạnh đồng loạt toàn nhóm growth/small-cap**, rõ ràng không đạt bộ lọc "ổn định/xác nhận volume xanh" theo CLAUDE.md 2026-07-24. Cửa sổ cấm wash-sale HIMS/RKLB đã hết hạn (~08-23) nhưng không quan trọng vì cả nhóm đang bán tháo mạnh. **KHÔNG đề xuất mua nhóm rủi ro cao lúc này.**
 - Chưa tới ngày review định kỳ 30 ngày (mốc kế tiếp 2026-09-01).
 - **Có đề xuất mới cần duyệt (cập nhật dời stop CRM lên $201.60, thay thế đề xuất cũ $200.51) → sẽ gửi PushNotification.**
+
+## 2026-08-24 ~09:53 ET (13:53 UTC) — Hogan duyệt qua phiên tương tác: dời stop-loss CRM
+
+- **Quyết định của Hogan:** "Dời crm" — duyệt đề xuất cập nhật dời stop-loss CRM từ lần kiểm tra routine 09:47 ET cùng ngày (mức $201.60, thay thế đề xuất $200.51 cũ chưa duyệt).
+- **Dời stop-loss CRM:** hủy lệnh GTC cũ (`6a85e8ae...`, trigger $197.55) — xác nhận `cancelled`. Đặt lệnh GTC stop_market mới bán 3cp @ trigger **$201.60** (`6a8c4ccc...`) — xác nhận `confirmed`.
+- **Có hành động thật (1 lệnh dời stop) → sẽ gửi PushNotification.**
