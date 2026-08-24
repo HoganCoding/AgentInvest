@@ -4103,3 +4103,9 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Không đề xuất thay thế vội ngay sau stop-loss QCOM — tránh phản ứng thái quá, đợi gộp chung vào đợt review định kỳ 30 ngày sắp tới (còn 7 ngày, mốc 2026-09-01) cùng 2 slot rủi ro cao đang chờ. QCOM tự nó bị cấm wash-sale nên không thể là ứng viên thay thế cho chính slot của nó dù muốn.
 - Rà soát nhanh ứng viên growth không thực hiện lại lần này (không có thay đổi bối cảnh đáng kể so với lần kiểm tra sáng nay — vẫn đỏ mạnh đồng loạt).
 - **Có đề xuất mới cần duyệt (dời stop GOOGL lên $334.02) và có sự kiện quan trọng cần Hogan biết (stop-loss QCOM đã khớp, lỗ -$10.96) → sẽ gửi PushNotification.**
+
+## 2026-08-24 ~13:33 ET (17:33 UTC) — Hogan duyệt qua phiên tương tác: dời stop-loss GOOGL
+
+- **Quyết định của Hogan:** "Dời GOOGL lên $334.02" — duyệt đề xuất dời stop-loss GOOGL từ lần kiểm tra routine 13:12 ET cùng ngày (đỉnh $351.60).
+- **Dời stop-loss GOOGL:** hủy lệnh GTC cũ (`6a85e8b0...`, trigger $329.39) — xác nhận `cancelled`. Đặt lệnh GTC stop_market mới bán 1cp @ trigger **$334.02** (`6a8c8041...`) — xác nhận `confirmed`.
+- **Có hành động thật (1 lệnh dời stop) → sẽ gửi PushNotification.**
