@@ -3038,3 +3038,16 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **KHÔNG chốt lời, KHÔNG cắt lỗ thủ công:** vị thế đang -3.84% từ giá vốn, còn cách stop-loss tự động ~3.7% — để stop-loss GTC đã đặt tự xử lý theo kỷ luật, không can thiệp thêm.
 - **Phần theo dõi sandbox (circuit breaker):** cash sandbox ~$365.8 (không đổi) + giá trị CIFR 20cp × $15.76 = $315.20 ≈ **~$681.0** — quanh mốc gốc $700, còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động — tiếp tục giữ 20cp CIFR, stop-loss $15.17 nguyên trạng.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-24 ~09:14 ET (13:14 UTC) — Kiểm tra định kỳ (routine tự động, sync git): CIFR gần như đi ngang -1.46% so lần check cuối tuần trước, vẫn giữ 20cp, stop-loss $15.17 chưa bị quẹt, chưa mở cửa chính thức
+
+- **Sync đầu phiên:** `git pull` — "Already up to date" với `origin/main` (0bae187, không có commit mới kể từ log 16:00 ET thứ Sáu 08-21). Không conflict.
+- `get_equity_positions` (704170133): 9 vị thế. **Sandbox sở hữu: CIFR 20cp @ giá vốn $16.39** — không đổi. 8 vị thế còn lại khớp đúng core-10 theo `trading-log.md`: AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp), QCOM(2cp) — **KHÔNG đụng tới, không tính vào phần theo dõi sandbox**.
+- `get_equity_orders` CIFR: lệnh stop-loss GTC `6a875f58...` trigger **$15.17** ở trạng thái `confirmed` — chưa bị quẹt (giá hiện tại còn cách ~2.3%).
+- `get_portfolio`: cash **$1,925.93**, buying_power **$1,925.93** — không đổi so với lần check trước (không có lệnh core-10 nào chen vào pool dùng chung).
+- `get_equity_quotes` (tiền phiên, chưa mở cửa chính thức 9:30 ET): **CIFR $15.53** (đóng cửa thứ Sáu 08-21 $15.765 → **-1.49%**; so giá vốn $16.39 → **-5.25%**; so lần check trước $15.76 → **-1.46%**, dưới ngưỡng 3-5% → không WebSearch). SPY $764.43 (**-0.17%** tiền phiên so đóng cửa $765.72), QQQ $709.12 (**-0.61%**) — đỏ nhẹ tiền phiên, chưa risk-off (dưới ngưỡng -1.5-2%).
+- **Không có đỉnh mới** (đỉnh cao nhất vẫn là $17.24 từ phiên 08-20) → **không dời trailing stop-loss thêm**, giữ nguyên trigger $15.17.
+- **KHÔNG chốt lời, KHÔNG cắt lỗ thủ công:** vị thế đang -5.25% từ giá vốn, còn cách stop-loss tự động ~2.3% — để stop-loss GTC đã đặt tự xử lý theo kỷ luật, không can thiệp thêm. Chưa mở cửa chính thức nên thanh khoản tiền phiên thấp, chưa đủ cơ sở đánh giá xu hướng thật trong ngày.
+- **Wash-sale ghi nhớ (cập nhật):** cấm mua lại OUST tới ~2026-09-17; HIMS/RKLB **đã hết cấm từ ~08-23** (có thể cân nhắc lại nếu có cơ hội tốt, dù hiện tại không xét mua mới); OKLO/ACHR/ONDS/AXTI tới ~08-27; PANW tới ~2026-09-18.
+- **Phần theo dõi sandbox (circuit breaker):** cash sandbox ~$365.8 (không đổi) + giá trị CIFR 20cp × $15.53 = $310.60 ≈ **~$676.4** — quanh mốc gốc $700, còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động — tiếp tục giữ 20cp CIFR, stop-loss $15.17 nguyên trạng.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
