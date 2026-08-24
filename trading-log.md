@@ -4022,3 +4022,38 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Rà soát nhanh ứng viên growth (giá ~19:32 UTC so đóng cửa 08-20):** AEHR -3.83%, APLD -5.13% (đỏ mạnh), LUNR +3.07%, RKLB +0.18% (xanh nhẹ/đi ngang), HIMS +6.22% (xanh mạnh nhất nhưng vẫn cấm wash-sale tới ~08-23, 2 ngày nữa) — tín hiệu trái chiều, chưa đủ "xác nhận ổn định/xanh đồng loạt" theo bộ lọc CLAUDE.md 2026-07-24 dù benchmark xanh nhẹ. **KHÔNG đề xuất mua nhóm rủi ro cao lúc này.**
 - Chưa tới ngày review định kỳ 30 ngày (mốc kế tiếp 2026-09-01).
 - **KẾT LUẬN: Không có đề xuất mới lần kiểm tra này** (đề xuất dời stop CRM từ 13:11 ET vẫn còn hiệu lực, chờ Hogan duyệt). Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động MỚI thật; đề xuất CRM đã push ở lần kiểm tra trước rồi).
+
+## 2026-08-24 ~09:47 ET (13:47 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 vẫn 8/10 slot, CẬP NHẬT đề xuất dời stop-loss CRM (đỉnh mới $212.21, thay thế đề xuất cũ $200.51 vẫn chưa được duyệt); slot rủi ro cao vẫn tạm hoãn (thị trường growth đỏ mạnh)
+
+- **Sync đầu phiên:** `git pull` — fast-forward 8b33198→20ee3f6 (12 commit mới, gồm các lần kiểm tra sandbox cuối tuần + hôm nay 08-24 09:14 ET). Không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn **8/10 slot**, không đổi so với lần kiểm tra cuối (08-21 15:32 ET): AMZN(2cp), RSP(2cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp), GOOGL(1cp), QCOM(2cp) — vẫn thiếu 2 slot rủi ro cao (thay IREN + ASTS). `get_equity_orders` từ 19:32 UTC 08-21 tới nay: **không có lệnh nào mới/khớp** — đề xuất dời stop CRM ($197.55→$200.51) từ lần kiểm tra 08-21 13:11 ET vẫn CHƯA được Hogan duyệt (chưa thấy lệnh hủy/đặt mới), stop hiện tại vẫn $197.55.
+- **Benchmark (09:47 ET/13:47 UTC):** SPY $763.07 (-0.35% so đóng cửa 08-21 $765.72), QQQ $704.27 (-1.29% so đóng cửa 08-21 $713.44) — đỏ rõ hơn ở nhóm tech, chưa tới ngưỡng risk-off (-1.5-2%) nhưng gần.
+- P&L nhanh (giá ~09:47 ET/13:47 UTC, so đóng cửa 08-21):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Đỉnh dùng đặt stop | Đỉnh intraday hôm nay |
+  |---|---|---|---|---|---|---|---|
+  | CRM | $191.24 | $210.79 | +10.24% | +0.77% | $197.55 (đề xuất $200.51 đang chờ duyệt) | $207.95 | **$212.21 (đỉnh mới, bar 13:40-13:45 UTC, vượt $211.06 dùng cho đề xuất cũ)** |
+  | XOM | $151.60 | $164.96 | +8.81% | -0.09% | $159.70 | $168.64 | $164.96 (chưa vượt) |
+  | QCOM | $162.24 | $157.33 | -3.03% | **-2.13%** | $156.84 | $165.09 | $157.33 (chưa vượt, đáy trong ngày $157.32 — sát stop $156.84 nhưng CHƯA breach) |
+  | RSP | $214.93 | $222.09 | +3.33% | +0.19% | $211.44 | $222.57 | $222.09 (chưa vượt) |
+  | VOO | $688.26 | $701.36 | +1.90% | -0.33% | (fractional, thủ công) | — | — |
+  | AMZN | $261.47 | $260.92 | -0.21% | +0.94% | $252.89 | $266.20 | $260.92 (chưa vượt) |
+  | GOOGL | $343.80 | $346.00 | +0.64% | +0.34% | $329.39 | $346.73 | $346.00 (chưa vượt) |
+  | JPM | $347.97 | $356.28 | +2.39% | +1.33% | $344.85 | $362.29 | $356.28 (chưa vượt) |
+
+- **QCOM giảm -2.13% trong ngày, dưới ngưỡng 3-5% nên không cần WebSearch sâu theo quy tắc mặc định, nhưng do giá đang sát stop-loss ($157.33 vs stop $156.84, chỉ còn ~0.31%) nên vẫn chủ động tra tin tức.** Kết quả WebSearch: không có catalyst tiêu cực riêng của QCOM (không kiện tụng/hạ bậc/mất lãnh đạo/lợi nhuận xấu đi) — tin gần nhất là chiến lược đa dạng hóa data-center và cổ tức $0.92 (ex-date 03/09), trung tính/tích cực. Mức giảm phù hợp với đà bán tháo chung nhóm bán dẫn/tech hôm nay (QQQ -1.29%). **Không breach stop, không cần hành động — chỉ theo dõi sát ở lần kiểm tra kế tiếp.**
+
+### CẬP NHẬT ĐỀ XUẤT — Dời stop-loss CRM (đỉnh mới $212.21, thay thế đề xuất $200.51 hôm 08-21 vẫn chưa duyệt)
+- **Bối cảnh:** Đề xuất dời stop CRM từ $197.55→$200.51 (dựa trên đỉnh $211.06 ghi nhận 08-21 13:11 ET) vẫn đang chờ Hogan duyệt, chưa có lệnh hủy/đặt nào được thực hiện. Sáng nay CRM tiếp tục tạo **đỉnh phiên mới $212.21** (bar 13:40-13:45 UTC, xác nhận qua `get_equity_historicals` 5min), vượt đỉnh $211.06 dùng cho đề xuất cũ. Trong ngày +0.77% — dưới ngưỡng 3-5%, không có catalyst mới (tiếp diễn đà tăng đã ghi nhận nhiều lần kiểm tra trước; lưu ý CRM báo cáo KQKD 26/08/2026 — còn 2 ngày nữa, rủi ro sự kiện gần cần theo dõi).
+- **Đề xuất cập nhật: dời stop-loss CRM từ $197.55 lên $201.60** (= $212.21 × 0.95, trailing -5% nhóm tech) — hủy lệnh GTC cũ, đặt lệnh GTC stop_market mới bán 3cp @ trigger **$201.60**. Đây là bản CẬP NHẬT thay thế hoàn toàn đề xuất $200.51 ngày 08-21 (không cần duyệt cả 2, chỉ 1 lệnh dời duy nhất tới mức mới nhất $201.60).
+- **Rủi ro chính:** CRM đã +10.24% từ giá vốn, hơn nửa đường tới ngưỡng cảnh báo chốt lời (+15-20%); dời stop khóa thêm lời nhưng thu hẹp biên độ chấp nhận biến động ngắn hạn trong bối cảnh thị trường tech đang có áp lực bán hôm nay (QQQ -1.29%).
+- **Mức cắt lỗ đề xuất cho lệnh dời này:** $201.60 (thay $197.55, thay thế luôn đề xuất $200.51 cũ). Không phải lệnh mua/bán mới nên không có mức chốt lời riêng — CRM vẫn theo dõi ngưỡng cảnh báo chốt lời chung +15-20% của nhóm tech.
+- **Chờ Hogan duyệt trước khi thực hiện** (core-10, routine read-only, KHÔNG có quyền đặt/hủy lệnh).
+
+### QCOM sát stop-loss — chỉ theo dõi, KHÔNG đề xuất hành động
+- Giá hiện tại $157.33 chỉ còn cách stop-loss $156.84 khoảng 0.31%. Không có catalyst tiêu cực riêng, mức giảm phù hợp đà bán tháo chung nhóm tech/bán dẫn. Theo quy tắc trailing stop, KHÔNG dời stop xuống dù giá giảm — giữ nguyên $156.84, để lệnh tự động khớp nếu bị breach thật.
+
+### Slot rủi ro cao (thay IREN + ASTS, 2 slot trống): vẫn TẠM HOÃN
+- **Rà soát ứng viên growth (giá ~13:48 UTC so đóng cửa 08-21):** AEHR -7.36%, LUNR -7.70%, RKLB -3.82%, CIFR -2.22%, APLD -1.95%, HIMS -8.67% — **đỏ mạnh đồng loạt toàn nhóm growth/small-cap**, rõ ràng không đạt bộ lọc "ổn định/xác nhận volume xanh" theo CLAUDE.md 2026-07-24. Cửa sổ cấm wash-sale HIMS/RKLB đã hết hạn (~08-23) nhưng không quan trọng vì cả nhóm đang bán tháo mạnh. **KHÔNG đề xuất mua nhóm rủi ro cao lúc này.**
+- Chưa tới ngày review định kỳ 30 ngày (mốc kế tiếp 2026-09-01).
+- **Có đề xuất mới cần duyệt (cập nhật dời stop CRM lên $201.60, thay thế đề xuất cũ $200.51) → sẽ gửi PushNotification.**
