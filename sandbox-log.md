@@ -3119,3 +3119,14 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **KHÔNG mở vị thế rủi ro cao mới:** cần thêm thời gian xác nhận ổn định qua phiên đóng cửa, không chỉ dựa vào biến động intraday. Nhắc wash-sale: cấm mua lại CIFR tới ~09-23; OUST tới ~09-17; PANW tới ~09-18 (core-10, không áp dụng sandbox); HIMS/RKLB đã hết cấm.
 - **Phần theo dõi sandbox (circuit breaker):** ~$669.2 (100% cash, không đổi so lần trước) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động — tiếp tục giữ 100% tiền mặt, chờ tín hiệu thị trường ổn định hơn/xác nhận qua phiên đóng cửa.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-24 ~16:12 ET (20:12 UTC) — Kiểm tra định kỳ (routine tự động, sync git): TTCK đã đóng cửa phiên chính (16:00 ET), sandbox vẫn 100% tiền mặt, QQQ đóng cửa -1.01%, KHÔNG mở vị thế mới
+
+- **Sync đầu phiên:** `git pull` — "Already up to date" với `origin/main` (khớp commit core-10 15:32 ET + sandbox 15:09 ET). Không conflict.
+- `get_accounts`: `unsettled_funds` (704170133) = **$616.92** — không đổi (tiền bán CIFR vẫn chưa settle, dự kiến T+1 ~08-25).
+- `get_equity_positions` (704170133): **7 vị thế, toàn bộ core-10** theo `trading-log.md`: AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp) — **không có gì thuộc sandbox** (CIFR đã bán hết từ 10:11 ET, chưa mở vị thế mới) — **KHÔNG đụng tới các vị thế này**.
+- `get_portfolio`: cash **$2,542.85**, buying_power **$1,925.93** — không đổi so với lần check trước.
+- `get_equity_quotes`: SPY $763.47 (đóng cửa chính thức phiên, **-0.29%** so đóng cửa 08-21 $765.72), QQQ $706.24 (**-1.01%** so đóng cửa $713.44) — phiên chính đã kết thúc (last_trade_time ~19:59:59 UTC = 15:59:59 ET), QQQ đóng cửa đỏ nhẹ, dưới ngưỡng risk-off -1.5/-2%, đây là lần đóng cửa đầu tiên kể từ đợt bán tháo sáng nay (không xấu thêm nhiều so với check 15:09 ET khi QQQ -0.82%, chênh dưới ngưỡng 3-5% → không WebSearch thêm).
+- **KHÔNG mở vị thế rủi ro cao mới:** phiên hôm nay đóng cửa đỏ nhẹ (QQQ -1.01%), chưa phải "phiên đóng cửa xanh/đi ngang" cần theo bộ lọc CLAUDE.md 2026-07-24 — chờ phiên tiếp theo (08-25) xác nhận ổn định trước khi cân nhắc vào lệnh mới. Nhắc wash-sale: cấm mua lại CIFR tới ~09-23; OUST tới ~09-17; PANW tới ~09-18 (core-10, không áp dụng sandbox); HIMS/RKLB đã hết cấm.
+- **Phần theo dõi sandbox (circuit breaker):** ~$669.2 (100% cash, không đổi so lần trước) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động — tiếp tục giữ 100% tiền mặt qua đêm, chờ phiên 08-25 xác nhận ổn định trước khi cân nhắc vào lệnh mới.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
