@@ -3066,6 +3066,17 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **Phần theo dõi sandbox (circuit breaker):** cash sandbox ~$365.8 (trước bán) + tiền bán CIFR $303.40 (chưa settle) ≈ **~$669.2**, không còn giá trị vị thế nào (100% cash) — vẫn quanh mốc gốc $700 (giảm nhẹ do khoản lỗ thực hiện -$24.40), còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào — sandbox vẫn hoạt động bình thường, tiếp tục theo dõi cơ hội mới.
 - **Quyết định: GHI NHẬN stop-loss CIFR đã tự động khớp — không có hành động thủ công nào cần làm thêm (lệnh đã tự xử lý đúng kỷ luật). KHÔNG mở vị thế mới lần kiểm tra này** do thị trường growth đang bán tháo mạnh, chờ ổn định. **Có thay đổi thật (vị thế đóng, lỗ thực hiện) → gửi PushNotification.**
 
+## 2026-08-25 ~09:15 ET (13:15 UTC) — Kiểm tra định kỳ (routine tự động, sync git): tiền bán CIFR đã settle, sandbox 100% tiền mặt, thị trường TIỀN MỞ CỬA xanh (QQQ +0.81%) nhưng chưa có phiên chính thức để xác nhận ổn định, KHÔNG mở vị thế mới
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD tại `319f517` (khớp `origin/main`) — đã `git checkout main` + fast-forward 25 commit (`8b33198`→`319f517`, gồm các lần kiểm tra core-10/sandbox 08-24 buổi chiều/tối). Không conflict.
+- `get_accounts` (704170133): **`unsettled_funds` = $0.00** — tiền bán CIFR $303.40 (khớp 08-24) đã settle T+1, giờ nằm trong buying power.
+- `get_equity_positions` (704170133): **7 vị thế, toàn bộ core-10** theo `trading-log.md`: AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp) — **không có gì thuộc sandbox** (CIFR đã bán hết từ 08-24, chưa mở vị thế mới) — **KHÔNG đụng tới các vị thế này**.
+- `get_portfolio`: cash **$2,542.85**, buying_power **$2,542.85** (đã cộng đủ, không còn phần chờ settle).
+- `get_equity_quotes`: thị trường **CHƯA MỞ CỬA phiên chính** (giờ hiện tại 9:15 ET, trước 9:30 ET) — giá tiền mở cửa (non-reg): SPY $766.52 (**+0.40%** so đóng cửa 08-24 $763.47), QQQ $712.01 (**+0.81%** so đóng cửa 08-24 $706.32) — tiền mở cửa xanh, hồi phục sau phiên đỏ hôm qua (QQQ đóng cửa -1.01%), nhưng đây chỉ là giá pre-market, CHƯA phải volume/giá xác nhận của phiên chính thức.
+- **KHÔNG mở vị thế rủi ro cao mới:** theo bộ lọc CLAUDE.md 2026-07-24, cần xác nhận giá ổn định/volume thật của ít nhất 1 phiên chính trước khi vào lệnh mới — thị trường chưa mở cửa nên chưa có gì để xác nhận. Chờ phiên chính 08-25 mở cửa và diễn biến trong ngày ở lần kiểm tra kế tiếp. Nhắc wash-sale: cấm mua lại CIFR tới ~09-23; OUST tới ~09-17; PANW tới ~09-18 (core-10, không áp dụng sandbox); HIMS/RKLB đã hết cấm.
+- **Phần theo dõi sandbox (circuit breaker):** ~$669.2 (100% cash, không đổi so lần trước, chỉ khác là khoản $303.40 nay đã settle thay vì chờ settle) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động — tiếp tục giữ 100% tiền mặt, chờ phiên chính 08-25 mở cửa để đánh giá xác nhận ổn định.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước (settle tiền không phải là hành động giao dịch) → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
 ## 2026-08-24 ~11:11 ET (15:11 UTC) — Kiểm tra định kỳ (routine tự động, sync git): sandbox vẫn 100% tiền mặt, thị trường tech/growth còn đỏ (chưa xác nhận ổn định), KHÔNG mở vị thế mới
 
 - **Sync đầu phiên:** `git pull` — "Already up to date" với `origin/main` (khớp commit ghi nhận stop-loss CIFR 10:11 ET). Không conflict.
