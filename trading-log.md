@@ -4132,3 +4132,31 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Biến động trong ngày mọi mã đều dưới ±1.4%** — không cần WebSearch tin tức sâu.
 - **Slot rủi ro cao (thay IREN+ASTS) + slot tech (thay QCOM): vẫn TẠM HOÃN**, gộp vào review định kỳ 30 ngày (mốc 2026-09-01, còn 8 ngày). Không rà soát lại ứng viên mới lần này (không có thay đổi bối cảnh đáng kể so với lần kiểm tra sáng nay).
 - **KẾT LUẬN: Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật).
+
+## 2026-08-25 ~09:46 ET (13:46 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 vẫn 7/10 slot, KHÔNG có đề xuất mới; lưu ý CRM báo cáo KQKD sau đóng cửa ngày mai (26/08)
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD tại `8142b8b` (khớp `origin/main`) — đã `git checkout main` + `git pull origin main`, fast-forward 8b33198→8142b8b (26 commit mới, gồm các lần kiểm tra sandbox 08-24 chiều tối). Không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn **7/10 slot**, không đổi so với lần kiểm tra cuối (08-24 15:32 ET): AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp) — vẫn thiếu 3 slot (2 rủi ro cao thay IREN+ASTS, 1 tech thay QCOM — gộp chờ review 2026-09-01). `get_equity_orders` từ 19:32 UTC 08-24 tới nay: **không có lệnh nào mới/khớp** — không stop-loss nào bị breach.
+- **Benchmark (09:46 ET/13:46 UTC, so đóng cửa 08-24):** SPY $766.22 (+0.36%), QQQ $712.80 (+0.92%) — xanh, không risk-off.
+- P&L nhanh (giá ~09:46 ET/13:46 UTC, so đóng cửa 08-24):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Đỉnh dùng đặt stop |
+  |---|---|---|---|---|---|---|
+  | CRM | $191.24 | $210.00 | +9.83% | +0.45% | $201.60 | $212.21 (chưa vượt) |
+  | XOM | $151.60 | $161.26 | +6.37% | -1.70% | $159.70 | $168.64 (chưa vượt) |
+  | RSP | $214.93 | $221.665 | +3.13% | -0.12% | $211.44 | $222.57 (chưa vượt) |
+  | VOO | $688.26 | $704.355 | +2.34% | +0.36% | (fractional, thủ công) | — |
+  | JPM | $347.97 | $353.9125 | +1.71% | -0.69% | $344.85 | $362.29 (chưa vượt) |
+  | GOOGL | $343.80 | $349.12 | +1.55% | +0.30% | $334.02 | $351.60 (chưa vượt) |
+  | AMZN | $261.47 | $262.39 | +0.35% | +0.12% | $252.89 | $266.20 (chưa vượt) |
+
+- **Không stop-loss nào bị breach; không mã nào chạm ngưỡng cảnh báo chốt lời (+15-20%).** CRM cao nhất +9.83% — còn xa ngưỡng. Không có đỉnh mới nào vượt đỉnh đã dùng đặt stop hiện có — không cần đề xuất dời stop lần này.
+- **Biến động trong ngày mọi mã đều dưới ±1.7%** — không cần WebSearch tin tức sâu cho biến động giá, nhưng có sự kiện quan trọng sắp tới cần lưu ý:
+
+### LƯU Ý — CRM báo cáo KQKD Q2 FY2027 sau đóng cửa ngày mai (26/08/2026, 17:00 ET)
+- WebSearch xác nhận: Salesforce công bố KQKD Q2 FY2027 sau đóng cửa 26/08 (~17:00 ET). Kỳ vọng doanh thu $11.27-11.35B (giữa $11.32B, +10.6% YoY theo Zacks), EPS non-GAAP $3.25-3.27 (kỳ vọng +12.4% YoY). Salesforce đã vượt kỳ vọng EPS 6/7 quý gần nhất; theo Polymarket xác suất vượt kỳ vọng lần này ~91%.
+- **Không có hành động nào cần thực hiện hôm nay** — đây chỉ là lưu ý rủi ro sự kiện (CRM đang +9.83% từ giá vốn, stop-loss hiện tại $201.60 vẫn cách xa giá hiện tại $210.00 ~4%, đủ đệm cho biến động sau KQKD thông thường). Sẽ theo dõi sát phản ứng giá sau KQKD ở lần kiểm tra tiếp theo (dự kiến sáng 08-26, sau khi thị trường phản ánh KQKD).
+
+### Slot rủi ro cao (thay IREN+ASTS) + slot tech (thay QCOM): vẫn TẠM HOÃN
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-09-01, còn 7 ngày). Không rà soát lại ứng viên mới lần này (không có thay đổi bối cảnh đáng kể so với lần kiểm tra trước).
+- **KẾT LUẬN: Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật; lưu ý KQKD CRM không phải đề xuất, chỉ là thông tin theo dõi).
