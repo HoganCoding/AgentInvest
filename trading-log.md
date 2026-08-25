@@ -4160,3 +4160,27 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 ### Slot rủi ro cao (thay IREN+ASTS) + slot tech (thay QCOM): vẫn TẠM HOÃN
 - Chưa tới ngày review định kỳ 30 ngày (mốc 2026-09-01, còn 7 ngày). Không rà soát lại ứng viên mới lần này (không có thay đổi bối cảnh đáng kể so với lần kiểm tra trước).
 - **KẾT LUẬN: Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật; lưu ý KQKD CRM không phải đề xuất, chỉ là thông tin theo dõi).
+
+## 2026-08-25 ~13:10 ET (17:10 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 vẫn 7/10 slot, KHÔNG có đề xuất mới
+
+- **Sync đầu phiên:** local ở trạng thái detached HEAD tại `9527996` (khớp `origin/main`) — đã `git checkout main` + fast-forward 8b33198→9527996 (31 commit mới, gồm các lần kiểm tra sandbox 08-25 sáng/trưa). Không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn **7/10 slot**, không đổi so với lần kiểm tra sáng nay (09:46 ET): AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp) — vẫn thiếu 3 slot (2 rủi ro cao thay IREN+ASTS, 1 tech thay QCOM — gộp chờ review 2026-09-01). `get_equity_orders` từ 13:46 UTC tới nay: **không có lệnh nào mới/khớp** — không stop-loss nào bị breach.
+- **Benchmark (13:10 ET/17:10 UTC, so đóng cửa 08-24):** SPY $765.12 (+0.22%), QQQ $709.70 (+0.48%) — xanh nhẹ, không risk-off.
+- P&L nhanh (giá ~13:10 ET/17:10 UTC, so đóng cửa 08-24):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Đỉnh dùng đặt stop |
+  |---|---|---|---|---|---|---|
+  | CRM | $191.24 | $206.29 | +7.90% | -1.32% | $201.60 | $212.21 (chưa vượt) |
+  | XOM | $151.60 | $162.01 | +6.86% | -1.24% | $159.70 | $168.64 (chưa vượt) |
+  | RSP | $214.93 | $221.59 | +3.10% | -0.15% | $211.44 | $222.57 (chưa vượt) |
+  | VOO | $688.26 | $703.29 | +2.18% | +0.21% | (fractional, thủ công) | — |
+  | JPM | $347.97 | $355.666 | +2.21% | -0.20% | $344.85 | $362.29 (chưa vượt) |
+  | GOOGL | $343.80 | $347.26 | +1.01% | -0.23% | $334.02 | $351.60 (chưa vượt) |
+  | AMZN | $261.47 | $260.74 | -0.28% | -0.51% | $252.89 | $266.20 (chưa vượt) |
+
+- **Không stop-loss nào bị breach; không mã nào chạm ngưỡng cảnh báo chốt lời (+15-20%).** CRM cao nhất +7.90% — còn xa ngưỡng. Không có đỉnh mới nào vượt đỉnh đã dùng đặt stop hiện có — không cần đề xuất dời stop lần này.
+- **Biến động trong ngày mọi mã đều dưới ±1.4%** — không cần WebSearch tin tức sâu. CRM báo cáo KQKD Q2 FY2027 sau đóng cửa ngày mai (26/08, ~17:00 ET) vẫn đang được theo dõi (đã ghi nhận lần kiểm tra sáng nay), không có diễn biến mới cần cập nhật.
+
+### Slot rủi ro cao (thay IREN+ASTS) + slot tech (thay QCOM): vẫn TẠM HOÃN
+- Chưa tới ngày review định kỳ 30 ngày (mốc 2026-09-01, còn 7 ngày). Không rà soát lại ứng viên mới lần này (không có thay đổi bối cảnh đáng kể so với lần kiểm tra sáng nay).
+- **KẾT LUẬN: Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật).
