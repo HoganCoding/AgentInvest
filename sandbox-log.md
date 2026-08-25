@@ -3173,3 +3173,14 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **KHÔNG mở vị thế rủi ro cao mới:** theo bộ lọc CLAUDE.md 2026-07-24, cần xác nhận giá ổn định/volume thật qua ít nhất 1 phiên đóng cửa trước khi vào lệnh mới — phiên hôm nay vẫn đang diễn ra (chưa đóng cửa), chưa đủ cơ sở xác nhận dù đang xanh nhẹ. Chờ đóng cửa phiên 08-25 ở lần kiểm tra kế tiếp. Nhắc wash-sale: cấm mua lại CIFR tới ~09-23; OUST tới ~09-17; PANW tới ~09-18 (core-10, không áp dụng sandbox); HIMS/RKLB đã hết cấm.
 - **Phần theo dõi sandbox (circuit breaker):** ~$669.2 (100% cash, không đổi so lần trước) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động — tiếp tục giữ 100% tiền mặt, chờ đóng cửa phiên 08-25 để đánh giá xác nhận ổn định.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-25 ~13:14 ET (17:14 UTC) — Kiểm tra định kỳ (routine tự động, sync git): phiên chính vẫn xanh nhẹ, gần như đi ngang so lần check trước, sandbox vẫn 100% tiền mặt, KHÔNG mở vị thế mới
+
+- **Sync đầu phiên:** `git pull origin main` — fast-forward, không conflict (khớp commit sandbox check 12:14 ET).
+- `get_accounts` (704170133): `unsettled_funds` = **$0.00** — không đổi.
+- `get_equity_positions` (704170133): **7 vị thế, toàn bộ core-10** khớp `trading-log.md`: AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), CRM(3cp), JPM(1cp), XOM(3cp) — **không có gì thuộc sandbox** (vẫn 100% cash, chưa mở vị thế mới) — **KHÔNG đụng tới các vị thế này**.
+- `get_portfolio`: cash **$2,542.85**, buying_power **$2,542.85** — không đổi so lần check trước.
+- `get_equity_quotes`: SPY $765.03 (**+0.20%** so đóng cửa 08-24 $763.47), QQQ $709.58 (**+0.46%** so đóng cửa $706.32) — gần như đi ngang so lần check 12:14 ET (khi đó QQQ +0.33%, SPY +0.26%), biến động dưới ngưỡng 3-5% → không WebSearch thêm.
+- **KHÔNG mở vị thế rủi ro cao mới:** theo bộ lọc CLAUDE.md 2026-07-24, cần xác nhận giá ổn định/volume thật qua ít nhất 1 phiên đóng cửa trước khi vào lệnh mới — phiên hôm nay vẫn đang diễn ra (chưa đóng cửa), chưa đủ cơ sở xác nhận dù đang xanh nhẹ. Chờ đóng cửa phiên 08-25 ở lần kiểm tra kế tiếp. Nhắc wash-sale: cấm mua lại CIFR tới ~09-23; OUST tới ~09-17; PANW tới ~09-18 (core-10, không áp dụng sandbox); HIMS/RKLB đã hết cấm.
+- **Phần theo dõi sandbox (circuit breaker):** ~$669.2 (100% cash, không đổi so lần trước) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động — tiếp tục giữ 100% tiền mặt, chờ đóng cửa phiên 08-25 để đánh giá xác nhận ổn định.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
