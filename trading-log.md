@@ -1,5 +1,27 @@
 # Trading Log
 
+## 2026-08-26 ~10:25 ET (14:25 UTC) — Rà soát ứng viên thay 5 slot trống (theo yêu cầu Hogan) — ĐỀ XUẤT, CHỜ DUYỆT
+
+- **Bối cảnh:** Hogan yêu cầu chủ động tìm ứng viên thay thế cho 5/10 slot core-10 đang trống (2 rủi ro cao thay IREN/ASTS, 2 tech thay QCOM/CRM, 1 blue-chip thay XOM) — không chờ tới mốc review định kỳ 2026-09-01.
+- **Wash-sale rà soát:** IREN (bán +8.84% 08-18), ASTS (bán +17.53% 08-19), CRM (bán +4.19% 08-26), XOM (bán +4.22% 08-26) — cả 4 đều LÃI, không bị cấm mua lại. Các mã hiện đang bị cấm mua lại (đã bán LỖ, không dùng làm ứng viên): **QCOM tới ~09-23, AMD tới ~09-17, PANW tới ~09-18**. RKLB từng bị cấm tới ~08-23 — đã hết hạn, đủ điều kiện làm ứng viên trở lại.
+
+### Nhóm rủi ro cao (2 slot) — CHƯA đề xuất mua ngay, đưa vào watchlist chờ xác nhận ổn định
+- Ứng viên: **IONQ** (quantum, doanh thu Q2 +286.8% YoY, nâng guidance FY26 $280-290M, target đồng thuận $67.68 tương đương +68% upside, Investor Day xúc tác 08-09-2026; hết cấm wash-sale từ ~08-06), **RGTI** (quantum, target đồng thuận $28.81 tương đương +81% upside, 9/13 khuyến nghị mua), **AEHR** (Jefferies khởi động Buy, target $175, có đơn hàng sản xuất FOX-XP thật từ khách hàng quang tử silicon; đã từng lãi lớn ở core-10 07-24, không bị cấm).
+- **KHÔNG đề xuất mua ngay hôm nay:** cả IONQ (-2.93%), RGTI (-3.91%), AEHR (-4.35%) đều giảm mạnh đồng loạt trong phiên hôm nay (14:25 UTC) — đúng tình huống "cả nhóm ngành đang giảm mạnh trong phiên" mà bộ lọc CLAUDE.md 2026-07-24 yêu cầu tránh mua vào. Nhiều khả năng là chốt lời/điều chỉnh sau đợt tăng mạnh gần đây (IONQ +34.68% trong tháng qua). Sẽ theo dõi tiếp, chỉ đề xuất mua khi có ít nhất 1 phiên đóng cửa ổn định/volume xác nhận.
+- RKLB cũng đủ điều kiện (hết cấm) nhưng đang giảm 6 phiên liên tiếp (momentum yếu) — không đưa vào danh sách ưu tiên lúc này.
+
+### Nhóm tech large-cap (2 slot) — ĐỀ XUẤT, chờ Hogan chọn
+- **Lựa chọn A: MSFT** — $494.05 (+0.47% trong ngày). Cloud Azure tăng trưởng ~40% YoY, tích hợp AI/OpenAI, kỳ vọng tăng trưởng EPS 2 chữ số. Rủi ro chính: định giá cao, phụ thuộc chi tiêu AI capex tiếp tục mạnh. Đề xuất mua ~1cp nguyên (giữ stop-loss tự động), stop-loss -5% từ đỉnh sau mua.
+- **Lựa chọn B: AVGO** — $351.20 (-1.55% trong ngày, do tâm lý thận trọng ngành chip trước KQKD Nvidia tối nay). Nhu cầu ASIC AI tùy biến + mạng tốc độ cao + VMware, Zacks kỳ vọng EPS FY26 +72.1%, doanh thu +66%. Rủi ro chính: biến động mạnh quanh KQKD Nvidia/chu kỳ bán dẫn. Đề xuất mua ~1cp nguyên, stop-loss -5% từ đỉnh sau mua.
+- (Cả 2 đều có thể chọn để lấp đủ 2 slot tech, hoặc chọn 1 trong 2 + ứng viên khác nếu Hogan muốn đa dạng hơn ngoài AI/semis.)
+
+### Nhóm blue-chip (1 slot) — ĐỀ XUẤT, chờ Hogan chọn
+- **Lựa chọn A: JNJ** — $271.80 (-0.49% trong ngày). Cổ tức ổn định, pipeline ung thư/miễn dịch tích cực (HSBC nâng target $290), rủi ro nền: kiện tụng talc còn tồn đọng (MDL, chưa có phán quyết bất lợi mới). Đề xuất mua ~1cp nguyên, stop-loss -5% từ đỉnh sau mua.
+- **Lựa chọn B: KO** — $90.97 (-0.73% trong ngày). Consumer staples phòng thủ, cổ tức tăng liên tục nhiều năm (Dividend Aristocrat), biến động thấp. Rủi ro chính: tăng trưởng chậm, nhạy cảm tỷ giá quốc tế. Đề xuất mua ~1cp nguyên, stop-loss -5% từ đỉnh sau mua.
+- (XOM cũng đủ điều kiện mua lại — không bị cấm wash-sale vì vừa bán lãi — nhưng không ưu tiên đề xuất lại ngay để tránh trùng lặp vị thế vừa thoát cùng ngày; nêu ra nếu Hogan muốn cân nhắc thêm.)
+
+- **KẾT LUẬN: Đề xuất 2 lựa chọn tech (MSFT/AVGO) + 2 lựa chọn blue-chip (JNJ/KO) chờ Hogan chọn/duyệt. Nhóm rủi ro cao (IONQ/RGTI/AEHR) đưa vào watchlist, CHƯA đề xuất mua do cả nhóm đang giảm mạnh trong phiên hôm nay — sẽ đề xuất chính thức khi có xác nhận ổn định.**
+
 ## 2026-07-03 — Xây dựng danh mục Agentic lần đầu (10 mã)
 
 **Bối cảnh:** Tài khoản Agentic (••••0133) có $5,000 cash, chưa có vị thế nào. Yêu cầu xây dựng danh mục 10 mã theo cơ cấu CLAUDE.md (2 rủi ro cao / 4 large-cap tech / 2 blue-chip / 2 ETF), giải ngân gần hết $5,000, ưu tiên nguyên cổ phiếu để giữ stop-loss tự động ở càng nhiều mã càng tốt.

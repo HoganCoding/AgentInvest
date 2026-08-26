@@ -2,6 +2,12 @@
 
 Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần duyệt từng lệnh) — tách biệt hoàn toàn khỏi 10 mã danh mục chính trong `trading-log.md`. Điều khoản đầy đủ: xem mục "Ngoại lệ đã duyệt: Sandbox tự động rủi ro cao" trong `CLAUDE.md`.
 
+## 2026-08-26 ~10:25 ET (14:25 UTC) — Rà soát ứng viên rủi ro cao mới (theo yêu cầu Hogan, dùng chung nghiên cứu với core-10) — KHÔNG vào lệnh hôm nay
+
+- Cùng đợt rà soát ứng viên cho core-10 (xem `trading-log.md` 2026-08-26 ~10:25 ET), có 3 ứng viên rủi ro cao đạt tiêu chí chất lượng (tăng trưởng doanh thu thật + được tổ chức/analyst quan tâm): **IONQ** (doanh thu Q2 +286.8% YoY, target đồng thuận +68% upside, Investor Day 09-08), **RGTI** (target đồng thuận +81% upside), **AEHR** (Jefferies khởi động Buy $175, đơn hàng sản xuất thật).
+- **KHÔNG mở vị thế sandbox nào hôm nay:** cả 3 mã đều giảm mạnh đồng loạt trong phiên (IONQ -2.93%, RGTI -3.91%, AEHR -4.35% tính tới 14:25 UTC) — vi phạm bộ lọc CLAUDE.md 2026-07-24 (không mua khi chính mã/nhóm ngành đang giảm mạnh trong phiên). Nhiều khả năng là điều chỉnh/chốt lời sau đợt tăng mạnh gần đây của nhóm quantum.
+- **Quyết định: tiếp tục giữ 100% tiền mặt, đưa cả 3 mã vào watchlist, chỉ vào lệnh khi có xác nhận ổn định (ít nhất 1 phiên đóng cửa không giảm mạnh) ở lần kiểm tra tiếp theo.** Không có giao dịch thật nào xảy ra → không gửi PushNotification, chỉ ghi log.
+
 ## 2026-07-06 ~11:48 ET — Bật sandbox $400 tự động (KHÔNG qua duyệt)
 
 **Quyết định của Hogan:** dùng ~$400 buying power còn dư để "day trade" hoàn toàn tự động, không cần duyệt từng lệnh, tối đa rủi ro, chấp nhận mất trắng. Tách biệt hoàn toàn khỏi 10 mã core portfolio. Điều khoản đầy đủ đã lưu vào memory (`sandbox_400_autonomous.md`):
