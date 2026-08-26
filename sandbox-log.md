@@ -3245,3 +3245,15 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **KHÔNG mở vị thế rủi ro cao mới:** chưa có ứng viên cụ thể nào đạt tiêu chí chất lượng qua lần rà soát trước (09:18 ET) — không rà soát lại lần này vì thị trường chưa có biến động đáng kể để đổi bối cảnh. Sẽ tiếp tục rà soát ở các lần kiểm tra tiếp theo. Nhắc wash-sale: cấm mua lại CIFR tới ~09-23; OUST tới ~09-17; PANW tới ~09-18 (core-10, không áp dụng sandbox); HIMS/RKLB đã hết cấm.
 - **Phần theo dõi sandbox (circuit breaker):** ~$669.2 (100% cash, không đổi so lần trước) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động — tiếp tục giữ 100% tiền mặt.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-26 ~11:11 ET (15:11 UTC) — Kiểm tra định kỳ (routine tự động, sync git): phiên chính đi ngang gần như tuyệt đối so lần check trước, sandbox vẫn 100% tiền mặt, KHÔNG mở vị thế mới
+
+- **Sync đầu phiên:** `git pull origin main` — "Already up to date" (khớp commit check sandbox 10:11 ET). Không conflict.
+- `get_equity_positions` (704170133): **5 vị thế, toàn bộ core-10** khớp `trading-log.md`: AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), JPM(1cp) — **không có gì thuộc sandbox** (vẫn 100% cash, chưa mở vị thế mới) — **KHÔNG đụng tới các vị thế này**.
+- `get_accounts` (704170133): `unsettled_funds` = **$1,071.73** — không đổi so lần trước (tiền bán CRM/XOM của core-10 sáng nay, chưa settle, không liên quan sandbox).
+- `get_portfolio`: cash **$3,614.58**, buying_power **$2,542.85** — không đổi so lần check trước.
+- `get_equity_quotes`: SPY $766.405 (**+0.06%** so đóng cửa 08-25 $765.91), QQQ $710.75 (**+0.004%** so đóng cửa $710.72) — gần như đi ngang tuyệt đối so lần check 10:11 ET (khi đó QQQ -0.01%, SPY +0.08%), biến động dưới ngưỡng 3-5% → không WebSearch thêm.
+- **Kiểm tra watchlist rủi ro cao (IONQ/RGTI/AEHR — thêm vào watchlist lúc 10:25 ET, xem entry trên):** giá hiện tại IONQ $40.85 (**-2.86%** so đóng cửa 08-25 $42.05), RGTI $16.205 (**-4.34%**), AEHR $92.35 (**-3.39%**) — cả 3 mã **vẫn đang giảm tương đương lúc 10:25 ET** (khi đó -2.93%/-3.91%/-4.35%), chưa có dấu hiệu ổn định/phục hồi trong phiên. Vẫn vi phạm bộ lọc CLAUDE.md 2026-07-24 (không mua khi đang giảm mạnh trong phiên) — tiếp tục KHÔNG vào lệnh, chờ xác nhận ổn định (đóng cửa không giảm mạnh) ở lần kiểm tra tiếp theo hoặc phiên sau.
+- **KHÔNG mở vị thế rủi ro cao mới.** Nhắc wash-sale: cấm mua lại CIFR tới ~09-23; OUST tới ~09-17; PANW tới ~09-18 (core-10, không áp dụng sandbox); HIMS/RKLB đã hết cấm.
+- **Phần theo dõi sandbox (circuit breaker):** ~$669.2 (100% cash, không đổi so lần trước) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động — tiếp tục giữ 100% tiền mặt, tiếp tục theo dõi watchlist IONQ/RGTI/AEHR chờ ổn định.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
