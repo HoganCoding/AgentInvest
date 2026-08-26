@@ -4266,3 +4266,25 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Lưu ý quan trọng:** core-10 hiện đã trống **một nửa danh mục** (5/10 slot, tăng từ 3/10 hôm qua) — tỷ lệ tiền mặt nhàn rỗi đang khá lớn so với chi phí cơ hội. Không đề xuất thay thế vội lần này (đúng quy trình CLAUDE.md — cần tối thiểu 2 lựa chọn/nhóm rủi ro qua review định kỳ, không tự chọn 1 mã). Sẽ cần chuẩn bị ứng viên đầy đủ cho CẢ 3 nhóm (rủi ro cao, tech, blue-chip) cho đợt review 2026-09-01 sắp tới do số lượng slot trống đã lớn.
 - Không có wash-sale ban nào áp dụng cho CRM/XOM (cả hai đều lãi khi bán).
 - **KẾT LUẬN: Không có đề xuất mua/bán mới lần kiểm tra này** (2 lệnh stop-loss đã tự động khớp theo lệnh GTC có sẵn, không phải quyết định của phiên này). **Có sự kiện quan trọng cần Hogan biết (2 stop-loss khớp cùng lúc, core-10 xuống còn 5/10 slot, lãi tổng +$43.23) → sẽ gửi PushNotification.**
+
+## 2026-08-26 ~13:09 ET (17:09 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 vẫn 5/10 slot, KHÔNG có đề xuất mới
+
+- **Sync đầu phiên:** `git pull origin main` — fast-forward 8b33198→997a74e, không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn **5/10 slot**, không đổi so với lần kiểm tra sáng nay (09:47 ET, sau khi CRM+XOM bị stop-loss khớp): AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), JPM(1cp) — vẫn thiếu 5 slot (2 rủi ro cao thay IREN+ASTS, 2 tech thay QCOM+CRM, 1 blue-chip thay XOM — gộp chờ review 2026-09-01). `get_equity_orders` từ 13:47 UTC tới nay: **không có lệnh nào mới/khớp** — không stop-loss nào bị breach.
+- **Benchmark (13:09 ET/17:09 UTC, so đóng cửa 08-25):** SPY $765.075 (-0.11%), QQQ $709.83 (-0.13%) — đỏ nhẹ, không risk-off.
+- P&L nhanh (giá ~13:09 ET/17:09 UTC, so đóng cửa 08-25):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Đỉnh dùng đặt stop |
+  |---|---|---|---|---|---|---|
+  | RSP | $214.93 | $222.10 | +3.34% | +0.15% | $211.44 | $222.57 (chưa vượt) |
+  | JPM | $347.97 | $356.80 | +2.54% | +0.03% | $344.85 | $362.29 (chưa vượt) |
+  | VOO | $688.26 | $703.30 | +2.18% | -0.10% | (fractional, thủ công) | — |
+  | GOOGL | $343.80 | $341.26 | -0.74% | -1.64% | $334.02 | $351.60 (chưa vượt) |
+  | AMZN | $261.47 | $258.89 | -0.99% | -0.83% | $251.89 | $266.20 (chưa vượt) |
+
+- **Không stop-loss nào bị breach; không mã nào chạm ngưỡng cảnh báo chốt lời (+15-20%).** RSP cao nhất +3.34% — còn xa ngưỡng. Không có đỉnh mới nào vượt đỉnh đã dùng đặt stop hiện có — không cần đề xuất dời stop lần này.
+- **Biến động trong ngày lớn nhất là GOOGL -1.64%** — dưới ngưỡng ±3-5% cần WebSearch tin tức sâu, không tra cứu thêm lần này. CRM (đã bị stop-loss khớp lãi sáng nay, không còn nắm giữ) báo cáo KQKD sau đóng cửa hôm nay ~17:00 ET như đã ghi nhận — không còn ảnh hưởng tới core-10 vì đã thoát vị thế trước đó, chỉ theo dõi cho tham khảo review 09-01 nếu CRM được đề xuất lại.
+
+### Slot trống (5/10: 2 rủi ro cao thay IREN+ASTS, 2 tech thay QCOM+CRM, 1 blue-chip thay XOM): vẫn TẠM HOÃN, gộp vào review định kỳ 2026-09-01 (còn 6 ngày)
+- Không rà soát lại ứng viên mới lần này (không có thay đổi bối cảnh đáng kể so với lần kiểm tra sáng nay).
+- **KẾT LUẬN: Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật).
