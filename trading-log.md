@@ -4208,3 +4208,39 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 ### Slot rủi ro cao (thay IREN+ASTS) + slot tech (thay QCOM): vẫn TẠM HOÃN
 - Chưa tới ngày review định kỳ 30 ngày (mốc 2026-09-01, còn 7 ngày). Không rà soát lại ứng viên mới lần này (không có thay đổi bối cảnh đáng kể so với lần kiểm tra trước).
 - **KẾT LUẬN: Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật).
+
+## 2026-08-26 ~09:47 ET (13:47 UTC) — Kiểm tra định kỳ (routine tự động, sync git): STOP-LOSS CRM + XOM đã tự động khớp gần như đồng thời đầu phiên (cả hai đều LÃI); core-10 còn 5/10 slot; các slot trống vẫn gộp chờ review 2026-09-01
+
+- **Sync đầu phiên:** `git fetch origin main` — không có commit mới kể từ lần kiểm tra trước (`b765b96`, sandbox check 09:18 ET). Không conflict.
+- `get_equity_positions`: core-10 hiện còn **5/10 slot** — AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), JPM(1cp). **CRM và XOM KHÔNG còn trong danh sách vị thế** (cả hai vừa bị stop-loss khớp sáng nay).
+
+### GHI NHẬN — Stop-loss CRM và XOM đã tự động khớp gần như cùng lúc lúc mở phiên (không cần duyệt, chỉ ghi log)
+- `get_equity_orders`: CRM — lệnh GTC stop_market bán 3cp @ trigger $201.60 (đặt 08-24, Hogan đã duyệt) khớp lúc **13:30:01 UTC** hôm nay, giá khớp **$199.25**. XOM — lệnh GTC stop_market bán 3cp @ trigger $159.70 (đặt 08-20, Hogan đã duyệt) khớp lúc **13:30:23 UTC**, giá khớp **$158.00**. Cả hai khớp trong vòng 22 giây sau mở phiên (9:30:01 và 9:30:23 ET).
+- **P&L thực hiện — CẢ HAI ĐỀU LÃI (khác QCOM tuần trước):**
+  - CRM: mua $191.24/cp → bán $199.25/cp → **+4.19%/cp, lãi thực hiện +$24.03** (3cp). Trailing stop đã khóa lại phần lớn lãi so với đỉnh $212.21 đã dùng đặt stop.
+  - XOM: mua $151.60/cp → bán $158.00/cp → **+4.22%/cp, lãi thực hiện +$19.20** (3cp). Trailing stop khóa lãi so với đỉnh $168.64 đã dùng đặt stop.
+  - **Tổng lãi thực hiện từ 2 lệnh: +$43.23.** Không có wash-sale (chỉ áp dụng cho bán LỖ) — không hạn chế mua lại CRM/XOM sau này nếu được chọn lại qua quy trình review.
+- **Bối cảnh/tin tức (WebSearch):** SPY/QQQ gần như đi ngang lúc đó (+0.04%/+0.05%) — KHÔNG phải bán tháo toàn thị trường.
+  - **CRM:** không tìm thấy tin tiêu cực nào. Bối cảnh hoàn toàn là kỳ vọng trước KQKD (CRM báo cáo Q2 FY2027 sau đóng cửa HÔM NAY ~17:00 ET, xác suất vượt kỳ vọng ~91% theo Polymarket, giá mục tiêu trung bình analyst ~$252 so với giá ~$205-209 các ngày gần đây). Giá khớp $199.25 nhiều khả năng là biến động thanh khoản mỏng ngay lúc mở phiên (9:30:01, chỉ 1 giây sau mở cửa) chứ không phải phản ứng theo tin tức — giá phục hồi lại ~$205 chỉ vài phút sau, khớp với vùng giá analyst đã ghi nhận trước đó.
+  - **XOM:** có driver cơ bản thật — giá dầu Brent giảm ~3.9% ($88.58/bbl), WTI giảm ~3.1% ($82.36) do Mỹ chuyển hướng gây áp lực kinh tế (thay vì quân sự) lên Iran, giảm rủi ro xung đột Vùng Vịnh → toàn ngành năng lượng giảm theo (XOM được báo cáo giảm ~2.09% trong ngày, giao dịch quanh $159.85-$162.81). Mức giảm về $158.00 hợp lý theo diễn biến ngành, không phải lỗi kỹ thuật.
+  - Không có báo cáo về sự cố mở phiên/circuit breaker toàn thị trường — thị trường đang tập trung chờ KQKD Nvidia và dữ liệu PCE.
+- **Kết luận:** cả hai đều là stop-loss tự động theo lệnh GTC đã được duyệt trước — KHÔNG cần duyệt thêm, không phải hành động của phiên này. Không có gì bất thường/lỗi hệ thống cần điều tra thêm.
+
+### Rà soát các vị thế còn lại (5/10 slot) — không có đỉnh mới, không cần dời stop
+- P&L nhanh (giá ~09:47 ET/13:47 UTC, so đóng cửa 08-25):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Đỉnh dùng đặt stop |
+  |---|---|---|---|---|---|---|
+  | RSP | $214.93 | $222.365 | +3.46% | +0.27% | $211.44 | $222.57 (chưa vượt) |
+  | JPM | $347.97 | $356.16 | +2.36% | -0.15% | $344.85 | $362.29 (chưa vượt) |
+  | VOO | $688.26 | $704.32 | +2.33% | +0.04% | (fractional, thủ công) | — |
+  | GOOGL | $343.80 | $343.555 | -0.07% | -0.98% | $334.02 | $351.60 (chưa vượt) |
+  | AMZN | $261.47 | $260.53 | -0.36% | -0.20% | $251.89 | $266.20 (chưa vượt) |
+
+- Không mã nào tạo đỉnh mới vượt đỉnh đã dùng đặt stop hiện có — không cần đề xuất dời stop lần này. Không mã nào chạm ngưỡng cảnh báo chốt lời (+15-20%).
+- **Tài khoản (chung với sandbox):** tổng giá trị $5,791.57 — cổ phiếu $2,176.99, tiền mặt $3,614.58, buying power $2,542.85 (chưa gồm tiền bán CRM/XOM sáng nay chưa settle). Tiền mặt tăng đáng kể do 5 slot core-10 đang trống.
+
+### Slot trống (5/10: 2 rủi ro cao thay IREN+ASTS, 2 tech thay QCOM+CRM, 1 blue-chip thay XOM): vẫn TẠM HOÃN, gộp vào review định kỳ 2026-09-01 (còn 6 ngày)
+- **Lưu ý quan trọng:** core-10 hiện đã trống **một nửa danh mục** (5/10 slot, tăng từ 3/10 hôm qua) — tỷ lệ tiền mặt nhàn rỗi đang khá lớn so với chi phí cơ hội. Không đề xuất thay thế vội lần này (đúng quy trình CLAUDE.md — cần tối thiểu 2 lựa chọn/nhóm rủi ro qua review định kỳ, không tự chọn 1 mã). Sẽ cần chuẩn bị ứng viên đầy đủ cho CẢ 3 nhóm (rủi ro cao, tech, blue-chip) cho đợt review 2026-09-01 sắp tới do số lượng slot trống đã lớn.
+- Không có wash-sale ban nào áp dụng cho CRM/XOM (cả hai đều lãi khi bán).
+- **KẾT LUẬN: Không có đề xuất mua/bán mới lần kiểm tra này** (2 lệnh stop-loss đã tự động khớp theo lệnh GTC có sẵn, không phải quyết định của phiên này). **Có sự kiện quan trọng cần Hogan biết (2 stop-loss khớp cùng lúc, core-10 xuống còn 5/10 slot, lãi tổng +$43.23) → sẽ gửi PushNotification.**
