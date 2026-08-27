@@ -3383,3 +3383,14 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **KHÔNG mở vị thế rủi ro cao mới.** Nhắc wash-sale: cấm mua lại CIFR tới ~09-23; OUST tới ~09-17; PANW tới ~09-18 (core-10, không áp dụng sandbox); HIMS/RKLB đã hết cấm.
 - **Phần theo dõi sandbox (circuit breaker):** ~$669.2 (100% cash, không đổi) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động — tiếp tục giữ 100% tiền mặt, theo dõi IONQ/RGTI/AEHR tới cuối phiên 08-27 để xác nhận đóng cửa xanh.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-27 ~14:10 ET (18:10 UTC) — Kiểm tra định kỳ (routine tự động, sync git): watchlist IONQ/RGTI/AEHR hạ nhiệt nhẹ giữa phiên, sandbox vẫn 100% tiền mặt, KHÔNG mở vị thế mới
+
+- **Sync đầu phiên:** local HEAD phát hiện ở trạng thái detached + phân kỳ hoàn toàn với `origin/main` (lịch sử bị rewrite/force-push bởi phiên khác — 50 vs 51 commit, không có merge-base). Đối chiếu nội dung: `CLAUDE.md` giống hệt, `sandbox-log.md`/`trading-log.md` trên `origin/main` là superset đầy đủ của local (đã xác nhận chứa cả entry CIFR stop-loss 08-20 15:12/16:11 ET của local HEAD cũ, cộng thêm toàn bộ entry tới 08-27 13:10 ET) → `git reset --hard origin/main` an toàn, không mất dữ liệu.
+- `get_accounts` (704170133): `unsettled_funds` = **$0.00**.
+- `get_equity_positions` (704170133): **5 vị thế, toàn bộ core-10** khớp `trading-log.md`: AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), JPM(1cp) — **không có gì thuộc sandbox** (vẫn 100% cash) — **KHÔNG đụng tới các vị thế này**.
+- `get_portfolio`: cash **$3,614.58**, buying_power **$3,614.58** — không đổi so lần check trước (13:10 ET).
+- **Watchlist rủi ro cao (IONQ/RGTI/AEHR), so lần check trước (13:10 ET: IONQ $42.65/RGTI $16.58/AEHR $93.74):** IONQ $42.2506 (-0.94% so lần trước, vẫn +5.55% so đóng cửa 08-26), RGTI $16.47 (-0.66% so lần trước, +3.32% so đóng cửa), AEHR $91.90 (-1.96% so lần trước, +0.86% so đóng cửa). Biến động đều **dưới ngưỡng 3-5%** → không cần WebSearch thêm, chỉ hạ nhiệt nhẹ giữa phiên, chưa có tín hiệu đảo chiều.
+- **Quyết định KHÔNG vào lệnh:** vẫn giữa phiên, chưa có xác nhận đóng cửa theo bộ lọc CLAUDE.md 2026-07-24. Nhắc wash-sale: cấm mua lại CIFR tới ~09-23; OUST tới ~09-17; PANW tới ~09-18 (core-10, không áp dụng sandbox).
+- **Phần theo dõi sandbox (circuit breaker):** ~$669.2 (100% cash, không đổi) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động — tiếp tục giữ 100% tiền mặt, theo dõi IONQ/RGTI/AEHR tới cuối phiên 08-27.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
