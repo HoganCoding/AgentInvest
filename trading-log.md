@@ -4379,3 +4379,26 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 ### Slot trống (5/10: 2 rủi ro cao thay IREN+ASTS, 2 tech thay QCOM+CRM, 1 blue-chip thay XOM): vẫn TẠM HOÃN, gộp vào review định kỳ 2026-09-01 (còn 5 ngày)
 - Không rà soát lại ứng viên mới lần này (không có thay đổi bối cảnh đáng kể so với lần kiểm tra trước; đề xuất MSFT/AVGO/JNJ/KO từ 08-26 vẫn còn hiệu lực, chờ Hogan chọn/duyệt).
 - **KẾT LUẬN: Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật).
+
+## 2026-08-28 ~09:46 ET (13:46 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 vẫn 5/10 slot, KHÔNG có đề xuất mới
+
+- **Sync đầu phiên:** `git pull` — đã ở trạng thái mới nhất, không có commit mới kể từ lần kiểm tra trước (08-27 15:31 ET). Không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn **5/10 slot**, không đổi: AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), JPM(1cp) — vẫn thiếu 5 slot (2 rủi ro cao thay IREN+ASTS, 2 tech thay QCOM+CRM, 1 blue-chip thay XOM). `get_equity_orders` từ 19:31 UTC hôm qua tới nay: **không có lệnh nào mới/khớp** — không stop-loss nào bị breach.
+- **Đề xuất chờ duyệt từ 08-26 10:25 ET (MSFT/AVGO cho 2 slot tech, JNJ/KO cho 1 slot blue-chip) vẫn CHƯA có quyết định của Hogan** — không lặp lại đề xuất, chỉ ghi nhận vẫn đang chờ.
+- **Benchmark (09:46 ET/13:46 UTC, so đóng cửa 08-27):** SPY $772.33 (+0.16%), QQQ $720.88 (-0.03%) — gần như đi ngang, không risk-off.
+- P&L nhanh (giá ~09:46 ET/13:46 UTC, so đóng cửa 08-27):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Thay đổi trong ngày | Stop-loss hiện tại | Đỉnh dùng đặt stop |
+  |---|---|---|---|---|---|---|
+  | VOO | $688.26 | $709.98 | +3.16% | +0.17% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $221.51 | +3.06% | +0.03% | $211.44 | $222.57 (chưa vượt) |
+  | JPM | $347.97 | $354.88 | +2.00% | +0.19% | $344.85 | $362.29 (chưa vượt) |
+  | GOOGL | $343.80 | $342.96 | -0.24% | +0.68% | $334.02 | $351.60 (chưa vượt) |
+  | AMZN | $261.47 | $259.05 | -0.93% | +1.09% | $251.89 | $266.20 (chưa vượt) |
+
+- **Không stop-loss nào bị breach; không mã nào chạm ngưỡng cảnh báo chốt lời (+15-20%).** VOO cao nhất +3.16% — còn xa ngưỡng. Không có đỉnh mới nào vượt đỉnh đã dùng đặt stop hiện có — không cần đề xuất dời stop lần này.
+- **Biến động trong ngày mọi mã đều dưới ±1.1%** — không cần WebSearch tin tức sâu.
+
+### Slot trống (5/10: 2 rủi ro cao thay IREN+ASTS, 2 tech thay QCOM+CRM, 1 blue-chip thay XOM): vẫn TẠM HOÃN, gộp vào review định kỳ 2026-09-01 (còn 4 ngày)
+- Không rà soát lại ứng viên mới lần này (không có thay đổi bối cảnh đáng kể so với lần kiểm tra trước; đề xuất MSFT/AVGO/JNJ/KO từ 08-26 vẫn còn hiệu lực, chờ Hogan chọn/duyệt). Review định kỳ 2026-09-01 chỉ còn 4 ngày — lần kiểm tra kế tiếp nên bắt đầu chuẩn bị ứng viên đầy đủ nếu Hogan chưa phản hồi đề xuất MSFT/AVGO/JNJ/KO.
+- **KẾT LUẬN: Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật).
