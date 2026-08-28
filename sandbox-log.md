@@ -3460,3 +3460,15 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **KHÔNG mở vị thế rủi ro cao mới.** Nhắc wash-sale: cấm mua lại CIFR tới ~09-23; OUST tới ~09-17; PANW tới ~09-18 (core-10, không áp dụng sandbox); HIMS/RKLB đã hết cấm.
 - **Phần theo dõi sandbox (circuit breaker):** ~$669.2 (100% cash, không đổi) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động — tiếp tục giữ 100% tiền mặt, tiếp tục theo dõi IONQ/RGTI/AEHR.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-28 ~12:08 ET (16:08 UTC) — Kiểm tra định kỳ (routine tự động, sync git): watchlist IONQ/RGTI/AEHR tiếp tục giảm sâu hơn so đóng cửa 08-27, nhưng biến động so lần check trước (11:11 ET) vẫn dưới ngưỡng 3-5%, sandbox vẫn 100% tiền mặt, KHÔNG vào lệnh
+
+- **Sync đầu phiên:** `git fetch origin` + `git merge origin/main` — "Already up to date", không conflict.
+- `get_accounts`/`get_equity_positions` (704170133): **5 vị thế, toàn bộ core-10** khớp `trading-log.md`: AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), JPM(1cp) — **không có gì thuộc sandbox** (vẫn 100% cash, chưa mở vị thế mới) — **KHÔNG đụng tới các vị thế này**.
+- `get_portfolio`: cash **$3,614.58**, buying_power **$3,614.58** — không đổi so lần check trước (11:11 ET).
+- **Benchmark (12:08 ET/16:08 UTC, so đóng cửa 08-27 $771.10/$721.11):** SPY $771.36 (+0.03%), QQQ $718.32 (-0.39%) — gần như đi ngang, không risk-off.
+- **Watchlist rủi ro cao (IONQ/RGTI/AEHR), so lần check trước (11:11 ET: IONQ $39.635/RGTI $15.865/AEHR $85.62):** IONQ $39.055 (-1.46% so lần trước, -8.02% so đóng cửa 08-27), RGTI $15.595 (-1.70% so lần trước, -5.14% so đóng cửa), AEHR $83.51 (-2.47% so lần trước, -7.68% so đóng cửa). Biến động so lần check trước đều **dưới ngưỡng 3-5%** → không cần WebSearch thêm lần này, dù mức giảm tích lũy so đóng cửa hôm qua đã nới rộng thêm (nhóm quantum tiếp tục yếu trong khi SPY/QQQ gần như đi ngang — vẫn là yếu kém đặc thù ngành, không phải risk-off toàn thị trường).
+- **Quyết định KHÔNG vào lệnh:** giữ nguyên quyết định đã nâng ngưỡng xác nhận cho nhóm quantum từ lần check 10:13 ET — cần ổn định/hồi phục rõ ràng (không chỉ 1 phiên xanh đơn lẻ) trước khi cân nhắc lại, hiện tại cả 3 mã đang tiếp tục giảm sâu hơn, chưa có tín hiệu đảo chiều.
+- **KHÔNG mở vị thế rủi ro cao mới.** Nhắc wash-sale: cấm mua lại CIFR tới ~09-23; OUST tới ~09-17; PANW tới ~09-18 (core-10, không áp dụng sandbox); HIMS/RKLB đã hết cấm.
+- **Phần theo dõi sandbox (circuit breaker):** ~$669.2 (100% cash, không đổi) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động — tiếp tục giữ 100% tiền mặt, tiếp tục theo dõi IONQ/RGTI/AEHR.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
