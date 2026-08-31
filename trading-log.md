@@ -4549,3 +4549,29 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Không stop-loss nào bị breach; không mã nào chạm ngưỡng cảnh báo chốt lời (+15-20%).** JPM cao nhất +2.27% — còn xa ngưỡng. IONQ/RGTI/MSFT/AVGO/JNJ mới mua hôm nay (đỉnh giá = giá hiện tại), chưa cần dời stop. Không có đỉnh mới nào ở các mã còn lại vượt đỉnh đã dùng đặt stop hiện có — không cần đề xuất dời stop lần này.
 - **Biến động trong ngày lớn nhất là GOOGL -1.59%** — dưới ngưỡng ±3-5% cần WebSearch tin tức sâu, không tra cứu thêm lần này.
 - **KẾT LUẬN: Core-10 đủ 10/10 slot, toàn bộ stop-loss hoạt động bình thường, không có việc tồn đọng. Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật).
+
+## 2026-08-31 ~15:31 ET (19:31 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 đủ 10/10 slot, KHÔNG có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch` — fast-forward `805e36d`→`eee8cdb` (thêm các lần kiểm tra sandbox 14:08 và 15:09 ET, không liên quan core-10). Đã checkout `main` bám `origin/main`, không conflict.
+- `get_equity_positions`: IONQ và RGTI trả về tổng gộp với sandbox (IONQ=14cp, RGTI=31cp) — theo đúng lot đã tách ở lần kiểm tra 13:11 ET (core-10: IONQ 7cp @ $39.85, RGTI 18cp @ $15.5983), phần còn lại là của sandbox, bỏ qua hoàn toàn. Core-10 vẫn đủ **10/10 slot**: IONQ(7cp core), AMZN(2cp), RSP(2cp), MSFT(1cp), GOOGL(1cp), VOO(0.72647cp), JNJ(2cp), AVGO(1cp), JPM(1cp), RGTI(18cp core).
+- `get_equity_orders` từ 13:11 ET tới nay: **không có lệnh nào mới/khớp** — không stop-loss nào bị breach kể từ lần kiểm tra trước.
+- **Benchmark (15:31 ET/19:31 UTC, so đóng cửa 08-28):** SPY $766.37 (-0.39%), QQQ $715.23 (-0.17%) — đỏ nhẹ, cải thiện nhẹ so lần trước (13:11 ET: SPY -0.48%, QQQ -0.25%), không risk-off.
+- P&L nhanh (giá ~15:31 ET/19:31 UTC, so giá vốn core-10):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Stop-loss hiện tại |
+  |---|---|---|---|---|
+  | VOO | $688.26 | $704.46 | +2.35% | (fractional, thủ công) |
+  | JPM | $347.97 | $355.55 | +2.18% | $344.85 |
+  | RSP | $214.93 | $219.41 | +2.08% | $211.44 |
+  | AVGO | $367.94 | $369.505 | +0.43% | $349.54 |
+  | JNJ | $265.88 | $265.946 | +0.02% | $252.59 |
+  | MSFT | $510.00 | $510.06 | +0.01% | $484.50 |
+  | RGTI | $15.5983 | $15.585 | -0.09% | $13.73 |
+  | AMZN | $261.47 | $259.055 | -0.92% | $251.89 |
+  | GOOGL | $343.80 | $338.4774 | -1.55% | $334.02 |
+  | IONQ | $39.85 | $39.13 | -1.81% | $35.07 |
+
+- **Không stop-loss nào bị breach; không mã nào chạm ngưỡng cảnh báo chốt lời (+15-20%).** VOO cao nhất +2.35% — còn xa ngưỡng. Không có đỉnh mới nào vượt đỉnh đã dùng đặt stop hiện có — không cần đề xuất dời stop lần này.
+- **Biến động trong ngày lớn nhất là IONQ -1.81%** — trong biên độ nhiễu bình thường của nhóm rủi ro cao, dưới ngưỡng ±3-5% cần WebSearch tin tức sâu; benchmark cũng đỏ nhẹ tương tự, không phải underperformance riêng của mã. Không tra cứu thêm lần này.
+- Review định kỳ 30 ngày rơi vào ngày mai (2026-09-01) — chưa tới hạn, không chạy quy trình review lần này.
+- **KẾT LUẬN: Core-10 đủ 10/10 slot, toàn bộ stop-loss hoạt động bình thường, không có việc tồn đọng. Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật).
