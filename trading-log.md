@@ -4523,3 +4523,29 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 
 - Không mã nào gần ngưỡng stop-loss. Benchmark: SPY -0.55%, QQQ -0.40% so đóng cửa 08-28 — vẫn đỏ nhẹ, không risk-off.
 - **KẾT LUẬN: Core-10 đã đủ 10/10 slot, toàn bộ stop-loss hoạt động bình thường. Không có việc tồn đọng.**
+
+## 2026-08-31 ~13:11 ET (17:11 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 đủ 10/10 slot, KHÔNG có đề xuất mới
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD tại `805e36d` (khớp `origin/main`, đã có toàn bộ commit tới lần lấp 5 slot + các lần kiểm tra sandbox trước đó) — đã `git checkout main` + fast-forward xác nhận không có commit mới nào bị bỏ sót, không conflict.
+- **Lưu ý vị thế merge với sandbox (đúng theo mục 'Đồng bộ giữa các phiên' của CLAUDE.md):** `get_equity_positions` trả về tổng gộp IONQ=14cp, RGTI=31cp (gồm cả phần core-10 lẫn phần sandbox chung 1 symbol), và SOUN=30cp (100% sandbox, KHÔNG thuộc core-10). Đã dùng `get_equity_tax_lots` để tách riêng phần core-10: **IONQ core-10 = 7cp @ $39.85/cp (lot ngày 08-31), RGTI core-10 = 18cp @ $15.5983/cp (lot ngày 08-31)** — khớp đúng với lệnh mua core-10 lúc 12:06 ET hôm nay. Phần còn lại (IONQ 7cp thêm + RGTI 13cp thêm + SOUN 30cp) là của sandbox, đã bỏ qua hoàn toàn theo quy tắc "không tự ý quản lý vị thế không phải của mình".
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**: IONQ(7cp core), AMZN(2cp), RSP(2cp), MSFT(1cp), GOOGL(1cp), VOO(0.72647cp), JNJ(2cp), AVGO(1cp), JPM(1cp), RGTI(18cp core).
+- `get_equity_orders` (state=confirmed): **toàn bộ 9 stop-loss core-10 đang hoạt động bình thường** (VOO là fractional, không có stop tự động, theo dõi thủ công) — IONQ 7cp@$35.07, RGTI 18cp@$13.73, MSFT 1cp@$484.50, AVGO 1cp@$349.54, JNJ 2cp@$252.59, GOOGL 1cp@$334.02, RSP 2cp@$211.44, AMZN 2cp@$251.89, JPM 1cp@$344.85. Không lệnh nào bị khớp/breach kể từ lần kiểm tra trước (12:07 ET).
+- **Benchmark (13:11 ET/17:11 UTC, so đóng cửa 08-28):** SPY $765.65 (-0.48%), QQQ $714.64 (-0.25%) — đỏ nhẹ, không risk-off (dưới ngưỡng cấm mở vị thế rủi ro cao >1.5-2%).
+- P&L nhanh (giá ~13:11 ET/17:11 UTC, so giá vốn core-10):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Stop-loss hiện tại |
+  |---|---|---|---|---|
+  | JPM | $347.97 | $355.875 | +2.27% | $344.85 |
+  | VOO | $688.26 | $703.84 | +2.26% | (fractional, thủ công) |
+  | RSP | $214.93 | $219.31 | +2.04% | $211.44 |
+  | IONQ | $39.85 | $40.275 | +1.07% | $35.07 |
+  | AVGO | $367.94 | $369.7388 | +0.49% | $349.54 |
+  | RGTI | $15.5983 | $15.71 | +0.72% | $13.73 |
+  | JNJ | $265.88 | $266.545 | +0.25% | $252.59 |
+  | MSFT | $510.00 | $511.295 | +0.25% | $484.50 |
+  | AMZN | $261.47 | $261.17 | -0.11% | $251.89 |
+  | GOOGL | $343.80 | $338.335 | -1.59% | $334.02 |
+
+- **Không stop-loss nào bị breach; không mã nào chạm ngưỡng cảnh báo chốt lời (+15-20%).** JPM cao nhất +2.27% — còn xa ngưỡng. IONQ/RGTI/MSFT/AVGO/JNJ mới mua hôm nay (đỉnh giá = giá hiện tại), chưa cần dời stop. Không có đỉnh mới nào ở các mã còn lại vượt đỉnh đã dùng đặt stop hiện có — không cần đề xuất dời stop lần này.
+- **Biến động trong ngày lớn nhất là GOOGL -1.59%** — dưới ngưỡng ±3-5% cần WebSearch tin tức sâu, không tra cứu thêm lần này.
+- **KẾT LUẬN: Core-10 đủ 10/10 slot, toàn bộ stop-loss hoạt động bình thường, không có việc tồn đọng. Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật).
