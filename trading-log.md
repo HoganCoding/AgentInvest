@@ -4449,3 +4449,22 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 ### Slot trống (5/10: 2 rủi ro cao thay IREN+ASTS, 2 tech thay QCOM+CRM, 1 blue-chip thay XOM): vẫn TẠM HOÃN, mốc review định kỳ 2026-09-01 (NGÀY MAI)
 - Không rà soát lại ứng viên mới lần này (không có thay đổi bối cảnh đáng kể so với lần kiểm tra 08-28; đề xuất MSFT/AVGO/JNJ/KO từ 08-26 vẫn còn hiệu lực, chờ Hogan chọn/duyệt). Review định kỳ 30 ngày rơi vào ngày mai (2026-09-01) — lần kiểm tra kế tiếp nên chính thức chạy quy trình review đầy đủ (tái xác nhận ứng viên tech/blue-chip đã đề xuất, xác nhận lại nhóm rủi ro cao IONQ/RGTI/AEHR đã ổn định/có volume xác nhận chưa).
 - **KẾT LUẬN: Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật).
+
+## 2026-08-31 ~11:53 ET (15:53 UTC) — Kiểm tra thủ công theo yêu cầu Hogan: core-10 vẫn 5/10 slot, KHÔNG có đề xuất mới
+
+- **Sync đầu phiên:** `git pull` — fast-forward `120d0bd`→`fa49e09` (16 commit mới, các lần kiểm tra sandbox trước đó). Không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn **5/10 slot**, không đổi: AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), JPM(1cp) — vẫn thiếu 5 slot (2 rủi ro cao thay IREN+ASTS, 2 tech thay QCOM+CRM, 1 blue-chip thay XOM). `get_equity_orders` hôm nay: **không có lệnh nào mới/khớp** — không stop-loss nào bị breach.
+- **Đề xuất chờ duyệt từ 08-26 10:25 ET (MSFT/AVGO cho 2 slot tech, JNJ/KO cho 1 slot blue-chip) vẫn CHƯA có quyết định của Hogan.**
+- **Benchmark (11:53 ET/15:53 UTC, so đóng cửa 08-28):** SPY $766.18 (-0.41%), QQQ $714.83 (-0.22%) — đỏ nhẹ, không risk-off.
+- P&L nhanh (giá ~11:53 ET/15:53 UTC, so đóng cửa 08-28):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Stop-loss hiện tại | Đỉnh dùng đặt stop |
+  |---|---|---|---|---|---|
+  | VOO | $688.26 | $704.28 | +2.33% | (fractional, thủ công) | — |
+  | JPM | $347.97 | $355.87 | +2.27% | $344.85 | $362.29 (chưa vượt) |
+  | RSP | $214.93 | $219.58 | +2.16% | $211.44 | $222.57 (chưa vượt) |
+  | AMZN | $261.47 | $261.28 | -0.07% | $251.89 | $266.20 (chưa vượt) |
+  | GOOGL | $343.80 | $338.69 | -1.49% | $334.02 | $351.60 (chưa vượt) |
+
+- **Không stop-loss nào bị breach; không mã nào chạm ngưỡng cảnh báo chốt lời (+15-20%).** Không có đỉnh mới nào vượt đỉnh đã dùng đặt stop hiện có — không cần đề xuất dời stop lần này. Biến động trong ngày mọi mã đều dưới ±1.5% — không cần WebSearch tin tức sâu.
+- **KẾT LUẬN: Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (routine, không có thay đổi thật).

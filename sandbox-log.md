@@ -3537,3 +3537,14 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **KHÔNG mở vị thế rủi ro cao mới.** Nhắc wash-sale: cấm mua lại CIFR tới ~09-23; OUST tới ~09-17; PANW tới ~09-18 (core-10, không áp dụng sandbox); HIMS/RKLB đã hết cấm.
 - **Phần theo dõi sandbox (circuit breaker):** ~$669.2 (100% cash, không đổi) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động — tiếp tục giữ 100% tiền mặt, tiếp tục theo dõi IONQ/RGTI/AEHR trong phiên.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-31 ~11:53 ET (15:53 UTC) — Kiểm tra thủ công theo yêu cầu Hogan: watchlist IONQ/RGTI/AEHR xanh nhẹ so lần check trước, dưới ngưỡng 3-5%, sandbox vẫn 100% tiền mặt, KHÔNG vào lệnh
+
+- **Sync đầu phiên:** `git pull` — fast-forward `120d0bd`→`fa49e09`. Không conflict.
+- `get_equity_positions` (704170133): **5 vị thế, toàn bộ core-10** khớp `trading-log.md`: AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), JPM(1cp) — **không có gì thuộc sandbox** (vẫn 100% cash, chưa mở vị thế mới) — **KHÔNG đụng tới các vị thế này**.
+- `get_portfolio`: cash **$3,614.58**, buying_power **$3,614.58** — không đổi so lần check trước (11:11 ET).
+- **Watchlist rủi ro cao (IONQ/RGTI/AEHR), so lần check trước (11:11 ET: IONQ $39.61/RGTI $15.605/AEHR $80.105):** IONQ $40.0254 (+1.05% so lần trước, +2.11% so đóng cửa 08-28), RGTI $15.6779 (+0.47% so lần trước, +0.57% so đóng cửa), AEHR $80.185 (+0.10% so lần trước, -0.77% so đóng cửa). Biến động so lần check trước đều **dưới ngưỡng 3-5%** → không cần WebSearch thêm — đà xanh nhẹ, chưa đủ điều kiện theo ngưỡng xác nhận đã nâng cao cho nhóm quantum (cần ổn định/hồi phục rõ ràng hơn 1 phiên xanh đơn lẻ).
+- **Quyết định KHÔNG vào lệnh:** giữ nguyên ngưỡng xác nhận đã nâng cao từ 08-28 — tiếp tục theo dõi.
+- **KHÔNG mở vị thế rủi ro cao mới.** Nhắc wash-sale: cấm mua lại CIFR tới ~09-23; OUST tới ~09-17; PANW tới ~09-18 (core-10, không áp dụng sandbox); HIMS/RKLB đã hết cấm.
+- **Phần theo dõi sandbox (circuit breaker):** ~$669.2 (100% cash, không đổi) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động — tiếp tục giữ 100% tiền mặt, tiếp tục theo dõi IONQ/RGTI/AEHR trong phiên.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
