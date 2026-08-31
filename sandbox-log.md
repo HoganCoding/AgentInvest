@@ -3616,3 +3616,12 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Phần theo dõi sandbox (circuit breaker):** giá trị vị thế hiện tại ≈ IONQ $281.89 + RGTI $204.17 + SOUN $214.16 = **~$700.22** (100% đầu tư, 0% cash phần sandbox) — tăng nhẹ +$1.83 so vốn gốc $698.39, còn rất xa cả 2 ngưỡng (dừng hẳn gần $0 / chốt lời ~$1400).
 - **Quyết định: KHÔNG hành động** — giữ nguyên 3 vị thế, không thêm/bớt gì. Không có thay đổi thật so lần check trước → **không gửi PushNotification**, chỉ ghi log.
 - **KẾT QUẢ: Sandbox đã triển khai đủ ~$700 vào IONQ + RGTI + SOUN, có stop-loss -12% riêng cho từng mã.**
+
+## 2026-08-31 ~14:08 ET (18:08 UTC) — Kiểm tra định kỳ (routine tự động, sync git): giá đi ngang/nhích nhẹ, KHÔNG hành động
+
+- **Sync đầu phiên:** repo detached HEAD tại `ce674aa` (khớp `origin/main`, đã có entry kiểm tra core-10 13:11 ET) — `git checkout main` + fast-forward 18 commit (`c9649c2`→`ce674aa`, gồm toàn bộ log vào lệnh IONQ/RGTI/SOUN 12:13 ET + các lần kiểm tra sau đó). Không conflict.
+- `get_equity_positions` (704170133): IONQ tổng **14cp** (avg hiển thị $39.90 = core-10 7cp/$39.85 + sandbox 7cp/$39.9499), RGTI tổng **31cp** (avg $15.61 = core-10 18cp/$15.5984 + sandbox 13cp/$15.6187), SOUN **30cp/$7.19 (100% sandbox)**. Cả 3 mã `shares_available_for_sells=0` — vẫn đang được giữ bởi các lệnh stop-loss core-10 + sandbox riêng biệt. Không có vị thế lạ nào khác.
+- `get_portfolio`: cash/buying_power **$946.76** — không đổi so lần check trước (13:09 ET), không có giao dịch mới nào xen giữa.
+- **Giá hiện tại so giá vốn sandbox (12:13 ET) và so lần check trước (13:09 ET: IONQ $40.27/RGTI $15.705/SOUN $7.1388):** IONQ $39.985 (+0.09% so vốn, -0.71% so lần trước), RGTI $15.6733 (+0.35% so vốn, -0.20% so lần trước), SOUN $7.1384 (-0.72% so vốn, -0.01% so lần trước). Biến động so lần check trước đều **dưới ngưỡng 3-5%** → không cần WebSearch tin tức.
+- **Phần theo dõi sandbox (circuit breaker):** giá trị vị thế hiện tại ≈ IONQ $279.895 + RGTI $203.7529 + SOUN $214.152 = **~$697.80** (100% đầu tư, 0% cash phần sandbox) — giảm nhẹ -$0.59 so vốn gốc $698.39, còn rất xa cả 2 ngưỡng (dừng hẳn gần $0 / chốt lời ~$1400).
+- **Quyết định: KHÔNG hành động** — giữ nguyên 3 vị thế, không thêm/bớt gì. Không có thay đổi thật so lần check trước → **không gửi PushNotification**, chỉ ghi log.
