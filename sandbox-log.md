@@ -3568,3 +3568,41 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **KHÔNG mở vị thế rủi ro cao mới.** Nhắc wash-sale: cấm mua lại CIFR tới ~09-23; OUST tới ~09-17; PANW tới ~09-18 (core-10, không áp dụng sandbox); HIMS/RKLB đã hết cấm.
 - **Phần theo dõi sandbox (circuit breaker):** ~$669.2 (100% cash, không đổi) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động — tiếp tục giữ 100% tiền mặt, tiếp tục theo dõi IONQ/RGTI/AEHR trong phiên.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-31 ~12:13 ET (16:13 UTC) — Hogan duyệt "fill luôn sandbox 700" — ĐÃ VÀO LỆNH: IONQ + RGTI + SOUN, tổng ~$698.39
+
+- **Bối cảnh:** Hogan yêu cầu trực tiếp triển khai phần vốn đầu tư sandbox (~$700) ngay trong phiên tương tác này (không phải routine tự động).
+- **Chọn mã:** đa dạng hóa ra ngoài quantum thay vì dồn hết vào IONQ/RGTI (đã trùng với core-10) — thêm **SOUN** (SoundHound AI, voice/conversational AI, không trùng core-10) làm mã thứ 3 để giảm tập trung rủi ro theo subsector. SOUN: Q2 doanh thu $61.9M vượt ước tính $52.4M, lỗ điều chỉnh thu hẹp còn $0.02/cp, đang trong thương vụ M&A mua LivePerson (ISS + Glass Lewis đều khuyến nghị ủng hộ), short interest cao (39.86% float) — tiềm năng short squeeze. Giá $7.19, cách xa đỉnh 52 tuần $22.17 nhưng đã hồi từ đáy 52 tuần $5.65 (29/07).
+
+### ⚠️ VẤN ĐỀ KỸ THUẬT PHÁT HIỆN VÀ ĐÃ XỬ LÝ: IONQ/RGTI merge position với core-10
+
+Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" core-10 vs sandbox), lệnh mua IONQ/RGTI cho sandbox đã **cộng dồn vào cùng 1 vị thế** với core-10 thay vì tách riêng:
+- IONQ: 7cp (core-10, giá vốn $39.85) + 7cp (sandbox, giá vốn $39.9499) → tổng vị thế **14cp**, average_buy_price hiển thị $39.90.
+- RGTI: 18cp (core-10, giá vốn $15.60) + 13cp (sandbox, giá vốn $15.6187) → tổng vị thế **31cp**, average_buy_price hiển thị $15.61.
+
+Đã xác nhận qua `get_equity_tax_lots`: 2 lô riêng biệt cho mỗi mã (core-10 lot mua lúc 16:06 UTC, sandbox lot mua lúc 16:12 UTC), đều `open_date=2026-08-31`, term=`st`. Robinhood tự động giữ đúng số cổ phiếu core-10 (7cp IONQ / 18cp RGTI) cho lệnh stop-loss core-10 đã đặt trước đó (`shares_held_for_sells` khớp chính xác), phần còn lại (7cp IONQ / 13cp RGTI) vẫn `shares_available_for_sells` — đã đặt thêm stop-loss RIÊNG cho đúng số lượng sandbox này (xem bảng dưới), không đụng tới lệnh stop-loss core-10 đang có.
+
+**Ghi chú cho các lần kiểm tra sau:** từ nay `get_equity_positions` sẽ hiển thị IONQ=14cp và RGTI=31cp gộp chung — KHÔNG được hiểu nhầm toàn bộ là core-10 hoặc toàn bộ là sandbox. Phân biệt qua tax lot (ngày/giờ mở lot + giá vốn) hoặc cộng dồn theo log: core-10 IONQ=7cp/$39.85, sandbox IONQ=7cp/$39.9499; core-10 RGTI=18cp/$15.60, sandbox RGTI=13cp/$15.6187.
+
+### Lệnh đã đặt và khớp (FILLED ngay lập tức, limit tại giá ask)
+
+| Mã | SL (sandbox) | Giá khớp TB | Tổng tiền | Order ID (mua) |
+|---|---|---|---|---|
+| IONQ | 7cp | $39.9499 | $279.649 | `6a95a7f1-c665-40ac-b338-94e211ab4891` |
+| RGTI | 13cp | $15.6187 | $203.043 | `6a95a7f3-4286-4569-b1a1-823586343a3d` |
+| SOUN | 30cp | $7.1899 | $215.697 | `6a95a7f4-9e5d-4108-9be3-b2c8003297b2` |
+
+**Tổng chi: ~$698.39** (khớp mục tiêu ~$700 phần đầu tư sandbox).
+
+### Stop-loss sandbox đã đặt (stop_market sell, GTC, -12% theo quy định nhóm rủi ro cao, đều đã CONFIRMED)
+
+| Mã | SL | Giá stop (-12% từ giá vốn sandbox) | Order ID (stop) |
+|---|---|---|---|
+| IONQ | 7cp | $35.16 | `6a95a831-fe82-43c6-962e-8856585b9782` |
+| RGTI | 13cp | $13.74 | `6a95a833-b90b-4286-8c1a-e550c63fa9fa` |
+| SOUN | 30cp | $6.33 | `6a95a834-5691-47a4-8365-47bbd1dbd37f` |
+
+- Xác nhận `get_equity_positions` sau khi đặt: cả 3 mã đều `shares_available_for_sells=0` (toàn bộ đã được giữ bởi các lệnh stop-loss tương ứng, đúng số lượng core-10 + sandbox riêng biệt) — không có phần dư chưa được bảo vệ.
+- **Buying power sau giao dịch: $946.76** (từ $1,645.15 trước đó).
+- **Phần theo dõi sandbox (circuit breaker) sau giao dịch:** ~$698.39 giá trị vị thế (100% đầu tư, 0% cash trong phần sandbox) — vẫn ở mức gốc ~$700, chưa breach ngưỡng nào.
+- **KẾT QUẢ: Sandbox đã triển khai đủ ~$700 vào IONQ + RGTI + SOUN, có stop-loss -12% riêng cho từng mã.**
