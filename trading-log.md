@@ -4468,3 +4468,34 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 
 - **Không stop-loss nào bị breach; không mã nào chạm ngưỡng cảnh báo chốt lời (+15-20%).** Không có đỉnh mới nào vượt đỉnh đã dùng đặt stop hiện có — không cần đề xuất dời stop lần này. Biến động trong ngày mọi mã đều dưới ±1.5% — không cần WebSearch tin tức sâu.
 - **KẾT LUẬN: Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (routine, không có thay đổi thật).
+
+## 2026-08-31 ~12:06 ET (16:06 UTC) — Lấp đủ 5/5 slot trống core-10, đã duyệt và đặt lệnh thật
+
+- **Bối cảnh:** Hogan duyệt lấp toàn bộ 5 slot trống còn lại (2 tech, 1 blue-chip, 2 rủi ro cao) từ đề xuất 08-26 + nghiên cứu bổ sung nhóm rủi ro cao hôm nay.
+- **Chọn mã:** Tech — MSFT + AVGO (dùng cả 2 ứng viên đã đề xuất, lấp đủ 2 slot). Blue-chip — Hogan chọn KO trước, sau đó đổi ý sang **JNJ 2cp**. Rủi ro cao — nghiên cứu bổ sung: **IONQ** mạnh (Q2 doanh thu $80.1M +287% YoY, nâng guidance FY26 lên $280-290M, hợp đồng DARPA, đóng thương vụ SkyWater, analyst Buy PT TB $69.58), **RGTI** trung bình (doanh thu Q2 $5.1M +183% YoY nhưng nhỏ, hụt nhẹ ước tính, Wedbush hạ PT $37 nhưng vẫn Outperform), **AEHR bị loại khỏi đề xuất** — vừa sập -46% từ đỉnh 52 tuần $147.40 (14/08) xuống ~$80 chỉ trong 2 tuần, đi kèm hàng loạt insider bán ra (CEO Gayn Erickson bán $5.2M ngày 12/08 + nhiều giám đốc khác bán >$10M trong tháng 8) — không đạt bộ lọc "giá ổn định" theo CLAUDE.md. Đã search thêm hướng ngoài quantum (POET Technologies) nhưng chưa đủ dữ liệu, không đề xuất. Hogan duyệt **IONQ + RGTI**.
+- **Benchmark lúc đặt lệnh (12:01-12:06 ET):** SPY -0.41%, QQQ -0.22% so đóng cửa 08-28 — dưới ngưỡng cấm mở vị thế rủi ro cao (>1.5-2%), đủ điều kiện.
+
+### Lệnh đã đặt và khớp (toàn bộ FILLED ngay lập tức, lệnh limit tại giá ask)
+
+| Mã | Nhóm | SL mua | Giá khớp TB | Tổng tiền | % danh mục | Order ID (mua) |
+|---|---|---|---|---|---|---|
+| MSFT | Tech | 1cp | $509.9982 | $509.998 | 8.83% | `6a95a53d-2940-4014-8fb1-1728cb293828` |
+| AVGO | Tech | 1cp | $367.9399 | $367.940 | 6.37% | `6a95a54e-9125-4e3b-a6c1-f010939239c5` |
+| JNJ | Blue-chip | 2cp | $265.8832 | $531.766 | 9.20% | `6a95a583-b909-4752-9b84-248e21e1459c` |
+| IONQ | Rủi ro cao | 7cp | $39.8499 | $278.949 | 4.83% | `6a95a66d-1b5c-4248-bf4c-47ad02718e02` |
+| RGTI | Rủi ro cao | 18cp | $15.5984 | $280.771 | 4.86% | `6a95a66e-8ab4-471c-a12f-d526d39ed720` |
+
+**Tổng chi:** ~$1,969.42. Cash còn lại sau lệnh: ~$235.45 (từ $2,204.87 trước đó).
+
+### Stop-loss đã đặt (stop_market sell, GTC, state=unconfirmed chờ xác nhận)
+
+| Mã | % stop | Giá stop | Order ID (stop) |
+|---|---|---|---|
+| MSFT | -5% (tech) | $484.50 | `6a95a67b-e6e3-4dd7-945b-17b072ca5567` |
+| AVGO | -5% (tech) | $349.54 | `6a95a67d-5cf4-4bba-a3fa-c0f3e831e25e` |
+| JNJ | -5% (blue-chip) | $252.59 | `6a95a67e-f671-4d1b-a976-1f57fedcab75` |
+| IONQ | -12% (rủi ro cao) | $35.07 | `6a95a680-c246-4296-b36f-bc0d01fc4802` |
+| RGTI | -12% (rủi ro cao) | $13.73 | `6a95a682-8b11-4330-9cdd-8dc3008e6167` |
+
+- **KẾT QUẢ: Core-10 nay đã đủ 10/10 slot** — AMZN, RSP, GOOGL, VOO, JPM (cũ) + MSFT, AVGO, JNJ, IONQ, RGTI (mới). Cần xác nhận 5 lệnh stop-loss chuyển từ `unconfirmed` sang `confirmed` ở lần kiểm tra tiếp theo.
+- **Việc cần làm tiếp theo:** xác nhận trạng thái 5 stop-loss mới; theo dõi IONQ/RGTI sát hơn (nhóm rủi ro cao, biến động mạnh); AEHR tiếp tục nằm trong watchlist sandbox, có thể xem xét lại cho core-10 sau khi ổn định/insider selling giảm bớt.
