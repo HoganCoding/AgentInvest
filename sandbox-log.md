@@ -3500,3 +3500,16 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **KHÔNG mở vị thế rủi ro cao mới.** Nhắc wash-sale: cấm mua lại CIFR tới ~09-23; OUST tới ~09-17; PANW tới ~09-18 (core-10, không áp dụng sandbox); HIMS/RKLB đã hết cấm.
 - **Phần theo dõi sandbox (circuit breaker):** ~$669.2 (100% cash, không đổi) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động — tiếp tục giữ 100% tiền mặt, tiếp tục theo dõi IONQ/RGTI/AEHR.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-31 ~09:13 ET (13:13 UTC) — Kiểm tra định kỳ (routine tự động, sync git): TIỀN MỞ CỬA THỨ HAI (premarket, sau cuối tuần), watchlist IONQ/RGTI/AEHR gần như đi ngang so lần check cuối cùng (08-28 14:10 ET), sandbox vẫn 100% tiền mặt, KHÔNG vào lệnh
+
+- **Sync đầu phiên:** `git pull origin main` — fast-forward `c9649c2` → `6e52f6e` (không có commit mới kể từ log cuối 08-28 14:10 ET). Không conflict.
+- `get_accounts` (704170133): `unsettled_funds` = **$0.00**.
+- `get_equity_positions` (704170133): **5 vị thế, toàn bộ core-10** khớp `trading-log.md`: AMZN(2cp), RSP(2cp), GOOGL(1cp), VOO(0.72647cp), JPM(1cp) — **không có gì thuộc sandbox** (vẫn 100% cash, chưa mở vị thế mới) — **KHÔNG đụng tới các vị thế này**.
+- `get_portfolio`: cash **$3,614.58**, buying_power **$3,614.58** — không đổi so lần check trước (08-28 14:10 ET).
+- **Thị trường CHƯA MỞ CỬA (9:13 ET, mở 9:30 ET) — thứ Hai đầu tuần sau cuối tuần, giá premarket.** Đóng cửa chính thức gần nhất vẫn là 08-28 (Thứ Sáu): IONQ $39.20, RGTI $15.59, AEHR $80.81; SPY $769.35, QQQ $716.43.
+- **Watchlist rủi ro cao (IONQ/RGTI/AEHR), so lần check trước (08-28 14:10 ET: IONQ $38.695/RGTI $15.485/AEHR $82.75):** IONQ premarket $38.73 (+0.09% so lần trước), RGTI premarket $15.439 (-0.30% so lần trước), AEHR premarket $81.29 (-1.76% so lần trước). SPY premarket $766.93 (-0.31% so đóng cửa 08-28), QQQ premarket $714.31 (-0.30%). Biến động so lần check trước đều **dưới ngưỡng 3-5%** → không cần WebSearch thêm — nhóm quantum đi ngang qua cuối tuần, chưa có tín hiệu đảo chiều/ổn định rõ ràng theo bộ lọc đã nâng cao.
+- **Quyết định KHÔNG vào lệnh:** thị trường chính chưa mở cửa, thanh khoản premarket mỏng; đồng thời vẫn giữ nguyên ngưỡng xác nhận đã nâng cao cho nhóm quantum (cần ổn định/hồi phục rõ ràng hơn 1 phiên xanh đơn lẻ) từ quyết định 08-28 10:13 ET — cả 3 mã vẫn giảm sâu so đóng cửa 08-27 (mốc trước đợt bán tháo ngành), chưa đạt điều kiện.
+- **KHÔNG mở vị thế rủi ro cao mới.** Nhắc wash-sale: cấm mua lại CIFR tới ~09-23; OUST tới ~09-17; PANW tới ~09-18 (core-10, không áp dụng sandbox); HIMS/RKLB đã hết cấm.
+- **Phần theo dõi sandbox (circuit breaker):** ~$669.2 (100% cash, không đổi) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
+- **Quyết định: KHÔNG hành động — tiếp tục giữ 100% tiền mặt, tiếp tục theo dõi IONQ/RGTI/AEHR khi phiên chính mở cửa.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
