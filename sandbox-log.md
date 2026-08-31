@@ -3548,3 +3548,11 @@ Bản dưới đây (từ `origin/main`, phiên cloud routine) là log real-time
 - **KHÔNG mở vị thế rủi ro cao mới.** Nhắc wash-sale: cấm mua lại CIFR tới ~09-23; OUST tới ~09-17; PANW tới ~09-18 (core-10, không áp dụng sandbox); HIMS/RKLB đã hết cấm.
 - **Phần theo dõi sandbox (circuit breaker):** ~$669.2 (100% cash, không đổi) — còn rất xa ngưỡng dừng hẳn (gần $0) và chốt lời x2 (~$1400). Không breach ngưỡng nào.
 - **Quyết định: KHÔNG hành động — tiếp tục giữ 100% tiền mặt, tiếp tục theo dõi IONQ/RGTI/AEHR trong phiên.** Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-08-31 ~12:07 ET (16:07 UTC) — Kiểm tra sau khi core-10 lấp đủ 5 slot: sandbox vẫn 100% tiền mặt, KHÔNG bị đụng, nhưng lưu ý buying power chung pool đã giảm
+
+- `get_equity_positions` (704170133): 10 vị thế đều thuộc core-10 (IONQ, AMZN, RSP, MSFT, GOOGL, VOO, JNJ, AVGO, JPM, RGTI) — **không có vị thế sandbox nào**, sandbox vẫn 100% cash, KHÔNG bị đụng tới.
+- **CẢNH BÁO quan trọng:** core-10 vừa lấp 5 slot trống (MSFT/AVGO/JNJ/IONQ/RGTI), dùng hết ~$1,969.42 từ pool cash dùng chung → buying_power thực tế giảm từ $3,614.58 xuống còn **$1,645.15**. Phần sandbox theo dõi (~$700 đầu tư + $700 đệm = $1,400 mục tiêu) vẫn nằm trong pool này nhưng dư địa co hẹp đáng kể (~$245 dư ngoài $1,400) — PHẢI kiểm tra buying_power thực tế trước khi đặt bất kỳ lệnh sandbox mới nào, không giả định còn nhiều dư địa như trước.
+- **Lưu ý đặc biệt:** core-10 vừa mua IONQ (7cp, giá vốn $39.85) và RGTI (18cp, giá vốn $15.60) — trùng mã với watchlist sandbox! Từ nay nếu sandbox cân nhắc vào lệnh IONQ/RGTI, PHẢI đối chiếu kỹ để không nhầm lẫn/đụng vào vị thế core-10 (theo quy định "Sandbox PHẢI đối chiếu trading-log.md trước khi nhận 1 vị thế lạ là của mình" — 2 mã này giờ có mặt ở CẢ core-10 lẫn watchlist sandbox, cần phân biệt rõ qua số lượng cổ phiếu: core-10 IONQ=7cp/RGTI=18cp, bất kỳ số lượng nào khác là sandbox).
+- AEHR (watchlist) hiện $79.41 (-1.73% so đóng cửa 08-28) — tiếp tục giảm, củng cố quyết định KHÔNG đưa vào core-10 hôm nay do sập mạnh + insider bán ồ ạt.
+- **Quyết định: KHÔNG hành động sandbox.** Không gửi PushNotification (không có giao dịch sandbox mới), chỉ ghi log cảnh báo về buying power chung pool.

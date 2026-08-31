@@ -4499,3 +4499,27 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 
 - **KẾT QUẢ: Core-10 nay đã đủ 10/10 slot** — AMZN, RSP, GOOGL, VOO, JPM (cũ) + MSFT, AVGO, JNJ, IONQ, RGTI (mới). Cần xác nhận 5 lệnh stop-loss chuyển từ `unconfirmed` sang `confirmed` ở lần kiểm tra tiếp theo.
 - **Việc cần làm tiếp theo:** xác nhận trạng thái 5 stop-loss mới; theo dõi IONQ/RGTI sát hơn (nhóm rủi ro cao, biến động mạnh); AEHR tiếp tục nằm trong watchlist sandbox, có thể xem xét lại cho core-10 sau khi ổn định/insider selling giảm bớt.
+
+## 2026-08-31 ~12:07 ET (16:07 UTC) — Xác nhận core-10 đủ 10/10 slot, 5 stop-loss mới đã CONFIRMED
+
+- **Sync đầu phiên:** `git fetch` — không có commit mới từ phiên khác kể từ lần ghi log trước (12:06 ET). Không conflict.
+- `get_equity_orders`: **cả 5 lệnh stop-loss mới (MSFT/AVGO/JNJ/IONQ/RGTI) đã chuyển từ `unconfirmed` sang `confirmed`** — hoạt động bình thường.
+- `get_equity_positions`: xác nhận **10/10 vị thế core**: IONQ(7cp), AMZN(2cp), RSP(2cp), MSFT(1cp), GOOGL(1cp), VOO(0.72647cp), JNJ(2cp), AVGO(1cp), JPM(1cp), RGTI(18cp).
+- `get_portfolio`: total_value $5,780.89, cash/buying_power **$1,645.15** (giảm từ $3,614.58 trước khi lấp 5 slot — đã dùng ~$1,969.42 để mua). **Lưu ý quan trọng cho sandbox:** buying_power dùng chung pool với sandbox — vẫn còn đủ trên mức $1,400 (700 đầu tư + 700 đệm) nhưng dư địa co hẹp còn ~$245, cần kiểm tra kỹ trước khi sandbox vào lệnh mới.
+- P&L nhanh (giá ~12:07 ET, so giá vốn):
+
+  | Mã | Giá vốn | Giá hiện tại | P&L |
+  |---|---|---|---|
+  | RSP | $214.93 | $219.49 | +2.12% |
+  | JPM | $347.97 | $355.51 | +2.17% |
+  | VOO | $688.26 | $703.35 | +2.19% |
+  | AVGO | $367.94 | $368.41 | +0.13% |
+  | IONQ | $39.85 | $39.90 | +0.13% |
+  | JNJ | $265.88 | $265.94 | +0.02% |
+  | RGTI | $15.60 | $15.585 | -0.10% |
+  | MSFT | $510.00 | $509.53 | -0.09% |
+  | AMZN | $261.47 | $260.95 | -0.20% |
+  | GOOGL | $343.80 | $338.24 | -1.62% |
+
+- Không mã nào gần ngưỡng stop-loss. Benchmark: SPY -0.55%, QQQ -0.40% so đóng cửa 08-28 — vẫn đỏ nhẹ, không risk-off.
+- **KẾT LUẬN: Core-10 đã đủ 10/10 slot, toàn bộ stop-loss hoạt động bình thường. Không có việc tồn đọng.**
