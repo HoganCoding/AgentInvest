@@ -4623,3 +4623,11 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Rủi ro chính:** JNJ đã giảm từ đỉnh $271.84 xuống ~$268.4 tính tới 10:05 ET (có thể là chốt lời sau đà tăng sáng hoặc nhiễu thị trường thường, biến động trong ngày vẫn +1.0% dương tính tới giờ kiểm tra — dưới ngưỡng ±3-5% cần WebSearch sâu, không tra cứu thêm); dời stop khóa thêm phần lãi nhỏ nhưng thu hẹp biên độ chấp nhận biến động ngắn hạn.
 
 **Tóm tắt hành động cần Hogan:** (1) chọn AAPL hoặc NVDA (hoặc mã tech khác Hogan muốn) để lấp slot tech thay GOOGL; (2) duyệt dời stop-loss JNJ từ $252.59 lên $258.25. Có sự kiện thật (GOOGL bị stop) + 2 đề xuất mới → **đã gửi PushNotification.**
+
+## 2026-09-01 ~10:20 ET (14:20 UTC) — Quyết định của Hogan (qua phiên chat): duyệt cả 2 đề xuất — CHƯA đặt lệnh (phiên này chỉ đọc)
+
+- **Quyết định của Hogan:** "1.aapl 2.move" — duyệt (1) chọn **AAPL** (1cp) lấp slot tech thay GOOGL; (2) duyệt dời stop-loss JNJ từ $252.59 lên $258.25.
+- **Lưu ý quan trọng:** phiên phân tích core-10 hiện tại được cấu hình CHỈ ĐỌC trên tài khoản (theo chỉ thị routine: "you must NEVER place, cancel, or modify any order; you are read-only on this account" — áp dụng dưới mọi hoàn cảnh, kể cả sau khi có duyệt). Do đó quyết định của Hogan được ghi nhận ở đây nhưng **CHƯA được thực thi** — 2 lệnh sau vẫn đang CHỜ đặt qua phiên có quyền đặt lệnh (phiên tương tác/preview):
+  1. Mua AAPL 1cp market (~$323, ~5.7% danh mục) — thay slot tech GOOGL.
+  2. Hủy lệnh stop-loss JNJ cũ (`6a95a67e-f671-4d1b-a976-1f57fedcab75`, trigger $252.59) → đặt lệnh GTC stop_market mới bán 2cp JNJ @ trigger $258.25.
+- Cần một phiên tương tác có quyền đặt lệnh (hoặc lần kiểm tra định kỳ core-10 tiếp theo nếu có quyền) thực thi 2 lệnh trên và ghi log xác nhận khớp lệnh.
