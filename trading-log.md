@@ -4575,3 +4575,51 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Biến động trong ngày lớn nhất là IONQ -1.81%** — trong biên độ nhiễu bình thường của nhóm rủi ro cao, dưới ngưỡng ±3-5% cần WebSearch tin tức sâu; benchmark cũng đỏ nhẹ tương tự, không phải underperformance riêng của mã. Không tra cứu thêm lần này.
 - Review định kỳ 30 ngày rơi vào ngày mai (2026-09-01) — chưa tới hạn, không chạy quy trình review lần này.
 - **KẾT LUẬN: Core-10 đủ 10/10 slot, toàn bộ stop-loss hoạt động bình thường, không có việc tồn đọng. Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật).
+
+## 2026-09-01 ~10:15 ET (14:15 UTC) — Kiểm tra định kỳ + Review 30 ngày (routine tự động, sync git): GOOGL bị trailing stop-loss tự động khớp sáng nay, core-10 còn 9/10 slot; đề xuất 2 lựa chọn lấp slot tech + đề xuất dời stop-loss JNJ (đỉnh mới)
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD tại `764bcf4` (khớp `origin/main`) — đã `git checkout main`, fast-forward xác nhận không có commit mới nào bị bỏ sót (23 commit mới từ các lần kiểm tra sandbox 08-31 chiều tới 09-01 sáng đã có sẵn). Không conflict.
+- **SỰ KIỆN THẬT (đã tự động khớp, không cần duyệt):** GOOGL bị trailing stop-loss tự động khớp lúc 09:30:19 ET (13:30:19 UTC) sáng nay — lệnh `6a8c8041...` (trigger $334.02, đặt 08-24 theo đỉnh $351.60, trailing -5% nhóm tech, đã được Hogan duyệt dời khi đặt) bán 1cp @ $334.00. Giá vốn $343.798 (lot mua 08-18) → lỗ thực hiện **-2.85%** (~-$9.80). Đây là thực thi tự động đúng kỷ luật trailing stop đã đặt sẵn từ trước, không phải quyết định mới. **Wash-sale: cấm mua lại GOOGL (hoặc mã gần tương đương) tới ~2026-10-01.**
+- `get_equity_positions` xác nhận core-10 còn **9/10 slot**: IONQ(7cp core), AMZN(2cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JNJ(2cp), AVGO(1cp), JPM(1cp), RGTI(18cp core, tổng gộp 31cp với sandbox) — thiếu 1 slot large-cap tech (thay GOOGL). `get_equity_orders` (confirmed): không lệnh nào khác khớp/breach ngoài GOOGL kể từ lần kiểm tra 08-31 15:31 ET.
+
+### Review định kỳ 30 ngày (2026-09-01, đúng hạn theo CLAUDE.md)
+- **Benchmark 30 ngày (mở 08-03 → đóng 08-31):** SPY +2.35%, QQQ +4.13%.
+- **P&L 30 ngày các mã core-10 còn lại (mở 08-03 → đóng 08-31):**
+
+  | Mã | Nhóm | 30 ngày | So benchmark |
+  |---|---|---|---|
+  | IONQ | Rủi ro cao | +9.71% | — |
+  | RGTI | Rủi ro cao | +4.89% | — |
+  | MSFT | Tech | +6.55% | vượt QQQ +2.4pp |
+  | JNJ | Blue-chip | +4.27% | — |
+  | VOO | ETF | +2.33% | ≈ SPY |
+  | RSP | ETF | +1.63% | dưới SPY nhẹ (đúng đặc tính equal-weight khi mega-cap dẫn dắt) |
+  | JPM | Blue-chip | +0.64% | — |
+  | AVGO | Tech | **-3.66%** | kém QQQ ~7.8pp |
+  | AMZN | Tech | **-6.66%** | kém QQQ ~10.8pp |
+
+- Đã WebSearch tin tức AMZN và AVGO do kém benchmark đáng kể:
+  - **AMZN:** giảm do (1) báo cáo FTC dự kiến kiện về thao túng giá quảng cáo cho merchant, (2) lo ngại capex 2026 nâng lên ~$220B (từ ~$200B) ăn vào biên lợi nhuận/dòng tiền. Tuy nhiên AWS vẫn tăng trưởng mạnh (~45% cuối 2026, vượt ước tính 38%), doanh thu AWS dự kiến vượt $335B vào 2028 — nền tảng cơ bản KHÔNG xấu đi rõ rệt, đây là lo ngại chi phí/kiện tụng hơn là suy yếu fundamentals thật sự. → **KHÔNG đạt ngưỡng đề xuất thay thế**, tiếp tục theo dõi diễn biến vụ FTC ở các lần kiểm tra sau.
+  - **AVGO:** giảm do (1) lỗ hổng bảo mật VMware vCenter bị khai thác (đã vá khẩn cấp), (2) Marvell giành hợp đồng chip TPU tùy chỉnh với Google (lo ngại cạnh tranh mất thị phần khách hàng lớn), (3) định giá cao + lo ngại tài trợ hạ tầng AI + insider selling. Tuy nhiên KQKD quý gần nhất vẫn vượt ước tính mạnh (DT +47.9% YoY, $22.19B). → **KHÔNG đạt ngưỡng đề xuất thay thế** (lo ngại cạnh tranh/định giá, không phải kiện tụng nghiêm trọng hay fundamentals xấu đi rõ rệt).
+- RGTI giảm **-4.21% trong ngày hôm nay** (biến động lớn nhất, đã kiểm tra >3% threshold) — không có tin tức tiêu cực mới (KQKD Q2 công bố 08-06 đã cũ, không phải driver mới), chỉ là biến động bình thường nhóm rủi ro cao/quantum.
+- **KẾT LUẬN review 30 ngày: không có mã nào (ngoài GOOGL đã tự bị stop-loss) đạt tiêu chí "không đạt kỳ vọng" theo CLAUDE.md.** AMZN/AVGO có lo ngại thật (kiện tụng FTC, cạnh tranh Marvell) cần tiếp tục theo dõi nhưng chưa đủ nghiêm trọng/rõ ràng để đề xuất thay ngay — cả hai vừa có KQKD/guidance nền tảng vững, tránh phản ứng thái quá với biến động 30 ngày đơn thuần.
+
+### Đề xuất 1: Lấp slot tech trống (thay GOOGL) — chọn 1 trong 2, cần Hogan duyệt
+Đã sàng lọc loại các mã đang trong cửa sổ wash-sale (tính tới 09-01, tra cả trading-log.md và sandbox-log.md): GOOGL (tới ~10-01, vừa bán lỗ hôm nay), QCOM (tới ~09-23), PANW (tới ~09-18), AMD (tới ~09-17), NOW (tới ~09-16), MSFT (tới ~09-16, đã đang held nên N/A), CSCO (tới ~09-12), TXN (tới ~09-02, quá sát hạn nên loại cho an toàn).
+
+**Lựa chọn A: AAPL (Apple)** — giá ~$323.17/cp (+2.0% hôm nay so đóng cửa 08-31; +3.6% trong tháng 8 so với S&P -0.3% — outperform rõ rệt). Đề xuất mua **1cp market (~$323, ~5.7% danh mục)**. Lý do: chuyển giao CEO êm thấm (John Ternus thay Tim Cook, không xáo trộn giá), sự kiện ra mắt iPhone mới 09-09 (kỳ vọng foldable iPhone, Siri overhaul, Mac mini chip M6 2nm mới) là catalyst gần, đa dạng hóa sang hardware tiêu dùng (khác hẳn MSFT/AVGO đang nắm — cloud/bán dẫn). Không dính wash-sale (hết cấm từ ~08-30).
+- **Rủi ro chính:** biên lợi nhuận có thể chịu áp lực nếu foldable iPhone giá cao ($1,500+) không đạt kỳ vọng doanh số (BofA cảnh báo); tin TSMC 3nm yield thấp cho chip A19 Pro (08-26) có thể ảnh hưởng nguồn cung iPhone 17 Pro ngắn hạn.
+- **Cắt lỗ đề xuất:** -5% từ đỉnh (trailing, nhóm tech), ban đầu = giá vốn × 0.95.
+
+**Lựa chọn B: NVDA (Nvidia)** — giá ~$217.98/cp (-1.3% hôm nay, nhưng +8.7% ngay sau KQKD Q2 vượt kỳ vọng 08-26). Đề xuất mua **2cp market (~$436, ~7.6% danh mục)**. Lý do: KQKD Q2 FY27 vượt ước tính, guidance doanh thu FY28 +70% (vượt xa ước tính đồng thuận 44%), cam kết mua lại cổ phiếu bổ sung $80B + cổ tức $0.25/cp, hợp tác AI mới (Poolside $6B license + $1B đầu tư, cân nhắc đầu tư Perplexity). Không dính wash-sale (hết cấm từ ~08-26).
+- **Rủi ro chính:** đã nắm AVGO (bán dẫn/AI-chip) — thêm NVDA làm tăng tập trung rủi ro nhóm bán dẫn/AI-capex trong 4 slot tech (2/4 sẽ cùng nhóm bán dẫn AI nếu chọn); định giá cao, nhạy cảm với tin tức chu kỳ AI-capex/thay đổi sentiment.
+- **Cắt lỗ đề xuất:** -5% từ đỉnh (trailing, nhóm tech), ban đầu = giá vốn × 0.95.
+
+**Khuyến nghị của agent:** nếu ưu tiên đa dạng hóa (tránh tập trung bán dẫn AVGO+NVDA), chọn AAPL. Nếu ưu tiên đà tăng trưởng AI mạnh nhất hiện tại, chọn NVDA — chấp nhận thêm rủi ro tập trung ngành bán dẫn.
+
+### Đề xuất 2: Dời stop-loss JNJ (đỉnh mới trong ngày) — cần Hogan duyệt
+- JNJ đạt đỉnh trong ngày **$271.84** lúc ~09:30-09:35 ET hôm nay (vượt đỉnh cũ dùng đặt stop = giá vốn $265.88, vì đây là lot mới mua 08-31, chưa từng có đỉnh nào khác trước đó để dời).
+- **Đề xuất: dời stop-loss JNJ từ $252.59 (= $265.88 × 0.95) lên $258.25 (= $271.84 × 0.95)** — hủy lệnh GTC cũ (`6a95a67e-f671-4d1b-a976-1f57fedcab75`, trigger $252.59), đặt lệnh GTC stop_market mới bán 2cp @ trigger **$258.25**. Chênh lệch +$5.66 (+2.24%) so với stop hiện tại — đủ lớn để cập nhật theo tiền lệ đã dùng trước đây (~1.4-1.5%).
+- **Rủi ro chính:** JNJ đã giảm từ đỉnh $271.84 xuống ~$268.4 tính tới 10:05 ET (có thể là chốt lời sau đà tăng sáng hoặc nhiễu thị trường thường, biến động trong ngày vẫn +1.0% dương tính tới giờ kiểm tra — dưới ngưỡng ±3-5% cần WebSearch sâu, không tra cứu thêm); dời stop khóa thêm phần lãi nhỏ nhưng thu hẹp biên độ chấp nhận biến động ngắn hạn.
+
+**Tóm tắt hành động cần Hogan:** (1) chọn AAPL hoặc NVDA (hoặc mã tech khác Hogan muốn) để lấp slot tech thay GOOGL; (2) duyệt dời stop-loss JNJ từ $252.59 lên $258.25. Có sự kiện thật (GOOGL bị stop) + 2 đề xuất mới → **đã gửi PushNotification.**
