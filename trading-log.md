@@ -4658,3 +4658,29 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Biến động trong ngày đáng chú ý:** RGTI -4.5%, IONQ -3.6% so đóng cửa 08-31 (vượt ngưỡng ±3-5% cần tra cứu thêm) — đã WebSearch: KHÔNG có tin tiêu cực riêng của công ty (RGTI vẫn có backdrop tích cực: DT quý tăng, $100M DOC LOI, $541M cash không nợ; IONQ vẫn tích cực: DT +287% YoY, nâng guidance FY, thương vụ SkyWater đã đóng, hợp đồng DARPA/NRO) — đây là biến động beta cao bình thường của nhóm quantum computing trong phiên risk-off thị trường rộng (SPY -0.70%, QQQ -1.20%, do global bond selloff/lo ngại thuế quan-Fed, không phải panic cực đoan). AMZN -2.66% từ giá vốn (chỉ còn đệm ~1.03% tới stop-loss $251.89) — WebSearch xác nhận vẫn là câu chuyện cũ đã đánh giá trong review 30 ngày hôm qua (lo ngại capex $220B + thuế quan chip + hoài nghi ROI AI/AWS), KHÔNG có tin mới/xấu đi cấp tính hôm nay riêng cho AMZN.
 - **Không đề xuất dời stop-loss** — không mã nào tạo đỉnh mới kể từ lần đặt/cập nhật stop gần nhất (tất cả đều đang dưới giá vốn hoặc đỉnh cũ trong phiên risk-off hôm nay). **Không đề xuất thay mã** — theo đúng CLAUDE.md, kỷ luật cắt lỗ đã đặt sẵn (stop AMZN $251.89) sẽ tự động khớp nếu bị breach, đây không phải quyết định tự quyết cần can thiệp — biến động rộng thị trường không phải lý do đủ để đề xuất thay mã dù đệm mỏng.
 - **KẾT LUẬN: Core-10 đủ 10/10 slot, 2 lệnh đã duyệt hôm nay đã thực thi thành công, toàn bộ stop-loss hoạt động bình thường. Không có việc tồn đọng. Không có đề xuất mới lần kiểm tra này** (AMZN đệm mỏng chỉ là kỷ luật stop-loss đã đặt tự động khớp, không cần đề xuất gì thêm — sẽ tiếp tục theo dõi sát ở lần kiểm tra tiếp theo). Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật; việc thực thi 2 lệnh đã duyệt trước đó không phải đề xuất mới cần Hogan biết thêm).
+
+## 2026-09-01 ~15:31 ET (19:31 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 đủ 10/10 slot, KHÔNG có đề xuất mới
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD tại `16daf0a` (khớp `origin/main`) — đã `git checkout main`, fast-forward xác nhận không có commit mới nào bị bỏ sót (33 commit mới từ các lần kiểm tra sandbox 08-28 tới 09-01 chiều đã có sẵn). Không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**: IONQ(7cp core, tổng gộp 14cp với sandbox), AMZN(2cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JNJ(2cp), AAPL(1cp), AVGO(1cp), JPM(1cp), RGTI(18cp core, tổng gộp 31cp với sandbox).
+- `get_equity_orders` (confirmed): không lệnh nào mới khớp/breach kể từ lần kiểm tra 13:11 ET — cả 2 stop AAPL ($308.83) và JNJ ($258.25) đặt lúc 10:25 ET sáng nay vẫn đang chờ, không đổi.
+- **Benchmark (15:31 ET/19:31 UTC, so đóng cửa 08-31):** SPY $760.97 (-0.79%), QQQ $707.13 (-1.34%) — risk-off tiếp tục xấu hơn nhẹ so với 13:11 ET (SPY -0.70%, QQQ -1.20%).
+- P&L nhanh (giá ~15:31 ET/19:31 UTC, so giá vốn core-10) và trạng thái stop-loss:
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Stop-loss hiện tại | Đệm tới stop |
+  |---|---|---|---|---|---|
+  | AAPL | $325.08 | $325.52 | +0.14% | $308.83 | 5.1% |
+  | JNJ | $265.88 | $271.11 | +1.97% | $258.25 | 4.7% |
+  | JPM | $347.97 | $354.75 | +1.95% | $344.85 | 2.8% |
+  | AVGO | $367.94 | $370.18 | +0.61% | $349.54 | 5.6% |
+  | VOO | $688.26 | $699.65 | +1.65% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $217.42 | +1.16% | $211.44 | 2.8% |
+  | MSFT | $510.00 | $501.055 | -1.75% | $484.50 | 3.3% |
+  | IONQ | $39.85 | $38.12 | -4.34% | $35.07 | 8.0% |
+  | RGTI | $15.5983 | $14.98 | -3.96% | $13.73 | 8.3% |
+  | AMZN | $261.47 | $254.07 | -2.83% | $251.89 | **0.86%** |
+
+- **Không mã nào tạo đỉnh mới kể từ lần cập nhật stop gần nhất** — AAPL/JNJ nhích nhẹ trên giá vốn nhưng chưa vượt đỉnh trong ngày đã dùng đặt stop ($271.84 JNJ sáng nay); không cần dời stop lần này.
+- **AMZN đệm tới stop tiếp tục thu hẹp (1.03%→0.86%)** theo đà risk-off thị trường rộng (SPY/QQQ đỏ đậm hơn), không có tin mới riêng AMZN — đã đánh giá kỹ hôm qua (FTC + capex), không có gì thay đổi để cần WebSearch lại. Đây là kỷ luật stop-loss đã đặt sẵn ($251.89), sẽ tự động khớp nếu breach — không phải quyết định tự quyết cần đề xuất.
+- **Biến động lớn nhất: IONQ -4.34%, RGTI -3.96%** so đóng cửa 08-31 — đã tra cứu kỹ hôm nay lúc 13:11 ET (không có tin xấu riêng công ty, chỉ là beta cao trong risk-off rộng), không có driver mới từ đó tới giờ, không tra cứu lại.
+- **KẾT LUẬN: Core-10 đủ 10/10 slot, toàn bộ stop-loss hoạt động bình thường (đã bao gồm cushion mỏng AMZN — vẫn nguyên vẹn, chưa breach). Không có việc tồn đọng. Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật, hoặc stop-loss/chốt lời thực sự kích hoạt).
