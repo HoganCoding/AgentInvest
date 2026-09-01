@@ -4631,3 +4631,30 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
   1. Mua AAPL 1cp market (~$323, ~5.7% danh mục) — thay slot tech GOOGL.
   2. Hủy lệnh stop-loss JNJ cũ (`6a95a67e-f671-4d1b-a976-1f57fedcab75`, trigger $252.59) → đặt lệnh GTC stop_market mới bán 2cp JNJ @ trigger $258.25.
 - Cần một phiên tương tác có quyền đặt lệnh (hoặc lần kiểm tra định kỳ core-10 tiếp theo nếu có quyền) thực thi 2 lệnh trên và ghi log xác nhận khớp lệnh.
+
+## 2026-09-01 ~13:11 ET (17:11 UTC) — Kiểm tra định kỳ (routine tự động, sync git): xác nhận 2 lệnh đã duyệt đã được thực thi, core-10 đủ 10/10 slot, KHÔNG có đề xuất mới
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD khớp `origin/main` (đã có toàn bộ commit tới lần duyệt của Hogan lúc 10:20 ET). Đã `git checkout main`, fast-forward xác nhận không có commit mới nào bị bỏ sót, không conflict.
+- **Xác nhận 2 lệnh đã duyệt (10:20 ET) đã được một phiên có quyền đặt lệnh thực thi lúc ~10:25 ET (14:25 UTC) hôm nay** (phiên core-10 hiện tại chỉ đọc, không tự đặt các lệnh này):
+  1. Mua AAPL 1cp @ $325.08 — xác nhận qua `get_equity_positions` (AAPL 1cp, giá vốn $325.08) + `get_equity_orders` (stop-loss GTC mới `6a96e070...` trigger $308.83 = $325.08 × 0.95, state=confirmed).
+  2. Dời stop-loss JNJ: lệnh cũ (`6a95a67e...`, trigger $252.59) đã bị hủy/không còn trong danh sách confirmed; lệnh mới `6a96e063...` trigger $258.25, state=confirmed — đúng như đề xuất.
+- `get_equity_positions` xác nhận core-10 đủ **10/10 slot**: IONQ(7cp core, tổng gộp 14cp với sandbox), AMZN(2cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JNJ(2cp), AAPL(1cp), AVGO(1cp), JPM(1cp), RGTI(18cp core, tổng gộp 31cp với sandbox).
+- **Benchmark (13:11 ET/17:11 UTC, so đóng cửa 08-31):** SPY $761.70 (-0.70%), QQQ $708.19 (-1.20%) — đỏ rõ hơn các phiên trước, không phải risk-off cực đoan nhưng là pullback thị trường rộng thật (không mở vị thế rủi ro cao mới hôm nay theo bộ lọc CLAUDE.md, dù không có ý định mở gì mới).
+- P&L nhanh (giá ~13:11 ET/17:11 UTC, so giá vốn core-10) và trạng thái stop-loss hiện tại:
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Stop-loss hiện tại | Đệm tới stop |
+  |---|---|---|---|---|---|
+  | JNJ | $265.88 | $269.36 | +1.31% | $258.25 | 4.1% |
+  | AAPL | $325.08 | $324.98 | -0.03% | $308.83 | 4.9% |
+  | JPM | $347.97 | $356.12 | +2.34% | $344.85 | 3.2% |
+  | AVGO | $367.94 | $369.27 | +0.36% | $349.54 | 5.4% |
+  | VOO | $688.26 | $700.21 | +1.74% | (fractional, thủ công) | — |
+  | MSFT | $510.00 | $500.57 | -1.85% | $484.50 | 3.2% |
+  | RSP | $214.93 | $217.48 | +1.19% | $211.44 | 2.8% |
+  | IONQ | $39.85 | $37.88 | -4.94% | $35.07 | 7.4% |
+  | AMZN | $261.47 | $254.52 | -2.66% | $251.89 | **1.03%** |
+  | RGTI | $15.5983 | $14.955 | -4.13% | $13.73 | 8.9% |
+
+- **Biến động trong ngày đáng chú ý:** RGTI -4.5%, IONQ -3.6% so đóng cửa 08-31 (vượt ngưỡng ±3-5% cần tra cứu thêm) — đã WebSearch: KHÔNG có tin tiêu cực riêng của công ty (RGTI vẫn có backdrop tích cực: DT quý tăng, $100M DOC LOI, $541M cash không nợ; IONQ vẫn tích cực: DT +287% YoY, nâng guidance FY, thương vụ SkyWater đã đóng, hợp đồng DARPA/NRO) — đây là biến động beta cao bình thường của nhóm quantum computing trong phiên risk-off thị trường rộng (SPY -0.70%, QQQ -1.20%, do global bond selloff/lo ngại thuế quan-Fed, không phải panic cực đoan). AMZN -2.66% từ giá vốn (chỉ còn đệm ~1.03% tới stop-loss $251.89) — WebSearch xác nhận vẫn là câu chuyện cũ đã đánh giá trong review 30 ngày hôm qua (lo ngại capex $220B + thuế quan chip + hoài nghi ROI AI/AWS), KHÔNG có tin mới/xấu đi cấp tính hôm nay riêng cho AMZN.
+- **Không đề xuất dời stop-loss** — không mã nào tạo đỉnh mới kể từ lần đặt/cập nhật stop gần nhất (tất cả đều đang dưới giá vốn hoặc đỉnh cũ trong phiên risk-off hôm nay). **Không đề xuất thay mã** — theo đúng CLAUDE.md, kỷ luật cắt lỗ đã đặt sẵn (stop AMZN $251.89) sẽ tự động khớp nếu bị breach, đây không phải quyết định tự quyết cần can thiệp — biến động rộng thị trường không phải lý do đủ để đề xuất thay mã dù đệm mỏng.
+- **KẾT LUẬN: Core-10 đủ 10/10 slot, 2 lệnh đã duyệt hôm nay đã thực thi thành công, toàn bộ stop-loss hoạt động bình thường. Không có việc tồn đọng. Không có đề xuất mới lần kiểm tra này** (AMZN đệm mỏng chỉ là kỷ luật stop-loss đã đặt tự động khớp, không cần đề xuất gì thêm — sẽ tiếp tục theo dõi sát ở lần kiểm tra tiếp theo). Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật; việc thực thi 2 lệnh đã duyệt trước đó không phải đề xuất mới cần Hogan biết thêm).
