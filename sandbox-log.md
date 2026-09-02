@@ -3755,3 +3755,13 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Đối chiếu stop-loss (chưa breach):** IONQ $37.72 vs stop $35.16 (còn cách 6.8%), RGTI $14.875 vs stop $13.74 (còn cách 7.6%), SOUN $6.895 vs stop $6.33 (còn cách 8.2%). Không lệnh nào gần bị kích hoạt.
 - **Phần theo dõi sandbox (circuit breaker):** IONQ (7cp×$37.72=$264.04) + RGTI (13cp×$14.875=$193.375) + SOUN (30cp×$6.895=$206.85) = **~$664.27** (100% đầu tư) — giảm -$34.12 (-4.89%) so vốn gốc $698.39, còn rất xa cả 2 ngưỡng (dừng hẳn gần $0 / chốt lời ~$1400).
 - **Quyết định: KHÔNG hành động** — giữ nguyên 3 vị thế, không thêm/bớt gì. Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-09-02 ~12:11 ET (16:11 UTC) — Kiểm tra định kỳ (routine tự động, sync git): giá đi ngang, KHÔNG hành động
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD tại `8845c63` (khớp `origin/main`, đã có entry check sandbox 11:11 ET) — `git checkout -B main origin/main`, không có commit nào bị bỏ sót, không conflict.
+- `get_equity_positions` (704170133): IONQ tổng **14cp** (avg hiển thị $39.90 = core-10 7cp/$39.85 + sandbox 7cp/$39.9499), RGTI tổng **31cp** (avg $15.61 = core-10 18cp/$15.5983 + sandbox 13cp/$15.6187), SOUN **30cp/$7.19 (100% sandbox)** — không đổi so lần check trước. Đối chiếu đầy đủ 10 vị thế core-10 hiện có (IONQ, AMZN, RSP, MSFT, VOO, JNJ, AAPL, AVGO, JPM, RGTI) khớp `trading-log.md` — **không có vị thế lạ nào ngoài core-10 + phần sandbox đã biết**, không đụng tới core-10.
+- `get_portfolio`: cash **$955.68**, buying_power **$955.68** — không đổi so lần check trước (11:11 ET), không có giao dịch mới nào xen giữa.
+- **Giá hiện tại (16:11 UTC) so lần check trước (11:11 ET: IONQ $37.72/RGTI $14.875/SOUN $6.895):** IONQ $37.4405 (-0.74%), RGTI $14.875 (0.00%), SOUN $6.82 (-1.09%). Benchmark: SPY $765.79 (+0.53% so đóng cửa 09-01), QQQ $709.31 (+0.24%). Tất cả biến động đều **dưới ngưỡng 3-5%** → không cần WebSearch thêm.
+- **Đối chiếu stop-loss (chưa breach):** IONQ $37.4405 vs stop $35.16 (còn cách 6.1%), RGTI $14.875 vs stop $13.74 (còn cách 7.6%), SOUN $6.82 vs stop $6.33 (còn cách 7.2%). Không lệnh nào gần bị kích hoạt.
+- **Phần theo dõi sandbox (circuit breaker):** IONQ (7cp×$37.4405=$262.08) + RGTI (13cp×$14.875=$193.375) + SOUN (30cp×$6.82=$204.60) = **~$660.06** (100% đầu tư) — giảm -$38.33 (-5.49%) so vốn gốc $698.39, còn rất xa cả 2 ngưỡng (dừng hẳn gần $0 / chốt lời ~$1400).
+- **Quyết định: KHÔNG hành động** — giữ nguyên 3 vị thế, không thêm/bớt gì. Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
