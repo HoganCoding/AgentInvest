@@ -4714,3 +4714,30 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **AMZN đệm tới stop tiếp tục mỏng (1.15%)** — không có tin mới riêng AMZN từ lần đánh giá 09-01 (FTC + capex), đây là kỷ luật stop-loss đã đặt sẵn ($251.89), sẽ tự động khớp nếu breach — không phải quyết định tự quyết cần đề xuất thêm.
 - **Không đề xuất thay mã** — chưa mã nào đạt tiêu chí "không đạt kỳ vọng" theo CLAUDE.md lần kiểm tra này.
 - **KẾT LUẬN: Core-10 đủ 10/10 slot, không breach stop-loss nào. Có 1 đề xuất mới (dời stop-loss JNJ lên $267.02 theo đỉnh mới $281.07) → đã gửi PushNotification.**
+
+## 2026-09-02 ~13:10 ET (17:10 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 đủ 10/10 slot, KHÔNG có đề xuất mới
+
+- **Sync đầu phiên:** repo detached HEAD khớp `origin/main` (đã có toàn bộ commit tới đề xuất dời stop-loss JNJ 09:47 ET sáng nay) — đã `git checkout main` + `git pull`, fast-forward xác nhận không có commit nào bị bỏ sót, không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**: IONQ(14cp tổng gộp core+sandbox), AMZN(2cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JNJ(2cp), AAPL(1cp), AVGO(1cp), JPM(1cp), RGTI(31cp tổng gộp core+sandbox). Vị thế SOUN(30cp) xuất hiện trong danh sách KHÔNG phải core-10 — đối chiếu sandbox-log.md xác nhận đây là vị thế sandbox, bỏ qua hoàn toàn (đúng quy tắc đồng bộ CLAUDE.md).
+- `get_equity_orders` (từ 13:47 UTC sáng nay tới nay): **không có lệnh nào khớp/breach mới** — đề xuất dời stop-loss JNJ lên $267.02 (gửi 09:47 ET sáng nay) vẫn đang CHỜ Hogan duyệt/thực thi qua phiên có quyền đặt lệnh, chưa có xác nhận thực thi.
+- **Benchmark (17:10 UTC, so đóng cửa 09-01):** SPY $764.72 (+0.39%), QQQ $707.86 (+0.03%) — đi ngang nhẹ, không có risk-off/risk-on rõ rệt.
+- P&L nhanh (giá ~17:10 UTC) và trạng thái stop-loss hiện tại:
+
+  | Mã | Giá vốn | Giá hiện tại | % so đóng cửa hôm qua | Stop-loss hiện tại | Đệm tới stop |
+  |---|---|---|---|---|---|
+  | JNJ | $265.88 | $275.47 | +1.58% | $258.25 (đề xuất dời $267.02 đang chờ duyệt) | 6.6% |
+  | RSP | $214.93 | $218.73 | +0.52% | $211.44 | 2.9% |
+  | VOO | $688.26 | $702.965 | +0.38% | (fractional, thủ công) | — |
+  | AAPL | $325.08 | $325.69 | +0.17% | $308.83 | 5.2% |
+  | JPM | $347.97 | $354.975 | +0.01% | $344.85 | 2.9% |
+  | AVGO | $367.94 | $367.00 | -0.72% | $349.54 | 5.3% |
+  | MSFT | $510.00 | $496.19 | -0.96% | $484.50 | 2.4% |
+  | RGTI | $15.5983 | $14.77 | -1.47% | $13.73 | 7.0% |
+  | IONQ | $39.85 | $37.01 | -2.04% | $35.07 | 5.5% |
+  | AMZN | $261.47 | $254.48 | -0.17% | $251.89 | **1.03%** |
+
+- **Không mã nào biến động >3-5% so đóng cửa hôm qua** — IONQ -2.04% là lớn nhất, dưới ngưỡng cần WebSearch tin tức sâu, không tra cứu thêm.
+- **JNJ chưa tạo đỉnh mới vượt $281.07** (đỉnh đã dùng cho đề xuất dời stop sáng nay) — giá hiện tại $275.47 thấp hơn đỉnh đó, không có gì mới để cập nhật thêm cho đề xuất đang chờ.
+- **AMZN đệm tới stop tiếp tục mỏng (~1.03%)** — không có tin mới, đây là kỷ luật stop-loss đã đặt sẵn ($251.89), sẽ tự động khớp nếu breach, không phải quyết định tự quyết cần đề xuất thêm.
+- **Không đề xuất thay mã** — chưa mã nào đạt tiêu chí "không đạt kỳ vọng" theo CLAUDE.md lần kiểm tra này.
+- **KẾT LUẬN: Core-10 đủ 10/10 slot, không breach stop-loss nào, không có đỉnh mới nào cần dời stop thêm. Không có đề xuất mới lần kiểm tra này** (đề xuất dời stop JNJ từ sáng nay vẫn đang chờ Hogan duyệt/thực thi, không phải đề xuất mới). Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật mới).
