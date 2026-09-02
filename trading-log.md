@@ -4684,3 +4684,33 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **AMZN đệm tới stop tiếp tục thu hẹp (1.03%→0.86%)** theo đà risk-off thị trường rộng (SPY/QQQ đỏ đậm hơn), không có tin mới riêng AMZN — đã đánh giá kỹ hôm qua (FTC + capex), không có gì thay đổi để cần WebSearch lại. Đây là kỷ luật stop-loss đã đặt sẵn ($251.89), sẽ tự động khớp nếu breach — không phải quyết định tự quyết cần đề xuất.
 - **Biến động lớn nhất: IONQ -4.34%, RGTI -3.96%** so đóng cửa 08-31 — đã tra cứu kỹ hôm nay lúc 13:11 ET (không có tin xấu riêng công ty, chỉ là beta cao trong risk-off rộng), không có driver mới từ đó tới giờ, không tra cứu lại.
 - **KẾT LUẬN: Core-10 đủ 10/10 slot, toàn bộ stop-loss hoạt động bình thường (đã bao gồm cushion mỏng AMZN — vẫn nguyên vẹn, chưa breach). Không có việc tồn đọng. Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật, hoặc stop-loss/chốt lời thực sự kích hoạt).
+
+## 2026-09-02 ~09:47 ET (13:47 UTC) — Kiểm tra định kỳ (routine tự động, sync git): JNJ tạo đỉnh mới rõ rệt do healthcare rotation, đề xuất dời stop-loss; còn lại core-10 đủ 10/10 slot, không breach
+
+- **Sync đầu phiên:** repo detached HEAD tại `9281ecb` (khớp `origin/main`, đã có toàn bộ 36 commit mới từ các lần kiểm tra sandbox/core-10 08-31 chiều tới 09-02 sáng) — đã `git checkout main`, fast-forward xác nhận không có commit nào bị bỏ sót, không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**: IONQ(7cp core, tổng gộp 14cp với sandbox), AMZN(2cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JNJ(2cp), AAPL(1cp), AVGO(1cp), JPM(1cp), RGTI(18cp core, tổng gộp 31cp với sandbox).
+- `get_equity_orders` (từ 19:31 UTC 09-01 tới nay): **không có lệnh nào khớp/breach** — toàn bộ stop-loss hiện tại vẫn nguyên vẹn.
+- **Benchmark (13:47 UTC, so đóng cửa 09-01):** SPY $762.28 (+0.07%), QQQ $706.51 (-0.16%) — gần như đi ngang, không có risk-off/risk-on rõ rệt hôm nay.
+- P&L nhanh (giá ~13:47 UTC, so giá vốn core-10) và trạng thái stop-loss hiện tại:
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Stop-loss hiện tại | Đệm tới stop |
+  |---|---|---|---|---|---|
+  | JNJ | $265.88 | $278.31 | +4.67% | $258.25 | 7.2% |
+  | JPM | $347.97 | $357.16 | +2.64% | $344.85 | 3.4% |
+  | VOO | $688.26 | $700.585 | +1.79% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $217.85 | +1.36% | $211.44 | 2.9% |
+  | AAPL | $325.08 | $325.26 | +0.06% | $308.83 | 5.1% |
+  | AVGO | $367.94 | $367.99 | +0.01% | $349.54 | 5.0% |
+  | AMZN | $261.47 | $254.82 | -2.54% | $251.89 | **1.15%** |
+  | MSFT | $510.00 | $497.45 | -2.46% | $484.50 | 2.6% |
+  | RGTI | $15.5983 | $14.775 | -5.28% | $13.73 | 7.1% |
+  | IONQ | $39.85 | $37.34 | -6.30% | $35.07 | 6.1% |
+
+- **JNJ tạo đỉnh mới trong ngày rõ rệt: $281.07** (bar 5 phút 09:40-09:45 ET, xác nhận qua `get_equity_historicals`) — vượt xa đỉnh cũ dùng đặt stop hiện tại ($271.84, dùng từ lần dời 09-01). Biến động +3.6% so đóng cửa hôm qua, vượt ngưỡng 3-5% cần tra cứu tin tức. Đã WebSearch: **không có tin tiêu cực/catalyst xấu** — nguyên nhân là "healthcare rotation" (dòng tiền luân chuyển từ nhóm tăng trưởng/công nghệ sang nhóm phòng thủ/y tế) kết hợp nền tảng vững đã biết (KQKD Q2 vượt kỳ vọng, nâng guidance FY2026 ~$101.1B doanh thu, DARZALEX/TREMFYA tăng trưởng mạnh, không có phán quyết talc bất lợi mới hôm nay). SPY/QQQ gần như đi ngang hôm nay → đây là dòng tiền luân chuyển riêng ngành y tế, không phải rủi ro thị trường rộng.
+- **ĐỀ XUẤT: dời stop-loss JNJ từ $258.25 lên $267.02** (= đỉnh mới $281.07 × 0.95) — hủy lệnh GTC hiện tại (`6a96e063-d6c2-48ec-8629-bd5f60aa0db0`, trigger $258.25, state=confirmed) rồi đặt lệnh GTC stop_market mới bán 2cp JNJ @ trigger $267.02. Chênh lệch +$8.77 (+3.4%) so với stop hiện tại — hợp lý theo đúng tiền lệ dời stop trước đây (đỉnh mới rõ rệt, không phải nhiễu nhỏ).
+  - **Rủi ro chính:** dời stop khóa thêm phần lãi (JNJ đã +4.67% từ giá vốn tính tới giờ kiểm tra, đỉnh trong ngày +5.71%) nhưng thu hẹp biên độ chấp nhận biến động — nếu healthcare rotation đảo chiều nhanh trong phiên, có thể bị quẹt sớm hơn so với để nguyên stop cũ. Tuy nhiên đỉnh mới đủ lớn (+3.4% cao hơn stop cũ) để đáng cập nhật theo kỷ luật trailing đã đặt ra trong CLAUDE.md.
+  - Đây KHÔNG phải sự kiện đã tự khớp — cần Hogan duyệt & một phiên có quyền đặt lệnh thực thi (phiên core-10 hiện tại chỉ đọc).
+- **Không mã nào khác tạo đỉnh mới đáng kể** kể từ lần cập nhật stop gần nhất — không đề xuất dời stop cho các mã còn lại lần này.
+- **AMZN đệm tới stop tiếp tục mỏng (1.15%)** — không có tin mới riêng AMZN từ lần đánh giá 09-01 (FTC + capex), đây là kỷ luật stop-loss đã đặt sẵn ($251.89), sẽ tự động khớp nếu breach — không phải quyết định tự quyết cần đề xuất thêm.
+- **Không đề xuất thay mã** — chưa mã nào đạt tiêu chí "không đạt kỳ vọng" theo CLAUDE.md lần kiểm tra này.
+- **KẾT LUẬN: Core-10 đủ 10/10 slot, không breach stop-loss nào. Có 1 đề xuất mới (dời stop-loss JNJ lên $267.02 theo đỉnh mới $281.07) → đã gửi PushNotification.**
