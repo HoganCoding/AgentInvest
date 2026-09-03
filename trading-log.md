@@ -4807,3 +4807,11 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 **Khuyến nghị của agent:** nếu ưu tiên chất lượng/momentum AI mạnh nhất và chấp nhận tiếp tục tập trung bán dẫn, chọn NVDA. Nếu ưu tiên đa dạng hóa ngành (tránh dồn thêm vào bán dẫn sau khi vừa thoát AVGO), chọn ORCL — nhưng cần cân nhắc kỹ rủi ro đòn bẩy tài chính/phụ thuộc OpenAI nêu trên trước khi quyết định, đây là rủi ro cao hơn bình thường so với các lựa chọn thay thế trước đây.
 
 **Tóm tắt hành động cần Hogan:** chọn NVDA hoặc ORCL (hoặc mã tech khác Hogan muốn) để lấp slot tech thay AVGO. Có sự kiện thật (AVGO bị stop) + đề xuất mới → **đã gửi PushNotification.**
+
+## 2026-09-03 ~10:20 ET (14:20 UTC) — Quyết định của Hogan (qua phiên chat): duyệt NVDA lấp slot tech thay AVGO — CHƯA đặt lệnh (phiên này chỉ đọc)
+
+- **Quyết định của Hogan:** "Nvda" — duyệt mua **NVDA 1cp market (~$228, ~6.1% giá trị core-10)** lấp slot tech trống (thay AVGO), theo đúng Lựa chọn A đã đề xuất lúc 09:48 ET sáng nay.
+- **Lưu ý quan trọng:** phiên phân tích core-10 hiện tại được cấu hình CHỈ ĐỌC trên tài khoản (theo chỉ thị routine: không được đặt/hủy/sửa bất kỳ lệnh nào dưới mọi hoàn cảnh, kể cả sau khi có duyệt). Do đó quyết định của Hogan được ghi nhận ở đây nhưng **CHƯA được thực thi** — lệnh sau vẫn đang CHỜ đặt qua phiên có quyền đặt lệnh (phiên tương tác/preview):
+  1. Mua NVDA 1cp market (~$228, ~6.1% danh mục) — thay slot tech AVGO.
+  2. Sau khi khớp, đặt stop-loss GTC -5% từ giá vốn (trailing, nhóm tech), ban đầu = giá vốn × 0.95.
+- Cần một phiên tương tác có quyền đặt lệnh (hoặc lần kiểm tra định kỳ core-10 tiếp theo nếu có quyền) thực thi lệnh trên và ghi log xác nhận khớp lệnh.
