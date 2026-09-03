@@ -4768,3 +4768,42 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **AMZN đệm tới stop nhích nhẹ lên (1.03%→1.25%)** — không có tin mới, kỷ luật stop-loss đã đặt sẵn ($251.89) sẽ tự động khớp nếu breach, không phải quyết định tự quyết cần đề xuất thêm.
 - **Không đề xuất thay mã** — chưa mã nào đạt tiêu chí "không đạt kỳ vọng" theo CLAUDE.md lần kiểm tra này.
 - **KẾT LUẬN: Core-10 đủ 10/10 slot, không breach stop-loss nào, không có đỉnh mới nào cần dời stop thêm. Không có đề xuất mới lần kiểm tra này** (đề xuất dời stop JNJ từ sáng nay vẫn đang chờ Hogan duyệt/thực thi, không phải đề xuất mới). Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật mới).
+
+## 2026-09-03 ~09:48 ET (13:48 UTC) — Kiểm tra định kỳ (routine tự động, sync git): AVGO bị trailing stop-loss tự động khớp sáng nay, core-10 còn 9/10 slot; đề xuất 2 lựa chọn lấp slot tech
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD khớp `origin/main` tại `06d4781` (đã có toàn bộ commit tới lần kiểm tra sandbox 09:11 ET sáng nay) — đã `git checkout main`, fast-forward xác nhận không có commit nào bị bỏ sót, không conflict.
+- **SỰ KIỆN THẬT (đã tự động khớp, không cần duyệt):** AVGO bị trailing stop-loss tự động khớp lúc 09:30:49 ET (13:30:49 UTC) sáng nay — lệnh `6a95a67d...` (trigger $349.54 = đỉnh $367.94 (giá vốn, chưa từng tạo đỉnh mới) × 0.95, đặt 08-31) bán 1cp @ $348.88. Giá vốn $367.94 (lot mua 08-31) → lỗ thực hiện **-5.18%** (~-$19.06). Đây là thực thi tự động đúng kỷ luật trailing stop đã đặt sẵn từ trước, không phải quyết định mới. **Wash-sale: cấm mua lại AVGO (hoặc mã gần như tương đương) tới ~2026-10-03.**
+- **Nguyên nhân (WebSearch xác nhận):** AVGO công bố KQKD Q3 FY2026 sau đóng cửa 09-02 — vượt ước tính doanh thu ($29.59B vs $29.36B ước tính) và EPS ($3.32 vs $3.24 ước tính), AI semiconductor revenue +221% YoY. Tuy nhiên guidance Q4 nhẹ dưới kỳ vọng ($34.8B vs $35.03B ước tính) và biên lợi nhuận gộp Q4 dự kiến giảm còn ~73% (từ 78% cùng kỳ năm ngoái) do chi phí memory/HBM tăng mạnh trong các chip AI tùy chỉnh — thị trường phản ứng tiêu cực dù kết quả kỷ lục. Đây là phản ứng thị trường bình thường với guidance/biên lợi nhuận, KHÔNG phải tin tiêu cực nghiêm trọng (không kiện tụng/gian lận/mất lãnh đạo) — nền tảng cơ bản (backlog AI $350B tới FY2027-2028) vẫn vững. Trailing stop-loss đã hoạt động đúng chức năng bảo vệ lợi nhuận/hạn chế lỗ.
+- `get_equity_positions` xác nhận core-10 còn **9/10 slot**: IONQ(7cp core), AMZN(2cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JNJ(2cp), AAPL(1cp), JPM(1cp), RGTI(18cp core) — thiếu 1 slot large-cap tech (thay AVGO). `get_equity_orders` xác nhận: không lệnh nào khác khớp/breach kể từ lần kiểm tra 09-02 15:33 ET.
+- P&L nhanh (giá ~09:48 ET/13:48 UTC, so giá vốn core-10) và trạng thái stop-loss:
+
+  | Mã | Giá vốn | Giá hiện tại | P&L | Stop-loss hiện tại | Đệm tới stop |
+  |---|---|---|---|---|---|
+  | JPM | $347.97 | $360.15 | +3.50% | $344.85 | 4.25% |
+  | JNJ | $265.88 | $274.465 | +3.23% | $258.25 (đề xuất dời $267.02 vẫn đang chờ duyệt) | 5.91% |
+  | VOO | $688.26 | $707.62 | +2.81% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $219.76 | +2.25% | $211.44 | 3.79% |
+  | AAPL | $325.08 | $326.465 | +0.43% | $308.83 | 5.40% |
+  | MSFT | $510.00 | $511.44 | +0.28% | $484.50 | 5.27% |
+  | AMZN | $261.47 | $258.885 | -0.99% | $251.89 | 2.70% |
+  | IONQ | $39.85 | $39.15 | -1.76% | $35.07 | 10.4% |
+  | RGTI | $15.5983 | $15.18 | -2.68% | $13.73 | 9.55% |
+
+- **Không mã nào tạo đỉnh mới đủ lớn để cần dời stop lần này** — MSFT ($511.44) và AAPL ($326.465) nhích nhẹ qua đỉnh cũ (giá vốn) nhưng mức dời tương ứng chỉ +0.33%/+0.74%, dưới ngưỡng đáng cập nhật theo tiền lệ (JNJ trước đây dời khi chênh ≥2.2%). JNJ/RSP/VOO/JPM vẫn dưới đỉnh trong ngày đã dùng đặt stop hiện tại. Đề xuất dời stop JNJ lên $267.02 (gửi 09-02) vẫn đang chờ Hogan duyệt/thực thi.
+- **Biến động lớn nhất hôm nay: IONQ +4.01% (tăng)** — đã WebSearch: không có tin tức riêng công ty mới, có khả năng ăn theo tâm lý tích cực nhóm AI/quantum sau KQKD NVDA vượt kỳ vọng (+7.3% premarket) và loạt bình luận tích cực về AI compute — biến động beta cao bình thường của nhóm rủi ro cao, không cần hành động (giá vẫn dưới đỉnh $39.85 dùng đặt stop hiện tại).
+- **AMZN đệm tới stop 2.70%** — không tin mới, kỷ luật stop-loss đã đặt sẵn ($251.89) sẽ tự động khớp nếu breach, không phải quyết định tự quyết.
+
+### Đề xuất: Lấp slot tech trống (thay AVGO) — chọn 1 trong 2, cần Hogan duyệt
+Đã sàng lọc loại các mã đang trong cửa sổ wash-sale (tính tới 09-03, tra cả trading-log.md và sandbox-log.md): AVGO (tới ~10-03, vừa bán lỗ hôm nay), GOOGL (tới ~10-01), QCOM (tới ~09-23), CIFR (tới ~09-23, sandbox), PANW (tới ~09-18), OUST (tới ~09-17, sandbox), AMD (tới ~09-17), NOW (tới ~09-16), CSCO (tới ~09-12). MSFT/AAPL đã đang held nên N/A.
+
+**Lựa chọn A: NVDA (Nvidia)** — giá ~$228.11/cp (+1.65% hôm nay, sau khi +3.21% hôm qua nhờ KQKD Q2 FY27 vượt ước tính: DT $96.22B vs $92.11B ước tính, EPS $2.22 vs $2.09, guidance Q3 $108B vs $103.52B ước tính). Đề xuất mua **1cp market (~$228, ~6.1% giá trị core-10 hiện tại ~$3,766)**. Lý do: tin mới hôm nay — Nvidia đồng ý mua lại Hugging Face giá $12.93B (mở rộng hệ sinh thái AI); analyst New Street Research nhận định NVDA "extremely cheap", dự phóng $400/cp trong 18 tháng (định giá P/E một chữ số trên earnings 2028); cam kết mua lại cổ phiếu bổ sung $80B. Không dính wash-sale.
+- **Rủi ro chính:** tiếp tục tập trung rủi ro nhóm bán dẫn/AI-chip (vừa thoát AVGO cũng cùng nhóm này) — nếu chọn NVDA, danh mục vẫn có exposure cao vào AI-capex cycle; định giá cao dù được cho là "rẻ tương đối", nhạy cảm với thay đổi sentiment AI.
+- **Cắt lỗ đề xuất:** -5% từ đỉnh (trailing, nhóm tech), ban đầu = giá vốn × 0.95.
+
+**Lựa chọn B: ORCL (Oracle)** — giá ~$149.35/cp (+2.47% hôm nay). Đề xuất mua **2cp market (~$298.70, ~7.9% giá trị core-10 hiện tại)**. Lý do: cloud infrastructure/enterprise software, đa dạng hóa khỏi nhóm bán dẫn/hardware (khác hẳn MSFT/AAPL/AVGO cũ đang nắm), doanh thu cloud infrastructure +77% FY2026, hợp đồng AI compute lớn với OpenAI ($300B/5 năm) và mở rộng hợp tác với HPE (Juniper Networking cho AI data centers, công bố hôm nay). Không dính wash-sale.
+- **Rủi ro chính (đáng lưu ý):** đòn bẩy tài chính cao hơn hẳn so với AMZN/MSFT/GOOGL — S&P Global đã hạ tín nhiệm xuống BBB- (chỉ còn 1 bậc trên junk) do phụ thuộc vốn vay để tài trợ capex AI (~$90-95B dự kiến FY2027); ước tính ~50% trong $638B doanh thu hợp đồng tương lai của Oracle gắn với OpenAI — nếu OpenAI gặp khó khăn tài chính, rủi ro lan truyền sang ORCL đáng kể (cảnh báo từ chuyên gia CFR). Ngoài ra Oracle công bố KQKD quý tiếp theo vào 09-10 (~1 tuần nữa) — biến động quanh earnings có thể lớn ngay sau khi vào lệnh.
+- **Cắt lỗ đề xuất:** -5% từ đỉnh (trailing, nhóm tech), ban đầu = giá vốn × 0.95.
+
+**Khuyến nghị của agent:** nếu ưu tiên chất lượng/momentum AI mạnh nhất và chấp nhận tiếp tục tập trung bán dẫn, chọn NVDA. Nếu ưu tiên đa dạng hóa ngành (tránh dồn thêm vào bán dẫn sau khi vừa thoát AVGO), chọn ORCL — nhưng cần cân nhắc kỹ rủi ro đòn bẩy tài chính/phụ thuộc OpenAI nêu trên trước khi quyết định, đây là rủi ro cao hơn bình thường so với các lựa chọn thay thế trước đây.
+
+**Tóm tắt hành động cần Hogan:** chọn NVDA hoặc ORCL (hoặc mã tech khác Hogan muốn) để lấp slot tech thay AVGO. Có sự kiện thật (AVGO bị stop) + đề xuất mới → **đã gửi PushNotification.**
