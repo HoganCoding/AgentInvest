@@ -4815,3 +4815,31 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
   1. Mua NVDA 1cp market (~$228, ~6.1% danh mục) — thay slot tech AVGO.
   2. Sau khi khớp, đặt stop-loss GTC -5% từ giá vốn (trailing, nhóm tech), ban đầu = giá vốn × 0.95.
 - Cần một phiên tương tác có quyền đặt lệnh (hoặc lần kiểm tra định kỳ core-10 tiếp theo nếu có quyền) thực thi lệnh trên và ghi log xác nhận khớp lệnh.
+
+## 2026-09-03 ~13:10 ET (17:10 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 vẫn 9/10 slot (chờ thực thi NVDA), phiên rally rộng, KHÔNG có đề xuất mới
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD (local `main` cũ, tụt lại từ 08-28 do shallow clone) — đã `git checkout main`, phát hiện lịch sử phân kỳ (shallow clone không tính được merge-base thật, không phải conflict nội dung thật: diff giữa 2 nhánh chỉ là phần `trading-log.md`/`sandbox-log.md` bị thiếu ở bản local cũ, không có nội dung local nào bị mất — working tree sạch, không có gì uncommitted). Đã `git reset --hard origin/main` để đồng bộ về đúng lịch sử mới nhất (tip `c3bb718`, kiểm tra sandbox 09-03 13:08 ET), xác nhận không mất commit nào của local (không có commit local nào ngoài origin).
+- `get_equity_positions` xác nhận core-10 vẫn **9/10 slot** (thiếu 1 slot tech, thay AVGO): IONQ(14cp tổng gộp core+sandbox, ~7cp core), AMZN(2cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), JNJ(2cp), AAPL(1cp), JPM(1cp), RGTI(31cp tổng gộp core+sandbox, ~18cp core). SOUN(30cp) xuất hiện — đối chiếu sandbox-log.md xác nhận là vị thế sandbox, bỏ qua hoàn toàn (đúng quy tắc đồng bộ CLAUDE.md). Đề xuất mua NVDA (đã được Hogan duyệt lúc 10:20 ET) **vẫn CHƯA thực thi** — cần phiên có quyền đặt lệnh.
+- `get_equity_orders` (từ 13:48 UTC sáng nay tới nay): **rỗng** — không có lệnh nào khớp/breach/hủy mới kể từ lần kiểm tra 09:48 ET.
+- **Benchmark (17:10 UTC, so đóng cửa 09-02):** SPY $772.48 (+0.96%), QQQ $716.79 (+1.06%) — phiên rally rộng, risk-on rõ rệt toàn thị trường.
+- P&L nhanh (giá ~17:10 UTC, so giá vốn) và trạng thái stop-loss:
+
+  | Mã | Giá vốn | Giá hiện tại | % so đóng cửa 09-02 | P&L từ vốn | Stop-loss hiện tại | Đệm tới stop |
+  |---|---|---|---|---|---|---|
+  | MSFT | $510.00 | $510.91 | +2.84% | +0.18% | $484.50 | 5.17% |
+  | IONQ | $39.90 (blend) | $38.965 | +3.52% | -2.34% | $35.07 | 10.0% |
+  | JPM | $347.97 | $360.97 | +1.33% | +3.74% | $344.85 | 4.51% |
+  | QQQ (bench) | — | $716.79 | +1.06% | — | — | — |
+  | JNJ | $265.88 | $278.105 | +1.05% | +4.60% | $258.25 (đề xuất dời $267.02 vẫn chờ duyệt/thực thi) | 7.68% |
+  | AAPL | $325.08 | $328.32 | +1.03% | +1.00% | $308.83 | 5.94% |
+  | SPY (bench) | — | $772.48 | +0.96% | — | — | — |
+  | VOO | $688.26 | $710.11 | +0.95% | +3.18% | (fractional, thủ công) | — |
+  | RGTI | $15.61 (blend) | $14.98 | +0.74% | -4.04% | $13.73 | 8.35% |
+  | RSP | $214.93 | $219.86 | +0.58% | +2.29% | $211.44 | 3.83% |
+  | AMZN | $261.47 | $258.25 | +1.28% | -1.23% | $251.89 | 2.46% |
+
+- **Kiểm tra đỉnh mới cho trailing stop (5-phút bars từ 13:30 UTC):** AAPL đỉnh trong ngày $330.81 (stop dời tương ứng $314.27, chỉ +1.76% so với stop hiện tại $308.83); MSFT đỉnh $514.97 (stop dời tương ứng $489.22, chỉ +0.97% so với stop hiện tại $484.50) — cả hai đều **dưới ngưỡng tiền lệ ~2.2%** để đáng cập nhật (giống nhận định 09-03 09:48 ET), chưa dời lần này. JPM đỉnh trong ngày $361.99 vẫn dưới đỉnh cũ đã dùng đặt stop hiện tại (ngụ ý ~$363.0). RSP đỉnh $220.28 vẫn dưới đỉnh cũ ngụ ý (~$222.57). JNJ đỉnh $278.70 vẫn dưới đỉnh $281.07 đã dùng cho đề xuất dời stop đang chờ duyệt — không có gì mới để cập nhật thêm.
+- **Không mã nào biến động >3-5% so đóng cửa hôm qua đủ để cần WebSearch tin tức mới** — IONQ +3.52% là lớn nhất, nhưng đây là tiếp diễn cùng xu hướng đã tra cứu kỹ sáng nay (09:48 ET, ăn theo tâm lý tích cực AI/quantum sau KQKD NVDA, không có tin riêng công ty) — không có driver mới từ đó tới giờ, không tra cứu lại.
+- **AMZN đệm tới stop 2.46%** — không tin mới, kỷ luật stop-loss đã đặt sẵn ($251.89) sẽ tự động khớp nếu breach, không phải quyết định tự quyết.
+- **Không đề xuất thay mã** — chưa mã nào đạt tiêu chí "không đạt kỳ vọng" theo CLAUDE.md lần kiểm tra này.
+- **KẾT LUẬN: Core-10 vẫn 9/10 slot (đề xuất NVDA đã duyệt lúc 10:20 ET vẫn chờ thực thi qua phiên có quyền đặt lệnh, không phải đề xuất mới), không breach stop-loss nào, không có đỉnh mới nào đủ lớn để cần dời stop thêm. Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật mới; NVDA/JNJ vẫn là các đề xuất cũ đang chờ, không phải mới).
