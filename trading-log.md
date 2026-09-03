@@ -4864,3 +4864,29 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - Core-10: **10/10 slot** — IONQ, AMZN, RSP, MSFT, VOO, JNJ, AAPL, **NVDA (mới)**, JPM, RGTI.
 - Stop-loss đang treo (GTC, confirmed): NVDA $218.16 (mới), JNJ $267.02 (dời), cùng các stop cũ MSFT $484.50 / AAPL $308.83 / JPM $344.85 / RSP $211.44 / AMZN $251.89 / IONQ $35.07 (core) / RGTI $13.73 (core). VOO fractional theo dõi thủ công.
 - Không gửi PushNotification riêng (đây là thực thi quyết định Hogan đã duyệt trong cùng phiên chat, không phải sự kiện cần báo lại).
+
+## 2026-09-03 ~15:31 ET (19:31 UTC) — Routine core-10 (read-only, chỉ đề xuất)
+
+- **Sync đầu phiên:** `git fetch` + `git pull origin main` — fast-forward sạch (`dd62e33` → `e1547ad`, +1 entry sandbox), không conflict.
+- **Danh sách 10 mã hiện tại (theo trading-log.md, xác nhận qua `get_equity_positions`):** IONQ, AMZN, RSP, MSFT, VOO, JNJ, AAPL, NVDA, JPM, RGTI — đủ 10/10 slot (đúng như sau phiên tương tác 15:30 ET vừa xong: mua NVDA + dời stop JNJ). Có 1 vị thế SOUN (30cp, giá vốn $7.19) trong tài khoản — **không có trong danh sách core-10**, đối chiếu đây là vị thế sandbox, bỏ qua hoàn toàn theo quy tắc đồng bộ CLAUDE.md.
+- **`get_equity_orders` (từ 20:00 UTC hôm qua tới nay):** chỉ 3 lệnh đã biết từ phiên tương tác trước đó (mua NVDA filled, dời stop JNJ) — không có lệnh mới/breach nào kể từ đó.
+- **Benchmark (19:31 UTC):** SPY $773.50 (+1.09% so đóng cửa 09-02), QQQ $717.81 (+1.20%) — tiếp tục đà rally rộng cả phiên.
+- P&L nhanh & trạng thái stop-loss (giá ~19:31 UTC):
+
+  | Mã | Giá vốn | Giá hiện tại | % so đóng cửa 09-02 | P&L từ vốn | Stop-loss hiện tại | Đệm tới stop |
+  |---|---|---|---|---|---|---|
+  | MSFT | $510.00 | $511.10 | +2.88% | +0.22% | $484.50 | 5.19% |
+  | NVDA | $229.64 | $229.52 | +2.28% | -0.05% | $218.16 | 4.95% |
+  | IONQ | $39.90 (blend) | $39.16 | +4.04% | -1.85% | $35.07 | 10.44% |
+  | JPM | $347.97 | $362.68 | +1.81% | +4.23% | $344.85 | 4.92% |
+  | JNJ | $265.88 | $278.40 | +1.16% | +4.71% | $267.02 (đã dời 15:30 ET) | 4.08% |
+  | AAPL | $325.08 | $327.64 | +0.83% | +0.79% | $308.83 | 5.74% |
+  | VOO | $688.26 | $711.04 | +1.09% | +3.31% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $219.99 | +0.64% | +2.35% | $211.44 | 3.89% |
+  | AMZN | $261.47 | $258.79 | +1.49% | -1.03% | $251.89 | 2.66% |
+  | RGTI | $15.61 (blend) | $15.185 | +2.12% | -2.72% | $13.73 | 9.58% |
+
+- **Kiểm tra đỉnh mới cho trailing stop (5-phút bars, cả phiên từ 13:30 UTC/mở cửa):** đỉnh trong ngày — AAPL $330.81 (giống lần kiểm tra trước, không đổi), MSFT $515.64 (đỉnh mới, cao hơn đỉnh ngụ ý cũ $510.00 nhưng chỉ +1.11% → dưới ngưỡng tiền lệ ~2.2%, chưa dời), JPM $362.50 (thấp hơn đỉnh ngụ ý cũ ~$362.95, không đổi), RSP $220.28 (giống lần trước, không đổi), JNJ $278.85 (thấp hơn đỉnh $281.07 đã dùng để dời stop lúc 15:30 ET, không đổi), IONQ $39.78 (thấp hơn đỉnh ngụ ý ~$39.86, không đổi), RGTI $15.32 (thấp hơn đỉnh ngụ ý ~$15.61, không đổi), NVDA $230.40 (vị thế mới, đỉnh ngụ ý mới +0.33% so với stop hiện tại — quá nhỏ, chưa đáng dời). **Không dời stop-loss nào lần này** — mọi chênh lệch đều dưới ngưỡng ~2.2% coi là đáng cập nhật.
+- **Không mã nào breach stop-loss.** IONQ +4.04% so đóng cửa là mức lớn nhất trong ngày, tiệm cận ngưỡng 3-5% cần WebSearch — nhưng đây là tiếp diễn cùng xu hướng đã tra cứu kỹ lúc 09:48 ET sáng nay (tâm lý AI/quantum tích cực sau KQKD NVDA, không có tin riêng công ty mới), và toàn thị trường đang rally rộng (SPY/QQQ đều >+1%) nên đây là beta thị trường + tiếp diễn narrative cũ, không phải tin mới — không tra cứu lại.
+- **Không đề xuất thay mã** — chưa mã nào đạt tiêu chí "không đạt kỳ vọng" theo CLAUDE.md lần kiểm tra này.
+- **KẾT LUẬN: Core-10 đủ 10/10 slot, không breach stop-loss, không có đỉnh mới nào đủ lớn để đáng dời stop, không có tin tức mới cần phân tích thêm. Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật mới).
