@@ -3817,6 +3817,17 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Phần theo dõi sandbox (circuit breaker), dùng giá premarket (ước tính, sẽ xác nhận lại khi thị trường mở cửa):** IONQ (7cp×$38.03=$266.21) + RGTI (13cp×$14.9759=$194.687) + SOUN (30cp×$6.91=$207.30) = **~$668.20** (100% đầu tư) — giảm -$30.19 (-4.32%) so vốn gốc $698.39, còn rất xa cả 2 ngưỡng (dừng hẳn gần $0 / chốt lời ~$1400).
 - **Quyết định: KHÔNG hành động** — giữ nguyên 3 vị thế, không thêm/bớt gì; chờ thị trường mở cửa chính thức để xác nhận lại giá và đỉnh mới (nếu có) trước khi cân nhắc dời stop-loss. Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
 
+## 2026-09-04 ~10:10 ET (14:10 UTC) — Kiểm tra định kỳ (routine tự động, sync git): giá đi ngang, KHÔNG hành động
+
+- **Sync đầu phiên:** `git pull` — local `main` detached HEAD tụt lại (do force-update lịch sử phiên trước), khớp `origin/main` sau `git checkout -B main origin/main` — fast-forward lên `525479a` (đã có toàn bộ log tới entry core-10 09:46 ET và sandbox 09:13 ET sáng nay). Không conflict, không có commit nào bị bỏ sót.
+- `get_equity_positions` (704170133): IONQ tổng **14cp** (avg hiển thị $39.90 = core-10 7cp + sandbox 7cp), RGTI tổng **31cp** (avg $15.61 = core-10 18cp + sandbox 13cp), SOUN **30cp/$7.19 (100% sandbox)** — không đổi so lần check trước. Đối chiếu đầy đủ 10 vị thế core-10 hiện có (IONQ, AMZN, RSP, MSFT, VOO, JNJ, AAPL, NVDA, JPM, RGTI — đủ 10/10 slot) khớp `trading-log.md` — **không có vị thế lạ nào ngoài core-10 + phần sandbox đã biết**, không đụng tới core-10.
+- `get_equity_orders` (từ 13:13 UTC hôm nay tới nay): **rỗng** — không có lệnh nào khớp/hủy mới kể từ lần kiểm tra trước.
+- `get_portfolio`: cash **$1,074.92**, buying_power **$1,074.92** — bằng nhau, không đổi so lần check trước (09:13 ET), không có giao dịch mới nào xen giữa.
+- **Giá hiện tại (14:10 UTC) so lần check trước (09:13 ET premarket: IONQ $38.99/RGTI $15.13/SOUN $6.6593):** IONQ $39.38 (+1.00%), RGTI $15.175 (+0.30%), SOUN $6.665 (+0.09%). Tất cả biến động đều **dưới ngưỡng 3-5%** → không cần WebSearch thêm.
+- **Đối chiếu stop-loss (chưa breach, chưa có đỉnh mới cần dời — giá hiện tại vẫn dưới đỉnh tham chiếu IONQ ~$39.90/RGTI ~$15.61/SOUN ~$7.19):** IONQ $39.38 vs stop $35.16 (còn cách 10.7%), RGTI $15.175 vs stop $13.74 (còn cách 9.5%), SOUN $6.665 vs stop $6.33 (còn cách 5.0%). Không lệnh nào gần bị kích hoạt.
+- **Phần theo dõi sandbox (circuit breaker):** IONQ (7cp×$39.38=$275.66) + RGTI (13cp×$15.175=$197.275) + SOUN (30cp×$6.665=$199.95) = **~$672.89** (100% đầu tư) — giảm -$25.50 (-3.65%) so vốn gốc $698.39, còn rất xa cả 2 ngưỡng (dừng hẳn gần $0 / chốt lời ~$1400).
+- **Quyết định: KHÔNG hành động** — giữ nguyên 3 vị thế, không thêm/bớt gì. Không có vị thế/giao dịch sandbox nào thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
 ## 2026-09-03 ~10:11 ET (14:11 UTC) — Kiểm tra định kỳ (routine tự động, sync git): thị trường đã mở cửa, giá nhích nhẹ, KHÔNG hành động
 
 - **Sync đầu phiên:** repo ở trạng thái detached HEAD khớp `origin/main` tại `b11322e` (đã có toàn bộ commit tới entry core-10 09:48 ET sáng nay — AVGO bị stop-loss tự động khớp, đề xuất NVDA/ORCL lấp slot) — đã `git checkout -B main origin/main`, xác nhận không có commit nào bị bỏ sót, không conflict.
