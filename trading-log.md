@@ -4890,3 +4890,29 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Không mã nào breach stop-loss.** IONQ +4.04% so đóng cửa là mức lớn nhất trong ngày, tiệm cận ngưỡng 3-5% cần WebSearch — nhưng đây là tiếp diễn cùng xu hướng đã tra cứu kỹ lúc 09:48 ET sáng nay (tâm lý AI/quantum tích cực sau KQKD NVDA, không có tin riêng công ty mới), và toàn thị trường đang rally rộng (SPY/QQQ đều >+1%) nên đây là beta thị trường + tiếp diễn narrative cũ, không phải tin mới — không tra cứu lại.
 - **Không đề xuất thay mã** — chưa mã nào đạt tiêu chí "không đạt kỳ vọng" theo CLAUDE.md lần kiểm tra này.
 - **KẾT LUẬN: Core-10 đủ 10/10 slot, không breach stop-loss, không có đỉnh mới nào đủ lớn để đáng dời stop, không có tin tức mới cần phân tích thêm. Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật mới).
+
+## 2026-09-04 ~09:46 ET (13:46 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 đủ 10/10 slot, KHÔNG có đề xuất mới
+
+- **Sync đầu phiên:** `git pull` — đã up to date với `origin/main`, không có commit mới nào từ phiên khác kể từ lần kiểm tra trước (09-03 15:31 ET), không conflict.
+- **Danh sách 10 mã hiện tại (theo trading-log.md, xác nhận qua `get_equity_positions`):** IONQ, AMZN, RSP, MSFT, VOO, JNJ, AAPL, NVDA, JPM, RGTI — đủ 10/10 slot. Có thêm SOUN (30cp, giá vốn $7.19) trong tài khoản — **không có trong danh sách core-10**, đối chiếu đây là vị thế sandbox (theo sandbox-log.md), bỏ qua hoàn toàn theo quy tắc đồng bộ CLAUDE.md.
+- **`get_equity_orders` (từ 09-03 19:31 UTC tới nay):** rỗng — không có lệnh mới/breach nào kể từ lần kiểm tra trước.
+- **Benchmark (13:46 UTC):** SPY $772.01 (-0.15% so đóng cửa 09-03), QQQ $719.69 (+0.28%) — đi ngang, không có risk-off/risk-on rõ rệt.
+- P&L nhanh & trạng thái stop-loss (giá ~13:46 UTC):
+
+  | Mã | Giá vốn | Giá hiện tại | % so đóng cửa 09-03 | P&L từ vốn | Stop-loss hiện tại | Đệm tới stop |
+  |---|---|---|---|---|---|---|
+  | NVDA | $229.64 | $233.11 | +2.04% | +1.51% | $218.16 | 6.41% |
+  | JNJ | $265.88 | $277.16 | -0.46% | +4.24% | $267.02 | 3.66% |
+  | JPM | $347.97 | $360.90 | -0.32% | +3.71% | $344.85 | 4.45% |
+  | VOO | $688.26 | $709.69 | -0.14% | +3.11% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $218.96 | -0.50% | +1.87% | $211.44 | 3.43% |
+  | AAPL | $325.08 | $324.06 | -1.27% | -0.32% | $308.83 | 4.70% |
+  | MSFT | $510.00 | $503.86 | -1.23% | -1.20% | $484.50 | 3.84% |
+  | AMZN | $261.47 | $258.39 | -0.20% | -1.18% | $251.89 | 2.52% |
+  | IONQ | $39.90 (blend) | $39.24 | +0.56% | -1.65% | $35.07 | 10.62% |
+  | RGTI | $15.61 (blend) | $15.23 | +0.33% | -2.43% | $13.73 | 9.85% |
+
+- **Kiểm tra đỉnh mới cho trailing stop (5-phút bars, từ mở cửa 13:30 UTC hôm nay, riêng NVDA tính từ lúc mua 09-03 19:30 UTC):** AAPL cao nhất hôm nay $328.93 (thấp hơn đỉnh tham chiếu $330.81, không đổi), MSFT $511.00 (thấp hơn đỉnh tham chiếu $515.64, không đổi), JPM $362.86 (thấp hơn đỉnh tham chiếu ~$362.95, không đổi), RSP $219.16 (thấp hơn đỉnh tham chiếu $220.28, không đổi), JNJ $277.80 (thấp hơn đỉnh $281.07 đã dùng để dời stop, không đổi), IONQ $39.73 (thấp hơn đỉnh tham chiếu ~$39.86, không đổi), RGTI $15.46 (thấp hơn đỉnh tham chiếu ~$15.61, không đổi). **NVDA tạo đỉnh mới nhẹ: $233.77** (bar 13:35-13:40 UTC hôm nay) — cao hơn giá mua $229.6384 nhưng stop dời ngụ ý ($233.77×0.95=$222.08) chỉ chênh +1.8% so với stop hiện tại ($218.16) → dưới ngưỡng tiền lệ ~2.2% coi là đáng cập nhật, **chưa dời**.
+- **Không mã nào breach stop-loss.** Biến động lớn nhất hôm nay là NVDA +2.04% so đóng cửa — dưới ngưỡng 3-5% cần WebSearch tin tức, không tra cứu thêm.
+- **Không đề xuất thay mã** — chưa mã nào đạt tiêu chí "không đạt kỳ vọng" theo CLAUDE.md lần kiểm tra này. Chưa tới ngày review 30 ngày định kỳ (đã thực hiện 09-01).
+- **KẾT LUẬN: Core-10 đủ 10/10 slot, không breach stop-loss, không có đỉnh mới nào đủ lớn để đáng dời stop, không có tin tức mới cần phân tích thêm. Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật mới).
