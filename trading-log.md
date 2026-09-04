@@ -4942,3 +4942,29 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Không mã nào breach stop-loss** — đệm thấp nhất là AMZN 2.04% (không tin mới, kỷ luật stop $251.89 tự động khớp nếu breach). Biến động lớn nhất hôm nay là AAPL -2.09% so đóng cửa — vẫn dưới ngưỡng 3-5% cần WebSearch tin tức riêng, không tra cứu thêm (đi cùng chiều với thị trường chung đi ngang/giảm nhẹ).
 - **Không đề xuất thay mã** — chưa mã nào đạt tiêu chí "không đạt kỳ vọng" theo CLAUDE.md lần kiểm tra này. Chưa tới ngày review 30 ngày định kỳ tiếp theo (đã thực hiện 09-01).
 - **KẾT LUẬN: Core-10 đủ 10/10 slot, không breach stop-loss, không có đỉnh mới nào đủ lớn để đáng dời stop, không có tin tức mới cần phân tích thêm. Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật mới).
+
+## 2026-09-04 ~15:31 ET (19:31 UTC) — Kiểm tra định kỳ (routine tự động, sync git): core-10 đủ 10/10 slot, KHÔNG có đề xuất mới
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD khớp `origin/main` (không có commit local nào ngoài origin) — đã `git checkout main` rồi `git pull origin main`, fast-forward sạch (`7c3ca53` → `a5b99c1`, +2 entry sandbox), không conflict.
+- **Danh sách 10 mã hiện tại (theo trading-log.md, xác nhận qua `get_equity_positions`):** IONQ, AMZN, RSP, MSFT, VOO, JNJ, AAPL, NVDA, JPM, RGTI — đủ 10/10 slot. Có thêm SOUN (30cp, giá vốn $7.19) trong tài khoản — **không có trong danh sách core-10**, đối chiếu là vị thế sandbox (theo sandbox-log.md), bỏ qua hoàn toàn theo quy tắc đồng bộ CLAUDE.md.
+- **`get_equity_orders` (từ 09-04 17:11 UTC tới nay):** rỗng — không có lệnh mới/breach nào kể từ lần kiểm tra trước.
+- **Benchmark (19:31 UTC, so đóng cửa 09-03):** SPY $769.92 (-0.42%), QQQ $718.03 (+0.05%) — đi ngang/hơi giảm nhẹ, không risk-off rõ rệt.
+- P&L nhanh & trạng thái stop-loss (giá ~19:31 UTC):
+
+  | Mã | Giá vốn | Giá hiện tại | % so đóng cửa 09-03 | P&L từ vốn | Stop-loss hiện tại | Đệm tới stop |
+  |---|---|---|---|---|---|---|
+  | NVDA | $229.64 | $229.845 | +0.61% | +0.09% | $218.16 | 5.44% |
+  | IONQ | $39.90 (blend) | $39.215 | +0.50% | -1.72% | $35.07 | 10.55% |
+  | RGTI | $15.61 (blend) | $15.0528 | -0.84% | -3.57% | $13.73 | 9.63% |
+  | AMZN | $261.47 | $258.349 | -0.21% | -1.19% | $251.89 | 2.50% |
+  | VOO | $688.26 | $707.761 | -0.42% | +2.83% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $219.10 | -0.43% | +1.94% | $211.44 | 3.50% |
+  | JNJ | $265.88 | $275.44 | -1.07% | +3.59% | $267.02 | 3.09% |
+  | JPM | $347.97 | $357.978 | -1.13% | +2.88% | $344.85 | 3.67% |
+  | AAPL | $325.08 | $321.59 | -2.02% | -1.07% | $308.83 | 3.96% |
+  | MSFT | $510.00 | $499.735 | -2.04% | -2.01% | $484.50 | 3.05% |
+
+- **Kiểm tra đỉnh mới cho trailing stop (5-phút bars, từ mở cửa 13:30 UTC hôm nay):** đỉnh trong ngày — AAPL $328.93, MSFT $511.00, JPM $362.86, RSP $219.77, JNJ $277.80, IONQ $39.73, RGTI $15.4601, AMZN $261.12, VOO $710.45 — tất cả đều trùng khớp đỉnh đã ghi nhận ở lần kiểm tra trước (17:11 UTC cùng ngày), **không có đỉnh mới nào phát sinh thêm từ đó tới giờ** (thị trường đi ngang/giảm nhẹ cả phiên chiều). Riêng **NVDA đỉnh trong ngày $234.76** (cao hơn nhẹ so với đỉnh tham chiếu $233.77 dùng ở lần kiểm tra 09:46 ET) — dời stop ngụ ý = $234.76×0.95 = $223.02, chênh +2.23% so với stop hiện tại $218.16 — sát ngưỡng tiền lệ ~2.2% nhưng vẫn ở mức biên rất nhỏ (~$4.86/cp trên vị thế 1cp), giữ nguyên logic thận trọng đã áp dụng nhất quán các lần trước (chỉ dời khi chênh lệch rõ rệt hơn hẳn) — **chưa dời lần này**, tiếp tục theo dõi.
+- **Không mã nào breach stop-loss** — đệm thấp nhất vẫn là AMZN 2.50% (không tin mới, kỷ luật stop $251.89 tự động khớp nếu breach, không phải quyết định tự quyết). Biến động lớn nhất hôm nay là MSFT/AAPL ~-2.0% so đóng cửa — vẫn dưới ngưỡng 3-5% cần WebSearch tin tức riêng, không tra cứu thêm (đi cùng chiều thị trường chung đi ngang/giảm nhẹ, SPY -0.42%).
+- **Không đề xuất thay mã** — chưa mã nào đạt tiêu chí "không đạt kỳ vọng" theo CLAUDE.md lần kiểm tra này. Chưa tới ngày review 30 ngày định kỳ tiếp theo (đã thực hiện 09-01, tiếp theo 10-01).
+- **KẾT LUẬN: Core-10 đủ 10/10 slot, không breach stop-loss, không có đỉnh mới nào đủ lớn để đáng dời stop (NVDA sát ngưỡng nhưng vẫn dưới mức đủ để hành động), không có tin tức mới cần phân tích thêm. Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật mới).
