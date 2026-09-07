@@ -4010,3 +4010,14 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Đối chiếu stop-loss (không đổi, chưa breach, chưa có đỉnh mới):** IONQ $39.515 vs stop $35.16 (đệm ~11.0%), RGTI $15.21 vs stop $13.74 (đệm ~9.7%), SOUN $6.745 vs stop $6.33 (đệm ~6.2%).
 - **Phần theo dõi sandbox (circuit breaker), không đổi:** IONQ (7cp×$39.515=$276.605) + RGTI (13cp×$15.21=$197.73) + SOUN (30cp×$6.745=$202.35) = **~$676.69** (100% đầu tư) — giảm -$21.71 (-3.11%) so vốn gốc $698.39, còn rất xa cả 2 ngưỡng (dừng hẳn gần $0 / chốt lời ~$1400).
 - **Quyết định: KHÔNG hành động** — thị trường Mỹ vẫn đóng cửa nghỉ lễ Labor Day, không có phiên giao dịch mới, giữ nguyên 3 vị thế. Không có gì thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-09-07 ~13:00 ET (17:00 UTC) — Kiểm tra định kỳ (routine tự động, sync git): thị trường vẫn ĐÓNG CỬA (Labor Day), KHÔNG hành động
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD khớp `origin/main` — `git checkout main` + `git merge origin/main --ff-only`, fast-forward sạch (`7c3ca53` → `d241df9`, +14 commit gồm các entry sandbox/core-10 từ 09-04 và các entry Labor Day 09-07 10:00/11:00/12:00 ET). Không conflict.
+- `get_equity_positions` (704170133): IONQ tổng **14cp** (avg hiển thị $39.90 = core-10 7cp + sandbox 7cp), RGTI tổng **31cp** (avg $15.61 = core-10 18cp + sandbox 13cp), SOUN **30cp/$7.19 (100% sandbox)** — không đổi so lần check trước. Đối chiếu đầy đủ 10 vị thế core-10 hiện có (IONQ, AMZN, RSP, MSFT, VOO, JNJ, AAPL, NVDA, JPM, RGTI — đủ 10/10 slot) khớp `trading-log.md` — **không có vị thế lạ nào ngoài core-10 + phần sandbox đã biết**, không đụng tới core-10.
+- `get_equity_orders` (từ 16:00 UTC hôm nay tới nay): **rỗng** — không có lệnh nào khớp/hủy mới.
+- `get_portfolio`: cash **$1,074.92**, buying_power **$1,074.92** — bằng nhau, không đổi so lần check trước.
+- **Giá (quote timestamp vẫn dừng ở 2026-09-04T19:59:59 UTC — xác nhận thị trường đóng cửa hôm nay do nghỉ lễ Labor Day, không có phiên giao dịch mới):** IONQ $39.515, RGTI $15.21, SOUN $6.745 — không đổi so lần check trước (12:00 ET hôm nay). Không cần WebSearch (không có biến động giá thật, không có phiên giao dịch).
+- **Đối chiếu stop-loss (không đổi, chưa breach, chưa có đỉnh mới):** IONQ $39.515 vs stop $35.16 (đệm ~11.0%), RGTI $15.21 vs stop $13.74 (đệm ~9.7%), SOUN $6.745 vs stop $6.33 (đệm ~6.2%).
+- **Phần theo dõi sandbox (circuit breaker), không đổi:** IONQ (7cp×$39.515=$276.605) + RGTI (13cp×$15.21=$197.73) + SOUN (30cp×$6.745=$202.35) = **~$676.69** (100% đầu tư) — giảm -$21.71 (-3.11%) so vốn gốc $698.39, còn rất xa cả 2 ngưỡng (dừng hẳn gần $0 / chốt lời ~$1400).
+- **Quyết định: KHÔNG hành động** — thị trường Mỹ vẫn đóng cửa nghỉ lễ Labor Day, không có phiên giao dịch mới, giữ nguyên 3 vị thế. Không có gì thay đổi thật so với lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
