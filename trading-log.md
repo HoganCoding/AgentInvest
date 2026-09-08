@@ -4999,3 +4999,50 @@ Theo quy trình CLAUDE.md, đưa ra tối thiểu 2 lựa chọn cùng nhóm r�
 - **Đối chiếu stop-loss (không đổi, chưa breach, chưa có đỉnh mới — giá đứng yên):** NVDA $230.35 vs stop $218.16, JPM $358.61 vs stop $344.85, RSP $219.01 vs stop $211.44, JNJ $275.15 vs stop $267.02, IONQ $39.515 vs stop $35.07, RGTI $15.21 vs stop $13.73, AAPL $319.99 vs stop $308.83, MSFT $499.68 vs stop $484.50, AMZN $258.51 vs stop $251.89, VOO $708.05 (fractional, theo dõi thủ công, vẫn trên giá vốn $688.26).
 - **Không đề xuất thay mã** — chưa mã nào đạt tiêu chí "không đạt kỳ vọng" theo CLAUDE.md. Chưa tới ngày review 30 ngày định kỳ tiếp theo (đã thực hiện 09-01, tiếp theo 10-01).
 - **KẾT LUẬN: Core-10 đủ 10/10 slot, thị trường Mỹ vẫn đóng cửa nghỉ lễ Labor Day, không có gì thay đổi so với lần kiểm tra trước cùng ngày. Không có đề xuất mới lần kiểm tra này.** Không gửi PushNotification (đúng quy tắc: chỉ push khi có đề xuất/hành động thật mới; đây là lần kiểm tra lặp lại không có gì mới).
+
+## 2026-09-08 ~09:48 ET (13:48 UTC) — Routine core-10 (read-only, chỉ đề xuất): JNJ bị trailing stop-loss tự động khớp sáng nay, core-10 còn 9/10 slot; đề xuất 2 lựa chọn lấp slot blue-chip + đề xuất dời stop IONQ/RGTI
+
+- **Sync đầu phiên:** `git fetch` + `git checkout main` + `git pull origin main` — fast-forward sạch (`433df2a` → `5ea8b5c`, +1 entry sandbox), không conflict.
+- **Danh sách 10 mã hiện tại trước phiên (theo trading-log.md):** IONQ, AMZN, RSP, MSFT, VOO, JNJ, AAPL, NVDA, JPM, RGTI.
+- **SỰ KIỆN THẬT (đã tự động khớp, không cần duyệt):** JNJ bị trailing stop-loss tự động khớp lúc 09:35:18 ET (13:35:18.819 UTC) sáng nay — lệnh `6a99cae3-...` (trigger $267.02 = đỉnh $281.07 × 0.95, dời lúc 09-03 15:30 ET, đã qua phiên có quyền đặt lệnh) bán 2cp @ $266.83. Giá vốn $265.88 → **lãi thực hiện nhẹ +0.36%** (~+$1.90, có phí $0.02) — đây là chốt lời nhẹ do trailing stop bảo vệ lợi nhuận đã tích lũy trước đó (JNJ từng đạt đỉnh $281.07), không phải lỗ. **Không có wash-sale ban** (chỉ áp dụng khi bán lỗ) — JNJ có thể mua lại ngay nếu muốn, không bị cấm.
+- **Nguyên nhân (WebSearch xác nhận):** không có tin tiêu cực — JNJ vừa công bố cổ tức Q3 2026 ($1.34/cp, trả 09-08) và có bài viết ghi nhận "guidance moves higher" (kalkinemedia). Đây là điều chỉnh giá bình thường (đỉnh $281.07 → về vùng $266-278), trailing stop hoạt động đúng chức năng khóa lãi, không phải phản ứng với tin xấu.
+- `get_equity_positions` xác nhận core-10 còn **9/10 slot**: IONQ(14cp), AMZN(2cp), RSP(2cp), MSFT(1cp), VOO(0.72647cp), AAPL(1cp), NVDA(1cp), JPM(1cp), RGTI(31cp) — thiếu 1 slot blue-chip (thay JNJ). Có thêm SOUN(30cp, giá vốn $7.19) — **không có trong danh sách core-10**, đối chiếu là vị thế sandbox (theo sandbox-log.md), bỏ qua hoàn toàn theo quy tắc đồng bộ CLAUDE.md.
+- `get_equity_orders` (từ 09-07 19:31 UTC tới nay): chỉ lệnh JNJ nói trên — không có lệnh nào khác khớp/breach.
+- **Benchmark (13:48 UTC, so đóng cửa 09-04):** SPY $767.33 (-0.37%), QQQ $717.15 (-0.25%) — thị trường điều chỉnh nhẹ đầu phiên, không phải bán tháo diện rộng.
+- P&L nhanh & trạng thái stop-loss (giá ~13:48 UTC, so đóng cửa 09-04):
+
+  | Mã | Giá vốn | Giá hiện tại | % so đóng cửa 09-04 | P&L từ vốn | Stop-loss hiện tại | Đệm tới stop |
+  |---|---|---|---|---|---|---|
+  | IONQ | $39.90 (blend) | $43.73 | +10.65% | +9.61% | $35.07 | 19.8% |
+  | RGTI | $15.61 (blend) | $16.64 | +9.47% | +6.60% | $13.73 | 17.5% |
+  | JPM | $347.97 | $355.77 | -0.80% | +2.24% | $344.85 | 3.07% |
+  | RSP | $214.93 | $217.81 | -0.55% | +1.34% | $211.44 | 2.92% |
+  | AAPL | $325.08 | $317.08 | -0.90% | -2.46% | $308.83 | 2.60% |
+  | AMZN | $261.47 | $256.65 | -0.72% | -1.84% | $251.89 | 1.86% |
+  | MSFT | $510.00 | $491.50 | -1.64% | -3.63% | $484.50 | 1.42% |
+  | NVDA | $229.64 | $229.375 | -0.42% | -0.11% | $218.16 | 4.89% |
+  | VOO | $688.26 | $705.42 | -0.37% | +2.49% | (fractional, thủ công) | — |
+
+- **Không mã nào breach stop-loss.** MSFT (đệm 1.42%) và AMZN (đệm 1.86%) đang mỏng nhất — không phải tin xấu, chỉ là điều chỉnh nhẹ theo thị trường chung (SPY -0.37%) — kỷ luật stop-loss đã đặt sẵn (GTC) sẽ tự động khớp nếu breach thêm, không cần can thiệp.
+
+### Đề xuất 1: Dời stop-loss IONQ & RGTI theo đỉnh mới (WebSearch xác nhận nguyên nhân: tin tốt CHIPS Act)
+- **Nguyên nhân biến động (WebSearch):** cổ phiếu quantum computing (IONQ, RGTI, QBTS, D-Wave) đồng loạt tăng mạnh sáng nay sau khi Bộ Thương mại Mỹ (Commerce Department) hoàn tất các khoản tài trợ CHIPS Act, nhận cổ phần thiểu số (non-controlling equity stakes) tại các công ty nhận tài trợ. **RGTI** ký thỏa thuận $100M với Bộ Thương mại cho R&D siêu dẫn quantum (điện tử readout thu nhỏ, kiến trúc cryostat mới, chip kết nối cao). **IONQ** nâng guidance doanh thu FY2026 lên $280-290M sau khi hoàn tất mua lại SkyWater Technology, tổ chức investor day tại NYSE hôm nay. Đây là tin tốt cấp ngành + công ty cụ thể, không phải nhiễu ngắn hạn — hợp lý để dời stop theo đỉnh mới.
+- **Đỉnh mới trong phiên (5-phút bars từ mở cửa 13:30 UTC, mới ~18 phút giao dịch):** IONQ đỉnh **$44.43** (bar 13:35 UTC), RGTI đỉnh **$17.05** (bar 13:35 UTC) — đều cao hơn rõ rệt đỉnh ngụ ý cũ (IONQ ~$39.86, RGTI ~$15.60, dùng để đặt stop hiện tại).
+- **Đề xuất dời (nhóm rủi ro cao, trailing -12% theo CLAUDE.md 2026-07-24):**
+  - **IONQ:** dời stop từ $35.07 → **$39.10** (= $44.43 × 0.88). Chênh lệch +11.5% so với stop hiện tại — vượt xa ngưỡng đáng cập nhật.
+  - **RGTI:** dời stop từ $13.73 → **$15.00** (= $17.05 × 0.88). Chênh lệch +9.3% so với stop hiện tại.
+  - Thực hiện: cần hủy 2 lệnh stop GTC cũ rồi đặt lệnh mới (không sửa trực tiếp được) — qua phiên có quyền đặt lệnh như thường lệ. Lưu ý cổ phiếu đang bị giữ bởi lệnh cũ (`shares_held_for_sells`) nên phải hủy trước khi đặt lệnh mới.
+  - **Rủi ro chính:** nếu giá điều chỉnh sâu trong phiên (biến động tự nhiên nhóm quantum vẫn cao, 5-10%+/ngày), dời stop sớm quá có thể vẫn bị quẹt bởi nhiễu — nhưng mức tăng hôm nay (~10%) đã đủ lớn để đảm bảo còn nhiều đệm dù dời lên (đệm mới ~10.5-11% từ giá hiện tại).
+  - Chưa chạm ngưỡng chốt lời +15% từ giá vốn (IONQ +9.61%, RGTI +6.60%) — chưa cần cân nhắc bán một phần.
+
+### Đề xuất 2: Lấp slot blue-chip trống (thay JNJ) — chọn 1 trong 2, cần Hogan duyệt
+Không có mã blue-chip nào đang trong cửa sổ cấm wash-sale (đã tra trading-log.md và sandbox-log.md — các ban hiện tại chỉ liên quan CIFR/OUST, nhóm rủi ro cao, không áp dụng). JNJ không bị cấm mua lại (bán lãi, không phải wash-sale) nhưng đề xuất đa dạng hóa sang nhóm consumer staples thay vì mua lại JNJ ngay (core-10 đang có 1 mã pharma/healthcare thoát ra, JPM đã là blue-chip tài chính duy nhất còn lại — đa dạng hóa thêm ngành sẽ giảm tập trung rủi ro).
+
+**Lựa chọn A: PG (Procter & Gamble)** — giá ~$145.05/cp (-0.95% hôm nay). Đề xuất mua **1cp market (~$145, ~3.6% giá trị core-10 hiện tại ~$3,983)**. Lý do: KQKD quý gần nhất vượt ước tính (doanh thu +7%), cổ tức đều hàng quý, tỷ suất cổ tức 2.93%/năm, đa dạng hóa sang consumer staples (chưa có mã nào trong core-10 thuộc nhóm này), biến động thấp (beta thấp, phù hợp tiêu chí blue-chip). **Rủi ro chính:** công ty cảnh báo lợi nhuận FY2027 có thể giảm ~$1B do giá dầu nguyên liệu tăng; tăng trưởng volume một số mảng trì trệ; định giá P/E 22.1 không rẻ.
+
+**Lựa chọn B: PEP (PepsiCo)** — giá ~$137.53/cp (-0.08% hôm nay). Đề xuất mua **1cp market (~$137.5, ~3.5% giá trị core-10 hiện tại)**. Lý do: tỷ suất cổ tức cao nhất trong nhóm xem xét (4.18%/năm), giá gần đáy 52 tuần ($133.73 ngày 07-23, hiện chỉ cao hơn ~2.8%) — định giá hấp dẫn hơn PG tương đối, đa dạng hóa consumer staples (snacks/beverages, khác PG là personal/home care). **Rủi ro chính:** cổ phiếu underperform so với đối thủ trực tiếp KO gần đây, tăng trưởng mảng snack chậm lại, đang ở vùng giá thấp có thể phản ánh lo ngại cơ bản chưa rõ ràng hết.
+
+**Khuyến nghị của agent:** nếu ưu tiên chất lượng/tăng trưởng ổn định hơn và chấp nhận định giá cao hơn một chút, chọn PG. Nếu ưu tiên tỷ suất cổ tức cao + định giá hấp dẫn hơn (gần đáy 52 tuần), chọn PEP — nhưng cân nhắc rủi ro "value trap" nếu đà underperform tiếp diễn. Có thể chọn mã blue-chip khác (vd. KO, MRK — đã xem qua nhưng MRK P/E 120 quá cao, KO gần đỉnh 52 tuần nên định giá kém hấp dẫn hơn PEP) nếu Hogan muốn.
+**Mức cắt lỗ/chốt lời đề xuất cho lệnh mới (dù chọn PG hay PEP):** stop-loss trailing -5% từ đỉnh (nhóm blue-chip/tech theo CLAUDE.md), chốt lời cảnh báo +15-20% từ giá vốn (không tự động bán, chỉ cảnh báo cân nhắc).
+
+**Tóm tắt hành động cần Hogan:** (1) xác nhận đã biết JNJ bị stop tự động (không cần duyệt gì, đã xong); (2) duyệt dời stop-loss IONQ → $39.10 và RGTI → $15.00; (3) chọn PG hoặc PEP (hoặc mã blue-chip khác) để lấp slot trống thay JNJ, hoặc chọn không lấp lại lúc này. Có sự kiện thật (JNJ bị stop, core-10 còn 9/10) + 2 đề xuất mới → **đã gửi PushNotification.**
