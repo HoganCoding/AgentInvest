@@ -5046,3 +5046,29 @@ Không có mã blue-chip nào đang trong cửa sổ cấm wash-sale (đã tra t
 **Mức cắt lỗ/chốt lời đề xuất cho lệnh mới (dù chọn PG hay PEP):** stop-loss trailing -5% từ đỉnh (nhóm blue-chip/tech theo CLAUDE.md), chốt lời cảnh báo +15-20% từ giá vốn (không tự động bán, chỉ cảnh báo cân nhắc).
 
 **Tóm tắt hành động cần Hogan:** (1) xác nhận đã biết JNJ bị stop tự động (không cần duyệt gì, đã xong); (2) duyệt dời stop-loss IONQ → $39.10 và RGTI → $15.00; (3) chọn PG hoặc PEP (hoặc mã blue-chip khác) để lấp slot trống thay JNJ, hoặc chọn không lấp lại lúc này. Có sự kiện thật (JNJ bị stop, core-10 còn 9/10) + 2 đề xuất mới → **đã gửi PushNotification.**
+
+## 2026-09-08 ~13:11 ET (17:11 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git)
+
+- **Sync đầu phiên:** `git fetch` + `git checkout -B main origin/main` — local đã khớp `origin/main` tại `bea239d` (không có commit mới nào chưa pull), không cần merge.
+- **Đối chiếu core-10 hiện tại (9/10 slot, JNJ đã bị stop sáng nay 09:48 ET, đang chờ Hogan chọn PG/PEP lấp slot):** `get_equity_positions` xác nhận đúng 9 mã: IONQ, RGTI (nhóm rủi ro cao), AAPL, AMZN, MSFT, NVDA (large-cap tech), JPM (blue-chip, 1 slot blue-chip còn trống), VOO, RSP (ETF). Vị thế IONQ (14cp) và RGTI (31cp) là số gộp core-10 + sandbox (theo đúng ghi nhận sandbox-log.md 13:10 ET) — SOUN (30cp) là 100% sandbox, không thuộc core-10, không đụng tới.
+- **`get_equity_orders` (từ 13:00 UTC hôm nay tới nay):** chỉ có 2 lệnh stop GTC đã đặt lúc 14:11 UTC sáng nay (IONQ $39.10, RGTI $15.00) — đây là phần **sandbox** tự đặt (qty 7 và 13, khớp đúng số cổ phần sandbox), không phải lệnh core-10 (core-10 vẫn cần Hogan duyệt/thực thi qua phiên riêng, đề xuất dời stop core-10 IONQ/RGTI từ sáng nay 09:48 ET vẫn đang CHỜ). Không có lệnh nào khác khớp/breach.
+- **Giá hiện tại (17:11 UTC) so đóng cửa 09-04 (phiên trước, do 09-07 là cuối tuần):**
+
+  | Mã | Giá hiện tại | % so đóng cửa 09-04 |
+  |---|---|---|
+  | IONQ | $42.695 | +8.03% |
+  | RGTI | $15.97 | +5.07% |
+  | AAPL | $316.175 | -1.19% |
+  | AMZN | $257.455 | -0.41% |
+  | MSFT | $492.535 | -1.43% |
+  | NVDA | $225.9115 | -1.93% |
+  | JPM | $355.71 | -0.82% |
+  | VOO | $705.672 | -0.33% |
+  | RSP | $217.41 | -0.73% |
+
+- **Benchmark:** SPY $767.70 (-0.32%), QQQ $720.44 (+0.21%) — thị trường đi ngang, không risk-off/risk-on rõ rệt. MSFT/NVDA giảm nhẹ hơn QQQ nhưng chỉ 1 phiên, không phải tín hiệu underperform 30 ngày.
+- **IONQ (+8.03%) và RGTI (+5.07%)** là 2 mã duy nhất vượt ngưỡng 3-5% — nhưng đây là tiếp diễn đà tăng tin CHIPS Act đã xác nhận qua WebSearch sáng nay (09:48 ET), không phải tin mới, không cần tra cứu lại. Giá hiện tại (IONQ $42.695, RGTI $15.97) đều THẤP HƠN đỉnh phiên sáng nay đã dùng để đề xuất dời stop ($44.43/$17.05) — chưa có đỉnh mới, không có cơ sở đề xuất dời stop thêm lần này.
+- **Take-profit (+15% từ giá vốn core, nhóm rủi ro cao):** IONQ core avg ~$39.85 → hiện +7.15% (chưa đạt). RGTI core avg ~$15.60 → hiện +2.37% (chưa đạt). Chưa cần cân nhắc.
+- **Không có mã nào breach stop-loss, không có đỉnh mới cần dời stop, không có tin tức xấu/kiện tụng/hạ bậc tín nhiệm nào cần WebSearch thêm, chưa tới kỳ review 30 ngày (ngày 1 hàng tháng, kế tiếp 01/10).**
+- **Đề xuất đang chờ Hogan từ sáng nay (09:48 ET) vẫn còn hiệu lực, không lặp lại nội dung:** (1) dời stop-loss core-10 IONQ → $39.10, RGTI → $15.00; (2) chọn PG hoặc PEP để lấp slot blue-chip trống thay JNJ.
+- **Kết luận: Không có đề xuất mới lần kiểm tra này** — đã kiểm tra vị thế, giá, benchmark, lệnh chờ khớp; không mã nào đạt tiêu chí cần đề xuất mới theo CLAUDE.md. Không có thay đổi thật kể từ lần cập nhật sáng nay → **không gửi PushNotification**, chỉ ghi log.
