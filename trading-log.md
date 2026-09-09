@@ -5153,3 +5153,29 @@ Không có mã blue-chip nào đang trong cửa sổ cấm wash-sale (đã tra t
 - **Không mã nào breach stop-loss core-10 (AMZN gần nhất nhưng chưa breach).** Không có đỉnh mới nào cần dời stop thêm (không mã nào vượt đỉnh tham chiếu cũ). Chưa tới kỳ review 30 ngày định kỳ (kế tiếp 01/10).
 - **Đề xuất đang chờ Hogan từ 09-08 09:48 ET vẫn còn hiệu lực, không lặp lại nội dung mới:** (1) dời stop-loss core-10 IONQ → $39.10 (lưu ý: giá hiện đã dưới mức này, xem ghi chú trên), RGTI → $15.00; (2) chọn PG hoặc PEP để lấp slot blue-chip trống thay JNJ.
 - **Kết luận: Không có đề xuất mới lần kiểm tra này** — đã kiểm tra vị thế, giá, benchmark, lệnh chờ khớp, tin tức IONQ/AMZN; không mã nào đạt tiêu chí cần đề xuất mới theo CLAUDE.md, không có thay đổi thật (breach/lệnh mới) kể từ lần cập nhật trước → **không gửi PushNotification**, chỉ ghi log.
+
+## 2026-09-09 ~15:31 ET (19:31 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): KHÔNG có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch` + `git pull origin main` — local đã khớp `origin/main` tại `e9e71d5` (có thêm các commit sandbox 09-09 14:09/15:08 ET kể từ lần kiểm tra trước), không conflict, không có commit core-10 mới nào khác cần lưu ý.
+- **Core-10 hiện tại (9/10 slot, JNJ vẫn đang trống chờ Hogan chọn PG/PEP theo đề xuất 09-08 09:48 ET):** `get_equity_positions` xác nhận đúng 9 mã: IONQ(7cp, avg $39.95 — 100% core-10), RGTI(31cp tổng = 18cp core-10 + 13cp sandbox, avg $15.61), AAPL(1cp), AMZN(2cp), MSFT(1cp), NVDA(1cp), JPM(1cp), VOO(0.72647cp), RSP(2cp). SOUN(30cp) vẫn 100% sandbox, không đụng tới.
+- `get_equity_orders` (từ 09-09 17:11 UTC tới nay): **rỗng** — không có lệnh mới/breach nào kể từ lần kiểm tra trước.
+- **Benchmark (19:31 UTC, so đóng cửa 09-08):** SPY $763.115 (-0.37%), QQQ $716.28 (-0.29%) — thị trường tiếp tục đi ngang/giảm nhẹ, không phải bán tháo diện rộng.
+- P&L nhanh & trạng thái stop-loss (giá ~19:31 UTC, so đóng cửa 09-08):
+
+  | Mã | Giá vốn | Giá hiện tại | % so đóng cửa 09-08 | P&L từ vốn | Stop-loss hiện tại | Đệm tới stop |
+  |---|---|---|---|---|---|---|
+  | IONQ | $39.95 | $38.65 | -4.50% | -3.25% | $35.07 | 9.27% |
+  | RGTI | $15.61 (blend) | $15.527 | -1.79% | -0.53% | $13.73 (phần core-10) | 11.58% |
+  | AAPL | $325.08 | $315.58 | -0.20% | -2.92% | $308.83 | 2.14% |
+  | AMZN | $261.47 | $252.146 | -1.88% | -3.57% | $251.89 | **0.10% — cực mỏng, tiếp diễn** |
+  | MSFT | $510.00 | $491.34 | -0.53% | -3.65% | $484.50 | 1.39% |
+  | NVDA | $229.64 | $224.14 | -0.70% | -2.40% | $218.16 | 2.67% |
+  | JPM | $347.97 | $355.33 | +0.51% | +2.13% | $344.85 | 2.95% |
+  | VOO | $688.26 | $701.52 | -0.36% | +1.93% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $215.05 | -0.78% | +0.06% | $211.44 | 1.68% |
+
+- **So với lần kiểm tra trước (13:11 ET/17:11 UTC), tất cả các mã đều gần như đi ngang** (thay đổi <1% so với giá lần trước: IONQ -0.5%, RGTI -0.7%, AAPL +0.8%, AMZN -0.03%, MSFT -0.3%, NVDA ~flat, JPM ~flat, VOO ~flat, RSP ~flat) — không mã nào có biến động đáng kể (>3-5%) kể từ lần kiểm tra trước, nên **không cần WebSearch tin tức mới lần này** (IONQ/AMZN đã được tra cứu kỹ 2 lần trong ngày hôm nay, 09:47 ET và 13:11 ET, đều xác nhận không có tin xấu, chỉ là điều chỉnh/chốt lời theo đà thị trường chung).
+- **AMZN đệm tới stop-loss vẫn cực mỏng (~0.10%, $252.146 vs stop $251.89), tiếp diễn tình trạng đã ghi nhận 2 lần trước trong ngày** — không có diễn biến mới, kỷ luật stop-loss GTC sẽ tự động khớp nếu breach thêm (đúng thiết kế, không phải quyết định tự quyết cần duyệt).
+- **Không mã nào breach stop-loss core-10.** Không có đỉnh mới nào cần dời stop thêm. Chưa tới kỳ review 30 ngày định kỳ (kế tiếp 01/10).
+- **Đề xuất đang chờ Hogan từ 09-08 09:48 ET vẫn còn hiệu lực, không lặp lại nội dung mới:** (1) dời stop-loss core-10 IONQ → $39.10 (giá hiện tại $38.65 đã dưới mức này — nếu duyệt bây giờ sẽ khớp ngay), RGTI → $15.00; (2) chọn PG hoặc PEP để lấp slot blue-chip trống thay JNJ.
+- **Kết luận: Không có đề xuất mới lần kiểm tra này** — đã kiểm tra vị thế, giá, benchmark, lệnh chờ khớp; không mã nào biến động đáng kể so với lần kiểm tra trước, không mã nào breach stop-loss, không có thay đổi thật kể từ lần cập nhật trước → **không gửi PushNotification**, chỉ ghi log.
