@@ -5126,3 +5126,30 @@ Không có mã blue-chip nào đang trong cửa sổ cấm wash-sale (đã tra t
 - **Không mã nào breach stop-loss core-10.** Chưa tới kỳ review 30 ngày định kỳ (kế tiếp 01/10).
 - **Đề xuất đang chờ Hogan từ 09-08 09:48 ET vẫn còn hiệu lực, không lặp lại nội dung mới:** (1) dời stop-loss core-10 IONQ → $39.10, RGTI → $15.00 (lưu ý ngữ cảnh IONQ nêu trên); (2) chọn PG (~$143.24, -1.6%) hoặc PEP (~$137.32, -0.82%) để lấp slot blue-chip trống thay JNJ.
 - **Kết luận: Không có đề xuất MỚI lần kiểm tra này** — sự kiện IONQ hôm nay chỉ là lệnh sandbox tự động khớp (không thuộc phạm vi core-10), không phải đề xuất cần duyệt. AMZN đệm mỏng nhưng chưa breach, không phải quyết định tự quyết. Không gửi PushNotification (đúng quy tắc: chỉ gửi khi có đề xuất/hành động thật mới thuộc core-10; các đề xuất đang chờ đã được thông báo trước đó).
+
+## 2026-09-09 ~13:11 ET (17:11 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): KHÔNG có đề xuất mới
+
+- **Sync đầu phiên:** `git pull origin main` — đã up to date với `origin/main`, không có commit mới nào kể từ lần kiểm tra trước (09-09 09:47 ET), không conflict.
+- **Core-10 hiện tại (9/10 slot, JNJ vẫn đang trống chờ Hogan chọn PG/PEP theo đề xuất 09-08 09:48 ET):** `get_equity_positions` xác nhận đúng 9 mã: IONQ(7cp, avg $39.95 — 100% core-10, phần sandbox đã bị stop sáng nay), RGTI(31cp tổng = 18cp core-10 + 13cp sandbox, avg $15.61), AAPL(1cp), AMZN(2cp), MSFT(1cp), NVDA(1cp), JPM(1cp), VOO(0.72647cp), RSP(2cp). SOUN(30cp) vẫn 100% sandbox, không đụng tới.
+- `get_equity_orders` (từ 09-09 13:47 UTC tới nay): **rỗng** — không có lệnh mới/breach nào kể từ lần kiểm tra trước.
+- **Benchmark (17:11 UTC, so đóng cửa 09-08):** SPY $762.79 (-0.41%), QQQ $716.45 (-0.27%) — thị trường tiếp tục giảm nhẹ diện rộng, không phải bán tháo mạnh (risk-off vừa phải).
+- P&L nhanh & trạng thái stop-loss (giá ~17:11 UTC, so đóng cửa 09-08):
+
+  | Mã | Giá vốn | Giá hiện tại | % so đóng cửa 09-08 | P&L từ vốn | Stop-loss hiện tại | Đệm tới stop |
+  |---|---|---|---|---|---|---|
+  | IONQ | $39.95 | $38.85 | -4.00% | -2.75% | $35.07 | 10.8% |
+  | RGTI | $15.61 (blend) | $15.63 | -1.14% | +0.13% | $13.73 (phần core-10) | 13.8% |
+  | AAPL | $325.08 | $313.10 | -0.99% | -3.68% | $308.83 | 1.38% |
+  | AMZN | $261.47 | $252.23 | -1.85% | -3.53% | $251.89 | **0.14% — cực mỏng, tiếp diễn từ lần kiểm tra trước** |
+  | MSFT | $510.00 | $492.93 | -0.21% | -3.35% | $484.50 | 1.74% |
+  | NVDA | $229.64 | $224.115 | -0.72% | -2.41% | $218.16 | 2.73% |
+  | JPM | $347.97 | $355.11 | +0.45% | +2.05% | $344.85 | 2.97% |
+  | VOO | $688.26 | $701.15 | -0.41% | +1.87% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $215.065 | -0.77% | +0.06% | $211.44 | 1.71% |
+
+- **AMZN đệm tới stop-loss vẫn cực mỏng (~0.14%, $252.23 vs stop $251.89), tiếp diễn tình trạng đã ghi nhận lúc 09:47 ET sáng nay** — WebSearch lại xác nhận không có tin xấu mới kể từ sáng: vẫn là narrative cắt giảm nhân sự để đầu tư AI (đã biết), guidance Q3 2026 vẫn tích cực (doanh thu dự kiến +9-12% YoY), consensus vẫn Strong Buy, còn có tin tốt bổ sung (thỏa thuận chip AI $60B với Qualcomm). Đây là điều chỉnh theo đà giảm nhẹ chung của thị trường (SPY -0.41%), không phải deterioration fundamentals theo tiêu chí CLAUDE.md → **không đề xuất can thiệp**, kỷ luật stop-loss GTC sẽ tự động khớp nếu breach thêm (đúng thiết kế, không phải quyết định tự quyết cần duyệt).
+- **IONQ giảm thêm, nay -4.00% so đóng cửa hôm qua (đã -3.29% lúc sáng)** — WebSearch lại xác nhận không có tin xấu: vẫn toàn tin tốt/tiếp diễn (guidance FY2026 nâng lên $450-460M sau M&A SkyWater, ra mắt Superion 256, consensus vẫn Strong Buy, target trung bình $69.44). Mức giảm là tiếp tục chốt lời/điều chỉnh sau đà tăng mạnh tuần này (đỉnh $44.43 ngày 09-08), không phải tin xấu mới. Giá hiện tại ($38.85) đã **thấp hơn** mức stop đề xuất dời $39.10 từ 09-08 — nếu đề xuất đó được duyệt bây giờ sẽ khớp ngay lập tức lúc đặt lệnh; giữ nguyên ghi chú này cho Hogan, không tự thay đổi nội dung đề xuất.
+- Không mã nào khác biến động >3% so đóng cửa hôm qua, không cần WebSearch thêm.
+- **Không mã nào breach stop-loss core-10 (AMZN gần nhất nhưng chưa breach).** Không có đỉnh mới nào cần dời stop thêm (không mã nào vượt đỉnh tham chiếu cũ). Chưa tới kỳ review 30 ngày định kỳ (kế tiếp 01/10).
+- **Đề xuất đang chờ Hogan từ 09-08 09:48 ET vẫn còn hiệu lực, không lặp lại nội dung mới:** (1) dời stop-loss core-10 IONQ → $39.10 (lưu ý: giá hiện đã dưới mức này, xem ghi chú trên), RGTI → $15.00; (2) chọn PG hoặc PEP để lấp slot blue-chip trống thay JNJ.
+- **Kết luận: Không có đề xuất mới lần kiểm tra này** — đã kiểm tra vị thế, giá, benchmark, lệnh chờ khớp, tin tức IONQ/AMZN; không mã nào đạt tiêu chí cần đề xuất mới theo CLAUDE.md, không có thay đổi thật (breach/lệnh mới) kể từ lần cập nhật trước → **không gửi PushNotification**, chỉ ghi log.
