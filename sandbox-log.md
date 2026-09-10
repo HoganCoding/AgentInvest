@@ -4319,3 +4319,14 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Phần theo dõi sandbox (circuit breaker) — 100% tiền mặt, không đổi:** cash IONQ đã settle ($273.70) + proceeds RGTI chưa settle ($193.57) + proceeds SOUN chưa settle ($189.978) = **~$657.25** — giảm -$41.14 (-5.89%) so vốn gốc $698.39, còn rất xa cả 2 ngưỡng (dừng hẳn gần $0 / chốt lời ~$1400). Không kích hoạt circuit breaker.
 - **Wash-sale vẫn hiệu lực:** IONQ (tới ~2026-10-09), RGTI + SOUN (tới ~2026-10-10) — không được mua lại 3 mã này.
 - **Quyết định: KHÔNG hành động** — chưa tìm ứng viên rủi ro cao mới thay thế, tiếp tục chờ proceeds RGTI/SOUN settle (dự kiến ~09-11) trước khi cân nhắc vào lệnh mới, đúng tiền lệ sau WULF. Không có gì thay đổi thật so lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-09-10 ~14:10 ET (18:10 UTC) — Kiểm tra định kỳ (routine tự động, sync git): sandbox vẫn 100% tiền mặt, KHÔNG hành động
+
+- **Sync đầu phiên:** repo detached HEAD tụt 1 commit so `origin/main` (`51f1cc3`, core-10 13:10 ET) — `git checkout main` + `git merge origin/main --ff-only`, fast-forward sạch, không conflict.
+- `get_equity_positions` (704170133): 7 vị thế — IONQ 7cp/avg $39.95, RSP 2cp/avg $214.93, MSFT 1cp/avg $510.00, VOO 0.72647cp/avg $688.26, AAPL 1cp/avg $325.08, JPM 1cp/avg $347.97, RGTI 18cp/avg $15.61 — đối chiếu trading-log.md xác nhận **toàn bộ đều là core-10** (không có RGTI/SOUN phần sandbox, không có mã lạ nào khác). **Sandbox hiện không giữ mã cổ phiếu nào** (100% cash).
+- `get_equity_orders` (từ 17:10 UTC hôm nay tới nay): **rỗng** — không có lệnh mới nào.
+- `get_accounts` + `get_portfolio`: `unsettled_funds` **$601.71** (không đổi so lần check trước) — proceeds RGTI ($193.57) + SOUN ($189.978) sandbox vẫn chưa settle (dự kiến ~09-11). cash **$2,987.67**, buying_power **$2,385.96** — không đổi.
+- **Giá tham khảo (~18:08 UTC, không nắm giữ):** RGTI $15.105 (-0.89% so đóng cửa 09-09 $15.24), SOUN $6.36 (-1.85% so đóng cửa 09-09 $6.48) — cả 2 dưới ngưỡng 3-5%, không cần WebSearch (không cân nhắc vào lệnh mới cụ thể — vẫn trong wash-sale ban tới ~10-10).
+- **Phần theo dõi sandbox (circuit breaker) — 100% tiền mặt, không đổi:** cash IONQ đã settle ($273.70) + proceeds RGTI chưa settle ($193.57) + proceeds SOUN chưa settle ($189.978) = **~$657.25** — giảm -$41.14 (-5.89%) so vốn gốc $698.39, còn rất xa cả 2 ngưỡng (dừng hẳn gần $0 / chốt lời ~$1400). Không kích hoạt circuit breaker.
+- **Wash-sale vẫn hiệu lực:** IONQ (tới ~2026-10-09), RGTI + SOUN (tới ~2026-10-10) — không được mua lại 3 mã này.
+- **Quyết định: KHÔNG hành động** — chưa tìm ứng viên rủi ro cao mới thay thế, tiếp tục chờ proceeds RGTI/SOUN settle (dự kiến ~09-11) trước khi cân nhắc vào lệnh mới, đúng tiền lệ sau WULF. Không có gì thay đổi thật so lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
