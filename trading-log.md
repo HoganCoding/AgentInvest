@@ -5179,3 +5179,41 @@ Không có mã blue-chip nào đang trong cửa sổ cấm wash-sale (đã tra t
 - **Không mã nào breach stop-loss core-10.** Không có đỉnh mới nào cần dời stop thêm. Chưa tới kỳ review 30 ngày định kỳ (kế tiếp 01/10).
 - **Đề xuất đang chờ Hogan từ 09-08 09:48 ET vẫn còn hiệu lực, không lặp lại nội dung mới:** (1) dời stop-loss core-10 IONQ → $39.10 (giá hiện tại $38.65 đã dưới mức này — nếu duyệt bây giờ sẽ khớp ngay), RGTI → $15.00; (2) chọn PG hoặc PEP để lấp slot blue-chip trống thay JNJ.
 - **Kết luận: Không có đề xuất mới lần kiểm tra này** — đã kiểm tra vị thế, giá, benchmark, lệnh chờ khớp; không mã nào biến động đáng kể so với lần kiểm tra trước, không mã nào breach stop-loss, không có thay đổi thật kể từ lần cập nhật trước → **không gửi PushNotification**, chỉ ghi log.
+
+## 2026-09-10 ~09:48 ET (13:48 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): PHÁT HIỆN MUỘN — AMZN đã bị stop-loss khớp từ HÔM QUA (09-09 09:31 ET), bị bỏ sót ở 3 lần kiểm tra trước; core-10 còn 8/10 slot; đề xuất 2 lựa chọn lấp slot tech
+
+- **Sync đầu phiên:** `git checkout main` + fast-forward `433df2a → d9ecadf` (+2 commit sandbox 09-09 16:09 ET và 09-10 09:10 ET), không conflict.
+- **Core-10 hiện tại xác nhận qua `get_equity_positions`: chỉ còn 8 mã** — IONQ(7cp, avg $39.95), RGTI(18cp, avg $15.61 — 100% core-10, phần sandbox 13cp trước đó đã không còn trong tổng, đây là việc của routine sandbox, không xét ở đây), AAPL(1cp), MSFT(1cp), NVDA(1cp), JPM(1cp), VOO(0.72647cp), RSP(2cp). **AMZN KHÔNG còn trong danh sách vị thế.**
+- **SỰ KIỆN THẬT, PHÁT HIỆN MUỘN — cần lưu ý quy trình:** tra `get_equity_orders` (symbol=AMZN) cho thấy lệnh stop-loss GTC (`6a85e8af-...`, trigger $251.89, đặt 08-19 khi dời stop) đã **khớp lúc 09-09 09:31:02 ET (13:31:02.767 UTC) — tức là HÔM QUA**, bán 2cp @ $251.86 TB (phí $0.02). Giá vốn $261.47 → **lỗ thực hiện -3.71%** (~-$19.24). Đây là thực thi tự động đúng kỷ luật trailing stop đã đặt sẵn, không phải quyết định mới cần duyệt.
+  - **Vấn đề quy trình:** thời điểm khớp (09-09 09:31:02 ET) sớm hơn CẢ BA lần kiểm tra định kỳ ngày 09-09 (09:47 ET, 13:11 ET, 15:31 ET) — nhưng cả 3 entry đó đều ghi nhận NHẦM là AMZN vẫn đang giữ 2cp với "đệm tới stop cực mỏng ~0.10-0.14%" thay vì đã bị khớp. Nguyên nhân nhiều khả năng do các phiên đó không gọi lại `get_equity_positions` tươi mà tái dùng bảng P&L cũ, hoặc lỗi đọc dữ liệu. Ghi nhận ở đây để sửa lại lịch sử — **AMZN đã thoát vị thế từ sáng 09-09, không phải hôm nay.**
+  - **Wash-sale:** bán LỖ → cấm mua lại AMZN (hoặc mã gần tương đương) tới **~2026-10-09**.
+- `get_equity_orders` (toàn bộ, từ 09-09 19:31 UTC tới nay): không có lệnh nào khác khớp/breach ngoài AMZN nói trên (đã khớp từ trước, không phải trong cửa sổ này).
+- **Benchmark (13:48 UTC, so đóng cửa 09-09):** SPY $758.755 (-0.48%), QQQ $709.79 (-0.91%) — thị trường điều chỉnh nhẹ, nhóm tech giảm mạnh hơn (QQQ) do bán dẫn/AI-capex chốt lời trước sự kiện KQKD Oracle tối nay.
+- P&L nhanh & trạng thái stop-loss (giá ~13:48 UTC, so đóng cửa 09-09):
+
+  | Mã | Giá vốn | Giá hiện tại | % so đóng cửa 09-09 | P&L từ vốn | Stop-loss hiện tại | Đệm tới stop |
+  |---|---|---|---|---|---|---|
+  | IONQ | $39.95 | $37.66 | -1.25% | -5.72% | $35.07 | 6.87% |
+  | RGTI | $15.61 | $15.225 | -0.10% | -2.47% | $13.73 | 9.83% |
+  | AAPL | $325.08 | $320.825 | +1.74% | -1.31% | $308.83 | 3.74% |
+  | MSFT | $510.00 | $490.235 | -0.29% | -3.87% | $484.50 | **1.17% — mỏng** |
+  | NVDA | $229.64 | $218.605 | -2.27% | -4.81% | $218.16 | **0.20% — cực mỏng, gần breach** |
+  | JPM | $347.97 | $353.21 | -0.42% | +1.51% | $344.85 | 2.37% |
+  | VOO | $688.26 | $697.47 | -0.49% | +1.34% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $213.845 | -0.37% | -0.51% | $211.44 | 1.13% |
+
+- **NVDA đệm tới stop cực mỏng (0.20%)** — giảm -2.27% so đóng cửa hôm qua, dưới ngưỡng 3-5% cần WebSearch riêng, đi cùng chiều bán tháo nhóm bán dẫn/AI trước KQKD Oracle tối nay (QQQ -0.91%). Đây là kỷ luật stop-loss GTC đã đặt sẵn ($218.16, chưa từng dời vì chưa có đỉnh mới đủ lớn) — sẽ tự động khớp nếu breach thêm, không phải quyết định tự quyết cần can thiệp. MSFT (1.17%) cũng khá mỏng, cùng lý do.
+- Không mã nào breach stop-loss core-10 lần kiểm tra này (AMZN đã khớp từ hôm qua, đã xử lý ở trên).
+
+### Đề xuất: Lấp slot large-cap tech trống (thay AMZN) — chọn 1 trong 2, cần Hogan duyệt
+- **Sàng lọc wash-sale (tính tới 09-10, tra cả trading-log.md và sandbox-log.md):** loại trừ AMZN (tới ~10-09, vừa bán lỗ hôm qua), AVGO (tới ~10-03), GOOGL (tới ~10-01), QCOM (tới ~09-23), PANW (tới ~09-18), AMD (tới ~09-17), NOW (tới ~09-16), CSCO (tới ~09-12, gần hết hạn). MSFT/AAPL/NVDA đã đang held nên N/A.
+
+**Lựa chọn A: CRM (Salesforce)** — giá ~$248.05/cp (+1.59% hôm nay). Đề xuất mua **1cp market (~$248, ~8.7% giá trị equity core-10 hiện tại ~$2,855)**. Lý do: từng nắm giữ trong core-10, thoát vị thế 08-26 ở mức **lãi +4.19%** (không dính wash-sale), đa dạng hóa sang SaaS/enterprise software (khác hẳn AAPL hardware, MSFT cloud-OS, NVDA chip — chưa có mã nào), đồng thuận analyst "Buy" trung bình, target 12 tháng $270.37 (+9%), đang đẩy mạnh AI qua nền tảng Agentforce, cổ tức đều ($0.44/cp, ex-date 09-17). **Rủi ro chính:** giám đốc Craig Conway vừa bán 4,500cp nội bộ (09-04, không nhất thiết là tín hiệu xấu — có thể chỉ đa dạng hóa cá nhân); tăng trưởng doanh thu SaaS truyền thống đang chậm lại so với các đối thủ cloud lớn hơn.
+
+**Lựa chọn B: ORCL (Oracle)** — giá ~$157.75/cp (-2.40% hôm nay). Đề xuất mua **1cp market (~$158, ~5.5% giá trị equity core-10 hiện tại)**. Lý do: RPO (backlog hợp đồng) tăng 363% lên $638B nhờ nhu cầu AI cloud infrastructure (OCI), guidance FY27 tăng trưởng doanh thu ~34% constant-currency. **Rủi ro chính — QUAN TRỌNG:** Oracle công bố KQKD Q1 FY2027 **TỐI NAY (09-10, 5PM ET)** — mua ngay trước KQKD là đặt cược vào 1 sự kiện biến động cao (cổ phiếu đã giảm sẵn hôm nay do lo ngại vốn hóa/capex $70B và phát hành thêm cổ phần pha loãng ~4.8%); nếu KQKD gây thất vọng có thể gap-down mạnh sáng mai, bỏ qua hoàn toàn stop-loss trailing thông thường (gap qua đêm không có bảo vệ). Nếu chọn ORCL, khuyến nghị đợi qua KQKD tối nay rồi mới mua (tránh rủi ro gap qua đêm) thay vì mua ngay hôm nay.
+
+**Khuyến nghị của agent:** CRM là lựa chọn an toàn hơn ngay bây giờ (không có catalyst biến động lớn trước mắt). Nếu muốn ORCL, nên đợi đến sau KQKD tối nay (kiểm tra phản ứng giá phiên mai) thay vì mua trước giờ công bố.
+**Mức cắt lỗ/chốt lời đề xuất cho lệnh mới (dù chọn CRM hay ORCL):** stop-loss trailing -5% từ đỉnh (nhóm tech theo CLAUDE.md), chốt lời cảnh báo +15-20% từ giá vốn (không tự động bán, chỉ cảnh báo cân nhắc).
+
+- **Đề xuất đang chờ Hogan từ 09-08 09:48 ET vẫn còn hiệu lực, không lặp lại nội dung:** (1) dời stop-loss core-10 IONQ → $39.10 (lưu ý giá hiện $37.66 đã thấp hơn nhiều — nếu duyệt bây giờ sẽ khớp ngay lập tức, cân nhắc lại mức dời), RGTI → $15.00 (giá hiện $15.225, sát mức này); (2) chọn PG hoặc PEP để lấp slot blue-chip trống thay JNJ.
+- **Tóm tắt hành động cần Hogan:** (1) biết rằng AMZN đã bị stop-loss khớp từ hôm qua (lỗi ghi log muộn, không phải hành động mới); (2) chọn CRM hoặc ORCL (hoặc mã tech khác) lấp slot tech trống — lưu ý khuyến nghị đợi qua KQKD nếu chọn ORCL; (3) các đề xuất cũ (dời stop IONQ/RGTI, chọn PG/PEP) vẫn đang chờ. Có sự kiện thật (AMZN đã thoát vị thế, dù phát hiện muộn) + đề xuất mới → **đã gửi PushNotification.**
