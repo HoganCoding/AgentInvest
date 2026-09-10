@@ -5242,3 +5242,59 @@ Không có mã blue-chip nào đang trong cửa sổ cấm wash-sale (đã tra t
 - **Không mã nào breach stop-loss core-10.** Không có đỉnh mới nào cần dời stop thêm. Chưa tới kỳ review 30 ngày định kỳ (kế tiếp 01/10).
 - **Các đề xuất đang chờ Hogan từ sáng nay (09-10 09:48 ET) vẫn còn hiệu lực, không lặp lại nội dung mới:** (1) chọn CRM hoặc ORCL lấp slot tech trống (lưu ý khuyến nghị đợi qua KQKD Oracle tối nay nếu chọn ORCL — ORCL hiện $156.97, -2.88% thêm so với sáng nay, phản ánh đúng tâm lý thận trọng trước KQKD); (2) dời stop-loss core-10 IONQ → $39.10 (giá hiện $37.99 vẫn thấp hơn mức này), RGTI → $15.00 (giá hiện $15.255, sát mức này); (3) chọn PG hoặc PEP lấp slot blue-chip trống thay JNJ.
 - **Kết luận: Không có đề xuất mới lần kiểm tra này** — đã kiểm tra vị thế, giá, benchmark, lệnh chờ khớp; không mã nào đạt tiêu chí cần đề xuất mới theo CLAUDE.md, không có thay đổi thật (breach/lệnh mới/fill) kể từ lần cập nhật sáng nay → **không gửi PushNotification**, chỉ ghi log.
+
+## 2026-09-10 ~15:32 ET (19:32 UTC) — Kiểm tra định kỳ core-10: NVDA đã bị stop-loss khớp (phát hiện muộn, 2 lần kiểm tra trước bỏ sót); AAPL đạt đỉnh mới cần dời stop; làm rõ nhầm lẫn IONQ/RGTI (thực ra là giao dịch sandbox); đề xuất lấp slot tech trống thay NVDA
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD, `git checkout main` + fast-forward `433df2a → 096ba37` (+31 commit, toàn bộ là các entry sandbox 09-07→09-10 09-10 15:10 ET), không conflict.
+- **Core-10 hiện tại xác nhận qua `get_equity_positions`: chỉ còn 7 mã (giảm từ 8)** — IONQ(7cp), RGTI(18cp), AAPL(1cp), MSFT(1cp), JPM(1cp), VOO(0.72647cp), RSP(2cp). **NVDA KHÔNG còn trong danh sách vị thế.**
+
+### SỰ KIỆN THẬT, PHÁT HIỆN MUỘN — NVDA đã bị stop-loss khớp
+- Tra `get_equity_orders` (symbol=NVDA) cho thấy lệnh stop-loss GTC (`6a99cadd`, trigger $218.16, đặt 09-03 sau khi mua lại 1cp @ $229.6384) đã **khớp lúc 2026-09-10 09:48:45 ET (13:48:45 UTC)**, bán 1cp @ $218.1643. **Lỗ thực hiện: -5.00%** (~-$11.47).
+- **Vấn đề quy trình (tiếp diễn, giống sự cố AMZN 09-09→09-10 đã ghi nhận):** thời điểm khớp (09:48:45 ET) trùng gần như chính xác với 2 lần kiểm tra định kỳ gần nhất trong ngày (09:48 ET và 13:10 ET/17:10 UTC) — nhưng CẢ HAI entry đó đều ghi NVDA vẫn đang giữ (buffer "0.20% — cực mỏng" lúc 09:48 ET, "0.34%" lúc 13:10 ET). Nhiều khả năng do gọi `get_equity_positions` ngay trước/đúng lúc lệnh khớp, hoặc tái dùng dữ liệu cache. Ghi nhận ở đây để sửa lại lịch sử — **NVDA đã thoát vị thế từ sáng nay, không phải phát hiện mới trong ngày.**
+- **Wash-sale:** bán LỖ → cấm mua lại NVDA (hoặc mã gần tương đương) tới **~2026-10-10**.
+- **Core-10 hiện còn 7/10 slot, 3 slot trống:** 2 large-cap tech (thay AMZN — đề xuất CRM/ORCL đang chờ từ 09-08; nay thêm thay NVDA — đề xuất mới bên dưới) + 1 blue-chip (thay JNJ — đề xuất PG/PEP đang chờ từ 09-08).
+
+### Làm rõ nhầm lẫn tra cứu IONQ/RGTI — không phải core-10, là giao dịch song song của sandbox
+- Khi tra `get_equity_orders`/`get_equity_tax_lots` cho IONQ và RGTI để kiểm tra đỉnh giá mới, phát hiện mỗi mã có **2 lô mua riêng biệt cùng ngày 08-31** (IONQ: 7cp@$39.8499 và 7cp@$39.9499; RGTI: 18cp@$15.5984 và 13cp@$15.6187) — ban đầu tưởng nhầm là core-10 tự mua trùng lặp hoặc đã tự ý thực hiện đề xuất dời stop mà chưa qua duyệt.
+- Sau khi đối chiếu `sandbox-log.md`: lô IONQ 7cp@$39.9499 và lô RGTI 13cp@$15.6187 (hoặc phần tương ứng theo FIFO) **thực chất là giao dịch của sandbox** (mua/bán độc lập, tự chủ theo đúng quyền hạn sandbox) — không phải core-10. Proceeds khớp chính xác: IONQ 7cp×$39.10=$273.70 và RGTI 13cp×$14.89=$193.57, đúng bằng số tiền "unsettled_funds" sandbox-log đã ghi nhận. **Core-10 KHÔNG hề tự ý đặt/sửa lệnh nào — đề xuất dời stop IONQ→$39.10 và RGTI→$15.00 từ 09-08 vẫn CHƯA được thực hiện cho core-10, vẫn đang chờ duyệt như log trước đã ghi.**
+- **Lưu ý phụ về thuế (thông tin, không cần hành động):** vì sandbox bán lỗ IONQ (7cp@$39.9499→$39.10) trong khi core-10 vẫn đang giữ IONQ cùng mã trong cùng tài khoản (mua trong vòng 30 ngày, vẫn còn giữ) → kích hoạt **wash sale tự động, không chủ ý** — khoản lỗ bị từ chối của sandbox được cộng vào cost basis của lô core-10 đang giữ. `get_equity_tax_lots(IONQ)` xác nhận cost basis lô core-10 hiện là **$40.70/cp** (thay vì $39.85 gốc) — chỉ ảnh hưởng số liệu lãi/lỗ chưa thực hiện hiển thị, không cần hành động gì (đúng theo CLAUDE.md: stop-loss/kỷ luật vẫn chạy bình thường, đây là hệ quả cơ học không phải quyết định). Core-10 stop-loss IONQ vẫn nguyên $35.07 (chưa dời), RGTI vẫn nguyên $13.73 (chưa dời) — xác nhận qua `get_equity_orders` (state "confirmed", chưa khớp).
+
+### AAPL đạt đỉnh mới ($330.81, 09-03) — stop-loss chưa được dời theo, đề xuất dời
+- AAPL mua 09-01 @ $325.08, stop-loss đặt cùng ngày ở $308.83 (-5% từ giá vốn). `get_equity_historicals` cho thấy AAPL đã đạt đỉnh intraday **$330.81 vào 09-03** (sau khi mua) — cao hơn giá vốn, nhưng stop-loss CHƯA được dời lên theo đúng quy tắc trailing "-5% từ đỉnh giá cao nhất kể từ khi mua" (CLAUDE.md 2026-07-24). Đây là lần đầu phát hiện việc này (các lần kiểm tra trước không rà lại lịch sử giá).
+- **Đề xuất mới:** dời stop-loss AAPL từ $308.83 → **$314.27** (= $330.81 × 0.95). Giá hiện tại $325.495 vẫn cao hơn nhiều mức đề xuất (buffer 3.46%), không có rủi ro khớp ngay nếu duyệt.
+
+### Benchmark & P&L nhanh (~19:32 UTC, so đóng cửa 09-09)
+- SPY $757.695 (-0.62%), QQQ $709.07 (-1.01%) — thị trường giảm rộng hơn hôm qua, nhóm tech giảm mạnh hơn (lo ngại lợi suất trái phiếu tăng, giá dầu tăng, thận trọng trước KQKD Oracle/Adobe tối nay).
+
+| Mã | Giá vốn | Giá hiện tại | % so đóng cửa 09-09 | P&L từ vốn | Stop-loss hiện tại | Đệm tới stop |
+|---|---|---|---|---|---|---|
+| IONQ | $39.85 (basis thuế $40.70, xem ghi chú wash-sale) | $37.03 | -2.91% | -7.06% (trên basis gốc) | $35.07 | 5.29% |
+| RGTI | $15.61 | $15.075 | -1.08% | -3.43% | $13.73 | 8.92% |
+| AAPL | $325.08 | $325.495 | +3.22% | +0.13% | $308.83 (đề xuất dời $314.27) | 5.12% |
+| MSFT | $510.00 | $490.44 | -0.25% | -3.83% | $484.50 | 1.21% |
+| JPM | $347.97 | $352.76 | -0.55% | +1.38% | $344.85 | 2.24% |
+| VOO | $688.26 | $696.475 | -0.63% | +1.19% | (fractional, thủ công) | — |
+| RSP | $214.93 | $213.205 | -0.67% | -0.80% | $211.44 | 0.83% |
+| NVDA | $229.64 | — (đã bán) | — | **-5.00% (đã thực hiện, khớp 09:48:45 ET)** | — | — |
+
+- WebSearch xác nhận: AAPL tăng do phản ứng tích cực sau sự kiện ra mắt sản phẩm 09-09 (iPhone Duo gập, Watch Ultra 4) — không có tin xấu. NVDA giảm cùng đà bán tháo nhóm bán dẫn/AI chung của thị trường dù CEO vẫn khẳng định nhu cầu mạnh — không phải deterioration fundamentals, việc bị stop là đúng kỷ luật đã đặt sẵn. Không mã nào khác biến động bất thường cần tra thêm.
+- Không mã nào breach stop-loss core-10 lần kiểm tra này (NVDA đã khớp từ sáng nay, đã xử lý ở trên).
+
+### Đề xuất: Lấp slot large-cap tech trống (thay NVDA) — chọn 1 trong 2, cần Hogan duyệt
+- **Sàng lọc wash-sale (tính tới 09-10, tra cả trading-log.md và sandbox-log.md):** loại trừ NVDA (mới, tới ~10-10), AMZN (tới ~10-09), AVGO (tới ~10-03), GOOGL (tới ~10-01), QCOM (tới ~09-23), PANW (tới ~09-18), AMD (tới ~09-17), NOW (tới ~09-16), CSCO (tới ~09-12). ADBE loại vì báo cáo KQKD TỐI NAY (09-10 pm, cùng rủi ro như ORCL).
+
+**Lựa chọn A: TXN (Texas Instruments)** — giá ~$258.46/cp (-1.20% hôm nay). Đề xuất mua **1cp market (~$258, ~9.8% giá trị equity core-10 hiện tại ~$2,632)**. Lý do: nhà sản xuất chip analog/embedded hàng đầu (khác hẳn AI-GPU của NVDA — đa dạng hóa sang phân khúc bán dẫn công nghiệp/ô tô ổn định hơn), cổ tức đều, báo cáo tài chính minh bạch, không có KQKD trong 21 ngày tới (an toàn, không rủi ro gap qua đêm). **Rủi ro chính:** tăng trưởng doanh thu chậm hơn nhóm AI-thuần (TXN thiên về chu kỳ công nghiệp/ô tô, nhạy cảm với suy giảm nhu cầu chip truyền thống).
+
+**Lựa chọn B: MU (Micron)** — giá ~$983.05/cp (-4.35% hôm nay, do lợi suất trái phiếu/giá dầu tăng đẩy bán tháo nhóm chip nhớ toàn ngành, KHÔNG phải tin xấu riêng công ty — theo WebSearch). Do giá quá cao so với quy mô tài khoản (~37% nếu mua 1cp nguyên), đề xuất mua **fractional ~$180-210 (7-8% giá trị equity core-10)** — lưu ý: **vị thế fractional KHÔNG có stop-loss tự động, cần theo dõi thủ công mỗi lần kiểm tra định kỳ** cho tới khi đủ nguyên cổ phiếu hoặc thoát vị thế (theo đúng yêu cầu CLAUDE.md khi đề xuất fractional). Lý do: hưởng lợi trực tiếp từ nhu cầu bộ nhớ AI (HBM), tiếp nối đúng chủ đề tăng trưởng AI mà NVDA từng đại diện, đồng thuận Buy mạnh. **Rủi ro chính:** biến động rất cao (đã -4.35% hôm nay do yếu tố vĩ mô), báo cáo KQKD 09-30 (20 ngày tới — cần cân nhắc thoát/giảm vị thế hoặc chấp nhận rủi ro biến động trước ngày đó), không có stop-loss tự động do là fractional.
+
+**Khuyến nghị của agent:** TXN an toàn hơn và phù hợp quy mô tài khoản hơn (mua nguyên 1cp, có stop-loss tự động ngay, không rủi ro KQKD gần). MU hấp dẫn hơn về tăng trưởng nhưng đòi hỏi theo dõi thủ công do fractional và biến động cao hơn nhiều.
+**Mức cắt lỗ/chốt lời đề xuất cho lệnh mới (dù chọn TXN hay MU):** stop-loss trailing -5% từ đỉnh (nhóm tech theo CLAUDE.md, chỉ áp dụng được ngay nếu mua nguyên cổ phiếu như TXN), chốt lời cảnh báo +15-20% từ giá vốn (không tự động bán, chỉ cảnh báo cân nhắc).
+
+### Các đề xuất đang chờ Hogan (tổng hợp, không lặp lại nội dung mới)
+1. **Mới:** dời stop-loss AAPL → $314.27 (theo đỉnh mới $330.81 ngày 09-03).
+2. **Mới:** chọn TXN hoặc MU (hoặc mã khác) lấp slot tech trống thay NVDA.
+3. Từ 09-10 09:48 ET: chọn CRM hoặc ORCL lấp slot tech trống thay AMZN (lưu ý ORCL đã qua KQKD tối 09-10, nên kiểm tra phản ứng giá phiên 09-11 trước khi quyết nếu chọn ORCL).
+4. Từ 09-08: dời stop-loss core-10 IONQ → $39.10 (**lưu ý: giá hiện $37.03 đã thấp hơn nhiều mức này — nếu duyệt bây giờ sẽ khớp NGAY LẬP TỨC**, cân nhắc lại mức hoặc bỏ qua đề xuất này do đã lỗi thời), RGTI → $15.00 (giá hiện $15.075, sát mức này, buffer mỏng 0.5% nếu duyệt).
+5. Từ 09-08: chọn PG hoặc PEP lấp slot blue-chip trống thay JNJ.
+
+**Tóm tắt hành động cần Hogan:** (1) biết NVDA đã bị stop-loss khớp từ sáng nay (lỗi phát hiện muộn, không phải hành động mới); (2) biết IONQ/RGTI trước đó nghi ngờ core-10 tự ý hành động — đã xác minh KHÔNG đúng, là giao dịch sandbox, core-10 vẫn nguyên trạng chờ duyệt; (3) duyệt dời stop AAPL → $314.27; (4) chọn mã lấp 2 slot tech (TXN/MU thay NVDA, CRM/ORCL thay AMZN — lưu ý IONQ→$39.10 đã lỗi thời, cân nhắc bỏ) và 1 slot blue-chip (PG/PEP thay JNJ). Có sự kiện thật (NVDA đã thoát vị thế, đỉnh mới AAPL) + đề xuất mới → **đã gửi PushNotification.**
