@@ -5217,3 +5217,28 @@ Không có mã blue-chip nào đang trong cửa sổ cấm wash-sale (đã tra t
 
 - **Đề xuất đang chờ Hogan từ 09-08 09:48 ET vẫn còn hiệu lực, không lặp lại nội dung:** (1) dời stop-loss core-10 IONQ → $39.10 (lưu ý giá hiện $37.66 đã thấp hơn nhiều — nếu duyệt bây giờ sẽ khớp ngay lập tức, cân nhắc lại mức dời), RGTI → $15.00 (giá hiện $15.225, sát mức này); (2) chọn PG hoặc PEP để lấp slot blue-chip trống thay JNJ.
 - **Tóm tắt hành động cần Hogan:** (1) biết rằng AMZN đã bị stop-loss khớp từ hôm qua (lỗi ghi log muộn, không phải hành động mới); (2) chọn CRM hoặc ORCL (hoặc mã tech khác) lấp slot tech trống — lưu ý khuyến nghị đợi qua KQKD nếu chọn ORCL; (3) các đề xuất cũ (dời stop IONQ/RGTI, chọn PG/PEP) vẫn đang chờ. Có sự kiện thật (AMZN đã thoát vị thế, dù phát hiện muộn) + đề xuất mới → **đã gửi PushNotification.**
+
+## 2026-09-10 ~13:10 ET (17:10 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): KHÔNG có đề xuất mới
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD, đã `git checkout main` + fast-forward `433df2a → d97f693` (+28 commit, toàn bộ là các entry sandbox 09-07→09-10 và entry core-10 09:48 ET sáng nay), không conflict.
+- **Core-10 hiện tại (8/10 slot, đúng như đề xuất sáng nay — slot tech chờ chọn CRM/ORCL, slot blue-chip chờ chọn PG/PEP):** `get_equity_positions` xác nhận đúng 8 mã: IONQ(7cp, avg $39.95), RGTI(18cp, avg $15.61 — 100% core-10), AAPL(1cp), MSFT(1cp), NVDA(1cp), JPM(1cp), VOO(0.72647cp), RSP(2cp). Không có thay đổi số lượng nào so với lần kiểm tra sáng nay.
+- `get_equity_orders` (từ 09-10 13:48 UTC tới nay): **rỗng** — không có lệnh mới/breach nào kể từ lần kiểm tra sáng nay.
+- **Benchmark (17:10 UTC, so đóng cửa 09-09):** SPY $759.205 (-0.42%), QQQ $711.12 (-0.72%) — thị trường tiếp tục giảm nhẹ, nhóm tech giảm mạnh hơn (tiếp diễn tâm lý thận trọng trước KQKD Oracle tối nay), không phải bán tháo mạnh.
+- P&L nhanh & trạng thái stop-loss (giá ~17:10 UTC, so đóng cửa 09-09):
+
+  | Mã | Giá vốn | Giá hiện tại | % so đóng cửa 09-09 | P&L từ vốn | Stop-loss hiện tại | Đệm tới stop |
+  |---|---|---|---|---|---|---|
+  | IONQ | $39.95 | $37.99 | -0.39% | -4.91% | $35.07 | 7.69% |
+  | RGTI | $15.61 | $15.255 | +0.10% | -2.28% | $13.73 | 10.0% |
+  | AAPL | $325.08 | $323.48 | +2.58% | -0.49% | $308.83 | 4.53% |
+  | MSFT | $510.00 | $493.94 | +0.47% | -3.15% | $484.50 | 1.91% |
+  | NVDA | $229.64 | $218.91 | -2.13% | -4.68% | $218.16 | **0.34% — cực mỏng, tiếp diễn từ sáng nay (0.20%)** |
+  | JPM | $347.97 | $352.29 | -0.68% | +1.24% | $344.85 | 2.11% |
+  | VOO | $688.26 | $697.69 | -0.45% | +1.37% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $213.58 | -0.49% | -0.63% | $211.44 | 1.00% |
+
+- **NVDA đệm tới stop-loss vẫn cực mỏng (0.34%, đã ghi nhận 0.20% sáng nay lúc 09:48 ET)** — không xấu thêm, thực tế nhích lên nhẹ so với sáng nay, không breach. Đây là kỷ luật stop-loss GTC đã đặt sẵn ($218.16), không có đỉnh mới nào để dời lên, không phải quyết định tự quyết — không cần WebSearch lại vì đã tra cứu sáng nay (không có tin xấu, chỉ là bán tháo nhóm bán dẫn/AI trước KQKD Oracle tối nay), tình huống chưa đổi.
+- Không mã nào khác biến động >3-5% so đóng cửa hôm qua, không cần WebSearch thêm.
+- **Không mã nào breach stop-loss core-10.** Không có đỉnh mới nào cần dời stop thêm. Chưa tới kỳ review 30 ngày định kỳ (kế tiếp 01/10).
+- **Các đề xuất đang chờ Hogan từ sáng nay (09-10 09:48 ET) vẫn còn hiệu lực, không lặp lại nội dung mới:** (1) chọn CRM hoặc ORCL lấp slot tech trống (lưu ý khuyến nghị đợi qua KQKD Oracle tối nay nếu chọn ORCL — ORCL hiện $156.97, -2.88% thêm so với sáng nay, phản ánh đúng tâm lý thận trọng trước KQKD); (2) dời stop-loss core-10 IONQ → $39.10 (giá hiện $37.99 vẫn thấp hơn mức này), RGTI → $15.00 (giá hiện $15.255, sát mức này); (3) chọn PG hoặc PEP lấp slot blue-chip trống thay JNJ.
+- **Kết luận: Không có đề xuất mới lần kiểm tra này** — đã kiểm tra vị thế, giá, benchmark, lệnh chờ khớp; không mã nào đạt tiêu chí cần đề xuất mới theo CLAUDE.md, không có thay đổi thật (breach/lệnh mới/fill) kể từ lần cập nhật sáng nay → **không gửi PushNotification**, chỉ ghi log.
