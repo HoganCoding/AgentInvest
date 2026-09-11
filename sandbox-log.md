@@ -4363,3 +4363,14 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Phần theo dõi sandbox (circuit breaker) — 100% tiền mặt, đã settle đầy đủ:** cash IONQ ($273.70) + proceeds RGTI ($193.57) + proceeds SOUN ($189.978) = **~$657.25** — không đổi về giá trị so lần check trước (chỉ thay đổi trạng thái settle), giảm -$41.14 (-5.89%) so vốn gốc $698.39, còn rất xa cả 2 ngưỡng (dừng hẳn gần $0 / chốt lời ~$1400). Không kích hoạt circuit breaker.
 - **Wash-sale vẫn hiệu lực:** IONQ (tới ~2026-10-09), RGTI + SOUN (tới ~2026-10-10) — không được mua lại 3 mã này.
 - **Quyết định: KHÔNG hành động** — cash sandbox nay đã settle toàn bộ (không còn ràng buộc GFV), nhưng chưa xác định được ứng viên rủi ro cao mới cụ thể để vào lệnh (cần xem thị trường mở cửa ổn định, tránh mua giữa lúc benchmark/nhóm ngành giảm mạnh theo bộ lọc CLAUDE.md 2026-07-24). Sẽ rà soát ứng viên mới ở các lần kiểm tra tiếp theo sau khi phiên chính mở cửa. Việc settle proceeds là diễn biến đã biết trước (không phải quyết định giao dịch mới) → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-09-11 ~10:10 ET (14:10 UTC) — Kiểm tra định kỳ (routine tự động, sync git): sandbox vẫn 100% tiền mặt, KHÔNG hành động
+
+- **Sync đầu phiên:** `git fetch` + `git pull origin main` — đã cập nhật đầy đủ (bao gồm entry core-10 09:47 ET), không conflict.
+- `get_equity_positions` (704170133): 7 vị thế — IONQ 7cp/avg $39.95, RSP 2cp/avg $214.93, MSFT 1cp/avg $510.00, VOO 0.72647cp/avg $688.26, AAPL 1cp/avg $325.08, JPM 1cp/avg $347.97, RGTI 18cp/avg $15.61 — đối chiếu trading-log.md xác nhận **toàn bộ đều là core-10** (không có RGTI/SOUN phần sandbox, không có mã lạ nào khác). **Sandbox hiện không giữ mã cổ phiếu nào** (100% cash).
+- `get_equity_orders` (từ 13:10 UTC hôm nay tới nay): **rỗng** — không có lệnh mới nào.
+- `get_portfolio`/`get_accounts`: cash **$2,987.67**, buying_power **$2,987.67**, `unsettled_funds` **$0** — không đổi so lần check trước (proceeds RGTI/SOUN đã settle đầy đủ từ sáng nay).
+- Không có vị thế sandbox nào đang giữ nên không cần đối chiếu giá/stop-loss; chưa có ứng viên rủi ro cao mới cụ thể đang cân nhắc ngay bây giờ → không cần WebSearch.
+- **Phần theo dõi sandbox (circuit breaker) — 100% tiền mặt, không đổi:** ~$657.25 (IONQ $273.70 + RGTI $193.57 + SOUN $189.978) — giảm -$41.14 (-5.89%) so vốn gốc $698.39, còn rất xa cả 2 ngưỡng (dừng hẳn gần $0 / chốt lời ~$1400). Không kích hoạt circuit breaker.
+- **Wash-sale vẫn hiệu lực:** IONQ (tới ~2026-10-09), RGTI + SOUN (tới ~2026-10-10) — không được mua lại 3 mã này.
+- **Quyết định: KHÔNG hành động** — chưa xác định được ứng viên rủi ro cao mới cụ thể để vào lệnh, thị trường mới mở cửa được ~40 phút. Không có gì thay đổi thật so lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
