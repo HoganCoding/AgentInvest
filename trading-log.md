@@ -5331,3 +5331,45 @@ Không có mã blue-chip nào đang trong cửa sổ cấm wash-sale (đã tra t
 5. Từ 09-08: chọn PG hoặc PEP lấp slot blue-chip trống thay JNJ.
 
 - **Kết luận:** có đề xuất cập nhật thật (mức dời stop AAPL mới do đỉnh giá mới) → **đã gửi PushNotification.**
+
+## 2026-09-11 ~13:10 ET (17:10 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): AAPL tạo đỉnh cao hơn nữa, cập nhật đề xuất dời stop lần 2 trong ngày; TXN +5.22% do rally toàn ngành bán dẫn (không phải tin riêng)
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD trùng `origin/main` nhưng nhánh local `main` tụt 39 commit — `git checkout main` + fast-forward `433df2a → df59107` (toàn bộ là entry sandbox 09-11 sáng/trưa), không conflict.
+- **Core-10 hiện tại xác nhận qua `get_equity_positions`: vẫn 7/10 slot**, không đổi so lần kiểm tra 09:47 ET sáng nay — IONQ(7cp, avg $39.95), RGTI(18cp, avg $15.61), AAPL(1cp, avg $325.08), MSFT(1cp, avg $510.00), JPM(1cp, avg $347.97), VOO(0.72647cp, avg $688.26), RSP(2cp, avg $214.93). 3 slot trống chưa đổi: 2 large-cap tech (thay AMZN, thay NVDA), 1 blue-chip (thay JNJ).
+- `get_equity_orders` (từ 09-11 13:47 UTC tới nay): **rỗng** — không có lệnh mới/fill/breach nào kể từ lần kiểm tra sáng nay.
+- **Benchmark (17:10 UTC, so đóng cửa 09-10):** SPY $765.62 (+1.03%), QQQ $716.31 (+1.10%) — rally tiếp diễn từ sáng, tech dẫn dắt nhẹ.
+- P&L nhanh & trạng thái stop-loss (giá ~17:10 UTC, so đóng cửa 09-10):
+
+  | Mã | Giá vốn | Giá hiện tại | % so đóng cửa 09-10 | Stop-loss hiện tại | Đệm tới stop |
+  |---|---|---|---|---|---|
+  | IONQ | $39.95 (basis thuế $40.70) | $37.41 | +1.54% | $35.07 | 6.25% |
+  | RGTI | $15.61 | $15.46 | +1.94% | $13.73 | 11.19% |
+  | AAPL | $325.08 | $334.27 | +2.36% | $308.83 (đề xuất dời — xem bên dưới) | — |
+  | MSFT | $510.00 | $494.65 | +0.45% | $484.50 | 2.05% |
+  | JPM | $347.97 | $356.77 | +0.91% | $344.85 | 3.34% |
+  | VOO | $688.26 | $703.87 | +1.03% | (fractional, thủ công) | — |
+  | RSP | $214.93 | $215.03 | +0.87% | $211.44 | 1.67% |
+
+- **Không mã nào breach stop-loss.**
+
+### AAPL tạo đỉnh mới cao hơn — cập nhật đề xuất dời stop lần 2 (thay thế đề xuất $317.56 sáng nay)
+- `get_equity_historicals` (5min, từ 13:30 UTC tới nay) cho thấy AAPL đã tạo đỉnh intraday **$336.22** (bar 15:10 UTC) — vượt đỉnh $334.27 (bar 13:35 UTC sáng nay) mà đề xuất $317.56 dựa vào.
+- **Đề xuất cập nhật (thay thế đề xuất $317.56 cũ, không cộng dồn):** dời stop-loss AAPL từ $308.83 → **$319.41** (= $336.22 × 0.95). Giá hiện tại $334.27–334.39 vẫn cao hơn mức đề xuất (đệm ~4.5%), không rủi ro khớp ngay nếu duyệt.
+
+### TXN +5.22% hôm nay — đã WebSearch, xác nhận rally toàn ngành bán dẫn, không phải tin riêng công ty
+- TXN là 1 trong 2 lựa chọn đang chờ duyệt để lấp slot tech (thay NVDA) — biến động +5.22% vượt ngưỡng 3-5% nên đã tra cứu thêm theo quy tắc CLAUDE.md.
+- Kết quả: rally toàn ngành bán dẫn hôm nay — Intel +8% (nâng hạng phân tích + kỳ vọng thiếu hụt CPU server), Qualcomm +4% (hợp tác Amazon về hạ tầng AI datacenter), Citi nâng triển vọng TAM ngành chip lên $237B tới 2030, nhóm quang học (Coherent, Lumentum) cũng tăng mạnh. **Không có tin xấu/tốt riêng của TXN** — biến động là beta ngành, không đổi đánh giá cơ bản đã nêu ở đề xuất 09-10 15:32 ET. Không cần điều chỉnh đề xuất TXN/MU, chỉ ghi nhận bối cảnh.
+- MU (+0.16%) không tham gia rally hôm nay đáng kể dù cùng ngành bán dẫn — có thể do đã tăng sẵn trước đó (nhớ/HBM là câu chuyện AI riêng biệt với CPU/analog).
+
+### IONQ/RGTI/JPM/RSP/VOO — xác nhận không có đỉnh mới cần dời stop thêm
+- `get_equity_historicals` (daily, từ 08-31) xác nhận đỉnh cao nhất của IONQ kể từ khi mua vẫn là $44.43 (09-08, giá hôm nay $37.41 thấp hơn nhiều) và RGTI vẫn là $17.05 (09-08, giá hôm nay $15.46) — đúng bằng các mốc đã dùng để tính đề xuất dời stop đang chờ ($39.10/$15.00 từ 09-08), không có đỉnh mới nào cao hơn để cập nhật thêm.
+- `get_equity_historicals` (daily, từ 08-15) xác nhận JPM/RSP/VOO chưa vượt các đỉnh đã dùng để tính stop hiện tại (JPM đỉnh tham chiếu ~$363, RSP/VOO tương tự) — không cần cập nhật.
+
+### Các đề xuất đang chờ Hogan (tổng hợp, không lặp lại nội dung chi tiết — xem entry gốc)
+1. **Cập nhật hôm nay (lần 2):** dời stop-loss AAPL → $319.41 (thay cho $317.56 đề xuất sáng nay 09:47 ET, do đỉnh mới cao hơn $336.22).
+2. Từ 09-10 15:32 ET: chọn TXN hoặc MU lấp slot tech trống thay NVDA (TXN +5.22% hôm nay do rally ngành, không phải tin riêng — xem ghi chú trên).
+3. Từ 09-10 09:48 ET: chọn CRM hoặc ORCL lấp slot tech trống thay AMZN.
+4. Từ 09-08: dời stop-loss core-10 IONQ → $39.10 (**vẫn lỗi thời — giá hiện $37.41 thấp hơn mức này**, khuyến nghị bỏ qua), RGTI → $15.00 (giá hiện $15.46, đệm ~3%, vẫn hợp lý nếu duyệt).
+5. Từ 09-08: chọn PG hoặc PEP lấp slot blue-chip trống thay JNJ.
+
+- **Kết luận:** có đề xuất cập nhật thật (mức dời stop AAPL mới lần 2 trong ngày do đỉnh giá mới) → **đã gửi PushNotification.**
