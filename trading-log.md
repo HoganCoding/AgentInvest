@@ -5435,3 +5435,28 @@ Không có mã blue-chip nào đang trong cửa sổ cấm wash-sale (đã tra t
 6. Chọn PG hoặc PEP lấp slot blue-chip trống thay JNJ.
 
 - **Kết luận:** có sự kiện thật cần Hogan biết (IONQ đã thoát vị thế từ 09-14, khoảng trống ghi log core-10 ~4 ngày) → **đã gửi PushNotification.**
+
+## 2026-09-15 ~10:30 ET (14:30 UTC) — Hogan duyệt & thực hiện: dời 2 stop-loss + lấp 3/4 slot trống (CRM/TXN/PG)
+
+Hogan duyệt trực tiếp trong phiên tương tác: (1) nghiên cứu mã thay IONQ — xem entry riêng bên dưới; (2) dời stop AAPL → $319.41; (3) dời stop RGTI → $15.00; (4) chọn CRM (thay AMZN), TXN (thay NVDA), PG (thay JNJ), mỗi mã 1cp market theo đúng sizing đã đề xuất 09-08/09-10.
+
+- **Dời stop-loss AAPL:** hủy lệnh stop cũ `6a96e070...` ($308.83, state → cancelled xác nhận qua get_equity_orders) → đặt lệnh stop_market mới `6aa95683...` @ **$319.41**, gtc.
+- **Dời stop-loss RGTI:** hủy lệnh stop cũ `6a95a682...` ($13.73, state → cancelled xác nhận) → đặt lệnh stop_market mới `6aa95684...` @ **$15.00**, gtc.
+- **Mua CRM:** 1cp market, lệnh `6aa95689...` filled @ **$256.3582**. Đặt stop-loss mới `6aa95693...` @ **$243.54** (-5% từ giá vốn, nhóm tech).
+- **Mua TXN:** 1cp market, lệnh `6aa9568a...` filled @ **$265.0858**. Đặt stop-loss mới `6aa95694...` @ **$251.83** (-5% từ giá vốn, nhóm tech).
+- **Mua PG:** 1cp market, lệnh `6aa9568a...` (PG) filled @ **$145.9699**. Đặt stop-loss mới `6aa95695...` @ **$138.67** (-5% từ giá vốn, nhóm blue-chip).
+- **Core-10 sau lệnh: 9/10 slot** — RSP, MSFT, VOO, AAPL, JPM, RGTI, CRM, TXN, PG. Còn **1 slot trống: rủi ro cao (thay IONQ)** — Hogan yêu cầu nghiên cứu, chưa chọn/mua (xem đề xuất bên dưới, đúng quy trình tối thiểu 2 lựa chọn, không tự chọn 1 mã và đặt lệnh luôn).
+- Chốt lời cảnh báo (không tự bán) cho CRM/TXN/PG: +15-20% từ giá vốn, theo đúng đề xuất gốc.
+
+### Nghiên cứu mã thay IONQ (nhóm rủi ro cao, slot cuối còn trống) — 2 lựa chọn, CHƯA đặt lệnh, chờ Hogan chọn
+- **Sàng lọc wash-sale (tính tới 09-15):** loại IONQ (đang giữ vị thế cũ tới ~10-14), RGTI (đang held), SOUN (tới ~10-10), CIFR (tới ~09-23), OUST (tới ~09-17), PANW (tới ~09-18, khác nhóm). HIMS/RKLB/OKLO/ACHR/ONDS/AXTI đã hết hạn cấm từ 08-23/08-27 trở về trước — đủ điều kiện mua lại.
+- **Loại HIMS khỏi danh sách dù đã hết wash-sale:** tin tức mới (WebSearch) cho thấy rủi ro cơ bản xấu đi thật, không phải nhiễu ngắn hạn — FDA cảnh báo về thuốc GLP-1 dạng compounded, Visa đưa vào chương trình giám sát do tranh chấp thẻ tín dụng tăng, nhiều vụ kiện tập thể (class action) mới nộp đầu 09-2026. Đúng tiêu chí loại trừ "tin tức tiêu cực nghiêm trọng" trong CLAUDE.md — không tái sử dụng dù giá đã hết cấm.
+
+**Lựa chọn A: RKLB (Rocket Lab)** — giá $63.235 (+1.10% so đóng cửa 09-14). Đề xuất mua **2cp market (~$126.47, ~4.1% giá trị equity core-10 hiện tại ~$3,052)**. Lý do: hoàn tất tài trợ cho thương vụ mua lại Iridium **ngay hôm nay 09-15** (catalyst mới), doanh thu kỷ lục quý này, CEO xác nhận >$1B hợp đồng mới ký từ đầu Q2, vừa phóng thành công chuyến Electron thứ 16 trong năm (09-11), công bố công nghệ pin mặt trời mới cho vệ tinh. Giá đã điều chỉnh sâu (-39% từ giữa tháng 6 tới 09-10) nhưng đã xác nhận **2 phiên tăng liên tiếp** (09-14 tăng từ đáy $60.51, 09-15 tiếp tục +1.10%) — đạt bộ lọc "ổn định/volume xác nhận" theo CLAUDE.md 2026-07-24. **Rủi ro chính:** đang có tranh chấp/protest về hợp đồng NASA bị trao cho Blue Origin; định giá vẫn cao dù đã điều chỉnh; tích hợp thương vụ Iridium có thể tạo thêm biến động ngắn hạn.
+
+**Lựa chọn B: AEHR (Aehr Test Systems)** — giá $83.73 (+0.43% so đóng cửa 09-14). Đề xuất mua **2cp market (~$167.46, ~5.5% giá trị equity core-10 hiện tại)**. Lý do: khách hàng AI lớn vừa đặt thêm đơn hàng follow-on $22M cho hệ thống FOX-XP burn-in wafer-level (thiết bị test chip AI), Jefferies khởi động coverage với khuyến nghị Buy target $175, công ty guidance doanh thu FY2027 tăng 160-200% nhờ nhu cầu test AI chip, consensus target $115 (+37% từ giá hiện tại). Mã này từng là giao dịch thắng đậm nhất tài khoản (2 đợt bán +23.1%/+14.47% hồi tháng 7). **Rủi ro chính — QUAN TRỌNG:** giá vừa giảm mạnh **-11.95% chỉ trong 1 phiên (09-11→09-14: $94.69→$83.37)** sau khi đạt đỉnh ngắn hạn $101.62 (09-09); phiên 09-15 hôm nay chỉ hồi nhẹ +0.43% — **CHƯA đủ xác nhận ổn định theo bộ lọc CLAUDE.md** (khuyến nghị chờ thêm ít nhất 1 phiên xanh rõ ràng nữa trước khi vào lệnh nếu chọn AEHR). Biến động cực cao (đã swing từ $145+ giữa tháng 8 xuống dưới $83 hiện tại).
+
+**Khuyến nghị của agent:** RKLB an toàn hơn ngay bây giờ — đã có 2 phiên xác nhận ổn định + catalyst công ty cụ thể ngay hôm nay, đạt đủ bộ lọc entry. AEHR hấp dẫn hơn về tiềm năng tăng trưởng/upside nhưng nên CHỜ thêm 1 phiên ổn định nữa trước khi vào lệnh, tránh lặp lại sai lầm mua giữa lúc chưa xác nhận đà giảm đã dừng.
+**Mức cắt lỗ/chốt lời đề xuất cho lệnh mới (dù chọn RKLB hay AEHR):** stop-loss trailing -12% từ đỉnh (nhóm rủi ro cao, CLAUDE.md 2026-07-24), chốt lời bán 50% khi lãi +15% tích lũy từ giá vốn, 50% còn lại chạy tiếp theo trailing stop.
+
+**Chờ Hogan chọn RKLB, AEHR, hoặc mã khác (hoặc chờ thêm) trước khi đặt lệnh — theo đúng quy trình, agent không tự chọn 1 mã và đặt lệnh luôn.**
