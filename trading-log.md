@@ -5464,3 +5464,50 @@ Hogan duyệt trực tiếp trong phiên tương tác: (1) nghiên cứu mã tha
 **Hogan chọn RKLB.** Đã mua 2cp market, lệnh `6aa95766...` filled @ **$63.3847**. Đặt stop-loss trailing -12% (nhóm rủi ro cao): stop_market GTC @ **$55.78**, lệnh `6aa9576c...`.
 
 **Core-10 đủ lại 10/10 slot:** RSP, MSFT, VOO, AAPL, JPM, RGTI, CRM, TXN, PG, RKLB. Tất cả nguyên cổ phiếu (trừ VOO fractional, theo dõi thủ công) đều có stop-loss active.
+
+## 2026-09-15 ~13:15 ET (17:15 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): JPM + RGTI vừa bị stop-loss khớp trong phiên (còn 8/10 slot), đề xuất mới
+
+- **Sync đầu phiên:** `git pull` — local đã khớp `origin/main`, không có commit mới nào từ phiên khác kể từ entry 10:30 ET sáng nay, không conflict.
+- `get_equity_positions` (704170133) xác nhận **8/10 slot**: RSP(2cp), MSFT(1cp), VOO(0.72647cp), AAPL(1cp), RKLB(2cp), PG(1cp), CRM(1cp), TXN(1cp). **JPM và RGTI không còn trong danh mục.**
+- `get_equity_orders` xác nhận: JPM stop-loss (đặt từ 08-10 @ $344.85, theo đỉnh ~$362.9 -5% trailing blue-chip) khớp **filled @ $344.86 lúc 15:10:22 UTC** hôm nay. RGTI stop-loss (vừa dời lên $15.00 sáng nay 10:30 ET theo đỉnh $17.05, đã Hogan duyệt) khớp **filled @ trung bình $15.0006 (18cp: 2cp@$15.0033 + 16cp@$15.00) lúc 15:22:52 UTC** hôm nay. Cả hai đúng theo kỷ luật trailing stop đã đặt sẵn (GTC), không phải quyết định tùy ý mới. Lỗ thực hiện: JPM $347.97→$344.86 ≈ **-0.89% (~-$3.11)**; RGTI $15.61→$15.0006 ≈ **-3.90% (~-$10.97, 18cp)**.
+- **WebSearch xác nhận nguyên nhân là risk-off toàn thị trường, không phải tin xấu riêng JPM/RGTI:** hôm nay thị trường bán tháo rộng do lo ngại giới CEO AI (Anthropic/OpenAI/xAI) kêu gọi chậm phát triển AI, dầu Brent vượt $105, lợi suất 10Y vượt 5% lần đầu từ 2023 — chỉ số bán dẫn -5.9%. Nhóm tài chính giảm theo do Bank of America cảnh báo doanh thu trading (tin toàn ngành, không phải JPM riêng). Không có tin tiêu cực nào riêng của JPM hay RGTI — đúng là nhiễu thị trường/kỷ luật stop hoạt động bình thường, không phải deterioration cơ bản.
+- **2 slot trống hiện tại:** 1 blue-chip (thay JPM), 1 rủi ro cao (thay RGTI).
+- **Wash-sale cập nhật:** JPM cấm mua lại tới **~2026-10-15**; RGTI cấm mua lại tới **~2026-10-15** (gia hạn từ lệnh bán lỗ core-10 hôm nay, cộng với ban cũ từ sandbox tới ~10-10). Vẫn hiệu lực: IONQ (~10-14), SOUN (~10-10, sandbox), CIFR (~09-23), OUST (~09-17), PANW (~09-18, khác nhóm). HIMS loại khỏi danh sách ứng viên dù hết cấm (tin xấu cơ bản mới — xem entry 10:15 ET sáng nay).
+- P&L nhanh & trạng thái stop-loss (giá ~17:11 UTC, so đóng cửa 09-14):
+
+  | Mã | Giá vốn | Giá hiện tại | % so đóng cửa 09-14 | Stop-loss hiện tại | Đệm tới stop |
+  |---|---|---|---|---|---|
+  | AAPL | $325.08 | $329.90 | -0.95% | $319.41 | 3.18% |
+  | MSFT | $510.00 | $500.45 | -1.89% | $484.50 | 3.19% |
+  | RSP | $214.93 | $214.39 | -0.29% | (fractional, thủ công) | — |
+  | VOO | $688.26 | $696.34 | -0.42% | (fractional, thủ công) | — |
+  | RKLB | $63.38 | $64.345 | +2.87% | $55.78 (đề xuất dời $57.83) | 13.3%/10.1% |
+  | PG | $145.97 | $146.93 | +0.55% | $138.67 (đề xuất dời $139.82) | 5.6%/4.8% |
+  | CRM | $256.36 | $260.625 | +0.46% | $243.54 (đề xuất dời $249.00) | 6.6%/4.5% |
+  | TXN | $265.09 | $263.09 | -0.13% | $251.83 | 4.3% |
+
+- **Không mã nào breach stop-loss.** Không mã nào biến động >3-5% so phiên trước ngoài bối cảnh thị trường chung đã tra ở trên.
+
+### Đề xuất 1: Cập nhật trailing stop-loss theo đỉnh mới (3 mã)
+- **RKLB:** `get_equity_historicals` (5min, từ 13:30 UTC) xác nhận đỉnh intraday **$65.72** (bar 13:40 UTC) kể từ khi mua sáng nay. Đề xuất dời stop-loss **$55.78 → $57.83** (= $65.72 × 0.88, nhóm rủi ro cao -12%).
+- **CRM:** đỉnh intraday **$262.11** (bar 16:25 UTC). Đề xuất dời stop-loss **$243.54 → $249.00** (= $262.11 × 0.95, nhóm tech -5%).
+- **PG:** đỉnh intraday **$147.18** (bar 15:35 UTC). Đề xuất dời stop-loss **$138.67 → $139.82** (= $147.18 × 0.95, nhóm blue-chip -5%).
+- TXN/AAPL/MSFT: chưa có đỉnh mới kể từ lần cập nhật gần nhất (TXN hiện dưới giá vốn) — không cần cập nhật.
+
+### Đề xuất 2: Lấp slot blue-chip trống (thay JPM) — chọn 1 trong 2, cần Hogan duyệt
+Không mã blue-chip nào đang trong wash-sale ban. Đề xuất đa dạng hóa sang consumer staples thay vì mua lại JPM/mã tài chính khác ngay (core-10 vừa mất slot tài chính đúng ngày nhóm tài chính toàn ngành bị bán tháo vì cảnh báo BofA — nên tránh lặp lại cùng rủi ro ngành ngay lập tức).
+
+- **Lựa chọn A: PEP (PepsiCo)** — giá $135.455 (-0.65% so đóng cửa 09-14). Đề xuất mua **1cp market (~$135.46, ~5.3% giá trị equity core-10 hiện tại ~$2,564)**. Lý do: dividend aristocrat, dòng tiền ổn định, đa dạng hóa khỏi nhóm tài chính vừa bị ảnh hưởng chung ngành. Rủi ro chính: tăng trưởng doanh thu chậm, áp lực chi phí nguyên liệu/logistics, USD mạnh ảnh hưởng doanh thu quốc tế. Stop-loss đề xuất: -5% từ giá vốn (~$128.68, nhóm blue-chip); chốt lời cảnh báo +15-20%.
+- **Lựa chọn B: KO (Coca-Cola)** — giá $88.475 (-0.98% so đóng cửa 09-14, một phần do điều chỉnh chia cổ tức — `adjusted_previous_close` $88.82 khác `previous_close` $89.35, không phải tin xấu). Đề xuất mua **1cp market (~$88.48, ~3.5% giá trị equity)**. Lý do: blue-chip cổ tức ổn định lâu đời, biến động thấp, ít tương quan với nhóm tài chính/công nghệ đang biến động mạnh hôm nay. Rủi ro chính: tăng trưởng chậm, định giá không rẻ so lịch sử, biến động tiền tệ quốc tế. Stop-loss đề xuất: -5% từ giá vốn (~$84.05); chốt lời cảnh báo +15-20%.
+
+**Khuyến nghị của agent:** cả 2 đều đạt tiêu chí blue-chip ổn định, không có tin xấu; PEP định giá tương đối hấp dẫn hơn nhẹ. Chờ Hogan chọn PEP, KO, hoặc mã khác (hoặc chờ thêm) trước khi đặt lệnh.
+
+### Đề xuất 3: Lấp slot rủi ro cao trống (thay RGTI) — chọn 1 trong 2, cần Hogan duyệt, LƯU Ý thị trường hôm nay đang risk-off cho nhóm AI/growth
+Sàng lọc wash-sale: loại RGTI/IONQ/SOUN (đang cấm), CIFR (~09-23), OUST (~09-17), PANW (~09-18, khác nhóm), HIMS (tin xấu cơ bản mới). ACHR loại vì đang trong downtrend chưa xác nhận đáy (-62% từ đỉnh 52 tuần, thêm rủi ro sự kiện warrant đáo hạn 09-16) — không đạt bộ lọc entry.
+
+- **Lựa chọn A: OKLO (Oklo Inc.)** — giá $36.17 (-0.11% so đóng cửa 09-14). Lý do: SMR nuclear, hợp đồng cấp điện 1.2GW với Meta, ký fuel-supply với Centrus, vừa đạt first criticality tại lò test Groves — catalyst dài hạn mạnh (AI datacenter cần điện). **Rủi ro chính — QUAN TRỌNG:** vừa công bố chương trình ATM offering $1B (pha loãng cổ phần) 09-11, giá đã giảm mạnh từ đỉnh $193 (10/2025) về $36 hiện tại (~-81%); mới chỉ đi ngang 3 phiên sau tin pha loãng, **CHƯA đủ xác nhận ổn định rõ ràng** theo bộ lọc CLAUDE.md 2026-07-24.
+- **Lựa chọn B: ONDS (Ondas Holdings)** — giá $7.385 (+2.14% so đóng cửa 09-14). Lý do: công nghệ drone/tự động hóa quốc phòng, đã hết hạn wash-sale, biến động vừa phải hôm nay dù thị trường chung risk-off. Rủi ro chính: vốn hóa nhỏ, thanh khoản thấp hơn, chưa xác định catalyst cụ thể mới, cần nghiên cứu cơ bản thêm trước khi quyết định size.
+
+**Khuyến nghị của agent:** thị trường hôm nay đang risk-off rõ rệt cho nhóm AI/growth (bán dẫn -5.9%) — dù không cấm tuyệt đối theo bộ lọc (SPY chỉ -0.49%, không phải benchmark trực tiếp của 2 mã này), khuyến nghị CHỜ thêm 1-2 phiên xác nhận ổn định trước khi vào lệnh dù chọn OKLO hay ONDS, tránh lặp lại sai lầm mua giữa lúc thị trường liên quan đang biến động mạnh (QBTS/HIMS trước đây). Chờ Hogan chọn hoặc chỉ định mã khác.
+
+**Kết luận:** có sự kiện thật (JPM + RGTI vừa bị stop-loss khớp, core-10 còn 8/10) + 3 đề xuất mới (2 dời stop, 2 slot cần lấp) → **đã gửi PushNotification.**
