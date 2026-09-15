@@ -4573,3 +4573,14 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Phần theo dõi sandbox (circuit breaker) — 100% tiền mặt, không đổi:** $0 vị thế, không kích hoạt circuit breaker.
 - **Wash-sale cập nhật:** IONQ (tới ~2026-10-14), SOUN (tới ~2026-10-10) — không đổi. **RGTI: lưu ý thêm lệnh bán lỗ MỚI hôm nay (core-10, $15.61→$15.00, -3.9%)** ngoài lệnh bán lỗ sandbox cũ (tới ~10-10) — cấm mua lại RGTI tới ít nhất **~2026-10-15** (30 ngày từ lần bán lỗ mới nhất, tính theo tax lot chung toàn tài khoản). JPM cũng vừa bán lỗ nhẹ hôm nay nhưng không thuộc nhóm rủi ro cao nên không phải ứng viên sandbox, không cần theo dõi wash-sale riêng.
 - **Quyết định: KHÔNG hành động** — sandbox không có gì thay đổi thật (vẫn 100% cash, không đặt lệnh nào) → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md. Sự kiện JPM/RGTI thuộc core-10, ngoài phạm vi báo cáo của routine này.
+
+## 2026-09-15 ~13:09 ET (17:09 UTC) — Kiểm tra định kỳ (routine tự động, sync git): sandbox vẫn 100% tiền mặt, KHÔNG hành động
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD, tụt so `origin/main` (`8d3b6fa`, +entry sandbox 09-15 12:09 ET) — `git checkout main` + `git pull origin main`, fast-forward sạch, không conflict.
+- `get_equity_positions` (704170133): **8 vị thế** — RSP 2cp/avg $214.93, MSFT 1cp/avg $510.00, VOO 0.72647cp/avg $688.26, AAPL 1cp/avg $325.08, RKLB 2cp/avg $63.38, PG 1cp/avg $145.97, CRM 1cp/avg $256.36, TXN 1cp/avg $265.09 — đối chiếu `trading-log.md` xác nhận **toàn bộ 8 mã đều là core-10** (RKLB thay IONQ, CRM/TXN/PG thay AMZN/NVDA/JNJ, mua sáng nay 09-15; JPM và RGTI đã bị stop-loss khớp lúc 15:10/15:22 UTC hôm nay, đúng ghi nhận lần check trước, chưa được core-10 thay thế). Không có mã lạ nào → **sandbox hiện vẫn không giữ mã cổ phiếu nào** (100% cash).
+- `get_equity_orders` (từ 09-15 16:09 UTC tới nay): **rỗng** — không có lệnh mới nào (kể cả core-10).
+- `get_portfolio`: cash **$3,054.72**, buying_power **$2,439.85** — không đổi so lần check trước (12:09 ET). Chênh lệch cash vs buying_power (~$614.87) là tiền bán JPM+RGTI (core-10) hôm nay chưa settle xong — không ảnh hưởng sandbox vì sandbox không có cash/vị thế riêng nào.
+- Không có vị thế sandbox nào đang giữ nên không cần đối chiếu giá/stop-loss; chưa có ứng viên rủi ro cao mới cụ thể đang cân nhắc ngay bây giờ → không cần WebSearch.
+- **Phần theo dõi sandbox (circuit breaker) — 100% tiền mặt, không đổi:** $0 vị thế, không kích hoạt circuit breaker.
+- **Wash-sale vẫn hiệu lực:** IONQ (tới ~2026-10-14), SOUN (tới ~2026-10-10), RGTI (tới ~2026-10-15, cập nhật theo lệnh bán lỗ core-10 mới nhất) — không được mua lại các mã này.
+- **Quyết định: KHÔNG hành động** — chưa xác định được ứng viên rủi ro cao mới cụ thể để vào lệnh. Không có gì thay đổi thật so lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
