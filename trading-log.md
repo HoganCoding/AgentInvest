@@ -5460,3 +5460,7 @@ Hogan duyệt trực tiếp trong phiên tương tác: (1) nghiên cứu mã tha
 **Mức cắt lỗ/chốt lời đề xuất cho lệnh mới (dù chọn RKLB hay AEHR):** stop-loss trailing -12% từ đỉnh (nhóm rủi ro cao, CLAUDE.md 2026-07-24), chốt lời bán 50% khi lãi +15% tích lũy từ giá vốn, 50% còn lại chạy tiếp theo trailing stop.
 
 **Chờ Hogan chọn RKLB, AEHR, hoặc mã khác (hoặc chờ thêm) trước khi đặt lệnh — theo đúng quy trình, agent không tự chọn 1 mã và đặt lệnh luôn.**
+
+**Hogan chọn RKLB.** Đã mua 2cp market, lệnh `6aa95766...` filled @ **$63.3847**. Đặt stop-loss trailing -12% (nhóm rủi ro cao): stop_market GTC @ **$55.78**, lệnh `6aa9576c...`.
+
+**Core-10 đủ lại 10/10 slot:** RSP, MSFT, VOO, AAPL, JPM, RGTI, CRM, TXN, PG, RKLB. Tất cả nguyên cổ phiếu (trừ VOO fractional, theo dõi thủ công) đều có stop-loss active.
