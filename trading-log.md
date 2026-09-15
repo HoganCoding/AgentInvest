@@ -5511,3 +5511,11 @@ Sàng lọc wash-sale: loại RGTI/IONQ/SOUN (đang cấm), CIFR (~09-23), OUST 
 **Khuyến nghị của agent:** thị trường hôm nay đang risk-off rõ rệt cho nhóm AI/growth (bán dẫn -5.9%) — dù không cấm tuyệt đối theo bộ lọc (SPY chỉ -0.49%, không phải benchmark trực tiếp của 2 mã này), khuyến nghị CHỜ thêm 1-2 phiên xác nhận ổn định trước khi vào lệnh dù chọn OKLO hay ONDS, tránh lặp lại sai lầm mua giữa lúc thị trường liên quan đang biến động mạnh (QBTS/HIMS trước đây). Chờ Hogan chọn hoặc chỉ định mã khác.
 
 **Kết luận:** có sự kiện thật (JPM + RGTI vừa bị stop-loss khớp, core-10 còn 8/10) + 3 đề xuất mới (2 dời stop, 2 slot cần lấp) → **đã gửi PushNotification.**
+
+## 2026-09-15 ~15:31 ET (19:31 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): KHÔNG có đề xuất mới
+
+- `git pull` đầu phiên: fast-forward 10 commit (9aec0ec→669b3f5), không có xung đột.
+- `get_equity_positions` xác nhận vẫn 8/10 slot, không đổi so với lần kiểm tra 13:15 ET: RSP(2cp), MSFT(1cp), VOO(0.72647cp), AAPL(1cp), RKLB(2cp), PG(1cp), CRM(1cp), TXN(1cp). `get_equity_orders` từ 17:15 UTC tới nay: không có lệnh mới nào khớp (0 orders) — 2 slot trống (blue-chip thay JPM, rủi ro cao thay RGTI) và 3 đề xuất dời stop-loss (RKLB/CRM/PG) từ lần kiểm tra trước vẫn đang chờ Hogan quyết định, chưa có phản hồi.
+- P&L nhanh (giá ~19:31 UTC so đóng cửa 09-14): RSP -0.45%, MSFT -1.70%, VOO -0.50%, AAPL -0.94%, RKLB +1.58%, PG +0.16%, CRM -1.21%, TXN -0.18%. Không mã nào biến động >3-5% → không cần WebSearch tin tức sâu theo quy định tiết kiệm chi phí.
+- Không mã nào tạo đỉnh mới kể từ lần cập nhật gần nhất (giá hiện tại của cả RKLB/CRM/PG đều thấp hơn đỉnh intraday đã ghi nhận lúc 13:15 ET) → không có đề xuất dời stop-loss bổ sung. Không mã nào breach stop-loss hiện tại (AAPL đệm ~3.2%, MSFT ~2.5%, TXN ~4.2%, RKLB/CRM/PG đệm rộng so với stop hiện hành).
+- **Kết luận:** không có sự kiện mới, không có đề xuất mới → không gửi PushNotification (tránh spam noise theo quy định). Các đề xuất đang chờ Hogan từ entry 13:15 ET hôm nay (2 lựa chọn lấp slot blue-chip: PEP/KO; 2 lựa chọn lấp slot rủi ro cao: OKLO/ONDS; 3 đề xuất dời stop RKLB/CRM/PG) vẫn còn hiệu lực, chưa có quyết định.
