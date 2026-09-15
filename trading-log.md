@@ -5403,3 +5403,35 @@ Không có mã blue-chip nào đang trong cửa sổ cấm wash-sale (đã tra t
   5. Từ 09-08: chọn PG hoặc PEP lấp slot blue-chip trống thay JNJ.
 
 - **Kết luận: Không có đề xuất mới lần kiểm tra này** — đã kiểm tra vị thế, giá, benchmark, lệnh chờ khớp, đỉnh giá AAPL; không mã nào đạt tiêu chí cần đề xuất mới theo CLAUDE.md, không có thay đổi thật (breach/lệnh mới/fill/đỉnh mới) kể từ lần cập nhật trước → **không gửi PushNotification**, chỉ ghi log.
+
+## 2026-09-15 ~10:15 ET (14:15 UTC) — Kiểm tra định kỳ core-10 (phiên tương tác, theo yêu cầu Hogan): ghi nhận IONQ đã bị stop-loss khớp 09-14, hiện 6/10 slot, 4 slot trống
+
+- **Sync đầu phiên:** `git fetch` + `git pull` — local tụt 77 commit so `origin/main` (toàn bộ entry sandbox/core-10 từ 09-03 15:30 ET tới nay), fast-forward sạch, không conflict. **Lưu ý: đây là lần đầu core-10 routine ghi log kể từ 09-11 ~15:32 ET** (khoảng trống ~4 ngày không có entry core-10 nào, dù sandbox vẫn chạy đều — có thể routine core-10 đã không chạy trong giai đoạn này).
+- `get_equity_positions` (704170133) xác nhận **6/10 slot** — RSP 2cp/avg $214.93, MSFT 1cp/avg $510.00, VOO 0.72647cp/avg $688.26, AAPL 1cp/avg $325.08, JPM 1cp/avg $347.97, RGTI 18cp/avg $15.61. **IONQ không còn trong danh mục.**
+- `get_equity_orders` (symbol IONQ) xác nhận: lệnh sell stop-loss IONQ 7cp đã **filled @ $35.16** lúc 2026-09-14 ~09:30 ET — khớp đúng mức stop $35.07 đã đặt sẵn (chưa được dời lên $39.10 như đề xuất 09-08, do đề xuất đó chưa được Hogan duyệt và đã bị khuyến nghị bỏ qua vì lỗi thời từ 09-11). Lỗ thực hiện: $39.95 → $35.16 = **-11.99% (~-$33.53 tổng, 7cp)** — đúng theo kỷ luật trailing stop -12% nhóm rủi ro cao (CLAUDE.md 2026-07-24), không phải quyết định tùy ý, không cần hành động thêm cho lệnh này.
+- **4 slot trống hiện tại:** 1 rủi ro cao (IONQ, mới), 2 large-cap tech (AMZN, NVDA), 1 blue-chip (JNJ).
+- **Wash-sale:** không được mua lại IONQ tới ~2026-10-14 (theo ghi nhận sandbox-log, do wash sale dùng chung tax lot toàn tài khoản).
+- P&L nhanh & trạng thái stop-loss (giá ~14:07 UTC, so đóng cửa 09-14):
+
+  | Mã | Giá vốn | Giá hiện tại | % so đóng cửa 09-14 | Stop-loss hiện tại | Đệm tới stop |
+  |---|---|---|---|---|---|
+  | AAPL | $325.08 | $329.63 | -1.04% | $308.83 (đề xuất dời $319.41 vẫn chờ duyệt) | 6.75% |
+  | MSFT | $510.00 | $499.36 | -1.19% | $484.50 | 2.97% |
+  | JPM | $347.97 | $349.795 | -0.10% | $344.85 | 1.41% |
+  | RSP | $214.93 | $214.07 | -0.44% | $211.44 | 1.24% |
+  | RGTI | $15.61 | $15.31 | +0.26% | $13.73 (đề xuất dời $15.00 vẫn chờ duyệt) | 11.5% |
+  | VOO | $688.26 | $697.43 | -0.27% | (fractional, thủ công) | — |
+
+- **Không mã nào breach stop-loss.** `get_equity_historicals` (daily, từ 09-01) xác nhận AAPL đỉnh cao nhất kể từ khi mua vẫn là $336.22 (09-11) và RGTI vẫn $17.05 (09-08) — không có đỉnh mới nào cao hơn kể từ lần kiểm tra 09-11, 2 đề xuất dời stop đang chờ ($319.41 / $15.00) vẫn là mức mới nhất, không cần cập nhật thêm.
+- **Benchmark (14:07 UTC, so đóng cửa 09-14):** SPY $758.705 (-0.29%), QQQ $707.87 (-0.18%) — đi ngang nhẹ, không có tín hiệu risk-off, không mã nào biến động >3-5% → không cần WebSearch thêm.
+- `get_portfolio`: cash/buying_power **$3,234.04** (dùng chung pool core-10 + sandbox), `unsettled_funds` $0.
+
+### Các đề xuất đang chờ Hogan (tổng hợp, chưa có quyết định nào từ 09-08→09-11, cộng 1 mục mới)
+1. **Mới:** IONQ đã bị stop-loss khớp (không cần duyệt gì, đã xảy ra) — cần đề xuất mã thay thế cùng nhóm rủi ro cao khi Hogan sẵn sàng (agent sẽ nghiên cứu nếu được yêu cầu, tránh tự chọn 1 mã và đặt lệnh luôn theo đúng quy trình).
+2. Dời stop-loss AAPL → $319.41 (theo đỉnh $336.22, 09-11).
+3. Dời stop-loss RGTI → $15.00 (theo đỉnh $17.05, 09-08).
+4. Chọn CRM hoặc ORCL lấp slot tech trống thay AMZN.
+5. Chọn TXN hoặc MU lấp slot tech trống thay NVDA (lưu ý: TXN/MU giá tham chiếu từ 09-10, nên lấy giá mới nếu duyệt).
+6. Chọn PG hoặc PEP lấp slot blue-chip trống thay JNJ.
+
+- **Kết luận:** có sự kiện thật cần Hogan biết (IONQ đã thoát vị thế từ 09-14, khoảng trống ghi log core-10 ~4 ngày) → **đã gửi PushNotification.**
