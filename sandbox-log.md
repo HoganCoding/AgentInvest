@@ -4716,3 +4716,14 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Phần theo dõi sandbox (circuit breaker) — 100% tiền mặt, không đổi:** $0 vị thế, không kích hoạt circuit breaker.
 - **Wash-sale vẫn hiệu lực:** IONQ (~10-14), SOUN (~10-10), RGTI (~10-15), JPM (~10-15), CIFR (~09-23), OUST (~09-17), PANW (~09-18, khác nhóm).
 - **Quyết định: KHÔNG hành động** — không có gì thay đổi thật → không gửi PushNotification, chỉ ghi log.
+
+## 2026-09-16 ~15:48 ET (19:48 UTC) — Kiểm tra định kỳ (phiên tương tác, theo yêu cầu Hogan): sandbox vẫn 100% tiền mặt, KHÔNG hành động; ghi nhận RSP (core-10) vừa bị stop-loss khớp, không thuộc phạm vi sandbox
+
+- **Sync đầu phiên:** `git fetch` + `git pull --ff-only`, không conflict.
+- `get_equity_positions` (704170133): **8 vị thế** — MSFT, VOO, AAPL, RKLB, PG, CRM, TXN, PEP. **RSP không còn trong danh mục** — đối chiếu `trading-log.md` xác nhận đây là stop-loss core-10 khớp lúc 15:18 ET hôm nay (không phải giao dịch sandbox bị lỡ) → theo đúng quy tắc đối chiếu bắt buộc, sandbox **KHÔNG hành động gì** với sự kiện này.
+- Các mã còn lại đều là core-10, không có mã lạ nào → **sandbox hiện vẫn không giữ mã cổ phiếu nào** (100% cash).
+- `get_portfolio`: cash **$3,342.56**, buying_power **$2,919.70** (chênh lệch là tiền bán RSP hôm nay chưa settle — không ảnh hưởng sandbox).
+- Không có vị thế sandbox nào đang giữ; OKLO/ONDS chưa kiểm tra lại riêng lần này (đã đánh giá ở entry core-10 gần nhất, thị trường vẫn điều chỉnh giảm nhẹ, chưa đạt bộ lọc entry).
+- **Phần theo dõi sandbox (circuit breaker) — 100% tiền mặt, không đổi:** $0 vị thế, không kích hoạt circuit breaker.
+- **Wash-sale cập nhật:** thêm RSP (core-10, tới ~2026-10-16) — không liên quan nhóm rủi ro cao sandbox nên không ảnh hưởng ứng viên đang cân nhắc.
+- **Quyết định: KHÔNG hành động** — sandbox không có gì thay đổi thật → không gửi PushNotification riêng (sự kiện RSP thuộc core-10, đã gửi push từ entry core-10 tương ứng), chỉ ghi log.
