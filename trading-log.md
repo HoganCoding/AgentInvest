@@ -5617,3 +5617,28 @@ Hogan duyệt trực tiếp trong phiên tương tác (trả lời "1234 Dời, 
 - **Các mã khác:** đệm tới stop vẫn rộng — RKLB $62.21 vs stop $57.83 (đệm 6.6%), TXN $259.735 vs stop $254.57 (đệm 2.0%), AAPL $331.885 vs stop $319.41 (đệm 3.9%), PG $147.32 vs stop $140.22 (đệm 5.1%), PEP $134.61 vs stop $128.27 (đệm 4.9%), MSFT $488.50 vs stop $484.50 (đệm 0.8% — cũng khá hẹp), RSP $211.48 (fractional, theo dõi thủ công). Không mã nào tạo đỉnh mới (toàn bộ đang dưới đỉnh tham chiếu do thị trường giảm hôm nay) → không có đề xuất dời stop.
 - **Slot rủi ro cao (thay RGTI):** OKLO $35.13 (-2.36%), ONDS $7.045 (-2.69%) — cả hai tiếp tục giảm, càng không đạt bộ lọc entry (cần phiên xanh xác nhận). Tiếp tục để trống, không đề xuất vào lệnh giữa lúc thị trường điều chỉnh.
 - **Kết luận:** không mã nào breach stop-loss, không có tin xấu cụ thể, không có đề xuất mới thật sự (CRM và MSFT đệm hẹp nhưng đó là kỷ luật stop đã đặt sẵn hoạt động bình thường, không phải quyết định cần duyệt) → **không gửi PushNotification**, chỉ ghi log. Lưu ý cho lần kiểm tra kế tiếp: theo dõi sát CRM (đệm 0.25%) và MSFT (đệm 0.8%) — nếu breach sẽ là lệnh GTC tự khớp bình thường, không cần đề xuất, chỉ cần xác nhận qua `get_equity_orders`.
+
+## 2026-09-16 ~15:48 ET (19:48 UTC) — Kiểm tra định kỳ core-10 (phiên tương tác, theo yêu cầu Hogan): RSP đã bị stop-loss khớp lúc 15:18 ET, còn 8/10 slot; MSFT/CRM đang rất sát stop
+
+- **Sync đầu phiên:** `git fetch` + `git pull --ff-only` — fast-forward sạch (c3dc6d9→2036171, +entry core-10 15:31 ET + 2 entry sandbox), không conflict.
+- `get_equity_positions` xác nhận **8/10 slot** — MSFT, VOO, AAPL, RKLB, PG, CRM, TXN, PEP. **RSP không còn trong danh mục.**
+- `get_equity_orders` (symbol RSP) xác nhận: lệnh stop-loss RSP (2cp @ $211.44, đặt từ 08-19) đã **filled @ $211.43 lúc 2026-09-16 19:18:25 UTC (15:18 ET)** — đúng theo kỷ luật trailing stop -5% nhóm ETF, không phải quyết định tùy ý. Lỗ thực hiện: $214.93 → $211.43 ≈ **-1.63% (~-$7.00, 2cp)**.
+- **Lưu ý sai sót cần rút kinh nghiệm:** entry routine 15:31 ET (sau khi RSP đã khớp lúc 15:18 ET) vẫn ghi nhầm "RSP $211.48 (fractional, theo dõi thủ công)" như còn đang giữ — RSP thực tế đã bán và chưa từng là fractional (2 cổ phiếu nguyên). Routine đó không gọi `get_equity_orders` riêng cho RSP để xác nhận, chỉ dựa vào giá quote nên bỏ sót sự kiện. Đã sửa lại đúng ở entry này.
+- **2 slot trống hiện tại:** 1 ETF (thay RSP), 1 rủi ro cao (thay RGTI, đã biết từ trước).
+- **Wash-sale mới:** không được mua lại RSP tới ~**2026-10-16**.
+- `get_equity_orders` (từ 19:31 UTC tới nay, các mã khác): không có fill nào khác ngoài RSP.
+- **Benchmark (19:48 UTC, so đóng cửa 09-15):** SPY $753.37 (-0.53%), QQQ $704.18 (-0.05%) — thị trường tiếp tục điều chỉnh nhẹ buổi chiều, chưa tới ngưỡng risk-off mạnh.
+- P&L nhanh & đệm tới stop (giá 19:48 UTC so giá vốn/đỉnh dùng đặt stop):
+
+  | Mã | Giá hiện tại | Stop-loss | Đệm tới stop |
+  |---|---|---|---|
+  | MSFT | $489.34 | $484.50 | **0.99%** — rất sát |
+  | CRM | $250.83 | $249.00 | **0.73%** — rất sát |
+  | TXN | $259.09 | $254.57 | 1.78% |
+  | AAPL | $332.02 | $319.41 | 3.95% |
+  | RKLB | $63.22 | $57.83 | 9.30% |
+  | PG | $147.10 | $140.22 | 4.91% |
+  | PEP | $134.42 | $128.27 | 4.79% |
+
+- **MSFT và CRM đang rất sát ngưỡng stop-loss** — đây là kỷ luật trailing stop hoạt động bình thường (chỉ dời lên, không dời xuống dù giá giảm), không cần hành động/đề xuất gì thêm, chỉ theo dõi sát khả năng khớp ở lần kiểm tra kế tiếp.
+- **Kết luận:** có sự kiện thật (RSP bị stop-loss khớp, core-10 còn 8/10, phát hiện sai sót ghi log trước đó) → **đã gửi PushNotification.**
