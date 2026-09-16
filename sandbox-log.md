@@ -4727,3 +4727,14 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Phần theo dõi sandbox (circuit breaker) — 100% tiền mặt, không đổi:** $0 vị thế, không kích hoạt circuit breaker.
 - **Wash-sale cập nhật:** thêm RSP (core-10, tới ~2026-10-16) — không liên quan nhóm rủi ro cao sandbox nên không ảnh hưởng ứng viên đang cân nhắc.
 - **Quyết định: KHÔNG hành động** — sandbox không có gì thay đổi thật → không gửi PushNotification riêng (sự kiện RSP thuộc core-10, đã gửi push từ entry core-10 tương ứng), chỉ ghi log.
+
+## 2026-09-16 ~16:07 ET (20:07 UTC) — Kiểm tra định kỳ (routine tự động, sync git): sandbox vẫn 100% tiền mặt, KHÔNG hành động
+
+- **Sync đầu phiên:** `git checkout main` (từ detached HEAD) + `git pull origin main` — fast-forward sạch (9aec0ec→1aca95f, +entry core-10 15:48 ET + entry sandbox 15:48 ET), không conflict.
+- `get_equity_positions` (704170133): **8 vị thế** — MSFT(1cp), VOO(0.72647cp), AAPL(1cp), RKLB(2cp), PG(1cp), CRM(1cp), TXN(1cp), PEP(1cp) — đối chiếu `trading-log.md` xác nhận **toàn bộ đều là core-10** (RSP đã bị stop-loss khớp 15:18 ET hôm nay, đúng như entry trước ghi nhận). Không có mã lạ nào → **sandbox hiện vẫn không giữ mã cổ phiếu nào** (100% cash).
+- `get_equity_orders` (từ 19:48 UTC tới nay): **rỗng** — không có lệnh mới/fill nào.
+- `get_portfolio`: cash **$3,342.56**, buying_power **$2,919.70** — không đổi so lần check trước (15:48 ET).
+- Không có vị thế sandbox nào đang giữ nên không cần đối chiếu giá/stop-loss; chưa có ứng viên rủi ro cao mới cụ thể đang cân nhắc ngay bây giờ (OKLO/ONDS vẫn chưa đạt bộ lọc entry theo đánh giá core-10 gần nhất) → không cần WebSearch.
+- **Phần theo dõi sandbox (circuit breaker) — 100% tiền mặt, không đổi:** $0 vị thế, không kích hoạt circuit breaker.
+- **Wash-sale vẫn hiệu lực:** IONQ (~10-14), SOUN (~10-10), RGTI (~10-15), JPM (~10-15), CIFR (~09-23), OUST (~09-17), PANW (~09-18, khác nhóm), RSP (~10-16, core-10, không liên quan nhóm rủi ro cao sandbox).
+- **Quyết định: KHÔNG hành động** — chưa xác định được ứng viên rủi ro cao mới cụ thể để vào lệnh. Không có gì thay đổi thật so lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
