@@ -5564,3 +5564,15 @@ Sàng lọc wash-sale: loại RGTI/IONQ/SOUN (đang cấm), CIFR (~09-23), OUST 
 - Không mã nào tạo đỉnh mới vượt mốc đã dùng để tính stop-loss/đề xuất hiện tại (TXN $266.02 < đỉnh $267.97 sáng nay; PG $147.33 < đỉnh $147.60 sáng nay; AAPL/RKLB/CRM đều dưới đỉnh đã ghi nhận trước đó) → không có đề xuất dời stop bổ sung.
 - **Các đề xuất đang chờ Hogan (không đổi, xem entry 09:46 ET sáng nay để chi tiết):** (1) dời stop PG → $140.22; (2) dời stop TXN → $254.57; (3) dời stop RKLB → $57.83; (4) dời stop CRM → $249.00; (5) chọn PEP/KO lấp slot blue-chip; (6) chọn OKLO/ONDS lấp slot rủi ro cao.
 - **Kết luận:** không có gì thay đổi thật, không có đề xuất mới → không gửi PushNotification, chỉ ghi log.
+
+## 2026-09-16 ~10:09 ET (14:09 UTC) — Hogan duyệt & thực hiện: dời 4 stop-loss + mua PEP lấp slot blue-chip (thay JPM)
+
+Hogan duyệt trực tiếp trong phiên tương tác (trả lời "1234 Dời, 5 PEP 6 chờ"): (1-4) dời stop-loss PG/TXN/RKLB/CRM theo đúng mức đề xuất entry 09:46 ET sáng nay; (5) mua PEP lấp slot blue-chip trống thay JPM; (6) chưa chọn mã rủi ro cao thay RGTI (OKLO/ONDS) — Hogan yêu cầu chờ thêm.
+
+- **Dời stop-loss PG:** hủy lệnh cũ `6aa95695...` ($138.67, state → cancelled xác nhận) → đặt lệnh stop_market mới `6aaaa321...` @ **$140.22**, gtc.
+- **Dời stop-loss TXN:** hủy lệnh cũ `6aa95694...` ($251.83, state → cancelled xác nhận) → đặt lệnh stop_market mới `6aaaa322...` @ **$254.57**, gtc.
+- **Dời stop-loss RKLB:** hủy lệnh cũ `6aa9576c...` ($55.78, state → cancelled xác nhận) → đặt lệnh stop_market mới `6aaaa324...` @ **$57.83**, gtc.
+- **Dời stop-loss CRM:** hủy lệnh cũ `6aa95693...` ($243.54, state → cancelled xác nhận) → đặt lệnh stop_market mới `6aaaa324...` (CRM) @ **$249.00**, gtc.
+- **Mua PEP:** 1cp market, lệnh `6aaaa32d...` filled @ **$135.0199**. Đặt stop-loss mới `6aaaa334...` @ **$128.27** (-5% từ giá vốn, nhóm blue-chip). Chốt lời cảnh báo (không tự bán) +15-20% từ giá vốn theo đúng đề xuất gốc.
+- **Core-10 sau lệnh: 9/10 slot** — RSP, MSFT, VOO, AAPL, RKLB, PG, CRM, TXN, PEP. Còn **1 slot trống: rủi ro cao (thay RGTI)** — Hogan yêu cầu chờ thêm, chưa chọn OKLO/ONDS hay mã khác.
+- **Kết luận:** đã thực hiện đầy đủ theo yêu cầu Hogan → không cần PushNotification thêm (đã thực hiện ngay trong phiên tương tác, Hogan đã biết).
