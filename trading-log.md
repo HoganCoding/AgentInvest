@@ -5519,3 +5519,37 @@ Sàng lọc wash-sale: loại RGTI/IONQ/SOUN (đang cấm), CIFR (~09-23), OUST 
 - P&L nhanh (giá ~19:31 UTC so đóng cửa 09-14): RSP -0.45%, MSFT -1.70%, VOO -0.50%, AAPL -0.94%, RKLB +1.58%, PG +0.16%, CRM -1.21%, TXN -0.18%. Không mã nào biến động >3-5% → không cần WebSearch tin tức sâu theo quy định tiết kiệm chi phí.
 - Không mã nào tạo đỉnh mới kể từ lần cập nhật gần nhất (giá hiện tại của cả RKLB/CRM/PG đều thấp hơn đỉnh intraday đã ghi nhận lúc 13:15 ET) → không có đề xuất dời stop-loss bổ sung. Không mã nào breach stop-loss hiện tại (AAPL đệm ~3.2%, MSFT ~2.5%, TXN ~4.2%, RKLB/CRM/PG đệm rộng so với stop hiện hành).
 - **Kết luận:** không có sự kiện mới, không có đề xuất mới → không gửi PushNotification (tránh spam noise theo quy định). Các đề xuất đang chờ Hogan từ entry 13:15 ET hôm nay (2 lựa chọn lấp slot blue-chip: PEP/KO; 2 lựa chọn lấp slot rủi ro cao: OKLO/ONDS; 3 đề xuất dời stop RKLB/CRM/PG) vẫn còn hiệu lực, chưa có quyết định.
+
+## 2026-09-16 ~09:46 ET (13:46 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): PG và TXN tạo đỉnh mới, đề xuất cập nhật/khởi tạo trailing stop; các đề xuất cũ vẫn chờ
+
+- **Sync đầu phiên:** `git pull` (từ detached HEAD tại `acd6071`) — `git checkout -B main origin/main`, khớp `origin/main`, không conflict.
+- **Core-10 hiện tại (8/10 slot, không đổi so lần kiểm tra 09-15 15:31 ET):** `get_equity_positions` xác nhận đúng 8 mã — RSP(2cp, avg $214.93), MSFT(1cp, avg $510.00), VOO(0.72647cp, avg $688.26), AAPL(1cp, avg $325.08), RKLB(2cp, avg $63.38), PG(1cp, avg $145.97), CRM(1cp, avg $256.36), TXN(1cp, avg $265.09). **2 slot trống chưa đổi:** 1 blue-chip (thay JPM), 1 rủi ro cao (thay RGTI) — Hogan chưa quyết định.
+- `get_equity_orders` (từ 09-15 19:31 UTC tới nay): **rỗng** — không có lệnh mới/fill/breach nào qua đêm.
+- **Stop-loss đang active (xác nhận qua `get_equity_orders` state=confirmed):** AAPL $319.41, MSFT $484.50, RSP $211.44, RKLB $55.78, CRM $243.54, PG $138.67, TXN $251.83 (VOO fractional, theo dõi thủ công).
+- **Benchmark (13:46 UTC, so đóng cửa 09-15):** SPY $759.69 (+0.30%), QQQ $709.415 (+0.69%) — đầu phiên đi lên nhẹ, không có tín hiệu risk-off.
+- P&L nhanh (so đóng cửa 09-15): RSP +0.12%, MSFT -0.57%, VOO +0.31%, AAPL +0.88%, RKLB +0.50%, PG +0.44%, CRM -0.06%, TXN +1.28%. **Không mã nào biến động >3-5%** → không cần WebSearch tin tức riêng.
+
+### PG tạo đỉnh mới trong phiên — cập nhật đề xuất dời stop (thay thế đề xuất $139.82 cũ)
+- `get_equity_historicals` (5min, từ 13:30 UTC hôm nay) cho thấy đỉnh intraday **$147.60** (bar 13:35 UTC), vượt đỉnh cũ $147.18 (09-15) mà đề xuất dời stop $139.82 (từ 09-15 13:15 ET, chưa được Hogan duyệt) dựa vào — stop hiện tại vẫn là mức gốc $138.67.
+- **Đề xuất cập nhật (thay thế $139.82 cũ, không cộng dồn):** dời stop-loss PG từ $138.67 → **$140.22** (= $147.60 × 0.95, nhóm blue-chip -5%). Giá hiện tại $147.32 vẫn cao hơn mức đề xuất (đệm ~4.8%).
+
+### TXN vượt giá vốn, tạo đỉnh đầu tiên kể từ khi mua — khởi tạo trailing stop
+- Giá vốn $265.09, stop cố định hiện tại $251.83 (-5% từ giá vốn, đặt lúc mua 09-15, chưa từng cập nhật vì giá luôn quanh/dưới giá vốn tới nay).
+- `get_equity_historicals` (5min, từ 13:30 UTC hôm nay) cho thấy đỉnh intraday **$267.97** (bar 13:30 UTC) — lần đầu tiên giá vượt đáng kể giá vốn kể từ khi mua.
+- **Đề xuất:** dời stop-loss TXN từ $251.83 → **$254.57** (= $267.97 × 0.95, nhóm tech -5%). Giá hiện tại $266.80 vẫn cao hơn mức đề xuất (đệm ~4.6%).
+
+### AAPL/RKLB/CRM/MSFT/RSP/VOO — không có đỉnh mới cần cập nhật thêm
+- **AAPL:** đỉnh cao nhất kể từ khi mua vẫn $336.22 (09-11); đỉnh trong phiên hôm nay chỉ $335.48 — chưa vượt, stop $319.41 giữ nguyên.
+- **RKLB:** đỉnh cao nhất vẫn $65.72 (09-15); đỉnh trong phiên hôm nay chỉ $63.87 — chưa vượt, đề xuất dời $57.83 (từ 09-15 13:15 ET) vẫn là mức mới nhất, chưa được duyệt.
+- **CRM:** đỉnh cao nhất vẫn $262.11 (09-15); đỉnh trong phiên hôm nay chỉ $256.40 — chưa vượt, đề xuất dời $249.00 vẫn là mức mới nhất, chưa được duyệt.
+- **MSFT/RSP/VOO:** giá hiện tại đều thấp hơn mốc đỉnh đã dùng để tính stop hiện hành — không cần cập nhật.
+
+### Các đề xuất đang chờ Hogan (tổng hợp, không lặp lại nội dung chi tiết — xem entry gốc)
+1. **Mới:** dời stop-loss PG → $140.22 (thay $139.82 cũ, theo đỉnh mới $147.60).
+2. **Mới:** dời stop-loss TXN → $254.57 (khởi tạo trailing theo đỉnh đầu tiên $267.97 kể từ khi mua).
+3. Từ 09-15 13:15 ET: dời stop-loss RKLB → $57.83 (theo đỉnh $65.72).
+4. Từ 09-15 13:15 ET: dời stop-loss CRM → $249.00 (theo đỉnh $262.11).
+5. Từ 09-15 13:15 ET: chọn PEP hoặc KO lấp slot blue-chip trống thay JPM.
+6. Từ 09-15 13:15 ET: chọn OKLO hoặc ONDS lấp slot rủi ro cao trống thay RGTI (lưu ý giá tham chiếu từ 09-15, nên lấy giá mới nếu duyệt).
+
+- **Kết luận:** có đề xuất cập nhật thật (dời stop PG theo đỉnh mới + khởi tạo trailing stop TXN lần đầu) → **đã gửi PushNotification.**
