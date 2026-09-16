@@ -4683,3 +4683,14 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Phần theo dõi sandbox (circuit breaker) — 100% tiền mặt, không đổi:** $0 vị thế, không kích hoạt circuit breaker.
 - **Wash-sale vẫn hiệu lực:** IONQ (tới ~2026-10-14), SOUN (tới ~2026-10-10), RGTI (tới ~2026-10-15), JPM (tới ~2026-10-15, không liên quan nhóm rủi ro cao sandbox), CIFR (~09-23), OUST (~09-17), PANW (~09-18, khác nhóm) — không được mua lại các mã này.
 - **Quyết định: KHÔNG hành động** — chưa xác định được ứng viên rủi ro cao mới cụ thể để vào lệnh. Không có gì thay đổi thật so lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-09-16 ~13:58 ET (17:58 UTC) — Kiểm tra định kỳ (phiên tương tác, theo yêu cầu Hogan): sandbox vẫn 100% tiền mặt, KHÔNG hành động
+
+- **Sync đầu phiên:** `git fetch` + `git pull --ff-only`, không conflict.
+- `get_equity_positions` (704170133): **9 vị thế** — RSP, MSFT, VOO, AAPL, RKLB, PG, CRM, TXN, PEP — đối chiếu `trading-log.md` xác nhận **toàn bộ đều là core-10**, không có mã lạ nào. **Sandbox hiện vẫn không giữ mã cổ phiếu nào** (100% cash).
+- `get_equity_orders` (từ 17:08 UTC tới nay): **rỗng** — không có lệnh mới nào.
+- `get_portfolio`: cash/buying_power **$2,919.70**, không đổi.
+- Không có vị thế sandbox nào đang giữ; OKLO ($35.32, khoảng -1.83% so đóng cửa 09-15) và ONDS ($7.13, -1.52%) vẫn tiếp tục giảm nhẹ, chưa có phiên xanh xác nhận đảo chiều — chưa phải ứng viên phù hợp.
+- **Phần theo dõi sandbox (circuit breaker) — 100% tiền mặt, không đổi:** $0 vị thế, không kích hoạt circuit breaker.
+- **Wash-sale vẫn hiệu lực:** IONQ (~10-14), SOUN (~10-10), RGTI (~10-15), JPM (~10-15), CIFR (~09-23), OUST (~09-17), PANW (~09-18, khác nhóm).
+- **Quyết định: KHÔNG hành động** — không có gì thay đổi thật → không gửi PushNotification, chỉ ghi log.

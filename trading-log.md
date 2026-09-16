@@ -5594,3 +5594,13 @@ Hogan duyệt trực tiếp trong phiên tương tác (trả lời "1234 Dời, 
 - **Đối chiếu stop-loss hiện tại (không breach):** AAPL $332.685 vs stop $319.41 (đệm 4.0%), MSFT $493.50 vs stop $484.50 (đệm 1.8%), RSP $214.095 vs stop $211.44 (đệm 1.2%), RKLB $63.355 vs stop $57.83 (đệm 8.7%), CRM $250.72 vs stop $249.00 (đệm 0.7% — khá sát, cần theo dõi sát lần sau), PG $147.61 vs stop $140.22 (đệm 5.0%), TXN $264.54 vs stop $254.57 (đệm 3.8%), PEP $135.155 vs stop $128.27 (đệm 5.1%). VOO fractional, theo dõi thủ công, vẫn trên giá vốn.
 - **Slot rủi ro cao (thay RGTI):** kiểm tra nhanh giá OKLO ($35.64, -0.94% so đóng cửa 09-15) và ONDS ($7.16, -1.10%) — cả hai vẫn tiếp tục giảm nhẹ, chưa có phiên xanh xác nhận đảo chiều mới so với đánh giá 10:12 ET sáng nay → không đánh giá lại sâu thêm (không có thay đổi đáng kể), tiếp tục để trống.
 - **Kết luận:** không mã nào breach stop-loss, không có đỉnh mới đủ lớn để đề xuất dời stop, không có tin tức/biến động đáng kể, slot rủi ro cao chưa có thay đổi → **không gửi PushNotification**, chỉ ghi log. CRM đáng lưu ý cho lần kiểm tra kế tiếp do đệm tới stop khá hẹp (0.7%).
+
+## 2026-09-16 ~13:58 ET (17:58 UTC) — Kiểm tra định kỳ core-10 (phiên tương tác, theo yêu cầu Hogan): không đổi, không breach
+
+- **Sync đầu phiên:** `git fetch` + `git pull --ff-only` — fast-forward sạch (bd3db0a→b164c66, +entry core-10 13:11 ET + 3 entry sandbox), không conflict.
+- `get_equity_positions` xác nhận vẫn **9/10 slot**, không đổi so lần kiểm tra 13:11 ET: RSP, MSFT, VOO, AAPL, RKLB, PG, CRM, TXN, PEP. Slot rủi ro cao (thay RGTI) vẫn để trống.
+- `get_equity_orders` (từ 17:11 UTC tới nay): **rỗng** — không có lệnh mới/fill nào.
+- `get_portfolio`: cash/buying_power **$2,919.70**, không đổi.
+- P&L nhanh (so đóng cửa 09-15): RSP +0.19%, MSFT -0.76%, VOO +0.34%, AAPL +0.56%, RKLB -1.05%, PG +0.98%, CRM -1.69%, TXN +0.51%, PEP -0.15%. Benchmark: SPY +0.34%, QQQ +0.75%. Không mã nào biến động >3-5% → không cần WebSearch.
+- **CRM ($251.32) vs stop $249.00 — đệm 0.93%**, khá hẹp nhưng chưa breach, nhích nhẹ so lần trước (0.7%) nhờ giá hồi lại. Các mã khác đệm rộng (RKLB 8.7%, TXN 3.8%, AAPL 4.1%, PG 5.6%, PEP 5.2%, MSFT 1.9%, RSP 1.4%). Không mã nào tạo đỉnh mới đáng kể để cập nhật stop.
+- **Kết luận:** không có gì thay đổi thật → không gửi PushNotification, chỉ ghi log.
