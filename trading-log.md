@@ -5576,3 +5576,9 @@ Hogan duyệt trực tiếp trong phiên tương tác (trả lời "1234 Dời, 
 - **Mua PEP:** 1cp market, lệnh `6aaaa32d...` filled @ **$135.0199**. Đặt stop-loss mới `6aaaa334...` @ **$128.27** (-5% từ giá vốn, nhóm blue-chip). Chốt lời cảnh báo (không tự bán) +15-20% từ giá vốn theo đúng đề xuất gốc.
 - **Core-10 sau lệnh: 9/10 slot** — RSP, MSFT, VOO, AAPL, RKLB, PG, CRM, TXN, PEP. Còn **1 slot trống: rủi ro cao (thay RGTI)** — Hogan yêu cầu chờ thêm, chưa chọn OKLO/ONDS hay mã khác.
 - **Kết luận:** đã thực hiện đầy đủ theo yêu cầu Hogan → không cần PushNotification thêm (đã thực hiện ngay trong phiên tương tác, Hogan đã biết).
+
+## 2026-09-16 ~10:12 ET (14:12 UTC) — Đánh giá OKLO/ONDS theo yêu cầu Hogan (slot rủi ro cao trống, thay RGTI): CHƯA đủ ổn định, tiếp tục chờ
+
+- **OKLO ($35.53, -1.25% so đóng cửa 09-15):** `get_equity_historicals` (daily, 09-01→09-15) cho thấy giá trôi dốc liên tục kể từ vụ bán tháo -9% ngày 09-11 (tin ATM offering $1B pha loãng): 09-11 $36.22 → 09-14 $36.21 (đi ngang) → 09-15 $35.98 (-0.66%) → hôm nay $35.53 (-1.25%). Không có phiên xanh nào xác nhận đảo chiều — KHÔNG đạt bộ lọc entry (CLAUDE.md 2026-07-24). WebSearch không có tin xấu mới hôm nay, chỉ là dư âm tin cũ.
+- **ONDS ($7.125, -1.59% so đóng cửa 09-15):** có 2 phiên đi ngang/nhích nhẹ (09-14 $7.23, 09-15 $7.24) nhưng hôm nay giảm lại -1.59% trong khi SPY (+0.28%)/QQQ (+0.65%) đang tăng — phân kỳ tiêu cực so thị trường, KHÔNG đạt bộ lọc entry. WebSearch: tin mua lại GATE Technologies + Bron Technologies ($205-390M), chưa rõ tác động, không phải catalyst đủ mạnh để vào lệnh ngay.
+- **Quyết định: KHÔNG vào lệnh** — cả 2 mã đều chưa đạt xác nhận ổn định. Slot rủi ro cao (thay RGTI) tiếp tục để trống, sẽ đánh giá lại ở lần kiểm tra sau hoặc khi có phiên xanh rõ ràng. Không cần PushNotification (đã trao đổi trực tiếp trong phiên tương tác).
