@@ -5553,3 +5553,14 @@ Sàng lọc wash-sale: loại RGTI/IONQ/SOUN (đang cấm), CIFR (~09-23), OUST 
 6. Từ 09-15 13:15 ET: chọn OKLO hoặc ONDS lấp slot rủi ro cao trống thay RGTI (lưu ý giá tham chiếu từ 09-15, nên lấy giá mới nếu duyệt).
 
 - **Kết luận:** có đề xuất cập nhật thật (dời stop PG theo đỉnh mới + khởi tạo trailing stop TXN lần đầu) → **đã gửi PushNotification.**
+
+## 2026-09-16 ~09:52 ET (13:52 UTC) — Kiểm tra định kỳ core-10 (phiên tương tác, theo yêu cầu Hogan): không đổi, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch` + `git pull --ff-only` — fast-forward sạch (a5adab8→0d8f929, +entry core-10 09:46 ET sáng nay), không conflict.
+- `get_equity_positions` xác nhận vẫn **8/10 slot**, không đổi so lần kiểm tra 09:46 ET: RSP(2cp), MSFT(1cp), VOO(0.72647cp), AAPL(1cp), RKLB(2cp), PG(1cp), CRM(1cp), TXN(1cp). 2 slot trống (blue-chip thay JPM, rủi ro cao thay RGTI) vẫn chờ Hogan chọn.
+- `get_equity_orders` (từ 13:46 UTC tới nay): **rỗng** — không có lệnh mới/fill nào.
+- `get_portfolio`: cash/buying_power **$3,054.72**, không đổi.
+- P&L nhanh (so đóng cửa 09-15): AAPL +0.79%, RKLB +0.54%, PG +0.45%, TXN +0.98%, VOO +0.39%, RSP +0.11%, CRM -0.24%, MSFT -0.62%. Benchmark: SPY +0.38%, QQQ +0.76%. **Không mã nào biến động >3-5%** → không cần WebSearch.
+- Không mã nào tạo đỉnh mới vượt mốc đã dùng để tính stop-loss/đề xuất hiện tại (TXN $266.02 < đỉnh $267.97 sáng nay; PG $147.33 < đỉnh $147.60 sáng nay; AAPL/RKLB/CRM đều dưới đỉnh đã ghi nhận trước đó) → không có đề xuất dời stop bổ sung.
+- **Các đề xuất đang chờ Hogan (không đổi, xem entry 09:46 ET sáng nay để chi tiết):** (1) dời stop PG → $140.22; (2) dời stop TXN → $254.57; (3) dời stop RKLB → $57.83; (4) dời stop CRM → $249.00; (5) chọn PEP/KO lấp slot blue-chip; (6) chọn OKLO/ONDS lấp slot rủi ro cao.
+- **Kết luận:** không có gì thay đổi thật, không có đề xuất mới → không gửi PushNotification, chỉ ghi log.
