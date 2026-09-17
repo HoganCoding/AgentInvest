@@ -5642,3 +5642,36 @@ Hogan duyệt trực tiếp trong phiên tương tác (trả lời "1234 Dời, 
 
 - **MSFT và CRM đang rất sát ngưỡng stop-loss** — đây là kỷ luật trailing stop hoạt động bình thường (chỉ dời lên, không dời xuống dù giá giảm), không cần hành động/đề xuất gì thêm, chỉ theo dõi sát khả năng khớp ở lần kiểm tra kế tiếp.
 - **Kết luận:** có sự kiện thật (RSP bị stop-loss khớp, core-10 còn 8/10, phát hiện sai sót ghi log trước đó) → **đã gửi PushNotification.**
+
+## 2026-09-17 ~09:49 ET (13:49 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): CRM đã bị stop-loss khớp sáng nay, còn 7/10 slot; RKLB tạo đỉnh mới mạnh, đề xuất dời stop; đề xuất 2 lựa chọn lấp slot tech
+
+- **Sync đầu phiên:** local ở trạng thái detached HEAD tại `5e8674b` (khớp `origin/main`) — `git checkout main && git pull origin main` fast-forward sạch (9aec0ec→5e8674b, +31 commit gồm các entry sandbox 09-16/09-17), không conflict.
+- **Core-10 hiện tại (7/10 slot):** `get_equity_positions` xác nhận **7 mã** — MSFT(1cp, avg $510.00), VOO(0.72647cp, avg $688.26), AAPL(1cp, avg $325.08), RKLB(2cp, avg $63.38), PG(1cp, avg $145.97), TXN(1cp, avg $265.09), PEP(1cp, avg $135.02). **CRM không còn trong danh mục.**
+
+### SỰ KIỆN THẬT (đã tự động khớp, không cần duyệt) — CRM bị stop-loss khớp
+- `get_equity_orders` (symbol CRM) xác nhận: lệnh stop-loss GTC (1cp @ $249.00, đặt 09-16 10:09 ET) đã **filled @ $244.26 lúc 2026-09-17 13:30:03 UTC (09:30:03 ET, ngay đầu phiên)** — đúng kỷ luật trailing stop -5% nhóm tech, không phải quyết định tùy ý. Giá vốn $256.358 → lỗ thực hiện **-4.72% (~-$12.10, 1cp)**.
+- **WebSearch CRM:** không tìm thấy tin xấu cụ thể mới trong 24h — chỉ có Dreamforce 2026 tiếp diễn (đã biết từ hôm qua), CRM vừa chia cổ tức $0.44 (ex-date 09-17, không phải tin tiêu cực, chỉ làm giá điều chỉnh nhẹ). Mức giảm có vẻ là tiếp diễn áp lực nhẹ sau Dreamforce, không phải deterioration cơ bản.
+- **Wash-sale mới:** bán LỖ → cấm mua lại CRM tới **~2026-10-17**.
+- **3 slot trống hiện tại:** 1 ETF (thay RSP, cấm tới ~10-16), 1 rủi ro cao (thay RGTI, cấm tới ~10-15), 1 tech (thay CRM, cấm tới ~10-17, mới).
+- **Wash-sale tổng hợp toàn tài khoản (core-10 + sandbox dùng chung tax lot), tính tới hôm nay:** RGTI (~10-15), JPM (~10-15), RSP (~10-16), IONQ (~10-14), SOUN (~10-10), CRM (~10-17, mới).
+
+### RKLB tạo đỉnh mới mạnh trong phiên — đề xuất dời stop-loss (nhóm rủi ro cao, -12%)
+- **Benchmark (13:49 UTC, so đóng cửa 09-16):** SPY $761.02 (+0.92%), QQQ $714.355 (+1.37%) — thị trường tăng mạnh đầu phiên, không có tín hiệu risk-off.
+- RKLB tăng **+5.51%** so đóng cửa 09-16 ($63.70 → $67.205), vượt xa ngưỡng 3-5% cần WebSearch. `get_equity_historicals` (5min, từ 13:30 UTC) xác nhận đỉnh intraday **$67.205** (bar 13:45 UTC + quote live), vượt đỉnh cũ $65.72 (09-15) đang dùng để tính stop hiện tại $57.83.
+- **WebSearch:** không có tin xấu — tin chính là Rocket Lab vừa hoàn tất tài trợ (ATM offering) cho thương vụ mua Iridium Communications ($1.94B), gỡ bỏ phần nào yếu tố bất định về pha loãng đã đè giá trước đó (nguyên nhân RKLB giảm mạnh cuối 07/2026). Thị trường có vẻ đón nhận tích cực việc tài trợ đã chốt xong.
+- **Đề xuất:** dời stop-loss RKLB từ $57.83 → **$59.14** (= $67.205 × 0.88, nhóm rủi ro cao -12% theo CLAUDE.md 2026-07-24). Giá hiện tại $67.205 vẫn cao hơn nhiều mức đề xuất (đệm ~13.7%). Cắt lỗ chỉ dời LÊN theo đỉnh mới, không ảnh hưởng phần lãi chưa thực hiện (giá vốn $63.38, RKLB đang lãi tốt +6.0%).
+- **AAPL/MSFT/PG/TXN/PEP/VOO:** không có đỉnh mới vượt mốc đang dùng để tính stop hiện hành (kiểm tra 5-phút bar từ 13:30 UTC hôm nay) — không cần cập nhật.
+
+### Đề xuất lấp slot large-cap tech trống (thay CRM) — chọn 1 trong 2, cần Hogan duyệt
+Sàng lọc wash-sale (tra cả trading-log.md và sandbox-log.md, tính tới hôm nay): loại CRM bản thân (~10-17, mới), RGTI/JPM/RSP/IONQ/SOUN (nhóm khác, không liên quan tech nhưng vẫn cấm), GOOGL (~10-01), AVGO (~10-03), QCOM (~09-23), PANW (~09-18). Loại ORCL (luận điểm bear dài hạn chưa từng đổi qua nhiều lần review trước — FCF âm nặng do capex AI, S&P gần "junk", Michael Burry duy trì short) và ADBE (rủi ro quản trị — khoảng trống CEO kéo dài nhiều tháng ở các lần review trước, không re-verify lại lần này vì không phải trọng tâm hôm nay). NOW (wash-sale hết hạn ~09-16) và CSCO (hết hạn ~09-12) đều đã đủ điều kiện mua lại.
+
+- **Lựa chọn A: NOW (ServiceNow)** — giá $139.925 (+0.08% so đóng cửa 09-16). Đề xuất mua **1cp market (~$139.93, ~6.9% giá trị equity core-10 hiện tại ~$2,014)**. Lý do: enterprise workflow/AI platform, mảng AI vừa vượt $1B ACV (annual contract value) trong Q2, Needham vừa nâng target $115→$155 (giữ Buy) sau đợt tăng +7.4% ngày 09-14 nhờ đánh giá lại tác động AI tích cực tới nền tảng phần mềm doanh nghiệp (thay vì đe dọa). Rủi ro chính: định giá cao sau đợt tăng mạnh gần đây, tăng trưởng subscription cần duy trì tốc độ để biện minh định giá, cạnh tranh AI agent từ nhiều hãng lớn. Stop-loss đề xuất: -5% từ giá vốn (~$132.93, nhóm tech); chốt lời cảnh báo +15-20%.
+- **Lựa chọn B: CSCO (Cisco Systems)** — giá $109.94 (+2.04% so đóng cửa 09-16). Đề xuất mua **1cp market (~$109.94, ~5.5% giá trị equity)**. Lý do: networking hạ tầng AI, KQKD Q4 FY2026 mạnh (doanh thu +18% ~$17.3B, đơn hàng AI đạt $4B), vừa mở rộng hợp tác Nvidia (Splunk AI on-premise) và Infleqtion (quantum networking), cổ tức đều ($0.42, ex-date 10-02). Rủi ro chính: định giá hiện thấp hơn target đồng thuận ($129.68) nhưng analyst outlook chỉ ở mức Neutral do lo ngại cạnh tranh, tăng trưởng networking truyền thống chậm hơn mảng AI. Stop-loss đề xuất: -5% từ giá vốn (~$104.44, nhóm tech); chốt lời cảnh báo +15-20%.
+
+**Khuyến nghị của agent:** cả 2 đều đạt tiêu chí large-cap tech (thanh khoản cao, báo cáo minh bạch), không dính wash-sale, có catalyst tích cực gần đây được xác nhận qua tin tức, không mã nào đang giảm mạnh trong phiên (loại trừ rủi ro mua đúng lúc risk-off). NOW có momentum AI-narrative mạnh hơn nhưng định giá đã chạy trước; CSCO có nền tảng KQKD vững hơn và cổ tức. Chờ Hogan chọn NOW, CSCO, hoặc mã khác.
+
+### Các đề xuất cũ vẫn đang chờ Hogan (chưa có quyết định, không lặp chi tiết)
+1. Slot ETF trống (thay RSP): chưa có đề xuất mã thay thế cụ thể — cần đánh giá ở lần kiểm tra tới.
+2. Slot rủi ro cao trống (thay RGTI): OKLO/ONDS từ 09-15 13:15 ET vẫn chưa đạt bộ lọc entry ở lần đánh giá gần nhất (09-16 13:11 ET, cả 2 tiếp tục giảm) — cần đánh giá lại giá mới nếu Hogan muốn tiếp tục cân nhắc 2 mã này hoặc mã khác.
+
+**Kết luận:** có sự kiện thật (CRM bị stop-loss khớp, core-10 còn 7/10) + 2 đề xuất mới (dời stop RKLB theo đỉnh mới mạnh, 2 lựa chọn lấp slot tech) → **đã gửi PushNotification.**
