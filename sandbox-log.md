@@ -4935,3 +4935,14 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Phần theo dõi sandbox (circuit breaker) — 100% tiền mặt, không đổi:** $0 vị thế, không kích hoạt circuit breaker.
 - **Wash-sale vẫn hiệu lực (đối chiếu cả trading-log.md và sandbox-log.md):** IONQ (~10-14), SOUN (~10-10, có thể đã hết), RGTI (~10-15), JPM (~10-15), RSP (~10-16, core-10), CRM (~10-17, core-10), PEP (~10-21, core-10, mới).
 - **Quyết định: KHÔNG hành động** — chưa xác định được ứng viên rủi ro cao mới cụ thể để vào lệnh. Không có gì thay đổi thật so lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-09-21 ~11:04 ET (15:04 UTC) — Kiểm tra định kỳ (routine tự động, sync git): sandbox vẫn 100% tiền mặt, KHÔNG hành động
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD (khớp `origin/main` tại `be40f02`) — `git checkout main` + `git reset --hard origin/main`, không conflict, không mất commit (local đã khớp sẵn origin/main).
+- `get_equity_positions` (704170133): **6 vị thế** — MSFT(1cp), VOO(0.72647cp), AAPL(1cp), RKLB(2cp), PG(1cp), TXN(1cp) — đối chiếu `trading-log.md` xác nhận **toàn bộ đều là core-10** (PEP bị stop-loss khớp sáng nay 09:36 ET, còn 6/10 slot). Không có mã lạ nào → **sandbox hiện vẫn không giữ mã cổ phiếu nào** (100% cash).
+- `get_equity_orders` (từ 14:10 UTC tới nay): **rỗng** — không có lệnh mới/fill nào.
+- `get_portfolio`: cash **$3,715.08**, buying_power **$3,586.82** — không đổi so lần check trước (10:10 ET); chênh lệch cash/buying_power vẫn là proceeds PEP (core-10) chưa settle hết, không ảnh hưởng sandbox.
+- Không có vị thế sandbox nào đang giữ nên không cần đối chiếu giá/stop-loss; chưa có ứng viên rủi ro cao mới cụ thể đang cân nhắc ngay bây giờ → không cần WebSearch.
+- **Phần theo dõi sandbox (circuit breaker) — 100% tiền mặt, không đổi:** $0 vị thế, không kích hoạt circuit breaker.
+- **Wash-sale vẫn hiệu lực:** IONQ (~10-14), SOUN (~10-10, có thể đã hết), RGTI (~10-15), JPM (~10-15), RSP (~10-16, core-10), CRM (~10-17, core-10), PEP (~10-21, core-10).
+- **Quyết định: KHÔNG hành động** — chưa xác định được ứng viên rủi ro cao mới cụ thể để vào lệnh. Không có gì thay đổi thật so lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
