@@ -5748,3 +5748,29 @@ Sàng lọc wash-sale (tra cả trading-log.md và sandbox-log.md, tính tới h
 - **TXN +2.29% hôm nay** — giá $264.06 vẫn dưới đỉnh cũ dùng tính stop hiện hành (~$268.02, suy từ $254.57/0.95) nên không phải đỉnh mới, không cần cập nhật dời stop. **AAPL/PG/MSFT:** giảm nhẹ trong phiên, không tạo đỉnh mới — không cần đề xuất dời thêm.
 - **3 slot trống:** không đánh giá thêm lần này (đề xuất/đánh giá gần nhất vẫn ở entry 09:49 ET/09-17 — NOW/CSCO thay CRM đang chờ Hogan chọn; OKLO/ONDS chưa đạt bộ lọc entry cho slot rủi ro cao theo đánh giá 09-16; slot ETF vẫn chưa có đề xuất mã cụ thể).
 - **Kết luận:** không mã nào breach stop-loss, không có đỉnh mới cần cập nhật dời stop, RKLB/PEP đi ngang so lần kiểm tra trước (đã xác nhận là nhiễu/overhang cũ, không phải tin mới) → không có đề xuất mới thật sự → **không gửi PushNotification**, chỉ ghi log. Lưu ý cho lần kiểm tra kế tiếp: PEP đệm tới stop tiếp tục hẹp (1.37%, đã 4 lần kiểm tra liên tiếp cảnh báo) — nếu breach thì đây là stop-loss tự động khớp theo kỷ luật, không cần duyệt riêng. Các đề xuất cũ (dời stop RKLB → $59.14; chọn NOW hoặc CSCO thay CRM; slot ETF/rủi ro cao vẫn trống) tiếp tục chờ Hogan.
+
+## 2026-09-21 ~09:47 ET (13:47 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): PEP đã bị stop-loss khớp sáng nay, còn 6/10 slot; RKLB tạo đỉnh mới mạnh, đề xuất dời stop
+
+- **Sync đầu phiên:** local ở trạng thái detached HEAD (khớp `origin/main` tại `b7f7c38`) — `git checkout -B main origin/main`, không conflict, không có commit core-10 mới nào kể từ entry 09-18 15:31 ET (chỉ có các entry sandbox check 09-18/09-21 xen giữa).
+- **Core-10 hiện tại (6/10 slot):** `get_equity_positions` xác nhận **6 mã** — MSFT(1cp, avg $510.00), VOO(0.72647cp, avg $688.26), AAPL(1cp, avg $325.08), RKLB(2cp, avg $63.38), PG(1cp, avg $145.97), TXN(1cp, avg $265.09). **PEP không còn trong danh mục.**
+
+### SỰ KIỆN THẬT (đã tự động khớp, không cần duyệt) — PEP bị stop-loss khớp
+- `get_equity_orders` (symbol PEP) xác nhận: lệnh stop-loss GTC (1cp @ $128.27, đặt 09-16 10:09 ET khi mua) đã **filled @ $128.26 lúc 2026-09-21T13:36:03.847Z (09:36 ET, đầu phiên)** — đúng kỷ luật trailing stop -5% nhóm blue-chip (chưa từng dời lên vì giá không tạo đỉnh mới kể từ khi mua, đã cảnh báo đệm hẹp dần liên tục 4 lần kiểm tra 09-18). Giá vốn $135.02 → lỗ thực hiện **-5.01% (~-$6.76, 1cp)**.
+- **Lưu ý kỹ thuật cho routine sau:** `get_equity_orders` không filter theo `last_transaction_at` mà theo `created_at` — lệnh stop PEP có `created_at=2026-09-16` (lúc đặt) nên bị bỏ sót khi query `created_at_gte` từ lần kiểm tra trước; phải dùng `state=confirmed`/`state=filled` không giới hạn ngày rồi lọc `last_transaction_at` thủ công mới bắt được sự kiện. Đã đối chiếu lại toàn bộ orders `state=filled` để xác nhận không bỏ sót sự kiện nào khác — chỉ có PEP.
+- **Wash-sale mới:** bán LỖ → cấm mua lại PEP tới **~2026-10-21**.
+- **4 slot trống hiện tại:** 1 ETF (thay RSP, cấm tới ~10-16), 1 rủi ro cao (thay RGTI, cấm tới ~10-15), 1 tech (thay CRM, cấm tới ~10-17), 1 blue-chip (thay PEP, mới, cấm tới ~10-21).
+- **Wash-sale tổng hợp toàn tài khoản (core-10 + sandbox dùng chung tax lot), tính tới hôm nay:** RGTI (~10-15), JPM (~10-15), RSP (~10-16), IONQ (~10-14), SOUN (~10-10, có thể đã hết), CRM (~10-17), PEP (~10-21, mới).
+
+### RKLB tạo đỉnh mới mạnh trong phiên — đề xuất dời stop-loss (nhóm rủi ro cao, -12%)
+- **Benchmark (13:47 UTC, so đóng cửa 09-18):** SPY $767.13 (+0.71%), QQQ $731.43 (+1.38%) — thị trường tăng, không risk-off.
+- RKLB tăng **+7.71%** so đóng cửa 09-18 ($64.57 → $69.54, giá lúc 13:46 UTC), vượt xa ngưỡng 3-5% → WebSearch xác nhận **không có tin xấu**: phóng thành công vệ tinh Synspective thứ 12 (StriX) hôm 09-20 — chuyến Electron thứ 96, đã đặt thêm 15 chuyến bay tới 2030; chuyến thứ 97 dự kiến phóng thứ Sáu tới. Backlog kỷ lục $2.36B (Q2). Tiếp nối đà tăng tích cực đã ghi nhận từ tuần trước (tài trợ xong thương vụ Iridium) — không phải deterioration hay tin tiêu cực, là momentum/catalyst thật.
+- `get_equity_historicals` (5min, từ 13:30 UTC hôm nay) xác nhận đỉnh intraday **$70.01** (bar 13:35 UTC), vượt xa đỉnh cũ $68.60 (09-18) đang dùng làm cơ sở cho đề xuất dời stop $59.14 (chưa từng được Hogan duyệt, đề xuất gốc từ 09-15/09-17).
+- **Đề xuất cập nhật (thay thế đề xuất $59.14 cũ, không cộng dồn):** dời stop-loss RKLB từ $57.83 → **$61.61** (= $70.01 × 0.88, nhóm rủi ro cao -12% theo CLAUDE.md 2026-07-24). Giá hiện tại $69.54 vẫn cao hơn nhiều mức đề xuất (đệm ~11.4%). RKLB đang lãi tốt +9.7% từ giá vốn $63.38.
+- **AAPL/MSFT/PG/TXN:** không có đỉnh mới vượt mốc đang dùng để tính stop hiện hành (giá hiện tại của cả 4 mã đều thấp hơn đỉnh tham chiếu trước đó/dưới giá vốn) — không cần cập nhật. VOO fractional, giá $706.94 (trên giá vốn $688.26), theo dõi thủ công.
+
+### 3 slot trống cũ — kiểm tra nhanh, chưa đủ điều kiện đề xuất lại lần này
+- **NOW ($136.04, +0.42% so đóng cửa 09-18) / CSCO ($109.255, -0.23%):** gần như đi ngang so lần đánh giá 09-17 — 2 lựa chọn cũ (lấp slot tech thay CRM) vẫn còn hiệu lực, chưa có Hogan quyết định, không cần đề xuất lại.
+- **OKLO ($40.07, +5.45% so đóng cửa 09-18) / ONDS ($7.605, +2.91%):** cả hai tăng đáng kể sáng nay nhưng phiên hôm nay **chưa kết thúc** (mới đầu phiên ~09:47 ET) — chưa đạt bộ lọc "ít nhất 1 phiên xác nhận ổn định" theo CLAUDE.md 2026-07-24 (cần chờ đóng cửa hôm nay hoặc phiên sau để xác nhận không phải nhiễu trong ngày). Chưa đề xuất vào lệnh, sẽ đánh giá lại ở lần kiểm tra sau nếu đà tăng giữ được tới cuối phiên.
+- **Slot ETF (thay RSP):** chưa có đề xuất mã cụ thể — cần đánh giá kỹ hơn ở lần kiểm tra tới (không phải trọng tâm hôm nay do đã có 2 sự kiện thật cần xử lý).
+
+**Kết luận:** có sự kiện thật (PEP bị stop-loss khớp, core-10 còn 6/10) + đề xuất cập nhật dời stop RKLB theo đỉnh mới mạnh → **đã gửi PushNotification.**
