@@ -5858,4 +5858,21 @@ Sàng lọc wash-sale (tra cả trading-log.md và sandbox-log.md, tính tới h
 - CSCO giảm **-6.1%** so đóng cửa 09-21 ($111.46→$104.68) — vượt ngưỡng đáng chú ý (>3-5%), đã WebSearch: nguyên nhân là Piper Sandler hạ mục tiêu giá từ $132→$125 (vẫn cao hơn nhiều giá hiện tại), không phải tin xấu về cơ bản — quý gần nhất doanh thu $17.25B (+17.6% YoY), EPS $1.22 vs $0.99 cùng kỳ, vẫn đang mở rộng AI infrastructure (hợp tác Splunk) và tham gia Verizon 6G Innovation Forum. Đây là điều chỉnh định giá/target, không phải deterioration — CSCO vẫn là 1 trong 2 lựa chọn hợp lệ (cùng NOW) cho slot tech thay CRM, chưa cần loại bỏ. Không phải vị thế đang nắm giữ nên không có hành động stop-loss.
 - OKLO ($40.905, +1.80%) / ONDS ($7.54, +2.17%) / NOW ($136.105, -1.14%): không có thay đổi luận điểm đáng kể so lần kiểm tra sáng nay.
 
+## 2026-09-22 ~15:42 ET (19:42 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): không breach, không có đề xuất mới
+
+- **Sync đầu phiên:** local ở trạng thái detached HEAD khớp `origin/main` tại `29be26d` (không có commit core-10 mới nào kể từ entry 13:20 ET, chỉ có 2 entry sandbox check 14:08/15:08 ET xen giữa) — `git checkout main && git merge origin/main` fast-forward, không conflict.
+- `get_equity_positions` xác nhận vẫn **6/10 slot**, không đổi: MSFT(1cp), VOO(0.72647cp), AAPL(1cp), RKLB(2cp), PG(1cp), TXN(1cp). 4 slot trống (ETF thay RSP, rủi ro cao thay RGTI, tech thay CRM, blue-chip thay PEP) vẫn chờ Hogan quyết định.
+- `get_equity_orders` (từ 17:20 UTC tới nay): **rỗng** — không có lệnh mới/fill nào, không mã nào breach stop-loss.
+- `get_portfolio`: cash/buying_power **$3,715.52** — không đổi so lần trước.
+- **Benchmark (19:41 UTC, so đóng cửa 09-21):** SPY $774.54 (+0.13%), QQQ $747.45 (+0.81%) — đi ngang/tăng nhẹ, không risk-off.
+- P&L nhanh (so đóng cửa 09-21): RKLB +3.44%, PG +1.38%, AAPL +0.32%, VOO +0.14%, TXN -0.15%, MSFT -0.63%. RKLB chạm biên ngưỡng 3-5% nhưng không có tin mới (tiếp diễn đà tăng đã xác nhận nguyên nhân sáng nay — Cantor/Raymond James, Electron 96, HASTE + Space Force) → không cần WebSearch lại.
+- **Đối chiếu đỉnh intraday (30-phút/5-phút bar, từ 13:30 UTC) với 2 đề xuất dời stop đang chờ duyệt (gửi 09:46 ET sáng nay):**
+  - RKLB: đỉnh intraday mới **$72.50** (bar 18:55 UTC), vượt mốc $71.95 dùng cho đề xuất $63.32 đang chờ. Mức dời ngụ ý mới ($72.50×0.88=$63.80) chỉ chênh +0.76% so đề xuất đang chờ — dưới ngưỡng đáng cập nhật (~2%) → giữ nguyên đề xuất $63.32, không cập nhật thêm.
+  - AAPL: đỉnh intraday cao nhất hôm nay vẫn là $345.34 (bar 13:30 UTC, không có đỉnh mới nào vượt) — đề xuất $328.07 đang chờ giữ nguyên.
+  - PG: đỉnh intraday $147.97, mức dời ngụ ý ($147.97×0.95=$140.57) chỉ chênh +0.25% so stop hiện tại $140.22 — dưới ngưỡng, không đề xuất.
+  - TXN: đỉnh intraday $271.635, mức dời ngụ ý ($271.635×0.95=$258.05) chênh +1.37% so stop hiện tại $254.57 — dưới ngưỡng ~2%, không đề xuất.
+  - MSFT: đỉnh intraday $508.50, vẫn dưới giá vốn $510.00 (mốc dùng tính stop hiện hành $484.50) — không có đỉnh mới. VOO fractional, giá $713.765 (trên giá vốn $688.26), theo dõi thủ công.
+- **4 slot trống:** không đánh giá thêm lần này — không có thông tin mới đáng kể so lần kiểm tra 13:20 ET (CSCO/NOW/OKLO/ONDS/slot ETF+blue-chip vẫn như cũ, chờ Hogan quyết định).
+- **Kết luận:** không mã nào breach stop-loss, không có đỉnh mới đủ lớn để cập nhật 2 đề xuất dời stop đang chờ (RKLB → $63.32; AAPL → $328.07), không có tin xấu/sự kiện mới cần WebSearch, không có đề xuất mới thật sự → **không gửi PushNotification**, chỉ ghi log.
+
 **Kết luận:** không mã nào breach stop-loss, không có đề xuất mới đủ ngưỡng (2 đề xuất dời stop RKLB $63.32/AAPL $328.07 từ 09:46 ET vẫn là bản mới nhất) → **không gửi PushNotification**, chỉ ghi log.
