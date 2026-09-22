@@ -5808,3 +5808,35 @@ Sàng lọc wash-sale (tra cả trading-log.md và sandbox-log.md, tính tới h
 - **Đối chiếu stop-loss hiện tại (không breach):** MSFT $500.64 vs stop $484.50 (đệm 3.33%), AAPL $339.215 vs stop $319.41 (đệm 6.20%), RKLB $69.373 vs stop $57.83 (đệm 19.96%, vs đề xuất đang chờ $61.61 đệm 12.60%), PG $146.55 vs stop $140.22 (đệm 4.51%), TXN $270.49 vs stop $254.57 (đệm 6.25%). VOO fractional, giá $713.74 (trên giá vốn $688.26), theo dõi thủ công.
 - **4 slot trống:** không đánh giá thêm lần này (phiên 09-21 chưa đóng cửa — 15:35 ET, cần chờ đóng cửa để xác nhận bộ lọc entry cho OKLO/ONDS theo CLAUDE.md 2026-07-24; NOW/CSCO thay CRM và slot ETF/blue-chip vẫn chờ Hogan quyết định, không có thông tin mới đáng đánh giá lại).
 - **Kết luận:** không mã nào breach stop-loss, không có đỉnh mới đủ lớn để cập nhật đề xuất dời stop (AAPL/TXN có đỉnh mới nhẹ nhưng dưới ngưỡng ~2%), không có tin xấu/sự kiện mới nào cần WebSearch, không có đề xuất mới thật sự → **không gửi PushNotification**, chỉ ghi log. Các đề xuất cũ (dời stop RKLB → $61.61; chọn NOW hoặc CSCO thay CRM; slot ETF/rủi ro cao/blue-chip vẫn trống) tiếp tục chờ Hogan.
+
+## 2026-09-22 ~09:46 ET (13:46 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): không breach, đề xuất cập nhật dời stop RKLB và AAPL theo đỉnh mới
+
+- **Sync đầu phiên:** `git fetch`/`git pull origin main` (2 lần, trước và sau phân tích) — cả 2 lần "Already up to date" (không có commit mới từ phiên khác kể từ entry 09-21 15:35 ET), không conflict.
+- `get_equity_positions` xác nhận vẫn **6/10 slot**, không đổi: MSFT(1cp, avg $510.00), VOO(0.72647cp, avg $688.26), AAPL(1cp, avg $325.08), RKLB(2cp, avg $63.38), PG(1cp, avg $145.97), TXN(1cp, avg $265.09). 4 slot trống (ETF thay RSP, rủi ro cao thay RGTI, tech thay CRM, blue-chip thay PEP) vẫn chờ Hogan quyết định.
+- `get_equity_orders` (từ 19:35 UTC 09-21 tới nay): **rỗng** — không có lệnh mới/fill nào, không mã nào breach stop-loss.
+- `get_portfolio`: cash **$3,715.52**, buying_power **$3,715.52** — gần như không đổi so lần trước ($3,715.08/$3,586.82).
+- **Benchmark (13:46 UTC, so đóng cửa 09-21):** SPY $774.11 (+0.08%), QQQ $744.28 (+0.38%) — đi ngang, không risk-off.
+- P&L nhanh (so đóng cửa 09-21): AAPL +0.84%, RKLB +0.91%, PG +0.87%, VOO +0.08%, TXN -0.60%, MSFT -0.77%. Không mã nào vượt ngưỡng 3-5% so đóng cửa hôm qua.
+
+### Đề xuất cập nhật dời stop-loss RKLB (nhóm rủi ro cao, -12%) — thay thế đề xuất $61.61 đang chờ
+- RKLB mở cửa gap up mạnh ($69.89→$71.72), đỉnh intraday **$71.95** (bar 13:35 UTC, `get_equity_historicals` 5-phút), sau đó hạ nhiệt về $70.47-70.81 (hiện $70.525) — biến động trong phiên nhưng đỉnh mới đã xác lập vượt xa mốc $70.01 (09-21) đang dùng cho đề xuất $61.61 chưa được duyệt.
+- **WebSearch RKLB:** không có tin xấu — tiếp diễn loạt catalyst tích cực: Cantor Fitzgerald tái khẳng định Overweight/target $122 (thứ Hai), Raymond James khởi động coverage Outperform/target $80 (kỳ vọng EBITDA/FCF dương 2027-28), vừa hoàn tất chuyến Electron thứ 96, hợp đồng thử nghiệm siêu thanh HASTE $190M + hợp đồng Space Force mới. Đợt hạ nhiệt sau khi chạm đỉnh sáng nay là chốt lời bình thường, không phải deterioration.
+- **Đề xuất cập nhật (thay thế $61.61 cũ, không cộng dồn):** dời stop-loss RKLB từ $57.83 → **$63.32** (= $71.95 × 0.88, nhóm rủi ro cao -12% theo CLAUDE.md 2026-07-24). Giá hiện tại $70.525 vẫn cao hơn mức đề xuất (đệm ~10.2%). RKLB đang lãi tốt +11.3% từ giá vốn $63.38. Chênh lệch so đề xuất cũ đang chờ ($61.61): +2.77%, vượt ngưỡng đáng cập nhật (~2%, theo tiền lệ nhiều entry trước) → cập nhật đề xuất.
+
+### Đề xuất cập nhật dời stop-loss AAPL (nhóm tech, -5%) — thay thế mức $319.41 đang armed
+- AAPL đỉnh intraday **$345.34** (bar 13:30 UTC), vượt xa mốc tham chiếu cũ $336.22 (09-11) đang dùng cho stop armed hiện tại $319.41. Các lần kiểm tra trước (09-17→09-21) đỉnh chỉ nhích nhẹ (~$337-339, dưới ngưỡng cập nhật ~2%), nhưng đỉnh mới hôm nay tăng vọt rõ rệt.
+- **WebSearch AAPL:** không có tin xấu — giá đang giao dịch gần đỉnh 52 tuần ($344.57) sau đợt ra mắt iPhone 18 Pro/foldable, cổ phiếu +~21% YTD, 25/31 analyst khuyến nghị Mua. Không có catalyst tiêu cực.
+- **Đề xuất cập nhật:** dời stop-loss AAPL từ $319.41 → **$328.07** (= $345.34 × 0.95, nhóm tech -5%). Giá hiện tại $341.83 vẫn cao hơn mức đề xuất (đệm ~4.0%). Chênh lệch so stop armed hiện tại $319.41: +2.71%, vượt ngưỡng đáng cập nhật → cập nhật đề xuất.
+
+### Các mã khác — không có đỉnh mới đáng cập nhật
+- **TXN:** đỉnh intraday $271.13 (bar 13:30 UTC), nhích nhẹ so mốc tham chiếu cũ ~$270.54 (09-21). Mức dời ngụ ý ($271.13×0.95=$257.57) chỉ chênh +1.18% so stop hiện tại $254.57 — dưới ngưỡng đáng cập nhật, không đề xuất.
+- **PG:** đỉnh intraday $147.524 (bar 13:40 UTC), vẫn dưới mốc tham chiếu $147.60 dùng tính stop $140.22 — không có đỉnh mới.
+- **MSFT:** đỉnh intraday $508.50, vẫn dưới giá vốn $510.00 (mốc dùng tính stop hiện hành $484.50) — không có đỉnh mới.
+- VOO fractional, giá $713.33 (trên giá vốn $688.26), theo dõi thủ công.
+
+### 4 slot trống — cập nhật nhanh, chưa đủ căn cứ đề xuất mới
+- **OKLO ($39.66, -1.29% so đóng cửa 09-21) / ONDS ($7.495, +1.56%):** OKLO đã có phiên xanh xác nhận 09-21 (+5.7% so 09-18, volume tốt) — đạt bộ lọc "1 phiên xác nhận" theo CLAUDE.md 2026-07-24, nhưng đang đỏ nhẹ sáng nay (chưa phải giảm mạnh >3-5%, chỉ là điều chỉnh nhẹ sau phiên tăng) — chưa vào lệnh giữa lúc chưa rõ xu hướng trong ngày, đánh giá lại ở lần kiểm tra tới nếu ổn định/xanh trở lại. ONDS phiên 09-21 đóng đỏ nhẹ, chưa đạt bộ lọc "phiên xanh xác nhận".
+- **NOW ($136.69, -0.72% so đóng cửa 09-21) / CSCO ($108.71, -2.47%):** cả hai đi ngang/giảm nhẹ, không có thay đổi luận điểm — 2 lựa chọn cũ (thay CRM) vẫn còn hiệu lực, chưa có Hogan quyết định, không cần đề xuất lại.
+- **Slot ETF (thay RSP) / slot blue-chip (thay PEP):** chưa có đề xuất mã cụ thể lần này — không phải trọng tâm hôm nay.
+
+**Kết luận:** không mã nào breach stop-loss, có 2 đề xuất cập nhật thật sự (dời stop RKLB → $63.32; dời stop AAPL → $328.07, cả hai đều vượt ngưỡng đáng cập nhật so đề xuất/mức đang chờ trước đó) → **đã gửi PushNotification.** Các đề xuất cũ khác (chọn NOW hoặc CSCO thay CRM; slot ETF/rủi ro cao/blue-chip vẫn trống) tiếp tục chờ Hogan.
