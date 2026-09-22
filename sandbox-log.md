@@ -5022,3 +5022,15 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Phần theo dõi sandbox (circuit breaker) — 100% tiền mặt, không đổi:** $0 vị thế, không kích hoạt circuit breaker.
 - **Wash-sale vẫn hiệu lực:** IONQ (~10-14), SOUN (~10-10, có thể đã hết), RGTI (~10-15), JPM (~10-15), RSP (~10-16, core-10), CRM (~10-17, core-10), PEP (~10-21, core-10).
 - **Quyết định: KHÔNG hành động** — chưa xác định được ứng viên rủi ro cao mới cụ thể để vào lệnh. Không có gì thay đổi thật so lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-09-22 ~11:09 ET (15:09 UTC) — Kiểm tra định kỳ (routine tự động, sync git): sandbox vẫn 100% tiền mặt, KHÔNG hành động
+
+- **Sync đầu phiên:** local ở trạng thái detached HEAD, `git checkout main && git pull origin main` — fast-forward 2 commit mới (core-10 stop-loss update 09:46 ET, sandbox check 10:09 ET, cả hai không cần hành động thêm từ phiên này), không conflict.
+- `get_equity_positions` (704170133): **6 vị thế** — MSFT(1cp), VOO(0.72647cp), AAPL(1cp), RKLB(2cp), PG(1cp), TXN(1cp) — đối chiếu `trading-log.md` xác nhận **toàn bộ đều là core-10** (khớp đúng 6/10 slot đang có). Không có mã lạ nào → **sandbox hiện vẫn không giữ mã cổ phiếu nào** (100% cash).
+- Lưu ý: cả 5 vị thế core-10 (trừ VOO) đang có lệnh bán "confirmed" (chưa khớp) khiến `shares_held_for_sells` bằng đúng số lượng nắm giữ — đây là các lệnh stop-loss core-10 đang armed (đặt từ trước, chưa khớp), KHÔNG phải giao dịch sandbox, ngoài phạm vi quản lý ở đây → bỏ qua hoàn toàn theo đúng quy tắc đối chiếu `trading-log.md`.
+- `get_equity_orders`: không có lệnh sandbox nào được tạo/khớp hôm nay.
+- `get_portfolio`: cash **$3,715.52**, buying_power **$3,715.52** — không đổi so lần check trước (10:09 ET).
+- Không có vị thế sandbox nào đang giữ nên không cần đối chiếu giá/stop-loss; chưa có ứng viên rủi ro cao mới cụ thể đang cân nhắc ngay bây giờ → không cần WebSearch.
+- **Phần theo dõi sandbox (circuit breaker) — 100% tiền mặt, không đổi:** $0 vị thế, không kích hoạt circuit breaker.
+- **Wash-sale vẫn hiệu lực:** IONQ (~10-14), SOUN (~10-10, có thể đã hết), RGTI (~10-15), JPM (~10-15), RSP (~10-16, core-10), CRM (~10-17, core-10), PEP (~10-21, core-10).
+- **Quyết định: KHÔNG hành động** — chưa xác định được ứng viên rủi ro cao mới cụ thể để vào lệnh. Không có gì thay đổi thật so lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
