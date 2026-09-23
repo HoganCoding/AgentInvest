@@ -5910,3 +5910,28 @@ Sàng lọc wash-sale (tra cả trading-log.md và sandbox-log.md, tính tới h
 - Giá hiện tại lúc đặt lệnh: RKLB $71.50 (đệm ~9.6% so stop mới), AAPL $338.17 (đệm ~3.0% so stop mới).
 - Cả 2 vị thế khác (MSFT $484.50, PG $140.22, TXN $254.57) không đổi, vẫn armed như cũ.
 - **Kết luận:** đã thực hiện đúng theo quyết định Hogan (yes), không có gì cần thêm.
+
+## 2026-09-23 ~11:09 ET (15:09 UTC) — Hogan chọn 4 mã lấp đủ 10/10 slot (phiên tương tác): NOW, ONDS, WMT, VXUS
+
+- **Bối cảnh:** đã trình 4 slot trống × 2 lựa chọn/slot (tech: NOW/CSCO; rủi ro cao: OKLO/ONDS; blue-chip: JNJ/WMT; ETF: VXUS/SCHD), rà soát không mã nào vi phạm wash-sale/nhóm rủi ro. Hogan chọn: NOW (tech, thay CRM), ONDS (rủi ro cao, thay RGTI), WMT (blue-chip, thay PEP), VXUS (ETF, thay RSP).
+- Kích thước lệnh tính theo tỷ trọng CLAUDE.md (tech/blue-chip/ETF 5-10%, rủi ro cao ~5%, trên giá trị equity core-10 trước giao dịch ~$1,916.14), mua nguyên cổ phiếu để đặt được stop-loss tự động.
+
+### NOW (tech, -5%)
+- Mua market 1cp @ $139.9099 (~7.3% equity core-10) — lệnh `6ab3eb83...`, filled.
+- Đặt stop-loss GTC stop_market bán 1cp @ **$132.91** (= $139.9099 × 0.95) — lệnh `6ab3ebbe...`, confirmed.
+
+### ONDS (rủi ro cao, -12%)
+- Mua market 12cp @ avg $7.7482 (~4.9% equity core-10) — lệnh `6ab3eb85...`, filled. Lưu ý: đây là mã đầu cơ nhỏ, đã kiểm tra bộ lọc entry (phiên xanh +2%, catalyst thật — mua 2 công ty quốc phòng GATE/Bron).
+- Đặt stop-loss GTC stop_market bán 12cp @ **$6.82** (= $7.7482 × 0.88) — lệnh `6ab3ebc0...`, confirmed.
+
+### WMT (blue-chip, -5%)
+- Mua market 1cp @ $109.5699 (~5.7% equity core-10) — lệnh `6ab3eb86...`, filled.
+- Đặt stop-loss GTC stop_market bán 1cp @ **$104.09** (= $109.5699 × 0.95) — lệnh `6ab3ebc2...`, confirmed.
+
+### VXUS (ETF, -5% mặc định)
+- Mua market 2cp @ avg $86.325 (~9.0% equity core-10) — lệnh `6ab3eb87...`, filled.
+- Đặt stop-loss GTC stop_market bán 2cp @ **$82.01** (= $86.325 × 0.95) — lệnh `6ab3ebc3...`, confirmed.
+
+**Tổng vốn triển khai:** ~$516.33. Cash/buying power còn lại đủ lớn (trước giao dịch $3,715.52), không ảnh hưởng phần đệm sandbox (~$1,400).
+
+**Kết luận: Core-10 đủ lại 10/10 slot** — MSFT, VOO, AAPL, RKLB, PG, TXN, NOW, ONDS, WMT, VXUS. Tất cả 10 stop-loss GTC đang armed. Không có đề xuất mới nào khác đang chờ.
