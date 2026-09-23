@@ -6038,3 +6038,16 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 - Core-10 (9/10, còn chờ VB): tổng ~$4,366.77, lãi chưa chốt ~+$19.00. Không mã nào gần ngưỡng -10% theo giá đóng cửa (sát nhất là MSFT, cách ngưỡng $464.09 khoảng 7.4%). 6 stop dự phòng -15% + stop KTOS đều đang `confirmed`.
 - Sandbox: KTOS 8cp @ $47.00 (-0.93%, cách stop $41.75 khoảng 12.6%).
 - Việc đang chờ: routine một lần 09-24 10:30 ET mua VB $500 + SCHD ~$185.
+
+## 2026-09-23 ~13:20 ET (17:20 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): không breach, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin` — local đang ở detached HEAD khớp `origin/main` tại `e45d17b` (không có commit core-10 mới nào kể từ entry 12:55 ET), `git checkout -B main origin/main` sạch, không conflict.
+- `get_equity_positions` xác nhận core-10 đang **9/10 slot** (đúng kế hoạch — VB chưa mua, chờ routine 09-24 10:30 ET): MSFT 1cp (avg $510.00), VOO 0.72647cp (avg $688.26), AAPL 1.483843cp (avg $328.93), PG 3.39362cp (avg $147.15), TXN 2cp (avg $268.34), NOW 3.563497cp (avg $139.65), WMT 4.545415cp (avg $109.85), VXUS 5.813138cp (avg $86.30), SCHD 9.431165cp (avg $33.40). KTOS 8cp là vị thế **sandbox**, không thuộc core-10 — chỉ ghi nhận, không quản lý ở đây.
+- `get_equity_orders` (từ 16:55 UTC tới nay): **rỗng** — không có lệnh mới/fill nào, không mã nào breach stop. 6 stop dự phòng -15% (MSFT/AAPL/PG/TXN/NOW/WMT) vẫn `confirmed` như log trước.
+- `get_portfolio`: total value **$5,618.99**, equity $4,747.58, cash $871.41 (buying power $5.41 — vẫn đang chờ $866 tiền bán RKLB/ONDS settle 09-24).
+- **Benchmark (17:20 UTC, so đóng cửa 09-22):** SPY $767.70 (-0.73%), QQQ $739.89 (-1.01%) — thị trường đỏ trên diện rộng, không phải rủi ro riêng lẻ mã nào.
+- P&L nhanh (so đóng cửa 09-22): NOW +2.31%, WMT +0.34%, MSFT +0.41%, PG -0.45%, AAPL -0.55%, TXN -0.63%, VOO -0.74%, SCHD -1.11%, VXUS -1.89%. Tất cả nằm trong biên độ thị trường chung, không mã nào lệch bất thường >3-5% so benchmark → không cần WebSearch tin tức sâu.
+- **Đối chiếu đỉnh intraday với 6 stop dự phòng -15% (không cần cập nhật do -15% cố định theo đỉnh tại thời điểm tái cấu trúc 12:20 ET, không phải mức đóng cửa trước đó):** WMT tạo đỉnh nhẹ $110.49 (vượt mốc $110.04 dùng khi đặt stop $93.53), mức dời ngụ ý ($110.49×0.85=$93.92) chỉ chênh +0.41% so ngưỡng hiện tại — dưới ngưỡng đáng cập nhật (~2%) → không cập nhật. Các mã còn lại (MSFT/AAPL/PG/TXN/NOW) đều dưới đỉnh đã ghi nhận trong phiên tái cấu trúc, không có đỉnh mới.
+- **Ngưỡng đóng cửa -10%:** chưa đến giờ kiểm tra chính (15:30 ET) — không đánh giá lần này, đúng quy trình mới.
+- Không phải ngày 1-7 đầu tháng → không kiểm tra tiền nạp $300. Không phải ngày 1 tháng → không cần báo cáo 3 dòng.
+- **Kết luận:** không mã nào breach stop-loss, không có tin xấu/phân kỳ đáng kể, không có đề xuất mới → **không gửi PushNotification**, chỉ ghi log.
