@@ -5165,3 +5165,16 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Core-10 không còn nhóm rủi ro cao** — RKLB/ONDS đã bán hôm nay (core-10, KHÔNG phải sandbox). Cổ phiếu rủi ro cao chỉ còn giao dịch trong sandbox. ⚠️ ONDS bán lỗ nhẹ hôm nay → sandbox không được mua ONDS tới ~10-23 (wash sale).
 - **Lưu ý đối chiếu vị thế:** từ 09-24, SCHD và VB là **core-10** (ETF mới), không phải sandbox.
 - KTOS: giữ nguyên, stop $41.75 vẫn armed.
+
+## 2026-09-23 ~15:02 ET (19:02 UTC) — Kiểm tra định kỳ (routine tự động, 2 lần/ngày): giữ nguyên KTOS, KHÔNG hành động
+
+- **Sync đầu phiên:** `git pull` — "Already up to date", không có commit mới từ phiên khác kể từ entry 12:20 ET (13:20 ET là core-10, không liên quan sandbox), không conflict.
+- `get_equity_positions` (704170133): **10 vị thế** — 9 mã core-10 (MSFT 1cp, VOO 0.72647cp, AAPL 1.483843cp, PG 3.39362cp, TXN 2cp, NOW 3.563497cp, WMT 4.545415cp, VXUS 5.813138cp, SCHD 9.431165cp — đối chiếu `trading-log.md` khớp đúng số lượng/giá vốn sau tái cấu trúc 12:20 ET, VB vẫn chưa mua chờ routine 09-24 10:30 ET) + **KTOS 8cp, avg $47.44** — đối chiếu `sandbox-log.md`: đúng vị thế sandbox duy nhất, không dính core-10.
+- `get_equity_quotes` KTOS: giá hiện tại **$46.70** (so đóng cửa 09-22 $46.97: -0.57%; so giá vốn $47.44: **-1.56%**; so lần check trước 12:07 ET $47.155: -0.97%) — biến động nhỏ, dưới ngưỡng 3-5% → không cần WebSearch tin tức mới.
+- `get_equity_orders` (từ 16:20 UTC tới nay): **rỗng** — không có lệnh mới/fill nào. Stop-loss GTC stop $41.75/8cp (KTOS) vẫn đang held for sells (armed), cách giá hiện tại ~10.6%.
+- `get_portfolio`: cash **$871.41**, nhưng **buying_power chỉ $5.41** — $866 tiền bán RKLB/ONDS (core-10) vẫn chưa settle (dự kiến 09-24), không phải tiền sandbox rảnh dùng được ngay. total_value $5,618.69.
+- **Không mở vị thế mới:** (1) buying power thực tế gần $0, không đủ vào lệnh mới bất kể có ứng viên hay không; (2) theo quyết định 12:20 ET, đệm sandbox đang thiếu (~$185 so mục tiêu ~$280) nên tạm ngưng mở vị thế mới cho tới khi KTOS thoát hoặc vốn sandbox tăng (VB/SCHD settle 09-24). Không cần rà ứng viên mới lần này.
+- **Phần theo dõi sandbox (circuit breaker):** giá trị KTOS hiện tại ~8×$46.70=**$373.60** — còn rất xa ngưỡng chốt lời x2 (~$1,230 co giãn) và còn rất xa ngưỡng dừng hẳn (gần $0). Không kích hoạt circuit breaker.
+- **Wash-sale vẫn hiệu lực (ước tính):** IONQ (~10-14), RGTI (~10-15), JPM (~10-15), ONDS (~10-23, core-10), RSP (~10-16, core-10), CRM (~10-17, core-10), PEP (~10-21, core-10).
+- **Số lệnh mở mới tuần này (09-21→09-25):** 1/2 (KTOS 09-23) — còn 1 lệnh khả dụng nếu có ứng viên và buying power thực tế cho phép.
+- **Quyết định: KHÔNG hành động** — giữ nguyên KTOS, không đủ buying power thực tế để vào lệnh mới. Không có gì thay đổi thật so lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
