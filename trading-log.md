@@ -5901,3 +5901,12 @@ Sàng lọc wash-sale (tra cả trading-log.md và sandbox-log.md, tính tới h
 - OKLO ($39.69, -1.88%), ONDS ($7.73, +0.13%), NOW ($139.58, +1.88%), CSCO ($106.27, -0.16%) — không mã nào biến động đủ lớn để cần đánh giá lại. 2 lựa chọn tech (NOW/CSCO thay CRM) và slot ETF/rủi ro cao/blue-chip vẫn chờ Hogan.
 
 **Kết luận:** không mã nào breach stop-loss, có 1 đề xuất cập nhật thật sự (dời stop RKLB → $64.60, vượt ngưỡng đáng cập nhật so đề xuất đang chờ trước đó) → **đã gửi PushNotification.** Đề xuất AAPL → $328.07 (09-22) vẫn là bản mới nhất, chưa có Hogan quyết định.
+
+## 2026-09-23 ~11:00 ET (15:00 UTC) — Hogan duyệt 2 đề xuất dời stop-loss RKLB/AAPL (phiên tương tác)
+
+- Hogan duyệt cả 2 đề xuất đang chờ từ entry 09:46 ET hôm nay và 09-22: dời stop RKLB → $64.60, dời stop AAPL → $328.07.
+- **RKLB:** hủy lệnh stop-loss cũ (order `6aaaa324`, stop $57.83, đặt 09-16) → xác nhận `cancelled`. Đặt lệnh stop_market sell mới 2cp, stop $64.60, GTC (order `6ab3e970`) → xác nhận `confirmed`.
+- **AAPL:** hủy lệnh stop-loss cũ (order `6aa95683`, stop $319.41, đặt 09-15) → xác nhận `cancelled`. Đặt lệnh stop_market sell mới 1cp, stop $328.07, GTC (order `6ab3e972`) → xác nhận `confirmed`.
+- Giá hiện tại lúc đặt lệnh: RKLB $71.50 (đệm ~9.6% so stop mới), AAPL $338.17 (đệm ~3.0% so stop mới).
+- Cả 2 vị thế khác (MSFT $484.50, PG $140.22, TXN $254.57) không đổi, vẫn armed như cũ.
+- **Kết luận:** đã thực hiện đúng theo quyết định Hogan (yes), không có gì cần thêm.
