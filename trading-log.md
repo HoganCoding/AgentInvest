@@ -6023,3 +6023,12 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 
 ## 2026-09-23 ~12:50 ET — Sửa hướng dẫn duyệt trong 2 routine core-10 (Hogan duyệt)
 - Routine 13:00 (`trig_01Cc9YN89CoH9uMfHs2gHGB8`) và 15:30 (`trig_01GtwWcHBt3GKLes5fPrvuZn`): thông báo đề xuất giờ hướng dẫn **mở phiên mới (PC hoặc app Claude → Code) và gõ "duyệt đề xuất mới nhất"**, không trả lời trong phiên routine (phiên đó chỉ có quyền đọc, không đặt lệnh được). Đồng thời bổ sung vào prompt: 15:30 xét stop theo giá đóng cửa -10%, 13:00 kiểm tra tiền nạp $300 trong 7 ngày đầu tháng, báo cáo 3 dòng ngày 1, viết bằng tiếng Việt. Quyền Robinhood của 2 routine vẫn chỉ đọc như cũ.
+
+## 2026-09-23 ~12:54 ET (16:54 UTC) — Kiểm tra (phiên tương tác, Hogan: "Kiểm tra"): mọi thứ khớp, KHÔNG hành động
+- Thị trường: SPY -0.80%, QQQ -1.13% trong phiên.
+- Core-10 (giá ~12:53 ET, so giá vốn): MSFT $498.36 (-2.3%), AAPL $336.85 (+2.4%), TXN $269.89 (+0.6%), NOW $139.89 (+0.2%), PG $147.66 (+0.3%), WMT $110.34 (+0.4%), VOO $707.00 (+2.7%), VXUS $85.84 (-0.5%), SCHD $33.36 (-0.1%). Tất cả còn xa ngưỡng đóng cửa -10% và stop dự phòng -15%.
+- 6 stop dự phòng -15% (MSFT/AAPL/PG/TXN/NOW/WMT) đều `confirmed`; ETF không có stop (đúng quy tắc mới).
+- Sandbox: KTOS 8cp $46.99 (-0.95% so giá vốn $47.44), stop $41.75 vẫn armed.
+- `get_portfolio`: total $5,613.83, equity $4,742.42, cash $871.41 (buying power $5.41 — $866 tiền bán RKLB/ONDS settle ngày 09-24).
+- VB chưa mua — đúng kế hoạch, routine `trig_01RfG5LMTqFXn1wxSVRkUq1b` sẽ mua VB $500 + SCHD ~$185 lúc 10:30 ET ngày 09-24.
+- Không có đề xuất mới.
