@@ -6001,3 +6001,12 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 
 ### Tài khoản sau giao dịch
 - `get_portfolio`: total $5,616.68, equity $4,745.27, cash $871.41 (buying power $5.41 — phần còn lại là tiền chưa settle).
+
+## 2026-09-23 ~12:30 ET (16:30 UTC) — Hogan duyệt thêm 4 đề xuất (phiên tương tác)
+
+1. **Sandbox:** routine chỉ chạy 2 lần/ngày (11:00 và 15:00 ET; cron `0 15,19 * * 1-5`, đã cập nhật routine `trig_018wufdDSW9zaGnr8DTdVPAw`). Tối đa 2 lệnh mở mới/tuần; thua 2 lệnh liên tiếp → nghỉ 5 phiên; push notification chỉ khi có thay đổi.
+2. **Điều kiện dừng sandbox so với VOO:** mốc đo lấy ngày 09-24; thua VOO 2 tháng liên tiếp hoặc sau 3 tháng → đề xuất dừng.
+3. **Né báo cáo tài chính:** không mở vị thế mới nếu báo cáo tài chính rơi trong 5 phiên tới. Lịch sắp tới: **TXN 10-20 (sau đóng cửa), PG 10-22 (trước mở cửa), KTOS ~11-03 (chưa xác nhận)**.
+4. **Tiền nạp mới → ETF core.** Khuyến nghị Hogan tự bật nạp tiền định kỳ + DRIP trong app.
+- Đã ghi tất cả vào CLAUDE.md.
+- **Routine một lần** `trig_01RfG5LMTqFXn1wxSVRkUq1b` (10:30 ET ngày 09-24) sẽ mua VB $500 + SCHD phần còn thiếu (~$185) theo mục "ĐANG CHỜ" ở entry trước, sau đó ghi mốc đo sandbox so với VOO.
