@@ -6010,3 +6010,10 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 4. **Tiền nạp mới → ETF core.** Khuyến nghị Hogan tự bật nạp tiền định kỳ + DRIP trong app.
 - Đã ghi tất cả vào CLAUDE.md.
 - **Routine một lần** `trig_01RfG5LMTqFXn1wxSVRkUq1b` (10:30 ET ngày 09-24) sẽ mua VB $500 + SCHD phần còn thiếu (~$185) theo mục "ĐANG CHỜ" ở entry trước, sau đó ghi mốc đo sandbox so với VOO.
+
+## 2026-09-23 ~12:40 ET (16:40 UTC) — Hogan duyệt đề xuất 5-8 (phiên tương tác)
+- **5:** đã tắt routine core-10 lúc 9:45 ET (`trig_01X1nwMKoqi8mBaNZBHGxWrR`, enabled=false). Core-10 chỉ còn kiểm tra lúc 13:00 và 15:30 ET.
+- **6:** thêm vào CLAUDE.md: review ngày 01/12 sẽ gồm đề xuất tối ưu thuế (tax-loss harvesting).
+- **7:** Hogan tự kiểm tra lãi tiền mặt (cash sweep) trong app.
+- **8:** review ngày 1 hàng tháng mở đầu bằng báo cáo 3 dòng Core-10 / Sandbox / VOO, gửi qua PushNotification.
+- Ghi nhận `get_accounts`: unsettled_funds $866.00 (tiền bán RKLB/ONDS, settle ngày 09-24).
