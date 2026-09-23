@@ -5935,3 +5935,34 @@ Sàng lọc wash-sale (tra cả trading-log.md và sandbox-log.md, tính tới h
 **Tổng vốn triển khai:** ~$516.33. Cash/buying power còn lại đủ lớn (trước giao dịch $3,715.52), không ảnh hưởng phần đệm sandbox (~$1,400).
 
 **Kết luận: Core-10 đủ lại 10/10 slot** — MSFT, VOO, AAPL, RKLB, PG, TXN, NOW, ONDS, WMT, VXUS. Tất cả 10 stop-loss GTC đang armed. Không có đề xuất mới nào khác đang chờ.
+
+## 2026-09-23 ~11:25 ET (15:27 UTC) — Consolidate vốn core-10 theo target $500/mã co giãn (phiên tương tác): mua thêm 7/10 slot, cập nhật CLAUDE.md
+
+- **Bối cảnh:** Hogan nhắc lại mục tiêu ban đầu core-10 là ~$500/mã (tách biệt khỏi sandbox $700+$700), khác với cách tính "%  trên equity core-10 hiện tại" đã dùng trước đó khiến 4 mã mới (NOW/ONDS/WMT/VXUS) bị undersize. Đã thống nhất công thức co giãn theo tỷ lệ: tỷ lệ = tổng giá trị tài khoản hiện tại ($5,627.38) / $6,400 gốc (core-10 $5,000 + sandbox $1,400) = **87.9%** → core-10 target mới **~$440/mã**, sandbox target mới **~$615/bucket**. Hogan xác nhận: áp dụng đều $500 gốc cho MỌI nhóm (kể cả rủi ro cao, không giảm riêng theo %), rà soát cả 10 slot, execute luôn, và **tỷ lệ co giãn này sẽ tính lại mỗi lần consolidate định kỳ hàng tháng** (đã ghi vào CLAUDE.md).
+
+### Mua thêm 7 vị thế (AAPL giữ nguyên — quantization giá cao không có lựa chọn nguyên cổ phiếu nào khớp gần $440 hơn mức hiện tại 74%)
+| Mã | Trước | Mua thêm | Sau | Giá vốn mới |
+|---|---|---|---|---|
+| RKLB | 2cp/$63.38 | +4cp @ $72.1877 (`6ab3ef5e...`) | 6cp | $69.25 |
+| PG | 1cp/$145.97 | +2cp @ $147.7034 (`6ab3ef5f...`) | 3cp | $147.13 |
+| TXN | 1cp/$265.09 | +1cp @ $271.5799 (`6ab3ef60...`) | 2cp | $268.34 |
+| NOW | 1cp/$139.91 | +2cp @ $139.3599 (`6ab3ef61...`) | 3cp | $139.54 |
+| ONDS | 12cp/$7.7482 | +45cp @ $7.7169 (`6ab3ef63...`) | 57cp | $7.72 |
+| WMT | 1cp/$109.57 | +3cp @ $109.91 (`6ab3ef64...`) | 4cp | $109.82 |
+| VXUS | 2cp/$86.32 | +3cp @ $86.349 (`6ab3ef65...`) | 5cp | $86.34 |
+
+Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
+
+### Cập nhật lại 7 lệnh stop-loss (hủy cũ → đặt mới theo số lượng/giá vốn mới)
+- RKLB: hủy stop $64.60/2cp (`6ab3e970...`) → đặt mới $64.60/6cp (`6ab3efe2...`, confirmed) — **trigger giữ nguyên** (peak-based $73.41×0.88, không đổi theo giá vốn).
+- PG: hủy stop $140.22/1cp (`6aaaa321...`) → đặt mới $140.22/3cp (`6ab3efe3...`, confirmed) — trigger giữ nguyên.
+- TXN: hủy stop $254.57/1cp (`6aaaa322...`) → đặt mới $254.57/2cp (`6ab3efe5...`, confirmed) — trigger giữ nguyên.
+- NOW: hủy stop $132.91/1cp (`6ab3ebbe...`) → đặt mới **$132.56**/3cp (`6ab3efe6...`, confirmed) — tính lại = giá vốn mới $139.54 × 0.95 (nhóm tech).
+- ONDS: hủy stop $6.82/12cp (`6ab3ebc0...`) → đặt mới **$6.79**/57cp (`6ab3efe8...`, confirmed) — = giá vốn mới $7.72 × 0.88 (nhóm rủi ro cao).
+- WMT: hủy stop $104.09/1cp (`6ab3ebc2...`) → đặt mới **$104.33**/4cp (`6ab3efe9...`, confirmed) — = giá vốn mới $109.82 × 0.95 (nhóm blue-chip).
+- VXUS: hủy stop $82.01/2cp (`6ab3ebc3...`) → đặt mới **$82.02**/5cp (`6ab3efeb...`, confirmed) — = giá vốn mới $86.34 × 0.95 (ETF, mặc định -5%).
+
+### Kết quả
+- `get_portfolio` sau cùng: equity **$4,498.82**, cash/buying power **$1,129.91** (khớp sát mục tiêu sandbox co giãn ~$1,230, chênh lệch do làm tròn nguyên cổ phiếu).
+- **Đã cập nhật CLAUDE.md:** thêm quy tắc "Mục tiêu vốn mỗi vị thế core-10" (target $500/mã gốc, công thức co giãn theo tỷ lệ tổng tài khoản/$6,400), cập nhật "Phạm vi vốn" sandbox thành $615/$615 co giãn (thay vì cố định $700/$700), thêm bước "Consolidate vốn hàng tháng" vào quy trình review 30 ngày.
+- **Kết luận:** Core-10 đủ 10/10 slot với size đã hiệu chỉnh theo target co giãn 87.9%. Không có đề xuất mới nào khác đang chờ.
