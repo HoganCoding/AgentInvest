@@ -6051,3 +6051,28 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 - **Ngưỡng đóng cửa -10%:** chưa đến giờ kiểm tra chính (15:30 ET) — không đánh giá lần này, đúng quy trình mới.
 - Không phải ngày 1-7 đầu tháng → không kiểm tra tiền nạp $300. Không phải ngày 1 tháng → không cần báo cáo 3 dòng.
 - **Kết luận:** không mã nào breach stop-loss, không có tin xấu/phân kỳ đáng kể, không có đề xuất mới → **không gửi PushNotification**, chỉ ghi log.
+
+## 2026-09-23 ~15:43 ET (19:43 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): kiểm tra ngưỡng đóng cửa -10% chính, không breach, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin` + `git log origin/main` — local (`HEAD detached`) đã khớp `origin/main` tại `69560df` (không có commit core-10 mới nào kể từ entry 13:20 ET, chỉ có 1 entry sandbox check 15:02 ET xen giữa), `git checkout -B main origin/main` sạch, không conflict.
+- `get_equity_positions` xác nhận vẫn **9/10 slot** (VB chưa mua, đúng kế hoạch chờ routine 09-24 10:30 ET): MSFT 1cp, VOO 0.72647cp, AAPL 1.483843cp, PG 3.39362cp, TXN 2cp, NOW 3.563497cp, WMT 4.545415cp, VXUS 5.813138cp, SCHD 9.431165cp. KTOS 8cp là vị thế sandbox, không thuộc core-10.
+- `get_equity_orders` (từ 17:20 UTC tới nay): **rỗng** — không có lệnh mới/fill nào.
+- `get_portfolio`: total value **$5,618.14**, equity $4,746.73, cash $871.41 (buying power $5.41 — vẫn chờ $866 tiền bán RKLB/ONDS settle 09-24).
+- **Benchmark (19:43 UTC, so đóng cửa 09-22):** SPY $767.33 (-0.78%), QQQ $740.25 (-0.96%) — thị trường tiếp tục đỏ trên diện rộng cả ngày, không phải rủi ro riêng lẻ mã nào.
+
+### Ngưỡng đóng cửa -10% từ đỉnh (kiểm tra chính, ~15:30 ET) — KHÔNG mã nào thủng
+| Mã | Đỉnh dùng tính ngưỡng | Ngưỡng đóng cửa -10% | Giá hiện tại (~15:43 ET) | Đệm |
+|---|---|---|---|---|
+| MSFT | $515.65 (09-03) | $464.09 | $499.68 | +7.65% |
+| AAPL | $345.34 (09-22) | $310.81 | $336.48 | +8.25% |
+| PG | $148.25 (09-22) | $133.43 | $147.37 | +10.42% |
+| TXN | $271.78 (09-21) | $244.60 | $272.52 | +11.40% |
+| NOW | ~$140.37 (09-23) | $126.33 | $140.44 | +11.14% |
+| WMT | ~$110.04 (09-23) | $99.04 | $110.38 | +11.45% |
+
+- Không mã nào gần ngưỡng (đệm nhỏ nhất 7.65%, MSFT) → không có đề xuất bán theo cơ chế mới.
+- **Đỉnh intraday hôm nay (`get_equity_historicals` 5-phút, từ 13:30 UTC):** MSFT $509.44, AAPL $341.80 — cả hai vẫn dưới đỉnh tham chiếu đang dùng, không có đỉnh mới. PG $148.93, TXN $272.57, NOW $141.54, WMT $111.22 — cả 4 tạo đỉnh mới nhẹ vượt mốc tham chiếu hiện hành, nhưng mức dời ngụ ý cho ngưỡng -10%/-15% đều **dưới +1.1%** (PG +0.45%, TXN +0.29%, NOW +0.84%, WMT +1.07%) — dưới ngưỡng đáng cập nhật theo tiền lệ (~2%) → không cập nhật stop dự phòng -15% lần này, giữ nguyên toàn bộ 6 lệnh `confirmed`.
+- **NOW +2.51%** so đóng cửa 09-22 (lệch hẳn so thị trường chung đang đỏ) — WebSearch xác nhận nguyên nhân: Cantor Fitzgerald nâng target giá từ $141 → **$174**, giữ Overweight. Tin tốt, không phải rủi ro cần hành động.
+- Các mã còn lại (MSFT/AAPL/PG/TXN/WMT) và 3 ETF (VOO -0.75%, VXUS -1.73%, SCHD -1.19%) đều nằm trong biên độ thị trường chung, không lệch bất thường → không cần WebSearch thêm.
+- Không phải ngày 1-7 đầu tháng → không kiểm tra tiền nạp $300. Không phải ngày 1 tháng → không cần báo cáo 3 dòng.
+- **Kết luận:** kiểm tra ngưỡng đóng cửa -10% chính của ngày — không mã nào breach, không có đỉnh mới đủ lớn để cập nhật stop dự phòng, tin tức NOW là tích cực → không có đề xuất mới thật sự → **không gửi PushNotification**, chỉ ghi log.
