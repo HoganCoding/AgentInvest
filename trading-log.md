@@ -6017,3 +6017,6 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 - **7:** Hogan tự kiểm tra lãi tiền mặt (cash sweep) trong app.
 - **8:** review ngày 1 hàng tháng mở đầu bằng báo cáo 3 dòng Core-10 / Sandbox / VOO, gửi qua PushNotification.
 - Ghi nhận `get_accounts`: unsettled_funds $866.00 (tiền bán RKLB/ONDS, settle ngày 09-24).
+
+## 2026-09-23 ~12:50 ET — Hogan chốt nạp định kỳ $300/tháng, ngày 1 (khoản đầu tiên 2026-10-01)
+- Tiền nạp đi vào tài khoản Agentic ••••0133 → dùng để mua ETF core (ưu tiên ETF đang có giá trị thấp nhất). Routine 13:00 ET trong 7 ngày đầu tháng sẽ đề xuất khi tiền về. Khoản nạp này không tính là lãi trong báo cáo 3 dòng.
