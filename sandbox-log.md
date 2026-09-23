@@ -5158,3 +5158,10 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Phần theo dõi sandbox (circuit breaker):** giá trị vị thế KTOS hiện tại ~8×$47.155=**$377.24** (giảm nhẹ so vốn mua ~$379.50) — còn rất xa ngưỡng chốt lời x2 (~$1,230, tính trên mục tiêu ~$615 xoay vòng co giãn) và còn rất xa ngưỡng dừng hẳn (gần $0). Không kích hoạt circuit breaker nào.
 - **Wash-sale vẫn hiệu lực (ước tính):** IONQ (~10-14), RGTI (~10-15), JPM (~10-15), RSP (~10-16, core-10), CRM (~10-17, core-10), PEP (~10-21, core-10).
 - **Quyết định: KHÔNG hành động** — KTOS biến động nhỏ, stop-loss vẫn armed đúng mức, chưa có ứng viên rủi ro cao mới cụ thể khác để vào thêm lệnh. Không có gì thay đổi thật so lần check trước (11:38 ET) → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-09-23 ~12:20 ET (16:20 UTC) — Thay đổi phạm vi vốn sandbox (Hogan quyết định, phiên tương tác)
+
+- **Core-10 được ưu tiên cố định $500/mã; sandbox = phần còn lại** (tổng tài khoản − core-10), chia đôi xoay vòng/đệm. Mức hiện tại: sandbox tổng ~$565 = KTOS 8cp (~$377) + ~$181-185 tiền mặt (sau khi core-10 mua VB/SCHD ngày 09-24) → mục tiêu **~$280 xoay vòng + ~$280 đệm**. Hiện KTOS đang dùng nhiều hơn phần xoay vòng, nên đệm đang thiếu (~$185 so với ~$280) → **KHÔNG mở vị thế sandbox mới** cho tới khi KTOS thoát hoặc vốn sandbox tăng.
+- **Core-10 không còn nhóm rủi ro cao** — RKLB/ONDS đã bán hôm nay (core-10, KHÔNG phải sandbox). Cổ phiếu rủi ro cao chỉ còn giao dịch trong sandbox. ⚠️ ONDS bán lỗ nhẹ hôm nay → sandbox không được mua ONDS tới ~10-23 (wash sale).
+- **Lưu ý đối chiếu vị thế:** từ 09-24, SCHD và VB là **core-10** (ETF mới), không phải sandbox.
+- KTOS: giữ nguyên, stop $41.75 vẫn armed.

@@ -5966,3 +5966,38 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 - `get_portfolio` sau cùng: equity **$4,498.82**, cash/buying power **$1,129.91** (khớp sát mục tiêu sandbox co giãn ~$1,230, chênh lệch do làm tròn nguyên cổ phiếu).
 - **Đã cập nhật CLAUDE.md:** thêm quy tắc "Mục tiêu vốn mỗi vị thế core-10" (target $500/mã gốc, công thức co giãn theo tỷ lệ tổng tài khoản/$6,400), cập nhật "Phạm vi vốn" sandbox thành $615/$615 co giãn (thay vì cố định $700/$700), thêm bước "Consolidate vốn hàng tháng" vào quy trình review 30 ngày.
 - **Kết luận:** Core-10 đủ 10/10 slot với size đã hiệu chỉnh theo target co giãn 87.9%. Không có đề xuất mới nào khác đang chờ.
+
+## 2026-09-23 ~12:20 ET (16:20 UTC) — Review hiệu suất + tái cấu trúc core-10 (phiên tương tác, Hogan duyệt A + B + C)
+
+### Review (Hogan hỏi "bữa giờ toàn lỗ, có kế hoạch gì để có lời")
+- `get_pnl_trade_history` (all): **58 lệnh đã đóng, tổng -$416.55, thắng 15/thua 43 (26%)**. Theo nhóm: rủi ro cao 25 lệnh **-$380.07** (~91% tổng lỗ); tech 25 lệnh -$14.50; blue-chip + ETF 8 lệnh -$22. Cùng kỳ SPY ~+3.4%, QQQ ~+1% (đi ngang, biên độ ~10%) → lỗ đến từ cách giao dịch, không phải do thị trường.
+- Nguyên nhân: (1) nhóm rủi ro cao kỳ vọng âm; (2) stop -5% quá chặt với large-cap; (3) 24/43 lệnh lỗ khớp trong 20 phút đầu phiên (stop-market khớp giá gap-down); (4) mua bán lặp lại cùng mã (AMZN 4 lần; GOOGL/CRM/IONQ 3 lần; AVGO/NVDA/RGTI/SOUN 2 lần).
+
+### Quyết định Hogan: A = Yes, B = bỏ nhóm rủi ro cao khỏi core-10 (chỉ giữ ở sandbox), C = Yes; core-10 cố định $500/mã, sandbox nhận phần còn lại; ETF mới = SCHD + VB; cho phép fractional
+- **Cơ cấu mới:** 4 tech (MSFT, AAPL, TXN, NOW) + 2 blue-chip (PG, WMT) + 4 ETF (VOO, VXUS, SCHD, VB). Đã cập nhật CLAUDE.md.
+
+### Lệnh đã thực hiện
+- Hủy 9 lệnh stop cũ (RKLB, ONDS, VXUS, WMT, NOW, TXN, PG, AAPL, MSFT); tất cả đã `cancelled`. Stop KTOS (sandbox) giữ nguyên.
+- **Bán RKLB** 6cp @ $71.5501 = $429.30 (lãi ≈ +$13.80) — `6ab3fb99`, filled.
+- **Bán ONDS** 57cp @ $7.6615 = $436.71 (lỗ ≈ -$3.35) — `6ab3fb9a`, filled. ⚠️ Wash sale ONDS tới ~10-23 (cả sandbox).
+- **Mua thêm (theo $, fractional) cho đủ ~$500:** AAPL $163 (0.483843cp @ $336.89), NOW $79 (0.563497cp @ $140.20), PG $58 (0.39362cp @ $147.35), WMT $60 (0.545415cp @ $110.01), VXUS $70 (0.813138cp @ $86.09). Tất cả filled.
+- **Mua SCHD $315** (9.431165cp @ $33.40) — `6ab3fbc7`, filled (tiền mặt đã settle).
+- **Stop dự phòng mới, -15% từ đỉnh, GTC, chỉ cho phần cổ phiếu nguyên** (tất cả confirmed):
+
+| Mã | Đỉnh từ khi mua | Ngưỡng đóng cửa -10% (kiểm tra 15:30) | Stop dự phòng -15% (trên sàn) | Order |
+|---|---|---|---|---|
+| MSFT 1cp | $515.65 (09-03) | $464.09 | $438.30 | `6ab3fbf7` |
+| AAPL 1cp (+0.48 lẻ) | $345.34 (09-22) | $310.81 | $293.54 | `6ab3fbf9` |
+| PG 3cp (+0.39 lẻ) | $148.25 (09-22) | $133.43 | $126.01 | `6ab3fbfa` |
+| TXN 2cp | $271.78 (09-21) | $244.60 | $231.01 | `6ab3fbfc` |
+| NOW 3cp (+0.56 lẻ) | ~$140.37 (09-23) | $126.33 | $119.31 | `6ab3fbfd` |
+| WMT 4cp (+0.55 lẻ) | ~$110.04 (09-23) | $99.04 | $93.53 | `6ab3fbff` |
+
+- ETF (VOO, VXUS, SCHD) KHÔNG còn stop-loss.
+
+### ĐANG CHỜ — đã duyệt, thực hiện 09-24 khi tiền bán RKLB/ONDS đã settle (~$866)
+- **Mua SCHD thêm ~$185** (cho đủ ~$500) và **mua VB $500** (market, theo $). Đặt sau 10:00 ET, tránh 20 phút đầu phiên. Không cần đặt stop (ETF).
+- Sau đó: tiền mặt còn ~$181 là tiền của sandbox.
+
+### Tài khoản sau giao dịch
+- `get_portfolio`: total $5,616.68, equity $4,745.27, cash $871.41 (buying power $5.41 — phần còn lại là tiền chưa settle).
