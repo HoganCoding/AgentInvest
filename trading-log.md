@@ -6020,3 +6020,6 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 
 ## 2026-09-23 ~12:50 ET — Hogan chốt nạp định kỳ $300/tháng, ngày 1 (khoản đầu tiên 2026-10-01)
 - Tiền nạp đi vào tài khoản Agentic ••••0133 → dùng để mua ETF core (ưu tiên ETF đang có giá trị thấp nhất). Routine 13:00 ET trong 7 ngày đầu tháng sẽ đề xuất khi tiền về. Khoản nạp này không tính là lãi trong báo cáo 3 dòng.
+
+## 2026-09-23 ~12:50 ET — Sửa hướng dẫn duyệt trong 2 routine core-10 (Hogan duyệt)
+- Routine 13:00 (`trig_01Cc9YN89CoH9uMfHs2gHGB8`) và 15:30 (`trig_01GtwWcHBt3GKLes5fPrvuZn`): thông báo đề xuất giờ hướng dẫn **mở phiên mới (PC hoặc app Claude → Code) và gõ "duyệt đề xuất mới nhất"**, không trả lời trong phiên routine (phiên đó chỉ có quyền đọc, không đặt lệnh được). Đồng thời bổ sung vào prompt: 15:30 xét stop theo giá đóng cửa -10%, 13:00 kiểm tra tiền nạp $300 trong 7 ngày đầu tháng, báo cáo 3 dòng ngày 1, viết bằng tiếng Việt. Quyền Robinhood của 2 routine vẫn chỉ đọc như cũ.
