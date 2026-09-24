@@ -5178,3 +5178,9 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Wash-sale vẫn hiệu lực (ước tính):** IONQ (~10-14), RGTI (~10-15), JPM (~10-15), ONDS (~10-23, core-10), RSP (~10-16, core-10), CRM (~10-17, core-10), PEP (~10-21, core-10).
 - **Số lệnh mở mới tuần này (09-21→09-25):** 1/2 (KTOS 09-23) — còn 1 lệnh khả dụng nếu có ứng viên và buying power thực tế cho phép.
 - **Quyết định: KHÔNG hành động** — giữ nguyên KTOS, không đủ buying power thực tế để vào lệnh mới. Không có gì thay đổi thật so lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-09-24 ~09:15 ET (13:15 UTC, trước giờ mở cửa) — Kiểm tra (phiên tương tác): giữ KTOS, KHÔNG hành động
+- KTOS 8cp: đóng cửa 09-23 $46.16, pre-market ~$45.65 (**-3.8%** so giá vốn $47.44). Stop $41.75 vẫn armed (còn cách ~8.5%). Pre-market SPY -0.44%/QQQ -0.84% → giảm theo thị trường chung, chưa tới ngưỡng tìm tin (>3-5% so lần kiểm tra trước chỉ ~-2.9%).
+- Vị thế trong tài khoản đối chiếu log: 9 mã core-10 + KTOS (sandbox). Không có mã lạ.
+- Tiền mặt sandbox sau khi routine 10:30 ET mua VB/SCHD: ~$186. Đệm vẫn thiếu so mục tiêu ~$280 → không mở vị thế mới (đúng quyết định 09-23).
+- Không có thay đổi thật → không gửi PushNotification.

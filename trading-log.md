@@ -6076,3 +6076,10 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 - Các mã còn lại (MSFT/AAPL/PG/TXN/WMT) và 3 ETF (VOO -0.75%, VXUS -1.73%, SCHD -1.19%) đều nằm trong biên độ thị trường chung, không lệch bất thường → không cần WebSearch thêm.
 - Không phải ngày 1-7 đầu tháng → không kiểm tra tiền nạp $300. Không phải ngày 1 tháng → không cần báo cáo 3 dòng.
 - **Kết luận:** kiểm tra ngưỡng đóng cửa -10% chính của ngày — không mã nào breach, không có đỉnh mới đủ lớn để cập nhật stop dự phòng, tin tức NOW là tích cực → không có đề xuất mới thật sự → **không gửi PushNotification**, chỉ ghi log.
+
+## 2026-09-24 ~09:15 ET (13:15 UTC, trước giờ mở cửa) — Kiểm tra core-10 (phiên tương tác, Hogan: "Check main and sandbox"): không hành động
+- Pre-market: SPY -0.44%, QQQ -0.84%.
+- Giá pre-market (so giá vốn): MSFT $498.56 (-2.2%), AAPL $336.79 (+2.4%), TXN $269.75 (+0.5%), NOW $141.03 (+1.0%), PG $148.10 (+0.6%), WMT $111.20 (+1.2%), VOO $704.42 (+2.3%), VXUS $85.62 (-0.8%), SCHD $33.37 (-0.1%). Không mã nào gần ngưỡng đóng cửa -10%.
+- 6 stop dự phòng -15% vẫn giữ (shares_held_for_sells khớp). Không có lệnh mới nào kể từ 09-23 17:00 UTC.
+- `get_portfolio`: total $5,609.19, cash **$871.41, buying power $871.41** — tiền bán RKLB/ONDS đã settle.
+- VB chưa mua: đúng kế hoạch, routine `trig_01RfG5LMTqFXn1wxSVRkUq1b` sẽ mua VB $500 + SCHD ~$185 lúc 10:30 ET hôm nay.
