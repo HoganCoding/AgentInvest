@@ -5184,3 +5184,12 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - Vị thế trong tài khoản đối chiếu log: 9 mã core-10 + KTOS (sandbox). Không có mã lạ.
 - Tiền mặt sandbox sau khi routine 10:30 ET mua VB/SCHD: ~$186. Đệm vẫn thiếu so mục tiêu ~$280 → không mở vị thế mới (đúng quyết định 09-23).
 - Không có thay đổi thật → không gửi PushNotification.
+
+## 2026-09-24 ~10:31 ET (14:31 UTC) — Baseline mới cho quy tắc "dừng sandbox so với VOO" (sau khi core-10 hoàn tất mua VB/SCHD)
+- Core-10 vừa hoàn tất tái cấu trúc (mua VB $500 + SCHD $186.04), cash còn lại thuộc sandbox: **$185.37**.
+- **Baseline sandbox (mốc so VOO theo CLAUDE.md, tính từ khi tái cấu trúc 09-24 hoàn tất):**
+  - KTOS: 8cp × $45.295 (giá hiện tại) = **$362.36**
+  - Cash sandbox: **$185.37**
+  - **Tổng giá trị sandbox mốc: $547.73**
+  - VOO giá mốc: **$705.755**
+- Không có giao dịch sandbox nào khác trong lần này (chỉ ghi nhận baseline).

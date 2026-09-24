@@ -6083,3 +6083,14 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 - 6 stop dự phòng -15% vẫn giữ (shares_held_for_sells khớp). Không có lệnh mới nào kể từ 09-23 17:00 UTC.
 - `get_portfolio`: total $5,609.19, cash **$871.41, buying power $871.41** — tiền bán RKLB/ONDS đã settle.
 - VB chưa mua: đúng kế hoạch, routine `trig_01RfG5LMTqFXn1wxSVRkUq1b` sẽ mua VB $500 + SCHD ~$185 lúc 10:30 ET hôm nay.
+
+## 2026-09-24 ~10:31 ET (14:31 UTC) — Hoàn tất tái cấu trúc core-10: mua VB + SCHD (đã duyệt sẵn từ review 09-23 ~12:20 ET)
+- **Bối cảnh:** thực thi mục "ĐANG CHỜ" trong entry review 2026-09-23 ~12:20 ET — 2 lệnh mua đã được Hogan duyệt trước, chờ tiền bán RKLB/ONDS settle.
+- `git pull origin main` đầu phiên: đã cập nhật, không có commit mới xen giữa. `get_portfolio` xác nhận buying power $871.41 (đủ, tiền RKLB/ONDS đã settle).
+- SCHD trước khi mua: 9.431165cp, giá $33.29 → giá trị ~$313.96 → cần mua thêm ~$186.04 để đạt $500.
+- **Lệnh 1 — VB mua $500.00 (market, regular_hours, gfd):** khớp **1.731357cp @ giá TB $288.7907** = $500.00.
+- **Lệnh 2 — SCHD mua $186.04 (market, regular_hours, gfd):** khớp **5.588851cp @ giá TB $33.2877** = $186.04.
+- Không đặt stop-loss cho VB/SCHD (đúng quy tắc mới — ETF không còn stop tự động).
+- `get_portfolio` sau lệnh: cash còn **$185.37** — đây là phần thuộc sandbox (không phải core-10).
+- **Core-10 hoàn tất đủ 10/10 mã:** MSFT, AAPL, TXN, NOW, PG, WMT, VOO, VXUS, SCHD, VB.
+- Không có hành động nào khác (không đụng KTOS/sandbox).
