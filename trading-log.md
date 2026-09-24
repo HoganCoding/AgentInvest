@@ -6094,3 +6094,17 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 - `get_portfolio` sau lệnh: cash còn **$185.37** — đây là phần thuộc sandbox (không phải core-10).
 - **Core-10 hoàn tất đủ 10/10 mã:** MSFT, AAPL, TXN, NOW, PG, WMT, VOO, VXUS, SCHD, VB.
 - Không có hành động nào khác (không đụng KTOS/sandbox).
+
+## 2026-09-24 ~13:02 ET (17:02 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): không breach, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin` — local (detached HEAD) đã khớp `origin/main` tại `92869df` (commit gần nhất là log sandbox check 09-24 11:03 ET), `git checkout -B main origin/main` sạch, không conflict.
+- `get_equity_positions` xác nhận core-10 đã đủ **10/10 slot**: MSFT 1cp (avg $510.00), AAPL 1.483843cp (avg $328.93), TXN 2cp (avg $268.34), NOW 3.563497cp (avg $139.65), PG 3.393620cp (avg $147.15), WMT 4.545415cp (avg $109.85), VOO 0.726470cp (avg $688.26), VXUS 5.813138cp (avg $86.30), SCHD 15.020016cp (avg $33.36, gồm 5.588851cp mua thêm 09-24 10:31 ET), VB 1.731357cp (avg $288.79). KTOS 8cp là vị thế **sandbox**, không thuộc core-10 — chỉ ghi nhận.
+- `get_equity_orders` (từ 14:31 UTC 09-24 tới nay): chỉ có 2 lệnh VB $500 + SCHD $186.04 đã ghi ở entry trước (10:31 ET) — không có lệnh mới/fill nào khác kể từ đó, không mã nào breach stop.
+- `get_portfolio`: total value **$5,596.33**, equity $5,410.96, cash **$185.37** (buying power $185.37 — đây là phần thuộc sandbox, không phải core-10).
+- **Benchmark (17:02 UTC, so đóng cửa 09-23):** SPY $767.76 (-0.01%), QQQ $741.39 (+0.02%) — thị trường gần như đi ngang.
+- P&L nhanh (so đóng cửa 09-23): AAPL +0.38%, VB -0.24%, VOO -0.03%, VXUS -0.21%, SCHD -0.38%, PG -0.34%, TXN -0.55%, MSFT -0.92%, NOW -1.34%, WMT -1.83%. Tất cả nằm trong biên độ thị trường chung/nhiễu bình thường, không mã nào lệch bất thường >3-5% so benchmark → không cần WebSearch tin tức sâu.
+- **Đối chiếu đỉnh dùng cho stop dự phòng -15%:** giá hiện tại của cả 6 mã tech/blue-chip đều **thấp hơn** đỉnh tham chiếu đang dùng (MSFT $496.00 < $515.65; AAPL $338.31 < $345.34; PG $146.89 < $148.25; TXN $271.11 < $271.78; NOW $138.90 < $140.37; WMT $108.51 < $110.04) → không có đỉnh mới, không cập nhật stop dự phòng lần này. 6 lệnh stop -15% (MSFT/AAPL/PG/TXN/NOW/WMT) giữ nguyên.
+- **Ngưỡng đóng cửa -10%:** chưa đến giờ kiểm tra chính (15:30 ET) — không đánh giá lần này, đúng quy trình mới. Sơ bộ mọi mã đều còn cách ngưỡng rất xa (đệm nhỏ nhất ~7% ở MSFT).
+- Không phải 7 ngày đầu tháng (đã qua 09-07) → không kiểm tra tiền nạp $300 lần này (đợt nạp đầu tiên là 2026-10-01). Không phải ngày 1 tháng → không cần báo cáo 3 dòng.
+- Earnings đã biết: TXN 10-20, PG 10-22 — còn xa, không trong 5 phiên tới, chỉ ghi chú.
+- **Kết luận:** không mã nào breach stop-loss/ngưỡng đóng cửa, không tin xấu/phân kỳ đáng kể, core-10 đủ 10/10 slot đúng kế hoạch → **không có đề xuất mới** → không gửi PushNotification, chỉ ghi log.
