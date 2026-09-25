@@ -6164,3 +6164,28 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 - Earnings đã biết: TXN 10-20, PG 10-22 — còn xa (>5 phiên), chỉ ghi chú, không cần né lệnh nào hôm nay (không mở vị thế mới trong core-10 hôm nay).
 - Không phải 7 ngày đầu tháng → không kiểm tra tiền nạp $300. Không phải ngày 1 tháng → không cần báo cáo 3 dòng.
 - **Kết luận:** không mã nào breach stop-loss/ngưỡng đóng cửa; có 1 đề xuất thật sự (dời stop TXN $231.01 → $236.73) → **đã gửi PushNotification.** Để duyệt: mở phiên mới (Claude Code trên PC, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất".
+
+## 2026-09-25 ~15:34 ET (19:34 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): kiểm tra ngưỡng đóng cửa -10% chính, không breach, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin` — local (detached HEAD) đã khớp `origin/main` tại `b0694f6` (commit gần nhất là log sandbox check 09-25 15:03 ET, không có commit core-10 mới nào kể từ entry 13:03 ET hôm nay), `git checkout -B main origin/main` sạch, không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi: MSFT 1cp (avg $510.00), AAPL 1.483843cp (avg $328.93), TXN 2cp (avg $268.34), NOW 3.563497cp (avg $139.65), PG 3.393620cp (avg $147.15), WMT 4.545415cp (avg $109.85), VOO 0.726470cp (avg $688.26), VXUS 5.813138cp (avg $86.30), SCHD 15.020016cp (avg $33.36), VB 1.731357cp (avg $288.79). KTOS 8cp là vị thế sandbox, không thuộc core-10 — chỉ ghi nhận.
+- `get_equity_orders` (từ 17:03 UTC hôm nay tới nay): **rỗng** — không có lệnh mới/fill nào. 6 stop dự phòng -15% (MSFT/AAPL/PG/TXN/NOW/WMT) + KTOS (sandbox) đều vẫn `confirmed`, **TXN vẫn ở mức cũ $231.01** — đề xuất dời lên $236.73 từ entry 13:03 ET hôm nay chưa được duyệt/thực thi (đúng dự kiến, phiên này chỉ đọc).
+- `get_portfolio`: total value **$5,612.28**, equity $5,426.91, cash **$185.37** (buying power $185.37 — phần thuộc sandbox, không phải core-10).
+- **Benchmark (19:34 UTC, so đóng cửa 09-24):** SPY $770.34 (+0.41%), QQQ $743.66 (+0.35%) — thị trường tiếp tục xanh nhẹ.
+- P&L nhanh (so đóng cửa 09-24): MSFT +3.55%, TXN +2.46%, AAPL +1.29%, VXUS +0.80%, VOO +0.40%, VB +0.25%, SCHD +0.26%, WMT +0.33%, PG +0.23%, NOW -1.19%. MSFT/TXN tiếp tục lệch rõ so benchmark nhưng là tiếp diễn đà tăng đã ghi nhận & giải thích ở entry 13:03 ET hôm nay (Copilot mới của Microsoft, TXN tăng cổ tức +7%) — không phải tin mới, không cần WebSearch lại. NOW -1.19% nằm trong biên độ nhiễu bình thường.
+
+### Ngưỡng đóng cửa -10% từ đỉnh (kiểm tra chính, ~15:34 ET) — KHÔNG mã nào thủng
+| Mã | Đỉnh dùng tính ngưỡng | Ngưỡng đóng cửa -10% | Giá hiện tại (~15:34 ET) | Đệm |
+|---|---|---|---|---|
+| MSFT | $519.40 (09-25, đỉnh mới ghi nhận 13:03 ET hôm nay) | $467.46 | $515.62 | +10.32% |
+| AAPL | $345.34 (09-22) | $310.81 | $340.24 | +9.49% |
+| PG | $148.93 (09-23) | $134.04 | $146.02 | +8.93% |
+| TXN | $278.69 (09-25, đỉnh intraday mới hôm nay, xem dưới) | $250.82 | $277.30 | +10.55% |
+| NOW | $141.54 (09-23) | $127.39 | $136.14 | +6.87% |
+| WMT | $111.22 (09-23) | $100.10 | $107.94 | +7.83% |
+
+- Không mã nào gần ngưỡng (đệm nhỏ nhất 6.87%, NOW) → không có đề xuất bán theo cơ chế mới.
+- **Đối chiếu đỉnh intraday hôm nay (`get_equity_historicals` 5-phút, từ 13:30 UTC) với stop dự phòng -15%:** MSFT đỉnh $519.40 (đã ghi nhận & đánh giá "không đổi" ở entry 13:03 ET — chênh +0.73% so đỉnh cũ, dưới ngưỡng đáng cập nhật). TXN đỉnh $278.69 (nhích nhẹ +0.07% so mức $278.50 đã dùng cho đề xuất dời stop 13:03 ET — không đổi đề xuất, giữ nguyên $236.73 đã đề xuất). AAPL $340.48, PG $146.19, NOW $139.83, WMT $108.02 — tất cả đều **thấp hơn** đỉnh tham chiếu đang dùng (không có đỉnh mới) → không cập nhật gì thêm.
+- Earnings đã biết: TXN 10-20, PG 10-22 — còn xa (>5 phiên), chỉ ghi chú.
+- Không phải 7 ngày đầu tháng → không kiểm tra tiền nạp $300. Không phải ngày 1 tháng → không cần báo cáo 3 dòng.
+- **Kết luận:** kiểm tra ngưỡng đóng cửa -10% chính của ngày — không mã nào breach, không có đỉnh mới đáng kể ngoài TXN (đã đề xuất từ sáng, chưa duyệt) → **không có đề xuất mới thật sự** (đề xuất TXN vẫn đang chờ duyệt từ entry 13:03 ET, không lặp lại push) → không gửi PushNotification, chỉ ghi log.
