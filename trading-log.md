@@ -6134,3 +6134,33 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 - Không phải 7 ngày đầu tháng → không kiểm tra tiền nạp $300. Không phải ngày 1 tháng → không cần báo cáo 3 dòng.
 - Earnings đã biết: TXN 10-20, PG 10-22 — còn xa, không trong 5 phiên tới, chỉ ghi chú.
 - **Kết luận:** kiểm tra ngưỡng đóng cửa -10% chính của ngày — không mã nào breach, không có đỉnh mới, WMT/NOW giảm nhiều hơn benchmark nhưng không có tin xấu cụ thể (nhiễu ngắn hạn) → **không có đề xuất mới** → không gửi PushNotification, chỉ ghi log.
+
+## 2026-09-25 ~13:03 ET (17:03 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): không breach, đề xuất dời stop dự phòng TXN theo đỉnh mới
+
+- **Sync đầu phiên:** `git fetch origin` — local (detached HEAD) đã khớp `origin/main` tại `b205a63` (commit gần nhất là log sandbox check 09-25 11:04 ET), `git checkout -B main origin/main` sạch, không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi: MSFT 1cp (avg $510.00), AAPL 1.483843cp (avg $328.93), TXN 2cp (avg $268.34), NOW 3.563497cp (avg $139.65), PG 3.393620cp (avg $147.15), WMT 4.545415cp (avg $109.85), VOO 0.726470cp (avg $688.26), VXUS 5.813138cp (avg $86.30), SCHD 15.020016cp (avg $33.36), VB 1.731357cp (avg $288.79). KTOS 8cp là vị thế sandbox, không thuộc core-10 — chỉ ghi nhận.
+- `get_equity_orders` (từ 19:34 UTC 09-24 tới nay): **rỗng** — không có lệnh mới/fill nào, không mã nào breach stop. 6 lệnh stop dự phòng -15% (MSFT/AAPL/PG/TXN/NOW/WMT) + KTOS (sandbox) đều `confirmed`.
+- `get_portfolio`: total value **$5,617.88**, equity $5,432.51, cash **$185.37** (buying power $185.37 — phần thuộc sandbox, không phải core-10).
+- **Benchmark (17:02 UTC, so đóng cửa 09-24):** SPY $770.98 (+0.49%), QQQ $744.83 (+0.50%) — thị trường xanh, tech dẫn đầu (+1.02% theo nhóm ngành).
+- P&L nhanh (so đóng cửa 09-24): MSFT +3.83%, TXN +2.57%, VXUS +0.76%, AAPL +1.05%, VB +0.50%, VOO +0.49%, SCHD +0.35%, PG +0.20%, WMT +0.11%, NOW -1.04%. MSFT và TXN lệch rõ so benchmark (>2-3 lần mức tăng thị trường) → đã WebSearch cả hai.
+- **MSFT (+3.83%):** tin tốt — Microsoft công bố Copilot bản làm mới (Home/Code/Autopilot), thị trường tech nói chung dẫn đầu phiên tăng (Nasdaq/S&P +0.53%, nhóm tech +1.02%). Không phải rủi ro, không cần hành động.
+- **TXN (+2.57%):** tin tốt — công bố tăng cổ tức hàng quý +7% (từ $1.42 lên $1.52/cp, hiệu lực 11-10-2026). Không phải rủi ro.
+
+### Đối chiếu đỉnh intraday hôm nay với stop dự phòng -15% (GTC, đang `confirmed`)
+| Mã | Đỉnh cũ dùng tính stop | Stop hiện tại | Đỉnh intraday hôm nay (09-25) | Stop mới ngụ ý (-15%) | Chênh lệch | Hành động |
+|---|---|---|---|---|---|---|
+| MSFT | $515.65 (09-03) | $438.30 | $519.40 | $441.49 | +0.73% | Dưới ngưỡng đáng cập nhật (~2%) → **không đổi** |
+| AAPL | $345.34 (09-22) | $293.54 | $340.24 | — | Đỉnh hôm nay thấp hơn đỉnh cũ | Không đổi |
+| PG | $148.93 (09-23) | $126.01 | $146.19 | — | Đỉnh hôm nay thấp hơn đỉnh cũ | Không đổi |
+| **TXN** | **$271.78 (09-21, lúc đặt lệnh)** | **$231.01** | **$278.50** | **$236.73** | **+2.48%** | **Vượt ngưỡng đáng cập nhật → ĐỀ XUẤT dời lên** |
+| NOW | $141.54 (09-23) | $119.31 | $139.83 | — | Đỉnh hôm nay thấp hơn đỉnh cũ | Không đổi |
+| WMT | $111.22 (09-23) | $93.53 | $107.91 | — | Đỉnh hôm nay thấp hơn đỉnh cũ | Không đổi |
+
+### ĐỀ XUẤT — dời stop dự phòng TXN theo đỉnh mới (cần Hogan duyệt, phiên này chỉ đọc, không đặt lệnh được)
+1. **TXN — dời stop_market GTC** (2cp nguyên) từ **$231.01** lên **$236.73** (hủy lệnh cũ `6ab3fbfc-2d5b-4e86-8837-2e31e7bc91a0`, đặt lệnh mới).
+2. **Lý do:** TXN tạo đỉnh intraday mới $278.50 hôm nay (09-25), cao hơn +2.48% so với đỉnh $271.78 dùng khi đặt stop hiện tại ($231.01 = -15% từ $271.78) — vượt ngưỡng "đáng kể" (~2%, theo tiền lệ áp dụng ở các lần trước). Đây là dời LÊN theo đỉnh mới, đúng quy tắc (không bao giờ dời xuống). Tin tức hôm nay (tăng cổ tức +7%) là chất xúc tác tích cực, không phải rủi ro.
+3. **Rủi ro chính:** không có rủi ro tăng thêm — chỉ siết chặt biên bảo vệ theo đỉnh mới, giảm mức lỗ tối đa nếu giá đảo chiều mạnh. Nếu KHÔNG dời, biên bảo vệ vẫn ở mức cũ thấp hơn cần thiết (không sai quy tắc, chỉ kém tối ưu).
+4. **Mức cắt lỗ đề xuất:** $236.73 (GTC stop_market, thay thế lệnh $231.01), tương ứng -15% từ đỉnh mới $278.50. Ngưỡng đóng cửa -10% (kiểm tra chính 15:30 ET) cũng nên dùng đỉnh mới $278.50 (→ $250.65) cho lần kiểm tra chiều nay.
+- Earnings đã biết: TXN 10-20, PG 10-22 — còn xa (>5 phiên), chỉ ghi chú, không cần né lệnh nào hôm nay (không mở vị thế mới trong core-10 hôm nay).
+- Không phải 7 ngày đầu tháng → không kiểm tra tiền nạp $300. Không phải ngày 1 tháng → không cần báo cáo 3 dòng.
+- **Kết luận:** không mã nào breach stop-loss/ngưỡng đóng cửa; có 1 đề xuất thật sự (dời stop TXN $231.01 → $236.73) → **đã gửi PushNotification.** Để duyệt: mở phiên mới (Claude Code trên PC, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất".
