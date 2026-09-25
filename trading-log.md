@@ -6189,3 +6189,12 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 - Earnings đã biết: TXN 10-20, PG 10-22 — còn xa (>5 phiên), chỉ ghi chú.
 - Không phải 7 ngày đầu tháng → không kiểm tra tiền nạp $300. Không phải ngày 1 tháng → không cần báo cáo 3 dòng.
 - **Kết luận:** kiểm tra ngưỡng đóng cửa -10% chính của ngày — không mã nào breach, không có đỉnh mới đáng kể ngoài TXN (đã đề xuất từ sáng, chưa duyệt) → **không có đề xuất mới thật sự** (đề xuất TXN vẫn đang chờ duyệt từ entry 13:03 ET, không lặp lại push) → không gửi PushNotification, chỉ ghi log.
+
+## 2026-09-25 ~15:47 ET (19:47 UTC) — Phiên tương tác (PC): Hogan DUYỆT dời stop dự phòng TXN → đã thực hiện
+
+- **Quyết định của Hogan: YES** — duyệt đề xuất từ entry 13:03 ET hôm nay (dời stop dự phòng -15% TXN theo đỉnh mới $278.50).
+- Đã hủy lệnh stop cũ `6ab3fbfc-2d5b-4e86-8837-2e31e7bc91a0` (TXN sell 2cp stop $231.01 GTC) → trạng thái `cancelled`, không khớp phần nào.
+- Đã đặt lệnh mới `6ab6cfdf-b124-4f91-823f-6ea462482739`: TXN sell 2cp **stop_market $236.73 GTC** (regular hours) → trạng thái `confirmed`.
+- Giá TXN lúc đặt: ~$277.92 (+2.69% so đóng cửa 09-24). Stop mới cách giá hiện tại ~14.8%.
+- Ngưỡng đóng cửa -10% (kiểm tra 15:30 ET) cho TXN từ nay dùng đỉnh $278.69 (đỉnh intraday cao nhất 09-25, xem entry 15:34 ET) → $250.82. Stop trên sàn giữ đúng mức $236.73 đã duyệt (chênh không đáng kể so với -15% từ $278.69 = $236.89).
+- Kiểm tra nhanh trước đó (~15:44 ET): không lệnh/fill mới, tổng tài khoản $5,617.75, cash $185.37, không mã core-10 nào gần ngưỡng -10%, KTOS (sandbox) $45.49 với stop $41.75 vẫn armed.
