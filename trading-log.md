@@ -6214,3 +6214,28 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 - **Ngưỡng đóng cửa -10%:** chưa đến giờ kiểm tra chính (15:30 ET) — không đánh giá lần này, đúng quy trình mới. Sơ bộ NOW có đệm mỏng nhất (~2.9% so ngưỡng $127.39 tính từ đỉnh $141.54) — sẽ đánh giá kỹ ở lần kiểm tra 15:30 ET.
 - Không phải 7 ngày đầu tháng (09-28 > 09-07) → không kiểm tra tiền nạp $300. Không phải ngày 1 tháng → không cần báo cáo 3 dòng.
 - **Kết luận:** không mã nào breach stop-loss, không có tin xấu nghiêm trọng (NOW là tái cơ cấu/cắt giảm chi phí thông thường, không phải rủi ro cơ bản), không có đề xuất mới → **không gửi PushNotification**, chỉ ghi log.
+
+
+## 2026-09-28 ~15:34 ET (19:34 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): kiểm tra ngưỡng đóng cửa -10% chính, không breach, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin` — local (detached HEAD) đã khớp `origin/main` tại `86421e6` (commit gần nhất là log sandbox check 09-28 15:03 ET), `git checkout -B main origin/main` sạch, không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi: MSFT 1cp (avg $510.00), AAPL 1.483843cp (avg $328.93), TXN 2cp (avg $268.34), NOW 3.563497cp (avg $139.65), PG 3.393620cp (avg $147.15), WMT 4.545415cp (avg $109.85), VOO 0.726470cp (avg $688.26), VXUS 5.813138cp (avg $86.30), SCHD 15.020016cp (avg $33.36), VB 1.731357cp (avg $288.79). KTOS 8cp là vị thế sandbox, không thuộc core-10 — chỉ ghi nhận.
+- `get_equity_orders` (từ 17:02 UTC hôm nay tới nay): **rỗng** — không có lệnh mới/fill nào, không mã nào breach stop. 6 lệnh stop dự phòng -15% (MSFT/AAPL/PG/TXN/NOW/WMT) vẫn `confirmed` (không đổi từ entry 13:02 ET hôm nay).
+- `get_portfolio`: total value **$5,578.24**, equity $5,392.87, cash **$185.37** (buying power $185.37 — phần thuộc sandbox, không phải core-10).
+- P&L nhanh (so đóng cửa 09-25): PG +2.03%, WMT +0.75%, TXN +0.01%, AAPL -0.81%, VXUS -0.64%, SCHD -0.59%, VB -0.65%, VOO -0.70%, MSFT -1.16%, **NOW -3.23%** — tiếp diễn xu hướng yếu đã ghi nhận & WebSearch ở entry 13:02 ET hôm nay (tin tái cơ cấu/cắt ~300 vị trí, không phải tin xấu nghiêm trọng theo tiêu chí CLAUDE.md) — không phải tin mới, không WebSearch lại.
+
+### Ngưỡng đóng cửa -10% từ đỉnh (kiểm tra chính, ~15:34 ET) — KHÔNG mã nào thủng
+| Mã | Đỉnh dùng tính ngưỡng | Ngưỡng đóng cửa -10% | Giá hiện tại (~15:34 ET) | Đệm |
+|---|---|---|---|---|
+| MSFT | $519.40 (09-25) | $467.46 | $510.17 | +9.14% |
+| AAPL | $345.34 (09-22) | $310.81 | $338.32 | +8.85% |
+| PG | $149.48 (09-28, đỉnh intraday mới hôm nay) | $134.53 | $149.20 | +10.91% |
+| TXN | $279.33 (09-28, đỉnh intraday mới hôm nay, đã ghi nhận sáng nay) | $251.40 | $278.09 | +10.62% |
+| NOW | $141.54 (09-23) | $127.39 | $131.24 | +3.02% |
+| WMT | $111.22 (09-23) | $100.10 | $108.79 | +8.68% |
+
+- Không mã nào thủng ngưỡng. **NOW có đệm mỏng nhất (+3.02%)** — tiếp tục theo dõi sát, nhưng chưa breach và tin nền tảng chưa đủ nghiêm trọng để thay mã giữa kỳ (đã đánh giá sáng nay).
+- **Đối chiếu đỉnh intraday hôm nay (`get_equity_historicals` 5-phút, từ 13:30 UTC) với đỉnh tham chiếu dùng cho stop dự phòng -15%:** MSFT $513.33 (<$519.40, không đổi), AAPL $342.988 (<$345.34, không đổi), TXN $279.33 (trùng mức đã ghi nhận sáng nay, không đổi), NOW $131.89 (<$141.54, không đổi), **PG $149.48** (+0.37% so đỉnh $148.93 đang dùng cho stop — dưới ngưỡng đáng cập nhật ~2%, không đổi lệnh stop dự phòng, nhưng đã cập nhật đỉnh tham chiếu cho bảng -10% ở trên), WMT $109.415 (<$111.22, không đổi) → không mã nào vượt ngưỡng "đáng kể" (~2%) để dời stop dự phòng -15% trên sàn, giữ nguyên toàn bộ 6 lệnh `confirmed`.
+- `get_earnings_calendar` (7 ngày tới, 09-28→10-05): không có mã core-10 nào trong danh sách báo cáo tuần này. Earnings đã biết trước: TXN 10-20, PG 10-22 — còn xa (>5 phiên).
+- Không phải 7 ngày đầu tháng → không kiểm tra tiền nạp $300. Không phải ngày 1 tháng → không cần báo cáo 3 dòng.
+- **Kết luận:** kiểm tra ngưỡng đóng cửa -10% chính của ngày — không mã nào breach, không có tin xấu mới, không cần dời stop dự phòng → **không có đề xuất mới** → không gửi PushNotification, chỉ ghi log.
