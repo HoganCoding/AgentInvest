@@ -5246,3 +5246,16 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Số lệnh mở mới tuần này (09-21→09-25):** 1/2 (KTOS 09-23) — tuần kết thúc hôm nay.
 - **Wash-sale vẫn hiệu lực (ước tính):** IONQ (~10-14), RGTI (~10-15), JPM (~10-15), ONDS (~10-23, core-10), RSP (~10-16, core-10), CRM (~10-17, core-10), PEP (~10-21, core-10).
 - **Quyết định: KHÔNG hành động** — giữ nguyên KTOS, stop-loss $41.75 vẫn armed đúng mức, không đủ buying power thực tế để vào lệnh mới. Không có gì thay đổi thật so lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
+
+## 2026-09-28 ~11:04 ET (15:04 UTC) — Kiểm tra định kỳ (routine tự động, 2 lần/ngày): giữ nguyên KTOS, KHÔNG hành động
+
+- **Sync đầu phiên:** `git fetch origin` — local (detached HEAD) khớp `origin/main` tại `b0bdb95` (entry gần nhất là core-10 log duyệt dời stop TXN 09-25 15:47 ET), `git checkout main && git pull origin main` fast-forward 13 commit, không conflict.
+- `get_equity_positions` (704170133): **10 vị thế** — 9 mã core-10 (MSFT 1cp, VOO 0.726470cp, AAPL 1.483843cp, PG 3.393620cp, TXN 2cp, NOW 3.563497cp, WMT 4.545415cp, VXUS 5.813138cp, SCHD 15.020016cp) + VB 1.731357cp (đủ 10/10 slot core-10, đối chiếu `trading-log.md` khớp đúng số lượng/giá vốn, không đổi từ 09-25) + **KTOS 8cp, avg $47.44** — đối chiếu `sandbox-log.md`: đúng vị thế sandbox duy nhất, không dính core-10.
+- `get_equity_quotes` KTOS: giá hiện tại **$44.58** (đóng cửa 09-25: $45.62, **-2.28%**; so giá vốn $47.44: **-6.03%**; so lần check trước 09-25 15:03 ET $45.39: **-1.78%**) — biến động nhỏ kể từ lần check trước (đầu tuần, gap nhẹ so cuối tuần trước), dưới ngưỡng 3-5% → không cần WebSearch tin tức mới.
+- `get_equity_orders` (KTOS, toàn bộ lịch sử): chỉ 2 lệnh — mua filled 09-23 và stop-loss GTC stop $41.75/8cp vẫn **confirmed** (`shares_held_for_sells`=8, armed), cách giá hiện tại ~6.35%. Không có lệnh mới/fill nào từ lần check trước.
+- `get_portfolio`: cash/buying_power **$185.37** — không đổi so lần check trước (09-25 15:03 ET), total_value **$5,563.14**.
+- **Đỉnh dùng tính stop -12%:** vẫn là giá mua $47.44 (chưa từng có phiên nào tạo đỉnh mới cao hơn kể từ khi mua 09-23) → stop giữ nguyên $41.75, đúng quy tắc chỉ dời lên khi có đỉnh mới.
+- **Không mở vị thế mới:** buying power thực tế ($185.37) vẫn dưới mục tiêu đệm ~$280 (quyết định 09-23 ~12:20 ET vẫn còn hiệu lực — tạm ngưng mở vị thế mới cho tới khi KTOS thoát hoặc vốn sandbox tăng). Tuần mới (09-28→10-02) bắt đầu, số lệnh mở mới tuần này: 0/2 — không có ý nghĩa thực tế do vẫn thiếu buying power. Không rà ứng viên mới lần này.
+- **Phần theo dõi sandbox (circuit breaker):** giá trị KTOS hiện tại 8×$44.58=**$356.64**, cộng cash $185.37 = tổng sandbox ~$542.01 — còn dưới ngưỡng chốt lời x2 (~$560, tính trên mục tiêu ~$280 xoay vòng) và còn rất xa ngưỡng dừng hẳn (gần $0). Không kích hoạt circuit breaker.
+- **Wash-sale vẫn hiệu lực (ước tính):** IONQ (~10-14), RGTI (~10-15), JPM (~10-15), ONDS (~10-23, core-10), RSP (~10-16, core-10), CRM (~10-17, core-10), PEP (~10-21, core-10).
+- **Quyết định: KHÔNG hành động** — giữ nguyên KTOS, stop-loss $41.75 vẫn armed đúng mức (chưa breach, cách giá hiện tại ~6.35%), không đủ buying power thực tế để vào lệnh mới. Không có gì thay đổi thật so lần check trước → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
