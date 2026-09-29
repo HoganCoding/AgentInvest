@@ -6259,3 +6259,30 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 - **Kết luận:** không mã nào breach stop-loss; AAPL/WMT giảm nhiều hơn benchmark nhưng tin chỉ là bình luận/hạ mục tiêu giá của 1 hãng phân tích, không đạt ngưỡng tin xấu nghiêm trọng; NOW đệm ngưỡng -10% mỏng dần (+2.30%) cần theo dõi sát ở lần 15:30 ET → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log.
 
 - Kiểm tra nhanh (phiên tương tác, ~13:57 ET 09-29): không lệnh/fill mới kể từ 13:00 ET, tổng tài khoản $5,530.04, cash $185.37. NOW $128.66 — đệm tới ngưỡng đóng cửa -10% ($127.39) chỉ còn ~1.0%, cần xét kỹ ở lần 15:30 ET. AAPL $331.64 (đệm +6.7%), WMT $106.15 (+6.0%). KTOS (sandbox) $43.62, stop $41.75 vẫn armed. Không đề xuất mới.
+
+## 2026-09-29 ~15:34 ET (19:34 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): kiểm tra ngưỡng đóng cửa -10% chính, không breach, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin` — local (detached HEAD) đã khớp `origin/main` tại `dbaada2` (commit gần nhất là log sandbox check 09-29 15:03 ET), `git checkout -B main origin/main` sạch, không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi: MSFT 1cp (avg $510.00), AAPL 1.483843cp (avg $328.93), TXN 2cp (avg $268.34), NOW 3.563497cp (avg $139.65), PG 3.393620cp (avg $147.15), WMT 4.545415cp (avg $109.85), VOO 0.726470cp (avg $688.26), VXUS 5.813138cp (avg $86.30), SCHD 15.020016cp (avg $33.36), VB 1.731357cp (avg $288.79). KTOS 8cp là vị thế sandbox, không thuộc core-10 — chỉ ghi nhận.
+- `get_equity_orders` (từ 17:00 UTC hôm nay tới nay): **rỗng** — không có lệnh mới/fill nào, không mã nào breach stop. 6 lệnh stop dự phòng -15% (MSFT/AAPL/PG/TXN/NOW/WMT) vẫn `confirmed` (khớp `shares_held_for_sells`).
+- `get_portfolio`: total value **$5,542.45**, equity $5,357.08, cash **$185.37** (buying power $185.37 — phần thuộc sandbox, không phải core-10).
+- **Benchmark (19:34 UTC, so đóng cửa 09-28):** SPY $764.52 (-0.14%), QQQ $738.26 (+0.24%) — thị trường gần đi ngang.
+
+### Ngưỡng đóng cửa -10% từ đỉnh (kiểm tra chính, ~15:34 ET) — KHÔNG mã nào thủng
+| Mã | Đỉnh dùng tính ngưỡng | Ngưỡng đóng cửa -10% | Giá hiện tại (~15:34 ET) | Đệm |
+|---|---|---|---|---|
+| MSFT | $519.40 (09-25) | $467.46 | $511.25 | +9.36% |
+| AAPL | $345.34 (09-22) | $310.81 | $330.09 | +6.20% |
+| TXN | $284.39 (09-29, đỉnh intraday mới hôm nay) | $255.95 | $281.65 | +10.04% |
+| NOW | $141.54 (09-23) | $127.39 | $129.96 | +2.02% |
+| PG | $149.48 (09-28) | $134.53 | $148.22 | +10.17% |
+| WMT | $111.22 (09-23) | $100.10 | $106.89 | +6.78% |
+
+- Không mã nào thủng ngưỡng. **NOW vẫn là đệm mỏng nhất (+2.02%)** — nới nhẹ so với mức ~1.0% lúc kiểm tra nhanh 13:57 ET nhưng vẫn thu hẹp hơn hôm 09-28 (+3.02%) và 09-25 (+6.87%) — xu hướng co hẹp liên tục 3 phiên, cần theo dõi rất sát ở lần kiểm tra tiếp theo.
+- **Đối chiếu đỉnh intraday hôm nay (`get_equity_historicals` 5-phút, từ 13:30 UTC) với đỉnh tham chiếu dùng cho stop dự phòng -15%:** MSFT đỉnh $513.64 (<$519.40, không đổi), AAPL $337.06 (<$345.34, không đổi), NOW $132.44 (<$141.54, không đổi), PG $148.835 (<$149.48, không đổi), WMT $107.86 (<$111.22, không đổi). **TXN đỉnh $284.39** — trùng khớp mức đã ghi nhận & đánh giá ở entry 13:02 ET sáng nay (+1.81% so đỉnh cũ $279.33, dưới ngưỡng đáng cập nhật ~2%) → không có đỉnh mới nào vượt ngưỡng đáng cập nhật kể từ sáng → giữ nguyên toàn bộ 6 lệnh stop dự phòng `confirmed`, không dời gì thêm lần này.
+- **QUAN TRỌNG — cập nhật/đính chính nguyên nhân NOW yếu (WebSearch hôm nay):** NOW giảm liên tục 09-25→09-29 (đã ghi "tái cơ cấu/cắt ~300 vị trí" ở entry 09-28) nhưng WebSearch hôm nay cho thấy nguyên nhân chính nhiều khả năng khác: **Meta Platforms công bố "Meta Enterprise Platform" (Muse AI agent, Meta Business Agent...) ngày 09-28, nhắm trực tiếp vào ServiceNow/Salesforce** — cú sốc cạnh tranh AI doanh nghiệp mới, khiến cả nhóm SaaS bán tháo (IGV -2%, NOW -5% ngày 09-28, Salesforce -4.5%, Oracle -3%, Figma -6%, Adobe -4%...). Đây là tin **cạnh tranh/fundamentals** (đối thủ lớn có vốn mạnh gia nhập đúng mảng AI agent doanh nghiệp của NOW) rõ nét hơn nhiều so với tin cắt giảm nhân sự thường đã ghi trước đó, và giải thích tốt hơn việc NOW yếu hơn hẳn benchmark 2 phiên liên tiếp trong khi MSFT (cũng bị ảnh hưởng Meta hôm 09-28 nhưng đã hồi phục hôm nay, +0.40%) không tiếp diễn yếu. NOW hôm nay tiếp tục giảm riêng lẻ (-1.13%) trong khi QQQ +0.24% — không đi cùng thị trường chung, phù hợp giả thuyết áp lực cạnh tranh riêng NOW.
+- Thêm phát hiện: ServiceNow công bố 5 lỗ hổng bảo mật CVE trên AI Platform ngày 09-24 (đã vá, không có bằng chứng bị khai thác) — tin bảo mật thường kỳ, không phải nguyên nhân chính của đợt giảm giá.
+- **Đánh giá theo tiêu chí CLAUDE.md:** tin cạnh tranh Meta là thật và đáng chú ý, nhưng KHÔNG thuộc nhóm "tin xấu nghiêm trọng" tức thời (không phải kiện tụng/gian lận/mất CEO/hạ bậc tín nhiệm) mà là yếu tố cạnh tranh/fundamentals cần đánh giá ở quy trình review 30 ngày — **không đạt ngưỡng thay mã/bán giữa kỳ hôm nay**, và NOW chưa breach ngưỡng đóng cửa -10% (đệm +2.02%) nên cơ chế stop cũng chưa kích hoạt. Ghi nhận rõ để đưa vào **review ngày 1 hàng tháng (2026-10-01, chỉ còn 2 ngày)** — cân nhắc đây có phải "hiệu suất kém hơn đáng kể so với benchmark + yếu tố cạnh tranh mới" đủ để đề xuất thay mã hay không.
+- AAPL (-2.45% so đóng cửa 09-28) và WMT (-1.69%) tiếp tục giảm nhiều hơn benchmark — cùng nguyên nhân đã WebSearch và ghi nhận ở entry 13:02 ET sáng nay (BofA lo ngại cạnh tranh AI với AAPL; Mizuho hạ target WMT + "death cross" kỹ thuật), không phải tin mới, không WebSearch lại.
+- Không phải 7 ngày đầu tháng → không kiểm tra tiền nạp $300. Không phải ngày 1 tháng → không cần báo cáo 3 dòng (còn 2 ngày nữa).
+- **Kết luận:** kiểm tra ngưỡng đóng cửa -10% chính của ngày — không mã nào breach (NOW đệm mỏng nhất +2.02%, chưa chạm ngưỡng), không có đỉnh mới đủ lớn để dời stop dự phòng, tin cạnh tranh Meta/NOW đáng chú ý nhưng chưa đạt ngưỡng hành động giữa kỳ (ghi nhận cho review 10-01) → **không có đề xuất mới thật sự** → không gửi PushNotification (theo đúng quy tắc chỉ gửi khi có đề xuất/thay đổi thật), chỉ ghi log.
