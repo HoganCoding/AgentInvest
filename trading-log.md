@@ -6257,3 +6257,5 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 - `get_earnings_calendar` (7 ngày tới, 09-29→10-06): không có mã core-10 nào trong danh sách báo cáo tuần này. Earnings đã biết trước: TXN 10-20, PG 10-22 — còn xa (>5 phiên).
 - Không phải 7 ngày đầu tháng (09-29 > 09-07) → không kiểm tra tiền nạp $300. Không phải ngày 1 tháng → không cần báo cáo 3 dòng.
 - **Kết luận:** không mã nào breach stop-loss; AAPL/WMT giảm nhiều hơn benchmark nhưng tin chỉ là bình luận/hạ mục tiêu giá của 1 hãng phân tích, không đạt ngưỡng tin xấu nghiêm trọng; NOW đệm ngưỡng -10% mỏng dần (+2.30%) cần theo dõi sát ở lần 15:30 ET → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log.
+
+- Kiểm tra nhanh (phiên tương tác, ~13:57 ET 09-29): không lệnh/fill mới kể từ 13:00 ET, tổng tài khoản $5,530.04, cash $185.37. NOW $128.66 — đệm tới ngưỡng đóng cửa -10% ($127.39) chỉ còn ~1.0%, cần xét kỹ ở lần 15:30 ET. AAPL $331.64 (đệm +6.7%), WMT $106.15 (+6.0%). KTOS (sandbox) $43.62, stop $41.75 vẫn armed. Không đề xuất mới.
