@@ -6302,3 +6302,57 @@ Tổng vốn triển khai thêm: ~$2,069. Tất cả filled ngay lập tức.
 - `get_earnings_calendar` (7 ngày tới, 09-30→10-07): không có mã core-10 nào trong danh sách báo cáo tuần này. Earnings đã biết trước: TXN 10-20, PG 10-22 — còn xa (>5 phiên).
 - Không phải 7 ngày đầu tháng (09-30, đã qua 09-07) → không kiểm tra tiền nạp $300 lần này (đợt nạp đầu tiên 10-01, sẽ kiểm tra trong 7 ngày đầu tháng 10). Không phải ngày 1 tháng → chưa cần báo cáo 3 dòng (review tháng vào ngày mai 10-01).
 - **Kết luận:** không mã nào breach stop-loss/ngưỡng đóng cửa, không có tin xấu mới, NOW/AAPL/MSFT phục hồi tích cực cùng đà tăng thị trường chung, không có đề xuất mới → **không gửi PushNotification**, chỉ ghi log.
+
+## 2026-10-01 ~13:02 ET (17:02 UTC) — REVIEW THÁNG 1 + Kiểm tra định kỳ core-10 (routine tự động, sync git): đề xuất thay NOW, đề xuất mua ETF từ tiền nạp $300, báo cáo hiệu suất 3 dòng
+
+- **Sync đầu phiên:** `git fetch origin` — local (detached HEAD) đã khớp `origin/main` tại `8a8638b` (commit gần nhất là log core-10 check 13:00 ET 09-30), `git checkout -B main origin/main` sạch, không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi về số mã: MSFT 1cp, AAPL 1.483843cp, TXN 2cp, NOW 3.563497cp, PG 3.393620cp, WMT 4.545415cp, VOO 0.728352cp, VXUS 5.813138cp, SCHD 15.020016cp, VB 1.736545cp (VOO/VB tăng nhẹ do DRIP tự động, đã khớp lệnh `drip` 0.001882cp VOO @ $701.26 và 0.005188cp VB @ $283.34 lúc sáng nay — không phải giao dịch của agent, chỉ ghi nhận). KTOS 8cp là vị thế sandbox, không thuộc core-10 — chỉ ghi nhận.
+- `get_equity_orders` (từ 19:34 UTC 09-30 tới nay): chỉ 2 lệnh DRIP (VOO/VB) nêu trên — không có breach/fill nào của 6 lệnh stop dự phòng -15% (MSFT/AAPL/PG/TXN/NOW/WMT), tất cả vẫn `confirmed`. **Đối chiếu đỉnh intraday hôm nay:** MSFT $513.09, AAPL $327.95, TXN $279.49, NOW $136.36, PG $144.02, WMT $104.79 — toàn bộ **thấp hơn** đỉnh tham chiếu đang dùng (519.83/345.34/284.39/141.54/149.48/111.22) → không có đỉnh mới, không cập nhật stop dự phòng lần này. Ngưỡng đóng cửa -10% chính thức xét ở lần kiểm tra 15:30 ET hôm nay.
+- `get_portfolio`: total value **$5,823.95**, equity $5,338.58, **cash $485.37** (buying_power $485.37) — tăng đúng **+$300** so với lần check 09-30 13:02 ET ($185.37), khớp khoản nạp định kỳ đã lên lịch ngày 1 hàng tháng (Hogan chốt 2026-09-23, $300/tháng, bắt đầu 10-01) — không phải do bán/cổ tức (2 lệnh duy nhất là DRIP, giá trị <$3). `get_accounts`: `unsettled_funds` = $0.0000 cho tài khoản 704170133 → khoản nạp đã khả dụng để giao dịch (buying_power = cash, không có phần chờ settle).
+- `get_earnings_calendar` (7 ngày tới, 10-01→10-08): **không có mã core-10 nào** trong danh sách báo cáo tuần này. Earnings đã biết trước: TXN 10-20, PG 10-22, NOW 10-28 — đều còn xa (>5 phiên), chỉ ghi chú.
+
+### A. Tiền nạp định kỳ $300 đã về — ĐỀ XUẤT mua ETF core (cần Hogan duyệt 1 lần theo quy tắc 2026-09-23)
+Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11** (5.813138cp×$84.135), SCHD $490.66 (15.020016cp×$32.6601), VB $496.11 (1.736545cp×$285.70). **VXUS đang thấp nhất.**
+
+1. **VXUS — MUA ~$300 (≈3.566cp theo giá hiện tại $84.135, dùng fractional vì ETF không cần stop-loss tự động)**
+2. **Lý do:** tiền nạp mới mặc định vào ETF core theo quy tắc đã duyệt sẵn về nguyên tắc (CLAUDE.md, cập nhật 2026-09-23); VXUS là ETF có giá trị thấp nhất trong 4 ETF core (đa dạng hóa quốc tế, bổ sung mảng khác MSFT/AAPL/TXN/NOW/PG/WMT đang có).
+3. **Rủi ro chính:** không có rủi ro tăng thêm đáng kể — chỉ tăng tỷ trọng ETF quốc tế đã có sẵn; VXUS biến động theo thị trường quốc tế nói chung.
+4. **Cắt lỗ/chốt lời:** không áp dụng — theo quy tắc, ETF core (VOO/VXUS/SCHD/VB) KHÔNG đặt stop-loss tự động, chỉ đánh giá trong review hàng tháng.
+- Đây là việc mua đã được duyệt sẵn về nguyên tắc (tiền nạp mới → ETF core); vẫn ghi đề xuất cụ thể vào log + gửi PushNotification để Hogan duyệt 1 lần theo đúng quy trình 2026-09-23, sau đó chỉ đặt lệnh trong phiên có quyền đặt lệnh (phiên này read-only).
+
+### B. Review 30 ngày (09-01 → 09-30) — hiệu suất core-10 vs benchmark
+| Mã | Nhóm | Giá 09-01 (mở cửa) | Giá 09-30 (đóng cửa) | % 30 ngày | Benchmark 30 ngày | Chênh lệch |
+|---|---|---|---|---|---|---|
+| MSFT | Tech | $497.52 | $512.90 | +3.09% | QQQ +4.58% | -1.49pp |
+| AAPL | Tech | $316.98 | $333.02 | +5.06% | QQQ +4.58% | +0.48pp |
+| TXN | Tech | $256.19 | $280.09 | +9.33% | QQQ +4.58% | +4.75pp |
+| **NOW** | **Tech** | **$144.55** | **$134.01** | **-7.29%** | **QQQ +4.58%** | **-11.87pp** |
+| PG | Blue-chip | $145.76 | $145.28 | -0.33% | SPY +0.11% | -0.44pp |
+| WMT | Blue-chip | $105.11 | $103.92 | -1.13% | SPY +0.11% | -1.24pp |
+| VOO/VXUS/SCHD/VB | ETF | — | — | — | — | không áp dụng stop/thay mã, chỉ đánh giá định tính |
+
+**NOW nổi bật tiêu cực:** kém hơn QQQ gần 12 điểm % trong 30 ngày — vượt xa biên độ nhiễu bình thường của các mã còn lại (MSFT/PG/WMT lệch dưới 1.5pp). Kết hợp với tin đã ghi nhận ở entry 09-29 15:34 ET: **Meta Platforms công bố "Meta Enterprise Platform" (Muse AI agent, Meta Business Agent...) ngày 09-28, cạnh tranh trực tiếp vào mảng AI agent doanh nghiệp cốt lõi của ServiceNow** — khiến cả nhóm SaaS bán tháo (NOW -5% riêng ngày 09-28, Salesforce -4.5%, Oracle -3%, Figma -6%, Adobe -4%). Đây là yếu tố cạnh tranh/fundamentals thực sự (đối thủ lớn, vốn mạnh, gia nhập đúng mảng lõi của NOW), không phải nhiễu ngắn hạn — đáp ứng tiêu chí "hiệu suất kém hơn đáng kể so với benchmark + fundamentals xấu đi" theo CLAUDE.md.
+
+### ĐỀ XUẤT — thay NOW (cần Hogan chọn 1 trong 2 lựa chọn, hoặc giữ nguyên/từ chối)
+1. **Mã + hành động:** BÁN toàn bộ NOW (3.563497cp, giá trị hiện tại ≈$485.98, giá vốn $139.65, giá hiện tại $136.36 → lỗ chưa chốt nhỏ ≈-2.4%/-$11.73) → MUA 1 trong 2 lựa chọn thay thế cùng nhóm large-cap tech, ~$500:
+   - **Lựa chọn A: QCOM** (Qualcomm) — 30 ngày +11.22% (open $165.47→close $184.04), mạnh hơn QQQ +6.64pp. Vốn hóa lớn, thanh khoản cao, báo cáo tài chính minh bạch (Q4 FY2026 dự kiến 11-04, còn xa). Nhóm bán dẫn/di động, không cùng rủi ro cạnh tranh AI-agent doanh nghiệp như NOW.
+   - **Lựa chọn B: PANW** (Palo Alto Networks) — 30 ngày +6.06% (open $374.62→close $397.31), mạnh hơn QQQ +1.48pp. Dẫn đầu an ninh mạng doanh nghiệp, vừa báo cáo tốt (Q4 FY2026, EPS actual $1.02 vs ước tính $0.88, ngày 09-01), earnings kế tiếp 11-18, còn xa. Biến động cao hơn QCOM (biên độ ngày rộng).
+   - (Đã loại ORCL -6.44% và ADBE -16.76% khỏi danh sách ứng viên — cả hai cũng đang bị bán tháo cùng nhóm SaaS/phần mềm như NOW do cùng tin cạnh tranh Meta, không giải quyết được vấn đề gốc.)
+2. **Lý do:** xem phần B ở trên — NOW kém hơn benchmark ~12pp/30 ngày + đối thủ lớn (Meta) vừa gia nhập trực tiếp mảng AI agent doanh nghiệp cốt lõi của NOW.
+3. **Rủi ro chính:** (a) bán NOW hiện đang lỗ nhỏ -2.4%, chốt lỗ thực tế dù nhỏ; (b) QCOM/PANW đều có rủi ro ngành riêng (bán dẫn theo chu kỳ / an ninh mạng định giá cao); (c) không chắc Meta Enterprise Platform có ảnh hưởng dài hạn thực sự tới doanh thu NOW hay chỉ là phản ứng thị trường ngắn hạn — đây là điểm cần Hogan cân nhắc khi quyết định.
+4. **Cắt lỗ/chốt lời đề xuất cho mã thay thế:** theo cơ chế mới core-10 (2026-09-23) — stop dự phòng trên sàn GTC -15% từ giá mua cho phần nguyên, kiểm tra ngưỡng đóng cửa -10% từ đỉnh mỗi 15:30 ET, không đặt stop cứng trên sàn cho phần lẻ.
+- **Lưu ý thực hiện nếu duyệt:** NOW hiện có lệnh stop dự phòng GTC đang `confirmed` (id `6ab3fbfd-678d-4fe3-a6ba-2803b57b9e16`, sell 3cp stop $119.31) — phải HỦY lệnh này trước khi bán phần còn lại, vì 3cp đang bị giữ bởi `shares_held_for_sells`.
+- **Không đạt ngưỡng thay mã nào khác:** MSFT/AAPL/TXN/PG/WMT đều trong biên độ nhiễu bình thường (lệch benchmark <5pp), không có tin xấu nghiêm trọng (kiện tụng/gian lận/mất CEO/hạ tín nhiệm) → giữ nguyên.
+- **Screen wash-sale/anti-churn (bắt buộc trước khi chọn ứng viên):** đối chiếu trading-log.md + sandbox-log.md, các mã đã bị bán/stop trong 30 ngày qua (từ 09-01) và đang trong lệnh cấm mua lại: GOOGL (09-01), AVGO (09-03), JNJ (09-08), AMZN (09-09), NVDA (09-10), IONQ (09-14, sandbox), JPM/RGTI (09-15), CRM (09-17), RSP (09-16), PEP (09-21), RKLB/ONDS (09-23/24, core-10 cũ) — **tất cả bị loại khỏi danh sách ứng viên**. QCOM và PANW không nằm trong danh sách này, chưa từng được mua/bán trong tài khoản này → an toàn để đề xuất.
+
+### C. Consolidate vốn hàng tháng (2026-09-23 rule)
+- **(1) Mua thêm mã core-10 dưới $500 cố định:** giá trị hiện tại từng mã: MSFT $513.09, VOO $509.65, AAPL $486.63, PG $488.84, TXN $558.98, NOW $485.98, WMT $476.33, VXUS $489.11, SCHD $490.66, VB $496.11 — các mã dưới $500 (AAPL/PG/NOW/WMT/VXUS/SCHD/VB) đều lệch nhẹ trong biên ~$4-24, không đáng kể để mua thêm ngay (không có cash core-10 rảnh ngoài khoản nạp $300 đã earmark cho mục A ở trên) → **không đề xuất mua thêm riêng lần này**, việc mua VXUS ở mục A đã gián tiếp đưa 1 ETF đang dưới target gần hơn mức $500.
+- **(2) Vốn sandbox = tổng tài khoản − core-10 (không tính $300 earmark cho mục A, chưa thực hiện):** core-10 hiện tại ≈ **$4,995.38** (tổng 10 vị thế theo giá hiện tại). Tổng tài khoản $5,823.95 − core-10 $4,995.38 − $300 (earmark ETF) = **≈$528.57** sandbox (khớp KTOS $343.44 + cash $185.37 = $528.81, chênh lệch nhỏ do thời điểm giá). Chia đôi: **~$264 xoay vòng + ~$264 đệm** (giảm nhẹ so mức ~$280/$280 lúc 09-23 do KTOS giảm giá $377→$343). Core-10 routine chỉ ghi nhận số liệu này cho đồng bộ — việc quản lý thực tế thuộc routine sandbox riêng.
+
+### D. Báo cáo hiệu suất 3 dòng (mốc 2026-09-24, review đầu tiên theo khung theo dõi mới — thực chất là 7 ngày đầu, chưa đủ 1 tháng)
+- **Core-10: -0.56% (-$28.37)** — giá trị mốc 09-24 (giá đóng cửa, cùng số lượng hiện tại) ≈$5,023.75 → hiện tại ≈$4,995.38 (chỉ lãi/lỗ chưa chốt, không có lệnh đóng nào từ mốc).
+- **Sandbox: -3.45% (-$18.92)** — giá trị mốc 09-24 (~10:31 ET, ngay sau khi hoàn tất tái cấu trúc) $547.73 (KTOS $362.36 + cash $185.37) → hiện tại $528.81 (KTOS $343.44 + cash $185.37, không tính $300 nạp mới).
+- **VOO: -1.03%** — giá đóng cửa 09-24 $706.99 → giá hiện tại $699.74.
+- **Nhận xét:** Core-10 nhỉnh hơn VOO (-0.56% so -1.03%) — ổn định, phù hợp cơ cấu 6 tech/blue-chip + 4 ETF mới. Sandbox thua VOO đáng kể (-3.45% so -1.03%) do biến động đơn lẻ của KTOS (vị thế duy nhất, không đa dạng hóa) — mới là điểm dữ liệu ĐẦU TIÊN theo quy tắc so VOO (2026-09-23), chưa đủ 2 tháng liên tiếp để kích hoạt đề xuất dừng sandbox; sẽ theo dõi tiếp ở review 11-01.
+
+- **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach stop-loss hôm nay (đánh giá chính thức ngưỡng đóng cửa -10% ở lần 15:30 ET). Có **2 đề xuất thật sự cần Hogan duyệt**: (A) mua ~$300 VXUS từ tiền nạp định kỳ, (B) thay NOW bằng QCOM hoặc PANW (review tháng). Đã gửi PushNotification + báo cáo hiệu suất 3 dòng. Để duyệt: mở phiên mới (Claude Code trên PC, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất".
