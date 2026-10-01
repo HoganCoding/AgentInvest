@@ -6356,3 +6356,16 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - **Nhận xét:** Core-10 nhỉnh hơn VOO (-0.56% so -1.03%) — ổn định, phù hợp cơ cấu 6 tech/blue-chip + 4 ETF mới. Sandbox thua VOO đáng kể (-3.45% so -1.03%) do biến động đơn lẻ của KTOS (vị thế duy nhất, không đa dạng hóa) — mới là điểm dữ liệu ĐẦU TIÊN theo quy tắc so VOO (2026-09-23), chưa đủ 2 tháng liên tiếp để kích hoạt đề xuất dừng sandbox; sẽ theo dõi tiếp ở review 11-01.
 
 - **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach stop-loss hôm nay (đánh giá chính thức ngưỡng đóng cửa -10% ở lần 15:30 ET). Có **2 đề xuất thật sự cần Hogan duyệt**: (A) mua ~$300 VXUS từ tiền nạp định kỳ, (B) thay NOW bằng QCOM hoặc PANW (review tháng). Đã gửi PushNotification + báo cáo hiệu suất 3 dòng. Để duyệt: mở phiên mới (Claude Code trên PC, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất".
+
+## 2026-10-01 ~13:10 ET (17:10 UTC) — Hogan DUYỆT 2 đề xuất từ review 13:02 ET (trả lời trong phiên routine, chưa thực hiện)
+
+- **Quyết định của Hogan:** 
+  1. **Mục A (mua $300 VXUS từ tiền nạp định kỳ): YES, duyệt.**
+  2. **Mục B (thay NOW): chọn Lựa chọn A — QCOM.** Bán toàn bộ NOW (3.563497cp), mua ~$500 QCOM.
+- **CHƯA THỰC HIỆN:** Hogan trả lời ngay trong phiên routine 13:02 ET hôm nay (read-only, không có quyền đặt lệnh theo đúng thiết kế — xem mục "Đồng bộ giữa các phiên" trong CLAUDE.md, tránh lặp lại sự cố 2026-07-28). Cần mở phiên mới (Claude Code trên PC, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) để thực hiện:
+  1. Hủy lệnh stop dự phòng NOW đang `confirmed` (id `6ab3fbfd-678d-4fe3-a6ba-2803b57b9e16`, sell 3cp stop $119.31) trước khi bán phần còn lại bị giữ bởi `shares_held_for_sells`.
+  2. Bán toàn bộ NOW 3.563497cp (giá tham chiếu lúc đề xuất ~$136.36, sẽ chênh lệch theo giá thị trường lúc thực hiện).
+  3. Mua ~$500 QCOM (giá tham chiếu lúc đề xuất $184.04).
+  4. Đặt stop dự phòng GTC -15% cho QCOM (phần nguyên) theo cơ chế mới core-10.
+  5. Mua ~$300 VXUS (fractional, không cần stop-loss) từ tiền nạp định kỳ đã settle ($300, buying_power xác nhận khả dụng lúc 13:02 ET).
+- Không gửi thêm PushNotification cho bước thực hiện này (đã duyệt, chỉ ghi log theo đúng quy tắc 2026-07-09 — không push lặp cho các bước tiếp theo của cùng đề xuất đã duyệt).
