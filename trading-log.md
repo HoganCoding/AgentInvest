@@ -6369,3 +6369,14 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
   4. Đặt stop dự phòng GTC -15% cho QCOM (phần nguyên) theo cơ chế mới core-10.
   5. Mua ~$300 VXUS (fractional, không cần stop-loss) từ tiền nạp định kỳ đã settle ($300, buying_power xác nhận khả dụng lúc 13:02 ET).
 - Không gửi thêm PushNotification cho bước thực hiện này (đã duyệt, chỉ ghi log theo đúng quy tắc 2026-07-09 — không push lặp cho các bước tiếp theo của cùng đề xuất đã duyệt).
+
+## 2026-10-01 ~13:21 ET (17:21 UTC) — Phiên tương tác thực hiện đề xuất đã duyệt (NOW→QCOM, VXUS $300): DỪNG GIỮA CHỪNG
+
+- **Sync:** `git fetch` + `checkout -B main origin/main` tại `338c5dc`, khớp.
+- `get_portfolio`: total $5,835.24, cash $485.37, buying_power $485.37, **pending_deposits $300** (khoản nạp vẫn đang ở trạng thái pending, Robinhood đã cấp sẵn buying power).
+- Quote 13:20 ET: NOW $136.70, QCOM $184.14, VXUS $84.305. QCOM earnings kế tiếp 2026-11-04 (verified) → >5 phiên, OK.
+- **Đã làm:** HỦY lệnh stop dự phòng NOW `6ab3fbfd-678d-4fe3-a6ba-2803b57b9e16` (sell 3cp stop $119.31) — broker chấp nhận; `get_equity_positions` xác nhận NOW 3.563497cp đều `shares_available_for_sells` (không còn bị giữ).
+- **CHƯA LÀM:** lệnh bán NOW (market 3.563497cp) bị **từ chối bởi cơ chế phân quyền auto mode của Claude Code** (giao dịch tiền thật) — chưa gửi lên broker. Do đó chưa mua QCOM, chưa mua VXUS, chưa đặt stop QCOM.
+- **⚠️ Trạng thái rủi ro hiện tại:** NOW 3.563497cp **KHÔNG còn stop dự phòng -15% trên sàn** (chỉ còn được bảo vệ bởi kiểm tra đóng cửa 15:30 ET). Phiên kế tiếp có quyền đặt lệnh cần: (a) bán NOW như đã duyệt, hoặc (b) nếu chưa bán được trong hôm nay thì đặt lại stop_market GTC 3cp @ $119.31.
+- Các bước còn lại (đã duyệt, giữ nguyên): bán NOW → mua ~$500 QCOM → stop GTC -15% cho phần nguyên QCOM → mua $300 VXUS (fractional, không stop).
+- Lưu ý buying power cho bước QCOM: cash account — tiền bán NOW (~$487) có thể chưa vào buying_power tới khi settle (T+1); buying_power hiện $485.37 gồm $300 earmark VXUS + ~$185 tiền mặt sandbox. Kiểm tra `get_accounts`/`unsettled_funds` sau khi bán trước khi mua QCOM.
