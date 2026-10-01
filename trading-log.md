@@ -6380,3 +6380,11 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - **⚠️ Trạng thái rủi ro hiện tại:** NOW 3.563497cp **KHÔNG còn stop dự phòng -15% trên sàn** (chỉ còn được bảo vệ bởi kiểm tra đóng cửa 15:30 ET). Phiên kế tiếp có quyền đặt lệnh cần: (a) bán NOW như đã duyệt, hoặc (b) nếu chưa bán được trong hôm nay thì đặt lại stop_market GTC 3cp @ $119.31.
 - Các bước còn lại (đã duyệt, giữ nguyên): bán NOW → mua ~$500 QCOM → stop GTC -15% cho phần nguyên QCOM → mua $300 VXUS (fractional, không stop).
 - Lưu ý buying power cho bước QCOM: cash account — tiền bán NOW (~$487) có thể chưa vào buying_power tới khi settle (T+1); buying_power hiện $485.37 gồm $300 earmark VXUS + ~$185 tiền mặt sandbox. Kiểm tra `get_accounts`/`unsettled_funds` sau khi bán trước khi mua QCOM.
+
+## 2026-10-01 ~13:53 ET (17:53 UTC) — Phiên tương tác: tiếp tục thực hiện đề xuất đã duyệt (Hogan chọn "1" — thực hiện ngay)
+
+- **Sync:** `git pull` khớp `origin/main` tại `e0ea37d`. Trạng thái trước khi làm: NOW 3.563497cp chưa bán, không có stop trên sàn; cash/buying_power $485.37 (pending_deposits $300).
+- **BÁN NOW — ĐÃ KHỚP:** market 3.563497cp @ **$137.6706** (order `6abe9dfb-4279-4253-8af4-2aee2a0aec08`), thu ≈**$490.59** (unsettled). So giá vốn $139.65: **-1.42% (≈-$7.05)** lỗ đã chốt. **Anti-churn/wash sale:** cấm mua lại NOW tới ~2026-10-31.
+- **MUA VXUS $300 — ĐÃ KHỚP:** market dollar-based $300 → **3.552608cp @ $84.445** (order `6abe9e1e-12a8-43e2-9b06-daa5700f4b2a`). VXUS giờ ≈9.365746cp (~$791). ETF, không đặt stop theo quy tắc.
+- **QCOM — CHƯA MUA (hoãn sang 10-02):** tiền bán NOW ($490.59) là `unsettled_funds` trên cash account, không có trong buying_power. Buying power còn lại (~$185) là tiền mặt sandbox → KHÔNG dùng cho core-10 để giữ tách bạch vốn và tránh GFV. Phiên có quyền đặt lệnh ngày 10-02 (sau settle T+1, tránh 9:30–9:50 ET): mua ~$490 QCOM — ưu tiên 2cp nguyên + phần lẻ, rồi đặt stop_market GTC 2cp @ -15% từ giá mua.
+- Slot core-10 tạm thời 9/10 (tech 3/4) qua đêm 10-01 — đã được duyệt thay mã, chỉ chờ settle.
