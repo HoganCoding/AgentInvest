@@ -6442,3 +6442,12 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - `get_earnings_calendar` (7 ngày tới, 10-02→10-08): **không có mã core-10 nào** (MSFT/AAPL/TXN/PG/WMT/QCOM) trong danh sách báo cáo tuần này. QCOM earnings kế tiếp đã biết 11-11 (còn xa, >5 phiên, không ảnh hưởng kế hoạch mua).
 - Không phải 7 ngày đầu tháng áp dụng cho kiểm tra tiền nạp lần này (tiền nạp 10-01 $300 đã xử lý xong, đã mua VXUS). Không phải ngày 1 tháng → không cần báo cáo 3 dòng.
 - **Kết luận:** không mã nào breach stop-loss/ngưỡng đóng cửa; có 1 đề xuất thật sự (dời stop TXN $236.73 → $252.50) → **đã gửi PushNotification.** Nhắc trạng thái chờ xử lý (không phải đề xuất mới): QCOM đã sẵn sàng mua (buying power $675.96 đã settle), core-10 tạm 9/10 slot. Để duyệt: mở phiên mới (Claude Code trên PC, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất".
+
+## 2026-10-02 ~13:10 ET (17:10 UTC) — Phiên tương tác: Hogan duyệt "cả hai" → mua QCOM + dời stop TXN (ĐÃ THỰC HIỆN)
+
+- **Sync:** `git pull` khớp `origin/main` tại `520f8cf`. Buying power $675.96 (đã settle, gồm ~$490.59 earmark core-10 từ bán NOW).
+- **MUA QCOM — ĐÃ KHỚP:** market dollar-based $490.00 → **2.633277cp @ $186.0799** (order `6abfe567-169f-4ecd-8a33-a68521246196`). Thay slot NOW (đã duyệt 10-01). Core-10 trở lại **10/10 slot** (tech 4/4).
+- **Stop dự phòng QCOM:** stop_market GTC bán **2cp nguyên @ $158.17** (-15% từ giá mua $186.08), order `6abfe578-65e4-450d-be1b-78e83773d8a4` — `confirmed`. Phần lẻ 0.633277cp KHÔNG có stop trên sàn, bảo vệ bởi kiểm tra 15:30 ET (ngưỡng đóng cửa -10% từ đỉnh, đỉnh hiện = giá mua $186.08 → $167.47).
+- **DỜI STOP TXN:** hủy lệnh cũ $236.73 (`6ab6cfdf-b124-4f91-823f-6ea462482739` → `cancelled`), đặt mới stop_market GTC bán **2cp @ $252.50** (-15% từ đỉnh $297.06 ngày 10-02), order `6abfe577-601e-4602-9747-8782cac84e4c` — `confirmed`. Ngưỡng đóng cửa -10% TXN cho kiểm tra 15:30 ET: **$267.35**.
+- Buying power còn lại ≈ $185.96 = phần sandbox (không đổi).
+- Quyết định của Hogan: **yes** (cả hai). Không gửi PushNotification (đã duyệt trong phiên tương tác).
