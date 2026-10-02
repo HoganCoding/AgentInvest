@@ -6413,3 +6413,32 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - Không phải 13:00 ET → không kiểm tra lại tiền nạp $300 (đã xử lý ở entry 13:02 ET hôm nay). Báo cáo hiệu suất 3 dòng đã gửi ở entry 13:02 ET hôm nay, không lặp lại.
 - **Nhắc trạng thái chờ xử lý (không phải đề xuất mới, chỉ ghi nhận):** QCOM vẫn chưa mua (chờ tiền bán NOW settle, dự kiến 10-02); core-10 tạm 9/10 slot qua đêm.
 - **Kết luận:** kiểm tra ngưỡng đóng cửa -10% chính của ngày — không mã nào breach (WMT đệm mỏng nhất +4.33%, chưa chạm ngưỡng), không có tin xấu mới, không cần dời stop dự phòng nào → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log.
+
+## 2026-10-02 ~13:03 ET (17:03 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): TXN tạo đỉnh mới mạnh, đề xuất dời stop dự phòng; QCOM đã sẵn sàng mua (buying power đã settle)
+
+- **Sync đầu phiên:** `git fetch` + `git checkout -B main origin/main` tại `8a18b5f` (commit gần nhất là log sandbox check 11:06 ET hôm nay) — sạch, không conflict.
+- `get_equity_positions`: core-10 vẫn **9/10 slot** (tech tạm 3/4, chờ mua QCOM): MSFT 1cp (avg $510.00), AAPL 1.483843cp (avg $328.93), TXN 2cp (avg $268.34), PG 3.393620cp (avg $147.15), WMT 4.545415cp (avg $109.85), VOO 0.728352cp (avg $688.29), VXUS 9.365746cp (avg $85.60), SCHD 15.020016cp (avg $33.36), VB 1.736545cp (avg $288.77) — không đổi số lượng so lần trước. KTOS 8cp là vị thế sandbox, không thuộc core-10 — chỉ ghi nhận.
+- `get_equity_orders` (từ 19:35 UTC 10-01 tới nay, state=confirmed): 5 lệnh stop dự phòng -15% (MSFT $438.30, AAPL $293.54, PG $126.01, TXN $236.73, WMT $93.53) + KTOS (sandbox $41.75) đều `confirmed`, **không có fill/breach nào**.
+- `get_portfolio`: total value **$5,893.56**, equity $5,217.60, cash **$675.96**, **buying_power $675.96** (không còn pending_deposits, không còn unsettled — tiền bán NOW đã settle xong) → **QCOM đã sẵn sàng mua trong phiên có quyền đặt lệnh kế tiếp** (kế hoạch đã duyệt từ 10-01: mua ~$490 QCOM, ưu tiên 2cp nguyên + phần lẻ, rồi đặt stop_market GTC -15% cho 2cp nguyên). Không phải đề xuất mới (đã duyệt), chỉ ghi nhận trạng thái sẵn sàng.
+- **Benchmark (17:03 UTC, so đóng cửa 10-01):** SPY $769.82 (+0.76%), QQQ $750.05 (+1.08%) — thị trường xanh, nhóm bán dẫn dẫn đầu rõ rệt.
+- P&L nhanh (so đóng cửa 10-01): **TXN +5.27%**, VB +1.08%, AAPL +1.00%, VXUS +0.89%, VOO +0.75%, PG +0.39%, MSFT +0.33%, SCHD +0.21%, WMT -0.12%. **TXN lệch mạnh so benchmark** (+5.27% so QQQ +1.08%, chênh +4.19pp) → đã WebSearch.
+- **TXN (+5.27%):** không có tin riêng công ty mới (không tìm thấy tin xấu/tốt đặc thù TXN hôm nay) — xác nhận đây là **rally toàn ngành bán dẫn**: Micron báo cáo lợi nhuận vượt kỳ vọng mạnh, xuất khẩu bán dẫn Hàn Quốc lập đỉnh, kỳ vọng cuộc gặp Trump–Xi về AI/thương mại, lợi suất trái phiếu & giá dầu giảm hỗ trợ nhóm tech — Intel +11%, AMD/QCOM/NVDA cùng tăng mạnh. Đây là chất xúc tác tích cực toàn ngành, không phải rủi ro/fundamentals xấu đi.
+- QCOM cũng tăng +2.53% cùng đà rally bán dẫn — không ảnh hưởng tới kế hoạch mua đã duyệt (giá tham chiếu lúc đề xuất $184.04, giá hiện tại $186.70, chênh nhẹ +1.4%, không đáng kể).
+
+### Đối chiếu đỉnh intraday hôm nay (`get_equity_historicals` 5-phút, từ 13:30 UTC) với stop dự phòng -15%
+| Mã | Đỉnh cũ dùng tính stop | Stop hiện tại | Đỉnh intraday hôm nay (10-02) | Stop mới ngụ ý (-15%) | Chênh lệch | Hành động |
+|---|---|---|---|---|---|---|
+| MSFT | $515.65 (09-03) | $438.30 | $522.50 | $444.13 | +1.33% | Dưới ngưỡng đáng cập nhật (~2%) → **không đổi** |
+| AAPL | $345.34 (09-22) | $293.54 | $334.54 | — | Đỉnh hôm nay thấp hơn đỉnh cũ | Không đổi |
+| PG | $149.48 (09-28) | $126.01 | $144.87 | — | Đỉnh hôm nay thấp hơn đỉnh cũ | Không đổi |
+| **TXN** | **$278.69 (09-25, lúc đặt stop hiện tại)** | **$236.73** | **$297.06** | **$252.50** | **+6.66%** | **Vượt xa ngưỡng đáng cập nhật → ĐỀ XUẤT dời lên** |
+| WMT | $111.22 (09-23) | $93.53 | $105.14 | — | Đỉnh hôm nay thấp hơn đỉnh cũ | Không đổi |
+
+### ĐỀ XUẤT — dời stop dự phòng TXN theo đỉnh mới (cần Hogan duyệt, phiên này chỉ đọc, không đặt lệnh được)
+1. **TXN — dời stop_market GTC** (2cp nguyên, sell) từ **$236.73** lên **$252.50**.
+2. **Lý do:** TXN tạo đỉnh intraday mới $297.06 hôm nay (10-02), cao hơn +6.66% so với đỉnh $278.69 đang dùng để tính stop hiện tại ($236.73 = -15% từ $278.69) — vượt xa ngưỡng "đáng kể" (~2%). Đây là dời LÊN theo đỉnh mới, đúng quy tắc trailing (không bao giờ dời xuống). Đà tăng là rally toàn ngành bán dẫn (Micron, xuất khẩu Hàn Quốc, kỳ vọng Trump-Xi AI/thương mại) — chất xúc tác tích cực xác nhận qua WebSearch, không phải nhiễu đơn lẻ.
+3. **Rủi ro chính:** không có rủi ro tăng thêm — chỉ siết chặt biên bảo vệ theo đỉnh mới, giảm mức lỗ tối đa nếu giá đảo chiều mạnh (ngành bán dẫn vốn biến động cao, có thể điều chỉnh sau rally mạnh). Nếu KHÔNG dời, biên bảo vệ vẫn đúng quy tắc (không sai), chỉ kém tối ưu hơn.
+4. **Mức cắt lỗ đề xuất:** $252.50 (GTC stop_market, thay thế lệnh $236.73 hiện tại `6ab6cfdf-b124-4f91-823f-6ea462482739`), tương ứng -15% từ đỉnh mới $297.06. Ngưỡng đóng cửa -10% (kiểm tra chính 15:30 ET) hôm nay cũng nên dùng đỉnh mới $297.06 (→ $267.35) cho lần kiểm tra chiều nay.
+- `get_earnings_calendar` (7 ngày tới, 10-02→10-08): **không có mã core-10 nào** (MSFT/AAPL/TXN/PG/WMT/QCOM) trong danh sách báo cáo tuần này. QCOM earnings kế tiếp đã biết 11-11 (còn xa, >5 phiên, không ảnh hưởng kế hoạch mua).
+- Không phải 7 ngày đầu tháng áp dụng cho kiểm tra tiền nạp lần này (tiền nạp 10-01 $300 đã xử lý xong, đã mua VXUS). Không phải ngày 1 tháng → không cần báo cáo 3 dòng.
+- **Kết luận:** không mã nào breach stop-loss/ngưỡng đóng cửa; có 1 đề xuất thật sự (dời stop TXN $236.73 → $252.50) → **đã gửi PushNotification.** Nhắc trạng thái chờ xử lý (không phải đề xuất mới): QCOM đã sẵn sàng mua (buying power $675.96 đã settle), core-10 tạm 9/10 slot. Để duyệt: mở phiên mới (Claude Code trên PC, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất".
