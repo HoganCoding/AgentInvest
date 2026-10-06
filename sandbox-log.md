@@ -5382,3 +5382,14 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Wash-sale vẫn hiệu lực (đối chiếu cả 2 file):** IONQ (~10-14), RGTI (~10-15), JPM (~10-15), ONDS (~10-23, core-10), RSP (~10-16, core-10), CRM (~10-17, core-10), PEP (~10-21, core-10), NOW (~10-31, core-10), **KTOS (~11-04, mới)**.
 - **Quy tắc "2 lệnh thua liên tiếp" (CLAUDE.md, cập nhật 2026-09-23) — KÍCH HOẠT:** 2 lần đóng vị thế sandbox gần nhất đều lỗ — **SOUN** (stop-loss khớp 09-10, lỗ -$25.72) và **KTOS** (stop-loss khớp 10-05, lỗ -$45.50). → **Nghỉ mở lệnh mới 5 phiên giao dịch**, tính từ phiên kế tiếp **2026-10-06 (hôm nay) → 10-07, 10-08, 10-09, 10-12** — chỉ quản lý vị thế đang có (hiện không có vị thế nào), **không mở lệnh mới cho tới 2026-10-13**. Trong thời gian này vẫn kiểm tra định kỳ bình thường, chỉ không xét ứng viên mới.
 - **Quyết định: KHÔNG mở vị thế mới** (đang trong giai đoạn nghỉ bắt buộc sau 2 lệnh thua liên tiếp, có hiệu lực tới 10-13) — chỉ ghi nhận việc KTOS đã thoát lệnh qua đêm. **Có sự kiện thật (stop-loss khớp, chuyển 100% tiền mặt)** → **đã gửi PushNotification.**
+
+## 2026-10-06 ~15:05 ET (19:05 UTC) — Kiểm tra định kỳ (routine tự động, 2 lần/ngày): sandbox 100% tiền mặt, KHÔNG hành động
+
+- **Sync đầu phiên:** `git fetch origin` — local khớp `origin/main` tại `4a076b2` (entry gần nhất là core-10 check 13:00 ET hôm nay), `git checkout -B main origin/main` sạch, không conflict.
+- `get_accounts`: tài khoản 704170133 (Agentic), `unsettled_funds` **$0**.
+- `get_equity_positions` (704170133): **10 vị thế, toàn bộ là core-10 đủ 10/10 slot** (MSFT, VOO, AAPL, PG, TXN, QCOM, WMT, VXUS, SCHD, VB — đối chiếu `trading-log.md` khớp đúng, không đổi so lần check sáng nay). **Không có vị thế sandbox nào** (KTOS đã thoát hôm 10-05, chưa mở lệnh mới nào) — không có mã lạ nào khác.
+- `get_portfolio`: cash/buying_power **$519.96** — không đổi so lần check 11:05 ET hôm nay, total_value **$5,942.08**.
+- **Không mở vị thế mới:** đang trong giai đoạn nghỉ bắt buộc sau 2 lệnh thua liên tiếp (SOUN, KTOS) theo quy tắc CLAUDE.md — cấm mở lệnh mới từ 10-06 đến hết 10-12, chỉ được mở lại từ **2026-10-13**. Không rà ứng viên mới lần này.
+- **Phần theo dõi sandbox (circuit breaker):** sandbox 100% cash $519.96, trừ đệm ước tính ~$264 → phần theo dõi ≈ **$255.96** — không đổi so lần check sáng nay, còn rất xa ngưỡng chốt lời x2 (~$528) và ngưỡng dừng hẳn (gần $0). Không kích hoạt circuit breaker.
+- **Wash-sale vẫn hiệu lực (đối chiếu cả 2 file):** IONQ (~10-14), RGTI (~10-15), JPM (~10-15), ONDS (~10-23, core-10), RSP (~10-16, core-10), CRM (~10-17, core-10), PEP (~10-21, core-10), NOW (~10-31, core-10), KTOS (~11-04).
+- **Quyết định: KHÔNG hành động** — không có vị thế sandbox nào để quản lý, không mở lệnh mới (đang trong giai đoạn nghỉ bắt buộc tới 10-13). Không có gì thay đổi thật so lần check trước (cash/vị thế giữ nguyên) → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md.
