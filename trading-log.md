@@ -6513,3 +6513,28 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - Trong 7 ngày đầu tháng (10-06 ≤ 10-07) → đã kiểm tra tiền nạp $300 định kỳ (xem giải trình buying power ở trên) — **chưa thấy khoản nạp $300 về**, không có gì để đề xuất mua ETF lần này.
 - Không phải ngày 1 tháng → không cần báo cáo hiệu suất 3 dòng.
 - **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach stop-loss/ngưỡng đóng cửa (đánh giá chính thức ở lần 15:30 ET), không có tin xấu/biến động đáng chú ý, không có đỉnh mới đủ lớn để dời stop dự phòng, chưa thấy tiền nạp $300 mới → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log.
+
+## 2026-10-06 ~15:34 ET (19:34 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): kiểm tra ngưỡng đóng cửa -10% chính, không breach, không có đề xuất mới
+- **Sync đầu phiên:** `git fetch`/`checkout -B main origin/main` khớp `origin/main` tại `08a5e31` (commit gần nhất là log sandbox check 15:05 ET hôm nay) — sạch, không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi: MSFT 1cp (avg $510.00), AAPL 1.483843cp (avg $328.93), TXN 2cp (avg $268.34), QCOM 2.633277cp (avg $186.08), PG 3.393620cp (avg $147.15), WMT 4.545415cp (avg $109.85), VOO 0.728352cp (avg $688.29), VXUS 9.365746cp (avg $85.60), SCHD 15.020016cp (avg $33.36), VB 1.736545cp (avg $288.77).
+- `get_equity_orders` (từ 17:03 UTC hôm nay tới nay): **rỗng** — không có lệnh mới/fill nào, không mã nào breach stop. 6 lệnh stop dự phòng -15% (MSFT/AAPL/PG/TXN/WMT/QCOM) vẫn `confirmed`, không đổi.
+- `get_portfolio`/`get_accounts`: total value **$5,932.12**, equity $5,412.16, cash **$519.96**, buying_power **$519.96**, unsettled_funds $0 — không đổi so lần 13:03 ET hôm nay → chưa thấy tiền nạp $300 định kỳ về (đã kiểm tra chi tiết nguồn gốc +$334 ở lần 13:03 ET, xác nhận là tiền sandbox KTOS settle, không phải tiền nạp core-10).
+- **Benchmark (19:34 UTC, so đóng cửa 10-05):** SPY $779.56 (+0.61%), QQQ $760.48 (+0.57%) — thị trường tiếp tục xanh nhẹ.
+- P&L nhanh (so đóng cửa 10-05): WMT +2.08%, PG +1.97%, MSFT +1.19%, TXN +0.62%, VOO +0.60%, SCHD +0.26%, VXUS +0.01%, AAPL +0.22%, VB -0.07%, QCOM -0.02%. PG/WMT nhỉnh hơn benchmark ~1.3-1.5pp nhưng dưới ngưỡng 3-5% cần WebSearch sâu — so với lần kiểm tra sáng nay (13:03 ET) biến động trong phiên đều rất nhỏ (<0.4pp mỗi mã) → không cần tin tức mới.
+- **Đối chiếu đỉnh intraday hôm nay (`get_equity_historicals` 5-phút, từ 13:30 UTC) với đỉnh tham chiếu dùng cho ngưỡng đóng cửa -10% và stop dự phòng -15%:** MSFT đỉnh $535.69 (không đổi so sáng nay). AAPL đỉnh $334.38 (<$345.34, không đổi). **TXN đỉnh mới nhẹ $298.75** (+0.12% so đỉnh $298.385 ghi nhận sáng nay — dưới xa ngưỡng đáng cập nhật ~2%, không đổi stop, cập nhật đỉnh tham chiếu). QCOM đỉnh $183.09 (<giá mua $186.08, chưa tạo đỉnh mới kể từ khi mua). PG đỉnh $149.68 (không đổi so sáng nay). WMT đỉnh $107.37 (<$111.22, không đổi) → không mã nào vượt ngưỡng "đáng kể" để dời stop dự phòng -15% trên sàn, giữ nguyên toàn bộ 6 lệnh `confirmed`.
+
+### Ngưỡng đóng cửa -10% từ đỉnh (kiểm tra chính, ~15:34 ET) — KHÔNG mã nào thủng
+| Mã | Đỉnh dùng tính ngưỡng | Ngưỡng đóng cửa -10% | Giá hiện tại (~15:34 ET) | Đệm |
+|---|---|---|---|---|
+| MSFT | $535.69 (10-06) | $482.12 | $531.44 | +10.23% |
+| AAPL | $345.34 (09-22) | $310.81 | $333.62 | +7.34% |
+| TXN | $298.75 (10-06, đỉnh mới nhẹ) | $268.88 | $296.74 | +10.37% |
+| PG | $149.68 (10-06) | $134.71 | $148.81 | +10.47% |
+| WMT | $111.22 (09-23) | $100.10 | $107.26 | +7.15% |
+| QCOM | $186.08 (giá mua 10-02, chưa tạo đỉnh mới) | $167.47 | $180.76 | +7.94% |
+
+- Không mã nào thủng ngưỡng. WMT nới đệm đáng kể hôm nay (+4.79% sáng 10-05 → +7.15% hiện tại) nhờ phiên tăng tốt — không còn là mã đệm mỏng nhất bất thường.
+- `get_earnings_calendar` (7 ngày tới, 10-06→10-13): **không có mã core-10 nào** (MSFT/AAPL/TXN/QCOM/PG/WMT) trong danh sách báo cáo. Earnings đã biết trước: TXN 10-20, PG 10-22, QCOM ~11-11 — đều còn xa (>5 phiên).
+- Đã kiểm tra tiền nạp $300 định kỳ ở lần 13:03 ET hôm nay (trong 7 ngày đầu tháng) — chưa về, buying_power không đổi từ sáng tới giờ → không lặp lại kiểm tra lần này.
+- Không phải ngày 1 tháng → không cần báo cáo hiệu suất 3 dòng.
+- **Kết luận:** kiểm tra ngưỡng đóng cửa -10% chính của ngày — không mã nào breach, không có đỉnh mới đủ lớn để dời stop dự phòng, không có tin xấu/biến động đáng chú ý, chưa thấy tiền nạp mới → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log.
