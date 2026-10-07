@@ -6538,3 +6538,8 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - Đã kiểm tra tiền nạp $300 định kỳ ở lần 13:03 ET hôm nay (trong 7 ngày đầu tháng) — chưa về, buying_power không đổi từ sáng tới giờ → không lặp lại kiểm tra lần này.
 - Không phải ngày 1 tháng → không cần báo cáo hiệu suất 3 dòng.
 - **Kết luận:** kiểm tra ngưỡng đóng cửa -10% chính của ngày — không mã nào breach, không có đỉnh mới đủ lớn để dời stop dự phòng, không có tin xấu/biến động đáng chú ý, chưa thấy tiền nạp mới → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log.
+
+## 2026-10-07 ~11:45 ET — Phiên tương tác: ĐÍNH CHÍNH về tiền nạp $300 tháng 10
+- Khoản nạp định kỳ $300 tháng 10 **ĐÃ VỀ ngày 2026-10-01** (cash +$300 lúc 13:02 ET 10-01) và **ĐÃ DÙNG HẾT** để mua VXUS $300 (3.552608cp @ $84.445, lệnh `6abe9e1e...`, filled 10-01 17:53 UTC), Hogan đã duyệt (xem entry review 10-01).
+- Các entry 10-05/10-06 ghi "chưa thấy tiền nạp $300 về" là **SAI**, do không đối chiếu entry 10-01. Khoản nạp tháng 10 đã xử lý xong, **không kiểm tra tiền nạp nữa cho tới đợt 2026-11-01**.
+- Lưu ý cho routine: trước khi kiểm tra tiền nạp trong 7 ngày đầu tháng, grep `trading-log.md` xem đợt nạp của tháng đó đã được ghi nhận/mua chưa.
