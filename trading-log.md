@@ -6581,3 +6581,36 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - Trong 7 ngày đầu tháng (10-07) nhưng tiền nạp $300 tháng 10 đã xử lý xong từ 10-01 (xem đính chính sáng nay) → không kiểm tra lại, buying_power $519.96 không đổi xác nhận không có khoản mới.
 - Không phải ngày 1 tháng → không cần báo cáo hiệu suất 3 dòng.
 - **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach stop-loss/ngưỡng đóng cửa (đánh giá chính thức ở lần 15:30 ET), TXN/QCOM giảm hơn benchmark nhưng do điều chỉnh sau rally (TXN) và lo ngại cạnh tranh đã biết từ trước (QCOM) — không phải tin xấu nghiêm trọng mới, không có đỉnh mới đủ lớn để dời stop dự phòng → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log.
+
+## 2026-10-07 ~15:34 ET (19:34 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): kiểm tra ngưỡng đóng cửa -10% chính, không breach, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch`/`git checkout -B main origin/main` khớp `origin/main` tại `2d44ef1` (commit gần nhất là log sandbox 15:03 ET hôm nay; không có commit core-10 mới nào kể từ entry 13:03 ET hôm nay) — sạch, không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi so lần 13:03 ET: MSFT 1cp, AAPL 1.483843cp, TXN 2cp, QCOM 2.633277cp, PG 3.393620cp, WMT 4.545415cp, VOO 0.728352cp, VXUS 9.365746cp, SCHD 15.020016cp, VB 1.736545cp.
+- `get_equity_orders` (từ 17:00 UTC hôm nay): **rỗng** — không có lệnh mới/fill nào, 6 lệnh stop dự phòng -15% vẫn giữ nguyên.
+- `get_portfolio`/`get_accounts`: total value **$5,893.42**, cash/buying_power **$519.96** (không đổi so 13:03 ET) → không có tiền nạp/bán mới.
+- **Benchmark (19:34 UTC, so đóng cửa 10-06):** SPY $777.07 (-0.26%), QQQ $757.29 (-0.31%) — tiếp tục phiên đỏ nhẹ.
+
+### Đối chiếu đỉnh intraday hôm nay (`get_equity_historicals` 5-phút, từ 13:30 UTC) với đỉnh tham chiếu dùng cho stop dự phòng -15% và ngưỡng đóng cửa -10%
+| Mã | Đỉnh tham chiếu đang dùng | Đỉnh intraday hôm nay (10-07) | Đỉnh mới? |
+|---|---|---|---|
+| MSFT | $535.69 | $531.73 | Không (thấp hơn) |
+| AAPL | $345.34 | $338.67 | Không (thấp hơn) |
+| TXN | $298.75 | $291.62 | Không (thấp hơn) |
+| PG | $149.68 | $149.665 | Không (thấp hơn, xấp xỉ) |
+| WMT | $111.22 | $108.80 | Không (thấp hơn) |
+| QCOM | $186.08 | $179.82 | Không (thấp hơn, vẫn chưa tạo đỉnh mới kể từ khi mua) |
+
+- Không mã nào tạo đỉnh mới → giữ nguyên toàn bộ 6 lệnh stop dự phòng, không dời lệnh nào.
+
+### Ngưỡng đóng cửa -10% từ đỉnh (LẦN KIỂM TRA CHÍNH, ~15:34 ET/gần đóng cửa) — KHÔNG mã nào breach
+| Mã | Đỉnh dùng tính ngưỡng | Ngưỡng đóng cửa -10% | Giá hiện tại (~15:34 ET) | Đệm |
+|---|---|---|---|---|
+| MSFT | $535.69 | $482.12 | $529.54 | +9.86% |
+| AAPL | $345.34 | $310.81 | $336.13 | +8.13% |
+| TXN | $298.75 | $268.88 | $289.345 | +7.61% |
+| PG | $149.68 | $134.71 | $148.34 | +10.10% |
+| WMT | $111.22 | $100.10 | $108.04 | +7.93% |
+| QCOM | $186.08 | $167.47 | $177.71 | +6.11% |
+
+- So lần 13:03 ET: TXN (-3.68%→-2.65% so đóng cửa 10-06) và QCOM (-2.12%→-1.83%) đều PHỤC HỒI nhẹ trong phiên, không xấu thêm — đã WebSearch đầy đủ ở lần 13:03 ET hôm nay (không có tin xấu nghiêm trọng mới), không cần lặp lại.
+- **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach ngưỡng đóng cửa -10% chính thức, không có đỉnh mới cần dời stop dự phòng, không có tiền mới/lệnh mới → **không có đề xuất mới** → không gửi PushNotification, chỉ ghi log.
