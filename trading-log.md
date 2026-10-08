@@ -6652,3 +6652,39 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - `get_earnings_calendar` (7 ngày tới, 10-08→10-15): **không có mã core-10 nào** (MSFT/AAPL/TXN/QCOM/PG/WMT) trong danh sách báo cáo.
 - Không phải ngày 1 tháng → không cần báo cáo hiệu suất 3 dòng.
 - **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach stop-loss/ngưỡng đóng cửa (đánh giá chính thức ở lần 15:30 ET), QCOM giảm nhiều hơn benchmark và đệm thu hẹp nhanh nhưng vẫn do lo ngại cạnh tranh/đồn đoán ngành đã biết từ trước (không phải tin xấu nghiêm trọng mới) → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log. Sẽ theo dõi sát QCOM ở lần 15:30 ET.
+
+## 2026-10-08 ~15:34 ET (19:34 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): kiểm tra ngưỡng đóng cửa -10% chính, không breach, QCOM phục hồi đệm, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch`/`git checkout -B main origin/main` khớp `origin/main` tại `f14c689` (commit gần nhất là log sandbox 15:03 ET hôm nay) — sạch, không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi so lần 13:02 ET: MSFT 1cp, AAPL 1.483843cp, TXN 2cp, QCOM 2.633277cp, PG 3.393620cp, WMT 4.545415cp, VOO 0.728352cp, VXUS 9.365746cp, SCHD 15.020016cp, VB 1.736545cp.
+- `get_equity_orders` (từ 17:02 UTC hôm nay tới nay): **rỗng** — không có lệnh mới/fill nào. 6 lệnh stop dự phòng -15% vẫn `confirmed`, không đổi: MSFT $438.30, AAPL $293.54, TXN $252.50, PG $126.01, WMT $93.53, QCOM $158.17.
+- `get_portfolio`: total value **$5,898.33**, equity $5,378.37, cash/buying_power **$519.96** — không đổi so lần 13:02 ET → không có tiền nạp/bán mới.
+- **Benchmark (19:34 UTC, so đóng cửa 10-07):** SPY $773.17 (-0.52%), QQQ $746.57 (-1.47%) — thị trường đỏ, QQQ tiếp tục giảm mạnh hơn SPY (phiên yếu cho công nghệ, giống sáng nay).
+- P&L nhanh (so đóng cửa 10-07): WMT +2.43%, PG +1.84%, AAPL +1.34%, SCHD +1.45%, VB +0.13%, TXN -0.63%, VOO -0.50%, QCOM -1.23%, VXUS -0.93%, MSFT -1.49%. **QCOM đã PHỤC HỒI so với sáng nay** (-2.96% so đóng cửa 10-07 lúc 13:02 ET → nay chỉ -1.23%, giảm ít hơn QQQ -1.47%) — không còn lệch bất thường so benchmark, không cần WebSearch thêm (đã làm đầy đủ sáng nay, không có tin mới trong ngày).
+
+### Đối chiếu đỉnh intraday hôm nay (`get_equity_historicals` 5-phút, 13:30 UTC → 19:34 UTC) với đỉnh tham chiếu dùng cho stop dự phòng -15% và ngưỡng đóng cửa -10%
+| Mã | Đỉnh tham chiếu đang dùng | Đỉnh intraday hôm nay (10-08) | Đỉnh mới? |
+|---|---|---|---|
+| MSFT | $535.69 (10-06) | $533.51 | Không (thấp hơn) |
+| AAPL | $345.34 (09-22) | $341.57 | Không (thấp hơn) |
+| TXN | $298.75 (10-06) | $290.49 | Không (thấp hơn) |
+| **PG** | $149.68 (10-06) | **$150.76** | **Đỉnh mới, +0.72%** — dưới ngưỡng đáng dời stop dự phòng (~2%), không đổi lệnh -15% trên sàn; cập nhật đỉnh tham chiếu cho ngưỡng đóng cửa -10% dùng ở các lần kiểm tra sau |
+| WMT | $111.22 (09-23) | $111.13 | Không (thấp hơn) |
+| QCOM | $186.08 (giá mua 10-02) | $175.37 | Không (thấp hơn, vẫn chưa tạo đỉnh mới kể từ khi mua) |
+
+- Không mã nào vượt ngưỡng "đáng kể" (~2%) để dời stop dự phòng -15% trên sàn → giữ nguyên toàn bộ 6 lệnh `confirmed`. PG có đỉnh mới nhẹ, cập nhật đỉnh tham chiếu dùng để tính ngưỡng đóng cửa -10% (xem bảng dưới) nhưng không đủ lớn để dời stop dự phòng trên sàn.
+
+### Ngưỡng đóng cửa -10% từ đỉnh (LẦN KIỂM TRA CHÍNH, ~15:34 ET) — KHÔNG mã nào breach
+| Mã | Đỉnh dùng tính ngưỡng | Ngưỡng đóng cửa -10% | Giá hiện tại (~15:34 ET) | Đệm |
+|---|---|---|---|---|
+| MSFT | $535.69 | $482.12 | $521.93 | +8.26% |
+| AAPL | $345.34 | $310.81 | $341.16 | +9.76% |
+| TXN | $298.75 | $268.88 | $287.17 | +6.80% |
+| PG | $150.76 (đỉnh mới hôm nay) | $135.68 | $150.545 | +10.96% |
+| WMT | $111.22 | $100.10 | $110.788 | +10.68% |
+| QCOM | $186.08 | $167.47 | $174.945 | +4.46% (phục hồi so +2.63% lúc 13:02 ET) |
+
+- **QCOM: đệm phục hồi từ +2.63% (13:02 ET) lên +4.46% (15:34 ET)** — không breach, không còn cần theo dõi khẩn cấp; sẽ tiếp tục theo dõi bình thường ở lần kiểm tra kế tiếp.
+- `get_earnings_calendar` (7 ngày tới, 10-08→10-15): **không có mã core-10 nào** (MSFT/AAPL/TXN/QCOM/PG/WMT) trong danh sách báo cáo.
+- Không phải 7 ngày đầu tháng mới (đã qua, và tiền nạp $300 tháng 10 đã xử lý xong từ 10-01) → không kiểm tra lại. Không phải ngày 1 tháng → không cần báo cáo hiệu suất 3 dòng.
+- **Kết luận:** lần kiểm tra chính ngưỡng đóng cửa -10% của ngày — không mã nào breach, QCOM phục hồi đệm đáng kể trong phiên, PG có đỉnh mới nhẹ (+0.72%, chưa đủ dời stop dự phòng), không có tin xấu/biến động đáng chú ý mới → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log.
