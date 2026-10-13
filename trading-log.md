@@ -6874,3 +6874,26 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - `get_earnings_calendar` (7 ngày tới, 10-13→10-20): **không có mã core-10 nào** (MSFT/AAPL/TXN/QCOM/PG/WMT) trong danh sách báo cáo (có JPM/WFC/JNJ/GS/UNH/C/ASML/MS/BAC... báo cáo trong tuần, không liên quan core-10).
 - Không phải ngày 1 tháng → không cần báo cáo hiệu suất 3 dòng. Không phải 7 ngày đầu tháng mới (tiền nạp $300 tháng 10 đã xử lý xong từ 10-01).
 - **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach stop-loss/ngưỡng đóng cửa, MSFT/AAPL/PG/WMT có đỉnh mới nhẹ (chưa đủ dời stop dự phòng), biến động các mã còn lại trong biên độ nhiễu bình thường so benchmark, không có tin xấu nghiêm trọng mới → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log. Lần kiểm tra chính ngưỡng đóng cửa -10% sẽ diễn ra ~15:30 ET hôm nay.
+
+## 2026-10-13 ~15:34 ET (19:34 UTC) — Kiểm tra chính ngưỡng đóng cửa -10% core-10 (routine tự động, sync git): không breach, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch`/`git checkout -B main origin/main` khớp `origin/main` tại `ec15959` (gồm 2 log mới từ phiên khác kể từ lần kiểm tra 13:02 ET hôm nay: sandbox 15:0x ET). Không có conflict.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi so lần 13:02 ET hôm nay.
+- `get_equity_orders` (state=confirmed): toàn bộ 6 lệnh stop dự phòng -15% vẫn `confirmed`, không đổi: MSFT $438.30, AAPL $293.54, PG $126.01, WMT $93.53, TXN $252.50, QCOM $158.17.
+- **Đối chiếu đỉnh intraday hôm nay (`get_equity_historicals` 5-phút, cả phiên tới 19:34 UTC):** MSFT $551.15, AAPL $348.15, TXN $288.90 (< đỉnh tham chiếu $298.75, không đổi), PG $154.72, WMT $114.825, QCOM $180.78 (< đỉnh tham chiếu/giá mua $186.08, chưa tạo đỉnh mới kể từ khi mua) — khớp đúng các đỉnh đã cập nhật ở lần kiểm tra 13:02 ET, không có đỉnh mới nào phát sinh thêm trong buổi chiều.
+
+### Ngưỡng đóng cửa -10% từ đỉnh — lần kiểm tra CHÍNH trong ngày (~15:34 ET)
+| Mã | Đỉnh dùng tính ngưỡng | Ngưỡng đóng cửa -10% | Giá hiện tại (~15:34 ET) | Đệm | Breach? |
+|---|---|---|---|---|---|
+| MSFT | $551.15 | $496.04 | $545.41 | +9.94% | Không |
+| AAPL | $348.15 | $313.34 | $341.51 | +9.00% | Không |
+| TXN | $298.75 | $268.88 | $288.20 | +7.20% | Không |
+| PG | $154.72 | $139.25 | $153.02 | +9.90% | Không |
+| WMT | $114.825 | $103.34 | $112.87 | +9.20% | Không |
+| QCOM | $186.08 (giá mua, chưa có đỉnh mới) | $167.47 | $177.59 | +5.78% | Không |
+
+- **Không mã nào thủng ngưỡng đóng cửa -10%** → không có đề xuất bán nào cho lần kiểm tra chính hôm nay. Giữ nguyên toàn bộ 6 lệnh stop dự phòng -15% trên sàn, không dời lệnh nào (không có đỉnh mới đáng kể kể từ 13:02 ET).
+- Benchmark (19:34 UTC): SPY $778.58 (+0.06% so đóng cửa 10-12), QQQ $743.62 (-0.32%) — thị trường gần như đi ngang, hơi đỏ nhẹ ở nhóm công nghệ.
+- `get_earnings_calendar`: đã kiểm tra ở lần 13:02 ET hôm nay — không mã core-10 nào báo cáo trong 5 phiên tới (10-13→10-20). Không cần kiểm tra lại trong cùng ngày.
+- Không phải ngày 1 tháng, không phải 7 ngày đầu tháng mới → không cần báo cáo hiệu suất 3 dòng / kiểm tra tiền nạp.
+- **Kết luận:** lần kiểm tra chính ngưỡng đóng cửa -10% hôm nay — không mã nào breach, không có đỉnh mới phát sinh thêm buổi chiều, thị trường đi ngang → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log.
