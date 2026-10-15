@@ -7020,3 +7020,10 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach ngưỡng đóng cửa -10%. **PG và WMT tạo đỉnh mới đáng kể (+2.32%/+4.81%) → có đề xuất thật sự: dời 2 lệnh stop dự phòng trên sàn lên theo đỉnh mới (xem trên)** → **CÓ gửi PushNotification**. TXN đang là mã cần theo dõi sát nhất (đệm +2.45%) cho lần kiểm tra chính 15:30 ET, lưu ý thêm TXN báo cáo KQKD 10-21 (chỉ ghi chú, core-10 không cần né earnings).
 
 **Để duyệt:** Hogan mở phiên mới (Claude Code trên máy, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất" để thực hiện 2 lệnh dời stop dự phòng PG/WMT nêu trên.
+
+## Thực hiện đề xuất dời stop dự phòng PG/WMT — 2026-10-15 ~13:09 ET (Hogan duyệt)
+- Hogan duyệt đề xuất 13:02 ET → phiên tương tác thực hiện.
+- **PG:** hủy stop cũ 3cp @ $126.01 (đã `cancelled`) → đặt stop_market sell 3cp GTC @ **$135.96** (-15% từ đỉnh $159.95), trạng thái `confirmed`. Ngưỡng đóng cửa -10% = $143.96.
+- **WMT:** hủy stop cũ 4cp @ $93.53 (đã `cancelled`) → đặt stop_market sell 4cp GTC @ **$103.17** (-15% từ đỉnh $121.38), trạng thái `confirmed`. Ngưỡng đóng cửa -10% = $109.24.
+- Giá lúc đặt: PG $157.91, WMT $118.62 — cả hai còn xa stop mới. Phần lẻ (fractional) của PG/WMT vẫn không có stop trên sàn, bảo vệ bởi kiểm tra 15:30 ET.
+- Stop các mã khác giữ nguyên (MSFT $438.30, AAPL $293.54, TXN $252.50, QCOM $158.17).
