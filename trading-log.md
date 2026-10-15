@@ -6972,3 +6972,51 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - `get_earnings_calendar` (7 ngày tới, 10-14→10-21): xác nhận lại — **không có mã core-10 nào** (MSFT/AAPL/TXN/QCOM/PG/WMT) trong danh sách báo cáo (ASML/BLK/BAC/MS/PGR báo cáo sáng nay, TSM/SCHW/PNC/NFLX/RTX/USB... trong tuần — không liên quan core-10).
 - Không phải ngày 1 tháng, không phải 7 ngày đầu tháng mới → không cần báo cáo hiệu suất 3 dòng / kiểm tra tiền nạp.
 - **Kết luận:** lần kiểm tra chính ngưỡng đóng cửa -10% hôm nay — không mã nào breach dù thị trường bán tháo diện rộng kéo dài cả phiên (SPY -1.10%, QQQ -1.86%), PG/WMT có đỉnh mới rất nhẹ (chưa đủ dời stop dự phòng), QCOM/TXN đệm vẫn >3% và đã nhích lên cuối phiên, không có tin xấu riêng mã nào → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log.
+
+## 2026-10-15 ~13:02 ET (17:02 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): PG/WMT tạo đỉnh mới đáng kể → ĐỀ XUẤT dời 2 lệnh stop dự phòng, chờ duyệt
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD khớp `origin/main` tại `da5647d` (gồm các log sandbox 11:04 ET 10-15 và core-10/sandbox 10-14 từ các phiên khác) → `git checkout main && git merge origin/main --ff-only` fast-forward sạch từ `59b9af6` lên `da5647d`, không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi: MSFT 1cp (avg $510.00), AAPL 1.483843cp (avg $328.93), TXN 2cp (avg $268.34), QCOM 2.633277cp (avg $186.08), PG 3.393620cp (avg $147.15), WMT 4.545415cp (avg $109.85), VOO 0.728352cp (avg $688.29), VXUS 9.365746cp (avg $85.60), SCHD 15.020016cp (avg $33.36), VB 1.736545cp (avg $288.77).
+- `get_equity_orders` (state=confirmed): toàn bộ 6 lệnh stop dự phòng -15% vẫn `confirmed`, không đổi: MSFT $438.30, AAPL $293.54, PG $126.01, WMT $93.53, TXN $252.50, QCOM $158.17. Không có lệnh mới/fill nào.
+- `get_portfolio`: total value **$5,966.47**, equity $5,446.51, cash/buying_power **$519.96** — không đổi so lần kiểm tra trước → không có tiền nạp/bán mới. Đã qua 7 ngày đầu tháng → không kiểm tra lại tới 11-01.
+- **Benchmark (17:02 UTC, so đóng cửa 10-14):** SPY $769.745 (+0.02%, gần như đi ngang), QQQ $723.52 (-0.74%, công nghệ tiếp tục yếu hơn).
+- P&L nhanh so đóng cửa 10-14: WMT +2.14%, PG +1.00%, QCOM +1.59%, MSFT +1.09%, AAPL +0.39%, VB +0.76% — các mã phòng thủ/QCOM đi ngược QQQ âm; TXN **-1.85%** (275.45 so 280.65) lệch ~1.1pp so QQQ -0.74%, chưa tới ngưỡng 3-5% cần WebSearch sâu riêng mã.
+
+### Đối chiếu đỉnh intraday hôm nay (`get_equity_historicals` 5-phút, từ 13:30 UTC) với đỉnh tham chiếu đang dùng
+| Mã | Đỉnh tham chiếu trước | Đỉnh intraday hôm nay (10-15, tới giờ) | Đỉnh mới? |
+|---|---|---|---|
+| MSFT | $551.15 (10-13) | $540.25 | Không (thấp hơn) |
+| AAPL | $348.15 (10-13) | $347.85 | Không (thấp hơn) |
+| TXN | $298.75 (10-06) | $282.47 | Không (thấp hơn, đang giảm mạnh) |
+| QCOM | $186.08 (giá mua) | $176.88 | Không (thấp hơn, vẫn chưa tạo đỉnh mới kể từ khi mua) |
+| **PG** | $156.32 (10-14) | **$159.95** | **Đỉnh mới +2.32%** — VƯỢT ngưỡng ~2% đáng dời stop dự phòng |
+| **WMT** | $115.81 (10-14) | **$121.38** | **Đỉnh mới +4.81%** — VƯỢT rõ ngưỡng ~2% đáng dời stop dự phòng |
+
+### ĐỀ XUẤT (chờ Hogan duyệt) — dời 2 lệnh stop dự phòng -15% lên theo đỉnh mới PG/WMT
+1. **PG — hủy lệnh stop dự phòng cũ (stop_market sell, 3cp, $126.01) → đặt lệnh mới: stop_market sell 3cp tại $135.96** (= $159.95 đỉnh mới × 0.85).
+   - Lý do: PG tạo đỉnh intraday mới $159.95 hôm nay (10-15), cao hơn đỉnh tham chiếu cũ $156.32 (10-14) tới +2.32% — vượt ngưỡng ~2% quy định trong CLAUDE.md để dời stop dự phòng lên (chỉ dời lên, không bao giờ dời xuống).
+   - Rủi ro chính: PG hiện lãi +7.43% so giá vốn ($147.15) — còn xa ngưỡng cảnh báo chốt lời +15-20%; dời stop không làm thay đổi rủi ro tăng, chỉ siết chặt hơn mức bảo vệ lãi đã có.
+   - Mức cắt lỗ mới đề xuất: $135.96 (stop dự phòng trên sàn, -15% từ đỉnh mới); ngưỡng đóng cửa -10% cập nhật theo = $143.955 (giám sát thủ công ở lần kiểm tra 15:30 ET).
+2. **WMT — hủy lệnh stop dự phòng cũ (stop_market sell, 4cp, $93.53) → đặt lệnh mới: stop_market sell 4cp tại $103.17** (= $121.38 đỉnh mới × 0.85).
+   - Lý do: WMT tạo đỉnh intraday mới $121.38 hôm nay, cao hơn đỉnh tham chiếu cũ $115.81 (10-14) tới +4.81% — vượt rõ ngưỡng ~2% dời stop. Giá đã điều chỉnh về $118.645 lúc kiểm tra nhưng đỉnh trong phiên vẫn dùng làm mốc theo quy tắc trailing-stop.
+   - Rủi ro chính: WMT hiện lãi +8.02% so giá vốn ($109.85) — còn xa ngưỡng cảnh báo chốt lời; dời stop chỉ siết bảo vệ lãi, không tăng rủi ro.
+   - Mức cắt lỗ mới đề xuất: $103.17 (stop dự phòng trên sàn, -15% từ đỉnh mới); ngưỡng đóng cửa -10% cập nhật theo = $109.242 (giám sát thủ công ở lần kiểm tra 15:30 ET).
+- **Lưu ý:** phiên này là read-only trên tài khoản Agentic, KHÔNG tự hủy/đặt lệnh — cần Hogan duyệt rồi thực hiện qua phiên có quyền đặt lệnh (CLAUDE.md: core-10 dời stop dự phòng vẫn cần qua phiên có quyền đặt lệnh như lệnh thường).
+- Các mã còn lại (MSFT/AAPL/TXN/QCOM) không có đỉnh mới đáng kể → giữ nguyên nguyên trạng, không đề xuất gì thêm cho các mã này lần này.
+
+### Ngưỡng đóng cửa -10% từ đỉnh (sơ bộ, chưa phải lần kiểm tra chính 15:30 ET) — KHÔNG mã nào gần breach
+| Mã | Đỉnh dùng tính ngưỡng | Ngưỡng đóng cửa -10% | Giá hiện tại (~13:02 ET) | Đệm |
+|---|---|---|---|---|
+| MSFT | $551.15 | $496.04 | $539.505 | +8.76% |
+| AAPL | $348.15 | $313.34 | $344.28 | +9.88% |
+| TXN | $298.75 | $268.88 | $275.45 | **+2.45%** (đệm thu hẹp đáng kể, cần theo dõi sát lần 15:30 ET) |
+| PG | $159.95 (đỉnh mới hôm nay) | $143.96 | $158.095 | +9.82% |
+| WMT | $121.38 (đỉnh mới hôm nay) | $109.24 | $118.645 | +8.61% |
+| QCOM | $186.08 (giá mua, chưa có đỉnh mới) | $167.47 | $175.365 | +4.71% |
+
+- TXN là mã cần chú ý nhất: đệm đã thu hẹp từ +4.78%/+5.22% (10-14) xuống còn +2.45% hôm nay, giảm -1.85% trong phiên (lệch ~1.1pp so QQQ -0.74%) — chưa tới ngưỡng cần WebSearch sâu (3-5%) và chưa breach, nhưng là mã rủi ro cao nhất cho lần kiểm tra chính 15:30 ET nếu đà giảm tiếp diễn.
+- `get_earnings_calendar` (7 ngày tới, 10-15→10-22): **TXN báo cáo KQKD 2026-10-21 (pm)** — trong vòng 5 phiên giao dịch tới (10-16, 10-19, 10-20, 10-21 = phiên thứ 4). Theo CLAUDE.md, core-10 chỉ cần ghi chú, không cần hành động (không giống sandbox phải né earnings). Không mã core-10 nào khác báo cáo trong 7 ngày tới.
+- Không phải ngày 1 tháng → không cần báo cáo hiệu suất 3 dòng. Không phải 7 ngày đầu tháng mới → không cần kiểm tra tiền nạp.
+- **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach ngưỡng đóng cửa -10%. **PG và WMT tạo đỉnh mới đáng kể (+2.32%/+4.81%) → có đề xuất thật sự: dời 2 lệnh stop dự phòng trên sàn lên theo đỉnh mới (xem trên)** → **CÓ gửi PushNotification**. TXN đang là mã cần theo dõi sát nhất (đệm +2.45%) cho lần kiểm tra chính 15:30 ET, lưu ý thêm TXN báo cáo KQKD 10-21 (chỉ ghi chú, core-10 không cần né earnings).
+
+**Để duyệt:** Hogan mở phiên mới (Claude Code trên máy, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất" để thực hiện 2 lệnh dời stop dự phòng PG/WMT nêu trên.
