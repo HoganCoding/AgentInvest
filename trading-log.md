@@ -7174,3 +7174,38 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - `get_earnings_calendar` (7 ngày tới, 10-19→10-26): xác nhận lại — **TXN báo cáo KQKD 2026-10-21 (pm)** và **PG báo cáo KQKD 2026-10-22 (am)**, không đổi so lần kiểm tra trước, chỉ ghi chú (core-10 không né earnings, khác sandbox). Không mã core-10 nào khác báo cáo trong 7 ngày tới.
 - Không phải ngày 1 tháng → không cần báo cáo hiệu suất 3 dòng.
 - **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach ngưỡng đóng cửa -10% dù thị trường hồi phục mạnh (SPY +0.53%, QQQ +1.42%) sau 4 phiên bán tháo liên tiếp, không mã nào tạo đỉnh mới đáng kể (chưa đủ dời stop dự phòng), không mã nào đạt ngưỡng chốt lời/cắt lỗ, không có tin xấu riêng mã nào mới (TXN/PG báo cáo KQKD 10-21/10-22 đã ghi chú từ trước). → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log. Lần kiểm tra chính ngưỡng đóng cửa -10% sẽ diễn ra ~15:30 ET hôm nay.
+
+## 2026-10-19 ~15:35 ET (19:35 UTC) — Kiểm tra CHÍNH ngưỡng đóng cửa -10% core-10 (routine tự động, sync git): hồi phục tiếp tục mạnh hơn, không breach, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin main` khớp `origin/main` tại `2d1ddaf` (thêm 1 commit log sandbox 15:15 ET 10-19 từ routine khác kể từ lần kiểm tra core-10 13:02 ET hôm nay). Working tree đã khớp, không conflict.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi: MSFT 1cp, AAPL 1.483843cp, TXN 2cp, QCOM 2.633277cp, PG 3.393620cp, WMT 4.545415cp, VOO 0.728352cp, VXUS 9.365746cp, SCHD 15.020016cp, VB 1.736545cp.
+- `get_equity_orders` (state=confirmed): toàn bộ 6 lệnh stop dự phòng -15% vẫn `confirmed`, không đổi: MSFT $438.30, AAPL $293.54, TXN $252.50, QCOM $158.17, PG $135.96, WMT $103.17. Không có lệnh mới/fill nào.
+- `get_portfolio`: total value **$5,958.01**, cash/buying_power **$519.96** — cash không đổi so lần 13:02 ET hôm nay ($519.96), tăng total value chỉ do giá cổ phiếu tăng → không có tiền nạp/bán mới.
+
+### Đối chiếu đỉnh intraday hôm nay (`get_equity_historicals` 5-phút, 13:30→19:35 UTC) với đỉnh tham chiếu đang dùng
+| Mã | Đỉnh tham chiếu hiện tại | Đỉnh intraday hôm nay (cả phiên tới giờ) | Đỉnh mới? |
+|---|---|---|---|
+| MSFT | $551.15 | $535.57 | Không (thấp hơn) |
+| AAPL | $348.15 | $346.00 | Không (thấp hơn, sát gần) |
+| TXN | $298.75 | $283.12 | Không (thấp hơn) |
+| QCOM | $186.08 (giá mua) | $178.00 | Không (thấp hơn, vẫn chưa tạo đỉnh mới kể từ khi mua) |
+| PG | $159.95 | $158.48 | Không (thấp hơn) |
+| WMT | $121.38 | $119.275 | Không (thấp hơn) |
+
+- Không mã nào tạo đỉnh mới trong cả phiên hôm nay → giữ nguyên toàn bộ 6 lệnh stop dự phòng `confirmed`, không dời lệnh nào trên sàn.
+
+### Ngưỡng đóng cửa -10% từ đỉnh — lần kiểm tra CHÍNH trong ngày (~15:35 ET)
+| Mã | Đỉnh dùng tính ngưỡng | Ngưỡng đóng cửa -10% | Giá hiện tại (~15:35 ET) | Đệm | Breach? |
+|---|---|---|---|---|---|
+| MSFT | $551.15 | $496.035 | $534.525 | +7.76% | Không |
+| AAPL | $348.15 | $313.335 | $342.725 | +9.35% | Không |
+| TXN | $298.75 | $268.875 | $277.81 | +3.32% | Không |
+| PG | $159.95 | $143.955 | $157.485 | +9.39% | Không |
+| WMT | $121.38 | $109.242 | $118.755 | +8.72% | Không |
+| QCOM | $186.08 (giá mua, chưa có đỉnh mới) | $167.472 | $174.98 | +4.48% | Không |
+
+- **Không mã nào thủng ngưỡng đóng cửa -10%** → không có đề xuất bán nào cho lần kiểm tra chính hôm nay. TXN (+3.32%) vẫn là đệm mỏng nhất nhưng đang nới rộng dần so lần 13:02 ET (+3.11%) nhờ đà hồi phục.
+- Benchmark (19:35 UTC, so đóng cửa 10-16): SPY $768.18 (+0.65%), QQQ $720.54 (+1.51%) — hồi phục mạnh hơn cả lần kiểm tra 13:02 ET hôm nay (+0.53%/+1.42%), tiếp tục sau 4 phiên bán tháo liên tiếp (10-13→10-16).
+- Mức lãi/lỗ chưa chốt so giá vốn: WMT +8.11%, PG +7.02%, MSFT +4.81%, AAPL +4.19%, TXN +3.53%, SCHD +2.74%, VOO +2.58% — còn xa ngưỡng cảnh báo chốt lời +15-20%. VB -1.42%, VXUS -2.60%, QCOM -5.96% (lỗ rộng nhất, tiếp tục thu hẹp so lần trước -6.65%, vẫn trong biên trailing-stop, chưa breach ngưỡng đóng cửa -10%).
+- Không có tin xấu riêng mã nào mới kể từ lần kiểm tra 13:02 ET hôm nay; TXN (báo cáo KQKD 2026-10-21 pm) và PG (2026-10-22 am) vẫn là 2 mã cần chú ý tuần này, đã ghi chú từ trước, core-10 không né earnings (khác sandbox).
+- **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach ngưỡng đóng cửa -10% dù thị trường tiếp tục hồi phục mạnh, không mã nào tạo đỉnh mới đáng kể (chưa đủ dời stop dự phòng), không mã nào đạt ngưỡng chốt lời/cắt lỗ, không có tin xấu riêng mã nào mới. → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log.
