@@ -7209,3 +7209,40 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - Mức lãi/lỗ chưa chốt so giá vốn: WMT +8.11%, PG +7.02%, MSFT +4.81%, AAPL +4.19%, TXN +3.53%, SCHD +2.74%, VOO +2.58% — còn xa ngưỡng cảnh báo chốt lời +15-20%. VB -1.42%, VXUS -2.60%, QCOM -5.96% (lỗ rộng nhất, tiếp tục thu hẹp so lần trước -6.65%, vẫn trong biên trailing-stop, chưa breach ngưỡng đóng cửa -10%).
 - Không có tin xấu riêng mã nào mới kể từ lần kiểm tra 13:02 ET hôm nay; TXN (báo cáo KQKD 2026-10-21 pm) và PG (2026-10-22 am) vẫn là 2 mã cần chú ý tuần này, đã ghi chú từ trước, core-10 không né earnings (khác sandbox).
 - **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach ngưỡng đóng cửa -10% dù thị trường tiếp tục hồi phục mạnh, không mã nào tạo đỉnh mới đáng kể (chưa đủ dời stop dự phòng), không mã nào đạt ngưỡng chốt lời/cắt lỗ, không có tin xấu riêng mã nào mới. → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log.
+
+## 2026-10-20 ~13:04 ET (17:04 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): thị trường đi ngang/lẫn lộn, không breach, không có đề xuất mới
+
+- **Sync đầu phiên:** repo ở trạng thái detached HEAD khớp `origin/main` tại `262850d` (gồm log sandbox mua WULF 11:19 ET 10-20 từ routine khác kể từ lần kiểm tra core-10 trước, 10-19 ~15:35 ET) → `git checkout -B main origin/main`, không conflict, working tree sạch.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi: MSFT 1cp (avg $510.00), AAPL 1.483843cp (avg $328.93), TXN 2cp (avg $268.34), QCOM 2.633277cp (avg $186.08), PG 3.393620cp (avg $147.15), WMT 4.545415cp (avg $109.85), VOO 0.728352cp (avg $688.29), VXUS 9.365746cp (avg $85.60), SCHD 15.020016cp (avg $33.36), VB 1.736545cp (avg $288.77). (Vị thế WULF 21cp trong `get_equity_positions` là của sandbox, không liên quan core-10 — đã đối chiếu `sandbox-log.md`, bỏ qua đúng theo quy tắc đồng bộ phiên.)
+- `get_equity_orders` (state=confirmed): toàn bộ 6 lệnh stop dự phòng -15% vẫn `confirmed`, không đổi: MSFT $438.30, AAPL $293.54, TXN $252.50, QCOM $158.17, PG $135.96, WMT $103.17. Không có lệnh mới/fill nào cho core-10 (lệnh WULF trong danh sách là của sandbox).
+- `get_portfolio`: total value **$5,963.95**, cash/buying_power **$262.29** (giảm so lần trước $519.96 — do sandbox vừa mua 21cp WULF ~$257.67 lúc 11:19 ET hôm nay, đúng ghi chú CLAUDE.md về buying_power dùng chung, không phải tiền nạp/bán core-10 nào). Không phải 7 ngày đầu tháng → không cần kiểm tra tiền nạp.
+- **Benchmark (17:04 UTC, so đóng cửa 10-19):** SPY $768.67 (+0.29%), QQQ $718.17 (-0.03%, gần như đi ngang) — thị trường đi ngang/lẫn lộn sau 2 phiên hồi phục mạnh liên tiếp.
+
+### Đối chiếu đỉnh intraday hôm nay (`get_equity_historicals` 5-phút, 13:30→16:55 UTC) với đỉnh tham chiếu đang dùng
+| Mã | Đỉnh tham chiếu hiện tại | Đỉnh intraday hôm nay (tới giờ) | Đỉnh mới? |
+|---|---|---|---|
+| MSFT | $551.15 | $534.32 | Không (thấp hơn) |
+| AAPL | $348.15 | $343.06 | Không (thấp hơn) |
+| TXN | $298.75 | $282.45 | Không (thấp hơn) |
+| QCOM | $186.08 (giá mua) | $176.41 | Không (thấp hơn, vẫn chưa tạo đỉnh mới kể từ khi mua) |
+| PG | $159.95 | $159.45 | Không (thấp hơn) |
+| WMT | $121.38 | $120.54 | Không (thấp hơn) |
+
+- Không mã nào tạo đỉnh mới → giữ nguyên toàn bộ 6 lệnh stop dự phòng `confirmed`, không dời lệnh nào trên sàn.
+
+### Ngưỡng đóng cửa -10% từ đỉnh (sơ bộ, chưa phải lần kiểm tra chính 15:30 ET)
+| Mã | Đỉnh dùng tính ngưỡng | Ngưỡng đóng cửa -10% | Giá hiện tại (~13:04 ET) | Đệm |
+|---|---|---|---|---|
+| MSFT | $551.15 | $496.035 | $532.275 | +7.31% |
+| AAPL | $348.15 | $313.335 | $340.43 | +8.65% |
+| TXN | $298.75 | $268.875 | $278.4361 | +3.56% |
+| PG | $159.95 | $143.955 | $158.435 | +10.06% |
+| WMT | $121.38 | $109.242 | $118.05 | +8.06% |
+| QCOM | $186.08 (giá mua, chưa có đỉnh mới) | $167.472 | $174.48 | +4.18% |
+
+- Không mã nào gần breach. TXN (+3.56%) và QCOM (+4.18%) vẫn là 2 mã đệm mỏng nhất, tương tự các lần kiểm tra gần đây.
+- P&L nhanh so đóng cửa 10-19: MSFT -0.23%, AAPL -0.73%, TXN +0.83%, QCOM +0.55%, PG +0.47%, WMT -0.55% — không mã nào lệch bất thường so benchmark (SPY +0.29%/QQQ -0.03%), đều trong biên độ nhiễu bình thường, không cần WebSearch sâu riêng mã.
+- Mức lãi/lỗ chưa chốt so giá vốn: PG +7.67%, WMT +7.46%, MSFT +4.37%, TXN +3.76%, SCHD +3.69%, AAPL +3.50%, VOO +2.65% — còn xa ngưỡng cảnh báo chốt lời +15-20%. VB -0.45%, VXUS -2.23%, QCOM -6.23% (lỗ rộng nhất, vẫn trong biên trailing-stop vì tính từ giá mua, chưa breach ngưỡng đóng cửa -10%).
+- `get_earnings_calendar` (7 ngày tới, 10-20→10-27): xác nhận lại — **TXN báo cáo KQKD 2026-10-21 (pm, mai)** và **PG báo cáo KQKD 2026-10-22 (am)** — chỉ ghi chú (core-10 không né earnings, khác sandbox). Không mã core-10 nào khác báo cáo trong 7 ngày tới.
+- Không phải ngày 1 tháng, không phải 7 ngày đầu tháng mới → không cần báo cáo hiệu suất 3 dòng / kiểm tra tiền nạp.
+- **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach ngưỡng đóng cửa -10%, không mã nào tạo đỉnh mới đáng kể, không mã nào đạt ngưỡng chốt lời/cắt lỗ, không có tin xấu riêng mã nào mới, thị trường đi ngang/lẫn lộn hôm nay. TXN báo cáo KQKD ngay ngày mai (10-21 pm) — chỉ ghi chú theo dõi, không cần hành động trước báo cáo (core-10 không né earnings như sandbox). → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log. Lần kiểm tra chính ngưỡng đóng cửa -10% sẽ diễn ra ~15:30 ET hôm nay.
