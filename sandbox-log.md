@@ -5669,3 +5669,17 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Phần theo dõi sandbox (circuit breaker, công thức 2026-09-23):** sandbox = tổng tài khoản ($6,000.75) − core-10 (~$5,473.97) = **$526.78** (cash $262.29 + WULF ~$264.495), chia đôi → vốn xoay vòng ~$263 / đệm ~$263. Còn rất xa ngưỡng chốt lời x2 và ngưỡng dừng hẳn. Không kích hoạt circuit breaker.
 - **Wash-sale vẫn hiệu lực (đối chiếu cả 2 file):** ONDS (~10-23, core-10), NOW (~10-31, core-10), KTOS (~11-04, sandbox). PEP (core-10) hết hạn cấm từ hôm nay (10-21).
 - **Có hành động thật (dời stop-loss lên)** → **đã gửi PushNotification.**
+
+## 2026-10-21 ~15:16 ET (19:16 UTC) — Kiểm tra định kỳ (routine tự động, 2 lần/ngày): WULF tiếp tục tăng lên đỉnh mới, dời stop-loss lên $11.49
+
+- **Sync đầu phiên:** `git fetch origin` — local (đã từng detached HEAD) khớp `origin/main` tại `ca3a1cf` (entry gần nhất là core-10 kiểm tra 13:04 ET hôm nay), `git checkout main && git pull origin main` fast-forward sạch, không conflict.
+- `get_accounts` (704170133, Agentic): `unsettled_funds` **$0**.
+- `get_equity_positions`: **11 vị thế** — 10 core-10 đủ slot, không đổi so lần check 11:17 ET sáng nay (đối chiếu `trading-log.md` khớp đúng), **+ WULF 21cp** (vị thế sandbox duy nhất, mua 10-20 @ $12.27 — đúng như đã log, không phải mã lạ).
+- `get_portfolio`: cash **$262.29**, total_value **$6,000.33**, equity_value **$5,738.04** (core-10 ~$5,467.35 + WULF 21cp × $12.89 ≈ $270.69).
+- `get_equity_quotes` WULF: giá hiện tại **$12.89** (19:15 UTC), đóng cửa 10-20 $12.01 → **+7.33%**. So lần log gần nhất (11:17 ET hôm nay, giá $12.595) → **+2.34%** — dưới ngưỡng 3-5% nên KHÔNG WebSearch tin tức mới (chỉ kiểm tra giá/vị thế theo quy định "rẻ").
+- **Kiểm tra đỉnh giá kể từ khi mua (`get_equity_historicals`, 5 phút, từ 13:30 UTC hôm nay tới giờ):** đỉnh intraday mới **$13.055** (bar 18:40-18:45 UTC), cao hơn đỉnh tham chiếu đang dùng $12.90 (ghi nhận sáng nay 11:17 ET). Theo quy tắc trailing stop sandbox (-12% từ đỉnh, chỉ dời LÊN): đỉnh mới $13.055 → ngưỡng stop mới = $13.055 × 0.88 = **$11.4884 ≈ $11.49**, cao hơn stop cũ $11.35 → cần dời lên.
+- **Thực hiện dời stop-loss:** hủy lệnh stop cũ (`6ad8d7c9-...`, $11.35) — `cancel_equity_order` xác nhận `state: cancelled`. Đặt lệnh mới `stop_market` GTC bán 21cp WULF @ **$11.49** — order id `6ad90f76-be3a-416d-a95b-8205769c93f0`, state `unconfirmed` (chờ xác nhận sàn, bình thường cho lệnh GTC mới). Sẽ xác nhận `confirmed` ở lần kiểm tra tiếp theo.
+- **Không có hành động khác:** không mở vị thế mới (tuần 10-19→10-23 giữ nguyên 1/2 lệnh đã dùng — đây là lần kiểm tra quản lý vị thế đang có, không tìm ứng viên mới), không chạm ngưỡng chốt lời (+15% từ giá vốn $12.27 → $14.11, lãi hiện tại chỉ ~+5.05%) hay circuit breaker. `get_earnings_results` WULF đã kiểm tra hôm qua/sáng nay: báo cáo 11-06, còn nhiều hơn 5 phiên — không ảnh hưởng lần kiểm tra này.
+- **Phần theo dõi sandbox (circuit breaker, công thức 2026-09-23):** sandbox = tổng tài khoản ($6,000.33) − core-10 (~$5,467.35) = **$532.98** (cash $262.29 + WULF ~$270.69), chia đôi → vốn xoay vòng ~$266 / đệm ~$266. Còn rất xa ngưỡng chốt lời x2 (~$1,400 quy đổi hiện hành) và ngưỡng dừng hẳn (gần $0). Không kích hoạt circuit breaker.
+- **Wash-sale vẫn hiệu lực (đối chiếu cả 2 file):** ONDS (~10-23, core-10), NOW (~10-31, core-10), KTOS (~11-04, sandbox). PEP (core-10) đã hết hạn cấm từ hôm nay (10-21).
+- **Có hành động thật (dời stop-loss lên)** → **đã gửi PushNotification.**
