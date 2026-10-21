@@ -7283,3 +7283,40 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - `get_earnings_calendar`: xác nhận lại — **TXN báo cáo KQKD 2026-10-21 (pm, mai)** và **PG báo cáo KQKD 2026-10-22 (am)** — không đổi so lần kiểm tra trước, chỉ ghi chú (core-10 không né earnings, khác sandbox).
 - Không phải ngày 1 tháng, không phải 7 ngày đầu tháng mới → không cần báo cáo hiệu suất 3 dòng / kiểm tra tiền nạp.
 - **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach ngưỡng đóng cửa -10%, không mã nào tạo đỉnh mới đáng kể, không mã nào đạt ngưỡng chốt lời/cắt lỗ, không có tin xấu riêng mã nào mới, thị trường đi ngang hôm nay. TXN báo cáo KQKD ngay ngày mai (10-21 pm) — chỉ ghi chú theo dõi. → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log.
+
+## 2026-10-21 ~13:04 ET (17:04 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): chip/công nghệ bật tăng mạnh, TXN +3.4% trước KQKD tối nay, không breach, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin` thấy `origin/main` đã tiến lên `2a9d5dc` (thêm 1 commit log sandbox dời stop WULF 11:17 ET 10-21 từ routine khác kể từ lần kiểm tra core-10 trước, 10-20 ~15:40 ET). Repo ở trạng thái detached HEAD → `git checkout -B main origin/main`, không conflict, working tree sạch.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi: MSFT 1cp (avg $510.00), AAPL 1.483843cp (avg $328.93), TXN 2cp (avg $268.34), QCOM 2.633277cp (avg $186.08), PG 3.393620cp (avg $147.15), WMT 4.545415cp (avg $109.85), VOO 0.728352cp (avg $688.29), VXUS 9.365746cp (avg $85.60), SCHD 15.020016cp (avg $33.36), VB 1.736545cp (avg $288.77). (Vị thế WULF 21cp là của sandbox — đã đối chiếu `sandbox-log.md`, bỏ qua.)
+- `get_equity_orders` (state=confirmed): toàn bộ 6 lệnh stop dự phòng -15% vẫn `confirmed`, không đổi, không có fill nào: MSFT $438.30, AAPL $293.54, TXN $252.50, QCOM $158.17, PG $135.96, WMT $103.17.
+- `get_portfolio`: total value **$6,017.16**, cash/buying_power **$262.29** — không đổi so lần kiểm tra trước ngoài biến động giá (buying_power thấp vì sandbox đang giữ vị thế WULF, dùng chung pool). Không phải 7 ngày đầu tháng → không cần kiểm tra tiền nạp.
+- **Benchmark (17:04 UTC, so đóng cửa 10-20):** SPY $773.37 (+0.56%), QQQ $726.97 (+1.30%) — công nghệ/chip dẫn dắt đà tăng.
+
+### Đối chiếu đỉnh intraday hôm nay (`get_equity_historicals` 5-phút, 13:30→16:55 UTC) với đỉnh tham chiếu đang dùng
+| Mã | Đỉnh tham chiếu hiện tại | Đỉnh intraday hôm nay (tới giờ) | Đỉnh mới? |
+|---|---|---|---|
+| MSFT | $551.15 | $533.10 | Không (thấp hơn) |
+| AAPL | $348.15 | $345.25 | Không (thấp hơn) |
+| TXN | $298.75 | $288.11 | Không (thấp hơn, dù tăng mạnh hôm nay) |
+| QCOM | $186.08 (giá mua) | $178.99 | Không (thấp hơn, vẫn chưa tạo đỉnh mới kể từ khi mua) |
+| PG | $159.95 | $158.67 | Không (thấp hơn) |
+| WMT | $121.38 | $118.16 | Không (thấp hơn) |
+
+- Không mã nào tạo đỉnh mới → giữ nguyên toàn bộ 6 lệnh stop dự phòng `confirmed`, không dời lệnh nào trên sàn.
+
+### Ngưỡng đóng cửa -10% từ đỉnh (sơ bộ, chưa phải lần kiểm tra chính 15:30 ET)
+| Mã | Đỉnh dùng tính ngưỡng | Ngưỡng đóng cửa -10% | Giá hiện tại (~13:04 ET) | Đệm |
+|---|---|---|---|---|
+| MSFT | $551.15 | $496.035 | $532.775 | +7.41% |
+| AAPL | $348.15 | $313.335 | $344.08 | +9.80% |
+| TXN | $298.75 | $268.875 | $287.23 | +6.83% |
+| PG | $159.95 | $143.955 | $157.59 | +9.48% |
+| WMT | $121.38 | $109.242 | $117.915 | +7.95% |
+| QCOM | $186.08 (giá mua, chưa có đỉnh mới) | $167.472 | $177.86 | +6.17% |
+
+- Không mã nào gần breach, đệm mỏng nhất vẫn là TXN nhưng đã nới rộng đáng kể (+6.83%, so +4.06% lần trước) nhờ đà tăng hôm nay.
+- P&L nhanh so đóng cửa 10-20: **TXN +3.40%** (lệch hẳn so QQQ +1.30%, ~+2.1pp), QCOM +1.22%, AAPL +1.35%, MSFT +0.17%, PG -1.09%, WMT +0.06%, VOO +0.58%, VXUS +0.41%, SCHD -0.19%, VB +0.61% — TXN là mã duy nhất lệch bất thường (>3%) → đã `WebSearch` 2 lượt ("Texas Instruments TXN stock news today October 21 2026" và "semiconductor stocks rally today chip sector earnings analyst upgrade October 2026") nhưng không tìm được tin tức riêng mã/catalyst cụ thể nào mới trong 24h — kết quả chỉ ra các bài cũ (2023-2025). Nhận định hợp lý nhất: đà tăng đi cùng nhóm bán dẫn nói chung (QCOM cũng +1.22%, QQQ +1.30%) và tâm lý tích cực trước giờ TXN công bố KQKD tối nay (2026-10-21 pm, đúng lịch đã ghi nhận từ trước) — không phải tin xấu, không cần hành động. Sẽ theo dõi phản ứng giá sau KQKD ở lần kiểm tra chính 15:30 ET (dù báo cáo ra sau đóng cửa, phản ứng rõ rệt sẽ thấy phiên mai) và các lần kiểm tra tiếp theo.
+- Mức lãi/lỗ chưa chốt so giá vốn: PG +7.09%, WMT +7.34%, TXN +7.04%, MSFT +4.46%, SCHD +3.76%, AAPL +4.60%, VOO +3.29% — còn xa ngưỡng cảnh báo chốt lời +15-20%. VB +0.36%, VXUS -1.82%, QCOM -4.42% (thu hẹp đáng kể so lần trước -5.31%, vẫn trong biên trailing-stop, chưa breach ngưỡng đóng cửa -10%).
+- `get_earnings_calendar`: không gọi lại được do kết quả quá lớn (vượt giới hạn token) — xác nhận lại bằng ghi chú đã có từ các lần kiểm tra trước (không đổi trong vài ngày qua): **TXN báo cáo KQKD tối nay 2026-10-21 (pm)** và **PG báo cáo KQKD sáng mai 2026-10-22 (am)** — chỉ ghi chú (core-10 không né earnings, khác sandbox).
+- Không phải ngày 1 tháng, không phải 7 ngày đầu tháng mới → không cần báo cáo hiệu suất 3 dòng / kiểm tra tiền nạp.
+- **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach ngưỡng đóng cửa -10%, không mã nào tạo đỉnh mới đáng kể, không mã nào đạt ngưỡng chốt lời/cắt lỗ. TXN tăng nổi bật +3.4% trước giờ công bố KQKD tối nay nhưng không tìm thấy tin xấu/tin tốt riêng mã nào qua WebSearch — có khả năng là tâm lý tích cực trước báo cáo + đà chung nhóm bán dẫn, không phải catalyst cần hành động. → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log. Lần kiểm tra chính ngưỡng đóng cửa -10% sẽ diễn ra ~15:30 ET hôm nay, sẽ chú ý phản ứng giá TXN sau KQKD.
