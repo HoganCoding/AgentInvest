@@ -7357,3 +7357,36 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - `get_earnings_results` xác nhận: **TXN báo cáo KQKD tối nay 2026-10-21 (pm, actual chưa có)** và **PG báo cáo KQKD sáng mai 2026-10-22 (am, actual chưa có)** — không đổi, chỉ ghi chú (core-10 không né earnings, khác sandbox).
 - Không phải ngày 1 tháng, không phải 7 ngày đầu tháng mới → không cần báo cáo hiệu suất 3 dòng / kiểm tra tiền nạp.
 - **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach ngưỡng đóng cửa -10% dù có vài mã tăng/giảm nhẹ trong phiên, không mã nào tạo đỉnh mới đáng kể (giữ nguyên 6 lệnh stop dự phòng), không mã nào đạt ngưỡng chốt lời/cắt lỗ, không có tin xấu riêng mã nào mới. TXN công bố KQKD ngay tối nay, PG sáng mai — sẽ theo dõi phản ứng giá ở các lần kiểm tra tiếp theo. → **không có đề xuất mới thật sự** → không gửi PushNotification, chỉ ghi log.
+
+## 2026-10-22 ~13:04 ET (17:04 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): PG tăng +6.1% nhờ KQKD vượt kỳ vọng, tạo đỉnh mới đáng kể → ĐỀ XUẤT dời stop dự phòng, chờ duyệt
+
+- **Sync đầu phiên:** `git fetch origin` thấy `origin/main` đã tiến lên `9dc3360` (thêm 1 commit log sandbox kể từ lần kiểm tra core-10 trước, 15:40 ET 10-21). Repo ở trạng thái detached HEAD → `git checkout -B main origin/main`, không conflict, working tree sạch.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi: MSFT 1cp (avg $510.00), AAPL 1.483843cp (avg $328.93), TXN 2cp (avg $268.34), QCOM 2.633277cp (avg $186.08), PG 3.393620cp (avg $147.15), WMT 4.545415cp (avg $109.85), VOO 0.728352cp (avg $688.29), VXUS 9.365746cp (avg $85.60), SCHD 15.020016cp (avg $33.36), VB 1.736545cp (avg $288.77).
+- `get_equity_orders` (state=confirmed): toàn bộ 6 lệnh stop dự phòng -15% vẫn `confirmed`, chưa có lệnh nào fill: MSFT $438.30, AAPL $293.54, TXN $252.50, QCOM $158.17, PG $135.96, WMT $103.17.
+- `get_portfolio`: total value **$5,982.99**, cash **$503.63**, buying_power **$262.29** (thấp hơn cash vì sandbox đang giữ vị thế WULF, dùng chung pool buying_power). Không phải 7 ngày đầu tháng → không cần kiểm tra tiền nạp.
+- **Benchmark (17:04 UTC, so đóng cửa 10-21):** SPY $762.63 (-1.35%), QQQ $705.30 (-2.75%) — bán tháo diện rộng toàn thị trường (trùng ghi nhận ở log sandbox 11:16 ET hôm nay).
+
+### Đối chiếu đỉnh intraday hôm nay (`get_equity_historicals` 5-phút, 13:30→17:00 UTC) với đỉnh tham chiếu đang dùng
+| Mã | Đỉnh tham chiếu cũ | Đỉnh intraday hôm nay (tới giờ) | Đỉnh mới? |
+|---|---|---|---|
+| MSFT | $551.15 | $533.68 | Không (thấp hơn) |
+| AAPL | $348.15 | $347.28 | Không (thấp hơn) |
+| TXN | $298.75 | $286.54 | Không (thấp hơn) |
+| QCOM | $186.08 (giá mua) | $178.59 | Không (thấp hơn, vẫn chưa tạo đỉnh mới kể từ khi mua) |
+| **PG** | **$159.95** | **$166.79** | **Đỉnh mới +4.28%** — VƯỢT rõ ngưỡng ~2% đáng dời stop dự phòng (cùng loại tín hiệu như PG/WMT 10-15) |
+| WMT | $121.38 | $120.66 | Không (thấp hơn) |
+
+**ĐỀ XUẤT: dời lệnh stop dự phòng PG từ $135.96 lên $141.77 (hủy lệnh cũ, đặt lệnh mới GTC, 3cp nguyên)**
+1. Mã + hành động: PG — dời stop_market GTC (sell) 3cp nguyên, hủy lệnh cũ stop $135.96, đặt lệnh mới stop $141.77. Phần lẻ 0.393620cp không có stop trên sàn, tiếp tục theo dõi qua kiểm tra định kỳ.
+2. Lý do: PG công bố KQKD Q1 FY2027 sáng nay (2026-10-22 am) vượt kỳ vọng — EPS thực tế $2.00 vs ước tính $1.89 (`get_earnings_results`, +5.8% surprise) → giá tăng +6.12% so đóng cửa hôm qua ($156.84→$166.44 hiện tại), tạo đỉnh intraday mới $166.79, cao hơn đỉnh tham chiếu cũ $159.95 tới +4.28% — vượt ngưỡng ~2% quy định trong CLAUDE.md để dời stop dự phòng lên (chỉ dời lên, không bao giờ dời xuống).
+3. Rủi ro chính: giá tăng mạnh trong 1 phiên sau tin tốt có thể có pullback/chốt lời ngắn hạn; dời stop lên giúp siết chặt bảo vệ lợi nhuận đã có, không làm tăng rủi ro. PG hiện lãi **+13.11%** so giá vốn ($147.15) — đang tiến gần ngưỡng cảnh báo chốt lời +15-20% (chưa tới, chỉ ghi chú theo dõi, chưa đề xuất chốt lời).
+4. Mức cắt lỗ/chốt lời đề xuất: stop dự phòng GTC mới -15% từ đỉnh $166.79 = **$141.77** (cho 3cp nguyên); ngưỡng đóng cửa -10% mới dùng để theo dõi tại lần kiểm tra chính 15:30 ET = **$150.11** (không đặt lệnh trên sàn, chỉ so sánh thủ công). Sẽ cân nhắc đề xuất chốt lời một phần nếu PG tiếp tục tăng qua ngưỡng +15%.
+- **Lưu ý:** phiên này read-only trên tài khoản Agentic, KHÔNG tự hủy/đặt lệnh — cần Hogan duyệt rồi thực hiện qua phiên có quyền đặt lệnh.
+- Các mã còn lại (MSFT/AAPL/TXN/QCOM/WMT) không có đỉnh mới đáng kể → giữ nguyên nguyên trạng, không đề xuất gì thêm cho các mã này lần này.
+- P&L nhanh so đóng cửa 10-21: **PG +6.12%** (đã giải thích ở trên, KQKD vượt kỳ vọng), WMT +2.28%, SCHD +1.53%, AAPL +0.50%, VB -0.80%, TXN -1.19%, MSFT -1.58%, VOO -1.37%, VXUS -1.62%, QCOM -2.97% — QCOM lệch âm nhiều nhất nhưng sát biên độ giảm chung của QQQ (-2.75%), không bất thường riêng mã, không cần WebSearch sâu. MSFT/TXN/AAPL đều outperform rõ so QQQ trong phiên bán tháo chung.
+- Mức lãi/lỗ chưa chốt so giá vốn: **PG +13.11%**, WMT +9.68%, AAPL +5.11%, SCHD +5.49%, TXN +4.81%, MSFT +2.85%, VOO +1.84% — PG gần ngưỡng cảnh báo chốt lời +15-20% nhất, còn lại xa. VB -0.62%, VXUS -3.46%, QCOM -7.20% (lỗ rộng nhất, nới thêm so trước do bán tháo chung, vẫn trong biên trailing-stop vì tính từ giá mua, chưa breach ngưỡng đóng cửa -10% — đệm hiện ~+3.11% so ngưỡng $167.47).
+- `get_earnings_calendar`: **MSFT báo cáo KQKD 2026-10-28 (pm)** — trong vòng 5 phiên giao dịch tới (chỉ ghi chú, core-10 không né earnings như sandbox, không cần hành động). TXN và PG đã báo cáo (10-21 pm, 10-22 am) — không còn trong lịch tới.
+- Không phải ngày 1 tháng, không phải 7 ngày đầu tháng mới → không cần báo cáo hiệu suất 3 dòng / kiểm tra tiền nạp.
+- **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach ngưỡng đóng cửa -10% dù bán tháo diện rộng toàn thị trường. **PG tạo đỉnh mới đáng kể (+4.28%) nhờ KQKD vượt kỳ vọng → có đề xuất thật sự: dời 1 lệnh stop dự phòng PG lên theo đỉnh mới (xem trên)** → **CÓ gửi PushNotification**. QCOM tiếp tục là mã lỗ rộng nhất (-7.20%) nhưng chưa breach ngưỡng đóng cửa -10%, đệm còn ~+3.11%, cần theo dõi sát ở lần kiểm tra chính 15:30 ET hôm nay. MSFT báo cáo KQKD trong 5 phiên tới (10-28) — chỉ ghi chú.
+
+**Để duyệt:** Hogan mở phiên mới (Claude Code trên máy, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất" để thực hiện lệnh dời stop dự phòng PG nêu trên.
