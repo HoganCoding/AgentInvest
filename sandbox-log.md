@@ -5725,3 +5725,14 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Phần theo dõi sandbox (circuit breaker, công thức 2026-09-23):** sandbox = tổng tài khoản ($5,977.35) − core-10 (~$5,473.72) = **$503.63** (100% cash, đã settle đầy đủ), chia đôi → vốn xoay vòng **~$251.82** / đệm **~$251.82** — còn rất xa ngưỡng chốt lời x2 (~$503.63 phần theo dõi, ngưỡng x2 ≈ tổng ~$755 tương ứng) và ngưỡng dừng hẳn (gần $0). Không kích hoạt circuit breaker.
 - **Wash-sale vẫn hiệu lực (đối chiếu cả 2 file):** **WULF cấm mua lại tới ~2026-11-21** (sandbox), **KTOS cấm mua lại tới ~2026-11-04** (sandbox). ONDS (core-10) hết hạn cấm từ hôm nay (10-23). NOW (core-10) cấm tới ~10-31.
 - **Không có giao dịch/thay đổi thật nào** (không có vị thế để quản lý, đang trong giai đoạn nghỉ bắt buộc không xét lệnh mới) → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md. Lần kiểm tra tiếp theo ~15:00 ET chiều nay.
+
+## 2026-10-23 ~15:00 ET (19:00 UTC) — Kiểm tra định kỳ (routine tự động, 2 lần/ngày): sandbox vẫn 100% tiền mặt, ngày 1/5 giai đoạn nghỉ, KHÔNG hành động
+
+- **Sync đầu phiên:** `git fetch origin` khớp `origin/main` tại `09618eb` (thêm 1 commit log core-10 kiểm tra 13:05 ET hôm nay kể từ lần sandbox check 11:15 ET). `git checkout main && git merge --ff-only` sạch, không conflict.
+- `get_accounts` (704170133, Agentic): `unsettled_funds` **$0**.
+- `get_equity_positions`: **10 vị thế, toàn bộ core-10 đủ 10/10 slot**, không đổi so lần check 11:15 ET hôm nay (đối chiếu `trading-log.md` khớp đúng: MSFT, VOO, AAPL, PG, TXN, QCOM, WMT, VXUS, SCHD, VB). **Không có vị thế sandbox nào** — sandbox vẫn 100% tiền mặt.
+- `get_portfolio`: cash/buying_power **$503.63** (không đổi), total_value **$5,975.81** (biến động giá nhẹ core-10 so sáng nay), equity_value **$5,472.18** (= toàn bộ core-10).
+- **Giai đoạn nghỉ mở lệnh mới (CLAUDE.md 2026-09-23):** vẫn đang ngày 1/5 (10-23→10-29) do 2 lệnh thua liên tiếp KTOS+WULF — không xét ứng viên mới, chỉ quản lý vị thế đang có (hiện không có vị thế nào). Mở lại từ 2026-10-30.
+- **Phần theo dõi sandbox (circuit breaker):** sandbox = tổng tài khoản ($5,975.81) − core-10 (~$5,472.18) = **$503.63** (100% cash), chia đôi → vốn xoay vòng **~$251.82** / đệm **~$251.82** — không đổi so lần 11:15 ET, còn rất xa cả 2 ngưỡng circuit breaker.
+- **Wash-sale vẫn hiệu lực:** WULF cấm tới ~2026-11-21, KTOS cấm tới ~2026-11-04 (sandbox).
+- **Không có giao dịch/thay đổi thật nào** → **không gửi PushNotification**, chỉ ghi log. Lần kiểm tra tiếp theo ~11:00 ET ngày mai (10-24).
