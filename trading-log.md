@@ -7737,3 +7737,40 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - `get_earnings_calendar` (high_market_cap, 10-28→11-04): xác nhận lại **MSFT báo cáo KQKD TỐI NAY 2026-10-28 (pm)** — không đổi; AAPL báo cáo 2026-11-02 (pm) còn xa. Không mã core-10 nào khác có báo cáo trong 7 ngày tới.
 - Không phải ngày 1 tháng, không phải 7 ngày đầu tháng mới → không cần báo cáo hiệu suất 3 dòng / kiểm tra tiền nạp.
 - **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach ngưỡng đóng cửa -10%, không mã nào tạo đỉnh mới đáng kể, không mã nào vượt ngưỡng chốt lời mới, không có tin xấu riêng mã nào — biến động giảm nhẹ đồng loạt ở nhóm tech/blue-chip nhiều khả năng là tâm lý thận trọng trước KQKD MSFT tối nay, trong biên nhiễu bình thường. Đề xuất dời stop TXN lên $261.57 (13:05 ET 10-27), cân nhắc chốt lời một phần TXN (15:40 ET 10-27), và dời stop PG lên $141.77 (13:04 ET 10-22) đều vẫn còn nguyên, chưa được Hogan duyệt/thực hiện — không nhắc lại lần này (đã thông báo trước đó). MSFT báo cáo KQKD tối nay — sẽ đánh giá phản ứng giá ở lần kiểm tra tiếp theo. → **Không có đề xuất mới** → không gửi PushNotification, chỉ ghi log.
+
+## 2026-10-29 ~13:05 ET (17:05 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): MSFT giảm nhẹ ngày đầu sau KQKD, WMT tăng vượt trội do xoay vòng sang nhóm phòng thủ, TXN hạ nhiệt nhẹ dưới +15%, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin` + `git merge origin/main` khớp sạch `c36b054` (thêm 1 commit log sandbox 11:40 ET hôm nay từ routine khác kể từ lần kiểm tra core-10 trước, 15:41 ET 10-28 — không liên quan core-10). Không conflict, working tree sạch, đã ở branch `main` đúng `origin/main`.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi: MSFT 1cp (avg $510.00), AAPL 1.483843cp (avg $328.93), TXN 2cp (avg $268.34), QCOM 2.633277cp (avg $186.08), PG 3.416927cp (avg $147.23), WMT 4.545415cp (avg $109.85), VOO 0.728352cp (avg $688.29), VXUS 9.365746cp (avg $85.60), SCHD 15.020016cp (avg $33.36), VB 1.736545cp (avg $288.77).
+- `get_equity_orders` (state=confirmed): toàn bộ 6 lệnh stop dự phòng -15% vẫn `confirmed`, chưa có fill nào: MSFT $438.30, AAPL $293.54, **TXN $252.50 (đề xuất dời lên $261.57 từ 13:05 ET 10-27 vẫn CHƯA được thực hiện — vẫn chờ Hogan duyệt)**, QCOM $158.17, **PG $135.96 (đề xuất dời lên $141.77 từ 13:04 ET 10-22 vẫn CHƯA được thực hiện — vẫn chờ Hogan duyệt)**, WMT $103.17.
+- `get_portfolio`: total value **$6,081.39**, cash/buying_power **$503.63** (không đổi so lần 15:41 ET 10-28). Không phải 7 ngày đầu tháng → không cần kiểm tra tiền nạp.
+- **Benchmark (17:05 UTC, so đóng cửa 10-28):** SPY $769.13 (-0.41%), QQQ $715.31 (-1.42%) — thị trường, đặc biệt nhóm công nghệ, giảm rõ rệt.
+
+### Đối chiếu đỉnh intraday hôm nay (`get_equity_historicals` 5-phút, 13:30→17:00 UTC) với đỉnh tham chiếu đang dùng
+| Mã | Đỉnh tham chiếu | Đỉnh intraday hôm nay | Đỉnh mới đáng kể? |
+|---|---|---|---|
+| MSFT | $551.15 | $541.00 | Không (thấp hơn) |
+| AAPL | $348.15 | **$351.43** | Chạm cao hơn (+0.94% so đỉnh cũ) nhưng dưới ngưỡng ~2% coi là "đáng kể" → không đề xuất dời stop, chỉ cập nhật đỉnh tham chiếu AAPL = $351.43 để tính ngưỡng đóng cửa -10% lần tới |
+| TXN | $309.26 | **$311.35** | Chạm cao hơn (+0.68% so đỉnh cũ) nhưng dưới ngưỡng ~2% → không đề xuất dời thêm, đề xuất $261.57 (dựa $307.73) từ 13:05 ET 10-27 vẫn là đề xuất hiện hành; cập nhật đỉnh tham chiếu TXN = $311.35 |
+| QCOM | $186.08 (giá mua, chưa có đỉnh mới) | $183.70 | Không (vẫn dưới giá mua) |
+| PG | $166.79 | $160.95 | Không (thấp hơn) |
+| WMT | $121.38 | $121.16 | Không (thấp hơn, sát) |
+
+- AAPL và TXN chạm đỉnh intraday mới nhẹ (dưới ngưỡng "đáng kể" ~2%) → giữ nguyên toàn bộ 6 lệnh stop dự phòng, không đề xuất dời lệnh MỚI nào; chỉ cập nhật 2 đỉnh tham chiếu để dùng cho lần kiểm tra chính 15:30 ET hôm nay.
+
+### Ngưỡng đóng cửa -10% từ đỉnh (sơ bộ, dùng đỉnh đã cập nhật ở trên — chưa phải lần kiểm tra chính 15:30 ET)
+| Mã | Đỉnh dùng tính ngưỡng | Ngưỡng đóng cửa -10% | Giá hiện tại (~13:05 ET) | Đệm | Breach? |
+|---|---|---|---|---|---|
+| MSFT | $551.15 | $496.035 | $525.00 | +5.84% | Không |
+| AAPL | $351.43 (mới) | $316.287 | $349.81 | +10.59% | Không |
+| TXN | $311.35 (mới) | $280.215 | $307.86 | +9.86% | Không |
+| PG | $166.79 | $150.111 | $159.16 | +6.02% | Không |
+| WMT | $121.38 | $109.242 | $121.14 | +10.89% | Không |
+| QCOM | $186.08 (giá mua, chưa có đỉnh mới) | $167.472 | $183.255 | +9.43% | Không |
+
+- Không mã nào breach ngưỡng đóng cửa -10% (sơ bộ) → không có đề xuất bán.
+- P&L nhanh so đóng cửa 10-28: **WMT +2.00%** nổi bật vượt trội, ngược hẳn chiều cả SPY (-0.41%) lẫn QQQ (-1.42%) → đã `WebSearch` (qua subagent): không tìm thấy tin tức riêng WMT ngày hôm nay; nhiều khả năng là dòng tiền xoay vòng sang nhóm cổ phiếu phòng thủ/tiêu dùng thiết yếu (consumer staples) trong ngày thị trường công nghệ bán tháo mạnh, tiếp nối đà sau khuyến nghị mua từ Deutsche Bank giữa tháng 10 (nguồn: tradingpedia.com, finviz.com) — không phải catalyst công ty cụ thể mới. **MSFT -1.13%** (phiên giao dịch đầu tiên sau KQKD công bố tối 10-28) — `WebSearch` không xác nhận được bài viết trực tiếp về phản ứng KQKD lần này, nhưng theo bối cảnh đã biết (guidance Azure +44-45%, capex AI trên $50B, biên lợi nhuận đã thu hẹp các quý gần đây) và tiền lệ quý trước (MSFT từng giảm ~10% sau KQKD dù vượt kỳ vọng, do lo ngại capex AI/biên lợi nhuận lấn át tăng trưởng Azure) — mức giảm nhẹ -1.13% hôm nay nằm trong biên nhiễu bình thường, phù hợp với lo ngại capex/biên lợi nhuận đã biết trước, KHÔNG phải tin xấu bất ngờ mới. QQQ giảm mạnh -1.42% kéo theo tâm lý thận trọng nhóm công nghệ nói chung. AAPL +1.74% (trước KQKD riêng ngày 11-02, tăng ngược chiều thị trường, không có tin riêng mới đáng chú ý). QCOM +0.16%, PG +0.57%, VOO -0.41%, VXUS -0.20%, SCHD +0.97%, VB +1.16% — đều trong biên nhiễu bình thường so benchmark.
+- Mức lãi/lỗ chưa chốt so giá vốn: **TXN +14.73%** (gần như đi ngang so +14.66% lúc đóng cửa 10-28, vẫn dưới ngưỡng cảnh báo +15% — đề xuất cân nhắc chốt lời một phần từ 15:40 ET 10-27 vẫn còn nguyên, chờ Hogan quyết, không lặp lại cảnh báo mới vì chưa vượt lại ngưỡng), WMT +10.28%, PG +8.10%, SCHD +6.20%, AAPL +6.35%, MSFT +2.94%, VOO +2.71% — còn xa ngưỡng cảnh báo. VB +1.90%, QCOM -1.52%, VXUS -2.36% — vẫn trong biên trailing-stop, đệm đóng cửa -10% còn 9.4-9.9%.
+- `get_earnings_calendar` (high_market_cap, 10-29→11-05): MSFT đã báo cáo KQKD tối 10-28 (không còn trong cửa sổ tới); **AAPL báo cáo KQKD 2026-11-02 (pm)** — còn 2 phiên giao dịch tới, chỉ ghi chú (core-10 không né earnings như sandbox); **QCOM báo cáo KQKD 2026-11-04 (pm)** — còn 4 phiên, chỉ ghi chú. Không mã core-10 nào khác có báo cáo trong 7 ngày tới.
+- Không phải ngày 1 tháng, không phải 7 ngày đầu tháng mới → không cần báo cáo hiệu suất 3 dòng / kiểm tra tiền nạp.
+- **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach ngưỡng đóng cửa -10% (sơ bộ), AAPL và TXN chạm đỉnh intraday mới nhẹ (dưới ngưỡng "đáng kể") nên chỉ cập nhật đỉnh tham chiếu, không đề xuất dời stop mới. WMT tăng vượt trội nhiều khả năng do xoay vòng phòng thủ trong ngày công nghệ bán tháo (không phải tin xấu/tốt riêng mã); MSFT giảm nhẹ phiên đầu sau KQKD phù hợp lo ngại capex/biên lợi nhuận đã biết trước, chưa đủ cơ sở coi là "tin xấu nghiêm trọng" theo tiêu chí CLAUDE.md. TXN hạ nhiệt nhẹ xuống +14.73% lãi chưa chốt, vẫn dưới ngưỡng cảnh báo +15% — đề xuất dời stop TXN lên $261.57 (13:05 ET 10-27), cân nhắc chốt lời một phần TXN (15:40 ET 10-27), và dời stop PG lên $141.77 (13:04 ET 10-22) đều vẫn còn nguyên, chưa được Hogan duyệt/thực hiện — không nhắc lại lần này (đã thông báo trước đó). AAPL báo cáo KQKD còn 2 phiên, QCOM còn 4 phiên — theo dõi ở các lần kiểm tra tới. → **Không có đề xuất mới** → không gửi PushNotification, chỉ ghi log.
