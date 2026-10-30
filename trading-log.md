@@ -7811,3 +7811,56 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - `get_earnings_calendar` (high_market_cap, 10-29→11-05): xác nhận lại **AAPL báo cáo KQKD 2026-11-02 (pm)** — còn 1 phiên giao dịch tới (11-01 là thứ 7); **QCOM báo cáo KQKD 2026-11-04 (pm)** — còn 3 phiên. Không mã core-10 nào khác có báo cáo trong 7 ngày tới.
 - Không phải ngày 1 tháng, không phải 7 ngày đầu tháng mới → không cần báo cáo hiệu suất 3 dòng / kiểm tra tiền nạp.
 - **Kết luận:** core-10 đủ 10/10 slot, không mã nào breach ngưỡng đóng cửa -10%, TXN và WMT tạo đỉnh intraday mới nhẹ (dưới ngưỡng "đáng kể") nên chỉ cập nhật đỉnh tham chiếu, không đề xuất dời stop mới. WMT tiếp tục xoay vòng phòng thủ 2 phiên liên tiếp (không phải tin xấu/tốt riêng mã). TXN vượt lại ngưỡng cảnh báo +15% lãi chưa chốt (+15.94%) — đề xuất cân nhắc chốt lời một phần và dời stop $261.57 (cả hai từ 13:05/15:40 ET 10-27) vẫn còn nguyên, chưa được Hogan duyệt/thực hiện, càng có cơ sở hơn nhưng KHÔNG phải đề xuất mới nên không gửi push riêng. Đề xuất dời stop PG lên $141.77 (13:04 ET 10-22) vẫn còn nguyên, chưa duyệt. AAPL báo cáo KQKD còn 1 phiên, QCOM còn 3 phiên — theo dõi ở các lần kiểm tra tới. → **Không có đề xuất mới** → không gửi PushNotification, chỉ ghi log.
+
+## 2026-10-30 ~13:05 ET (17:05 UTC) — Kiểm tra định kỳ core-10 (routine tự động, sync git): bán tháo mạnh toàn ngành bán dẫn kéo QCOM/TXN giảm sâu, WMT tạo đỉnh mới đáng kể → ĐỀ XUẤT dời stop WMT, chờ duyệt; QCOM thủng ngưỡng đóng cửa -10% sơ bộ (chưa quyết, chờ lần kiểm tra CHÍNH 15:30 ET)
+
+- **Sync đầu phiên:** `git fetch origin main` khớp sạch `82610a8` (thêm các commit log sandbox từ routine khác kể từ lần kiểm tra core-10 trước, 15:40 ET 10-29 — không liên quan core-10). Không conflict, `git checkout -B main origin/main` thành công, working tree sạch.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi: MSFT 1cp (avg $510.00), AAPL 1.483843cp (avg $328.93), TXN 2cp (avg $268.34), QCOM 2.633277cp (avg $186.08), PG 3.416927cp (avg $147.23), WMT 4.545415cp (avg $109.85), VOO 0.728352cp (avg $688.29), VXUS 9.365746cp (avg $85.60), SCHD 15.020016cp (avg $33.36), VB 1.736545cp (avg $288.77).
+- `get_equity_orders` (state=confirmed): toàn bộ 6 lệnh stop dự phòng -15% vẫn `confirmed`, chưa có fill nào: MSFT $438.30, AAPL $293.54, **TXN $252.50 (đề xuất dời lên $261.57 từ 13:05 ET 10-27 vẫn CHƯA được thực hiện)**, QCOM $158.17, **PG $135.96 (đề xuất dời lên $141.77 từ 13:04 ET 10-22 vẫn CHƯA được thực hiện)**, **WMT $103.17 (ĐỀ XUẤT MỚI dời lên $105.83 — xem bên dưới)**.
+- `get_portfolio`: total value **$6,003.99**, cash/buying_power **$503.63** (không đổi so lần 15:40 ET 10-29). Không phải 7 ngày đầu tháng → không cần kiểm tra tiền nạp.
+- **Benchmark (17:05 UTC, so đóng cửa 10-29):** SPY $755.73 (**-1.77%**), QQQ $690.07 (**-3.53%**) — thị trường giảm mạnh, đặc biệt nhóm công nghệ/bán dẫn.
+
+### Đối chiếu đỉnh intraday hôm nay (`get_equity_historicals` 5-phút, 13:30→17:05 UTC) với đỉnh tham chiếu đang dùng
+| Mã | Đỉnh tham chiếu | Đỉnh intraday hôm nay | Đỉnh mới đáng kể? |
+|---|---|---|---|
+| MSFT | $551.15 | $526.36 | Không (thấp hơn) |
+| AAPL | $351.43 | $349.19 | Không (thấp hơn) |
+| TXN | $312.21 | $308.00 | Không (thấp hơn) |
+| QCOM | $186.08 (giá mua, chưa có đỉnh mới) | $176.17 | Không (vẫn dưới giá mua) |
+| PG | $166.79 | $165.35 | Không (thấp hơn) |
+| WMT | $121.70 | **$124.50** | **CÓ — vượt +2.30% đỉnh tham chiếu cũ** |
+
+- **WMT tạo đỉnh mới đáng kể** ($124.50, vượt +2.30% đỉnh tham chiếu cũ $121.70), đi ngược hẳn chiều giảm mạnh của thị trường chung hôm nay → cập nhật đỉnh tham chiếu WMT = $124.50 và **ĐỀ XUẤT dời lệnh stop dự phòng WMT** theo đúng quy tắc "dời LÊN khi có đỉnh mới đáng kể" (CLAUDE.md).
+
+### Ngưỡng đóng cửa -10% từ đỉnh (sơ bộ, dùng đỉnh đã cập nhật ở trên — chưa phải lần kiểm tra chính 15:30 ET)
+| Mã | Đỉnh dùng tính ngưỡng | Ngưỡng đóng cửa -10% | Giá hiện tại (~13:05 ET) | Đệm | Breach? |
+|---|---|---|---|---|---|
+| MSFT | $551.15 | $496.035 | $521.83 | +5.20% | Không |
+| AAPL | $351.43 | $316.287 | $347.06 | +9.72% | Không |
+| TXN | $312.21 | $280.989 | $297.415 | +5.85% | Không |
+| PG | $166.79 | $150.111 | $163.00 | +8.58% | Không |
+| WMT | $124.50 (mới) | $112.05 | $124.13 | +10.78% | Không |
+| QCOM | $186.08 (giá mua, chưa có đỉnh mới) | $167.472 | $163.945 | **-2.11%** | **CÓ (sơ bộ, giữa phiên)** |
+
+- **QCOM đã thủng ngưỡng đóng cửa -10% sơ bộ** (giá hiện tại $163.945 < ngưỡng $167.472) — nhưng theo CLAUDE.md, quyết định bán theo ngưỡng này **CHỈ** được đưa ra ở lần kiểm tra CHÍNH ~15:30 ET, **KHÔNG bán dựa trên giá giữa phiên** → **CHƯA đề xuất bán lúc này**, sẽ đánh giá lại dứt điểm ở lần kiểm tra 15:30 ET hôm nay. Stop dự phòng trên sàn của QCOM ($158.17) vẫn còn đệm +3.65%, chưa bị khớp.
+- Không mã nào khác breach ngưỡng đóng cửa -10%.
+
+### Biến động mạnh — đã `WebSearch`/đối chiếu benchmark để xác định nguyên nhân
+- **QCOM giảm sốc -11.57%** so đóng cửa 10-29 ($185.41 → $163.945), **TXN giảm -4.96%** ($312.94 → $297.415) — đều vượt xa ngưỡng 3-5% cần tìm hiểu sâu. `WebSearch` không tìm thấy tin tức tiêu cực riêng về công ty QCOM (không phải báo cáo tài chính — QCOM báo cáo KQKD 2026-11-04, chưa tới; không có vụ kiện/tin xấu mới được xác nhận ngoài vụ kiện Arm đã có từ 10-13 với kết quả hỗn hợp, không phải catalyst mới). Đối chiếu trực tiếp giá các mã bán dẫn khác cùng ngày qua `get_equity_quotes`: **AMD -11.61%, INTC -29.88%, AVGO -6.11%, MU -5.96%, NVDA -4.57%** — xác nhận đây là **bán tháo toàn ngành bán dẫn/công nghệ** (khả năng cao bắt nguồn từ phản ứng kết quả/guidance của 1 vài mã lớn trong ngành như INTC/AMD lan ra cả nhóm, cộng thêm lo ngại AI-capex/bong bóng AI đã nhóm lên từ tuần trước sau cuộc họp Fed 10-28), **KHÔNG phải tin xấu đặc thù của QCOM** theo tiêu chí CLAUDE.md (kiện tụng/gian lận/mất CEO/hạ bậc tín nhiệm) → chưa đủ cơ sở đề xuất thay mã ngoài kỳ review. MSFT -1.57%, AAPL -0.53% giảm nhẹ theo đà chung. PG +1.50%, WMT +2.38%, SCHD +0.62% tăng ngược chiều, tiếp tục câu chuyện xoay vòng phòng thủ đã ghi nhận 2 phiên trước. VOO -1.79%, VXUS -1.78%, VB -1.89% giảm theo đà ETF/thị trường chung.
+- Mức lãi/lỗ chưa chốt so giá vốn: WMT **+13.04%** (nới rộng mạnh, tiến gần vùng cảnh báo chốt lời +15-20% — chỉ ghi chú theo dõi), PG +10.70%, AAPL +5.51%, TXN **+10.84%** (hạ nhiệt mạnh từ +15.94% đóng cửa 10-29, rút khỏi vùng cảnh báo +15% — đề xuất cân nhắc chốt lời một phần từ 15:40 ET 10-27 tạm không còn cấp thiết nhưng vẫn giữ nguyên chờ Hogan quyết nếu muốn), MSFT +2.32%, VOO ~+1% — còn xa ngưỡng cảnh báo. QCOM **-11.90%** (mức lỗ chưa chốt sâu nhất ghi nhận cho mã này, vẫn trong biên trailing-stop -15% nhưng đệm co hẹp còn 3.65%), VXUS ~-4%, VB ~-1.5%.
+- `get_earnings_calendar` (high_market_cap, 7 ngày tới): **AAPL báo cáo KQKD 2026-11-02 (pm)** còn 3 phiên, **QCOM báo cáo KQKD 2026-11-04 (pm)** còn 5 phiên — không mã nào khác trong core-10 có báo cáo tuần này. Core-10 không né earnings như sandbox (chỉ ghi chú theo quy tắc CLAUDE.md).
+- Không phải ngày 1 tháng, không phải 7 ngày đầu tháng mới → không cần báo cáo hiệu suất 3 dòng / kiểm tra tiền nạp.
+
+### ĐỀ XUẤT: Dời lệnh stop dự phòng WMT (core-10 — cần Hogan duyệt, agent KHÔNG tự đặt/hủy lệnh)
+1. **Mã + hành động:** WMT — hủy lệnh stop_market GTC hiện tại ($103.17, 4cp) và đặt lệnh stop_market GTC mới ở **$105.83** cho 4cp nguyên.
+2. **Lý do:** WMT tạo đỉnh intraday mới đáng kể hôm nay ($124.50, vượt +2.30% đỉnh tham chiếu cũ $121.70), đi ngược hẳn chiều giảm sốc của thị trường/ngành công nghệ (QQQ -3.53%, QCOM/TXN/AMD/INTC đồng loạt giảm sâu) — tiếp nối đà xoay vòng phòng thủ đã ghi nhận 2 phiên liên tiếp trước đó (10-28, 10-29). Đúng quy tắc "dời stop dự phòng LÊN khi có đỉnh mới đáng kể, không bao giờ dời xuống" (CLAUDE.md).
+3. **Rủi ro chính:** WMT đang lãi chưa chốt mạnh +13.04% so giá vốn, phần lớn nhờ dòng tiền phòng thủ/risk-off trong ngày thị trường bán tháo mạnh — nếu tâm lý risk-off hạ nhiệt và dòng tiền xoay ngược lại nhóm công nghệ, WMT có thể điều chỉnh giảm nhanh trong vài phiên tới. Mức dời $105.83 giữ đúng biên -15% từ đỉnh mới nên vẫn có đệm hợp lý so giá hiện tại (~$124.13, đệm +15.3%).
+4. **Mức cắt lỗ/chốt lời đề xuất:** Stop dự phòng trên sàn mới = **$105.83** (-15% từ đỉnh mới $124.50). Ngưỡng đóng cửa -10% mới (áp dụng từ lần kiểm tra CHÍNH 15:30 ET tiếp theo) = **$112.05**. WMT chưa tới ngưỡng cảnh báo chốt lời tech/blue-chip +15-20% (hiện +13.04%) — chưa đề xuất chốt lời, chỉ theo dõi sát ở lần kiểm tra tới.
+
+**Lưu ý quan trọng — QCOM cần đánh giá dứt điểm ở lần kiểm tra CHÍNH 15:30 ET hôm nay:** QCOM đã thủng ngưỡng đóng cửa -10% sơ bộ giữa phiên (giá $163.945 < ngưỡng $167.472, tính trên giá mua $186.08 vì chưa từng có đỉnh mới) do bán tháo toàn ngành bán dẫn (không phải tin xấu riêng công ty, đã xác nhận qua đối chiếu AMD/INTC/AVGO/MU/NVDA). Theo CLAUDE.md, quyết định bán theo ngưỡng đóng cửa CHỈ dựa trên giá tại lần kiểm tra 15:30 ET, không dựa trên giá giữa phiên — nếu vẫn thủng ngưỡng lúc đóng cửa, sẽ đề xuất bán ở lần kiểm tra tới. Stop dự phòng trên sàn ($158.17) chưa bị khớp, còn đệm +3.65%.
+
+Đề xuất dời stop TXN lên $261.57 (13:05 ET 10-27), cân nhắc chốt lời một phần TXN (15:40 ET 10-27), và dời stop PG lên $141.77 (13:04 ET 10-22) đều vẫn còn nguyên, chưa được Hogan duyệt/thực hiện — không nhắc lại chi tiết lần này (đã thông báo trước đó).
+
+**Kết luận:** core-10 đủ 10/10 slot. Bán tháo mạnh toàn ngành bán dẫn/công nghệ hôm nay (QQQ -3.53%) kéo QCOM -11.57%/TXN -4.96% giảm sâu, xác nhận qua đối chiếu các mã bán dẫn khác là hiện tượng toàn ngành, không phải tin xấu riêng QCOM — chưa đủ cơ sở đề xuất thay mã ngoài kỳ review. QCOM thủng ngưỡng đóng cửa -10% sơ bộ giữa phiên — sẽ quyết định dứt điểm ở lần kiểm tra CHÍNH 15:30 ET hôm nay theo đúng quy tắc, KHÔNG bán dựa trên giá giữa phiên. **WMT tạo đỉnh mới đáng kể (+2.30%) đi ngược chiều thị trường → ĐỀ XUẤT MỚI dời stop dự phòng lên $105.83, chờ Hogan duyệt** (mở phiên mới, gõ "duyệt đề xuất mới nhất" để xác nhận). AAPL báo cáo KQKD còn 3 phiên, QCOM còn 5 phiên — theo dõi tiếp.
+
+**Hướng dẫn duyệt:** Phiên này là read-only, không thể đặt lệnh. Để duyệt đề xuất trên, Hogan mở một phiên MỚI (Claude Code trên máy, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất".
