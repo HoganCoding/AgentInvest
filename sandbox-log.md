@@ -5852,3 +5852,8 @@ Vì Robinhood gộp vị thế theo instrument (không phân biệt "bucket" cor
 - **Giới hạn giao dịch (CLAUDE.md 2026-09-23):** 0/2 lệnh mở mới trong tuần này (tuần 10-26→10-30, chưa có lệnh nào); không ở trong giai đoạn nghỉ bắt buộc (đã hết 5 phiên 10-23→10-29) — nhưng bộ lọc benchmark vẫn chặn mọi lệnh mới hôm nay bất kể giới hạn tuần.
 - **Wash-sale vẫn hiệu lực:** WULF cấm mua lại tới ~2026-11-21, KTOS cấm mua lại tới ~2026-11-04 (sandbox).
 - **Không có giao dịch/thay đổi thật nào** (không có vị thế để quản lý, bộ lọc benchmark chặn mọi lệnh mới hôm nay, bán tháo còn mạnh hơn sáng) → **không gửi PushNotification**, chỉ ghi log theo quy định CLAUDE.md. Lần kiểm tra tiếp theo ~11:00 ET ngày mai (10-31, nếu là ngày giao dịch) — sẽ xét lại bộ lọc benchmark và ứng viên mới nếu thị trường ổn định hơn (tuân thủ giới hạn 2 lệnh mở mới/tuần, né báo cáo tài chính 5 phiên, không vào lệnh 9:30-9:50 ET).
+
+## 2026-10-30 ~15:40 ET (19:40 UTC) — EOD Close (routine tự động): chưa tới ngày bắt đầu day trade (2026-11-03), không có gì để đóng
+
+- Theo CLAUDE.md mục "CHẾ ĐỘ DAY TRADE THỬ NGHIỆM 20 PHIÊN", phiên day trade đầu tiên là 2026-11-03 (sau khi bán QCOM ~10:00 ET 2026-11-02). Hôm nay 2026-10-30 trước mốc này → không có vị thế sandbox day trade nào để đóng.
+- Sandbox vẫn 100% tiền mặt (chế độ cũ, không có vị thế mở), core-10 không bị đụng tới. Không có giao dịch → không gửi PushNotification.
