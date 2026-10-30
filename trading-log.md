@@ -7872,3 +7872,40 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - Đỉnh tham chiếu cho ngưỡng đóng cửa -10% vẫn cập nhật bình thường (lần kiểm tra 15:30 ET vẫn dùng đỉnh mới nhất), chỉ lệnh stop trên sàn là giữ nguyên.
 - Đề xuất cân nhắc chốt lời một phần TXN (10-27) cũng không thực hiện (TXN đã hạ về ~+10.9%, dưới ngưỡng cảnh báo).
 - Không đặt/hủy lệnh nào. Sandbox: 100% tiền mặt $503.63, không mở lệnh mới hôm nay do QQQ -3.9% (bộ lọc benchmark).
+
+## 2026-10-30 ~15:40 ET (19:40 UTC) — Kiểm tra CHÍNH ngưỡng đóng cửa -10% core-10 (routine tự động, sync git): QCOM THỦNG ngưỡng đóng cửa -10% → ĐỀ XUẤT BÁN, chờ Hogan duyệt
+
+- **Sync đầu phiên:** `git fetch origin main` khớp sạch `40d71f3` (bao gồm entry 14:05 ET phiên tương tác — Hogan từ chối dời 3 stop WMT/TXN/PG). Không conflict, `git checkout -B main origin/main` thành công, working tree sạch.
+- `get_equity_positions` xác nhận core-10 vẫn đủ **10/10 slot**, không đổi: MSFT 1cp, AAPL 1.483843cp, TXN 2cp, QCOM 2.633277cp, PG 3.416927cp, WMT 4.545415cp, VOO 0.728352cp, VXUS 9.365746cp, SCHD 15.020016cp, VB 1.736545cp.
+- `get_equity_orders` (state=confirmed): 6 lệnh stop dự phòng -15% vẫn `confirmed`, chưa fill, đúng như Hogan giữ nguyên lúc 14:05 ET: MSFT $438.30, AAPL $293.54, TXN $252.50, QCOM $158.17, PG $135.96, WMT $103.17.
+- `get_portfolio`: total value **$5,989.86**, cash/buying_power **$503.63** (không đổi).
+- **Benchmark (19:40 UTC, so đóng cửa 10-29):** SPY $753.63 (**-2.04%**), QQQ $688.15 (**-3.80%**) — bán tháo tiếp diễn, nới rộng hơn so lần 13:05 ET (SPY -1.77%, QQQ -3.53%).
+- `get_equity_historicals` 5-phút cả phiên (13:30→19:40 UTC): đỉnh intraday hôm nay của MSFT/AAPL/TXN/QCOM/PG/WMT đều **bằng đúng** đỉnh đã ghi nhận ở lần 13:05 ET (MSFT $526.36, AAPL $349.19, TXN $308.00, QCOM $176.17 — vẫn dưới giá mua, PG $165.35, WMT $124.50) → **không có đỉnh mới nào kể từ 13:05 ET**, không cần cập nhật thêm đỉnh tham chiếu nào (WMT giữ đỉnh $124.50 đã cập nhật sáng nay; đề xuất dời stop dự phòng theo đỉnh này đã bị Hogan từ chối lúc 14:05 ET — chỉ lệnh trên sàn giữ nguyên, ngưỡng đóng cửa vẫn tính theo đỉnh mới).
+
+### Ngưỡng đóng cửa -10% từ đỉnh — LẦN KIỂM TRA CHÍNH chốt lúc ~15:40 ET
+| Mã | Đỉnh dùng tính ngưỡng | Ngưỡng đóng cửa -10% | Giá hiện tại (~15:40 ET) | Đệm | Breach? |
+|---|---|---|---|---|---|
+| MSFT | $551.15 | $496.035 | $523.26 | +5.49% | Không |
+| AAPL | $351.43 | $316.287 | $344.28 | +8.85% | Không |
+| TXN | $312.21 | $280.989 | $297.38 | +5.83% | Không |
+| PG | $166.79 | $150.111 | $161.69 | +7.71% | Không |
+| WMT | $124.50 | $112.05 | $123.621 | +10.33% | Không |
+| QCOM | $186.08 (giá mua, chưa từng có đỉnh mới) | $167.472 | $163.875 | **-2.15%** | **CÓ — THỦNG** |
+
+- **QCOM thủng ngưỡng đóng cửa -10% tại lần kiểm tra CHÍNH** (giá $163.875 < ngưỡng $167.472, tính trên giá mua $186.08 vì QCOM chưa từng tạo đỉnh mới kể từ khi mua). Đây là lần đầu cơ chế stop đóng-cửa -10% (áp dụng từ 2026-09-23) thực sự bị kích hoạt. Theo đúng quy tắc CLAUDE.md ("nếu thủng ngưỡng thì đề xuất bán... trước giờ đóng cửa"), **ĐỀ XUẤT BÁN toàn bộ vị thế QCOM**, chờ Hogan duyệt (core-10 vẫn cần duyệt, agent KHÔNG tự đặt lệnh). Stop dự phòng trên sàn ($158.17, 2cp nguyên) chưa bị khớp, còn đệm +3.49%, nhưng ngưỡng đóng-cửa là cơ chế CHÍNH theo thiết kế mới.
+- Không mã nào khác breach.
+
+### WebSearch xác nhận lại nguyên nhân (đối chiếu lần 13:05 ET, kiểm tra có tin mới không)
+- `WebSearch` xác nhận: **không có tin xấu riêng QCOM** (không kiện tụng/gian lận/mất CEO/hạ bậc tín nhiệm mới) — vụ Arm (10-13) và thỏa thuận cấp phép Huawei (10-05) đều là tin cũ, không phải catalyst hôm nay. Nguyên nhân bán tháo hôm nay: **INTC sụp -30% do guidance Q4 yếu** (PC market yếu, nghẽn sản xuất) kéo theo toàn ngành bán dẫn giảm sâu (chip index -9% hôm nay), cộng dồn lo ngại "bong bóng AI-capex" đã nhóm từ giữa 10 (Nasdaq giảm mạnh nhất từ tháng 6, S&P500 -2.3%+). QCOM -12% chủ yếu do beta ngành/tâm lý chung, KHÔNG phải tin xấu đặc thù công ty — **không đạt tiêu chí "tin xấu nghiêm trọng" để thay mã giữa kỳ**, nhưng điều này KHÔNG ảnh hưởng tới cơ chế stop-loss cơ học (ngưỡng đóng cửa -10% không có ngoại lệ cho nguyên nhân sector-wide theo CLAUDE.md — khác với bộ lọc chỉ áp dụng khi MỞ vị thế mới).
+- `get_earnings_calendar`: AAPL báo cáo KQKD 2026-11-02 (pm, còn 3 phiên), QCOM báo cáo KQKD 2026-11-04 (pm, còn 3 phiên) — không ảnh hưởng đề xuất bán hôm nay (QCOM đã breach stop cơ học, không phải quyết định tùy ý cần né earnings — quy tắc né báo cáo chỉ áp dụng sandbox).
+- Mức lãi/lỗ chưa chốt khác: WMT +12.53%, TXN +10.82%, PG +9.83%, SCHD +7.15%, AAPL +4.67%, MSFT +2.60%, VOO +0.64%, VB +0.16% — không mã nào khác chạm ngưỡng cảnh báo chốt lời +15-20%. VXUS -4.23%.
+
+### ĐỀ XUẤT: Bán toàn bộ vị thế QCOM (core-10 — cần Hogan duyệt, agent KHÔNG tự đặt lệnh)
+1. **Mã + hành động:** QCOM — **BÁN** toàn bộ **2.633277 cổ phiếu** (giá trị ước tính ~$431.6 theo giá hiện tại $163.875; lệnh thị trường nếu duyệt).
+2. **Lý do:** Giá đóng cửa/giá hiện tại tại lần kiểm tra CHÍNH 15:30-15:40 ET ($163.875) đã thủng ngưỡng cắt lỗ theo giá đóng cửa -10% từ đỉnh (đỉnh = giá mua $186.08 vì QCOM chưa từng tạo đỉnh mới kể từ khi mua 2026-10-02; ngưỡng = $167.472). Đây là cơ chế stop CHÍNH theo CLAUDE.md (thay thế stop -5% cũ từ 2026-09-23), kích hoạt cơ học khi thủng ngưỡng tại lần kiểm tra 15:30 ET, không phụ thuộc nguyên nhân. Đã xác nhận qua WebSearch đây là bán tháo toàn ngành bán dẫn (do INTC guidance yếu + lo ngại AI-capex), không phải tin xấu riêng QCOM — nhưng quy tắc đóng-cửa -10% không có ngoại lệ cho nguyên nhân sector-wide.
+3. **Rủi ro chính:** (a) Nếu bán, hiện thực hóa lỗ ~-$58.5 (2.633277cp × (-$22.205) lỗ/cp so giá vốn $186.08) — đúng kỷ luật cắt lỗ, không phải phản ứng cảm tính. (b) Vì là bán lỗ, áp dụng **wash sale 30 ngày**: KHÔNG mua lại QCOM (hoặc mã gần tương đương) trong 30 ngày tới nếu được duyệt bán — core-10 cần chọn mã thay thế khác nhóm large-cap công nghệ nếu muốn lấp slot trước ngày 2026-11-29. (c) Rủi ro giữ lại: nếu bán tháo ngành bán dẫn chỉ là phản ứng thái quá ngắn hạn và hồi phục nhanh (như QCOM đã hồi phục đệm nhiều lần trong tháng 10 ở các mức giảm nhỏ hơn), bán ở đáy có thể bỏ lỡ hồi phục — nhưng kỷ luật stop-loss ưu tiên bảo toàn vốn hơn dự đoán hồi phục. (d) QCOM báo cáo KQKD 2026-11-04 (còn 3 phiên) — nếu giữ lại chờ KQKD, rủi ro biến động thêm trước khi có kết quả.
+4. **Mức cắt lỗ/chốt lời đề xuất:** Nếu duyệt bán, không còn vị thế nên không cần đặt stop mới; hủy luôn lệnh stop dự phòng trên sàn QCOM ($158.17, order `6abfe578-65e4-450d-be1b-78e83773d8a4`) sau khi bán xong (cần Hogan thực hiện qua phiên có quyền đặt lệnh, không phải phiên read-only này). Nếu Hogan từ chối bán (muốn giữ chờ hồi phục/KQKD), đề xuất giữ nguyên stop dự phòng -15% hiện tại ($158.17) làm lưới an toàn cuối, và routine sẽ tiếp tục đề xuất bán lại ở mỗi lần kiểm tra CHÍNH tiếp theo cho tới khi giá hồi lên trên ngưỡng $167.472 hoặc Hogan quyết định khác. Slot trống (nếu bán) nên để cash chờ hoặc tạm đưa vào ETF core hiện có cho tới review 2026-11-01 (chỉ 2 ngày tới) — nơi sẽ đề xuất chính thức ≥2 mã thay thế cùng nhóm large-cap công nghệ.
+
+**Kết luận:** core-10 đủ 10/10 slot. Bán tháo ngành bán dẫn/công nghệ tiếp diễn và nới rộng (QQQ -3.80%, SPY -2.04%), xác nhận lại là sector-wide (INTC guidance sốc), không phải tin xấu riêng QCOM. **QCOM thủng ngưỡng đóng cửa -10% tại lần kiểm tra CHÍNH 15:40 ET → ĐỀ XUẤT BÁN toàn bộ vị thế QCOM (2.633277cp, ~$431.6), chờ Hogan duyệt.** Không mã nào khác breach; không có đỉnh mới nào kể từ lần 13:05 ET sáng nay. Review tháng 11 (còn 2 ngày, 2026-11-01) sẽ cần đề xuất mã thay thế nếu QCOM được duyệt bán.
+
+**Hướng dẫn duyệt:** Phiên này là read-only, không thể đặt lệnh. Để duyệt đề xuất trên, Hogan mở một phiên MỚI (Claude Code trên máy, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất".
