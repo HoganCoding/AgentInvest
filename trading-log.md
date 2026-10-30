@@ -7909,3 +7909,11 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 **Kết luận:** core-10 đủ 10/10 slot. Bán tháo ngành bán dẫn/công nghệ tiếp diễn và nới rộng (QQQ -3.80%, SPY -2.04%), xác nhận lại là sector-wide (INTC guidance sốc), không phải tin xấu riêng QCOM. **QCOM thủng ngưỡng đóng cửa -10% tại lần kiểm tra CHÍNH 15:40 ET → ĐỀ XUẤT BÁN toàn bộ vị thế QCOM (2.633277cp, ~$431.6), chờ Hogan duyệt.** Không mã nào khác breach; không có đỉnh mới nào kể từ lần 13:05 ET sáng nay. Review tháng 11 (còn 2 ngày, 2026-11-01) sẽ cần đề xuất mã thay thế nếu QCOM được duyệt bán.
 
 **Hướng dẫn duyệt:** Phiên này là read-only, không thể đặt lệnh. Để duyệt đề xuất trên, Hogan mở một phiên MỚI (Claude Code trên máy, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất".
+
+## 2026-10-30 ~16:10 ET — Phiên tương tác: Hogan duyệt rút QCOM khỏi core + chuyển sandbox sang day trade có duyệt
+
+- **Quyết định của Hogan: YES** — rút 1 mã kém nhất core để sandbox lên ~$1000 và thử day trade. Agent chọn **QCOM** (−12.3% so giá vốn $186.08, thủng ngưỡng đóng cửa −10% $167.47), Hogan xác nhận "bán QCOM".
+- Lúc thực hiện đã là 16:02 ET (thị trường đóng cửa) → đã hủy stop cũ rồi **đặt lại stop dự phòng QCOM $158.17 GTC cho 2cp** (id 6ae4f80f-c9de-4ab0-935d-ab4d752f31a7) để bảo vệ qua cuối tuần. Hogan chọn phương án 1: **bán toàn bộ 2.633277cp vào ~9:55 ET thứ Hai 2026-11-02** bằng routine 1 lần "AgentInvest QCOM exit" (đã được Hogan duyệt sẵn). Tiền settle 11-03.
+- **Core tạm còn 9 mã**, slot tech thứ 4 để trống tới khi đánh giá day trade xong (~12-01). QCOM cấm mua lại (core + sandbox) tới 2026-12-02.
+- **Sandbox → day trade thử nghiệm 20 phiên từ 2026-11-03**, chế độ **agent đề xuất → Hogan duyệt** trong phiên thường trực `/loop 10m /daytrade`. Chi tiết quy tắc: CLAUDE.md mục "CHẾ ĐỘ DAY TRADE THỬ NGHIỆM 20 PHIÊN".
+- **Routine:** tắt "Sandbox Day Trade (10/12/14 ET)" tự động; tạo "Sandbox EOD Close (15:40 ET)" làm lưới an toàn; dời cron core 13:00/15:30 ET (+1h UTC) do Mỹ đổi giờ mùa đông 2026-11-01.
