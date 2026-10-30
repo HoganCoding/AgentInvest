@@ -7864,3 +7864,11 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 **Kết luận:** core-10 đủ 10/10 slot. Bán tháo mạnh toàn ngành bán dẫn/công nghệ hôm nay (QQQ -3.53%) kéo QCOM -11.57%/TXN -4.96% giảm sâu, xác nhận qua đối chiếu các mã bán dẫn khác là hiện tượng toàn ngành, không phải tin xấu riêng QCOM — chưa đủ cơ sở đề xuất thay mã ngoài kỳ review. QCOM thủng ngưỡng đóng cửa -10% sơ bộ giữa phiên — sẽ quyết định dứt điểm ở lần kiểm tra CHÍNH 15:30 ET hôm nay theo đúng quy tắc, KHÔNG bán dựa trên giá giữa phiên. **WMT tạo đỉnh mới đáng kể (+2.30%) đi ngược chiều thị trường → ĐỀ XUẤT MỚI dời stop dự phòng lên $105.83, chờ Hogan duyệt** (mở phiên mới, gõ "duyệt đề xuất mới nhất" để xác nhận). AAPL báo cáo KQKD còn 3 phiên, QCOM còn 5 phiên — theo dõi tiếp.
 
 **Hướng dẫn duyệt:** Phiên này là read-only, không thể đặt lệnh. Để duyệt đề xuất trên, Hogan mở một phiên MỚI (Claude Code trên máy, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất".
+
+## 2026-10-30 ~14:05 ET — Phiên tương tác: Hogan TỪ CHỐI dời stop dự phòng WMT/TXN/PG
+
+- **Quyết định của Hogan: NO** — "thôi cứ giữ stop loss ko cần dời". Giữ nguyên 3 lệnh stop dự phòng hiện tại: **WMT $103.17, TXN $252.50, PG $135.96** (không dời lên $105.83 / $261.57 / $141.77 như đã đề xuất ngày 10-30, 10-27, 10-22).
+- Các đề xuất dời stop trên coi như ĐÃ ĐÓNG — các routine sau KHÔNG nhắc lại các đề xuất này. Chỉ đề xuất dời lại nếu có đỉnh mới đáng kể vượt rõ đỉnh tham chiếu hiện tại (WMT $124.50, TXN $312.21, PG $166.79).
+- Đỉnh tham chiếu cho ngưỡng đóng cửa -10% vẫn cập nhật bình thường (lần kiểm tra 15:30 ET vẫn dùng đỉnh mới nhất), chỉ lệnh stop trên sàn là giữ nguyên.
+- Đề xuất cân nhắc chốt lời một phần TXN (10-27) cũng không thực hiện (TXN đã hạ về ~+10.9%, dưới ngưỡng cảnh báo).
+- Không đặt/hủy lệnh nào. Sandbox: 100% tiền mặt $503.63, không mở lệnh mới hôm nay do QQQ -3.9% (bộ lọc benchmark).
