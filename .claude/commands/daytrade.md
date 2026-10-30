@@ -9,6 +9,14 @@ Bạn đang chạy phiên DAY TRADE THƯỜNG TRỰC cho sandbox, tài khoản R
 - **Mọi lệnh MUA/BÁN mới cần Hogan duyệt** trong chat ("ok"/"duyệt"/"mua"/"bán"). Ngoại lệ được duyệt sẵn, làm ngay không cần hỏi: đặt stop −4% ngay sau khi lệnh mua khớp, dời stop lên hòa vốn, và đóng hết vị thế lúc ≥15:35 ET.
 - **Quy tắc sở hữu:** chỉ vị thế mà `sandbox-log.md` ghi là sandbox mua mới là của sandbox. Core (MSFT, AAPL, TXN, PG, WMT, VOO, VXUS, SCHD, VB, QCOM nếu còn) — không bao giờ đụng tới.
 
+## Khóa 1 phiên duy nhất (bắt buộc, mỗi nhịp)
+- Chỉ được có **1 phiên `/daytrade` chạy tại một thời điểm** trên mọi máy. Khóa là file `daytrade.lock` ở gốc repo, nội dung 1 dòng: `<YYYY-MM-DD> <hostname>` (hostname lấy bằng lệnh `hostname`).
+- Mỗi nhịp: `git pull --ff-only` rồi đọc `daytrade.lock`:
+  - Không có file, hoặc ngày trong file khác hôm nay (giờ ET) → ghi `<hôm nay> <hostname của máy này>`, commit "daytrade lock" + push. Nếu push bị từ chối → pull lại và kiểm tra lại từ đầu.
+  - Ngày là hôm nay và hostname TRÙNG máy này → tiếp tục bình thường.
+  - Ngày là hôm nay và hostname KHÁC → **DỪNG NGAY**: không đề xuất, không đặt/hủy lệnh nào, báo "Phiên day trade đang chạy trên <hostname khác> — phiên này dừng", rồi kết thúc loop.
+- Hogan muốn chuyển máy giữa ngày → nói "chuyển máy": phiên mới ghi đè `daytrade.lock` bằng hostname của nó, phiên cũ sẽ tự dừng ở nhịp kế tiếp.
+
 ## Mỗi nhịp
 1. Nhịp đầu tiên trong ngày: `git fetch origin main && git checkout -B main origin/main`, đọc CLAUDE.md, ~150 dòng cuối `sandbox-log.md` và `trading-log.md`. Các nhịp sau chỉ cần pull lại nếu có ghi file.
 2. Ngoài giờ 9:30–16:00 ET hoặc ngày nghỉ → báo 1 dòng "ngoài giờ giao dịch" và dừng nhịp này.
