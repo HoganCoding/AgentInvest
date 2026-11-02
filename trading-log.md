@@ -2654,3 +2654,45 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 **Kết luận:** core-9 đủ 9/9 slot đang có (slot 10 trống theo kế hoạch). Không mã nào breach stop. **WMT vượt ngưỡng cảnh báo chốt lời +15% lần đầu → ĐỀ XUẤT cân nhắc chốt lời một phần, chờ Hogan duyệt** (chỉ là cảnh báo, không bắt buộc). TXN gần ngưỡng (+14.92%, đã từng chạm +15.94% ngày 10-29, đề xuất chốt lời một phần cũ chưa thực hiện) — tiếp tục theo dõi, không lặp lại đề xuất mới lần này. Lần kiểm tra CHÍNH 15:30 ET hôm nay sẽ xác nhận lại ngưỡng đóng cửa -10% với đỉnh mới nhất.
 
 **Hướng dẫn duyệt:** Phiên này là read-only, không thể đặt lệnh. Để duyệt đề xuất trên, Hogan mở một phiên MỚI (Claude Code trên máy, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất".
+
+## 2026-11-02 ~15:47 ET (20:47 UTC) — Kiểm tra CHÍNH ngưỡng đóng cửa -10% core-9 (routine tự động, sync git): không breach; phát hiện và sửa lỗi theo dõi đỉnh tham chiếu MSFT bị thấp hơn thực tế nhiều tuần qua
+
+- **Sync đầu phiên:** `git fetch`/`git pull origin main --ff-only` — kéo thêm 1 commit cập nhật `sandbox-log.md` (phiên day trade khác), không đụng `trading-log.md`, fast-forward sạch.
+- **Core hiện 9 mã** (không đổi so lần 13:15 ET): MSFT 1cp, AAPL 1.483843cp, TXN 2cp, PG 3.416927cp, WMT 4.545415cp, VOO 1.156525cp, VXUS 9.365746cp, SCHD 15.020016cp, VB 1.736545cp.
+- `get_portfolio`: total value **$6,322.28**, cash $945.07 (gồm $441.44 chưa settle từ QCOM).
+- Benchmark (so đóng cửa 10-30): SPY $752.33 (**-0.45%**), QQQ $680.845 (**-1.41%**) — nhóm công nghệ lớn giảm mạnh hơn hẳn thị trường chung hôm nay.
+
+**Giá hiện tại (~20:41 UTC) và P&L chưa chốt so giá vốn:**
+| Mã | Giá hiện tại | Giá vốn TB | P&L% |
+|---|---|---|---|
+| MSFT | $508.73 | $510.00 | -0.25% |
+| AAPL | $338.15 | $328.93 | +2.80% |
+| TXN | $303.06 | $268.34 | +12.94% |
+| PG | $164.195 | $147.23 | +11.52% |
+| WMT | $127.65 | $109.85 | +16.21% |
+| VOO | $691.54 | $692.87 | -0.19% |
+| VXUS | $82.605 | $85.60 | -3.50% |
+| SCHD | $35.925 | $33.36 | +7.69% |
+| VB | $291.67 | $288.77 | +1.00% |
+
+### Đối chiếu đỉnh tham chiếu dùng cho ngưỡng đóng cửa -10% — LẦN KIỂM TRA CHÍNH, tính lại từ `get_equity_historicals` (daily, từ 2026-09-23 = ngày tái cấu trúc/mua các mã hiện tại, cộng 5-phút bar hôm nay)
+
+**Phát hiện lỗi theo dõi (quan trọng):** đỉnh tham chiếu MSFT mà các lần kiểm tra gần đây dùng ($526.36, ghi nhận 10-30) **thấp hơn đáng kể** đỉnh thật kể từ khi mua — dữ liệu daily xác nhận MSFT đạt đỉnh **$551.15 vào 2026-10-13** (cao hơn $526.36 tới +4.72%), nhiều khả năng do các lần kiểm tra trước chỉ so đỉnh intraday "hôm nay" với mốc đang dùng mà không quét lại toàn bộ lịch sử, nên bỏ sót đỉnh 10-13. Đây là lỗi làm ngưỡng đóng cửa -10% bị tính THẤP hơn đúng ra phải có (thiên về hướng an toàn — khó bị bán nhầm hơn, không phải rủi ro bỏ sót breach), nhưng cần sửa để đúng quy tắc CLAUDE.md ("đỉnh cao nhất đã đạt được kể từ khi mua"). Đã quét lại toàn bộ 4 mã còn lại, không phát hiện lỗi tương tự (chênh lệch ≤0.1%).
+
+| Mã | Đỉnh tham chiếu cũ (đang dùng) | Đỉnh thật kể từ khi mua (xác nhận lại hôm nay) | Ngưỡng đóng cửa -10% (mới) | Giá hiện tại | Đệm |
+|---|---|---|---|---|---|
+| MSFT | $526.36 (10-30, **sai — thấp hơn thực tế**) | **$551.15 (10-13)** | $496.04 | $508.73 | +2.56% |
+| AAPL | $351.43 (10-29) | $351.73 (10-23, chênh +0.09%, không đổi thực chất) | $316.56 | $338.15 | +6.82% |
+| TXN | $312.21 (10-29) | $313.07 (10-29, chênh +0.28%, không đổi thực chất) | $281.76 | $303.06 | +7.56% |
+| PG | $165.35 (10-30, intraday) | $166.85 (10-22, chênh +0.9%, không đổi thực chất) | $150.17 | $164.195 | +9.35% |
+| WMT | $124.51 (10-30) | **$127.715 (hôm nay 11-02, đỉnh mới)** | $114.94 | $127.65 | +11.1% |
+
+- **Không mã nào breach ngưỡng đóng cửa -10%** (đệm thấp nhất: MSFT +2.56%, dù dùng đỉnh đã sửa đúng vẫn còn xa ngưỡng) → không có đề xuất bán nào theo cơ chế này.
+- **WMT tạo đỉnh mới $127.715 hôm nay** (vượt +2.58% đỉnh cũ $124.51) — mức tăng tương đương 2 lần trước đó mà Hogan đã từ chối dời stop dự phòng trên sàn ("giữ nguyên") → **không lặp lại đề xuất dời stop lần này**, chỉ cập nhật đỉnh tham chiếu dùng cho ngưỡng đóng cửa -10% (ngầm, không cần duyệt riêng).
+- **WebSearch** (qua agent con) xác nhận: tin tức hôm nay (MSFT -2.52%, AAPL -1.88% trong khi QQQ -1.41% > SPY -0.45%) là rotation/macro — lo ngại "bong bóng AI-capex" lặp lại (đã có đợt tương tự 10-23, theo Al Jazeera) kéo mega-cap tech giảm mạnh hơn thị trường, dòng tiền xoay sang nhóm phòng thủ (WMT/PG/TXN đều tăng hôm nay) — **không có tin xấu đặc thù riêng MSFT hoặc AAPL**. AAPL báo cáo KQKD tối nay (sau giờ đóng cửa, đã biết từ sáng) — một phần giảm của AAPL khả năng là de-risking trước KQKD, không phải tin xấu.
+
+### Chốt lời — không có đề xuất mới
+- WMT +16.21% — đã vượt ngưỡng cảnh báo +15% (lần đầu ghi nhận ở entry 13:15 ET hôm nay, đề xuất bán một phần đang CHỜ DUYỆT) — **không lặp lại đề xuất mới**, chỉ xác nhận vẫn còn hiệu lực chờ Hogan.
+- TXN +12.94%, PG +11.52% — dưới ngưỡng +15%, không cảnh báo mới.
+
+**Kết luận:** core-9 đủ 9/9 slot. Không mã nào breach ngưỡng đóng cửa -10% (kể cả sau khi sửa đỉnh tham chiếu MSFT bị tính sai nhiều tuần — $551.15 thay vì $526.36, ngưỡng mới $496.04 vẫn còn đệm +2.56%). Không có tin xấu đặc thù cho mã nào (biến động hôm nay là rotation/macro AI-capex, đã xác nhận qua WebSearch). Đề xuất chốt lời một phần WMT từ entry 13:15 ET hôm nay vẫn đang CHỜ DUYỆT, không lặp lại. **Không có đề xuất MỚI nào** → không gửi PushNotification (đúng quy tắc chỉ gửi khi có đề xuất/thay đổi thật), chỉ ghi log. **Lưu ý cho routine sau:** từ nay dùng đỉnh tham chiếu MSFT = $551.15 (không phải $526.36) khi tính ngưỡng đóng cửa -10%, trừ khi có đỉnh mới cao hơn.
