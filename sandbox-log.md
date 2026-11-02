@@ -764,3 +764,7 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 
 - Theo CLAUDE.md mục "CHẾ ĐỘ DAY TRADE THỬ NGHIỆM 20 PHIÊN", phiên day trade đầu tiên là 2026-11-03 (sau khi bán QCOM ~10:00 ET 2026-11-02). Hôm nay 2026-10-30 trước mốc này → không có vị thế sandbox day trade nào để đóng.
 - Sandbox vẫn 100% tiền mặt (chế độ cũ, không có vị thế mở), core-10 không bị đụng tới. Không có giao dịch → không gửi PushNotification.
+
+## 2026-11-02 ~15:40 ET (19:40 UTC) — EOD Close (routine tự động): chưa tới ngày bắt đầu day trade (2026-11-03), không có gì để đóng
+
+- Theo CLAUDE.md mục "Day Trade" (Hogan duyệt 2026-10-30), phiên day trade đầu tiên là 2026-11-03 (sau khi bán QCOM ~10:00 ET 2026-11-02 — đã thực hiện, xem trading-log.md). Hôm nay 2026-11-02 vẫn trước mốc bắt đầu → không có vị thế sandbox day trade nào để đóng, không có hành động nào thực hiện.
