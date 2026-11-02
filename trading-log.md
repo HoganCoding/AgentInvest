@@ -2551,3 +2551,67 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - Ngưỡng đóng cửa -10%: không mã nào khác breach ngoài QCOM (đã xử lý ở entry 15:40 ET + đã được Hogan duyệt rút khỏi core lúc 16:10 ET) — MSFT đệm +5.3%, AAPL +8.3%, TXN +6.9%, PG +7.6%, WMT +10.3%.
 - Không có biến động giá nào vượt 3-5% kể từ lần kiểm tra CHÍNH 15:40 ET cần WebSearch sâu thêm. Không phải ngày 1 tháng, không phải 7 ngày đầu tháng → không cần báo cáo hiệu suất 3 dòng/kiểm tra tiền nạp.
 - **Kết luận:** Không có gì mới so với lần kiểm tra CHÍNH 15:40 ET và quyết định của Hogan lúc 16:10 ET hôm nay. → **Không có đề xuất mới** → không gửi PushNotification, chỉ ghi log.
+
+## 2026-11-02 ~10:12 ET — THỰC HIỆN: Bán QCOM (routine đã duyệt 10-30); Review tháng 11; Đề xuất mua ETF $300
+
+### Bán QCOM (lệnh đã được Hogan duyệt từ 2026-10-30)
+
+- **Sync đầu phiên:** `git pull origin main` — "Already up to date", không conflict.
+- **Hủy stop dự phòng QCOM:** lệnh `6ae4f80f-c9de-4ab0-935d-ab4d752f31a7` ($158.17, 2cp GTC) → `cancel_equity_order` trả về `accepted: true` (hủy thành công).
+- **Đặt lệnh bán:** market sell 2.633277cp QCOM → **FILLED** @ **$167.6401/cp**, id `6ae8a86e-34b8-4a77-8c89-18fe67da35af`, 15:12:46 UTC.
+- **Thu về:** 2.633277 × $167.6401 = **$441.56**
+- **Lỗ thực hiện:** $441.56 − (2.633277 × $186.08) = $441.56 − $490.07 = **−$48.51 (−9.90%)**
+- **Wash-sale QCOM:** bán LỖ → cấm mua lại QCOM (core + sandbox) tới **~2026-12-02**.
+- **Core tạm còn 9 mã**, slot tech thứ 4 vẫn trống đến ~2026-12-01 theo quyết định 10-30.
+
+---
+
+### Review tháng 11 (ngày 01/11 = CN → dời sang 02/11)
+
+**Giá thị trường lúc review (~10:10 ET, 11-02):**
+| Mã | Giá | Giá vốn TB | Số lượng | Giá trị | P&L% |
+|---|---|---|---|---|---|
+| MSFT | $524.895 | $510.00 | 1cp | $524.90 | +2.92% |
+| AAPL | $340.19 | $328.93 | 1.483843cp | $504.72 | +3.42% |
+| TXN | $305.805 | $268.34 | 2cp | $611.61 | +13.96% |
+| PG | $163.16 | $147.23 | 3.416927cp | $557.52 | +10.88% |
+| WMT | $125.525 | $109.85 | 4.545415cp | $570.61 | +14.27% |
+| VOO | $698.86 | $688.29 | 0.728352cp | $509.16 | +1.56% |
+| VXUS | $83.195 | $85.60 | 9.365746cp | $779.22 | −2.81% |
+| SCHD | $35.89 | $33.36 | 15.020016cp | $539.07 | +7.63% |
+| VB | $293.35 | $288.77 | 1.736545cp | $509.38 | +1.61% |
+| **Core-9 tổng** | | | | **$5,106.19** | **+5.45%** |
+| QCOM (đã bán) | $167.64 | $186.08 | 2.633277cp | $441.56 | −9.90% |
+| **Core-10 tổng** | | | | **$5,547.75** | **+4.04%** |
+
+**Báo cáo hiệu suất 3 dòng (tích lũy từ mốc 2026-09-24 — đây là kỳ review đầu tiên sau tái cấu trúc):**
+- `Core-10: +4.0% (+$216)` — cost basis $5,332 → hiện $5,548 (tính cả QCOM vừa bán)
+- `Sandbox: −8.1% (−$44)` — baseline 09-24 $547.73 → hiện $503.63 (100% cash); lỗ từ KTOS −$45.50 + WULF −$16.33 = −$61.83 thực hiện, bù phần lãi nhỏ từ KTOS trước 09-24 baseline
+- `VOO: −1.0%` — mốc 09-24 $705.755 → hôm nay $698.86
+
+**Nhận xét:** Core hơn VOO ~5% (tích lũy từ 09-24), chủ yếu nhờ WMT +14.3%, TXN +14.0%, PG +10.9%, SCHD +7.6%. Kéo lùi: QCOM −9.9% (đã thoát hôm nay) và VXUS −2.8% (thị trường quốc tế yếu hơn Mỹ — bình thường với VXUS). Sandbox thua: 2 lần stop liên tiếp (KTOS + WULF), đang chuyển sang day trade từ 11-03.
+
+**Benchmark thị trường hôm nay (11-02, ~10:10 ET):** SPY $760.33 (+0.61%), QQQ $694.57 (+0.59%) — thị trường hồi phục sau đợt bán tháo 10-30.
+
+**Rà soát thay mã:**
+- 9 mã còn lại: không mã nào đạt tiêu chí thay thế (kém benchmark nghiêm trọng, tin xấu, fundamentals xấu rõ). VXUS âm nhẹ nhưng phù hợp đà chung ETF quốc tế — không thay.
+- Slot 10 (QCOM): giữ trống đến ~2026-12-01 theo quyết định Hogan 10-30.
+- **AAPL báo cáo KQKD tối nay (11-02, after hours):** theo dõi biến động pre-market ngày mai; core-10 không né earnings — chỉ ghi nhận.
+
+**Consolidate vốn:**
+- Mục tiêu $500/mã. Tất cả 9 mã đang **trên $500** → không cần top-up thêm. (MSFT $524.90, AAPL $504.72, TXN $611.61, PG $557.52, WMT $570.61, VOO $509.16, VXUS $779.22, SCHD $539.07, VB $509.38)
+
+**Cash sau bán QCOM (ước tính sau settle T+1):**
+- Cash hiện tại: $803.63 (gồm $300 deposit tháng 11 đã settle)
+- + QCOM proceeds: +$441.56 (settle ngày 11-03)
+- Tổng sau settle: ~$1,245.19
+- − $300 ETF (đề xuất bên dưới): −$300
+- **Vốn day trade từ 11-03: ~$945** (khớp mục tiêu ~$1,000 theo CLAUDE.md)
+
+---
+
+### ĐỀ XUẤT: Mua ETF $300 (khoản nạp tháng 11)
+1. **Mã + hành động:** VOO — mua fractional ~**$300** (~0.429cp @ $698.86)
+2. **Lý do:** Đây là khoản nạp định kỳ tháng 11 ($300) đã vào tài khoản (Hogan xác nhận). Theo CLAUDE.md, tiền nạp mới → ETF core có giá trị thấp nhất. ETF thấp nhất hiện tại: VOO $509.16 (sát với VB $509.38 — VOO thấp hơn $0.22). VOO (+0.58% hôm nay) đang hồi phục cùng thị trường.
+3. **Rủi ro:** Thị trường vừa qua đợt bán tháo mạnh (10-30 QQQ −3.8%), hôm nay hồi phục kỹ thuật — có thể tiếp tục biến động. Nhưng VOO là ETF passive S&P 500, dollar-cost averaging đúng thời điểm nạp là hợp lý.
+4. **Thực hiện:** Hogan gõ "duyệt VOO" (hoặc bất kỳ xác nhận nào) → agent đặt lệnh fractional market $300 vào VOO ngay trong phiên này.
