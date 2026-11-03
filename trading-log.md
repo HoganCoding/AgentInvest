@@ -2696,3 +2696,42 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - TXN +12.94%, PG +11.52% — dưới ngưỡng +15%, không cảnh báo mới.
 
 **Kết luận:** core-9 đủ 9/9 slot. Không mã nào breach ngưỡng đóng cửa -10% (kể cả sau khi sửa đỉnh tham chiếu MSFT bị tính sai nhiều tuần — $551.15 thay vì $526.36, ngưỡng mới $496.04 vẫn còn đệm +2.56%). Không có tin xấu đặc thù cho mã nào (biến động hôm nay là rotation/macro AI-capex, đã xác nhận qua WebSearch). Đề xuất chốt lời một phần WMT từ entry 13:15 ET hôm nay vẫn đang CHỜ DUYỆT, không lặp lại. **Không có đề xuất MỚI nào** → không gửi PushNotification (đúng quy tắc chỉ gửi khi có đề xuất/thay đổi thật), chỉ ghi log. **Lưu ý cho routine sau:** từ nay dùng đỉnh tham chiếu MSFT = $551.15 (không phải $526.36) khi tính ngưỡng đóng cửa -10%, trừ khi có đỉnh mới cao hơn.
+
+## 2026-11-03 ~13:05 ET (18:05 UTC) — Kiểm tra giữa phiên core-9 (routine tự động, sync git): **PHÁT HIỆN NGHIÊM TRỌNG — 3 lệnh stop dự phòng MSFT/AAPL/TXN bị hủy, KHÔNG có lệnh thay thế, đang hở stop từ ~21 giờ qua**
+
+- **Sync đầu phiên:** `git fetch`/`git checkout -B main origin/main` tại HEAD `bc9eba5` — khớp sạch với log ngày trước (bán QCOM, review tháng 11, mua VOO $300, kiểm tra 13:15 ET và 15:47 ET), không conflict. (Các commit mới kéo về đều là log phiên day trade `sandbox-log.md`, không đụng `trading-log.md`.)
+- **Core hiện 9 mã** (không đổi): MSFT 1cp, AAPL 1.483843cp, TXN 2cp, PG 3.416927cp, WMT 4.545415cp, VOO 1.156525cp, VXUS 9.365746cp, SCHD 15.020016cp, VB 1.736545cp.
+- `get_portfolio`: total value **$6,309.80**, cash $928.64, buying_power $928.64.
+
+**Giá hiện tại (~18:05 UTC) so đóng cửa hôm qua (11-02):**
+| Mã | Giá hiện tại | Đóng cửa 11-02 | % hôm nay | P&L% so giá vốn |
+|---|---|---|---|---|
+| MSFT | $520.45 | $507.12 | +2.63% | +2.05% |
+| AAPL | $330.515 | $338.32 | **-2.31%** | +0.48% |
+| TXN | $314.09 | $302.02 | +4.00% (đỉnh mới) | +17.05% |
+| PG | $162.225 | $163.56 | -0.82% | +10.18% |
+| WMT | $124.835 | $127.69 | -2.23% | +13.64% |
+| VOO | $694.88 | $691.32 | +0.52% | +0.29% |
+| VXUS | $82.38 | $82.59 | -0.25% | -3.76% |
+| SCHD | $35.625 | $35.90 | -0.77% | +6.79% |
+| VB | $293.625 | $291.80 | +0.63% | +1.68% |
+
+- **Benchmark:** SPY $755.95 (+0.51%), QQQ $687.43 (+0.93%).
+- **AAPL -2.31% trong khi QQQ +0.93%** — WebSearch (qua agent con) xác nhận: AAPL báo cáo KQKD tối qua (11-02) **vượt kỳ vọng doanh thu & EPS** (EPS $2.10 thực tế vs $1.98 ước tính), nhưng **hướng dẫn biên lợi nhuận gộp quý tháng 12 giảm (45-46% vs 47.9% quý trước)** do chi phí memory tăng — đây là catalyst thật (margin guidance miss) nhưng KHÔNG thuộc tiêu chí thay mã theo CLAUDE.md (không phải kiện tụng/gian lận/mất CEO/hạ tín nhiệm), và doanh thu guidance thực ra CAO hơn kỳ vọng (7-10% vs ~6.1% consensus) → không đủ cơ sở đề xuất bán/thay mã, chỉ ghi nhận theo dõi. AAPL vẫn +0.48% so giá vốn, đệm xa ngưỡng đóng cửa -10% ($316.56).
+- **WMT -2.23%** — WebSearch xác nhận không có tin xấu đặc thù, chỉ là nhịp điều chỉnh/chốt lời bình thường sau đà tăng +3.38% hôm 11-02 — không phải tin xấu, không hành động.
+- **TXN tạo đỉnh intraday mới ~$316.75** hôm nay (vượt đỉnh cũ $313.07 ghi nhận 10-29) — sẽ chốt chính thức ở lần kiểm tra CHÍNH 15:30 ET hôm nay.
+- **Không mã nào breach ngưỡng đóng cửa -10%** (đệm thấp nhất: MSFT +4.9% dùng đỉnh $551.15, AAPL +4.4% dùng đỉnh $351.73).
+- Không phải ngày 1 tháng, không phải trong 7 ngày đầu tháng còn khoản nạp chưa xử lý (đã xử lý xong $300 ETF sáng 11-02) → không kiểm tra tiền nạp lần này.
+
+### ⚠️ PHÁT HIỆN NGHIÊM TRỌNG: 3 lệnh stop dự phòng -15% (MSFT, AAPL, TXN) đã bị HỦY, không có lệnh thay thế — core đang hở floor stop
+
+- Gọi `get_equity_orders` theo từng mã để đối chiếu lệnh dự phòng GTC còn hiệu lực. Kết quả: **chỉ còn 2/5 lệnh stop dự phòng tồn tại** (WMT $103.17 GTC, PG $135.96 GTC — cả hai vẫn `confirmed`, chưa fill). **MSFT ($438.30), AAPL ($293.54), TXN ($252.50) — cả 3 lệnh stop dự phòng đều ở trạng thái `cancelled`, KHÔNG có lệnh mới nào được đặt thay thế.** `shares_available_for_sells` của MSFT (1.0/1.0) và TXN (2.0/2.0) xác nhận không có cổ phiếu nào đang bị giữ bởi lệnh bán — tức là thực sự KHÔNG có stop nào đang bảo vệ 3 mã này trên sàn hiện tại.
+- **Thời điểm hủy:** cả 3 lệnh bị hủy cùng lúc, `last_transaction_at` = **2026-11-02T20:46:45–46.1 UTC** (15:46 ET 11-02) — trùng khớp chính xác với thời điểm commit entry "Kiểm tra CHÍNH 15:30 ET 11-02" (`e910854`, 20:46:45 UTC). Tức là **chính phiên routine kiểm tra CHÍNH 15:30 ET hôm qua đã hủy 3 lệnh stop này** (khớp với việc phiên đó phát hiện và sửa lỗi đỉnh tham chiếu MSFT, nhiều khả năng đang trong quá trình "hủy cũ → đặt mới" theo đúng quy trình dời stop của CLAUDE.md) — nhưng **bước đặt lệnh mới không được thực hiện và không được ghi log**. Đối chiếu commit `bc60f53` (EOD close sandbox, 20:41:45 UTC, không đụng core) xác nhận đây không phải do phiên sandbox gây ra.
+- **Hậu quả:** MSFT, AAPL, TXN đã KHÔNG có lệnh stop dự phòng trên sàn trong suốt ~21 giờ qua (từ 15:46 ET 11-02 đến giờ, 13:05 ET 11-03) — nếu có cú sập mạnh/tin xấu đột ngột ngoài giờ kiểm tra định kỳ (13:00/15:30 ET), core sẽ KHÔNG có lớp bảo vệ dự phòng nào cho 3/9 vị thế này như CLAUDE.md yêu cầu.
+- **Đề xuất đặt lại NGAY lệnh stop dự phòng (cần phiên có quyền đặt lệnh — agent routine này read-only, KHÔNG tự đặt được):**
+  1. **MSFT — BÁN stop_market GTC 1cp @ $468.48** (= đỉnh xác nhận $551.15 × 0.85). Lý do: khôi phục lớp bảo vệ dự phòng -15% từ đỉnh theo đúng cơ chế CLAUDE.md, bị hở từ hôm qua do lỗi quy trình (hủy cũ nhưng chưa đặt mới). Rủi ro chính: nếu không đặt kịp trước khi có biến động mạnh, vị thế không được bảo vệ. Đây CHÍNH LÀ mức cắt lỗ đề xuất.
+  2. **AAPL — BÁN stop_market GTC 1cp @ $298.97** (= đỉnh xác nhận $351.73 × 0.85). Lý do & rủi ro tương tự mục 1.
+  3. **TXN — BÁN stop_market GTC 2cp @ $266.11** (= đỉnh xác nhận $313.07 × 0.85, dùng đỉnh trước khi có đỉnh mới hôm nay) hoặc cao hơn nếu lần kiểm tra CHÍNH 15:30 ET hôm nay xác nhận đỉnh mới ~$316.75 (→ $269.24). Lý do & rủi ro tương tự mục 1.
+  - Đây là thao tác khôi phục đúng cơ chế đã có (không phải thay đổi chiến lược), nhưng vẫn cần Hogan duyệt/thực hiện vì routine này không có quyền đặt lệnh.
+
+**Kết luận:** Không có đề xuất mua/bán/thay mã mới từ biến động giá hôm nay (AAPL margin-guidance miss không đạt tiêu chí thay mã; WMT chỉ là điều chỉnh bình thường). **NHƯNG phát hiện lỗi vận hành nghiêm trọng: 3/9 vị thế core (MSFT, AAPL, TXN) đang hở lệnh stop dự phòng trên sàn ~21 giờ qua** do một phiên trước hủy lệnh cũ nhưng không đặt lệnh mới. → Gửi PushNotification ưu tiên cao ngay, yêu cầu Hogan mở phiên có quyền đặt lệnh để đặt lại 3 lệnh stop nêu trên càng sớm càng tốt, độc lập với lần kiểm tra CHÍNH 15:30 ET hôm nay (sẽ xác nhận lại đỉnh TXN mới nhất và tiếp tục theo dõi ngưỡng đóng cửa -10%).
