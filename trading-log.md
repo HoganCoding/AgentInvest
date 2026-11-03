@@ -2735,3 +2735,58 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
   - Đây là thao tác khôi phục đúng cơ chế đã có (không phải thay đổi chiến lược), nhưng vẫn cần Hogan duyệt/thực hiện vì routine này không có quyền đặt lệnh.
 
 **Kết luận:** Không có đề xuất mua/bán/thay mã mới từ biến động giá hôm nay (AAPL margin-guidance miss không đạt tiêu chí thay mã; WMT chỉ là điều chỉnh bình thường). **NHƯNG phát hiện lỗi vận hành nghiêm trọng: 3/9 vị thế core (MSFT, AAPL, TXN) đang hở lệnh stop dự phòng trên sàn ~21 giờ qua** do một phiên trước hủy lệnh cũ nhưng không đặt lệnh mới. → Gửi PushNotification ưu tiên cao ngay, yêu cầu Hogan mở phiên có quyền đặt lệnh để đặt lại 3 lệnh stop nêu trên càng sớm càng tốt, độc lập với lần kiểm tra CHÍNH 15:30 ET hôm nay (sẽ xác nhận lại đỉnh TXN mới nhất và tiếp tục theo dõi ngưỡng đóng cửa -10%).
+
+## 2026-11-03 ~15:41 ET (20:41 UTC) — Kiểm tra CHÍNH ngưỡng đóng cửa -10% core-9 (routine tự động, sync git): không breach; TXN tạo đỉnh mới $316.75; ⚠️ XÁC NHẬN LẠI lệnh stop dự phòng MSFT/AAPL/TXN VẪN CHƯA được đặt lại (đã hở ~24 giờ)
+
+- **Sync đầu phiên:** `git pull origin main` — "Already up to date" tại `3b85257` (gồm log phiên day trade/sandbox gần nhất, không đụng `trading-log.md`). HEAD ở trạng thái detached đúng tại `3b85257` → đã `git checkout -B main origin/main` để ghi thẳng vào `main` theo quy định "Đồng bộ giữa các phiên".
+- **Core hiện 9 mã** (không đổi): MSFT 1cp, AAPL 1.483843cp, TXN 2cp, PG 3.416927cp, WMT 4.545415cp, VOO 1.156525cp, VXUS 9.365746cp, SCHD 15.020016cp, VB 1.736545cp.
+- `get_portfolio`: total value **$6,295.57**, cash/buying_power **$925.28** (không có nạp mới ngoài khoản $300 tháng 11 đã xử lý xong 11-02).
+- **Benchmark (so đóng cửa 11-02):** SPY $754.31 (+0.29%), QQQ $685.82 (+0.69%) — thị trường hồi phục nhẹ, không biến động mạnh.
+
+**Giá hiện tại (~20:41 UTC) so đóng cửa 11-02:**
+| Mã | Giá hiện tại | Đóng cửa 11-02 | % hôm nay | P&L% so giá vốn |
+|---|---|---|---|---|
+| MSFT | $521.625 | $507.12 | +2.86% | +2.28% |
+| AAPL | $330.70 | $338.32 | -2.25% | +0.54% |
+| TXN | $312.84 | $302.02 | +3.58% | +16.57% |
+| PG | $161.66 | $163.56 | -1.16% | +9.80% |
+| WMT | $124.57 | $127.69 | -2.44% | +13.37% |
+| VOO | $693.36 | $691.32 | +0.29% | +0.07% |
+| VXUS | $82.245 | $82.59 | -0.42% | -3.92% |
+| SCHD | $35.51 | $35.90 | -1.09% | +6.44% |
+| VB | $292.72 | $291.80 | +0.32% | +1.37% |
+
+### Ngưỡng đóng cửa -10% — cập nhật đỉnh tham chiếu (lần kiểm tra CHÍNH)
+
+`get_equity_historicals` 5-phút cả phiên (13:30→20:41 UTC) hôm nay, đối chiếu với đỉnh đã xác nhận gần nhất (entry 11-02 15:47 ET):
+
+| Mã | Đỉnh tham chiếu trước | Đỉnh intraday hôm nay | Đỉnh mới? | Đỉnh tham chiếu (cập nhật) | Ngưỡng đóng cửa -10% | Giá hiện tại | Đệm |
+|---|---|---|---|---|---|---|---|
+| MSFT | $551.15 (10-13) | $523.44 | Không | $551.15 | $496.04 | $521.625 | +5.16% |
+| AAPL | $351.73 (10-23) | $334.50 | Không | $351.73 | $316.56 | $330.70 | +4.47% |
+| TXN | $313.07 (10-29) | **$316.75** | **Có — đỉnh mới** | **$316.75** | **$285.08** | $312.84 | +9.74% |
+| PG | $166.85 (10-22) | $163.19 | Không | $166.85 | $150.17 | $161.66 | +7.67% |
+| WMT | $127.715 (11-02) | $126.85 | Không | $127.715 | $114.94 | $124.57 | +8.38% |
+
+- **Không mã nào breach ngưỡng đóng cửa -10%** (đệm thấp nhất: AAPL +4.47%).
+- **TXN tạo đỉnh mới $316.75 (16:15 UTC hôm nay)** — cập nhật đỉnh tham chiếu dùng cho ngưỡng đóng cửa -10% (ngầm theo quy tắc, không cần duyệt riêng). Lưu ý: TXN hiện KHÔNG có lệnh stop dự phòng nào trên sàn (xem mục dưới), nên "dời stop dự phòng lên" không áp dụng được cho tới khi lệnh được đặt lại.
+- Không có biến động giá nào (ngoài TXN/AAPL đã nêu) vượt 3-5% cần WebSearch sâu thêm so với các tin đã xác nhận hôm qua (AAPL margin-guidance miss, không đạt tiêu chí thay mã).
+
+### ⚠️ XÁC NHẬN LẠI: lệnh stop dự phòng MSFT/AAPL/TXN VẪN CHƯA được đặt lại — đã hở ~24 giờ
+
+- `get_equity_orders` theo từng mã xác nhận: MSFT (`6ab3fbf7...`, stop $438.30), AAPL (`6ab3fbf9...`, stop $293.54), TXN (`6abfe577...`, stop $252.50) **vẫn ở trạng thái `cancelled`**, `last_transaction_at` **không đổi** so với lần phát hiện lúc 13:05 ET hôm nay (2026-11-02T20:46:45-46 UTC) — xác nhận **chưa có hành động nào được thực hiện** để khôi phục 3 lệnh này kể từ lần cảnh báo sáng nay.
+- PG (`6ad108b4...`, stop $135.96) và WMT (`6ad108b6...`, stop $103.17) vẫn `confirmed`, còn hiệu lực — 2/5 lệnh dự phòng còn nguyên.
+- **Đề xuất đặt lại (cập nhật TXN theo đỉnh mới $316.75 xác nhận hôm nay, giữ nguyên MSFT/AAPL từ entry 13:05 ET):**
+  1. **MSFT — BÁN stop_market GTC 1cp @ $468.48** (đỉnh $551.15 × 0.85).
+  2. **AAPL — BÁN stop_market GTC 1cp @ $298.97** (đỉnh $351.73 × 0.85).
+  3. **TXN — BÁN stop_market GTC 2cp @ $269.24** (đỉnh MỚI $316.75 × 0.85 — cao hơn đề xuất tạm sáng nay $266.11 do đỉnh đã tăng thêm).
+  - Rủi ro chính: core đang thiếu lớp bảo vệ dự phòng cho 3/9 vị thế trong lúc chờ Hogan đặt lại — nếu có cú sập mạnh/tin xấu đột ngột ngoài giờ kiểm tra 13:00/15:30 ET, 3 vị thế này không có stop tự động trên sàn. Routine này read-only, không tự đặt được.
+
+### Chốt lời/khác — không có đề xuất mới
+- WMT +13.37% (giảm từ +16.21% hôm qua do điều chỉnh) — đề xuất chốt lời một phần từ entry 11-02 13:15 ET vẫn CHỜ DUYỆT, không lặp lại.
+- TXN +16.57% — đã vượt ngưỡng cảnh báo +15% nhiều phiên trước, chưa có đề xuất chốt lời riêng cho TXN (đề xuất cũ chưa thực hiện) — không lặp lại đề xuất mới lần này.
+- Không mã nào đạt tiêu chí thay mã theo CLAUDE.md (không có tin xấu nghiêm trọng/fundamentals xấu đi mới hôm nay).
+
+**Kết luận:** Không có đề xuất mua/bán/thay mã mới từ biến động giá hôm nay. Không mã nào breach ngưỡng đóng cửa -10% (TXN có đỉnh mới $316.75, ngưỡng mới $285.08, đệm +9.74%). **Vấn đề nghiêm trọng từ entry 13:05 ET hôm nay VẪN CHƯA được xử lý** — 3/9 vị thế core (MSFT, AAPL, TXN) tiếp tục không có lệnh stop dự phòng trên sàn, nay đã gần 24 giờ. → Gửi PushNotification nhắc lại ưu tiên cao, kèm số TXN cập nhật theo đỉnh mới.
+
+**Hướng dẫn duyệt:** Phiên này read-only, không thể đặt lệnh. Hogan mở phiên MỚI (Claude Code trên máy, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất" để đặt lại 3 lệnh stop dự phòng nêu trên.
