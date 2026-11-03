@@ -17,12 +17,18 @@ Bạn đang chạy phiên DAY TRADE cho tài khoản Robinhood 704170133 (cash a
   - Ngày hôm nay, hostname KHÁC → **DỪNG NGAY**, báo "Phiên đang chạy trên `<hostname khác>`".
 - Chuyển máy giữa ngày → nói "chuyển máy": phiên mới ghi đè lock, phiên cũ tự dừng.
 
+## File log theo ngày
+- Mỗi ngày dùng file riêng: `sandbox-YYYY-MM-DD.md` (ví dụ `sandbox-2026-11-03.md`).
+- Đầu file có block **Tóm tắt** (vốn, wash-sale, P&L realized, vị thế đang mở) và block **Trạng thái hiện tại** — cập nhật mỗi lần ghi log.
+- Nếu file ngày chưa tồn tại (ngày mới): tạo file với block Tóm tắt (lấy từ ngày trước: vốn cuối, wash-sale còn hiệu lực), commit + push trước khi ghi trade đầu tiên.
+- `sandbox-log.md` là archive lịch sử — **không ghi thêm**.
+
 ## Mỗi nhịp
-1. Nhịp đầu ngày: `git pull`, đọc ~100 dòng cuối `sandbox-log.md`.
+1. Nhịp đầu ngày: `git pull`, đọc toàn bộ file `sandbox-YYYY-MM-DD.md` của hôm nay (nếu đã có) hoặc tạo mới.
 2. Ngoài giờ 9:30–16:00 ET hoặc ngày nghỉ → báo 1 dòng và dừng nhịp.
 3. `get_portfolio` (buying_power), `get_equity_positions`, `get_equity_quotes` cho vị thế đang có + SPY/QQQ + ứng viên đang xét.
 4. Quản lý vị thế đang mở theo phán đoán (dời stop, chốt lời một phần, v.v.).
 5. Tìm cơ hội mới: tin tức, momentum, volume bất thường, phá vỡ kỹ thuật — WebSearch khi cần.
 6. Khi có đề xuất (vài phiên đầu): trình bày mã + hành động + lý do + stop/chốt lời, gọi `review_equity_order`, gửi `PushNotification` 1 dòng, **chờ Hogan duyệt**. Đề xuất hết hạn sau 10 phút hoặc giá lệch >1%.
-7. Sau khi duyệt (hoặc tự động): `place_equity_order`, xác nhận khớp, đặt stop nếu cần. Ghi `sandbox-log.md` + commit + push ngay.
+7. Sau khi duyệt (hoặc tự động): `place_equity_order`, xác nhận khớp, đặt stop nếu cần. Ghi vào `sandbox-YYYY-MM-DD.md` (cập nhật block Trạng thái hiện tại + thêm entry mới) + commit + push ngay.
 8. Nhịp không có gì: 1–2 dòng (SPY/QQQ, vị thế, tín hiệu), **không ghi log, không push**.
