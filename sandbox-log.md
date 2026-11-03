@@ -839,3 +839,18 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
   2. AEHR: earnings gap +25% hấp dẫn nhưng mua ở gần đỉnh intraday ($65.18 khi đỉnh chỉ $65.50) và không có volume xác nhận tiếp — gap fill xảy ra nhanh. Lần sau cần chờ 30-60 phút sau mở cửa để xác nhận gap hold/continue.
   3. Cả 2 lệnh vào gần cùng lúc (~10:42), hết tiền không có thêm cơ hội. Nên để lại ít nhất 20-30% vốn để average down hoặc mua lệnh thứ 2.
 - **Đã gửi PushNotification.**
+
+## 2026-11-03 ~12:29 ET (17:29 UTC) — VÀO LỆNH RVTY: midday consolidation at highs sau earnings beat, 2cp @ $169.05
+
+- **Cơ sở chọn RVTY:** Revvity (RVTY) báo cáo earnings beat + raised guidance → gap lên +11.6% so đóng cửa ($151.60 → ~$169). Stock đã giữ vững ở $169-170 từ ~10:00 ET đến 12:29 ET (~2.5 giờ consolidation). Pattern "midday consolidation at highs" = tổ chức đang giữ, không bán profit → có khả năng tiếp tục run vào close.
+- **Context thị trường:** SPY +0.45% ($755.51), QQQ +0.90% ($687.19) — thị trường xanh nhẹ, đủ điều kiện vào lệnh. Không chọn gap-and-go (tránh lặp lại sai lầm AEHR phiên trước).
+- **Limited margin:** tài khoản đã upgrade lên limited_margin từ cash → mua ngay với buying_power $930.74, không cần chờ tiền settle từ AEHR/AMD bán sáng nay.
+- **Lệnh MUA:** `place_equity_order` RVTY limit $169.50 GFD, 2cp — khớp @ **$169.0499** lúc 17:29:25 UTC (12:29 ET), order id `6aea19f5`.
+- **Lệnh STOP-LOSS:** stop_market GFD $163.50, 2cp — đặt xong (order id `6aea1a09`, state unconfirmed). Max risk: ($169.05 − $163.50) × 2 = **$11.10** (~1.2% vốn day trade).
+- **Tóm tắt vị thế:**
+  - RVTY: 2cp, giá vốn $169.05, stop GFD $163.50 (−3.3%), target $177+ trước 15:50 ET (R/R ≥ 1.4:1)
+  - Vốn dùng: $338.10 / $930.74 = 36.3% (giữ ~64% cash — cải thiện từ phiên 1 dùng 93%)
+  - Cash còn lại: ~$592.64 (sẵn sàng cho cơ hội thứ 2 nếu có)
+- **Wash-sale constraints:** AMD (~2026-12-03), AEHR (~2026-12-03), WULF (~2026-11-21). KTOS hết hạn 2026-11-04 (ngày mai).
+- **Kế hoạch:** theo dõi 5 phút/lần; trail stop nếu tăng lên $172+; đóng trước 15:50 ET theo nguyên tắc intraday.
+- **Đã gửi PushNotification.**
