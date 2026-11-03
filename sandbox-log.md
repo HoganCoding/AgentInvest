@@ -790,3 +790,18 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - **Wash-sale constraints:** WULF cấm tới ~2026-11-21; KTOS cấm tới ~2026-11-04 (hết hạn ngày mai).
 - **Ghi chú:** đây là lệnh qua đêm — earnings AMD sau đóng cửa hôm nay. Sẽ theo dõi sát phản ứng giá after-hours và premarket ngày mai để quyết định chốt lời hoặc điều chỉnh stop.
 - **Đã gửi PushNotification.**
+
+## 2026-11-03 ~10:42 ET (15:42 UTC) — INTRADAY: mua AEHR 6cp @ $65.18, stop $60 GFD; AMD giữ đến gần close
+
+- **Hogan clarify (2026-11-03):** Day trade là intraday mua/bán thường xuyên, không overnight hold — core portfolio đã lo phần giữ dài hạn. Áp dụng từ nhịp này: ưu tiên đóng vị thế trước ~15:50 ET.
+- **AMD 1cp @$489.14 (đã mua):** Hogan chọn giữ → đóng trước close (không qua đêm). Stop $445 GTC vẫn giữ nguyên như bảo vệ khẩn cấp.
+- **Phân tích ứng viên intraday ($455 còn lại):** AEHR +25.6% ($51.47→$64.65) — earnings beat, đang sustain mức premarket (không fading), track record thắng tại tài khoản này (+23.1%/+14.47%). KLAC/AMAT đã fading từ premarket +5%. BLZE faded từ +37% premarket xuống +8% — tránh. RVTY +12% earnings beat nhưng AEHR có momentum mạnh hơn và trong tầm giá.
+- **Lệnh MUA AEHR:** `place_equity_order` limit $65.50 GFD, 6cp — khớp @ **$65.18** (10:42 ET, order id `6aea00ce`). Cost = $391.08.
+- **Lệnh STOP AEHR:** stop_market $60 GFD, 6cp (order id `6aea00e4`). Max risk: ($65.18−$60) × 6 = **$31.08** (~3.3% vốn day trade).
+- **Tóm tắt vị thế sau nhịp này:**
+  - AMD: 1cp @$489.14, stop GTC $445 (overnight backup), **đóng trước 15:50 ET**
+  - AEHR: 6cp @$65.18, stop GFD $60, **đóng trước 15:50 ET**
+  - Cash còn lại: ~$64.85 (không đủ cho thêm lệnh)
+  - Tổng vốn dùng: $880.22 / $945.07 = 93.1%
+- **Kế hoạch:** theo dõi 5 phút/lần, trail stop AEHR nếu tăng tiếp, đóng cả 2 trước 15:50 ET. Không qua đêm trừ khi có lý do đặc biệt.
+- **Đã gửi PushNotification.**
