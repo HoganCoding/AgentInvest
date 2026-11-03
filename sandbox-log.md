@@ -854,3 +854,13 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - **Wash-sale constraints:** AMD (~2026-12-03), AEHR (~2026-12-03), WULF (~2026-11-21). KTOS hết hạn 2026-11-04 (ngày mai).
 - **Kế hoạch:** theo dõi 5 phút/lần; trail stop nếu tăng lên $172+; đóng trước 15:50 ET theo nguyên tắc intraday.
 - **Đã gửi PushNotification.**
+
+## 2026-11-03 ~13:05 ET (18:05 UTC) — THOÁT RVTY: relative weakness vs market, cắt lỗ chủ động −$2.10
+
+- **Diễn biến RVTY:** sau khi mua $169.05 (12:29), stock dipped xuống $167.93 (12:43), bounce lên $168.68 (12:54) rồi stuck tại $168.12-168.32 trong suốt 35 phút. Trong khi đó SPY/QQQ liên tục tạo đỉnh mới (SPY +0.50%, QQQ +0.91%).
+- **Lý do thoát:** thesis "midday consolidation → afternoon continuation" không xảy ra — RVTY không follow thị trường khi SPY/QQQ mạnh. Relative weakness liên tục 35 phút là tín hiệu rõ thesis thất bại.
+- **Thực hiện:** hủy stop GFD $163.50 (id `6aea1a09`, accepted) → bán market 2cp RVTY → khớp @ **$168.0001** (18:05:26 UTC, id `6aea2266`).
+- **P&L RVTY:** ($168.00 − $169.05) × 2 = **−$2.10** (−1.24%)
+- **Wash-sale:** RVTY bán lỗ hôm nay → **cấm mua lại RVTY tới ~2026-12-03** (30 ngày).
+- **Trạng thái:** 100% cash ~$928, buying_power đã settle (limited_margin). Còn ~2.75 giờ đến 15:50 ET — tìm cơ hội tiếp theo.
+- **Đã gửi PushNotification.**
