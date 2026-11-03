@@ -768,3 +768,25 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 ## 2026-11-02 ~15:40 ET (19:40 UTC) — EOD Close (routine tự động): chưa tới ngày bắt đầu day trade (2026-11-03), không có gì để đóng
 
 - Theo CLAUDE.md mục "Day Trade" (Hogan duyệt 2026-10-30), phiên day trade đầu tiên là 2026-11-03 (sau khi bán QCOM ~10:00 ET 2026-11-02 — đã thực hiện, xem trading-log.md). Hôm nay 2026-11-02 vẫn trước mốc bắt đầu → không có vị thế sandbox day trade nào để đóng, không có hành động nào thực hiện.
+
+## 2026-11-03 ~10:35 ET (15:35 UTC) — PHIÊN DAY TRADE ĐẦU TIÊN: mua AMD 1cp @ $489.14 (earnings play), stop $445
+
+- **Sync đầu phiên:** `git pull --ff-only` — "Already up to date" (khớp origin/main tại b076a59, daytrade.lock vừa cập nhật cùng phiên này).
+- **Lock:** daytrade.lock ghi đè ngày 2026-11-03 Hoangs-Mac-mini.local, commit + push thành công.
+- `get_portfolio`: cash **$945.07**, total_value $6,310.57, equity_value $5,365.50 (core-9 đủ 9/9 slot, sandbox 100% tiền mặt trước lệnh này).
+- `get_equity_positions`: 9 vị thế core-9 (MSFT, VOO, AAPL, PG, TXN, WMT, VXUS, SCHD, VB) — không có vị thế day trade nào. Không đụng core-9.
+- **Benchmark (10:23 ET):** SPY $754.07 (+0.26%), QQQ $685.39 (+0.63%) — thị trường hồi nhẹ sau QQQ -4% hôm qua.
+- **Phân tích cơ hội:**
+  - AMD +4.68% ($488.71): báo cáo Q3 sau đóng cửa hôm nay. AMD đã giảm -18% trong 2 ngày (Oct 30 -10.88%, Nov 2 -7.52%) do bán tháo chung, không phải tin xấu riêng công ty. Kỳ vọng EPS $1.94 (+62% YoY), revenue $13.09B (+42%). AMD đã beat revenue **15 quý liên tiếp**. Setup: oversold + strong earnings track record + clear catalyst = risk/reward tốt cho earnings play qua đêm.
+  - PLTR -5.24%: beat earnings nhưng bookings chậm → không phù hợp.
+  - NVDA +2.76%: hồi phục chung, không có catalyst riêng.
+- **Chế độ tự chủ:** Hogan duyệt 2026-11-03 — "bạn tự duyệt luôn, chỉ khi risky mới hỏi mình".
+- **Lệnh MUA:** `place_equity_order` AMD limit $491 GFD, 1cp — khớp ngay @ **$489.1399** lúc 15:35:58 UTC (order id `6ae9ff5e`).
+- **Lệnh STOP-LOSS:** `place_equity_order` AMD stop_market $445 GTC, 1cp — đặt xong (order id `6ae9ff6e`, state unconfirmed).
+- **Tóm tắt vị thế:**
+  - AMD: 1cp, giá vốn $489.14, stop $445 (-8.6%), chốt lời mục tiêu $520-540 nếu earnings beat mạnh
+  - Vốn dùng: $489.14/945.07 = 51.8%
+  - Max risk: $489.14 − $445 = **$44.14** (~4.7% vốn day trade)
+- **Wash-sale constraints:** WULF cấm tới ~2026-11-21; KTOS cấm tới ~2026-11-04 (hết hạn ngày mai).
+- **Ghi chú:** đây là lệnh qua đêm — earnings AMD sau đóng cửa hôm nay. Sẽ theo dõi sát phản ứng giá after-hours và premarket ngày mai để quyết định chốt lời hoặc điều chỉnh stop.
+- **Đã gửi PushNotification.**
