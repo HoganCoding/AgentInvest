@@ -815,3 +815,27 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - **Wash-sale:** AEHR bán lỗ hôm nay → **cấm mua lại AEHR tới ~2026-12-03** (30 ngày).
 - **Trạng thái sau thoát:** AMD 1cp @$489.14 còn giữ, kế hoạch đóng trước 15:50 ET. Cash ~$378 unsettled (từ AEHR, không dùng được ngay để mua mới — tránh GFV), ~$65 settled. Không mở lệnh mới với tiền chưa settle.
 - **Đã gửi PushNotification.**
+
+## 2026-11-03 ~11:36 ET (16:36 UTC) — THOÁT AMD: chạm ngưỡng $487, cắt lỗ chủ động −$1.37
+
+- **Diễn biến AMD:** sau khi mua $489.14 (10:35), đạt đỉnh $494.34 (11:03) rồi giảm liên tục — 11:22 $489.51 (near breakeven), 11:27 bounce $489.86, 11:32 $487.95 (vào đỏ), 11:36 $487.36 (bid $487.34, gần ngưỡng $487). Thị trường cũng yếu đồng thời (QQQ từ +1.08% → +0.64%).
+- **Quyết định:** đã đặt ngưỡng thoát $487 từ nhịp 11:32; bid AMD tới $487.34 (thực chất tại ngưỡng) → thoát chủ động. Không giữ đến gần close vì trend rõ ràng giảm và không muốn chịu thêm rủi ro với earnings tonight.
+- **Thực hiện:** hủy stop GTC $445 (id `6ae9ff6e`, cancelled) → bán market 1cp AMD → khớp @ **$487.7697** (16:37:11 UTC, id `6aea0db7`).
+- **P&L AMD:** $487.77 − $489.14 = **−$1.37** (−0.28%)
+
+## 2026-11-03 — Tổng kết phiên day trade đầu tiên
+
+| Mã | Hành động | Giá vào | Giá ra | P&L $ | P&L % |
+|---|---|---|---|---|---|
+| AMD | Mua 1cp → Bán | $489.14 | $487.77 | **−$1.37** | −0.28% |
+| AEHR | Mua 6cp → Bán | $65.18 | $63.02 | **−$12.96** | −3.31% |
+| **Tổng** | | | | **−$14.33** | −1.52% |
+
+- **Vốn ban đầu:** $945.07 → **Vốn cuối:** ~$930.74 (ước tính, toàn bộ cash unsettled từ 2 lệnh bán hôm nay)
+- **Vẫn trên ngưỡng dừng hẳn $700** — tiếp tục phiên tiếp theo.
+- **Wash-sale mới:** AMD bán lỗ hôm nay → **cấm mua lại AMD tới ~2026-12-03**. Cộng với AEHR (~12-03) và WULF (~11-21) và KTOS (~11-04, hết hạn ngày mai).
+- **Bài học phiên đầu:**
+  1. AMD: thesis đúng (pre-earnings momentum) nhưng mua sau khi gap +4.7% rồi thị trường quay đầu — entry timing kém, nên mua sớm hơn hoặc chờ pullback xác nhận trước khi vào.
+  2. AEHR: earnings gap +25% hấp dẫn nhưng mua ở gần đỉnh intraday ($65.18 khi đỉnh chỉ $65.50) và không có volume xác nhận tiếp — gap fill xảy ra nhanh. Lần sau cần chờ 30-60 phút sau mở cửa để xác nhận gap hold/continue.
+  3. Cả 2 lệnh vào gần cùng lúc (~10:42), hết tiền không có thêm cơ hội. Nên để lại ít nhất 20-30% vốn để average down hoặc mua lệnh thứ 2.
+- **Đã gửi PushNotification.**
