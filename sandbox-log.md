@@ -854,3 +854,28 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
 - **Wash-sale constraints:** AMD (~2026-12-03), AEHR (~2026-12-03), WULF (~2026-11-21). KTOS hết hạn 2026-11-04 (ngày mai).
 - **Kế hoạch:** theo dõi 5 phút/lần; trail stop nếu tăng lên $172+; đóng trước 15:50 ET theo nguyên tắc intraday.
 - **Đã gửi PushNotification.**
+
+## 2026-11-03 ~13:05 ET (18:05 UTC) — THOÁT RVTY: relative weakness vs market, cắt lỗ chủ động −$2.10
+
+- **Diễn biến RVTY:** sau khi mua $169.05 (12:29), stock dipped xuống $167.93 (12:43), bounce lên $168.68 (12:54) rồi stuck tại $168.12-168.32 trong suốt 35 phút. Trong khi đó SPY/QQQ liên tục tạo đỉnh mới (SPY +0.50%, QQQ +0.91%).
+- **Lý do thoát:** thesis "midday consolidation → afternoon continuation" không xảy ra — RVTY không follow thị trường khi SPY/QQQ mạnh. Relative weakness liên tục 35 phút là tín hiệu rõ thesis thất bại.
+- **Thực hiện:** hủy stop GFD $163.50 (id `6aea1a09`, accepted) → bán market 2cp RVTY → khớp @ **$168.0001** (18:05:26 UTC, id `6aea2266`).
+- **P&L RVTY:** ($168.00 − $169.05) × 2 = **−$2.10** (−1.24%)
+- **Wash-sale:** RVTY bán lỗ hôm nay → **cấm mua lại RVTY tới ~2026-12-03** (30 ngày).
+- **Trạng thái:** 100% cash ~$928, buying_power đã settle (limited_margin). Còn ~2.75 giờ đến 15:50 ET — tìm cơ hội tiếp theo.
+- **Đã gửi PushNotification.**
+
+## 2026-11-03 ~13:07 ET (18:07 UTC) — VÀO LỆNH ETN: earnings acceleration + market breakout, 2cp @ $391.28
+
+- **Lý do chọn ETN:** Eaton Corp báo Q3 beat với +19% organic growth diện rộng (Electrical Americas/Global/Aerospace). Buổi sáng +7% → nhích về +5.87% → 13:06 ET đang accelerate lại +7.06% cùng lúc SPY/QQQ tạo đỉnh mới ngày. Khác RVTY (stuck trong khi market rally) — ETN đang FOLLOW thị trường tích cực. Đây là setup "earnings beat + market tailwind" rõ ràng hơn.
+- **Context thị trường:** SPY +0.53% ($756.05), QQQ +0.95% ($687.57) — mạnh nhất trong ngày, đỉnh mới.
+- **Review:** `review_equity_order` clean, không có alerts. ETN bid $391.47/ask $391.79 lúc review.
+- **Lệnh MUA:** `place_equity_order` ETN limit $393.00 GFD, 2cp — khớp @ **$391.2771** lúc 18:07:09 UTC (13:07 ET), order id `6aea22cd`. Cost = $782.55.
+- **Lệnh STOP-LOSS:** stop_market GFD $381.00, 2cp — đặt xong (order id `6aea22ea`). Max risk: ($391.28 − $381) × 2 = **$20.55** (~2.2% vốn day trade).
+- **Tóm tắt vị thế:**
+  - ETN: 2cp, giá vốn $391.28, stop GFD $381 (−2.6%), target $403+ trước 15:50 ET (R/R ~2:1)
+  - Vốn dùng: $782.55 / ~$928 = 84.3%
+  - Cash còn lại: ~$145 (buffer nhỏ, đủ)
+- **Wash-sale constraints:** AMD, AEHR, RVTY (tất cả ~2026-12-03), WULF (~2026-11-21). ETN chưa có lịch sử giao dịch tại tài khoản này.
+- **Kế hoạch:** theo dõi 5 phút/lần; trail stop nếu ETN vượt $397 (lock profit); đóng trước 15:50 ET theo nguyên tắc intraday.
+- **Đã gửi PushNotification.**
