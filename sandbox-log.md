@@ -805,3 +805,13 @@ Log riêng cho phần vốn sandbox (~$700–1400, tự động, KHÔNG cần du
   - Tổng vốn dùng: $880.22 / $945.07 = 93.1%
 - **Kế hoạch:** theo dõi 5 phút/lần, trail stop AEHR nếu tăng tiếp, đóng cả 2 trước 15:50 ET. Không qua đêm trừ khi có lý do đặc biệt.
 - **Đã gửi PushNotification.**
+
+## 2026-11-03 ~11:17 ET (16:17 UTC) — THOÁT AEHR: phá hỗ trợ $63.50, cắt lỗ chủ động −$12.96
+
+- **Diễn biến AEHR:** sau khi mua $65.18 (10:42), tạo đỉnh $65.50 (10:44) rồi liên tục giảm — test đáy $63.90 (10:53), bounce lên $64.53 (11:03) nhưng không giữ được, rồi phá thủng $63.90 xuống $63.16 (11:17). Pattern: lower-high/lower-low liên tiếp, recovery thất bại 2 lần.
+- **Quyết định:** đã đặt ngưỡng thoát sớm $63.50 từ nhịp 11:12; AEHR xuống $63.16 (bid $63.14) → vượt ngưỡng → thoát chủ động thay vì chờ stop $60. SPY/QQQ vẫn xanh (+0.5%/+0.99%) nên đây là yếu kém riêng cổ phiếu, không phải macro.
+- **Thực hiện:** hủy stop GFD $60 (id `6aea00e4`, confirmed cancelled) → bán market 6cp AEHR → khớp @ **$63.0201** (16:18:20 UTC, id `6aea094c`).
+- **P&L AEHR:** ($63.02 − $65.18) × 6 = **−$12.96** (−3.31%)
+- **Wash-sale:** AEHR bán lỗ hôm nay → **cấm mua lại AEHR tới ~2026-12-03** (30 ngày).
+- **Trạng thái sau thoát:** AMD 1cp @$489.14 còn giữ, kế hoạch đóng trước 15:50 ET. Cash ~$378 unsettled (từ AEHR, không dùng được ngay để mua mới — tránh GFV), ~$65 settled. Không mở lệnh mới với tiền chưa settle.
+- **Đã gửi PushNotification.**
