@@ -2834,3 +2834,48 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 **Ngưỡng đóng cửa -10%:** đây là lần kiểm tra 13:00 ET (không phải lần kiểm tra CHÍNH 15:30 ET) — không mã nào gần ngưỡng (đệm nhỏ nhất vẫn >10% dựa trên đỉnh tham chiếu đang dùng MSFT $551.15/AAPL $351.73/TXN $316.75/PG $166.85/WMT $127.715); MSFT/AAPL hôm nay chưa vượt đỉnh tham chiếu cũ (MSFT $553.47 > đỉnh cũ $551.15 — **có thể đã tạo đỉnh mới**, sẽ xác nhận chính thức bằng `get_equity_historicals` ở lần kiểm tra CHÍNH 15:30 ET hôm nay). Không breach ngưỡng -10% cho mã nào.
 
 **Kết luận:** Không có sự kiện bất thường cần hành động — toàn vẹn 5 stop dự phòng xác nhận đầy đủ, không mã nào breach ngưỡng -10%, đà tăng mạnh của MSFT/AAPL hôm nay là macro/rotation tích cực (bầu cử giữa kỳ + hồi phục nhóm tech), không phải tiêu chí thay mã. **Không có đề xuất mới lần kiểm tra này.** Lần kiểm tra CHÍNH 15:30 ET hôm nay sẽ xác nhận lại đỉnh tham chiếu MSFT (khả năng đỉnh mới $553.47+) và ngưỡng đóng cửa -10% chính thức.
+
+## 2026-11-04 ~15:41 ET (20:41 UTC) — Kiểm tra CHÍNH ngưỡng đóng cửa -10% core-9 (routine tự động, sync git): MSFT/AAPL/PG/WMT/TXN đều tạo đỉnh mới phiên 2 của đà tăng hậu bầu cử; không breach; toàn vẹn 5 stop dự phòng OK; không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin main` + `git checkout -B main origin/main` — khớp sạch tại `4f530b6` (gồm log phiên day trade BAC/PYPL sáng nay, không đụng core). Không conflict.
+- **Core hiện 9 mã** (không đổi): MSFT 1cp, AAPL 1.483843cp, TXN 2.009648cp, PG 3.416927cp, WMT 4.545415cp, VOO 1.156525cp, VXUS 9.365746cp, SCHD 15.020016cp, VB 1.736545cp.
+- `get_portfolio`: total value **$6,448.48**, cash/buying_power **$924.09** (không có nạp mới ngoài khoản $300 tháng 11 đã xử lý xong 11-02).
+
+**Toàn vẹn stop dự phòng (bắt buộc mỗi lần kiểm tra):** `get_equity_orders` state=confirmed xác nhận **đủ 5/5 lệnh** — MSFT $438.30 (`6aeb4120`), AAPL $293.54 (`6aeb4121`), TXN $252.50 (`6aeb4123`), PG $135.96 (`6ad108b4`), WMT $103.17 (`6ad108b6`). Tất cả còn `confirmed`. Không thiếu mã nào → không cần báo khẩn.
+
+**Giá hiện tại (~20:41 UTC) so đóng cửa 11-03 và P&L chưa chốt:**
+| Mã | Giá hiện tại | % hôm nay | Giá vốn TB | P&L% |
+|---|---|---|---|---|
+| MSFT | $558.14 | +7.13% | $510.00 | +9.44% |
+| AAPL | $351.67 | +5.96% | $328.93 | +6.91% |
+| TXN | $309.44 | -0.98% | $268.56 | +15.22% |
+| PG | $167.75 | +3.51% | $147.23 | +13.94% |
+| WMT | $130.28 | +4.34% | $109.85 | +18.60% |
+| VOO | $705.545 | +1.73% | $692.87 | +1.83% |
+| VXUS | $83.845 | +1.94% | $85.60 | -2.05% |
+| SCHD | $36.16 | +1.72% | $33.36 | +8.39% |
+| VB | $295.38 | +1.04% | $288.77 | +2.29% |
+
+- **Benchmark:** SPY $767.57 (+1.75%), QQQ $692.02 (+0.98%) so đóng cửa 11-03 — phiên 2 liên tiếp thị trường tăng mạnh.
+- **MSFT/AAPL tiếp tục vượt trội QQQ** (+7.13%/+5.96% vs +0.98%) — WebSearch không tìm thấy tin tức đặc thù riêng công ty cho hôm nay (chỉ có kết quả cũ/không liên quan) → phù hợp với diễn giải tiếp diễn của entry 13:04 ET hôm nay (đà tăng hậu bầu cử giữa kỳ + hồi phục nhóm tech, không phải catalyst công ty riêng). **Không đạt tiêu chí thay mã/bán theo CLAUDE.md.**
+
+### Ngưỡng đóng cửa -10% — xác nhận đỉnh mới (lần kiểm tra CHÍNH)
+
+`get_equity_historicals` 5-phút cả phiên (13:30→20:45 UTC) hôm nay:
+
+| Mã | Đỉnh tham chiếu trước | Đỉnh intraday hôm nay | Đỉnh mới? | Đỉnh tham chiếu (cập nhật) | Ngưỡng đóng cửa -10% | Giá hiện tại | Đệm |
+|---|---|---|---|---|---|---|---|
+| MSFT | $551.15 | **$559.15** | Có | $559.15 | $503.24 | $558.14 | +10.91% |
+| AAPL | $351.73 | **$354.47** | Có | $354.47 | $319.02 | $351.67 | +10.24% |
+| TXN | $316.75 | **$317.155** | Có (nhỏ) | $317.155 | $285.44 | $309.44 | +8.41% |
+| PG | $166.85 | **$168.16** | Có | $168.16 | $151.34 | $167.75 | +10.84% |
+| WMT | $127.715 | **$130.94** | Có | $130.94 | $117.85 | $130.28 | +10.55% |
+
+- **Cả 5/5 mã tech/blue-chip đều tạo đỉnh mới hôm nay** — cập nhật đỉnh tham chiếu dùng cho ngưỡng đóng cửa -10% (ngầm theo quy tắc, không cần duyệt riêng). **Không mã nào breach** (đệm thấp nhất: TXN +8.41%).
+- **Stop dự phòng trên sàn (-15% từ đỉnh):** mức mới tương ứng sẽ cao hơn đáng kể mức hiện tại (vd. MSFT $475.28 vs hiện tại $438.30, WMT $111.30 vs $103.17) — **không đề xuất dời lần này**: sáng nay Hogan vừa chủ động khôi phục cả 5 lệnh về ĐÚNG mức cũ 10-30, từ chối dùng mức cao hơn mà các routine trước đã đề xuất ("không dùng mức cao hơn do các routine đề xuất"). Lặp lại đề xuất dời ngay trong cùng ngày là không phù hợp với quyết định đó — chỉ ghi nhận đỉnh mới, giữ nguyên stop hiện tại.
+
+### Chốt lời — không có đề xuất mới
+- WMT +18.60%, TXN +15.22% — đã vượt ngưỡng cảnh báo +15% từ trước, đề xuất chốt lời một phần (11-02) vẫn CHỜ Hogan — không lặp lại.
+- PG +13.94% — tiến gần ngưỡng cảnh báo +15% nhưng chưa chạm — chỉ ghi nhận theo dõi, chưa cảnh báo.
+
+**Kết luận:** Không có đề xuất mua/bán/thay mã mới. Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Cả 5 mã tech/blue-chip tạo đỉnh mới hôm nay nhưng không mã nào breach ngưỡng đóng cửa -10% (đệm thấp nhất TXN +8.41%). Đà tăng mạnh MSFT/AAPL phiên 2 liên tiếp là tiếp diễn macro/rotation (không có tin đặc thù công ty mới), không đạt tiêu chí thay mã. Đề xuất dời stop dự phòng theo đỉnh mới KHÔNG được lặp lại do Hogan vừa từ chối mức cao hơn sáng nay. **Không có đề xuất mới lần kiểm tra này** → không gửi PushNotification.
