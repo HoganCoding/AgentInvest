@@ -2803,3 +2803,34 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 - **Đã thêm quy tắc "Toàn vẹn lệnh stop dự phòng"** vào mục Quản trị rủi ro của CLAUDE.md.
 - **Đính chính thuế:** theo `get_equity_tax_lots`, lô WMT mở 2026-09-23, lô TXN mở 2026-09-15 và 2026-09-23 — tất cả NGẮN HẠN. Hưởng thuế dài hạn chỉ từ sau 2027-09-23. Ghi chú ngày 11-02 ("mua từ ~2026-07, đã >4 tháng") là sai.
 - Đề xuất chốt lời một phần WMT/TXN (11-02) vẫn CHỜ Hogan, không thay đổi.
+
+## 2026-11-04 ~13:04 ET (18:04 UTC) — Kiểm tra giữa phiên core-9 (routine tự động, sync git): thị trường tăng mạnh (Dems thắng Quốc hội) kéo MSFT/AAPL vượt trội hẳn QQQ; toàn vẹn 5 stop dự phòng xác nhận OK; không có đề xuất mới
+
+- **Sync đầu phiên:** `git pull origin main --ff-only` — "Already up to date" tại `0232b7a` (gồm log phiên day trade PYPL sáng nay, không đụng core). Không conflict.
+- **Core hiện 9 mã** (không đổi): MSFT 1cp, AAPL 1.483843cp, TXN 2.009648cp (tăng nhẹ do DRIP, avg cost $268.56 từ $268.34), PG 3.416927cp, WMT 4.545415cp, VOO 1.156525cp, VXUS 9.365746cp, SCHD 15.020016cp, VB 1.736545cp.
+- `get_portfolio`: total value **$6,450.63**, cash/buying_power **$924.48**.
+
+**Toàn vẹn stop dự phòng (bắt buộc mỗi lần kiểm tra theo quy tắc 11-04 mới):** `get_equity_orders` state=confirmed xác nhận **đủ 5/5 lệnh stop dự phòng** — MSFT $438.30 (`6aeb4120`), AAPL $293.54 (`6aeb4121`), TXN $252.50 (`6aeb4123`), PG $135.96 (`6ad108b4`), WMT $103.17 (`6ad108b6`). Tất cả còn `confirmed`, đúng mức Hogan khôi phục sáng nay 09:28 ET. Không thiếu mã nào → không cần báo khẩn.
+
+**Giá hiện tại (~18:04 UTC) so đóng cửa 11-03 và P&L chưa chốt so giá vốn:**
+| Mã | Giá hiện tại | Đóng cửa 11-03 | % hôm nay | Giá vốn TB | P&L% |
+|---|---|---|---|---|---|
+| MSFT | $553.47 | $520.99 | **+6.23%** | $510.00 | +8.52% |
+| AAPL | $354.42 | $331.90 | **+6.78%** | $328.93 | +7.75% |
+| TXN | $310.91 | $312.49 | -0.51% | $268.56 | +15.77% |
+| PG | $167.43 | $162.06 | +3.31% | $147.23 | +13.72% |
+| WMT | $130.045 | $124.86 | +4.15% | $109.85 | +18.39% |
+| VOO | $706.73 | $693.54 | +1.90% | $692.87 | +2.00% |
+| VXUS | $83.935 | $82.25 | +2.05% | $85.60 | -1.95% |
+| SCHD | $36.0929 | $35.55 | +1.53% | $33.36 | +8.19% |
+| VB | $295.51 | $292.34 | +1.08% | $288.77 | +2.33% |
+
+- **Benchmark:** SPY $768.84 (**+1.92%**), QQQ $696.09 (**+1.58%**) so đóng cửa 11-03 — thị trường tăng mạnh toàn phiên.
+- **MSFT (+6.23%) và AAPL (+6.78%) vượt trội rõ rệt so QQQ (+1.58%)** → đã `WebSearch` xác nhận nguyên nhân: (1) thị trường chung tăng mạnh (Dow +2.5-2.9%, S&P +1.7-1.8%, Nasdaq +1.9%) do Đảng Dân chủ thắng kiểm soát Quốc hội trong bầu cử giữa kỳ hôm qua (giảm bất định chính trị) — theo TheStreet/Yahoo Finance/StockTitan; (2) nhóm cổ phiếu công nghệ/bán dẫn hồi phục mạnh riêng trong phiên này theo cùng nguồn (sau giai đoạn lo ngại "bong bóng AI-capex" các tuần trước) — không phải tin tức đặc thù riêng MSFT/AAPL (không có thông tin công ty mới nào tìm thấy cho hôm nay). **Không đạt tiêu chí thay mã/bán theo CLAUDE.md** (đây là catalyst tích cực macro + rotation, không phải tin xấu hay suy giảm fundamentals).
+- TXN đi ngang hôm nay (-0.51%) trong khi nhóm công nghệ khác tăng mạnh — không phải tin xấu, chỉ là biến động bình thường (TXN đã tăng rất mạnh các phiên trước, +15.77% tổng).
+
+**Chốt lời — không có đề xuất mới:** WMT +18.39%, TXN +15.77% — cả hai đã vượt ngưỡng cảnh báo +15% từ các lần kiểm tra trước (WMT: đề xuất chốt lời một phần từ 11-02 vẫn CHỜ Hogan; TXN: đã ghi nhận vượt ngưỡng từ 11-03, chưa có đề xuất riêng) — **không lặp lại đề xuất mới lần này**, chỉ xác nhận vẫn còn hiệu lực.
+
+**Ngưỡng đóng cửa -10%:** đây là lần kiểm tra 13:00 ET (không phải lần kiểm tra CHÍNH 15:30 ET) — không mã nào gần ngưỡng (đệm nhỏ nhất vẫn >10% dựa trên đỉnh tham chiếu đang dùng MSFT $551.15/AAPL $351.73/TXN $316.75/PG $166.85/WMT $127.715); MSFT/AAPL hôm nay chưa vượt đỉnh tham chiếu cũ (MSFT $553.47 > đỉnh cũ $551.15 — **có thể đã tạo đỉnh mới**, sẽ xác nhận chính thức bằng `get_equity_historicals` ở lần kiểm tra CHÍNH 15:30 ET hôm nay). Không breach ngưỡng -10% cho mã nào.
+
+**Kết luận:** Không có sự kiện bất thường cần hành động — toàn vẹn 5 stop dự phòng xác nhận đầy đủ, không mã nào breach ngưỡng -10%, đà tăng mạnh của MSFT/AAPL hôm nay là macro/rotation tích cực (bầu cử giữa kỳ + hồi phục nhóm tech), không phải tiêu chí thay mã. **Không có đề xuất mới lần kiểm tra này.** Lần kiểm tra CHÍNH 15:30 ET hôm nay sẽ xác nhận lại đỉnh tham chiếu MSFT (khả năng đỉnh mới $553.47+) và ngưỡng đóng cửa -10% chính thức.
