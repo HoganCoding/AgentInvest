@@ -11,11 +11,12 @@
 ## Day Trade (thay thế hoàn toàn sandbox — Hogan duyệt 2026-10-30)
 Đây là ngoại lệ cho nguyên tắc "chỉ đề xuất, không tự đặt lệnh" — chỉ áp dụng cho phần vốn day trade dưới đây, KHÔNG áp dụng cho core-9.
 
-- **Vốn:** ~$1,000 (toàn bộ cash ngoài core-9). Chỉ dùng `buying_power` đã settle (cash account — tránh GFV).
-- **Quyền tự chủ:** agent tự chọn mã, tự vào/thoát lệnh, tự quyết stop-loss và thời gian nắm giữ (có thể qua đêm). Chỉ mua cổ phiếu NGUYÊN (để có stop tự động trên sàn).
-- **Vài phiên đầu:** agent đề xuất → Hogan duyệt. Khi thấy kết quả tốt, Hogan sẽ bật chế độ tự động hoàn toàn.
+- **Vốn:** ~$1,000 (toàn bộ cash ngoài core-9). Chỉ dùng `buying_power` Robinhood báo (tài khoản limited margin, không vay margin).
+- **Quyền tự chủ:** agent tự chọn mã, tự vào/thoát lệnh, tự quyết stop-loss, trong khuôn khổ quy tắc cứng ở `.claude/commands/daytrade.md`. Chỉ trong ngày, đóng hết trước 15:50 ET. Chỉ mua cổ phiếu NGUYÊN (để có stop tự động trên sàn).
+- **Chế độ tự động (Hogan bật 2026-11-04):** agent tự đặt lệnh trong quy tắc cứng ở `.claude/commands/daytrade.md`; chỉ hỏi Hogan ở các trường hợp rủi ro nêu trong file đó.
 - **Tiêu chí giao dịch:** agent tự đánh giá — mua khi thấy cơ hội có lời rõ ràng (tin tức, momentum, kỹ thuật...), quản lý rủi ro theo phán đoán riêng.
-- **Bắt buộc:** ghi mỗi lệnh vào `sandbox-log.md` (mã, giá, lý do, lãi/lỗ $) + PushNotification 1 dòng khi vào/thoát lệnh. KHÔNG chung với `trading-log.md` của core-9.
+- **Bắt buộc:** ghi mỗi lệnh vào file ngày `sandbox-YYYY-MM-DD.md` (mã, giá, lý do, lãi/lỗ $; `sandbox-log.md` chỉ là archive) + PushNotification 1 dòng khi vào/thoát lệnh. KHÔNG chung với `trading-log.md` của core-9.
+- **Ngoại lệ thuế:** day trade là quay vòng ngắn hạn có chủ đích, nên nguyên tắc "hạn chế giao dịch phát sinh thuế" ở đầu file không áp dụng cho phần vốn này.
 - **Dừng hẳn:** nếu vốn giảm còn < $700 → báo Hogan, không tự nạp thêm.
 - **Chỉ 1 phiên `/daytrade` chạy tại một thời điểm** (máy chính: Mac mini), kiểm soát bằng file khóa `daytrade.lock`.
 
