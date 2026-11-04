@@ -2790,3 +2790,16 @@ Giá trị 4 ETF hiện tại: VOO $509.65 (0.728352cp×$699.74), VXUS **$489.11
 **Kết luận:** Không có đề xuất mua/bán/thay mã mới từ biến động giá hôm nay. Không mã nào breach ngưỡng đóng cửa -10% (TXN có đỉnh mới $316.75, ngưỡng mới $285.08, đệm +9.74%). **Vấn đề nghiêm trọng từ entry 13:05 ET hôm nay VẪN CHƯA được xử lý** — 3/9 vị thế core (MSFT, AAPL, TXN) tiếp tục không có lệnh stop dự phòng trên sàn, nay đã gần 24 giờ. → Gửi PushNotification nhắc lại ưu tiên cao, kèm số TXN cập nhật theo đỉnh mới.
 
 **Hướng dẫn duyệt:** Phiên này read-only, không thể đặt lệnh. Hogan mở phiên MỚI (Claude Code trên máy, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất" để đặt lại 3 lệnh stop dự phòng nêu trên.
+
+
+## 2026-11-04 ~09:28 ET — Phiên tương tác: Hogan duyệt, KHÔI PHỤC 3 stop dự phòng MSFT/AAPL/TXN về mức cũ
+
+- **Bối cảnh:** MSFT/AAPL/TXN không có stop dự phòng từ 2026-11-02 15:46 ET (~42 giờ). Xác nhận lại bằng `get_equity_orders` (confirmed) sáng nay: chỉ còn WMT $103.17 và PG $135.96.
+- **Quyết định của Hogan: duyệt**, đặt lại đúng mức cũ đã giữ ở phiên 10-30 (không dùng mức cao hơn do các routine đề xuất):
+  - MSFT: bán stop_market GTC 1cp @ **$438.30** (order `6aeb4120`)
+  - AAPL: bán stop_market GTC 1cp @ **$293.54** (order `6aeb4121`)
+  - TXN: bán stop_market GTC 2cp @ **$252.50** (order `6aeb4123`)
+- Phần lẻ AAPL (0.483843cp) không có stop sàn (theo thiết kế, bảo vệ bởi kiểm tra 15:30 ET).
+- **Đã thêm quy tắc "Toàn vẹn lệnh stop dự phòng"** vào mục Quản trị rủi ro của CLAUDE.md.
+- **Đính chính thuế:** theo `get_equity_tax_lots`, lô WMT mở 2026-09-23, lô TXN mở 2026-09-15 và 2026-09-23 — tất cả NGẮN HẠN. Hưởng thuế dài hạn chỉ từ sau 2027-09-23. Ghi chú ngày 11-02 ("mua từ ~2026-07, đã >4 tháng") là sai.
+- Đề xuất chốt lời một phần WMT/TXN (11-02) vẫn CHỜ Hogan, không thay đổi.
