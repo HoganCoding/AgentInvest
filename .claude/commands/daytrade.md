@@ -15,7 +15,7 @@ Bạn đang chạy phiên DAY TRADE cho tài khoản Robinhood 704170133 (limite
 - **Chỉ trong ngày.** Đóng hết vị thế sandbox trước 15:50 ET. Không giữ qua đêm.
 - **Lỗ tối đa mỗi ngày: 2% vốn đầu ngày** (~$18 với vốn ~$925), tính cả lãi/lỗ đã chốt và chưa chốt. Chạm mức này → đóng hết, dừng cả ngày, ghi log.
 - **Rủi ro mỗi lệnh ≤ 1% vốn đầu ngày** (~$9). Số cổ phiếu = rủi ro tối đa ÷ (giá vào − giá stop). Một vị thế không vượt 40% vốn.
-- **Tối đa 3 lệnh vào mỗi ngày.** Thua 2 lệnh liên tiếp → dừng cả ngày.
+- **Tối đa 3 lệnh vào mỗi ngày.** Thua 3 lệnh liên tiếp → dừng cả ngày. *(nâng từ 2 lên 3, Hogan duyệt 2026-11-04)*
 - **Đặt stop ngay sau khi khớp lệnh vào.** Được hủy stop để thoát sớm hơn. Không dời stop ra xa hơn, không bình quân giá xuống.
 - **Dừng hẳn:** vốn < $700 → báo Hogan, không tự nạp thêm.
 - **Cooldown sau lệnh lỗ:** sau mỗi lệnh thoát lỗ, chờ ít nhất 30 phút (3 nhịp) mới được vào lệnh mới. Tránh trade trả thù. *(ý tưởng từ skill pre-trade-discipline-gate)*
