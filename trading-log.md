@@ -3008,3 +3008,46 @@ Dùng đỉnh tham chiếu đã xác nhận ở lần kiểm tra CHÍNH 11-04 15
 **Mã khác:** PG +12.82%, WMT +14.89% — cả hai chưa vượt lại ngưỡng cảnh báo chốt lời +15-20% (WMT từng chạm 11-02, đề xuất chốt lời một phần WMT từ 11-02 vẫn chờ Hogan, không lặp lại). 4 mã còn lại (MSFT, AAPL, PG, WMT) đều còn đệm an toàn so ngưỡng -10%, thấp nhất AAPL buffer lớn.
 
 **Kết luận:** Không có đề xuất MỚI lần kiểm tra này. Đề xuất bán TXN (11-05) và đề xuất chốt lời một phần WMT (11-02) đều vẫn đang chờ Hogan duyệt — không gửi lại PushNotification cho cả hai (đã gửi trước đó, tránh nhiễu). Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. Lần kiểm tra CHÍNH tiếp theo (~15:30 ET hôm nay) sẽ quyết định TXN theo giá đóng cửa nếu vẫn chưa được duyệt bán trước đó.
+
+## 2026-11-06 ~15:41 ET (20:41 UTC) — Kiểm tra CHÍNH ngưỡng đóng cửa -10% core-9 (routine tự động, sync git): TXN vẫn dưới ngưỡng đóng cửa -10% (đề xuất bán 11-05 vẫn chờ duyệt, không gửi lại push); 4 mã còn lại an toàn; toàn vẹn 5 stop dự phòng OK; không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin main` — local detached HEAD khớp sạch tại `32d824d` (commit mới nhất: thêm relative strength filter vào Quy tắc vào lệnh day trade, không đụng core). Đã `git checkout -B main origin/main`, không conflict.
+- **Core hiện 9 mã** (không đổi): MSFT 1cp, AAPL 1.483843cp, TXN 2.009648cp, PG 3.416927cp, WMT 4.545415cp, VOO 1.156525cp, VXUS 9.365746cp, SCHD 15.020016cp, VB 1.736545cp.
+- `get_portfolio`: total value **$6.224,17**, cash/buying_power **$921,54** (gần như không đổi so 11-05, dao động do bucket day trade riêng — không phải nạp mới; vẫn trong 7 ngày đầu tháng nhưng không có tăng cash bất thường → không đề xuất mua ETF).
+
+**Toàn vẹn stop dự phòng (bắt buộc mỗi lần kiểm tra):** `get_equity_orders` state=confirmed xác nhận **đủ 5/5 lệnh** — MSFT $438.30 (`6aeb4120`), AAPL $293.54 (`6aeb4121`), TXN $252.50 (`6aeb4123`), PG $135.96 (`6ad108b4`), WMT $103.17 (`6ad108b6`). Tất cả còn `confirmed`. Không thiếu mã nào → không cần báo khẩn.
+
+**Giá hiện tại (~20:41 UTC, ~15:41 ET) so đóng cửa chính thức 11-05:**
+| Mã | Giá hiện tại | Đóng cửa 11-05 | % hôm nay | Giá vốn TB | P&L% |
+|---|---|---|---|---|---|
+| MSFT | $531.72 | $535.93 | -0.79% | $510.00 | +4.26% |
+| AAPL | $343.51 | $344.17 | -0.19% | $328.93 | +4.43% |
+| TXN | $277.925 | $278.15 | -0.08% | $268.56 | +3.49% |
+| PG | $165.385 | $167.10 | -1.03% | $147.23 | +12.33% |
+| WMT | $125.36 | $127.72 | -1.85% | $109.85 | +14.12% |
+| VOO | $677.655 | $673.97 | +0.55% | $692.87 | -2.20% |
+| VXUS | $80.935 | $80.80 | +0.17% | $85.60 | -5.45% |
+| SCHD | $35.2315 | $35.42 | -0.53% | $33.36 | +5.61% |
+| VB | $286.1101 | $283.96 | +0.76% | $288.77 | -0.92% |
+
+- **Benchmark:** SPY $737.22 (+0.58% so đóng cửa 11-05), QQQ $658.2492 (+1.73%) — phiên hồi phục nhẹ tiếp diễn sau 2 phiên bán tháo AI-capex (11-04/11-05). TXN đi ngang (-0.08%) trong khi QQQ +1.73% — tiếp tục lệch yếu hơn thị trường, nhưng `WebSearch` (TXN hôm nay) không tìm được tin tức riêng công ty cho 2026-11-06, chỉ có kết quả cũ không liên quan → không có tin xấu đặc thù mới, phù hợp diễn giải "dư âm bán tháo nhóm bán dẫn" đã xác nhận các lần kiểm tra trước.
+
+**Đỉnh tham chiếu (giữ nguyên, không mã nào tạo đỉnh mới hôm nay):** MSFT $559.15, AAPL $354.47, TXN $317.155, PG $168.16, WMT $130.94. Không có cập nhật dời stop dự phòng.
+
+### Ngưỡng đóng cửa -10% — lần kiểm tra CHÍNH 15:30 ET
+
+| Mã | Ngưỡng đóng cửa -10% | Giá hiện tại (~15:41 ET) | Đệm | Breach? |
+|---|---|---|---|---|
+| MSFT | $503.235 | $531.72 | +5.66% | Không |
+| AAPL | $319.023 | $343.51 | +7.68% | Không |
+| **TXN** | **$285.4395** | **$277.925** | **-2.63%** | **CÓ — vẫn dưới ngưỡng** |
+| PG | $151.344 | $165.385 | +9.28% | Không |
+| WMT | $117.846 | $125.36 | +6.38% | Không |
+
+- **TXN tiếp tục dưới ngưỡng đóng cửa -10%** tại lần kiểm tra CHÍNH hôm nay (đệm -2.63%, nông hơn so 11-05 CHÍNH do giá đã hồi nhẹ, nhưng vẫn breach). Đề xuất bán toàn bộ 2.009648cp TXN gửi 11-05 ~15:40 ET **vẫn còn nguyên giá trị và vẫn CHƯA được thực hiện** (còn trong `get_equity_positions`, stop dự phòng GTC `6aeb4123` vẫn `confirmed`) — **không gửi lại PushNotification** (đã gửi, tránh nhiễu).
+- 4 mã còn lại đều an toàn, đệm thấp nhất MSFT +5.66%.
+
+### Chốt lời — không có đề xuất mới
+- PG +12.33%, WMT +14.12% — cả hai dưới ngưỡng cảnh báo +15-20% hiện tại (đã co hẹp nhẹ so hôm qua). Đề xuất chốt lời một phần WMT từ 11-02 vẫn chờ Hogan — không lặp lại.
+
+**Kết luận:** Không có đề xuất MỚI lần kiểm tra này. TXN vẫn dưới ngưỡng đóng cửa -10% — đề xuất bán toàn bộ (11-05) vẫn đang chờ Hogan duyệt, không gửi lại push. Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. 4 mã còn lại an toàn so ngưỡng -10%. Không gửi PushNotification lần này.
