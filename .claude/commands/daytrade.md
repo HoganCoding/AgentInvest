@@ -29,6 +29,7 @@ Bạn đang chạy phiên DAY TRADE cho tài khoản Robinhood 704170133 (limite
 - **Ngưỡng tăng:** không mua mã đã tăng quá 5% so với giá đóng cửa hôm trước. Dưới 5% thì cũng không mua ngay tại đỉnh intraday: chờ pullback, và giá giữ được vùng hỗ trợ ít nhất 2 nhịp.
 - **Ngưỡng giảm:** không mua mã đang giảm quá 3% so với giá đóng cửa hôm trước (không bắt dao rơi), trừ khi giá đã tạo đáy cao hơn qua ít nhất 2 nhịp.
 - **Bộ lọc thị trường:** không vào lệnh mới nếu SPY hoặc QQQ giảm quá 1% trong phiên.
+- **Relative strength (thêm 2026-11-06):** Mã phải tăng ít nhất bằng 50% mức tăng của SPY trong 30–60 phút gần nhất trước khi vào lệnh. Ví dụ: SPY +0.5% → mã phải +0.25% trở lên. Mã rõ ràng yếu hơn thị trường chung → NO_GO dù setup kỹ thuật đẹp. *(Hogan duyệt 2026-11-06, pattern: 10/10 lệnh thua do chọn mã underperform)*
 - Không vào lệnh chỉ vì tin tức hay earnings. Tin tức chỉ dùng để loại mã.
 - Mã phải có thanh khoản cao và spread hẹp.
 - Tính cỡ lệnh theo giá vào xấu nhất (giá limit sẽ đặt), không theo giá hiện tại. *(ý tưởng từ skill breakout-trade-planner)*
