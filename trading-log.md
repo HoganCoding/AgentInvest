@@ -3051,3 +3051,47 @@ Dùng đỉnh tham chiếu đã xác nhận ở lần kiểm tra CHÍNH 11-04 15
 - PG +12.33%, WMT +14.12% — cả hai dưới ngưỡng cảnh báo +15-20% hiện tại (đã co hẹp nhẹ so hôm qua). Đề xuất chốt lời một phần WMT từ 11-02 vẫn chờ Hogan — không lặp lại.
 
 **Kết luận:** Không có đề xuất MỚI lần kiểm tra này. TXN vẫn dưới ngưỡng đóng cửa -10% — đề xuất bán toàn bộ (11-05) vẫn đang chờ Hogan duyệt, không gửi lại push. Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. 4 mã còn lại an toàn so ngưỡng -10%. Không gửi PushNotification lần này.
+
+## 2026-11-09 ~13:05 ET (18:05 UTC) — Kiểm tra giữa phiên core-9 (routine tự động, sync git): thị trường hồi phục mạnh diện rộng, TXN hồi lại vượt ngưỡng đóng cửa -10% (không còn breach); toàn vẹn 5 stop dự phòng OK; không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin main` — local khớp sạch tại `ffef118` (các commit mới nhất chỉ là log day-trade 11-09, không đụng core). Không có gì mới cần merge cho core-9.
+- **Core hiện 9 mã** (không đổi): MSFT 1cp, AAPL 1.483843cp, TXN 2.009648cp, PG 3.416927cp, WMT 4.545415cp, VOO 1.156525cp, VXUS 9.365746cp, SCHD 15.020016cp, VB 1.736545cp.
+- `get_portfolio`: total value **$6.335,85**, cash/buying_power **$919,08** — giảm nhẹ so 11-06 15:41 ET ($921,54), chênh lệch nhỏ do hoạt động bucket day trade riêng (không phải core). Không phát hiện khoản nạp mới (đã qua 7 ngày đầu tháng, không áp dụng kiểm tra deposit).
+
+**Toàn vẹn stop dự phòng (bắt buộc mỗi lần kiểm tra):** `get_equity_orders` state=confirmed xác nhận **đủ 5/5 lệnh** — MSFT $438,30 (`6aeb4120`), AAPL $293,54 (`6aeb4121`), TXN $252,50 (`6aeb4123`), PG $135,96 (`6ad108b4`), WMT $103,17 (`6ad108b6`). Tất cả còn `confirmed`. Không thiếu mã nào → không cần báo khẩn.
+
+**Giá hiện tại (~18:05 UTC, ~13:05 ET) so đóng cửa chính thức 11-06:**
+| Mã | Giá hiện tại | Đóng cửa 11-06 | % hôm nay | Giá vốn TB | P&L% |
+|---|---|---|---|---|---|
+| MSFT | $544,14 | $530,61 | +2,55% | $510,00 | +6,69% |
+| AAPL | $349,39 | $342,37 | +2,05% | $328,93 | +6,22% |
+| TXN | $292,115 | $277,36 | **+5,32%** | $268,56 | +8,77% |
+| PG | $167,775 | $165,40 | +1,44% | $147,23 | +13,95% |
+| WMT | $125,26 | $125,52 | -0,21% | $109,85 | +14,03% |
+| VOO | $691,70 | $675,99 | +2,32% | $692,87 | -0,17% |
+| VXUS | $82,92 | $80,92 | +2,47% | $85,60 | -3,13% |
+| SCHD | $35,7286 | $35,17 | +1,59% | $33,36 | +7,10% |
+| VB | $294,36 | $285,64 | +3,05% | $288,77 | +1,94% |
+
+- **Benchmark:** SPY $752,47 (**+2,34%** so đóng cửa 11-06), QQQ $677,03 (**+3,19%**) — phục hồi mạnh, tiếp nối đà hồi phục sau 2 phiên bán tháo AI-capex (11-04/11-05). WebSearch xác nhận: đây là tiếp diễn hồi phục, KHÔNG phải catalyst mới — báo cáo việc làm tháng 10 tích cực (nonfarm payrolls +165.000, thất nghiệp 4,1%) cùng các brokerage lớn (Morgan Stanley, UBS) công khai nhận định bán tháo tuần trước là "quá mức" (overdone), cho rằng tác động AI-capex nếu có chỉ là dời từ 2028 sang 2029, không phải hủy bỏ. Riêng NVDA giảm ngược dòng (~-4-6%) do tin riêng công ty (điều tra nội bộ liên quan CEO Jensen Huang, không liên quan capex) — không ảnh hưởng core-9.
+- **TXN +5,32%, vượt trội các mã còn lại** — WebSearch không tìm thấy tin tức đặc thù riêng TXN (báo cáo KQKD, guidance, M&A, nâng/hạ hạng) trong 24-48h qua. Đây là **beta theo nhóm bán dẫn hồi phục đồng loạt** (AMD +10%+, AVGO +9%, INTC tăng) — cùng nhóm đã bị bán tháo tuần trước, không phải tin riêng TXN.
+
+### Ngưỡng đóng cửa -10% — CHỈ theo dõi, KHÔNG ra quyết định bán ở lần kiểm tra giữa phiên này
+
+Đỉnh tham chiếu giữ nguyên (MSFT $559,15, AAPL $354,47, TXN $317,155, PG $168,16, WMT $130,94 — không mã nào tạo đỉnh mới hôm nay, cả 5 mã đều dưới đỉnh tham chiếu):
+
+| Mã | Ngưỡng đóng cửa -10% | Giá hiện tại (giữa phiên) | Đệm | Breach? |
+|---|---|---|---|---|
+| MSFT | $503,235 | $544,14 | +8,13% | Không |
+| AAPL | $319,023 | $349,39 | +9,52% | Không |
+| **TXN** | **$285,4395** | **$292,115** | **+2,34%** | **Không — đã HỒI LẠI vượt ngưỡng** |
+| PG | $151,344 | $167,775 | +10,85% | Không |
+| WMT | $117,846 | $125,26 | +6,29% | Không |
+
+- **Đáng chú ý: TXN đã hồi lại VƯỢT ngưỡng đóng cửa -10%** (đệm +2,34%) sau 2 phiên liên tiếp (11-05, 11-06) đóng cửa dưới ngưỡng. Đề xuất bán toàn bộ TXN gửi 11-05 ~15:40 ET **vẫn đang chờ Hogan duyệt, chưa thực hiện** (còn trong `get_equity_positions`, stop dự phòng GTC `6aeb4123` vẫn `confirmed`) — routine này KHÔNG tự rút lại đề xuất đã gửi, chỉ ghi nhận thực tế: nếu TXN đóng cửa trên ngưỡng tại lần kiểm tra CHÍNH 15:30 ET hôm nay, đó sẽ là phiên đầu tiên KHÔNG breach kể từ 11-05, và quyết định bán/giữ tuỳ Hogan xem xét lại trước khi duyệt (giá đã đổi nhiều so lúc đề xuất).
+- 4 mã còn lại đều an toàn, đệm thấp nhất MSFT +8,13%.
+
+### Chốt lời — không có đề xuất mới
+- PG +13,95%, WMT +14,03% — cả hai dưới ngưỡng cảnh báo +15-20%, không lặp lại đề xuất cũ. Đề xuất chốt lời một phần WMT (11-02) vẫn chờ Hogan — không lặp lại.
+
+**Kết luận:** Không có đề xuất MỚI lần kiểm tra này (giữa phiên, không ra quyết định theo quy tắc). Điểm đáng chú ý nhất: **TXN đã hồi phục vượt ngưỡng đóng cửa -10%** sau 2 phiên breach liên tiếp — đề xuất bán 11-05 vẫn đang chờ Hogan, chưa bị thực hiện. Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. 4 mã còn lại an toàn so ngưỡng -10%. Lần kiểm tra CHÍNH 15:30 ET hôm nay sẽ xác nhận TXN có breach theo giá đóng cửa hay không. Không gửi PushNotification lần này (không có đề xuất mới, chỉ là thông tin cập nhật về đề xuất cũ).
