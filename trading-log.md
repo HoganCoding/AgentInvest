@@ -3139,3 +3139,43 @@ Dùng đỉnh tham chiếu đã xác nhận ở lần kiểm tra CHÍNH 11-04 15
 - TXN +10,63%, PG +14,42%, WMT +14,51% — PG/WMT vẫn dưới ngưỡng cảnh báo +15%, chưa chạm lại. Đề xuất chốt lời một phần WMT (11-02) vẫn chờ Hogan — không lặp lại.
 
 **Kết luận: không có đề xuất mới lần kiểm tra này.** Đề xuất bán TXN (11-05) và chốt lời một phần WMT (11-02) vẫn còn hiệu lực, chờ Hogan duyệt qua phiên mới.
+
+## 2026-11-10 ~13:04 ET (18:04 UTC) — Kiểm tra giữa phiên core-9 (routine tự động, sync git): thị trường điều chỉnh nhẹ sau 3 phiên hồi phục; PG vượt ngưỡng cảnh báo chốt lời +15% lần đầu tiên → ĐỀ XUẤT cân nhắc chốt lời một phần, chờ Hogan duyệt
+
+- **Sync đầu phiên:** `git fetch origin main` — local detached HEAD khớp sạch tại `7ca6b68` (commit mới nhất chỉ là khởi tạo file sandbox/lock ngày 11-10, không đụng core). Đã `git checkout -B main origin/main`, không conflict.
+- **Core hiện 9 mã** (không đổi): MSFT 1cp, AAPL 1,483843cp, TXN 2,009648cp, PG 3,416927cp, WMT 4,545415cp, VOO 1,156525cp, VXUS 9,365746cp, SCHD 15,020016cp, VB 1,736545cp.
+- `get_portfolio`: total value **$6.325,92**, cash/buying_power **$919,08** — không đổi so lần kiểm tra trước, không có khoản nạp mới (đã qua 7 ngày đầu tháng, không áp dụng kiểm tra deposit).
+
+**Toàn vẹn stop dự phòng (bắt buộc mỗi lần kiểm tra):** `get_equity_orders` state=confirmed xác nhận **đủ 5/5 lệnh**, không mã nào đổi mức — MSFT $438,30 (`6aeb4120`), AAPL $293,54 (`6aeb4121`), TXN $252,50 (`6aeb4123`), PG $135,96 (`6ad108b4`), WMT $103,17 (`6ad108b6`). Tất cả còn `confirmed`. Không thiếu mã nào → không cần báo khẩn.
+
+**Giá hiện tại (~18:04 UTC, ~13:04 ET) so đóng cửa chính thức 11-09:**
+| Mã | Giá hiện tại | Đóng cửa 11-09 | % hôm nay | Giá vốn TB | P&L% |
+|---|---|---|---|---|---|
+| MSFT | $530,525 | $545,18 | -2,69% | $510,00 | +4,03% |
+| AAPL | $347,76 | $350,69 | -0,84% | $328,93 | +5,72% |
+| TXN | $298,42 | $295,73 | +0,91% | $268,56 | +11,12% |
+| PG | $169,52 | $168,32 | +0,71% | $147,23 | **+15,15%** |
+| WMT | $126,0867 | $125,66 | +0,34% | $109,85 | +14,79% |
+| VOO | $685,8899 | $691,87 | -0,86% | $692,87 | -1,01% |
+| VXUS | $82,33 | $83,22 | -1,07% | $85,60 | -3,82% |
+| SCHD | $35,75 | $35,65 | +0,28% | $33,36 | +7,17% |
+| VB | $291,905 | $294,48 | -0,87% | $288,77 | +1,09% |
+
+- **Benchmark:** SPY $746,19 (-0,86% so đóng cửa 11-09), QQQ $669,35 (-1,47%) — điều chỉnh nhẹ sau 3 phiên hồi phục mạnh liên tiếp (11-06→11-09). MSFT giảm sâu hơn QQQ (-2,69% vs -1,47%) nhưng `WebSearch` ("Microsoft MSFT tech selloff hôm nay") không tìm được tin tức đặc thù công ty cho ngày 2026-11-10 — chỉ có kết quả cũ (01-29, 04-23) không liên quan. Diễn giải hợp lý nhất: nhịp chốt lời/điều chỉnh bình thường trong nhóm tech beta cao sau đà tăng mạnh, không phải tin xấu mới riêng MSFT.
+- **PG +0,71% hôm nay, vượt ngưỡng cảnh báo chốt lời +15% lần đầu tiên** (từ +14,42% lần kiểm tra CHÍNH 11-09 lên +15,15% hôm nay). `WebSearch` ("Procter Gamble PG stock news November 2026"): không có tin xấu — xác nhận P&G vừa báo cáo KQKD vượt kỳ vọng và nâng guidance FY26, cổ tức quý vẫn đều (trả 16/11), sắp có Investor Day 19/11 — đà tăng có nền tảng cơ bản (earnings beat + nâng guidance), không phải nhiễu ngắn hạn.
+
+**Đỉnh tham chiếu (giữ nguyên, không mã nào tạo đỉnh mới hôm nay — cả 5 mã tech/blue-chip đều giảm hoặc đi ngang):** MSFT $559,15, AAPL $354,47, TXN $317,155, PG $168,63, WMT $130,94. Không có cập nhật dời stop dự phòng. Buffer so ngưỡng đóng cửa -10% (chỉ để theo dõi, quyết định ở lần kiểm tra CHÍNH 15:30 ET): MSFT +5,42%, AAPL +9,01%, TXN +4,55%, PG +11,70%, WMT +6,99% — không mã nào breach.
+
+### ĐỀ XUẤT: Cân nhắc chốt lời một phần PG (core-9 — cần Hogan duyệt, agent KHÔNG tự đặt lệnh)
+1. **Mã + hành động:** PG — **cân nhắc BÁN một phần** (ví dụ 1 trong 3 cổ phiếu nguyên hiện có, ~$169,52, giữ lại 2,416927cp) hoặc giữ nguyên toàn bộ theo quyết định Hogan. Đây là ngưỡng CẢNH BÁO theo CLAUDE.md (nhóm tech/blue-chip/ETF: +15-20% không tự động bán, chỉ đề xuất cân nhắc), không phải lệnh bắt buộc.
+2. **Lý do:** PG vừa vượt ngưỡng cảnh báo chốt lời +15% lần đầu tiên (hiện +15,15%, tăng từ +14,42% lần kiểm tra CHÍNH 11-09), có nền tảng cơ bản hỗ trợ (KQKD vượt kỳ vọng + nâng guidance FY26, theo WebSearch) — không phải đà tăng nhiễu cần lo ngại đảo chiều nhanh, nhưng vẫn đáng cân nhắc hiện thực hóa một phần lãi theo đúng cơ chế cảnh báo đã đặt ra.
+3. **Rủi ro chính:** (a) Toàn bộ 4 lot PG hiện tại đều đang ở trạng thái **ngắn hạn** (`term: "st"`, lot cũ nhất mở 2026-09-15, chưa đủ 1 năm) — bán bây giờ sẽ hiện thực hóa lãi vốn ngắn hạn (thuế suất như thu nhập thường), không phải dài hạn; đây là điểm cần Hogan cân nhắc trước khi duyệt, dù CLAUDE.md quy định rõ nguyên tắc hạn chế thuế KHÔNG override kỷ luật chốt lời/cắt lỗ đã đặt ra. (b) Nếu giữ nguyên và PG tiếp tục tăng, bỏ lỡ cơ hội chốt lời ở mức lãi cao; nếu điều chỉnh giảm sau Investor Day 19/11 (có thể có thông tin mới ảnh hưởng giá), phần chưa chốt sẽ co hẹp lãi. (c) Bán 1cp nguyên vẫn giữ được 2cp nguyên còn lại cho stop dự phòng GTC hiện tại ($135,96) — không ảnh hưởng tới cơ chế stop.
+4. **Mức cắt lỗ/chốt lời đề xuất:** Nếu giữ nguyên toàn bộ: tiếp tục theo stop dự phòng hiện tại $135,96 + ngưỡng đóng cửa -10% hiện hành $151,767 (từ đỉnh $168,63). Nếu bán một phần: phần còn lại (2,416927cp) tiếp tục theo cùng cơ chế stop hiện tại, không đặt stop mới.
+
+### Chốt lời/khác — không lặp lại đề xuất cũ
+- WMT +14,79% — chưa chạm lại ngưỡng cảnh báo +15% (đã từng vượt 11-02→11-09, đề xuất chốt lời một phần WMT (11-02) vẫn CHỜ Hogan, không lặp lại).
+- TXN +11,12% — còn xa ngưỡng cảnh báo +15-20%, đề xuất bán TXN (11-05, do thủng ngưỡng đóng cửa -10% trước đó, đã được hồi lại từ 11-09) vẫn CHỜ Hogan, không lặp lại.
+
+**Kết luận:** Thị trường điều chỉnh nhẹ sau 3 phiên hồi phục (SPY -0,86%, QQQ -1,47%), MSFT giảm sâu hơn benchmark nhưng không có tin xấu đặc thù (nhịp điều chỉnh bình thường). **PG vượt ngưỡng cảnh báo chốt lời +15% lần đầu tiên → ĐỀ XUẤT cân nhắc chốt lời một phần, chờ Hogan duyệt** (chỉ là cảnh báo, không bắt buộc; lưu ý toàn bộ lot PG đang ngắn hạn về thuế). Không mã nào breach ngưỡng đóng cửa -10% (buffer thấp nhất TXN +4,55%) — lần kiểm tra CHÍNH 15:30 ET hôm nay sẽ quyết định theo giá đóng cửa. Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. Đề xuất bán TXN (11-05) và chốt lời một phần WMT (11-02) vẫn còn hiệu lực, chờ Hogan duyệt — không lặp lại push cho 2 đề xuất cũ.
+
+**Hướng dẫn duyệt:** Phiên này read-only, không thể đặt lệnh. Hogan mở phiên MỚI (Claude Code trên máy, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất" để thực hiện (nếu duyệt): bán một phần PG theo đề xuất trên.
