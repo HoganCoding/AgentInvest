@@ -3179,3 +3179,47 @@ Dùng đỉnh tham chiếu đã xác nhận ở lần kiểm tra CHÍNH 11-04 15
 **Kết luận:** Thị trường điều chỉnh nhẹ sau 3 phiên hồi phục (SPY -0,86%, QQQ -1,47%), MSFT giảm sâu hơn benchmark nhưng không có tin xấu đặc thù (nhịp điều chỉnh bình thường). **PG vượt ngưỡng cảnh báo chốt lời +15% lần đầu tiên → ĐỀ XUẤT cân nhắc chốt lời một phần, chờ Hogan duyệt** (chỉ là cảnh báo, không bắt buộc; lưu ý toàn bộ lot PG đang ngắn hạn về thuế). Không mã nào breach ngưỡng đóng cửa -10% (buffer thấp nhất TXN +4,55%) — lần kiểm tra CHÍNH 15:30 ET hôm nay sẽ quyết định theo giá đóng cửa. Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. Đề xuất bán TXN (11-05) và chốt lời một phần WMT (11-02) vẫn còn hiệu lực, chờ Hogan duyệt — không lặp lại push cho 2 đề xuất cũ.
 
 **Hướng dẫn duyệt:** Phiên này read-only, không thể đặt lệnh. Hogan mở phiên MỚI (Claude Code trên máy, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất" để thực hiện (nếu duyệt): bán một phần PG theo đề xuất trên.
+
+## 2026-11-10 ~15:41 ET (20:41 UTC) — Kiểm tra CHÍNH ngưỡng đóng cửa -10% core-9 (routine tự động, sync git): không breach; thị trường giảm diện rộng do CPI tháng 10 nóng hơn dự báo; PG tạo đỉnh intraday mới nhỏ; toàn vẹn 5 stop dự phòng OK; không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin main` — local detached HEAD, phát hiện 2 commit mới (`152a2af` kiểm tra 13:04 ET hôm nay, `1725b58` log EOD day-trade 11-10 — không đụng core). Đã `git checkout -B main origin/main`, không conflict.
+- **Core hiện 9 mã** (không đổi): MSFT 1cp, AAPL 1,483843cp, TXN 2,009648cp, PG 3,416927cp, WMT 4,545415cp, VOO 1,156525cp, VXUS 9,365746cp, SCHD 15,020016cp, VB 1,736545cp.
+- `get_portfolio`: total value **$6.337,65**, cash/buying_power **$919,08** — không đổi so lần kiểm tra 13:04 ET hôm nay, không có khoản nạp mới (đã qua 7 ngày đầu tháng, không áp dụng kiểm tra deposit).
+
+**Toàn vẹn stop dự phòng (bắt buộc mỗi lần kiểm tra):** `get_equity_orders` state=confirmed xác nhận **đủ 5/5 lệnh**, không mã nào đổi mức — MSFT $438,30 (`6aeb4120`), AAPL $293,54 (`6aeb4121`), TXN $252,50 (`6aeb4123`), PG $135,96 (`6ad108b4`), WMT $103,17 (`6ad108b6`). Tất cả còn `confirmed`. Không thiếu mã nào → không cần báo khẩn.
+
+**Giá hiện tại (~20:41 UTC, ~15:41 ET) so đóng cửa chính thức 11-09:**
+| Mã | Giá hiện tại | Đóng cửa 11-09 | % hôm nay | Giá vốn TB | P&L% |
+|---|---|---|---|---|---|
+| MSFT | $534,475 | $545,18 | -1,96% | $510,00 | +4,80% |
+| AAPL | $349,37 | $350,69 | -0,38% | $328,93 | +6,21% |
+| TXN | $299,72 | $295,73 | +1,35% | $268,56 | +11,60% |
+| PG | $168,82 | $168,32 | +0,30% | $147,23 | +14,66% |
+| WMT | $125,51 | $125,66 | -0,12% | $109,85 | +14,26% |
+| VOO | $688,77 | $691,87 | -0,45% | $692,87 | -0,60% |
+| VXUS | $82,59 | $83,22 | -0,76% | $85,60 | -3,51% |
+| SCHD | $35,795 | $35,65 | +0,41% | $33,36 | +7,30% |
+| VB | $292,69 | $294,48 | -0,61% | $288,77 | +1,36% |
+
+- **Benchmark:** SPY $749,30 (-0,45% so đóng cửa 11-09), QQQ $673,59 (-0,85%) — thị trường điều chỉnh giảm diện rộng. Theo log day-trade 11-10 (phiên sandbox cùng ngày, đã xác nhận qua tin tức sáng nay): CPI tháng 10 công bố +0,4% (vượt dự báo +0,3%) gây bán tháo kéo dài gần suốt phiên — QQQ dao động -1,20% đến -1,69% trong ngày trước khi thu hẹp về -0,85% lúc kiểm tra này, SPY -0,67% đến -0,97% trong phiên. Đây là phản ứng CPI nóng hơn dự báo (lo ngại Fed trì hoãn hạ lãi suất), ảnh hưởng toàn thị trường, không phải tin riêng từng mã.
+- **MSFT -1,96% hôm nay, giảm sâu hơn QQQ (-0,85%)** — `WebSearch` ("Microsoft MSFT stock news hôm nay 11-10") không tìm được tin tức đặc thù công ty cho ngày 2026-11-10, chỉ có kết quả cũ không liên quan. Diễn giải hợp lý nhất: MSFT là mã tăng trưởng/duration cao, nhạy hơn với lo ngại lãi suất từ CPI nóng — phản ứng beta cao hơn benchmark trong phiên bán tháo do lãi suất, không phải tin xấu riêng công ty.
+
+**Đỉnh tham chiếu — kiểm tra đỉnh intraday hôm nay qua `get_equity_historicals` 5-phút:**
+
+| Mã | Đỉnh tham chiếu trước | Đỉnh intraday hôm nay | Đỉnh mới? | Đỉnh tham chiếu (cập nhật) | Ngưỡng đóng cửa -10% | Giá hiện tại | Đệm | Breach? |
+|---|---|---|---|---|---|---|---|---|
+| MSFT | $559,15 | $544,15 | Không | $559,15 | $503,235 | $534,475 | +6,21% | Không |
+| AAPL | $354,47 | $353,87 | Không | $354,47 | $319,023 | $349,37 | +9,52% | Không |
+| TXN | $317,155 | $300,40 | Không | $317,155 | $285,4395 | $299,72 | +5,00% | Không |
+| PG | $168,63 | $169,785 | Có (nhỏ, +0,68%) | $169,785 | $152,8065 | $168,82 | +10,48% | Không |
+| WMT | $130,94 | $126,30 | Không | $130,94 | $117,846 | $125,51 | +6,50% | Không |
+
+- **PG tạo đỉnh intraday mới nhỏ (+0,68%, từ $168,63 lên $169,785)** — cập nhật đỉnh tham chiếu dùng cho ngưỡng đóng cửa -10% lên $152,8065 (ngầm theo quy tắc, không cần duyệt riêng). Mức tăng tiếp tục nhỏ (cùng kiểu đã ghi nhận 11-09, +0,28%) nên KHÔNG đề xuất dời stop dự phòng trên sàn lần này — ngưỡng -15% lý thuyết từ đỉnh mới (~$144,32) vẫn cách khá xa stop hiện tại ($135,96, ~6,1%), nhưng khoảng cách này đã tồn tại từ các đỉnh trước (không phải do đỉnh mới hôm nay tạo ra) — chỉ ghi nhận để theo dõi, chưa đến mức "đáng kể" để kích hoạt dời riêng theo đỉnh hôm nay.
+- Không mã nào breach ngưỡng đóng cửa -10% — đệm thấp nhất TXN +5,00%.
+
+### Chốt lời — không có đề xuất mới
+- PG +14,66% (co hẹp nhẹ so +15,15% lúc 13:04 ET hôm nay, dưới lại ngưỡng cảnh báo +15%) — đề xuất chốt lời một phần PG gửi 13:04 ET hôm nay **vẫn còn hiệu lực, chờ Hogan duyệt** (không gửi lại push, không rút lại đề xuất).
+- WMT +14,26%, TXN +11,60% — chưa chạm ngưỡng cảnh báo +15-20%. Đề xuất chốt lời một phần WMT (11-02) vẫn CHỜ Hogan — không lặp lại.
+- Đề xuất bán TXN (11-05, do thủng ngưỡng đóng cửa trước đó, đã hồi lại từ 11-09) vẫn CHỜ Hogan — không lặp lại.
+
+**Kết luận:** Thị trường giảm diện rộng do CPI tháng 10 nóng hơn dự báo (SPY -0,45%, QQQ -0,85% tại thời điểm kiểm tra, từng sâu hơn trong phiên). MSFT giảm sâu hơn QQQ nhưng không có tin xấu đặc thù (beta cao với lo ngại lãi suất). Không mã nào breach ngưỡng đóng cửa -10% (buffer thấp nhất TXN +5,00%). PG tạo đỉnh intraday mới nhỏ, cập nhật ngưỡng, không đủ "đáng kể" để dời stop dự phòng. Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. 3 đề xuất đang chờ Hogan (bán TXN 11-05, chốt lời một phần WMT 11-02, chốt lời một phần PG 13:04 ET hôm nay) đều còn hiệu lực — không lặp lại push cho đề xuất cũ. **Không có đề xuất MỚI lần kiểm tra này → không gửi PushNotification.**
