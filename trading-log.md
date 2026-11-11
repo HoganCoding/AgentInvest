@@ -3275,3 +3275,47 @@ Dùng đỉnh tham chiếu đã xác nhận ở lần kiểm tra CHÍNH 11-04 15
 **Kết luận:** Thị trường tăng mạnh nhờ rally hẹp ở nhóm hạ tầng AI/bán dẫn (CoreWeave +~25% nhờ KQKD, Micron +~13%, Nvidia tăng — SPY +1,45%, QQQ +2,76%), không phải catalyst macro. **TXN hưởng lợi theo beta nhóm này, vượt ngưỡng cảnh báo chốt lời +15% lần đầu tiên (+16,60%) → ĐỀ XUẤT MỚI cân nhắc chốt lời một phần, chờ Hogan duyệt** (lưu ý cả 3 lot đang ngắn hạn về thuế; đề xuất này độc lập với đề xuất bán toàn bộ TXN 11-05 đang chờ riêng). MSFT giảm ngược dòng thị trường (-2,30%) không có tin xấu đặc thù xác nhận được — có thể là luân chuyển vốn ra khỏi megacap software, chưa đủ cơ sở để coi là tín hiệu thay mã. Không mã nào breach ngưỡng đóng cửa -10% (buffer thấp nhất MSFT +3,51%) — lần kiểm tra CHÍNH 15:30 ET hôm nay sẽ quyết định theo giá đóng cửa. Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. Đề xuất bán TXN (11-05) và chốt lời một phần PG/WMT (11-10/11-02) vẫn còn hiệu lực, chờ Hogan duyệt — không lặp lại push cho các đề xuất cũ.
 
 **Hướng dẫn duyệt:** Phiên này read-only, không thể đặt lệnh. Hogan mở phiên MỚI (Claude Code trên máy, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất" để thực hiện (nếu duyệt): chốt lời một phần TXN theo đề xuất trên.
+
+## 2026-11-11 ~15:41 ET (20:41 UTC) — Kiểm tra CHÍNH ngưỡng đóng cửa -10% core-9 (routine tự động, sync git): không breach; rally AI-infra tiếp diễn mạnh; tìm được tin đặc thù giải thích MSFT giảm ngược dòng; toàn vẹn 5 stop dự phòng OK; không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin main` — không có commit mới kể từ entry 13:06 ET cùng ngày. Không conflict.
+- **Core hiện 9 mã** (không đổi): MSFT 1cp, AAPL 1,483843cp, TXN 2,009648cp, PG 3,416927cp, WMT 4,545415cp, VOO 1,156525cp, VXUS 9,365746cp, SCHD 15,020016cp, VB 1,736545cp.
+- `get_portfolio`: total value **$6.374,92**, cash/buying_power **$918,39** — không đổi so lần 13:06 ET (cùng ngày). Không có khoản nạp mới.
+
+**Toàn vẹn stop dự phòng (bắt buộc mỗi lần kiểm tra):** `get_equity_orders` state=confirmed xác nhận **đủ 5/5 lệnh**, không mã nào đổi mức — MSFT $438,30 (`6aeb4120`), AAPL $293,54 (`6aeb4121`), TXN $252,50 (`6aeb4123`), PG $135,96 (`6ad108b4`), WMT $103,17 (`6ad108b6`). Tất cả còn `confirmed`. Không thiếu mã nào → không cần báo khẩn.
+
+**Giá hiện tại (~20:41 UTC, ~15:41 ET) so đóng cửa chính thức 11-10:**
+| Mã | Giá hiện tại | Đóng cửa 11-10 | % hôm nay | Giá vốn TB | P&L% |
+|---|---|---|---|---|---|
+| MSFT | $519,89 | $533,16 | -2,49% | $510,00 | +1,94% |
+| AAPL | $355,07 | $348,51 | +1,88% | $328,93 | +7,95% |
+| TXN | $310,01 | $300,52 | +3,16% | $268,56 | +15,44% |
+| PG | $167,90 | $168,66 | -0,45% | $147,23 | +14,04% |
+| WMT | $125,375 | $125,55 | -0,14% | $109,85 | +14,13% |
+| VOO | $698,63 | $689,50 | +1,32% | $692,87 | +0,83% |
+| VXUS | $83,46 | $82,66 | +0,97% | $85,60 | -2,50% |
+| SCHD | $35,985 | $35,83 | +0,43% | $33,36 | +7,87% |
+| VB | $295,425 | $293,17 | +0,77% | $288,77 | +2,31% |
+
+- **Benchmark:** SPY $760,05 (**+1,35%** so đóng cửa 11-10), QQQ $690,86 (**+2,38%**) — rally AI-infra/bán dẫn (CoreWeave/Micron/Nvidia, xem entry 13:06 ET) tiếp diễn gần hết phiên.
+- **MSFT -2,49% hôm nay, tiếp tục giảm ngược dòng (SPY/QQQ đều tăng mạnh) — lần này `WebSearch` tìm được tin đặc thù:** (1) Anthropic ra mắt Claude Sheets/Whiteboards (beta) + Claude Dashboards (GA) ngày 11-10, bị thị trường nhìn nhận là đối thủ trực tiếp của Excel/Office (nguồn: heygotrade.com, SeekingAlpha) — cổ phiếu MSFT giảm -2,2% phiên 11-10 theo tin này, và đà giảm tiếp diễn hôm nay; (2) tin 11-11 về đề xuất Mỹ hạn chế bộ thu phát quang (optical transceiver) Trung Quốc dùng cho data center AI + cạnh tranh AI nơi làm việc gia tăng (nguồn: Benzinga); (3) CFO Amy Hood bán ~$3,98M cổ phiếu ngày 11-09 (tín hiệu phụ, không đáng kể). Lưu ý: MSFT cũng là nhà đầu tư/đối tác Azure của Anthropic nên tác động 2 chiều; IPO Anthropic được đồn vào 11-18 nên tin tức liên quan có thể còn tiếp diễn. **Đánh giá theo tiêu chí CLAUDE.md:** đây là tin cạnh tranh sản phẩm + tin ngành, KHÔNG phải "tin tức tiêu cực nghiêm trọng" (không kiện tụng/gian lận/mất CEO/hạ bậc tín nhiệm xác nhận) và MSFT chưa có dấu hiệu kém hơn benchmark 30 ngày rõ rệt — CHƯA đạt ngưỡng đề xuất thay mã, chỉ ghi nhận để theo dõi tiếp.
+
+**Đỉnh tham chiếu — kiểm tra đỉnh intraday hôm nay (cả phiên) qua `get_equity_historicals` 5-phút:**
+
+| Mã | Đỉnh tham chiếu trước (13:06 ET) | Đỉnh cả phiên hôm nay | Đỉnh mới? | Đỉnh tham chiếu (cập nhật) | Ngưỡng đóng cửa -10% | Giá hiện tại | Đệm | Breach? |
+|---|---|---|---|---|---|---|---|---|
+| MSFT | $559,15 | $534,76 | Không | $559,15 | $503,235 | $519,89 | +3,31% | Không |
+| AAPL | $355,13 | $355,33 | Có (nhỏ, +0,06%) | $355,33 | $319,797 | $355,07 | +11,03% | Không |
+| TXN | $317,155 | $314,75 | Không | $317,155 | $285,4395 | $310,01 | +8,61% | Không |
+| PG | $169,785 | $167,90 | Không | $169,785 | $152,8065 | $167,90 | +9,88% | Không |
+| WMT | $130,94 | $126,07 | Không | $130,94 | $117,846 | $125,375 | +6,39% | Không |
+
+- AAPL tạo đỉnh mới rất nhỏ trong phiên (+0,06%, $355,13→$355,33) — cập nhật đỉnh tham chiếu ngầm theo quy tắc, không cần duyệt riêng, không đáng kể để dời stop dự phòng trên sàn.
+- **KHÔNG mã nào breach ngưỡng đóng cửa -10% tại lần kiểm tra CHÍNH hôm nay** — buffer thấp nhất MSFT +3,31%. Không có đề xuất bán theo cơ chế này.
+
+### Chốt lời/khác — không lặp lại đề xuất cũ
+- TXN +15,44% (co nhẹ từ +16,60% lúc 13:06 ET do giá lùi $313,12→$310,01) — vẫn trên ngưỡng cảnh báo +15%, đề xuất chốt lời một phần TXN (13:06 ET hôm nay) vẫn CHỜ Hogan — không lặp lại push.
+- PG +14,04%, WMT +14,13% — cả hai vẫn dưới ngưỡng cảnh báo +15%. Đề xuất chốt lời một phần PG (13:04 ET 11-10) và WMT (11-02) vẫn CHỜ Hogan — không lặp lại.
+- Đề xuất bán toàn bộ TXN (11-05, do thủng ngưỡng đóng cửa trước đó, đã hồi lại từ 11-09) vẫn CHỜ Hogan — không lặp lại.
+
+**Kết luận:** Rally AI-infra/bán dẫn tiếp diễn gần hết phiên (SPY +1,35%, QQQ +2,38%). **Không mã nào breach ngưỡng đóng cửa -10%** — buffer thấp nhất MSFT +3,31%. MSFT tiếp tục giảm ngược dòng thị trường (-2,49%); lần này xác định được tin đặc thù (Anthropic ra mắt công cụ cạnh tranh Office + tin hạn chế linh kiện AI data center Trung Quốc) nhưng chưa đạt ngưỡng "tin tiêu cực nghiêm trọng" theo CLAUDE.md để đề xuất thay mã — chỉ ghi nhận theo dõi. AAPL tạo đỉnh mới nhỏ, cập nhật ngầm đỉnh tham chiếu. Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. 3 đề xuất đang chờ Hogan duyệt (chốt lời một phần TXN 13:06 ET hôm nay; bán toàn bộ TXN 11-05; chốt lời một phần PG 11-10 và WMT 11-02) — không lặp lại push cho đề xuất cũ. **Không có đề xuất mới lần kiểm tra này.**
