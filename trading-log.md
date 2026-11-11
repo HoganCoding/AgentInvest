@@ -3223,3 +3223,55 @@ Dùng đỉnh tham chiếu đã xác nhận ở lần kiểm tra CHÍNH 11-04 15
 - Đề xuất bán TXN (11-05, do thủng ngưỡng đóng cửa trước đó, đã hồi lại từ 11-09) vẫn CHỜ Hogan — không lặp lại.
 
 **Kết luận:** Thị trường giảm diện rộng do CPI tháng 10 nóng hơn dự báo (SPY -0,45%, QQQ -0,85% tại thời điểm kiểm tra, từng sâu hơn trong phiên). MSFT giảm sâu hơn QQQ nhưng không có tin xấu đặc thù (beta cao với lo ngại lãi suất). Không mã nào breach ngưỡng đóng cửa -10% (buffer thấp nhất TXN +5,00%). PG tạo đỉnh intraday mới nhỏ, cập nhật ngưỡng, không đủ "đáng kể" để dời stop dự phòng. Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. 3 đề xuất đang chờ Hogan (bán TXN 11-05, chốt lời một phần WMT 11-02, chốt lời một phần PG 13:04 ET hôm nay) đều còn hiệu lực — không lặp lại push cho đề xuất cũ. **Không có đề xuất MỚI lần kiểm tra này → không gửi PushNotification.**
+
+## 2026-11-11 ~13:06 ET (18:06 UTC) — Kiểm tra giữa phiên core-9 (routine tự động, sync git): thị trường tăng mạnh nhờ rally AI-infra (CoreWeave/Micron/Nvidia); TXN vượt ngưỡng cảnh báo chốt lời +15% LẦN ĐẦU TIÊN → ĐỀ XUẤT cân nhắc chốt lời một phần, chờ Hogan duyệt; MSFT giảm ngược dòng thị trường không rõ nguyên nhân đặc thù
+
+- **Sync đầu phiên:** `git fetch origin main` — phát hiện 2 commit mới từ phiên khác (log EOD day-trade 11-10, log day-trade 11-11 tới ~12:39 ET — không đụng core). Đã `git checkout -B main origin/main`, không conflict.
+- **Core hiện 9 mã** (không đổi): MSFT 1cp, AAPL 1,483843cp, TXN 2,009648cp, PG 3,416927cp, WMT 4,545415cp, VOO 1,156525cp, VXUS 9,365746cp, SCHD 15,020016cp, VB 1,736545cp.
+- `get_portfolio`: total value **$6.373,40**, cash/buying_power **$918,39** — giảm nhẹ $0,69 so lần kiểm tra 15:41 ET 11-10 ($919,08), khớp với chi phí lệnh day-trade cùng ngày (không phải tiền nạp mới). Không có khoản nạp mới.
+
+**Toàn vẹn stop dự phòng (bắt buộc mỗi lần kiểm tra):** `get_equity_orders` state=confirmed xác nhận **đủ 5/5 lệnh**, không mã nào đổi mức — MSFT $438,30 (`6aeb4120`), AAPL $293,54 (`6aeb4121`), TXN $252,50 (`6aeb4123`), PG $135,96 (`6ad108b4`), WMT $103,17 (`6ad108b6`). Tất cả còn `confirmed`. Không thiếu mã nào → không cần báo khẩn.
+
+**Giá hiện tại (~18:06 UTC, ~13:06 ET) so đóng cửa chính thức 11-10:**
+| Mã | Giá hiện tại | Đóng cửa 11-10 | % hôm nay | Giá vốn TB | P&L% |
+|---|---|---|---|---|---|
+| MSFT | $520,895 | $533,16 | -2,30% | $510,00 | +2,14% |
+| AAPL | $354,64 | $348,51 | +1,76% | $328,93 | +7,82% |
+| TXN | $313,12 | $300,52 | +4,20% | $268,56 | **+16,60%** |
+| PG | $166,88 | $168,66 | -1,06% | $147,23 | +13,35% |
+| WMT | $124,515 | $125,55 | -0,83% | $109,85 | +13,35% |
+| VOO | $699,3628 | $689,50 | +1,43% | $692,87 | +0,93% |
+| VXUS | $83,495 | $82,66 | +1,01% | $85,60 | -2,46% |
+| SCHD | $35,875 | $35,83 | +0,13% | $33,36 | +7,54% |
+| VB | $295,545 | $293,17 | +0,81% | $288,77 | +2,35% |
+
+- **Benchmark:** SPY $760,81 (**+1,45%** so đóng cửa 11-10), QQQ $693,47 (**+2,76%**) — thị trường tăng mạnh, dẫn đầu bởi nhóm hạ tầng AI. `WebSearch` xác nhận: catalyst chính là KQKD CoreWeave (+~25%, vượt kỳ vọng mạnh), cùng Micron (+~13%) và Nvidia tăng — rally tập trung ở nhóm hạ tầng AI/bán dẫn, không phải tin macro (CPI/lãi suất) như 2 phiên trước.
+- **TXN +4,20% hôm nay, vượt trội rõ rệt so QQQ (+2,76%)** — `WebSearch` không tìm thấy tin tức đặc thù riêng TXN (không có KQKD, guidance, M&A, nâng/hạ hạng mới trong 24-48h). Diễn giải hợp lý nhất: **beta theo nhóm bán dẫn/AI-infra đang rally** (cùng nhóm với Micron/Nvidia) — nhất quán với diễn giải TXN các lần kiểm tra trước, không phải tin riêng công ty.
+- **MSFT -2,30% hôm nay, giảm NGƯỢC DÒNG trong khi cả SPY và QQQ đều tăng mạnh** — `WebSearch` không tìm thấy tin xấu đặc thù MSFT trong 24-48h qua (chỉ có tin cũ không liên quan: vụ kiện tập thể về Azure/AI-capex từ 06/2026, thay đổi độc quyền OpenAI từ 04/2026 — cả hai đều không liên quan tới hôm nay). Diễn giải khả dĩ nhất (chưa xác nhận chắc chắn): rally hôm nay tập trung vào nhóm hạ tầng AI/bán dẫn cụ thể (CoreWeave/Micron/Nvidia), có thể đi kèm luân chuyển vốn ra khỏi nhóm megacap software — nhưng đây là suy đoán, không có nguồn xác nhận trực tiếp.
+
+**Đỉnh tham chiếu — kiểm tra đỉnh intraday hôm nay qua `get_equity_historicals` 5-phút:**
+
+| Mã | Đỉnh tham chiếu trước | Đỉnh intraday hôm nay | Đỉnh mới? | Đỉnh tham chiếu (cập nhật) | Ngưỡng đóng cửa -10% | Giá hiện tại | Đệm | Breach? |
+|---|---|---|---|---|---|---|---|---|
+| MSFT | $559,15 | $534,76 | Không | $559,15 | $503,235 | $520,895 | +3,51% | Không |
+| AAPL | $354,47 | $355,13 | Có (rất nhỏ, +0,19%) | $355,13 | $319,617 | $354,64 | +10,96% | Không |
+| TXN | $317,155 | $314,61 | Không | $317,155 | $285,4395 | $313,12 | +9,70% | Không |
+| PG | $169,785 | $167,48 | Không | $169,785 | $152,8065 | $166,88 | +9,21% | Không |
+| WMT | $130,94 | $126,07 | Không | $130,94 | $117,846 | $124,515 | +5,66% | Không |
+
+- **AAPL tạo đỉnh intraday mới rất nhỏ (+0,19%, từ $354,47 lên $355,13)** — cập nhật đỉnh tham chiếu dùng cho ngưỡng đóng cửa -10%, ngầm theo quy tắc, không cần duyệt riêng. Mức tăng không đáng kể nên KHÔNG đề xuất dời stop dự phòng trên sàn lần này.
+- Không mã nào breach ngưỡng đóng cửa -10% (giữa phiên, chỉ theo dõi — quyết định ở lần kiểm tra CHÍNH 15:30 ET). Buffer thấp nhất MSFT +3,51%.
+
+### ĐỀ XUẤT: Cân nhắc chốt lời một phần TXN — vượt ngưỡng cảnh báo +15% LẦN ĐẦU TIÊN (core-9 — cần Hogan duyệt, agent KHÔNG tự đặt lệnh)
+1. **Mã + hành động:** TXN — **cân nhắc BÁN một phần** (ví dụ 1 trong 2 cổ phiếu nguyên hiện có, ~$313,12/cp, giữ lại ~1,009648cp) hoặc giữ nguyên toàn bộ theo quyết định Hogan. Đây là ngưỡng CẢNH BÁO theo CLAUDE.md (nhóm tech/blue-chip/ETF: +15-20% không tự động bán, chỉ đề xuất cân nhắc), không phải lệnh bắt buộc.
+2. **Lý do:** TXN vừa vượt ngưỡng cảnh báo chốt lời +15% lần đầu tiên (hiện +16,60%, tăng mạnh từ +11,60% lúc kiểm tra CHÍNH 11-10 15:41 ET) nhờ rally nhóm bán dẫn/AI-infra hôm nay (+4,20%, không có tin riêng công ty theo WebSearch) — đây là diễn biến KHÁC với đề xuất bán toàn bộ TXN gửi 11-05 (lý do: thủng ngưỡng đóng cửa -10%, đã hồi lại từ 11-09). Đề xuất lần này xuất phát từ cơ chế chốt lời cảnh báo (+15-20%), không phải cắt lỗ.
+3. **Rủi ro chính:** (a) Cả 3 lot TXN hiện tại đều **ngắn hạn** (`term: "st"`: 1cp mở 2026-09-15 giá $265,09; 1cp mở 2026-09-23 giá $271,58; 0,009648cp mở 2026-11-04 giá $315,09, lot này hiện gần như hòa vốn/lỗ nhẹ so giá hiện tại) — bán bây giờ hiện thực hóa lãi vốn ngắn hạn, thuế suất như thu nhập thường; lot cũ nhất còn gần 10 tháng nữa mới đủ dài hạn. Hogan cần cân nhắc điểm này trước khi duyệt, dù CLAUDE.md quy định nguyên tắc hạn chế thuế KHÔNG override kỷ luật chốt lời đã đặt ra. (b) Nếu bán 1cp nguyên, cần hủy lệnh stop dự phòng GTC hiện tại (`6aeb4123`, bán 2cp @ $252,50) và đặt lại cho đúng 1cp còn lại — làm trong cùng 1 lượt theo quy tắc toàn vẹn stop dự phòng. (c) Nếu giữ nguyên và đà rally AI-infra tiếp diễn, bỏ lỡ chốt lời ở mức cao; nếu rally đảo chiều (vì là rally tập trung hẹp, dễ biến động), phần chưa chốt sẽ co hẹp lãi. (d) Đề xuất bán toàn bộ TXN (11-05) vẫn đang CHỜ Hogan riêng — nếu Hogan duyệt đề xuất đó thay vì đề xuất này, đề xuất chốt lời một phần ở đây sẽ không còn cần thiết.
+4. **Mức cắt lỗ/chốt lời đề xuất:** Nếu giữ nguyên toàn bộ: tiếp tục theo stop dự phòng hiện tại $252,50 + ngưỡng đóng cửa -10% hiện hành $285,4395 (từ đỉnh $317,155). Nếu bán một phần: phần còn lại (~1,009648cp) tiếp tục theo cùng cơ chế, đặt lại stop dự phòng cho đúng số lượng còn lại.
+
+### Chốt lời/khác — không lặp lại đề xuất cũ
+- PG +13,35%, WMT +13,35% — cả hai co hẹp lại dưới ngưỡng cảnh báo +15% (PG từng vượt 13:04 ET 11-10). Đề xuất chốt lời một phần PG (13:04 ET 11-10) và WMT (11-02) vẫn CHỜ Hogan — không lặp lại.
+- Đề xuất bán TXN (11-05, do thủng ngưỡng đóng cửa trước đó, đã hồi lại từ 11-09) vẫn CHỜ Hogan — không lặp lại.
+
+**Kết luận:** Thị trường tăng mạnh nhờ rally hẹp ở nhóm hạ tầng AI/bán dẫn (CoreWeave +~25% nhờ KQKD, Micron +~13%, Nvidia tăng — SPY +1,45%, QQQ +2,76%), không phải catalyst macro. **TXN hưởng lợi theo beta nhóm này, vượt ngưỡng cảnh báo chốt lời +15% lần đầu tiên (+16,60%) → ĐỀ XUẤT MỚI cân nhắc chốt lời một phần, chờ Hogan duyệt** (lưu ý cả 3 lot đang ngắn hạn về thuế; đề xuất này độc lập với đề xuất bán toàn bộ TXN 11-05 đang chờ riêng). MSFT giảm ngược dòng thị trường (-2,30%) không có tin xấu đặc thù xác nhận được — có thể là luân chuyển vốn ra khỏi megacap software, chưa đủ cơ sở để coi là tín hiệu thay mã. Không mã nào breach ngưỡng đóng cửa -10% (buffer thấp nhất MSFT +3,51%) — lần kiểm tra CHÍNH 15:30 ET hôm nay sẽ quyết định theo giá đóng cửa. Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. Đề xuất bán TXN (11-05) và chốt lời một phần PG/WMT (11-10/11-02) vẫn còn hiệu lực, chờ Hogan duyệt — không lặp lại push cho các đề xuất cũ.
+
+**Hướng dẫn duyệt:** Phiên này read-only, không thể đặt lệnh. Hogan mở phiên MỚI (Claude Code trên máy, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest với Robinhood connector) và gõ "duyệt đề xuất mới nhất" để thực hiện (nếu duyệt): chốt lời một phần TXN theo đề xuất trên.
