@@ -3319,3 +3319,47 @@ Dùng đỉnh tham chiếu đã xác nhận ở lần kiểm tra CHÍNH 11-04 15
 - Đề xuất bán toàn bộ TXN (11-05, do thủng ngưỡng đóng cửa trước đó, đã hồi lại từ 11-09) vẫn CHỜ Hogan — không lặp lại.
 
 **Kết luận:** Rally AI-infra/bán dẫn tiếp diễn gần hết phiên (SPY +1,35%, QQQ +2,38%). **Không mã nào breach ngưỡng đóng cửa -10%** — buffer thấp nhất MSFT +3,31%. MSFT tiếp tục giảm ngược dòng thị trường (-2,49%); lần này xác định được tin đặc thù (Anthropic ra mắt công cụ cạnh tranh Office + tin hạn chế linh kiện AI data center Trung Quốc) nhưng chưa đạt ngưỡng "tin tiêu cực nghiêm trọng" theo CLAUDE.md để đề xuất thay mã — chỉ ghi nhận theo dõi. AAPL tạo đỉnh mới nhỏ, cập nhật ngầm đỉnh tham chiếu. Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. 3 đề xuất đang chờ Hogan duyệt (chốt lời một phần TXN 13:06 ET hôm nay; bán toàn bộ TXN 11-05; chốt lời một phần PG 11-10 và WMT 11-02) — không lặp lại push cho đề xuất cũ. **Không có đề xuất mới lần kiểm tra này.**
+
+## 2026-11-12 ~13:05 ET (18:05 UTC) — Kiểm tra giữa phiên core-9 (routine tự động, sync git): thị trường đi ngang, không breach, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin main` — không có commit mới kể từ entry cuối ngày 11-11 (15:41 ET). Không conflict.
+- **Core hiện 9 mã** (không đổi): MSFT 1cp, AAPL 1,483843cp, TXN 2,009648cp, PG 3,416927cp, WMT 4,545415cp, VOO 1,156525cp, VXUS 9,365746cp, SCHD 15,020016cp, VB 1,736545cp.
+- `get_portfolio`: total value **$6.390,58**, cash/buying_power **$918,39** — không đổi so lần kiểm tra 15:41 ET 11-11. Không có khoản nạp mới.
+
+**Toàn vẹn stop dự phòng (bắt buộc mỗi lần kiểm tra):** `get_equity_orders` state=confirmed xác nhận **đủ 5/5 lệnh**, không mã nào đổi mức — MSFT $438,30 (`6aeb4120`), AAPL $293,54 (`6aeb4121`), TXN $252,50 (`6aeb4123`), PG $135,96 (`6ad108b4`), WMT $103,17 (`6ad108b6`). Tất cả còn `confirmed`. Không thiếu mã nào → không cần báo khẩn.
+
+**Giá hiện tại (~18:05 UTC, ~13:05 ET) so đóng cửa chính thức 11-11:**
+| Mã | Giá hiện tại | Đóng cửa 11-11 | % hôm nay | Giá vốn TB | P&L% |
+|---|---|---|---|---|---|
+| MSFT | $528,75 | $521,125 | +1,46% | $510,00 | +3,68% |
+| AAPL | $355,70 | $355,63 | +0,02% | $328,93 | +8,14% |
+| TXN | $313,355 | $309,81 | +1,14% | $268,56 | **+16,69%** |
+| PG | $168,695 | $167,67 | +0,61% | $147,23 | +14,57% |
+| WMT | $125,855 | $125,67 | +0,15% | $109,85 | +14,57% |
+| VOO | $699,62 | $698,35 | +0,18% | $692,87 | +0,97% |
+| VXUS | $82,825 | $83,44 | -0,74% | $85,60 | -3,25% |
+| SCHD | $36,12 | $36,02 | +0,28% | $33,36 | +8,27% |
+| VB | $293,70 | $295,41 | -0,58% | $288,77 | +1,70% |
+
+- **Benchmark:** SPY $760,76 (**+0,13%** so đóng cửa 11-11), QQQ $690,75 (**+0,05%**) — thị trường đi ngang, rally AI-infra/bán dẫn 3 phiên trước đã tạm dừng lại. Không có catalyst macro mới đáng kể hôm nay.
+- Cả 5 mã tech/blue-chip đều đi ngang-đến-tăng nhẹ, nhất quán hoặc vượt nhẹ so benchmark đi ngang — không mã nào lệch pha đáng kể, không cần WebSearch tin tức đặc thù lần này.
+
+**Đỉnh tham chiếu — kiểm tra đỉnh intraday hôm nay qua `get_equity_historicals` 5-phút:**
+
+| Mã | Đỉnh tham chiếu trước | Đỉnh intraday hôm nay | Đỉnh mới? | Đỉnh tham chiếu (cập nhật) | Ngưỡng đóng cửa -10% | Giá hiện tại | Đệm | Breach? |
+|---|---|---|---|---|---|---|---|---|
+| MSFT | $559,15 | $529,61 | Không | $559,15 | $503,235 | $528,75 | +5,07% | Không |
+| AAPL | $355,33 | $359,3684 | Có (nhỏ, +1,14%) | $359,3684 | $323,432 | $355,70 | +9,98% | Không |
+| TXN | $317,155 | $316,57 | Không | $317,155 | $285,4395 | $313,355 | +9,78% | Không |
+| PG | $169,785 | $169,95 | Có (rất nhỏ, +0,10%) | $169,95 | $152,955 | $168,695 | +10,29% | Không |
+| WMT | $130,94 | $127,66 | Không | $130,94 | $117,846 | $125,855 | +6,80% | Không |
+
+- AAPL và PG tạo đỉnh intraday mới nhưng mức tăng không đáng kể (+1,14% và +0,10%) — cập nhật đỉnh tham chiếu ngầm theo quy tắc, KHÔNG đề xuất dời stop dự phòng trên sàn lần này.
+- Không mã nào breach ngưỡng đóng cửa -10% (giữa phiên, chỉ theo dõi — quyết định ở lần kiểm tra CHÍNH 15:30 ET). Buffer thấp nhất MSFT +5,07%.
+
+### Chốt lời/khác — không lặp lại đề xuất cũ
+- TXN +16,69% (tăng nhẹ từ +16,60% hôm 11-11) — vẫn trên ngưỡng cảnh báo +15%, đề xuất chốt lời một phần TXN (13:06 ET 11-11) vẫn CHỜ Hogan — không lặp lại push.
+- PG +14,57%, WMT +14,57% — cả hai vẫn dưới ngưỡng cảnh báo +15% (chưa cross mới). Đề xuất chốt lời một phần PG (13:04 ET 11-10) và WMT (11-02) vẫn CHỜ Hogan — không lặp lại.
+- Đề xuất bán toàn bộ TXN (11-05, do thủng ngưỡng đóng cửa trước đó, đã hồi lại từ 11-09 và nay +16,69% lãi) vẫn CHỜ Hogan — không lặp lại; lưu ý đề xuất này có thể đã LỖI THỜI do giá đã hồi mạnh, Hogan nên xem lại trước khi duyệt.
+
+**Kết luận:** Thị trường đi ngang (SPY +0,13%, QQQ +0,05%), không có catalyst mới. Cả 5 mã tech/blue-chip ổn định hoặc tăng nhẹ, không mã nào lệch pha đáng kể so benchmark. AAPL/PG tạo đỉnh intraday mới không đáng kể, cập nhật ngầm đỉnh tham chiếu. Không mã nào breach ngưỡng đóng cửa -10% — buffer thấp nhất MSFT +5,07%. Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới (ngoài phạm vi 7 ngày đầu tháng). 3 đề xuất đang chờ Hogan duyệt (chốt lời một phần TXN 13:06 ET 11-11; bán toàn bộ TXN 11-05 — có thể đã lỗi thời; chốt lời một phần PG 11-10 và WMT 11-02) — không lặp lại push cho đề xuất cũ. **Không có đề xuất mới lần kiểm tra này.**
