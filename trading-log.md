@@ -3448,3 +3448,46 @@ Dùng đỉnh tham chiếu đã xác nhận ở lần kiểm tra CHÍNH 11-04 15
 - PG +15,51%, WMT +16,46% — cả hai tiếp tục trên ngưỡng cảnh báo +15% (không phải lần đầu). Đề xuất chốt lời một phần PG (13:04 ET 11-10) và WMT (11-02) vẫn CHỜ Hogan — không lặp lại.
 
 **Kết luận:** Bán tháo diện rộng do lo ngại valuation nhóm AI/semis (SPY -0,79%, QQQ -1,75%). **TXN giảm -4,21% riêng lẻ, lệch rõ so benchmark** — WebSearch xác nhận đây là điều chỉnh valuation sau đợt tăng mạnh, không phải tin xấu đặc thù/fundamentals xấu đi (chưa đạt tiêu chí thay mã theo CLAUDE.md), nhưng buffer so ngưỡng đóng cửa -10% đã co hẹp về +4,86% — cần theo dõi sát ở lần kiểm tra CHÍNH 15:30 ET hôm nay. 4 mã còn lại đi ngang-đến-tăng nhẹ, tốt hơn benchmark. AAPL/PG tạo đỉnh intraday mới không đáng kể, cập nhật ngầm đỉnh tham chiếu. Không mã nào breach ngưỡng đóng cửa -10%. Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. TXN đã lùi dưới ngưỡng +15% (không còn cảnh báo mới); PG/WMT tiếp tục trên ngưỡng (không phải lần đầu). 3 đề xuất cũ đang chờ Hogan (chốt lời một phần TXN 13:06 ET 11-11; bán toàn bộ TXN 11-05; chốt lời một phần PG 11-10 và WMT 11-02) — không lặp lại push cho đề xuất cũ. **Không có đề xuất mới lần kiểm tra này → không gửi PushNotification.**
+
+## 2026-11-13 ~15:44 ET (20:44 UTC) — Kiểm tra CHÍNH ngưỡng đóng cửa -10% core-9 (routine tự động, sync git): TXN hồi nhẹ từ đáy giữa phiên, không breach, không đỉnh mới, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch`/`git pull` — không có commit mới kể từ entry 13:04 ET cùng ngày. Không conflict. Branch `main` bám `origin/main`.
+- **Core hiện 9 mã** (không đổi): MSFT 1cp, AAPL 1,483843cp, TXN 2,009648cp, PG 3,416927cp, WMT 4,545415cp, VOO 1,156525cp, VXUS 9,365746cp, SCHD 15,020016cp, VB 1,736545cp.
+- `get_portfolio`: total value **$6.361,17**, cash/buying_power **$918,39** — không đổi so lần kiểm tra trước, không có khoản nạp mới.
+
+**Toàn vẹn stop dự phòng (bắt buộc mỗi lần kiểm tra):** `get_equity_orders` state=confirmed xác nhận **đủ 5/5 lệnh**, không mã nào đổi mức — MSFT $438,30 (`6aeb4120`), AAPL $293,54 (`6aeb4121`), TXN $252,50 (`6aeb4123`), PG $135,96 (`6ad108b4`), WMT $103,17 (`6ad108b6`). Tất cả còn `confirmed`. Không thiếu mã nào → không cần báo khẩn.
+
+**Giá hiện tại (~20:44 UTC, ~15:44 ET) so đóng cửa chính thức 11-12:**
+| Mã | Giá hiện tại | Đóng cửa 11-12 | % hôm nay | Giá vốn TB | P&L% |
+|---|---|---|---|---|---|
+| MSFT | $523,97 | $523,00 | +0,19% | $510,00 | +2,74% |
+| AAPL | $355,975 | $354,88 | +0,31% | $328,93 | +8,22% |
+| TXN | $303,50 | $312,48 | -2,87% | $268,56 | +13,01% |
+| PG | $169,76 | $168,03 | +1,03% | $147,23 | +15,30% |
+| WMT | $127,82 | $126,19 | +1,29% | $109,85 | +16,36% |
+| VOO | $691,875 | $696,00 | -0,59% | $692,87 | -0,14% |
+| VXUS | $82,51 | $82,66 | -0,18% | $85,60 | -3,61% |
+| SCHD | $36,049 | $35,93 | +0,33% | $33,36 | +8,06% |
+| VB | $290,94 | $291,58 | -0,22% | $288,77 | +0,75% |
+
+- **Benchmark:** SPY $752,645 (**-0,59%** so đóng cửa 11-12), QQQ $678,60 (**-1,40%**) — bán tháo valuation AI/semis dịu lại phần nào so giữa phiên (SPY -0,79%→-0,59%, QQQ -1,75%→-1,40%).
+- TXN hồi nhẹ từ đáy giữa phiên ($299,325 lúc 13:04 ET → $303,50 hiện tại) nhưng vẫn giảm -2,87% hôm nay, tiếp tục giảm mạnh hơn QQQ (-1,40%) — lệch tiêu cực nhưng đã bớt so giữa phiên (-4,21%). Đã xác nhận qua WebSearch lúc 13:04 ET hôm nay đây là điều chỉnh valuation sau rally, không phải tin xấu đặc thù — không lặp lại WebSearch lần này, không có diễn biến mới đủ để đổi đánh giá.
+- MSFT/AAPL/PG/WMT đều tăng nhẹ, tốt hơn benchmark rõ rệt hôm nay — không có tín hiệu đặc thù cần WebSearch thêm.
+
+**Đỉnh tham chiếu — kiểm tra đỉnh intraday hôm nay (cả phiên, qua `get_equity_historicals` 5-phút) so với đỉnh đã cập nhật lúc 13:04 ET cùng ngày:**
+
+| Mã | Đỉnh tham chiếu (13:04 ET) | Đỉnh cả phiên hôm nay | Đỉnh mới? | Ngưỡng đóng cửa -10% | Giá hiện tại | Đệm | Breach? |
+|---|---|---|---|---|---|---|---|
+| MSFT | $559,15 | $526,07 | Không | $503,235 | $523,97 | +4,12% | Không |
+| AAPL | $360,83 | $360,83 | Không (bằng, đã ghi nhận lúc 13:04) | $324,747 | $355,975 | +9,62% | Không |
+| TXN | $317,155 | $312,00 | Không | $285,4395 | $303,50 | +6,33% | Không |
+| PG | $170,73 | $170,73 | Không (bằng, đã ghi nhận lúc 13:04) | $153,657 | $169,76 | +10,48% | Không |
+| WMT | $130,94 | $128,27 | Không | $117,846 | $127,82 | +8,46% | Không |
+
+- Không mã nào tạo đỉnh mới trong phiên (đỉnh cao nhất hôm nay của AAPL/PG đã xảy ra trước 13:04 ET). **KHÔNG mã nào breach ngưỡng đóng cửa -10%** tại lần kiểm tra CHÍNH hôm nay — buffer thấp nhất MSFT +4,12%, TXN +6,33% (hồi từ +4,86% giữa phiên nhờ giá hồi nhẹ cuối phiên). Không có đề xuất bán theo cơ chế này.
+
+### Chốt lời/khác — không lặp lại đề xuất cũ
+- TXN +13,01% (hồi từ +11,46% giữa phiên) — vẫn dưới ngưỡng cảnh báo +15%, không phải cảnh báo mới. Đề xuất chốt lời một phần TXN (13:06 ET 11-11) và đề xuất bán toàn bộ TXN (11-05) vẫn CHỜ Hogan — không lặp lại push.
+- PG +15,30% (co nhẹ từ +15,51% giữa phiên, vẫn trên ngưỡng), WMT +16,36% — cả hai tiếp tục trên ngưỡng cảnh báo +15% (không phải lần đầu). Đề xuất chốt lời một phần PG (13:04 ET 11-10) và WMT (11-02) vẫn CHỜ Hogan — không lặp lại.
+
+**Kết luận:** Bán tháo valuation AI/semis dịu lại phần nào so giữa phiên (SPY -0,59%, QQQ -1,40%). TXN hồi nhẹ từ đáy giữa phiên nhưng vẫn giảm -2,87% riêng lẻ hôm nay, lệch tiêu cực hơn QQQ — không có diễn biến mới ngoài đánh giá "điều chỉnh valuation sau rally" đã xác nhận lúc 13:04 ET, chưa đạt tiêu chí thay mã theo CLAUDE.md. 4 mã còn lại tăng nhẹ, tốt hơn benchmark. Không mã nào tạo đỉnh intraday mới và **không mã nào breach ngưỡng đóng cửa -10%** — buffer thấp nhất MSFT +4,12%. Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới (ngoài phạm vi 7 ngày đầu tháng). TXN tiếp tục dưới ngưỡng +15% (không cảnh báo mới); PG/WMT tiếp tục trên ngưỡng (không phải lần đầu). 3 đề xuất cũ đang chờ Hogan (chốt lời một phần TXN 13:06 ET 11-11; bán toàn bộ TXN 11-05; chốt lời một phần PG 11-10 và WMT 11-02) — không lặp lại push cho đề xuất cũ. **Không có đề xuất mới lần kiểm tra này → không gửi PushNotification.**
