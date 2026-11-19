@@ -3751,3 +3751,46 @@ Dùng đỉnh tham chiếu đã xác nhận ở lần kiểm tra CHÍNH 11-04 15
 - PG +15,94%, WMT +15,81% — cả hai tiếp tục trên ngưỡng cảnh báo +15% (không phải lần đầu, nhích nhẹ so 13:05 ET). Đề xuất chốt lời một phần PG (13:04 ET 11-10) và WMT (11-02) vẫn CHỜ Hogan — không lặp lại.
 
 **Kết luận:** Thị trường tiếp tục phân kỳ nhẹ (SPY -0,24%, QQQ +0,37%), tương tự sáng nay. TXN giảm riêng lẻ -1,49%, lệch rõ so QQQ nhưng WebSearch (lại) xác nhận không có tin xấu đặc thù mới — tiếp nối chủ đề luân chuyển vốn khỏi bán dẫn, chưa đạt tiêu chí thay mã. Không mã nào tạo đỉnh intraday mới và **không mã nào breach ngưỡng đóng cửa -10%** — MSFT và TXN đều hồi phục buffer so sáng nay (MSFT +0,81%, TXN +2,10%), hạ nhiệt rủi ro breach ghi nhận hôm 11-17. Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới (ngoài 7 ngày đầu tháng, không áp dụng kiểm tra deposit; cash giảm nhẹ do hoạt động sandbox/day-trade đã đóng, không liên quan core-9). PG/WMT tiếp tục trên ngưỡng +15% (không phải lần đầu); TXN tiếp tục dưới ngưỡng. WMT báo cáo KQKD 19/11 — ghi nhận theo dõi. 4 đề xuất cũ đang chờ Hogan (chốt lời một phần TXN 13:06 ET 11-11; bán toàn bộ TXN 11-05; chốt lời một phần PG 11-10; chốt lời một phần WMT 11-02) — không lặp lại push cho đề xuất cũ. **Không có đề xuất mới lần kiểm tra này → không gửi PushNotification.**
+
+## 2026-11-19 ~13:04 ET (18:04 UTC) — Kiểm tra 13:00 ET core-9 (routine tự động, sync git): bán tháo tiếp diễn (chủ đề "AI valuation" chưa đổi), WMT báo KQKD beat nhẹ nhưng không tác động giá, không breach, không đỉnh mới, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin` — HEAD trước đó detached, `git checkout -B main origin/main`; không có commit mới liên quan core-9 kể từ entry 11-18 15:40 ET (commit mới nhất trên `main` là của routine day-trade/sandbox, mã TGT, không liên quan core-9). Không conflict.
+- **Core hiện 9 mã** (không đổi, xác nhận qua `get_equity_positions`): MSFT 1cp, AAPL 1,484973cp, TXN 2,009648cp, PG 3,416927cp, WMT 4,545415cp, VOO 1,156525cp, VXUS 9,365746cp, SCHD 15,020016cp, VB 1,736545cp.
+- `get_portfolio`: total value **$6.173,71**, cash/buying_power **$916,30** — giảm nhẹ so $917,53 lần kiểm tra trước (11-18 15:40 ET); đã qua 7 ngày đầu tháng nên không áp dụng kiểm tra deposit, chênh lệch nhỏ không phải tiền nạp mới (nhiều khả năng do hoạt động day-trade/sandbox dùng chung tài khoản).
+
+**Toàn vẹn stop dự phòng (bắt buộc mỗi lần kiểm tra):** `get_equity_orders` state=confirmed xác nhận **đủ 5/5 lệnh**, không mã nào đổi mức — MSFT $438,30 (`6aeb4120`), AAPL $293,54 (`6aeb4121`), TXN $252,50 (`6aeb4123`), PG $135,96 (`6ad108b4`), WMT $103,17 (`6ad108b6`). Tất cả còn `confirmed`. Không thiếu mã nào → không cần báo khẩn.
+
+**Giá hiện tại (~18:04 UTC, ~13:04 ET) so đóng cửa chính thức 11-18:**
+| Mã | Giá hiện tại | Đóng cửa 11-18 | % hôm nay | Giá vốn TB | P&L% |
+|---|---|---|---|---|---|
+| MSFT | $506,95 | $508,29 | -0,26% | $510,00 | -0,60% |
+| AAPL | $349,12 | $352,45 | -0,94% | $328,95 | +6,13% |
+| TXN | $288,5675 | $292,43 | -1,32% | $268,56 | +7,45% |
+| PG | $168,45 | $170,29 | -1,08% | $147,23 | +14,41% |
+| WMT | $126,255 | $127,36 | -0,87% | $109,85 | +14,93% |
+| VOO | $663,78 | $671,31 | -1,12% | $692,87 | -4,20% |
+| VXUS | $78,335 | $79,24 | -1,14% | $85,60 | -8,49% |
+| SCHD | $34,2699 | $34,70 | -1,24% | $33,36 | +2,73% |
+| VB | $280,21 | $283,65 | -1,21% | $288,77 | -2,96% |
+
+- **Benchmark:** SPY $721,81 (**-1,15%** so đóng cửa 11-18 $730,20), QQQ $651,55 (**-1,21%** so $659,51) — bán tháo diện rộng tiếp diễn, cùng chủ đề "AI valuation reckoning"/lo ngại định giá AI kéo dài từ đầu tháng 11. WebSearch xác nhận: chuỗi giảm 4 phiên liên tiếp của Dow tính tới 11-18, khảo sát BofA cho thấy tỷ lệ cash của quỹ giảm xuống 3,7% (mức lịch sử thường báo hiệu điều chỉnh) — không tìm thấy catalyst mới đặc thù cho riêng hôm nay 11-19, chỉ là tiếp nối chuỗi bán tháo đã ghi nhận nhiều lần từ đầu tháng.
+- **WMT báo cáo KQKD sáng nay** (`get_earnings_calendar` xác nhận: EPS thực tế $0,65 so ước tính $0,64 — beat nhẹ). WebSearch không tìm được chi tiết guidance Q3 FY27 cụ thể (kết quả chủ yếu trả về KQKD Q3 FY26 năm ngoái và Q2 FY27 tháng 7, chưa index kết quả hôm nay). Giá WMT giảm nhẹ -0,87% dù EPS beat — nhất quán với bán tháo diện rộng (độ lệch so benchmark không đáng kể), KHÔNG phải phản ứng tiêu cực riêng với KQKD → chưa đạt tiêu chí thay mã theo CLAUDE.md.
+- Không mã core nào khác lệch đáng kể so benchmark hôm nay (TXN -1,32% gần với QQQ -1,21%; các mã còn lại trong biên độ thị trường chung).
+
+**Đỉnh tham chiếu — kiểm tra đỉnh intraday hôm nay (từ mở phiên tới hiện tại ~13:04 ET, qua `get_equity_historicals` 5-phút) so với đỉnh tham chiếu đã cập nhật lúc 11-18 15:40 ET:**
+
+| Mã | Đỉnh tham chiếu (11-18 15:40 ET) | Đỉnh intraday hôm nay | Đỉnh mới? | Ngưỡng đóng cửa -10% | Giá hiện tại | Đệm | Breach? |
+|---|---|---|---|---|---|---|---|
+| MSFT | $559,15 | $526,49 | Không | $503,235 | $506,95 | **+0,74%** | Không |
+| AAPL | $360,83 | $355,28 | Không | $324,747 | $349,12 | +7,51% | Không |
+| TXN | $317,155 | $301,00 | Không | $285,4395 | $288,5675 | **+1,10%** | Không |
+| PG | $173,59 | $168,665 | Không | $156,231 | $168,45 | +7,82% | Không |
+| WMT | $130,94 | $126,95 | Không | $117,846 | $126,255 | +7,13% | Không |
+
+- Không mã nào tạo đỉnh intraday mới hôm nay (đỉnh cao nhất trong phiên của cả 5 mã đều thấp hơn đỉnh tham chiếu, kể cả WMT bất chấp nhịp tăng ngắn sau KQKD). **KHÔNG mã nào breach ngưỡng đóng cửa -10%** — buffer thấp nhất **TXN +1,10%** (co hẹp tiếp từ +2,10% hôm 11-18 15:40 ET), kế đến **MSFT +0,74%** (co hẹp từ +0,81%) — cả hai cần theo dõi RẤT sát ở lần kiểm tra CHÍNH 15:30 ET hôm nay.
+
+### Chốt lời/khác — không lặp lại đề xuất cũ
+- **PG +14,41% và WMT +14,93% — cả hai đã tụt XUỐNG DƯỚI ngưỡng cảnh báo +15%** (từ +15,94%/+15,81% hôm 11-18) do bán tháo hôm nay — đây là hướng ngược lại, KHÔNG phải cảnh báo mới, không hành động. Đề xuất chốt lời một phần PG (13:04 ET 11-10) và WMT (11-02) vẫn CHỜ Hogan — không lặp lại push.
+- TXN +7,45% (giảm từ +8,52% hôm 11-18) — tiếp tục dưới ngưỡng cảnh báo +15%, không phải cảnh báo mới. Đề xuất chốt lời một phần TXN (13:06 ET 11-11) và đề xuất bán toàn bộ TXN (11-05) vẫn CHỜ Hogan — không lặp lại.
+
+**Kết luận:** Bán tháo diện rộng tiếp diễn (SPY -1,15%, QQQ -1,21%), cùng chủ đề "AI valuation reckoning" đã kéo dài từ đầu tháng 11, WebSearch không tìm thấy catalyst mới đặc thù cho hôm nay. WMT báo KQKD beat nhẹ ($0,65 vs ước tính $0,64) nhưng giá vẫn giảm nhẹ theo thị trường chung — không phải tin xấu đặc thù, chưa đạt tiêu chí thay mã. Không mã nào tạo đỉnh intraday mới và **không mã nào breach ngưỡng đóng cửa -10%** — buffer thấp nhất TXN +1,10% và MSFT +0,74% (cả hai tiếp tục co hẹp, cần theo dõi rất sát ở lần kiểm tra CHÍNH 15:30 ET hôm nay). Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. PG/WMT vừa tụt xuống dưới ngưỡng +15% (hướng ngược, không cảnh báo mới); TXN tiếp tục dưới ngưỡng. 4 đề xuất cũ đang chờ Hogan (chốt lời một phần TXN 13:06 ET 11-11; bán toàn bộ TXN 11-05; chốt lời một phần PG 11-10; chốt lời một phần WMT 11-02) — không lặp lại push cho đề xuất cũ. **Không có đề xuất mới lần kiểm tra này → không gửi PushNotification.**
