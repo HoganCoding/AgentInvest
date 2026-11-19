@@ -3844,3 +3844,10 @@ Dùng đỉnh tham chiếu đã xác nhận ở lần kiểm tra CHÍNH 11-04 15
 **Kết luận:** Bán tháo AI-valuation lan rộng sâu hơn rõ rệt so sáng nay (SPY -1,86%, QQQ -2,05%), không có tin xấu đặc thù MSFT/TXN. **MSFT đã THỦNG ngưỡng đóng cửa -10% từ đỉnh → ĐỀ XUẤT BÁN TOÀN BỘ 1CP, CẦN HOGAN DUYỆT GẤP TRƯỚC 16:00 ET HÔM NAY.** TXN cực sát ngưỡng (+0,28%) — theo dõi tiếp. Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. 4 đề xuất cũ khác (chốt lời/bán TXN, PG, WMT) vẫn chờ Hogan, không lặp lại push riêng cho các đề xuất đó.
 
 **Để duyệt:** Hogan mở phiên MỚI (Claude Code trên PC, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest có kết nối Robinhood) và gõ "duyệt đề xuất mới nhất". Phiên routine này KHÔNG có quyền đặt lệnh.
+
+## 2026-11-19 ~15:46 ET — Hogan từ chối đề xuất bán MSFT: "thôi cứ để vậy"
+
+- **Quyết định:** Hogan xem xét đề xuất bán 1cp MSFT (giá ~$500,35, đã thủng ngưỡng đóng cửa -10% từ đỉnh $559,15) và chọn **KHÔNG bán** — giữ nguyên vị thế MSFT.
+- **Lý do từ chối (Hogan):** không nêu lý do cụ thể; phán đoán giữ nguyên dù giá đã thủng ngưỡng stop theo giá đóng cửa.
+- **Hệ quả:** Ngưỡng đóng cửa -10% cho MSFT ($503,235) đã bị breach hôm nay nhưng Hogan chủ động bỏ qua. Lần kiểm tra tiếp theo (13:00 ET 2026-11-20) sẽ tiếp tục theo dõi — nếu giá đóng cửa vẫn dưới $503,235, không lặp lại đề xuất bán (đã có quyết định rõ ràng của Hogan hôm nay), trừ khi giá tiếp tục xấu đi đáng kể.
+- **Stop dự phòng GTC MSFT `6aeb4120` @ $438,30 vẫn còn hiệu lực** (không thay đổi).
