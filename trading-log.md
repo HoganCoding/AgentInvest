@@ -3845,6 +3845,16 @@ Dùng đỉnh tham chiếu đã xác nhận ở lần kiểm tra CHÍNH 11-04 15
 
 **Để duyệt:** Hogan mở phiên MỚI (Claude Code trên PC, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest có kết nối Robinhood) và gõ "duyệt đề xuất mới nhất". Phiên routine này KHÔNG có quyền đặt lệnh.
 
+## 2026-11-20 ~14:42 ET — Bán TXN 2cp @$267,255 (Hogan duyệt trực tiếp) — lỗ −$2,63
+
+- **Lệnh:** Bán market 2cp TXN, khớp @$267,255, phí $0,02 — tổng thu $534,49
+- **P&L:** Giá vốn $268,56/cp × 2 = $537,12 → **lỗ −$2,63** (gần hòa vốn)
+- **Lý do:** TXN breach ngưỡng đóng cửa -10% từ đỉnh $317,155 (ngưỡng $285,44) ở mức đệm −5,99% tại thời điểm bán; giảm −6,44% hôm nay trong khi QQQ −3,91% (lệch ~2,5 điểm %). Hogan duyệt trực tiếp trong phiên tương tác ~14:42 ET.
+- **Quy trình:** Hủy stop dự phòng GTC `6aeb4123` ($252,50) trước → bán market → khớp ngay. Order ID: `6b00a2b3-7b03-4135-896f-8e3bb6ffd153`.
+- **Anti-churn:** KHÔNG mua lại TXN trước **2026-12-20** (30 ngày từ ngày bán).
+- **Còn lại:** 0,009648cp TXN lẻ (DRIP) vẫn còn trong tài khoản — không có stop, không ảnh hưởng.
+- **Core → còn 8 mã active** (slot tech thứ 3 trống, cùng slot 4 trống từ QCOM). MSFT vẫn breach ngưỡng −10% (đệm −2,88%) — Hogan chưa quyết định bán MSFT.
+
 ## 2026-11-19 ~15:46 ET — Hogan từ chối đề xuất bán MSFT: "thôi cứ để vậy"
 
 - **Quyết định:** Hogan xem xét đề xuất bán 1cp MSFT (giá ~$500,35, đã thủng ngưỡng đóng cửa -10% từ đỉnh $559,15) và chọn **KHÔNG bán** — giữ nguyên vị thế MSFT.
