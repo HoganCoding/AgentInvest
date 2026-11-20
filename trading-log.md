@@ -3907,3 +3907,51 @@ Dùng đỉnh tham chiếu đã xác nhận ở lần kiểm tra CHÍNH 11-04 15
 - TXN hiện P&L gần hòa vốn (-0,07%) — không còn liên quan ngưỡng cảnh báo chốt lời +15% (đã giảm sâu từ +8,52%). Đề xuất chốt lời một phần TXN (13:06 ET 11-11) và đề xuất bán toàn bộ TXN (11-05) vẫn CHỜ Hogan — không lặp lại push (các đề xuất đó dựa trên P&L dương, bối cảnh đã đổi nhưng vẫn là đề xuất cũ chưa được quyết định).
 
 **Kết luận:** Bán tháo diện rộng sâu hơn rõ rệt (SPY -2,23%, QQQ -3,91%), không có KQKD nào của 5 mã tech/blue-chip hôm nay/hôm qua. **TXN giảm riêng lẻ rất mạnh -6,08%, lệch rõ so QQQ** — WebSearch nhiều lần không tìm thấy tin xấu đặc thù mới, nhất quán với rotation/beta cao trong nhóm bán dẫn đã ghi nhận nhiều lần, chưa đạt tiêu chí thay mã. **Cả MSFT và TXN đang breach ngưỡng đóng cửa -10% GIỮA PHIÊN** (MSFT đệm -2,88%, TXN đệm -5,99%) nhưng theo đúng quy tắc CLAUDE.md, lần kiểm tra 13:00 ET này KHÔNG dùng giá giữa phiên để quyết định bán — chờ giá đóng cửa chính thức ở lần kiểm tra CHÍNH 15:30 ET. PG/WMT tiếp tục trên ngưỡng cảnh báo +15% (không mới). Toàn vẹn 5 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. Các đề xuất cũ (chốt lời/bán TXN theo P&L, chốt lời PG/WMT) vẫn chờ Hogan, không lặp lại push. **Không có đề xuất mới lần kiểm tra này (chưa tới thời điểm quyết định chính thức) → không gửi PushNotification** — nhưng lần kiểm tra CHÍNH 15:30 ET hôm nay cần xét đề xuất bán cho cả MSFT và TXN nếu còn breach lúc đóng cửa.
+
+## 2026-11-20 ~15:40 ET (20:41 UTC) — Kiểm tra CHÍNH 15:30 ET core-8 (sau khi bán TXN 14:42 ET): **MSFT tiếp tục breach ngưỡng đóng cửa -10%, xấu đi đáng kể so lúc Hogan từ chối bán (11-19) → TÁI ĐỀ XUẤT BÁN**, bán tháo AI-trade lan rộng mạnh (SPY -3,46%, QQQ -5,31%), không có tin xấu đặc thù MSFT
+
+- **Sync đầu phiên:** `git fetch`/`git pull` — repo ở trạng thái HEAD detached khớp `origin/main` (do phiên trước), đã `git checkout -B main origin/main`. Không có commit log mới kể từ entry "Bán TXN 2cp" (~14:42 ET hôm nay, phiên tương tác Hogan duyệt trực tiếp). Không conflict.
+- **Core hiện 8 mã active** (giảm từ 9 sau khi bán toàn bộ TXN 14:42 ET hôm nay, Hogan duyệt): MSFT 1cp, AAPL 1,484973cp, PG 3,416927cp, WMT 4,545415cp, VOO 1,156525cp, VXUS 9,365746cp, SCHD 15,020016cp, VB 1,736545cp. TXN còn 0,009648cp lẻ (DRIP, không có stop, không phải vị thế active).
+- `get_portfolio`: total value **$6.031,06**, cash/buying_power **$1.450,79** (tăng so trước do tiền bán TXN — không phải tiền nạp mới).
+
+**Toàn vẹn stop dự phòng:** `get_equity_orders` state=confirmed xác nhận **4/4 lệnh còn cần thiết** (TXN đã bán, không còn cần stop) — MSFT $438,30 (`6aeb4120`), AAPL $293,54 (`6aeb4121`), PG $135,96 (`6ad108b4`), WMT $103,17 (`6ad108b6`). Tất cả còn `confirmed`, không mã nào đổi mức. Không thiếu mã nào → không cần báo khẩn.
+
+**Giá hiện tại (~20:41 UTC, ~15:41 ET) so đóng cửa chính thức 11-19:**
+| Mã | Giá hiện tại | Đóng cửa 11-19 | % hôm nay | Giá vốn TB | P&L% |
+|---|---|---|---|---|---|
+| MSFT | $483,73 | $498,30 | **-2,92%** | $510,00 | **-5,15%** |
+| AAPL | $342,90 | $349,21 | -1,81% | $328,95 | +4,24% |
+| PG | $169,64 | $167,85 | +1,07% | $147,23 | +15,22% |
+| WMT | $128,385 | $126,04 | +1,86% | $109,85 | +16,87% |
+| VOO | $635,30 | $658,01 | -3,45% | $692,87 | -8,31% |
+| VXUS | $75,405 | $77,93 | -3,24% | $85,60 | -11,91% |
+| SCHD | $34,035 | $34,20 | -0,48% | $33,36 | +2,02% |
+| VB | $270,85 | $277,78 | -2,49% | $288,77 | -6,21% |
+
+- **Benchmark:** SPY $691,09 (**-3,46%** so đóng cửa 11-19 $715,87), QQQ $610,83 (**-5,31%** so $645,04) — bán tháo AI-trade lan rộng **mạnh hơn rõ rệt** so các lần kiểm tra gần đây (13:00 ET hôm nay: SPY -2,23%/QQQ -3,91%). WebSearch xác nhận: không có catalyst macro mới (không Fed/việc làm/thuế quan) — chủ đề vẫn là "AI valuation reckoning" đã kéo dài từ 2026-11-05, hôm nay tăng tốc do cổ phiếu Anthropic (IPO, mã ANT) giảm phiên thứ 2 liên tiếp, gây áp lực lan rộng lên cả nhóm AI-trade.
+- **MSFT riêng: WebSearch không tìm thấy tin xấu đặc thù công ty nào hôm nay** (không KQKD, không kiện tụng, không hạ bậc tín nhiệm, không mất CEO) — mức giảm hôm nay được gán cho nhà đầu tư "đánh giá lại" cam kết compute Azure/Anthropic ~$47-49 tỷ đã công bố trước đó (tin cũ, không phải tiết lộ mới) + beta cao hơn với đà bán tháo AI-trade chung. Một ghi chú của UBS vẫn giữ quan điểm tích cực về tăng trưởng Azure/AI-capacity. → xác nhận đây là rủi ro hệ thống/beta, không phải fundamentals MSFT xấu đi — **không đạt tiêu chí thay mã theo CLAUDE.md**, nhưng cơ chế stop theo giá đóng cửa áp dụng không phân biệt nguyên nhân.
+- AAPL/PG/WMT: WebSearch không tìm thấy tin tức ngày hôm nay riêng cho 3 mã này; biến động của PG/WMT (tăng nhẹ bất chấp thị trường giảm) tiếp tục nhất quán với dòng tiền trú ẩn sang blue-chip/tiêu dùng thiết yếu đã ghi nhận nhiều lần.
+
+**Đỉnh tham chiếu & ngưỡng đóng cửa -10% (qua `get_equity_historicals` 5-phút cho MSFT; AAPL/PG/WMT không thể tạo đỉnh mới hôm nay vì đều dưới đỉnh tham chiếu xa hơn giá hiện tại):**
+
+| Mã | Đỉnh tham chiếu | Đỉnh intraday hôm nay (MSFT, max) | Đỉnh mới? | Ngưỡng đóng cửa -10% | Giá hiện tại (~15:41 ET) | Đệm | Breach? |
+|---|---|---|---|---|---|---|---|
+| MSFT | $559,15 | $503,80 (15:00 UTC) | Không | $503,235 | $483,73 | **-3,88%** | **✅ CÓ — THỦNG NGƯỠNG, xấu đi rõ rệt** |
+| AAPL | $360,83 | — | Không | $324,747 | $342,90 | +5,59% | Không |
+| PG | $173,59 | — | Không | $156,231 | $169,64 | +8,59% | Không |
+| WMT | $130,94 | — | Không | $117,846 | $128,385 | +8,94% | Không |
+
+### ⚠️ TÁI ĐỀ XUẤT BÁN MSFT — breach ngưỡng đóng cửa -10% từ đỉnh, xấu đi đáng kể so lần Hogan từ chối (11-19 15:46 ET: đệm -0,65% → hôm nay -3,88%)
+
+1. **Mã + hành động:** Bán toàn bộ **1 cổ phiếu MSFT** (lệnh market, cần hủy lệnh stop dự phòng GTC `6aeb4120` @ $438,30 trước — 1cp đang bị giữ bởi lệnh đó, `shares_available_for_sells`=0).
+2. **Lý do:** Giá hiện tại $483,73 tiếp tục ở dưới ngưỡng đóng cửa -10% từ đỉnh tham chiếu $559,15 (ngưỡng $503,235), đúng cơ chế stop "theo giá đóng cửa" CLAUDE.md. **Đây là lần thứ 3 MSFT được ghi nhận breach** (11-19 15:46 ET đệm -0,65% → Hogan từ chối bán; 11-20 13:00 ET đệm -2,88% → chưa tới điểm quyết định; **11-20 15:40 ET (lần này) đệm -3,88%** → xấu đi thêm ~3,2 điểm % so lúc Hogan từ chối, đủ mức "xấu đi đáng kể" theo ghi chú entry 11-19 15:46 ET để tái đề xuất). WebSearch xác nhận không có tin xấu đặc thù MSFT — nguyên nhân là beta cao với đà bán tháo AI-trade diện rộng (gia tốc hôm nay do cổ phiếu Anthropic/ANT giảm phiên 2), không phải fundamentals xấu đi.
+3. **Rủi ro chính:** (a) Hogan đã từ chối bán 1 lần (11-19) với lý do không nêu rõ — có thể Hogan chủ động chấp nhận rủi ro/tin vào hồi phục; tái đề xuất có thể bị từ chối lần 2; (b) Bán vào đúng lúc hoảng loạn AI-trade có thể bỏ lỡ hồi phục nếu đây chỉ là điều chỉnh định giá ngắn hạn, không phải xấu đi fundamentals MSFT (UBS vẫn giữ quan điểm tích cực Azure/AI); (c) P&L hiện -5,15% từ giá vốn $510,00 — lỗ đã lớn hơn rõ rệt so các lần kiểm tra trước; (d) Anti-churn: nếu bán, MSFT bị cấm mua lại 30 ngày — tech slot sẽ còn **1/4 còn hoạt động** (AAPL), 3/4 trống (QCOM cũ + MSFT nếu bán + 1 slot đã trống từ trước).
+4. **Mức cắt lỗ/chốt lời đề xuất:** Không áp dụng — đây là lệnh thoát theo đúng ngưỡng stop đã đặt, không phải lệnh mới.
+
+### Chốt lời/khác — không lặp lại đề xuất cũ
+- PG +15,22%, WMT +16,87% — cả hai tiếp tục trên ngưỡng cảnh báo +15% (giảm nhẹ so sáng nay do chính PG/WMT cũng điều chỉnh nhẹ, không phải cảnh báo mới). Đề xuất chốt lời một phần PG (13:04 ET 11-10) và WMT (11-02) vẫn CHỜ Hogan — không lặp lại push.
+- Các đề xuất cũ về TXN đã hết hiệu lực (TXN đã bán toàn bộ 14:42 ET hôm nay).
+
+**Kết luận:** Bán tháo AI-trade diện rộng mạnh hơn rõ rệt hôm nay (SPY -3,46%, QQQ -5,31%), gia tốc do cổ phiếu Anthropic (ANT) giảm phiên IPO thứ 2, không có catalyst macro mới và không có tin xấu đặc thù MSFT/AAPL/PG/WMT. **MSFT tiếp tục breach ngưỡng đóng cửa -10% từ đỉnh, đệm xấu đi còn -3,88% (từ -0,65% lúc Hogan từ chối bán 11-19) → TÁI ĐỀ XUẤT BÁN TOÀN BỘ 1CP, CẦN HOGAN DUYỆT LẠI.** AAPL/PG/WMT an toàn, không breach. Toàn vẹn 4/4 stop dự phòng xác nhận đầy đủ (TXN không còn cần). Không khoản nạp mới. PG/WMT tiếp tục trên ngưỡng cảnh báo +15%, đề xuất chốt lời cũ vẫn chờ Hogan, không lặp lại push.
+
+**Để duyệt:** Hogan mở phiên MỚI (Claude Code trên PC, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest có kết nối Robinhood) và gõ "duyệt đề xuất mới nhất". Phiên routine này KHÔNG có quyền đặt lệnh.
