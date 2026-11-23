@@ -3954,4 +3954,45 @@ Dùng đỉnh tham chiếu đã xác nhận ở lần kiểm tra CHÍNH 11-04 15
 
 **Kết luận:** Bán tháo AI-trade diện rộng mạnh hơn rõ rệt hôm nay (SPY -3,46%, QQQ -5,31%), gia tốc do cổ phiếu Anthropic (ANT) giảm phiên IPO thứ 2, không có catalyst macro mới và không có tin xấu đặc thù MSFT/AAPL/PG/WMT. **MSFT tiếp tục breach ngưỡng đóng cửa -10% từ đỉnh, đệm xấu đi còn -3,88% (từ -0,65% lúc Hogan từ chối bán 11-19) → TÁI ĐỀ XUẤT BÁN TOÀN BỘ 1CP, CẦN HOGAN DUYỆT LẠI.** AAPL/PG/WMT an toàn, không breach. Toàn vẹn 4/4 stop dự phòng xác nhận đầy đủ (TXN không còn cần). Không khoản nạp mới. PG/WMT tiếp tục trên ngưỡng cảnh báo +15%, đề xuất chốt lời cũ vẫn chờ Hogan, không lặp lại push.
 
+## 2026-11-23 ~13:04 ET (18:04 UTC) — Kiểm tra 13:00 ET core-8 (routine tự động, sync git): thị trường hồi phục mạnh cuối tuần, MSFT vẫn breach ngưỡng đóng cửa -10% nhưng đệm cải thiện rõ rệt — KHÔNG đề xuất mới (chưa tới điểm quyết định 15:30 ET)
+
+- **Sync đầu phiên:** `git fetch origin` — repo ở trạng thái HEAD detached khớp `origin/main` (do phiên trước), đã `git checkout -B main origin/main`. Không có commit mới kể từ entry "Kiểm tra CHÍNH 15:30 ET core-8 11-20" (không có hoạt động cuối tuần, thị trường đóng cửa thứ Bảy/Chủ Nhật). Không conflict.
+- **Core hiện 8 mã active** (không đổi, xác nhận qua `get_equity_positions`): MSFT 1cp, AAPL 1,484973cp, PG 3,416927cp, WMT 4,545415cp, VOO 1,156525cp, VXUS 9,365746cp, SCHD 15,020016cp, VB 1,736545cp. TXN còn 0,009648cp lẻ (DRIP, không có stop, không phải vị thế active, cấm mua lại tới 2026-12-20).
+- `get_portfolio`: total value **$6.140,38**, cash/buying_power **$1.450,79** (không đổi so lần kiểm tra trước — không phải tiền nạp mới; đã qua 7 ngày đầu tháng nên không áp dụng kiểm tra deposit).
+
+**Toàn vẹn stop dự phòng (bắt buộc mỗi lần kiểm tra):** `get_equity_orders` state=confirmed xác nhận **đủ 4/4 lệnh còn cần thiết**, không mã nào đổi mức — MSFT $438,30 (`6aeb4120`), AAPL $293,54 (`6aeb4121`), PG $135,96 (`6ad108b4`), WMT $103,17 (`6ad108b6`). Tất cả còn `confirmed`. Không thiếu mã nào → không cần báo khẩn.
+
+**Giá hiện tại (~18:04 UTC, ~13:04 ET) so đóng cửa chính thức 11-20 (phiên cuối tuần, không có giao dịch 11-21/11-22):**
+| Mã | Giá hiện tại | Đóng cửa 11-20 | % hôm nay | Giá vốn TB | P&L% |
+|---|---|---|---|---|---|
+| MSFT | $497,415 | $484,52 | **+2,66%** | $510,00 | -2,47% |
+| AAPL | $348,88 | $342,56 | +1,84% | $328,95 | +6,06% |
+| PG | $170,23 | $169,37 | +0,51% | $147,23 | **+15,62%** |
+| WMT | $128,89 | $127,95 | +0,73% | $109,85 | **+17,33%** |
+| VOO | $664,57 | $635,54 | +4,57% | $692,87 | -4,09% |
+| VXUS | $78,395 | $75,38 | +4,00% | $85,60 | -8,41% |
+| SCHD | $34,36 | $33,94 | +1,24% | $33,36 | +3,00% |
+| VB | $279,39 | $270,68 | +3,22% | $288,77 | -3,25% |
+
+- **Benchmark:** SPY $722,91 (**+4,80%** so đóng cửa 11-20 $689,81), QQQ $651,47 (**+7,07%** so $608,45) — hồi phục rất mạnh, đảo ngược phần lớn đà bán tháo AI-trade của phiên 11-20 (SPY/QQQ hôm đó -3,46%/-5,31%). WebSearch tổng quát không xác định được rõ 1 catalyst cụ thể cho đúng ngày 2026-11-23 (kết quả trả về không có tin đã xác nhận ngày) — nhưng toàn bộ 8 mã core đều tăng cùng chiều với benchmark, không mã nào lệch pha âm, nên đây là hồi phục mang tính hệ thống (snap-back sau bán tháo quá mức cuối tuần trước), không phải tin xấu đặc thù. `get_earnings_calendar` xác nhận KHÔNG có KQKD nào của MSFT/AAPL/PG/WMT trong 7 ngày tới.
+- MSFT riêng: tăng +2,66% hôm nay, không có tin xấu/tốt đặc thù công ty được xác nhận qua search — nhất quán với việc đây là hồi phục beta theo nhóm AI-trade sau phiên bán tháo mạnh thứ Sáu.
+
+**Đỉnh tham chiếu & ngưỡng đóng cửa -10% (qua `get_equity_historicals` 5-phút MSFT hôm nay — không mã nào tạo đỉnh intraday mới, đỉnh cao nhất MSFT hôm nay $509,15 < đỉnh tham chiếu $559,15):**
+
+| Mã | Đỉnh tham chiếu | Ngưỡng đóng cửa -10% | Giá hiện tại (~13:04 ET) | Đệm | Breach? |
+|---|---|---|---|---|---|
+| MSFT | $559,15 | $503,235 | $497,415 | **-1,16%** | **CÓ (giữa phiên) — nhưng đệm cải thiện rõ rệt so thứ Sáu (-3,88% → -1,16%)** |
+| AAPL | $360,83 | $324,747 | $348,88 | +7,43% | Không |
+| PG | $173,59 | $156,231 | $170,23 | +8,96% | Không |
+| WMT | $130,94 | $117,846 | $128,89 | +9,36% | Không |
+
+### KHÔNG đề xuất bán ở lần kiểm tra 13:00 ET này — đúng theo quy tắc CLAUDE.md (quyết định chính thức chỉ dựa trên giá đóng cửa, chỉ xét ở lần kiểm tra CHÍNH 15:30 ET)
+- MSFT vẫn đang breach ngưỡng đóng cửa -10% giữa phiên (đệm -1,16%) — đề xuất "tái đề xuất bán" từ thứ Sáu 15:40 ET (11-20, entry phía trên) **vẫn đang CHỜ Hogan quyết định** (không có phản hồi nào trong file log/git trong 2 ngày cuối tuần). Tuy nhiên bối cảnh đã thay đổi đáng kể: đệm đã cải thiện từ -3,88% (lúc tái đề xuất) lên -1,16% hôm nay nhờ hồi phục mạnh của thị trường. Nếu MSFT đóng cửa trên $503,235 ở lần kiểm tra CHÍNH 15:30 ET hôm nay, ngưỡng không còn bị breach và đề xuất bán thứ Sáu coi như không còn hiệu lực (không cần Hogan phải trả lời "không" cho đề xuất cũ — sẽ ghi nhận là "hết hiệu lực do giá hồi phục trên ngưỡng" nếu xảy ra). Nếu vẫn breach lúc đóng cửa 15:30 ET, sẽ tái đánh giá dựa trên giá đóng cửa thực tế (không lặp lại nguyên văn đề xuất cũ nếu đệm đã thu hẹp đáng kể).
+- AAPL/PG/WMT an toàn, đệm lớn, không breach.
+
+### Chốt lời/khác — không lặp lại đề xuất cũ
+- PG +15,62%, WMT +17,33% — cả hai tiếp tục trên ngưỡng cảnh báo +15% (nhích lên từ +15,22%/+16,87% thứ Sáu nhờ giá tăng tiếp hôm nay). Đề xuất chốt lời một phần PG (13:04 ET 11-10) và WMT (11-02) vẫn CHỜ Hogan — không lặp lại push.
+
+**Kết luận:** Thị trường hồi phục rất mạnh sau bán tháo AI-trade cuối tuần trước (SPY +4,80%, QQQ +7,07%), toàn bộ 8 mã core tăng cùng chiều, không tin xấu đặc thù mã nào. **MSFT vẫn kỹ thuật breach ngưỡng đóng cửa -10% giữa phiên nhưng đệm đã co lại đáng kể (-3,88% → -1,16%)** — đề xuất bán thứ Sáu vẫn treo, chưa có quyết định Hogan; lần kiểm tra CHÍNH 15:30 ET hôm nay sẽ dùng giá đóng cửa thực tế để kết luận có còn breach hay không. AAPL/PG/WMT an toàn. Toàn vẹn 4/4 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. PG/WMT tiếp tục trên ngưỡng cảnh báo +15%, đề xuất chốt lời cũ vẫn chờ Hogan, không lặp lại push. **Không có đề xuất mới lần kiểm tra này → không gửi PushNotification.**
+
 **Để duyệt:** Hogan mở phiên MỚI (Claude Code trên PC, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest có kết nối Robinhood) và gõ "duyệt đề xuất mới nhất". Phiên routine này KHÔNG có quyền đặt lệnh.
