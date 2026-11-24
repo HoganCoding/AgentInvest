@@ -4081,3 +4081,47 @@ Dùng đỉnh tham chiếu đã xác nhận ở lần kiểm tra CHÍNH 11-04 15
 - Không khoản nạp mới (cash không đổi $1.450,79 so 11-23 15:41 ET).
 
 **Kết luận:** Thị trường phân kỳ nhẹ (QQQ -1,87% nhưng MSFT/AAPL cá nhân vẫn tăng +1,26%/+1,30%), không tìm được tin xấu đặc thù mã nào qua WebSearch. MSFT tiếp tục breach kỹ thuật giữa phiên (đệm -0,91%, cải thiện nhẹ) nhưng chưa tới điểm quyết định chính thức 15:30 ET — không đề xuất ở lần kiểm tra này. AAPL/PG/WMT an toàn, WMT tạo đỉnh intraday mới nhỏ (ghi nhận, không dời stop). Toàn vẹn 4/4 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. PG/WMT tiếp tục trên ngưỡng cảnh báo lãi, đề xuất chốt lời cũ vẫn chờ Hogan, không lặp lại push. **Không có đề xuất mới lần kiểm tra này → không gửi PushNotification.**
+
+## 2026-11-24 ~15:45 ET (20:45 UTC) — Kiểm tra CHÍNH 15:30 ET core-8: MSFT vẫn breach đóng cửa -10%, đệm xấu đi nhẹ trong phiên nhưng chưa tới mức tái đề xuất — KHÔNG đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin` + `git checkout -B main origin/main` — khớp `origin/main`, không có commit log mới kể từ entry 13:04 ET hôm nay (chỉ có 1 commit cập nhật `scheduled_tasks.lock` của chính phiên này, đã commit/push riêng). Không conflict.
+- **Core hiện 8 mã active** (không đổi, xác nhận qua `get_equity_positions`): MSFT 1,00198cp, AAPL 1,484973cp, PG 3,416927cp, WMT 4,545415cp, VOO 1,156525cp, VXUS 9,365746cp, SCHD 15,020016cp, VB 1,736545cp. TXN còn 0,009648cp lẻ (DRIP, không có stop, cấm mua lại tới 2026-12-20). Slot tech thứ 3 (TXN) và thứ 4 (QCOM) vẫn TRỐNG theo quyết định Hogan, chưa tới kỳ review (~2026-12-01).
+- `get_portfolio`: total value **$6.157,45**, cash/buying_power **$1.450,79** (không đổi so 13:04 ET hôm nay — không phải tiền nạp mới).
+
+**Toàn vẹn stop dự phòng (bắt buộc mỗi lần kiểm tra):** `get_equity_orders` state=confirmed xác nhận **đủ 4/4 lệnh còn cần thiết**, không mã nào đổi mức — MSFT $438,30 (`6aeb4120`), AAPL $293,54 (`6aeb4121`), PG $135,96 (`6ad108b4`), WMT $103,17 (`6ad108b6`). Tất cả còn `confirmed`. Không thiếu mã nào → không cần báo khẩn.
+
+**Giá hiện tại (~20:40 UTC, ~15:40 ET, gần đóng cửa) so đóng cửa chính thức 11-23:**
+| Mã | Giá hiện tại | Đóng cửa 11-23 | % hôm nay | Giá vốn TB | P&L% |
+|---|---|---|---|---|---|
+| MSFT | $493,915 | $492,50 | +0,29% | $509,97 | -3,15% |
+| AAPL | $352,141 | $349,08 | +0,88% | $328,95 | +7,05% |
+| PG | $172,35 | $169,60 | +1,62% | $147,23 | **+17,06%** |
+| WMT | $131,67 | $129,58 | +1,61% | $109,85 | **+19,88%** |
+| VOO | $658,2041 | $663,91 | -0,86% | $692,87 | -4,99% |
+| VXUS | $77,795 | $78,25 | -0,58% | $85,60 | -9,11% |
+| SCHD | $34,86 | $34,39 | +1,37% | $33,36 | +4,50% |
+| VB | $279,58 | $279,59 | -0,00% | $288,77 | -3,15% |
+
+- **Benchmark:** SPY $716,09 (-0,86% so đóng cửa 11-23 $722,29), QQQ $635,115 (**-1,87%** so $651,03) — phân kỳ giữ nguyên so lần 13:04 ET. `WebSearch` ("stock market today November 24 2026", "Microsoft MSFT stock news November 24 2026", "Texas Instruments TXN stock drop November 24 2026") tìm được 1 bài có ngày khớp hôm nay: "S&P 500, Nasdaq log 3rd straight loss as Nvidia tanks tech" — xác nhận đây là ngày thứ 3 liên tiếp Nasdaq giảm, do nhóm AI/chip (NVDA dẫn đầu, kéo theo TXN/AVGO...) bị bán mạnh, KHÔNG phải tin xấu đặc thù MSFT. Không tìm thấy tin tức MSFT riêng cho hôm nay (kết quả MSFT toàn cũ/không xác định ngày). TXN giảm mạnh hôm nay (-10,9% theo quote, không phải vị thế core — chỉ còn 0,0096cp lẻ DRIP) nằm trong diễn biến bán tháo nhóm chip chung này, không có tin riêng xác nhận. `get_earnings_calendar` xác nhận KHÔNG có KQKD nào của MSFT/AAPL/PG/WMT trong 7 ngày tới.
+
+**Đỉnh tham chiếu & ngưỡng đóng cửa -10% (xác nhận qua `get_equity_historicals` 5 phút cả phiên — không mã nào tạo đỉnh mới vượt mức đã ghi nhận: MSFT cao nhất hôm nay $501,80 < đỉnh $559,15; AAPL $353,92 < đỉnh $360,83; PG $173,27 < đỉnh $173,59; WMT $132,42 = đỉnh đã ghi nhận lúc 13:04 ET, không vượt thêm):**
+
+| Mã | Đỉnh tham chiếu | Ngưỡng đóng cửa -10% | Giá gần đóng cửa (~15:40 ET) | Đệm | Breach? |
+|---|---|---|---|---|---|
+| MSFT | $559,15 | $503,235 | $493,915 | **-1,85%** | **CÓ — xấu đi nhẹ so 13:04 ET hôm nay (-0,91%), nhưng vẫn tốt hơn nhiều mức "tái đề xuất bán" 11-20 (-3,88%)** |
+| AAPL | $360,83 | $324,747 | $352,141 | +8,43% | Không |
+| PG | $173,59 | $156,231 | $172,35 | +10,32% | Không |
+| WMT | $132,42 | $119,178 | $131,67 | +10,50% | Không |
+
+### MSFT — quyết định chính thức dựa trên giá gần đóng cửa (~15:40 ET): KHÔNG tái đề xuất bán
+- Đệm hiện tại **-1,85%**, xấu đi so lần kiểm tra 13:00 ET hôm nay (-0,91%) nhưng vẫn nằm trong dải dao động bình thường đã thấy nhiều lần tuần này (-0,65% Hogan đã xem 11-19, tới -3,88% lúc tái đề xuất 11-20, rồi hồi về -1,21%/-0,91% 11-23/11-24 sáng). Không có tin xấu đặc thù MSFT (WebSearch xác nhận nguyên nhân là bán tháo nhóm AI/chip toàn ngành do NVDA dẫn đầu, không phải MSFT riêng) — MSFT thực ra còn TĂNG nhẹ hôm nay (+0,29%) trong khi QQQ giảm -1,87%, cho thấy MSFT đang outperform benchmark chứ không bị bán tháo riêng.
+- Theo đúng quy tắc đã nêu các lần kiểm tra gần đây ("chỉ coi là đề xuất MỚI nếu đệm xấu đi rõ rệt, ví dụ vượt qua mức -3% một lần nữa"): đệm -1,85% chưa tới ngưỡng đó, và chưa có yếu tố mới (tin xấu/fundamentals) để biện minh tái đề xuất khác với quyết định "giữ nguyên" Hogan đã đưa ra 11-19. **KHÔNG tái đề xuất bán ở lần kiểm tra CHÍNH 15:30 ET hôm nay.** Nếu đệm tiếp tục xấu đi rõ rệt (qua -3%) hoặc xuất hiện tin xấu đặc thù ở các lần kiểm tra tới, sẽ coi là đề xuất mới.
+- AAPL/PG/WMT an toàn, đệm lớn (+8% đến +10,5%), không breach.
+
+### Chốt lời/khác — không lặp lại đề xuất cũ
+- WMT +19,88%, PG +17,06% — cả hai tiếp tục trong dải cảnh báo +15%-20% (không mới, dao động nhẹ xuống so 13:04 ET do giá hạ nhẹ cuối phiên). Đề xuất chốt lời một phần WMT (11-02) và PG (13:04 ET 11-10) vẫn CHỜ Hogan — không lặp lại push.
+- Không khoản nạp mới (cash không đổi $1.450,79 so 13:04 ET hôm nay).
+
+**Kết luận:** Phiên bán tháo nhóm AI/chip (NVDA dẫn đầu, ngày thứ 3 liên tiếp theo tin tức xác nhận) kéo QQQ -1,87% nhưng MSFT/AAPL cá nhân vẫn tăng nhẹ — không phải tin xấu đặc thù MSFT. **MSFT vẫn breach ngưỡng đóng cửa -10% ở lần kiểm tra CHÍNH, đệm -1,85% xấu đi nhẹ so sáng nay nhưng chưa đạt mức được coi là "xấu đi rõ rệt" (qua -3%) để tái đề xuất bán** — giữ nguyên hướng không hành động như các lần kiểm tra gần đây, nhất quán với quyết định Hogan 11-19. AAPL/PG/WMT an toàn, không mã nào tạo đỉnh mới hôm nay (xác nhận qua historicals) nên không cần dời stop dự phòng. Toàn vẹn 4/4 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. PG/WMT tiếp tục trên ngưỡng cảnh báo lãi, đề xuất chốt lời cũ vẫn chờ Hogan, không lặp lại push. **Không có đề xuất mới lần kiểm tra này → không gửi PushNotification.**
+
+**Để duyệt:** Hogan mở phiên MỚI (Claude Code trên PC, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest có kết nối Robinhood) và gõ "duyệt đề xuất mới nhất". Phiên routine này KHÔNG có quyền đặt lệnh.
