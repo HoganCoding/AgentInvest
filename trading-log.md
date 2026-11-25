@@ -4167,3 +4167,45 @@ Dùng đỉnh tham chiếu đã xác nhận ở lần kiểm tra CHÍNH 11-04 15
 **Kết luận:** Bán tháo nhóm AI/chip tiếp diễn phiên thứ 4 liên tiếp (SPY -1,08%, QQQ -2,17%), không tìm được tin xấu đặc thù mã nào qua WebSearch. **MSFT breach ngưỡng đóng cửa -10% giữa phiên với đệm xấu đi rõ rệt (-3,02%, lần đầu qua mốc -3% từ 11-20)** nhưng theo đúng quy tắc, lần kiểm tra 13:00 ET này KHÔNG dùng giá giữa phiên để quyết định bán — cần theo dõi rất sát ở lần kiểm tra CHÍNH 15:30 ET. AAPL an toàn (đệm rộng); PG/WMT tạo đỉnh intraday mới nhỏ (ghi nhận, không dời stop). Toàn vẹn 4/4 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. PG/WMT tiếp tục trên ngưỡng cảnh báo lãi, đề xuất chốt lời cũ vẫn chờ Hogan, không lặp lại push. **Không có đề xuất mới lần kiểm tra này (chưa tới thời điểm quyết định chính thức) → không gửi PushNotification** — nhưng lần kiểm tra CHÍNH 15:30 ET hôm nay cần xét đề xuất bán MSFT nếu đệm đóng cửa vẫn xấu đi tới/qua mức -3%.
 
 **Để duyệt:** Hogan mở phiên MỚI (Claude Code trên PC, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest có kết nối Robinhood) và gõ "duyệt đề xuất mới nhất". Phiên routine này KHÔNG có quyền đặt lệnh.
+
+## 2026-11-25 ~15:41 ET (20:41 UTC) — Kiểm tra CHÍNH 15:30 ET core-8: MSFT tiếp tục breach ngưỡng đóng cửa -10%, đệm cải thiện nhẹ so giữa phiên nhưng vẫn xấu hơn đóng cửa 11-24 — CHƯA tái đề xuất (chưa vượt mốc -3% theo tiêu chí đã đặt ra), không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin` — không có commit mới kể từ entry 13:04 ET hôm nay. Không conflict.
+- **Core hiện 8 mã active** (không đổi, xác nhận qua `get_equity_positions`): MSFT 1,00198cp, AAPL 1,484973cp, PG 3,416927cp, WMT 4,545415cp, VOO 1,156525cp, VXUS 9,365746cp, SCHD 15,020016cp, VB 1,736545cp. TXN còn 0,009648cp lẻ (DRIP, không có stop, cấm mua lại tới 2026-12-20). Slot tech thứ 3 (TXN) và thứ 4 (QCOM) vẫn TRỐNG theo quyết định Hogan, chưa tới kỳ review (~2026-12-01).
+- `get_portfolio`: total value **$6.169,57**, cash/buying_power **$1.450,79** (không đổi so 13:04 ET hôm nay — không phải tiền nạp mới).
+
+**Toàn vẹn stop dự phòng (bắt buộc mỗi lần kiểm tra):** `get_equity_orders` state=confirmed xác nhận **đủ 4/4 lệnh còn cần thiết**, không mã nào đổi mức — MSFT $438,30 (`6aeb4120`), AAPL $293,54 (`6aeb4121`), PG $135,96 (`6ad108b4`), WMT $103,17 (`6ad108b6`). Tất cả còn `confirmed`. Không thiếu mã nào → không cần báo khẩn.
+
+**Giá ~15:41 ET (gần đóng cửa, dùng làm cơ sở quyết định chính) so đóng cửa chính thức 11-24:**
+| Mã | Giá hiện tại | Đóng cửa 11-24 | % hôm nay | Giá vốn TB | P&L% |
+|---|---|---|---|---|---|
+| MSFT | $489,00 | $496,13 | -1,44% | $509,97 | -4,11% |
+| AAPL | $354,19 | $354,07 | +0,03% | $328,95 | +7,68% |
+| PG | $173,28 | $172,47 | +0,47% | $147,23 | **+17,69%** |
+| WMT | $132,055 | $132,31 | -0,19% | $109,85 | **+20,22%** |
+| VOO | $656,8134 | $660,71 | -0,59% | $692,87 | -5,20% |
+| VXUS | $77,84 | $77,94 | -0,13% | $85,60 | -9,07% |
+| SCHD | $35,245 | $34,89 | +1,02% | $33,36 | +5,65% |
+| VB | $282,205 | $280,06 | +0,77% | $288,77 | -2,27% |
+
+- **Benchmark:** SPY $714,47 (**-0,60%** so đóng cửa 11-24 $718,78), QQQ $629,98 (**-1,27%** so $638,10) — bán tháo nhóm AI/chip tiếp tục nhưng mức độ nhẹ hơn 2 lần kiểm tra trước (13:04 ET hôm nay: SPY -1,08%/QQQ -2,17%; hồi nhẹ lại trong phiên chiều). `WebSearch` ("Microsoft MSFT stock news November 25 2026", "stock market today November 25 2026 Nasdaq tech selloff AI chip") không tìm được bài viết nào xác định đúng ngày hôm nay — chỉ có kết quả cũ/không xác định ngày mô tả chuỗi bán tháo AI-valuation đã kéo dài từ đầu tháng 11. Không có cơ sở xác nhận tin xấu đặc thù MSFT hôm nay. MSFT giảm -1,44% hôm nay, hơi nhiều hơn QQQ (-1,27%) — lệch nhẹ (~0,17 điểm %), không đáng kể, nằm trong biên độ nhiễu bình thường. `get_earnings_calendar` xác nhận KHÔNG có KQKD nào của MSFT/AAPL/PG/WMT trong 7 ngày tới.
+
+**Đỉnh tham chiếu & ngưỡng đóng cửa -10% (quyết định CHÍNH thức của lần kiểm tra này):**
+
+| Mã | Đỉnh tham chiếu | Ngưỡng đóng cửa -10% | Giá ~15:41 ET | Đệm | Breach? |
+|---|---|---|---|---|---|
+| MSFT | $559,15 | $503,235 | $489,00 | **-2,83%** | **CÓ — breach tiếp diễn** |
+| AAPL | $360,83 | $324,747 | $354,19 | +9,06% | Không |
+| PG | $174,56 (đỉnh intraday ghi nhận 13:04 ET hôm nay, không có đỉnh mới thêm chiều nay — đã kiểm tra `get_equity_historicals` 5 phút cả phiên) | $157,104 | $173,28 | +10,30% | Không |
+| WMT | $133,19 (đỉnh intraday ghi nhận 13:04 ET hôm nay, không có đỉnh mới thêm chiều nay) | $119,871 | $132,055 | +10,17% | Không |
+
+- **MSFT — đánh giá quyết định chính:** Đệm tại thời điểm quyết định (-2,83%) đã **cải thiện nhẹ so giữa phiên hôm nay** (-3,02% lúc 13:04 ET) nhưng **vẫn xấu hơn đóng cửa 11-24** (-1,85%) khoảng 1 điểm %, tiếp tục xu hướng xấu đi dần qua nhiều phiên (11-23: -1,21% → 11-24: -1,85% → hôm nay: -2,83%). Theo tiêu chí đã tự đặt ra ở entry 11-23 15:41 ET ("nếu MSFT breach trở lại với đệm xấu đi rõ rệt, ví dụ vượt qua mức -3% một lần nữa, sẽ coi là đề xuất MỚI"): đệm hôm nay tại điểm quyết định **CHƯA vượt qua mốc -3%** (chỉ chạm -3,02% giữa phiên, không phải tại điểm quyết định chính) → **CHƯA đủ cơ sở để tái đề xuất bán theo đúng tiêu chí đã đặt ra trước đó**. WebSearch không xác nhận tin xấu đặc thù MSFT; mức giảm hôm nay (-1,44%) chỉ lệch nhẹ so QQQ (-1,27%), nhất quán với rủi ro hệ thống/beta như các lần trước, không phải fundamentals xấu đi. **Breach vẫn tiếp diễn và xu hướng đang xấu dần — lần kiểm tra tiếp theo (13:00 ET ngày mai, lưu ý thị trường ĐÓNG CỬA nghỉ lễ Thanksgiving 11-26, phiên tiếp theo là 11-27) cần đặc biệt chú ý: nếu đệm tiếp tục xấu đi qua mốc -3% rõ rệt tại điểm quyết định, sẽ coi là đề xuất MỚI.**
+- AAPL/PG/WMT an toàn, đệm rộng, không breach.
+
+**Chốt lời/khác — không lặp lại đề xuất cũ:**
+- PG +17,69%, WMT +20,22% (lần đầu vượt mốc +20%, tiếp tục mở rộng từ +19,75% lúc 13:04 ET) — cả hai tiếp tục trong/qua dải cảnh báo +15%-20%. Đề xuất chốt lời một phần WMT (11-02) và PG (13:04 ET 11-10) vẫn CHỜ Hogan — không lặp lại push.
+- Không khoản nạp mới (cash không đổi $1.450,79).
+
+**Kết luận:** Bán tháo nhóm AI/chip hạ nhiệt nhẹ so sáng nay (SPY -0,60%, QQQ -1,27%, cải thiện từ -1,08%/-2,17% lúc 13:04 ET) nhưng vẫn tiêu cực. **MSFT tiếp tục breach ngưỡng đóng cửa -10% tại điểm quyết định chính (đệm -2,83%), xấu hơn đóng cửa 11-24 (-1,85%) nhưng chưa vượt mốc -3% đã tự đặt ra làm tiêu chí tái đề xuất → KHÔNG tái đề xuất bán lần này, chỉ ghi nhận xu hướng xấu dần cần theo dõi rất sát lần kiểm tra tới.** AAPL/PG/WMT an toàn, không mã nào tạo đỉnh intraday mới thêm trong chiều nay (PG/WMT giữ nguyên đỉnh đã ghi nhận sáng nay). Toàn vẹn 4/4 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. WMT lần đầu vượt +20% P&L, PG tiếp tục trên +15%; đề xuất chốt lời cũ vẫn chờ Hogan, không lặp lại push. **Không có đề xuất mới lần kiểm tra này → không gửi PushNotification.** Lưu ý: thị trường Mỹ đóng cửa nghỉ lễ Thanksgiving thứ Năm 2026-11-26 — routine tiếp theo sẽ là phiên 13:00 ET thứ Sáu 2026-11-27 (có thể là phiên rút gọn, đóng cửa sớm 13:00 ET).
+
+**Để duyệt (nếu có đề xuất cũ muốn xem lại):** Hogan mở phiên MỚI (Claude Code trên PC, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest có kết nối Robinhood) và gõ "duyệt đề xuất mới nhất". Phiên routine này KHÔNG có quyền đặt lệnh.
