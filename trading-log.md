@@ -4231,3 +4231,47 @@ Dùng đỉnh tham chiếu đã xác nhận ở lần kiểm tra CHÍNH 11-04 15
 **Kết luận:** Đây là lần routine tự động fire TRÙNG LẶP thứ 2 trong cùng ngày nghỉ lễ Thanksgiving (đã có entry đầu ngày hôm nay ghi nhận thị trường đóng cửa) — không có phiên giao dịch mới nên không có gì để kiểm tra/đề xuất thêm, mọi phân tích ở entry 2026-11-25 15:41 ET vẫn còn nguyên giá trị. Toàn vẹn 4/4 stop dự phòng xác nhận đầy đủ. **Không có đề xuất mới → không gửi PushNotification.** Routine tiếp theo có ý nghĩa: phiên 13:00 ET thứ Sáu 2026-11-27 (có thể rút gọn, đóng cửa sớm 13:00 ET).
 
 **Để duyệt (nếu có đề xuất cũ muốn xem lại):** Hogan mở phiên MỚI (Claude Code trên PC, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest có kết nối Robinhood) và gõ "duyệt đề xuất mới nhất". Phiên routine này KHÔNG có quyền đặt lệnh.
+
+## 2026-11-27 ~13:04 ET (18:04 UTC) — Kiểm tra CHÍNH (phiên rút gọn, đóng cửa sớm 13:00 ET) core-8: thị trường hồi phục rộng (SPY +1,68%, QQQ +2,65%), MSFT vẫn breach đóng cửa -10% nhưng đệm cải thiện rõ (-2,83% → -1,96%) — KHÔNG tái đề xuất, không có đề xuất mới
+
+- **Sync đầu phiên:** `git fetch origin` — `HEAD` detached khớp `origin/main` (do phiên trước), đã `git checkout -B main origin/main`. Không có commit log mới kể từ entry 11-26 15:40 ET. Không conflict.
+- **Core hiện 8 mã active** (không đổi, xác nhận qua `get_equity_positions`): MSFT 1,001980cp, AAPL 1,484973cp, PG 3,416927cp, WMT 4,545415cp, VOO 1,156525cp, VXUS 9,365746cp, SCHD 15,020016cp, VB 1,736545cp. TXN còn 0,009648cp lẻ (DRIP, không có stop, cấm mua lại tới 2026-12-20). Slot tech thứ 3 (TXN) và thứ 4 (QCOM) vẫn TRỐNG theo quyết định Hogan, chưa tới kỳ review (~2026-12-01).
+- `get_portfolio`: total value **$6.228,21**, cash/buying_power **$1.450,79** — không đổi so lần kiểm tra 11-26 (không phải tiền nạp mới; ngoài phạm vi "7 ngày đầu tháng" nên không cần kiểm tra khoản nạp hôm nay).
+- **Lưu ý phiên:** hôm nay là phiên rút gọn sau lễ Thanksgiving, đóng cửa sớm **13:00 ET** (xác nhận qua `get_equity_historicals` 5 phút: nến cuối cùng kết thúc 17:55-18:00 UTC = ~12:55-13:00 ET) — giá dùng ở bảng dưới (~18:04 UTC) là giá SÁT/NGAY SAU đóng cửa chính thức, dùng làm cơ sở quyết định CHÍNH thức duy nhất của hôm nay (không có lần kiểm tra 15:30 ET riêng vì thị trường đã đóng).
+
+**Toàn vẹn stop dự phòng (bắt buộc mỗi lần kiểm tra):** `get_equity_orders` state=confirmed xác nhận **đủ 4/4 lệnh còn cần thiết**, không mã nào đổi mức — MSFT $438,30 (`6aeb4120`), AAPL $293,54 (`6aeb4121`), PG $135,96 (`6ad108b4`), WMT $103,17 (`6ad108b6`). Tất cả còn `confirmed`. Không thiếu mã nào → không cần báo khẩn.
+
+**Giá ~18:04 UTC (ngay sau đóng cửa sớm 13:00 ET) so đóng cửa chính thức 11-25:**
+| Mã | Giá hiện tại | Đóng cửa 11-25 | % hôm nay | Giá vốn TB | P&L% |
+|---|---|---|---|---|---|
+| MSFT | $493,38 | $489,93 | +0,70% | $509,97 | -3,25% |
+| AAPL | $358,70 | $355,58 | +0,88% | $328,95 | +9,04% |
+| PG | $172,97 | $173,23 | -0,15% | $147,23 | **+17,48%** |
+| WMT | $133,14 | $131,94 | +0,91% | $109,85 | **+21,21%** |
+| VOO | $669,94 | $658,87 | +1,68% | $692,87 | -3,31% |
+| VXUS | $79,54 | $78,02 | +1,95% | $85,60 | -7,08% |
+| SCHD | $35,67 | $35,29 | +1,08% | $33,36 | +6,92% |
+| VB | $287,22 | $283,09 | +1,46% | $288,77 | -0,54% |
+
+- **Benchmark:** SPY $728,73 (**+1,68%** so đóng cửa 11-25 $716,70), QQQ $650,76 (**+2,65%** so $633,93) — hồi phục rộng khắp thị trường, không riêng mã nào. `WebSearch` ("Microsoft MSFT stock news November 27 2026", "stock market today November 27 2026 Black Friday Nasdaq S&P 500") không tìm được bài viết xác định đúng ngày hôm nay (kết quả toàn cũ/không xác định ngày) — không có tin xấu đặc thù MSFT hay mã nào khác được xác nhận; MSFT thực ra TĂNG nhẹ hôm nay (+0,70%) cùng chiều với VOO/QQQ, nhất quán với một phiên Black Friday thanh khoản thấp, tăng rộng. `get_earnings_calendar` xác nhận KHÔNG có KQKD nào của MSFT/AAPL/PG/WMT trong 7 ngày tới.
+
+**Đỉnh tham chiếu & ngưỡng đóng cửa -10% (xác nhận qua `get_equity_historicals` 5 phút cả phiên rút gọn — KHÔNG mã nào tạo đỉnh mới: MSFT cao nhất hôm nay $500,465 < đỉnh $559,15; AAPL $359,50 < đỉnh $360,83; PG $173,31 < đỉnh $174,56; WMT $133,16 < đỉnh $133,19 — không cần dời stop dự phòng):**
+
+| Mã | Đỉnh tham chiếu | Ngưỡng đóng cửa -10% | Giá đóng cửa sớm (~13:00 ET) | Đệm | Breach? |
+|---|---|---|---|---|---|
+| MSFT | $559,15 | $503,235 | $493,38 | **-1,96%** | **CÓ — nhưng đệm cải thiện rõ rệt so đóng cửa 11-25 (-2,83%)** |
+| AAPL | $360,83 | $324,747 | $358,70 | +10,46% | Không |
+| PG | $174,56 | $157,104 | $172,97 | +10,10% | Không |
+| WMT | $133,19 | $119,871 | $133,14 | +11,07% | Không |
+
+### MSFT — quyết định chính thức dựa trên giá đóng cửa sớm hôm nay: KHÔNG tái đề xuất bán
+- Đệm hiện tại **-1,96%**, cải thiện rõ rệt so đóng cửa 11-24/11-25 (-1,85% → -2,83%, xu hướng xấu dần trước lễ) nhờ thị trường hồi phục mạnh dịp Black Friday. Theo đúng tiêu chí đã tự đặt ra (chỉ coi là đề xuất MỚI nếu đệm xấu đi rõ rệt, vượt qua mốc -3% tại điểm quyết định): đệm hôm nay KHÔNG những chưa vượt -3% mà còn cải thiện hẳn → **KHÔNG tái đề xuất bán**. Không có tin xấu đặc thù MSFT (WebSearch không tìm thấy); MSFT còn tăng giá cùng chiều thị trường hôm nay. Xu hướng xấu dần trước lễ coi như tạm dừng lại; tiếp tục theo dõi ở lần kiểm tra tiếp theo (tuần sau, thị trường trở lại phiên đầy đủ).
+- AAPL/PG/WMT an toàn, đệm rộng (+10% đến +11%), không breach, không mã nào tạo đỉnh intraday mới.
+
+### Chốt lời/khác — không lặp lại đề xuất cũ
+- WMT +21,21% (vượt tiếp mốc +20%), PG +17,48% — cả hai tiếp tục trong/qua dải cảnh báo +15%-20%. Đề xuất chốt lời một phần WMT (11-02) và PG (13:04 ET 11-10) vẫn CHỜ Hogan — không lặp lại push.
+- Không khoản nạp mới (cash không đổi $1.450,79).
+
+**Kết luận:** Phiên Black Friday rút gọn hồi phục mạnh trên diện rộng (SPY +1,68%, QQQ +2,65%), không tin xấu đặc thù mã nào qua WebSearch. **MSFT vẫn kỹ thuật breach ngưỡng đóng cửa -10% nhưng đệm cải thiện rõ (-2,83% → -1,96%)** → không tái đề xuất, xu hướng xấu dần trước lễ tạm dừng lại. AAPL/PG/WMT an toàn, không mã nào tạo đỉnh mới nên không cần dời stop dự phòng. Toàn vẹn 4/4 stop dự phòng xác nhận đầy đủ. Không khoản nạp mới. PG/WMT tiếp tục trên ngưỡng cảnh báo lãi, đề xuất chốt lời cũ vẫn chờ Hogan, không lặp lại push. **Không có đề xuất mới lần kiểm tra này → không gửi PushNotification.**
+
+**Để duyệt (nếu có đề xuất cũ muốn xem lại):** Hogan mở phiên MỚI (Claude Code trên PC, hoặc Claude app → Code → phiên mới trên repo HoganCoding/AgentInvest có kết nối Robinhood) và gõ "duyệt đề xuất mới nhất". Phiên routine này KHÔNG có quyền đặt lệnh.
